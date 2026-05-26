@@ -356,6 +356,7 @@ h2 {
   padding: clamp(84px, 11vw, 150px) 0;
   max-width: 100%;
   overflow-x: clip;
+  scroll-margin-top: 110px;
 }
 
 .vision-section {
@@ -620,50 +621,35 @@ h2 {
   font-size: 0.94rem;
 }
 
-.mini-chart {
-  display: flex;
-  align-items: end;
-  gap: 7px;
-  height: 42px;
-  margin: 22px 0;
-}
-
-.mini-chart i {
-  width: 100%;
-  border-radius: 999px 999px 4px 4px;
-  background: linear-gradient(180deg, var(--cyan), var(--blue));
-}
-
-.mini-chart i:nth-child(1) {
-  height: 34%;
-}
-.mini-chart i:nth-child(2) {
-  height: 62%;
-}
-.mini-chart i:nth-child(3) {
-  height: 46%;
-}
-.mini-chart i:nth-child(4) {
-  height: 82%;
-}
-
-.ingredient-card dl {
+.ingredient-specs {
   display: grid;
-  gap: 10px;
+  gap: 8px;
+  margin: 22px 0 0;
+}
+
+.ingredient-specs div {
+  display: grid;
+  gap: 5px;
+  padding: 12px 13px;
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(248, 250, 252, 0.96), rgba(239, 246, 255, 0.72));
 }
 
 .ingredient-card dt {
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 900;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .ingredient-card dd {
   margin: 0;
   color: var(--ink);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 750;
+  line-height: 1.45;
 }
 
 .tag-row {

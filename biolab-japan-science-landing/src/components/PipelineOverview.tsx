@@ -15,20 +15,18 @@ function IngredientCard({ item }: { item: Ingredient }) {
       </div>
       <h3>{item.name}</h3>
       <p>{item.summary}</p>
-      <div className="mini-chart" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-        <i />
-      </div>
-      <dl>
+      <dl className="ingredient-specs">
         <div>
-          <dt>Area</dt>
+          <dt>用途領域</dt>
           <dd>{item.area}</dd>
         </div>
         <div>
-          <dt>Intake basis</dt>
+          <dt>摂取目安</dt>
           <dd>{item.intake}</dd>
+        </div>
+        <div>
+          <dt>{item.strains ? "菌株 / 素材" : "由来素材"}</dt>
+          <dd>{list.slice(0, 2).join(" / ")}</dd>
         </div>
       </dl>
       <div className="tag-row">
@@ -36,7 +34,6 @@ function IngredientCard({ item }: { item: Ingredient }) {
           <span key={tag}>{tag}</span>
         ))}
       </div>
-      <p className="strain-line">{list.slice(0, 3).join(" / ")}</p>
     </motion.article>
   );
 }
