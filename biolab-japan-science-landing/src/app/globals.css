@@ -402,6 +402,7 @@ h2 {
 }
 
 .business-map-section {
+  padding: clamp(78px, 9vw, 120px) 0 clamp(52px, 6vw, 84px);
   background:
     radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.1), transparent 20rem),
     linear-gradient(180deg, #f8fafc, #eef4fb);
@@ -409,7 +410,7 @@ h2 {
 
 .route-canvas {
   position: relative;
-  min-height: 470px;
+  min-height: 430px;
 }
 
 .route-line {

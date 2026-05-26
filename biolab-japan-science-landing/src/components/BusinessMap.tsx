@@ -24,21 +24,21 @@ export function BusinessMap() {
         ease: "none",
         scrollTrigger: {
           trigger: root.current,
-          start: "top 68%",
-          end: "bottom 45%",
-          scrub: 0.7,
+          start: "top 72%",
+          end: "+=360",
+          scrub: 0.45,
         },
       });
 
       gsap.from(".route-card", {
-        y: 28,
+        y: 18,
         opacity: 0,
-        stagger: 0.14,
-        duration: 0.7,
+        stagger: 0.08,
+        duration: 0.48,
         ease: "power3.out",
         scrollTrigger: {
           trigger: root.current,
-          start: "top 62%",
+          start: "top 76%",
         },
       });
     }, root);
