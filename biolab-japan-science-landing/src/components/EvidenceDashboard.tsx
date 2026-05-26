@@ -35,6 +35,14 @@ export function EvidenceDashboard() {
             </span>
           </div>
         </article>
+        <article className="evidence-visual-card">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="images/clinical-platform-hero.png" alt="機能性素材と臨床研究を表現したカプセル型ビジュアル" />
+          <div>
+            <p>Clinical platform visual</p>
+            <h3>素材情報を、研究・処方・供給の文脈で見せる。</h3>
+          </div>
+        </article>
       </div>
     </SectionShell>
   );
