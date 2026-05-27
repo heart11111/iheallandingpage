@@ -64,8 +64,6 @@ export function PipelineOverview() {
 
   return (
     <section id="pipeline" className="pipeline-section">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="section-backdrop-image" src="images/global-evidence-bg.png" alt="" aria-hidden="true" />
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="section-heading compact-heading">
           <p className="eyebrow">Ingredient Pipeline / Global-ready Portfolio</p>
@@ -74,6 +72,29 @@ export function PipelineOverview() {
             プロバイオティクスと自然由来機能性素材を、用途、摂取量、エビデンスタグごとに整理し、
             日本から広域B2B展開まで検討しやすい素材ポートフォリオとして見せます。
           </p>
+        </div>
+
+        <div className="portfolio-lens" aria-label="Portfolio organization axis">
+          <div>
+            <span>01</span>
+            <strong>Evidence</strong>
+            <p>臨床・論文・特許・認証で参照可能な根拠を先に確認します。</p>
+          </div>
+          <div>
+            <span>02</span>
+            <strong>Application</strong>
+            <p>女性、体脂肪、脳、肝臓、鼻、肌、免疫など用途別に分類します。</p>
+          </div>
+          <div>
+            <span>03</span>
+            <strong>Formulation</strong>
+            <p>菌株・由来素材・摂取目安を商品設計に落とし込みます。</p>
+          </div>
+          <div>
+            <span>04</span>
+            <strong>Market Route</strong>
+            <p>日本B2B導入から広域市場展開までの提案軸に接続します。</p>
+          </div>
         </div>
 
         <div className="pipeline-controls" aria-label="Ingredient filters">

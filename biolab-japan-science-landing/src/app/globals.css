@@ -770,6 +770,49 @@ h2 {
   margin-bottom: 28px;
 }
 
+.portfolio-lens {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0 0 34px;
+  border-block: 1px solid rgba(103, 232, 249, 0.2);
+  background: rgba(103, 232, 249, 0.14);
+}
+
+.portfolio-lens div {
+  min-height: 170px;
+  padding: 22px 20px;
+  background: rgba(7, 26, 49, 0.66);
+}
+
+.portfolio-lens span,
+.evidence-flow span {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--cyan);
+  font-family: var(--font-display), var(--font-ja), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.portfolio-lens strong,
+.evidence-flow strong {
+  display: block;
+  color: white;
+  font-family: var(--font-display), var(--font-ja), sans-serif;
+  font-size: 1rem;
+  line-height: 1.15;
+}
+
+.portfolio-lens p,
+.evidence-flow p {
+  margin: 12px 0 0;
+  color: rgba(226, 232, 240, 0.7);
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
 .segmented,
 .filter-strip {
   display: flex;
@@ -941,23 +984,35 @@ h2 {
   font-weight: 800;
 }
 
-.abstract-chart {
-  margin: 22px 0;
-  border-radius: 0;
-  background: transparent;
-  border-block: 1px solid rgba(37, 99, 235, 0.12);
+.evidence-flow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 22px 0 20px;
+  border-block: 1px solid rgba(37, 99, 235, 0.16);
+  background: rgba(37, 99, 235, 0.12);
 }
 
-.abstract-chart svg {
-  width: 100%;
-  height: 70px;
+.evidence-flow div {
+  min-height: 126px;
+  padding: 15px 14px;
+  background: rgba(255, 255, 255, 0.84);
 }
 
-.abstract-chart path {
-  fill: none;
-  stroke: var(--blue);
-  stroke-width: 4;
-  stroke-linecap: round;
+.evidence-flow span {
+  margin-bottom: 10px;
+  color: var(--blue);
+}
+
+.evidence-flow strong {
+  color: var(--navy);
+  font-size: 0.84rem;
+}
+
+.evidence-flow p {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
 }
 
 .deep-card h4,
@@ -1385,6 +1440,7 @@ h2 {
 
   .compact-heading,
   .route-grid,
+  .portfolio-lens,
   .ingredient-grid,
   .deep-card-grid,
   .sheet-grid,
@@ -1474,6 +1530,7 @@ h2 {
 
   .compact-heading,
   .route-grid,
+  .portfolio-lens,
   .ingredient-grid,
   .deep-card-grid,
   .sheet-grid,
@@ -1482,6 +1539,14 @@ h2 {
   .lab-panel,
   .contact-form,
   .evidence-numbers {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-lens div {
+    min-height: auto;
+  }
+
+  .evidence-flow {
     grid-template-columns: 1fr;
   }
 

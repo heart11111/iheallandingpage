@@ -6,8 +6,8 @@ export function ProbioticsSection() {
     <SectionShell
       id="probiotics"
       eyebrow="Functional Probiotics Line"
-      title="用途別に設計されたプロバイオティクス菌株。"
-      copy="各カードはB2B素材情報として、サポート領域、菌株、摂取量、参照資料を控えめな表現で整理しています。"
+      title="菌株を、訴求ではなく検討順で整理する。"
+      copy="装飾的なチャートではなく、用途領域、根拠タイプ、菌株構成、摂取目安の順にB2B検討情報を読み取れる構成です。"
     >
       <div className="deep-card-grid">
         {probioticsIngredients.map((item) => (
@@ -18,11 +18,30 @@ export function ProbioticsSection() {
             </div>
             <h3>{item.name}</h3>
             <p>{item.summary}</p>
-            <div className="abstract-chart" aria-hidden="true">
-              <svg viewBox="0 0 180 54">
-                <path d="M4 42 C 30 24, 48 36, 70 26 S 112 16, 136 23 S 160 36, 176 13" />
-              </svg>
+
+            <div className="evidence-flow" aria-label={`${item.name} information structure`}>
+              <div>
+                <span>01</span>
+                <strong>用途領域</strong>
+                <p>{item.area}</p>
+              </div>
+              <div>
+                <span>02</span>
+                <strong>根拠タイプ</strong>
+                <p>{item.evidenceTags.slice(0, 2).join(" / ")}</p>
+              </div>
+              <div>
+                <span>03</span>
+                <strong>菌株構成</strong>
+                <p>{(item.strains ?? []).slice(0, 2).join(" / ")}</p>
+              </div>
+              <div>
+                <span>04</span>
+                <strong>摂取目安</strong>
+                <p>{item.intake}</p>
+              </div>
             </div>
+
             <h4>Strain portfolio</h4>
             <ul>
               {(item.strains ?? []).map((strain) => (
