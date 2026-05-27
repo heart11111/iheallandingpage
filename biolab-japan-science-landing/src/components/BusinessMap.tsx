@@ -51,10 +51,11 @@ export function BusinessMap() {
       <div className="route-ribbon" aria-hidden="true" />
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="section-heading">
-          <p className="eyebrow">Business Map</p>
-          <h2>韓国R&amp;Dから日本B2Bヘルスケア流通へ。</h2>
+          <p className="eyebrow">Business Map / Korea to Japan to Global</p>
+          <h2>韓国R&amp;D、日本B2B、そして広域市場へ。</h2>
           <p className="section-copy">
-            BIOLAB Japanは、素材開発、製造、ブランド管理、日本側販売ネットワークをつなぐ事業ブリッジとして機能します。
+            BIOLAB Japanは、素材開発、製造、ブランド管理、日本側販売ネットワークをつなぎ、
+            エビデンスを持つ素材をより広い市場へ展開する事業ブリッジとして機能します。
           </p>
         </div>
 

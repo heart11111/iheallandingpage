@@ -64,12 +64,15 @@ export function PipelineOverview() {
 
   return (
     <section id="pipeline" className="pipeline-section">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="section-backdrop-image" src="images/global-evidence-bg.png" alt="" aria-hidden="true" />
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="section-heading compact-heading">
-          <p className="eyebrow">Ingredient Pipeline</p>
-          <h2>ヘルスファンクショナル素材パイプライン。</h2>
+          <p className="eyebrow">Ingredient Pipeline / Global-ready Portfolio</p>
+          <h2>根拠ある素材を、市場別の提案軸へ。</h2>
           <p className="section-copy">
-            プロバイオティクスと自然由来機能性素材を、用途、摂取量、エビデンスタグごとに整理しました。
+            プロバイオティクスと自然由来機能性素材を、用途、摂取量、エビデンスタグごとに整理し、
+            日本から広域B2B展開まで検討しやすい素材ポートフォリオとして見せます。
           </p>
         </div>
 

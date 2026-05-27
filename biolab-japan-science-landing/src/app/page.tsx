@@ -23,18 +23,18 @@ export default function Home() {
         <section id="vision" className="vision-section">
           <div className="mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-[0.86fr_1.14fr]">
             <div>
-              <p className="eyebrow">Vision &amp; Mission</p>
-              <h2>Beyond Functional Healthcare Solutions.</h2>
+              <p className="eyebrow">Credibility to Global Scale</p>
+              <h2>公信力のある素材情報を、国境を越える事業設計へ。</h2>
             </div>
             <div className="vision-copy">
               <p>
-                BIOLAB Japanは、日本の機能性ヘルスケア産業でリーディングカンパニーへ飛躍することを目指し、
-                韓国の素材開発・製造力と日本のB2B市場をつなぎます。
+                BIOLAB Japanは、韓国の素材開発・製造力と日本のB2B市場をつなぎながら、
+                臨床・論文・特許・認証に基づく情報設計で、次の市場展開まで見据えたヘルスケア事業を構築します。
               </p>
               <div className="vision-points">
-                <span>Official supplier of KFDA-certified individually recognized ingredients</span>
-                <span>Human clinical trial based material portfolio</span>
-                <span>ODM/OEM-ready product development and distribution</span>
+                <span>Human clinical trial / SCI paper / patent referenced portfolio</span>
+                <span>Korea R&amp;D and manufacturing bridge for Japan B2B</span>
+                <span>Global-ready ODM/OEM, supply, and brand expansion planning</span>
               </div>
             </div>
           </div>

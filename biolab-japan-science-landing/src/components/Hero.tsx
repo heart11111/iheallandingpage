@@ -19,6 +19,8 @@ const trustChips = [
 export function Hero() {
   return (
     <section id="top" className="hero-section">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="hero-backdrop-image" src="images/global-evidence-bg.png" alt="" aria-hidden="true" />
       <div className="hero-bg-grid" aria-hidden="true" />
       <div className="hero-molecular-field" aria-hidden="true">
         <span />
@@ -28,15 +30,15 @@ export function Hero() {
       </div>
       <div className="mx-auto grid min-h-[100dvh] max-w-7xl items-center gap-10 px-5 pb-20 pt-32 sm:px-8 lg:grid-cols-[0.96fr_1.04fr] lg:pb-24">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}>
-          <p className="eyebrow">日本市場向け機能性ヘルスケアプラットフォーム</p>
+          <p className="eyebrow">Evidence-backed Healthcare Platform</p>
           <h1>
-            <span>日本のトータル</span>
-            <span>ヘルスケアを</span>
-            <span>ワンストップで。</span>
+            <span>信頼できる</span>
+            <span>素材根拠から、</span>
+            <span>グローバル展開へ。</span>
           </h1>
           <p className="hero-copy">
-            BIOLAB Japanは、韓国の機能性素材開発、製造、ODM/OEM生産、ブランドマネジメントと、
-            日本側のB2B販売ネットワークをひとつに結ぶエビデンス主導のヘルスケアプラットフォームです。
+            BIOLAB Japanは、ヒト臨床試験・論文・特許・認証で参照できる機能性素材を起点に、
+            韓国R&amp;D、日本B2B流通、そしてグローバル展開へつなぐヘルスケア事業ブリッジです。
           </p>
           <div className="hero-actions">
             <a className="btn-primary" href="#pipeline">
