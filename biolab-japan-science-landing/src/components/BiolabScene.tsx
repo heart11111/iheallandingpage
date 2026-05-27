@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Html, Line, MeshTransmissionMaterial, PerspectiveCamera, Sphere } from "@react-three/drei";
+import { Float, Html, Line, PerspectiveCamera, Sphere } from "@react-three/drei";
 import { Suspense, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { heroLabels } from "@/lib/ingredients";
@@ -31,25 +31,26 @@ function CapsuleCore() {
   return (
     <group ref={group}>
       <Float speed={1.2} rotationIntensity={0.2} floatIntensity={0.28}>
-        <mesh rotation={[0, 0, Math.PI / 2]}>
+        <mesh rotation={[0, 0, Math.PI / 2]} scale={[0.88, 0.88, 0.88]}>
           <capsuleGeometry args={[0.74, 2.25, 16, 36]} />
-          <MeshTransmissionMaterial
-            backside
-            samples={4}
-            thickness={0.6}
-            chromaticAberration={0.04}
-            anisotropy={0.12}
-            distortion={0.08}
-            distortionScale={0.18}
-            temporalDistortion={0.05}
-            transmission={0.96}
-            roughness={0.12}
-            color="#eaf8ff"
+          <meshPhysicalMaterial
+            color="#f8dbe4"
+            roughness={0.2}
+            metalness={0.02}
+            transparent
+            opacity={0.46}
+            clearcoat={0.8}
+            clearcoatRoughness={0.08}
+            side={THREE.DoubleSide}
           />
+        </mesh>
+        <mesh rotation={[0, 0, Math.PI / 2]} scale={[0.91, 0.91, 0.91]}>
+          <capsuleGeometry args={[0.75, 2.28, 16, 36]} />
+          <meshBasicMaterial color="#ffffff" transparent opacity={0.16} side={THREE.DoubleSide} />
         </mesh>
       </Float>
 
-      <Line points={[[-3.1, -1.45, 0], [-0.92, -1.05, 0], [0, -0.92, 0], [1.05, -1.04, 0], [3.1, -1.42, 0]]} color="#2563eb" lineWidth={2} transparent opacity={0.78} />
+      <Line points={[[-3.1, -1.45, 0], [-0.92, -1.05, 0], [0, -0.92, 0], [1.05, -1.04, 0], [3.1, -1.42, 0]]} color="#c8324a" lineWidth={2} transparent opacity={0.72} />
       <Html position={[-3.25, -1.72, 0]} center className="scene-label">
         KOREA R&amp;D
       </Html>
@@ -63,7 +64,7 @@ function CapsuleCore() {
       {nodes.map((node, index) => (
         <group key={`${node.x}-${index}`} position={node}>
           <Sphere args={[index % 5 === 0 ? 0.07 : 0.045, 12, 12]}>
-            <meshStandardMaterial color={index % 3 === 0 ? "#0f766e" : index % 3 === 1 ? "#2563eb" : "#67e8f9"} roughness={0.45} metalness={0.08} />
+            <meshStandardMaterial color={index % 3 === 0 ? "#6d8f72" : index % 3 === 1 ? "#c8324a" : "#c5964b"} roughness={0.45} metalness={0.08} />
           </Sphere>
           {index % 4 === 0 ? <Line points={[[0, 0, 0], [node.x * -0.18, node.y * -0.2, node.z * -0.18]]} color="#94a3b8" lineWidth={1} transparent opacity={0.42} /> : null}
         </group>
@@ -80,11 +81,11 @@ function CapsuleCore() {
 
       <mesh position={[0, 0, -0.12]}>
         <torusGeometry args={[1.46, 0.006, 8, 96]} />
-        <meshBasicMaterial color="#67e8f9" transparent opacity={0.42} />
+        <meshBasicMaterial color="#c8324a" transparent opacity={0.34} />
       </mesh>
       <mesh position={[0, 0, 0.14]} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[1.04, 0.006, 8, 96]} />
-        <meshBasicMaterial color="#a78bfa" transparent opacity={0.26} />
+        <meshBasicMaterial color="#c5964b" transparent opacity={0.32} />
       </mesh>
     </group>
   );
@@ -97,7 +98,7 @@ export function BiolabScene() {
         <PerspectiveCamera makeDefault position={[0, 0.4, 6]} fov={42} />
         <ambientLight intensity={0.72} />
         <directionalLight position={[4, 5, 4]} intensity={1.7} />
-        <pointLight position={[-3, -2, 3]} intensity={0.9} color="#67e8f9" />
+        <pointLight position={[-3, -2, 3]} intensity={0.9} color="#ffd6df" />
         <Suspense fallback={null}>
           <CapsuleCore />
         </Suspense>

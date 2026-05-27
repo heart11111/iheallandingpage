@@ -20,7 +20,7 @@ export function Hero() {
   return (
     <section id="top" className="hero-section">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="hero-backdrop-image" src="images/global-evidence-bg.png" alt="" aria-hidden="true" />
+      <img className="hero-backdrop-image" src="images/biolab-cosmetic-science-bg.png" alt="" aria-hidden="true" />
       <div className="hero-bg-grid" aria-hidden="true" />
       <div className="hero-molecular-field" aria-hidden="true">
         <span />
@@ -56,6 +56,13 @@ export function Hero() {
                 {chip.label}
               </div>
             ))}
+          </div>
+          <div className="hero-editorial-note" aria-label="Business route">
+            <span>KOREA R&amp;D</span>
+            <i />
+            <span>BIOLAB Japan</span>
+            <i />
+            <span>JAPAN / GLOBAL</span>
           </div>
         </motion.div>
 

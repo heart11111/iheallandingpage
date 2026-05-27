@@ -4,7 +4,7 @@ export function FinalCTA() {
   return (
     <section id="contact" className="final-cta">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="section-backdrop-image final-backdrop-image" src="images/global-factory-bg.png" alt="" aria-hidden="true" />
+      <img className="section-backdrop-image final-backdrop-image" src="images/biolab-global-factory-bg.png" alt="" aria-hidden="true" />
       <div className="final-cta-layout mx-auto grid max-w-7xl gap-10 px-5 sm:px-8">
         <div className="final-cta-copy">
           <p className="eyebrow">Partner Inquiry / 提携相談</p>

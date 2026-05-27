@@ -21,8 +21,8 @@ export default function Home() {
       <main>
         <Hero />
         <section id="vision" className="vision-section">
-          <div className="mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-[0.86fr_1.14fr]">
-            <div>
+          <div className="vision-layout mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-[0.82fr_1.18fr]">
+            <div className="vision-title-block">
               <p className="eyebrow">Credibility to Global Scale</p>
               <h2>公信力のある素材情報を、国境を越える事業設計へ。</h2>
             </div>
@@ -36,6 +36,10 @@ export default function Home() {
                 <span>Korea R&amp;D and manufacturing bridge for Japan B2B</span>
                 <span>Global-ready ODM/OEM, supply, and brand expansion planning</span>
               </div>
+            </div>
+            <div className="vision-image" aria-hidden="true">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="images/biolab-global-factory-bg.png" alt="" />
             </div>
           </div>
         </section>

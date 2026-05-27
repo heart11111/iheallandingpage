@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP, Space_Grotesk } from "next/font/google";
+import { Noto_Sans_JP, Tenor_Sans, Zen_Old_Mincho } from "next/font/google";
 import "./globals.css";
 
 const notoSansJp = Noto_Sans_JP({
@@ -9,9 +9,16 @@ const notoSansJp = Noto_Sans_JP({
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const zenOldMincho = Zen_Old_Mincho({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "900"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const tenorSans = Tenor_Sans({
+  subsets: ["latin"],
+  weight: ["400"],
   variable: "--font-display",
   display: "swap",
 });
@@ -29,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${notoSansJp.variable} ${spaceGrotesk.variable}`}>{children}</body>
+      <body className={`${notoSansJp.variable} ${zenOldMincho.variable} ${tenorSans.variable}`}>{children}</body>
     </html>
   );
 }

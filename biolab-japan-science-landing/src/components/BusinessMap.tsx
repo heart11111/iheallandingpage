@@ -64,9 +64,9 @@ export function BusinessMap() {
             <path ref={line} d="M65 112 C 260 38, 348 154, 500 96 S 760 46, 935 112" fill="none" stroke="url(#routeGradient)" strokeWidth="5" strokeLinecap="round" />
             <defs>
               <linearGradient id="routeGradient" x1="0" x2="1">
-                <stop offset="0%" stopColor="#2563eb" />
-                <stop offset="50%" stopColor="#0f766e" />
-                <stop offset="100%" stopColor="#67e8f9" />
+                <stop offset="0%" stopColor="#c8324a" />
+                <stop offset="48%" stopColor="#c5964b" />
+                <stop offset="100%" stopColor="#6d8f72" />
               </linearGradient>
             </defs>
           </svg>

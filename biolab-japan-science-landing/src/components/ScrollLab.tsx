@@ -22,9 +22,9 @@ export function ScrollLab() {
       ScrollTrigger.create({
         trigger: root.current,
         start: "top 96px",
-        end: "+=1120",
+        end: "+=620",
         pin: true,
-        scrub: 0.45,
+        scrub: 0.28,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
@@ -44,6 +44,8 @@ export function ScrollLab() {
 
   return (
     <section ref={root} className="scroll-lab-section">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="section-backdrop-image scroll-backdrop-image" src="images/biolab-global-factory-bg.png" alt="" aria-hidden="true" />
       <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.78fr_1.22fr]">
         <div className="section-heading">
           <p className="eyebrow">Scroll Lab</p>

@@ -64,6 +64,8 @@ export function PipelineOverview() {
 
   return (
     <section id="pipeline" className="pipeline-section">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="section-backdrop-image pipeline-backdrop-image" src="images/biolab-cosmetic-science-bg.png" alt="" aria-hidden="true" />
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="section-heading compact-heading">
           <p className="eyebrow">Ingredient Pipeline / Global-ready Portfolio</p>
