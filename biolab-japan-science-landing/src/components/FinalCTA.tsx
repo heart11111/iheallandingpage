@@ -3,8 +3,8 @@ import { ArrowRight } from "lucide-react";
 export function FinalCTA() {
   return (
     <section id="contact" className="final-cta">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[1fr_0.82fr]">
-        <div>
+      <div className="final-cta-layout mx-auto grid max-w-7xl gap-10 px-5 sm:px-8">
+        <div className="final-cta-copy">
           <p className="eyebrow">Partner Inquiry</p>
           <h2>BIOLAB Japanと次の機能性ヘルスケア商品を構築する。</h2>
           <p>
@@ -28,7 +28,7 @@ export function FinalCTA() {
           </label>
           <label>
             会社名
-            <input type="text" name="company" placeholder="Company / Brand" />
+            <input type="text" name="company" placeholder="会社名 / ブランド名" />
           </label>
           <label>
             メール
@@ -37,17 +37,17 @@ export function FinalCTA() {
           <label>
             相談領域
             <select name="interest">
-              <option>Functional ingredient sourcing</option>
-              <option>ODM/OEM production</option>
-              <option>Japan B2B distribution</option>
-              <option>iHEAL brand royalty</option>
+              <option>機能性素材の調達</option>
+              <option>ODM/OEM商品開発</option>
+              <option>日本B2B流通</option>
+              <option>iHEALブランド協業</option>
             </select>
           </label>
           <label className="wide">
             メッセージ
             <textarea name="message" rows={5} placeholder="検討中のカテゴリー、素材、発売時期などをご記入ください。" />
           </label>
-          <button type="button">Demo inquiry form</button>
+          <button type="button">お問い合わせ内容を確認</button>
         </form>
       </div>
       <footer>

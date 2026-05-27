@@ -968,11 +968,24 @@ h2 {
     linear-gradient(135deg, var(--navy), #061225);
 }
 
+.final-cta-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.58fr);
+  align-items: start;
+}
+
+.final-cta-copy {
+  min-width: 0;
+}
+
 .final-cta h2 {
-  max-width: 880px;
+  max-width: 760px;
+  font-size: clamp(2.45rem, 4.4vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
 }
 
 .final-cta p {
+  max-width: 760px;
   color: rgba(226, 232, 240, 0.72);
 }
 
@@ -980,6 +993,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+  min-width: 0;
   padding: 24px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 28px;
@@ -1003,6 +1017,7 @@ h2 {
 .contact-form select,
 .contact-form textarea {
   width: 100%;
+  min-width: 0;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 16px;
   padding: 13px 14px;
@@ -1143,6 +1158,10 @@ h2 {
   .lab-panel,
   .contact-form,
   .evidence-numbers {
+    grid-template-columns: 1fr;
+  }
+
+  .final-cta-layout {
     grid-template-columns: 1fr;
   }
 
