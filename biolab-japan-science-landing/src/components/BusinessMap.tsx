@@ -48,6 +48,7 @@ export function BusinessMap() {
 
   return (
     <section id="business" ref={root} className="business-map-section">
+      <div className="route-ribbon" aria-hidden="true" />
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="section-heading">
           <p className="eyebrow">Business Map</p>

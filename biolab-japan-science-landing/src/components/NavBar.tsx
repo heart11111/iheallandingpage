@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 
 const links = [
-  { label: "Vision", href: "#vision" },
-  { label: "Pipeline", href: "#pipeline" },
-  { label: "Evidence", href: "#evidence" },
-  { label: "Business", href: "#business" },
-  { label: "Contact", href: "#contact" },
+  { label: "ビジョン", href: "#vision" },
+  { label: "素材", href: "#pipeline" },
+  { label: "エビデンス", href: "#evidence" },
+  { label: "事業", href: "#business" },
+  { label: "お問い合わせ", href: "#contact" },
 ];
 
 export function NavBar() {
@@ -40,7 +40,7 @@ export function NavBar() {
       </nav>
 
       <a className="nav-cta" href="#contact">
-        Partner Inquiry
+        提携相談
         <ArrowRight size={16} aria-hidden="true" />
       </a>
 
@@ -56,7 +56,7 @@ export function NavBar() {
             </a>
           ))}
           <a href="#contact" onClick={() => setOpen(false)}>
-            Partner Inquiry
+            提携相談
           </a>
         </div>
       ) : null}

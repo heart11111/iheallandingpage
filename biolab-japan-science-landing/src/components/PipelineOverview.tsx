@@ -1,14 +1,23 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import type { CSSProperties } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { filterCategories, natureIngredients, probioticsIngredients, type Ingredient } from "@/lib/ingredients";
 
-function IngredientCard({ item }: { item: Ingredient }) {
+function IngredientCard({ item, index }: { item: Ingredient; index: number }) {
   const list = item.strains ?? item.origin ?? [];
 
   return (
-    <motion.article className="ingredient-card" layout initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ duration: 0.28 }}>
+    <motion.article
+      className="ingredient-card"
+      style={{ "--float-index": index } as CSSProperties & Record<string, number>}
+      layout
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 10 }}
+      transition={{ duration: 0.28 }}
+    >
       <div className="card-meta">
         <span>{item.line}</span>
         <span>{item.category}</span>
@@ -87,8 +96,8 @@ export function PipelineOverview() {
 
         <motion.div className="ingredient-grid" layout>
           <AnimatePresence mode="popLayout">
-            {items.map((item) => (
-              <IngredientCard item={item} key={item.id} />
+            {items.map((item, index) => (
+              <IngredientCard item={item} index={index} key={item.id} />
             ))}
           </AnimatePresence>
         </motion.div>

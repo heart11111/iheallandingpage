@@ -5,7 +5,7 @@ export function FinalCTA() {
     <section id="contact" className="final-cta">
       <div className="final-cta-layout mx-auto grid max-w-7xl gap-10 px-5 sm:px-8">
         <div className="final-cta-copy">
-          <p className="eyebrow">Partner Inquiry</p>
+          <p className="eyebrow">Partner Inquiry / 提携相談</p>
           <h2>BIOLAB Japanと次の機能性ヘルスケア商品を構築する。</h2>
           <p>
             エビデンスに基づく韓国機能性素材からODM/OEM生産、日本側B2B販売拡大まで、
@@ -13,11 +13,11 @@ export function FinalCTA() {
           </p>
           <div className="hero-actions">
             <a className="btn-primary" href="mailto:contact@biolabjp.com">
-              Start Partnership Discussion
+              提携について相談する
               <ArrowRight size={18} aria-hidden="true" />
             </a>
             <a className="btn-secondary" href="#pipeline">
-              Review Ingredient Pipeline
+              素材パイプラインを見る
             </a>
           </div>
         </div>

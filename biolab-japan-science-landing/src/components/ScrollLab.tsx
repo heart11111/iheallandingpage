@@ -21,12 +21,14 @@ export function ScrollLab() {
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: root.current,
-        start: "top top",
-        end: "+=2200",
+        start: "top 96px",
+        end: "+=1120",
         pin: true,
-        scrub: 0.8,
+        scrub: 0.45,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
         onUpdate: (self) => {
-          const index = Math.min(scrollLabSteps.length - 1, Math.floor(self.progress * scrollLabSteps.length));
+          const index = Math.min(scrollLabSteps.length - 1, Math.round(self.progress * (scrollLabSteps.length - 1)));
           setActive(index);
           if (progress.current) {
             progress.current.style.transform = `scaleY(${Math.max(0.04, self.progress)})`;
