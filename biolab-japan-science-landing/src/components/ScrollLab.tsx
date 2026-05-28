@@ -62,8 +62,11 @@ export function ScrollLab() {
           <div className="lab-steps">
             {scrollLabSteps.map((step, index) => (
               <button className={active === index ? "active" : ""} key={step.title} type="button" onClick={() => setActive(index)}>
-                <span>0{index + 1}</span>
-                {step.title}
+                <span className="step-index">0{index + 1}</span>
+                <span className="step-label">
+                  <small>{step.ruby}</small>
+                  <b>{step.title}</b>
+                </span>
               </button>
             ))}
           </div>
@@ -72,8 +75,11 @@ export function ScrollLab() {
               <ActiveIcon size={34} aria-hidden="true" />
             </div>
             <p>0{active + 1} / 05</p>
-            <h3>{scrollLabSteps[active].title}</h3>
-            <span>{scrollLabSteps[active].copy}</span>
+            <h3>
+              <small>{scrollLabSteps[active].ruby}</small>
+              {scrollLabSteps[active].title}
+            </h3>
+            <span className="lab-copy">{scrollLabSteps[active].copy}</span>
           </div>
         </div>
       </div>

@@ -2668,6 +2668,72 @@ h2 {
   word-break: keep-all;
 }
 
+.lab-steps button {
+  min-height: 62px;
+  gap: 14px;
+  padding: 9px 16px;
+}
+
+.lab-steps .step-index {
+  flex: 0 0 auto;
+  min-width: 2.1em;
+  color: #ffd1dc;
+  font-variant-numeric: tabular-nums;
+}
+
+.lab-steps .step-label {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+  line-height: 1.12;
+}
+
+.lab-steps .step-label small,
+.lab-detail h3 small {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  color: rgba(255, 209, 220, 0.78);
+}
+
+.lab-steps .step-label b {
+  display: block;
+  color: rgba(255, 250, 247, 0.74);
+  font-family: var(--font-ui);
+  font-size: 0.98rem;
+  font-weight: 820;
+  letter-spacing: 0.01em;
+}
+
+.lab-steps button.active .step-label small {
+  color: rgba(255, 250, 247, 0.82);
+}
+
+.lab-steps button.active .step-label b {
+  color: #fffaf7;
+}
+
+.lab-detail h3 {
+  display: grid;
+  gap: 8px;
+}
+
+.lab-detail h3 small {
+  font-size: clamp(0.72rem, 0.9vw, 0.9rem);
+  color: rgba(255, 209, 220, 0.84);
+}
+
+.lab-detail .lab-copy {
+  display: block;
+  max-width: 48ch;
+  color: rgba(255, 250, 247, 0.72);
+  font-size: clamp(0.98rem, 1.25vw, 1.08rem);
+  line-height: 1.9;
+}
+
 @media (max-width: 720px) {
   .hero-section {
     min-height: auto;

@@ -321,26 +321,31 @@ export const routeStages = [
 export const scrollLabSteps = [
   {
     title: "Evidence",
+    ruby: "根拠資料",
     copy: "ヒト臨床試験、SCI論文、特許、認証資料を整理し、用途別の根拠構造を明確にします。",
     icon: ShieldCheck,
   },
   {
     title: "Ingredient",
+    ruby: "機能性素材",
     copy: "プロバイオティクスと自然由来機能性素材を、ターゲットカテゴリーに合わせて選定します。",
     icon: Sprout,
   },
   {
     title: "Formulation",
+    ruby: "処方設計",
     copy: "ODM/OEM対応を前提に、摂取量、剤形、訴求領域、表示表現を実務レベルで設計します。",
     icon: FlaskConical,
   },
   {
     title: "Supply",
+    ruby: "生産供給",
     copy: "韓国メーカーの生産ネットワークと供給条件をつなぎ、事業化に必要な供給線を整えます。",
     icon: BriefcaseBusiness,
   },
   {
     title: "Market",
+    ruby: "市場展開",
     copy: "日本側の販売会社、メーカー、卸売会社へ展開するB2B導入プランを構築します。",
     icon: Leaf,
   },
