@@ -852,8 +852,18 @@ h2 {
   font-variant-numeric: tabular-nums;
 }
 
+.route-card small {
+  display: block;
+  margin-top: 8px;
+  color: #9f2d3e;
+  font-family: var(--font-display), var(--font-ja), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
 .route-card h3 {
-  margin: 22px 0 4px;
+  margin: 8px 0 4px;
   font-size: 1.55rem;
   line-height: 1.15;
 }
@@ -2095,6 +2105,10 @@ h3,
   color: var(--red);
   font-family: var(--font-display), var(--font-ja), sans-serif;
   letter-spacing: 0.1em;
+}
+
+.route-card small {
+  color: #aa3a4a;
 }
 
 .route-card h3 {

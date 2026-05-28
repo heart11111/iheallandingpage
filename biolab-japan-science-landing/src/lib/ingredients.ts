@@ -300,18 +300,21 @@ export const filterCategories = [
 export const routeStages = [
   {
     title: "KOREA",
-    subtitle: "R&D / Manufacturing",
-    points: ["Develop & Sourcing", "Direct-to-manufacturer supply", "Producing", "Brand Management"],
+    kicker: "韓国",
+    subtitle: "研究開発・製造",
+    points: ["素材開発・ソーシング", "メーカー直供給", "製造・量産対応", "ブランド管理"],
   },
   {
     title: "BIOLAB Japan",
-    subtitle: "Business bridge",
-    points: ["Regulatory-aware coordination", "Ingredient portfolio", "ODM/OEM planning", "Brand royalty"],
+    kicker: "事業ブリッジ",
+    subtitle: "日韓ヘルスケア事業連携",
+    points: ["規制を踏まえた調整", "機能性素材ポートフォリオ", "ODM/OEM企画", "ブランドロイヤリティ"],
   },
   {
     title: "JAPAN",
-    subtitle: "B2B expansion",
-    points: ["Sales & Marketing", "Distributor supply", "Sales network expansion", "New business discovery"],
+    kicker: "日本",
+    subtitle: "B2B展開",
+    points: ["販売・マーケティング", "販売会社・メーカー・卸への供給", "販売ネットワーク拡大", "新規事業の発掘"],
   },
 ];
 

@@ -26,7 +26,7 @@ export function BusinessMap() {
       gsap.set(dots, { autoAlpha: 0, scale: 0.35, transformOrigin: "center" });
       cards.forEach((card) => {
         gsap.set(card, { autoAlpha: 0, y: 28, filter: "blur(8px)" });
-        gsap.set(card.querySelectorAll("span, h3, p, li"), { autoAlpha: 0, y: 14, filter: "blur(6px)" });
+        gsap.set(card.querySelectorAll("span, small, h3, p, li"), { autoAlpha: 0, y: 14, filter: "blur(6px)" });
       });
 
       const timeline = gsap.timeline({
@@ -47,7 +47,7 @@ export function BusinessMap() {
         const at = 0.18 + index * 0.22;
         timeline
           .to(card, { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.52 }, at)
-          .to(card.querySelectorAll("span, h3, p, li"), { autoAlpha: 1, y: 0, filter: "blur(0px)", stagger: 0.045, duration: 0.34 }, at + 0.06);
+          .to(card.querySelectorAll("span, small, h3, p, li"), { autoAlpha: 1, y: 0, filter: "blur(0px)", stagger: 0.045, duration: 0.34 }, at + 0.06);
       });
     }, root);
 
@@ -86,6 +86,7 @@ export function BusinessMap() {
             {routeStages.map((stage, index) => (
               <article className={`route-card route-card-${index}`} key={stage.title}>
                 <span>0{index + 1}</span>
+                <small>{stage.kicker}</small>
                 <h3>{stage.title}</h3>
                 <p>{stage.subtitle}</p>
                 <ul>
