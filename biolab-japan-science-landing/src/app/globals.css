@@ -2658,7 +2658,27 @@ h2 {
 }
 
 .contact-form label {
-  color: rgba(255, 250, 247, 0.9);
+  color: rgba(255, 250, 247, 0.96);
+  text-shadow: 0 1px 14px rgba(42, 23, 36, 0.42);
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  border-color: rgba(255, 250, 247, 0.34);
+  color: rgba(255, 250, 247, 0.96);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 247, 0.2), rgba(255, 250, 247, 0.13)),
+    rgba(42, 23, 36, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 250, 247, 0.22),
+    0 16px 34px rgba(42, 23, 36, 0.1);
+  backdrop-filter: blur(9px);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255, 250, 247, 0.58);
 }
 
 .evidence-card h3,
