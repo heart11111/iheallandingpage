@@ -22,7 +22,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 104px;
+  scroll-padding-top: 0;
   max-width: 100%;
   overflow-x: hidden;
 }
@@ -60,7 +60,7 @@ a {
 }
 
 section[id] {
-  scroll-margin-top: 104px;
+  scroll-margin-top: 0;
 }
 
 button,
@@ -658,7 +658,7 @@ h2 {
   padding: clamp(84px, 11vw, 150px) 0;
   max-width: 100%;
   overflow-x: clip;
-  scroll-margin-top: 110px;
+  scroll-margin-top: 0;
 }
 
 .section-ambient {
