@@ -50,14 +50,14 @@ function CapsuleCore() {
         </mesh>
       </Float>
 
-      <Line points={[[-3.1, -1.45, 0], [-0.92, -1.05, 0], [0, -0.92, 0], [1.05, -1.04, 0], [3.1, -1.42, 0]]} color="#c8324a" lineWidth={2} transparent opacity={0.72} />
-      <Html position={[-2.85, -1.66, 0]} center className="scene-label">
+      <Line points={[[-2.42, -1.45, 0], [-0.92, -1.05, 0], [0, -0.92, 0], [1.05, -1.04, 0], [2.42, -1.42, 0]]} color="#c8324a" lineWidth={2} transparent opacity={0.72} />
+      <Html position={[-2.1, -1.66, 0]} center className="scene-label scene-label-side">
         KOREA R&amp;D
       </Html>
       <Html position={[0, -1.25, 0]} center className="scene-label scene-label-center">
         BIOLAB
       </Html>
-      <Html position={[2.85, -1.66, 0]} center className="scene-label">
+      <Html position={[2.1, -1.66, 0]} center className="scene-label scene-label-side">
         JAPAN B2B
       </Html>
 
@@ -72,8 +72,9 @@ function CapsuleCore() {
 
       {heroLabels.map((label, index) => {
         const angle = (index / heroLabels.length) * Math.PI * 2;
+        const mobileHide = index === 1 || index === 4 || index === 5 || index === 7;
         return (
-          <Html key={label} position={[Math.cos(angle) * 2.34, Math.sin(index) * 0.92, Math.sin(angle) * 2.34]} center className="strain-label">
+          <Html key={label} position={[Math.cos(angle) * 1.82, Math.sin(index) * 0.78, Math.sin(angle) * 1.82]} center className={`strain-label${mobileHide ? " strain-label-mobile-hide" : ""}`}>
             {label}
           </Html>
         );
@@ -95,7 +96,7 @@ export function BiolabScene() {
   return (
     <div className="scene-shell" aria-label="BIOLAB Japan ingredient platform 3D visualization">
       <Canvas dpr={[1, 1.7]} gl={{ antialias: true, alpha: true }}>
-        <PerspectiveCamera makeDefault position={[0, 0.4, 6]} fov={42} />
+        <PerspectiveCamera makeDefault position={[0, 0.4, 6.45]} fov={42} />
         <ambientLight intensity={0.72} />
         <directionalLight position={[4, 5, 4]} intensity={1.7} />
         <pointLight position={[-3, -2, 3]} intensity={0.9} color="#ffd6df" />

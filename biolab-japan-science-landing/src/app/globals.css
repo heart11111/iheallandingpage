@@ -2452,3 +2452,101 @@ h2 {
     min-height: auto;
   }
 }
+
+/* Last-mile visual QA overrides. Keep this at the end so it wins over section-specific rules. */
+.section-shell .section-heading,
+.business-map-section .section-heading,
+.pipeline-section .section-heading {
+  max-width: 1040px;
+}
+
+.section-shell .section-heading h2,
+.business-map-section .section-heading h2,
+.pipeline-section .section-heading h2 {
+  max-width: 980px;
+  font-size: clamp(2.05rem, 3.55vw, 3.55rem);
+  line-height: 1.22;
+  word-break: keep-all;
+}
+
+.section-copy {
+  max-width: 64ch;
+}
+
+.final-cta p {
+  color: rgba(255, 250, 247, 0.82);
+}
+
+.contact-form label {
+  color: rgba(255, 250, 247, 0.9);
+}
+
+.evidence-card h3,
+.route-card h3,
+.portfolio-lens strong,
+.evidence-flow strong {
+  word-break: keep-all;
+}
+
+@media (max-width: 720px) {
+  .hero-section {
+    min-height: auto;
+  }
+
+  .hero-section > .mx-auto {
+    gap: 24px;
+    padding-top: 112px;
+    padding-bottom: 44px;
+  }
+
+  .hero-visual {
+    height: 300px !important;
+    min-height: 300px !important;
+    margin-top: 8px;
+  }
+
+  .scene-shell {
+    height: 300px !important;
+    min-height: 300px !important;
+  }
+
+  .scene-label,
+  .strain-label {
+    font-size: 8px;
+    padding: 4px 6px;
+  }
+
+  .strain-label-mobile-hide {
+    display: none;
+  }
+
+  .hero-actions {
+    margin-top: 26px;
+  }
+
+  .trust-grid {
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .hero-editorial-note {
+    margin-top: 24px;
+  }
+
+  .vision-section,
+  .section-shell,
+  .business-map-section,
+  .pipeline-section,
+  .scroll-lab-section,
+  .final-cta {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .section-shell .section-heading h2,
+  .business-map-section .section-heading h2,
+  .pipeline-section .section-heading h2 {
+    font-size: clamp(1.86rem, 8vw, 2.55rem);
+    line-height: 1.22;
+  }
+}
