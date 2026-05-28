@@ -28,8 +28,11 @@ export function Hero() {
         <span />
         <span />
       </div>
+      <div className="hero-scene-backdrop" aria-hidden="true">
+        <BiolabScene />
+      </div>
       <div className="mx-auto grid min-h-[100dvh] max-w-7xl items-center gap-10 px-5 pb-20 pt-32 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:pb-24">
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}>
+        <motion.div className="hero-copy-block" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}>
           <p className="eyebrow">Evidence-backed Healthcare Platform</p>
           <h1>
             <span>信頼できる</span>
@@ -64,10 +67,6 @@ export function Hero() {
             <i />
             <span>JAPAN / GLOBAL</span>
           </div>
-        </motion.div>
-
-        <motion.div className="hero-visual" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
-          <BiolabScene />
         </motion.div>
       </div>
     </section>
