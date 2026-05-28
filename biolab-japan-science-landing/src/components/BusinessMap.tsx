@@ -18,28 +18,36 @@ export function BusinessMap() {
 
     const ctx = gsap.context(() => {
       const length = line.current?.getTotalLength() ?? 0;
-      gsap.set(line.current, { strokeDasharray: length, strokeDashoffset: length });
-      gsap.to(line.current, {
-        strokeDashoffset: 0,
-        ease: "none",
+      const routePaths = gsap.utils.toArray<SVGPathElement>(".route-path");
+      const dots = gsap.utils.toArray<SVGCircleElement>(".route-dot");
+      const cards = gsap.utils.toArray<HTMLElement>(".route-card");
+
+      gsap.set(routePaths, { strokeDasharray: length, strokeDashoffset: length });
+      gsap.set(dots, { autoAlpha: 0, scale: 0.35, transformOrigin: "center" });
+      cards.forEach((card) => {
+        gsap.set(card, { autoAlpha: 0, y: 28, filter: "blur(8px)" });
+        gsap.set(card.querySelectorAll("span, h3, p, li"), { autoAlpha: 0, y: 14, filter: "blur(6px)" });
+      });
+
+      const timeline = gsap.timeline({
+        defaults: { ease: "power2.out" },
         scrollTrigger: {
           trigger: root.current,
-          start: "top 72%",
-          end: "+=360",
-          scrub: 0.45,
+          start: "top 78%",
+          end: "top 18%",
+          scrub: 0.75,
         },
       });
 
-      gsap.from(".route-card", {
-        y: 18,
-        opacity: 0,
-        stagger: 0.08,
-        duration: 0.48,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: root.current,
-          start: "top 76%",
-        },
+      timeline
+        .to(routePaths, { strokeDashoffset: 0, duration: 1.12, ease: "power1.inOut" }, 0)
+        .to(dots, { autoAlpha: 1, scale: 1, stagger: 0.12, duration: 0.36, ease: "power3.out" }, 0.16);
+
+      cards.forEach((card, index) => {
+        const at = 0.18 + index * 0.22;
+        timeline
+          .to(card, { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.52 }, at)
+          .to(card.querySelectorAll("span, h3, p, li"), { autoAlpha: 1, y: 0, filter: "blur(0px)", stagger: 0.045, duration: 0.34 }, at + 0.06);
       });
     }, root);
 
@@ -61,7 +69,11 @@ export function BusinessMap() {
 
         <div className="route-canvas">
           <svg className="route-line" viewBox="0 0 1000 190" aria-hidden="true">
-            <path ref={line} d="M65 112 C 260 38, 348 154, 500 96 S 760 46, 935 112" fill="none" stroke="url(#routeGradient)" strokeWidth="5" strokeLinecap="round" />
+            <path className="route-path route-path-glow" d="M65 112 C 260 38, 348 154, 500 96 S 760 46, 935 112" fill="none" stroke="url(#routeGradient)" strokeWidth="12" strokeLinecap="round" />
+            <path ref={line} className="route-path route-path-main" d="M65 112 C 260 38, 348 154, 500 96 S 760 46, 935 112" fill="none" stroke="url(#routeGradient)" strokeWidth="5" strokeLinecap="round" />
+            <circle className="route-dot" cx="65" cy="112" r="7" />
+            <circle className="route-dot" cx="500" cy="96" r="7" />
+            <circle className="route-dot" cx="935" cy="112" r="7" />
             <defs>
               <linearGradient id="routeGradient" x1="0" x2="1">
                 <stop offset="0%" stopColor="#c8324a" />
