@@ -51,13 +51,13 @@ function CapsuleCore() {
       </Float>
 
       <Line points={[[-3.1, -1.45, 0], [-0.92, -1.05, 0], [0, -0.92, 0], [1.05, -1.04, 0], [3.1, -1.42, 0]]} color="#c8324a" lineWidth={2} transparent opacity={0.72} />
-      <Html position={[-3.25, -1.72, 0]} center className="scene-label">
+      <Html position={[-2.85, -1.66, 0]} center className="scene-label">
         KOREA R&amp;D
       </Html>
       <Html position={[0, -1.25, 0]} center className="scene-label scene-label-center">
         BIOLAB
       </Html>
-      <Html position={[3.25, -1.72, 0]} center className="scene-label">
+      <Html position={[2.85, -1.66, 0]} center className="scene-label">
         JAPAN B2B
       </Html>
 
@@ -73,7 +73,7 @@ function CapsuleCore() {
       {heroLabels.map((label, index) => {
         const angle = (index / heroLabels.length) * Math.PI * 2;
         return (
-          <Html key={label} position={[Math.cos(angle) * 2.65, Math.sin(index) * 1.02, Math.sin(angle) * 2.65]} center className="strain-label">
+          <Html key={label} position={[Math.cos(angle) * 2.34, Math.sin(index) * 0.92, Math.sin(angle) * 2.34]} center className="strain-label">
             {label}
           </Html>
         );

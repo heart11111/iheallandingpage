@@ -28,13 +28,13 @@ export function Hero() {
         <span />
         <span />
       </div>
-      <div className="mx-auto grid min-h-[100dvh] max-w-7xl items-center gap-10 px-5 pb-20 pt-32 sm:px-8 lg:grid-cols-[0.96fr_1.04fr] lg:pb-24">
+      <div className="mx-auto grid min-h-[100dvh] max-w-7xl items-center gap-10 px-5 pb-20 pt-32 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:pb-24">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}>
           <p className="eyebrow">Evidence-backed Healthcare Platform</p>
           <h1>
             <span>信頼できる</span>
             <span>素材根拠から、</span>
-            <span>グローバル展開へ。</span>
+            <span style={{ whiteSpace: "nowrap", wordBreak: "keep-all", overflowWrap: "normal" }}>グローバル展開へ。</span>
           </h1>
           <p className="hero-copy">
             BIOLAB Japanは、ヒト臨床試験・論文・特許・認証で参照できる機能性素材を起点に、
