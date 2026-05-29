@@ -783,8 +783,14 @@ h2 {
 }
 
 .route-path-glow {
-  opacity: 0.22;
-  filter: blur(8px);
+  opacity: 0.2;
+  filter: blur(9px);
+}
+
+.route-guide {
+  stroke: rgba(200, 50, 74, 0.17);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
 }
 
 .route-dot {
