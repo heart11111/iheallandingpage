@@ -11,9 +11,11 @@ import { PipelineOverview } from "@/components/PipelineOverview";
 import { ProbioticsSection } from "@/components/ProbioticsSection";
 import { ScrollLab } from "@/components/ScrollLab";
 import { useLenis } from "@/lib/useLenis";
+import { useSpotlight } from "@/lib/useSpotlight";
 
 export default function Home() {
   useLenis();
+  useSpotlight();
 
   return (
     <>

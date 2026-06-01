@@ -1,4 +1,5 @@
 import { evidenceItems } from "@/lib/ingredients";
+import { CountUp } from "./CountUp";
 import { SectionShell } from "./SectionShell";
 
 export function EvidenceDashboard() {
@@ -22,15 +23,15 @@ export function EvidenceDashboard() {
           <h3>Bifidobacterium evidence cluster</h3>
           <div className="evidence-numbers">
             <span>
-              <b>10</b>
+              <b><CountUp value={10} /></b>
               human clinical trials
             </span>
             <span>
-              <b>80</b>
+              <b><CountUp value={80} /></b>
               international patents
             </span>
             <span>
-              <b>260</b>
+              <b><CountUp value={260} /></b>
               SCI papers
             </span>
           </div>
