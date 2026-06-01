@@ -35,8 +35,18 @@ jobs:
         run: npm run build
         env:
           GITHUB_ACTIONS: "true"
+          # Set a repo variable named CUSTOM_DOMAIN to build for a root-served
+          # custom domain. Leave it unset to keep the /iheallandingpage project build.
+          CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+          # Web3Forms access key (safe to be public). Set it as a repo variable
+          # so the contact form can submit. Without it the form shows a fallback.
+          NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ vars.WEB3FORMS_ACCESS_KEY }}
       - name: Add nojekyll marker
         run: New-Item -ItemType File -Force -Path out/.nojekyll
+        shell: pwsh
+      - name: Add CNAME for custom domain
+        if: vars.CUSTOM_DOMAIN != ''
+        run: Set-Content -Path out/CNAME -Value "${{ vars.CUSTOM_DOMAIN }}" -NoNewline
         shell: pwsh
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4

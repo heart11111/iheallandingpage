@@ -1,20 +1,7 @@
 @import "tailwindcss";
 
-:root {
-  --bg: #f7f8fa;
-  --surface: #ffffff;
-  --ink: #0f172a;
-  --muted: #64748b;
-  --border: #e5e7eb;
-  --blue: #2563eb;
-  --navy: #0b1f3a;
-  --cyan: #67e8f9;
-  --teal: #0f766e;
-  --green: #22c55e;
-  --lavender: #a78bfa;
-  --red: #dc2626;
-  --shadow: 0 24px 70px rgba(15, 23, 42, 0.1);
-}
+/* Palette lives in the redesign :root further down (warm cosmetic/bio tokens).
+   The previous cool-blue :root here was fully overridden and has been removed. */
 
 * {
   box-sizing: border-box;
@@ -372,13 +359,13 @@ button {
   position: absolute;
   width: 10px;
   height: 10px;
-  border: 1px solid rgba(37, 99, 235, 0.28);
+  border: 1px solid rgba(200, 50, 74, 0.28);
   border-radius: 50%;
-  background: rgba(103, 232, 249, 0.24);
+  background: rgba(244, 215, 223, 0.3);
   box-shadow:
-    42px 24px 0 -4px rgba(15, 118, 110, 0.28),
-    74px -18px 0 -5px rgba(37, 99, 235, 0.22),
-    118px 20px 0 -6px rgba(167, 139, 250, 0.2);
+    42px 24px 0 -4px rgba(109, 143, 114, 0.28),
+    74px -18px 0 -5px rgba(197, 150, 75, 0.22),
+    118px 20px 0 -6px rgba(183, 162, 216, 0.2);
   animation: bioDrift 8s ease-in-out infinite;
 }
 
@@ -1791,7 +1778,7 @@ h2 {
   --bg: #f8f3ee;
   --surface: #fffaf7;
   --ink: #28212a;
-  --muted: #766f73;
+  --muted: #6b6469; /* darkened from #766f73 to clear WCAG AA (~5.2:1) on the cream surface */
   --border: #eaded8;
   --blue: #c8324a;
   --navy: #2a1724;
@@ -2871,4 +2858,69 @@ h2 {
   border-color: rgba(244, 215, 223, 0.9);
   background: rgba(255, 255, 255, 0.12);
   box-shadow: 0 0 0 3px rgba(200, 50, 74, 0.45);
+}
+
+/* ---------------------------------------------------------------------------
+   Premium micro-interaction: cursor-tracking "topline ignition".
+   These cards are flat editorial cards (transparent body, a single top
+   hairline). On hover the top line lights up with a brand red -> gold glow
+   that follows the pointer horizontally. `--spot-x` is updated by useSpotlight;
+   it degrades gracefully (stays centered) without JS and is disabled for
+   reduced-motion / touch via the hook. Text is never overlapped.
+--------------------------------------------------------------------------- */
+.ingredient-card,
+.deep-card,
+.ingredient-sheet,
+.evidence-card,
+.service-card {
+  --spot-x: 50%;
+}
+
+.ingredient-card::before,
+.deep-card::before,
+.ingredient-sheet::before,
+.evidence-card::before,
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  pointer-events: none;
+  background: radial-gradient(
+    140px 2px at var(--spot-x) center,
+    rgba(200, 50, 74, 0.95),
+    rgba(197, 150, 75, 0.55) 42%,
+    transparent 78%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.ingredient-card:hover::before,
+.deep-card:hover::before,
+.ingredient-sheet:hover::before,
+.evidence-card:hover::before,
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.section-dark .ingredient-sheet::before {
+  background: radial-gradient(
+    140px 2px at var(--spot-x) center,
+    rgba(244, 215, 223, 0.95),
+    rgba(197, 150, 75, 0.6) 42%,
+    transparent 78%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ingredient-card::before,
+  .deep-card::before,
+  .ingredient-sheet::before,
+  .evidence-card::before,
+  .service-card::before {
+    display: none;
+  }
 }

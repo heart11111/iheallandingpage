@@ -20,6 +20,22 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Contact form (Web3Forms)
+
+The contact form in the final CTA submits through [Web3Forms](https://web3forms.com),
+so it works on the static GitHub Pages export without a backend.
+
+1. Create a free access key at [web3forms.com](https://web3forms.com) (it's tied to
+   the inbox you want submissions delivered to).
+2. Expose it to the build as `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`:
+   - **Local:** add `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your-key` to `.env.local`.
+   - **CI / production:** add a repo variable named `WEB3FORMS_ACCESS_KEY`
+     (Settings → Secrets and variables → Actions → Variables). The deploy
+     workflow passes it into the build.
+
+The key is designed to be public (it only routes to your inbox). Without it the
+form shows a fallback message pointing to the email address.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
