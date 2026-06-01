@@ -2848,3 +2848,37 @@ h2 {
     line-height: 1.22;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Accessibility: visible keyboard focus states.
+   The design previously shipped no :focus-visible styling, and form fields
+   set `outline: none` with no replacement, so keyboard / switch users had no
+   indication of where focus was. The ring uses the brand accent (--red) with
+   an offset so it reads clearly on both the light surfaces and the dark CTA.
+--------------------------------------------------------------------------- */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Pill-shaped buttons keep their rounded silhouette while focused. */
+.nav-cta:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.contact-form button:focus-visible,
+.brand-lockup:focus-visible {
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+/* Contact-form fields get an in-line focus affordance (the previous
+   `outline: none` left them visually inert). */
+.contact-form input:focus-visible,
+.contact-form select:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: none;
+  border-color: rgba(244, 215, 223, 0.9);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(200, 50, 74, 0.45);
+}
