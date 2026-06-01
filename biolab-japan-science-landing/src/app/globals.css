@@ -2848,3 +2848,27 @@ h2 {
     line-height: 1.22;
   }
 }
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.brand-lockup:focus-visible,
+.nav-cta:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.contact-form button:focus-visible {
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+.contact-form input:focus-visible,
+.contact-form select:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: none;
+  border-color: rgba(244, 215, 223, 0.9);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(200, 50, 74, 0.45);
+}
