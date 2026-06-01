@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { ContactForm } from "./ContactForm";
 
 export function FinalCTA() {
   return (
@@ -23,34 +24,7 @@ export function FinalCTA() {
             </a>
           </div>
         </div>
-        <form className="contact-form">
-          <label>
-            お名前
-            <input type="text" name="name" placeholder="山田 太郎" />
-          </label>
-          <label>
-            会社名
-            <input type="text" name="company" placeholder="会社名 / ブランド名" />
-          </label>
-          <label>
-            メール
-            <input type="email" name="email" placeholder="name@company.jp" />
-          </label>
-          <label>
-            相談領域
-            <select name="interest">
-              <option>機能性素材の調達</option>
-              <option>ODM/OEM商品開発</option>
-              <option>日本B2B流通</option>
-              <option>iHEALブランド協業</option>
-            </select>
-          </label>
-          <label className="wide">
-            メッセージ
-            <textarea name="message" rows={5} placeholder="検討中のカテゴリー、素材、発売時期などをご記入ください。" />
-          </label>
-          <button type="button">お問い合わせ内容を確認</button>
-        </form>
+        <ContactForm />
       </div>
       <footer>
         <strong>BIOLAB Japan</strong>
