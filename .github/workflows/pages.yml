@@ -41,6 +41,8 @@ jobs:
           # Web3Forms access key (safe to be public). Set it as a repo variable
           # so the contact form can submit. Without it the form shows a fallback.
           NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ vars.WEB3FORMS_ACCESS_KEY }}
+          # Optional fallback address shown only when the submit service is not configured.
+          NEXT_PUBLIC_CONTACT_FALLBACK_EMAIL: ${{ vars.CONTACT_FALLBACK_EMAIL }}
       - name: Add nojekyll marker
         run: New-Item -ItemType File -Force -Path out/.nojekyll
         shell: pwsh

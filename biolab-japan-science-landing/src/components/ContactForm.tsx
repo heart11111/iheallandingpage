@@ -9,6 +9,7 @@ import { ArrowRight } from "lucide-react";
 // destination inbox configured on web3forms.com). Set it as the
 // NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY env / repo variable.
 const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+const FALLBACK_EMAIL = process.env.NEXT_PUBLIC_CONTACT_FALLBACK_EMAIL;
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -22,7 +23,11 @@ export function ContactForm() {
 
     if (!ACCESS_KEY) {
       setStatus("error");
-      setError("送信機能が未設定です。お手数ですが contact@biolabjp.com までメールでお問い合わせください。");
+      setError(
+        FALLBACK_EMAIL
+          ? `送信機能が未設定です。お手数ですが ${FALLBACK_EMAIL} までメールでお問い合わせください。`
+          : "送信機能は現在準備中です。受信用メールアドレスを設定すると、このフォームから直接送信できます。",
+      );
       return;
     }
 

@@ -15,7 +15,7 @@ export function FinalCTA() {
             BIOLAB Japanはヘルスケアブランドの統合ビジネスブリッジを提供します。
           </p>
           <div className="hero-actions">
-            <a className="btn-primary" href="mailto:contact@biolabjp.com">
+            <a className="btn-primary" href="#contact">
               提携について相談する
               <ArrowRight size={18} aria-hidden="true" />
             </a>

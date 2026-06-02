@@ -56,11 +56,31 @@ check to pass → tick **Enforce HTTPS** (certificate issuance can take a few mi
 
 DNS propagation can take up to 24–48h, though it's usually much faster.
 
-## Email (for the contact address / MX)
+## Contact form inbox
 
-GitHub Pages does **not** handle email — the `A`/`CNAME` records above only serve
-the website. To receive mail at `name@your-domain.com` you must add `MX` records
-for a mail provider. Examples:
+The on-site inquiry form can work **without** a `@your-domain.com` mailbox.
+Use Web3Forms with any inbox that should receive form submissions:
+
+1. Create a Web3Forms access key with the recipient inbox.
+2. GitHub → repository **Settings → Secrets and variables → Actions → Variables**.
+3. Add:
+   ```
+   WEB3FORMS_ACCESS_KEY = your Web3Forms access key
+   ```
+4. Re-run the Pages workflow or push to `main`.
+
+If you want the disabled/unconfigured form message to point to a real address,
+also set:
+
+```
+NEXT_PUBLIC_CONTACT_FALLBACK_EMAIL = your@email.com
+```
+
+## Domain email / MX records
+
+GitHub Pages does **not** handle domain email — the `A`/`CNAME` records above
+only serve the website. To receive mail at `name@your-domain.com`, add `MX`
+records for a mail provider. Examples:
 
 **Google Workspace**
 ```
@@ -73,8 +93,6 @@ MX   @   10   inbound1.worksmobile.com.
 MX   @   20   inbound2.worksmobile.com.
 ```
 
-`A`/`CNAME` (website) and `MX` (email) are independent and coexist on the same domain.
-
-> The contact form itself is a static form with no backend — wiring it to a
-> provider (Web3Forms / Formspree / EmailJS) is tracked separately. The MX setup
-> above only enables the `mailto:` address to receive mail.
+`A`/`CNAME` (website) and `MX` (email) are independent and coexist on the same
+domain. The Web3Forms contact form can send to an ordinary inbox first, then be
+switched to a domain mailbox later by issuing a new key.

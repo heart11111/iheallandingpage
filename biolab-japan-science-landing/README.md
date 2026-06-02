@@ -25,16 +25,24 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 The contact form in the final CTA submits through [Web3Forms](https://web3forms.com),
 so it works on the static GitHub Pages export without a backend.
 
-1. Create a free access key at [web3forms.com](https://web3forms.com) (it's tied to
-   the inbox you want submissions delivered to).
+You do **not** need a `@biolabjp.com` mailbox for this to work. Create the
+Web3Forms key with any inbox that should receive inquiries (Gmail, Naver, an
+agency address, or a later company mailbox).
+
+1. Create a free access key at [web3forms.com](https://web3forms.com) using the
+   inbox you want submissions delivered to.
 2. Expose it to the build as `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`:
    - **Local:** add `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your-key` to `.env.local`.
    - **CI / production:** add a repo variable named `WEB3FORMS_ACCESS_KEY`
      (Settings → Secrets and variables → Actions → Variables). The deploy
      workflow passes it into the build.
 
-The key is designed to be public (it only routes to your inbox). Without it the
-form shows a fallback message pointing to the email address.
+Optional fallback:
+
+- `NEXT_PUBLIC_CONTACT_FALLBACK_EMAIL=your@email.com`
+
+The key is designed to be public (it only routes to your inbox). Without a key,
+the form shows a setup message instead of referencing a fixed company mailbox.
 
 ## Learn More
 
