@@ -115,7 +115,7 @@ export const probioticsIngredients: Ingredient[] = [
       "健康な母乳栄養新生児由来の100%ヒト由来ビフィズス菌。腸の健康と排便活動をサポート。",
     intake: "用途別設計",
     strains: ["B. bifidum BGN4", "B. longum BORI", "B. lactis AD011"],
-    evidenceTags: ["FDA GRAS/NDI参照", "HALAL/KOSHER参照", "10臨床・80特許・260 SCI"],
+    evidenceTags: ["FDA GRAS/NDI/USP参照", "HALAL/KOSHER参照", "10臨床・80特許・260 SCI"],
     line: "Functional Probiotics",
   },
 ];
@@ -240,7 +240,7 @@ export const evidenceItems = [
   { label: "SCI paper referenced", title: "SCI論文参照", value: "Evidence-led" },
   { label: "International patent referenced", title: "国際特許資料", value: "Strain-level" },
   { label: "KFDA individually recognized", title: "KFDA個別認定型素材", value: "Supplier" },
-  { label: "FDA GRAS / NDI referenced", title: "FDA GRAS / NDI", value: "Bifidobacterium" },
+  { label: "FDA GRAS / NDI / USP referenced", title: "FDA GRAS / NDI / USP", value: "Bifidobacterium" },
   { label: "HALAL / KOSHER referenced", title: "HALAL / KOSHER", value: "Referenced" },
   { label: "ODM/OEM capable", title: "ODM/OEM対応", value: "Korea network" },
   { label: "Japan B2B network", title: "日本B2B展開", value: "Distribution" },
