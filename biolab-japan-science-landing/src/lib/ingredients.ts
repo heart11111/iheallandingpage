@@ -71,8 +71,8 @@ export const probioticsIngredients: Ingredient[] = [
     line: "Functional Probiotics",
   },
   {
-    id: "nvp17902",
-    name: "NVP-17902",
+    id: "nvp1702",
+    name: "NVP-1702",
     category: "肝臓",
     area: "肝の健康",
     summary:
@@ -90,7 +90,7 @@ export const probioticsIngredients: Ingredient[] = [
     summary:
       "小児、青少年、成人を対象にした臨床試験資料をもとに、鼻のコンディションをサポート。",
     intake: "100億 CFU/day",
-    strains: ["L. plantarum IM7", "B. longum IM55"],
+    strains: ["L. plantarum IM76", "B. longum IM55"],
     evidenceTags: ["大規模臨床試験参照", "小児・成人対象", "特許複合菌"],
     line: "Functional Probiotics",
   },
@@ -351,4 +351,4 @@ export const scrollLabSteps = [
   },
 ];
 
-export const heroLabels = ["MED01", "MED02", "NVP-2106", "NVP-17902", "NVP-1703", "NVP-1704", "BGN4", "BORI", "AD011", "ThinkGIN"];
+export const heroLabels = ["MED01", "MED02", "NVP-2106", "NVP-1702", "NVP-1703", "NVP-1704", "BGN4", "BORI", "AD011", "ThinkGIN"];
