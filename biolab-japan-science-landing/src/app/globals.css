@@ -2924,3 +2924,963 @@ h2 {
     display: none;
   }
 }
+
+/* DH Chemtech-inspired corporate structure refresh */
+.dh-page {
+  --dh-blue: #1f57a4;
+  --dh-sky: #41abe1;
+  --dh-ink: #202226;
+  --dh-muted: #666f7d;
+  --dh-line: #e3e6ea;
+  --dh-soft: #ececec;
+  min-height: 100vh;
+  background: #fff;
+  color: var(--dh-ink);
+  font-family: var(--font-ja), "Noto Sans JP", system-ui, sans-serif;
+}
+
+.dh-container {
+  width: min(1000px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.dh-nav {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  background: rgba(18, 30, 48, 0.64);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dh-nav-scrolled {
+  background: rgba(15, 26, 42, 0.94);
+  box-shadow: 0 10px 26px rgba(11, 31, 58, 0.18);
+}
+
+.dh-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1100px, calc(100% - 36px));
+  height: 100%;
+  margin: 0 auto;
+}
+
+.dh-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  color: #fff;
+  font-family: var(--font-display), var(--font-ja), sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+
+.dh-logo b {
+  color: var(--dh-sky);
+  font-family: var(--font-ja), sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+}
+
+.dh-menu {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.dh-menu-item {
+  position: relative;
+  height: 100%;
+}
+
+.dh-menu-item > a {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 13px;
+  border-bottom: 4px solid transparent;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.dh-menu-item:hover > a,
+.dh-menu-item > a:focus-visible {
+  border-color: var(--dh-sky);
+  color: #dff6ff;
+}
+
+.dh-submenu {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  display: grid;
+  min-width: 230px;
+  transform: translateX(-50%) translateY(8px);
+  border-top: 3px solid var(--dh-sky);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 42px rgba(9, 28, 51, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dh-menu-item:hover .dh-submenu,
+.dh-menu-item:focus-within .dh-submenu {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dh-submenu a {
+  padding: 14px 18px;
+  border-bottom: 1px solid #edf0f3;
+  color: #26323f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.dh-submenu a:hover {
+  color: var(--dh-blue);
+  background: #f6fbff;
+}
+
+.dh-nav-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  color: #fff;
+}
+
+.dh-nav-tools a {
+  display: inline-flex;
+  color: inherit;
+}
+
+.dh-mobile-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: #fff;
+}
+
+.dh-mobile-panel {
+  display: none;
+}
+
+.dh-hero {
+  position: relative;
+  min-height: 745px;
+  overflow: hidden;
+  background: #0b1f3a;
+}
+
+.dh-hero-image,
+.dh-hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.dh-hero-image {
+  background-image: url("/images/biolab-global-factory-bg.png");
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.03);
+}
+
+.dh-hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(5, 12, 22, 0.28), rgba(5, 12, 22, 0.2) 36%, rgba(5, 12, 22, 0.62) 100%),
+    radial-gradient(circle at 64% 48%, rgba(65, 171, 225, 0.2), transparent 34%);
+}
+
+.dh-hero-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: 745px;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 75px;
+}
+
+.dh-hero-copy {
+  width: min(520px, 100%);
+  color: #fff;
+  text-align: right;
+}
+
+.dh-hero-copy > p {
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.dh-hero-copy h1 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display), var(--font-ja), sans-serif;
+  font-size: clamp(42px, 5.4vw, 70px);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.04;
+}
+
+.dh-hero-line {
+  display: block;
+}
+
+.dh-hero-copy h1 .dh-hero-accent {
+  display: block;
+  color: var(--dh-sky);
+}
+
+.dh-hero-copy h2 {
+  margin: 22px 0 0;
+  color: #fff;
+  font-family: var(--font-serif), serif;
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+}
+
+.dh-hero-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.dh-hero-actions a,
+.dh-outline-button,
+.dh-topic a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 128px;
+  height: 36px;
+  padding: 0 25px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: currentColor;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.17em;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.dh-hero-actions a:first-child {
+  border-color: var(--dh-sky);
+  background: var(--dh-sky);
+  color: #fff;
+}
+
+.dh-hero-actions a:hover,
+.dh-outline-button:hover,
+.dh-topic:hover a {
+  border-color: var(--dh-sky);
+  background: var(--dh-sky);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.dh-about,
+.dh-products,
+.dh-news,
+.dh-pipeline,
+.dh-services,
+.dh-contact {
+  padding: 120px 0;
+}
+
+.dh-about-grid,
+.dh-contact-grid {
+  display: grid;
+  grid-template-columns: 0.86fr 1.14fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.dh-kicker,
+.dh-product-eyebrow,
+.dh-topic-date {
+  margin: 0 0 16px;
+  color: var(--dh-blue);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.dh-about h2,
+.dh-section-title h2,
+.dh-pipeline h2,
+.dh-services h2,
+.dh-contact h2 {
+  margin: 0;
+  color: var(--dh-ink);
+  font-family: var(--font-serif), serif;
+  font-size: clamp(32px, 3.2vw, 46px);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.dh-about-text p,
+.dh-about-text li,
+.dh-section-title p,
+.dh-pipeline article p,
+.dh-services article p,
+.dh-contact p,
+.dh-topic p,
+.dh-tech-item p {
+  color: var(--dh-muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.dh-about-text p {
+  margin: 0 0 26px;
+  font-size: 17px;
+}
+
+.dh-about-text ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.dh-about-text li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.dh-about-text li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--dh-sky);
+}
+
+.dh-section-title {
+  margin-bottom: 60px;
+}
+
+.dh-section-title p {
+  margin: 18px 0 0;
+  font-size: 20px;
+}
+
+.dh-product-grid,
+.dh-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.dh-product-card {
+  position: relative;
+  min-height: 470px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #102238;
+}
+
+.dh-product-card img,
+.dh-product-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dh-product-card img {
+  object-fit: cover;
+  transform: scale(1.01);
+  transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.dh-product-shade {
+  background: linear-gradient(180deg, rgba(2, 8, 15, 0.1), rgba(2, 8, 15, 0.56) 45%, rgba(2, 8, 15, 0.86));
+}
+
+.dh-product-card:hover img {
+  transform: scale(1.14);
+  filter: saturate(1.08) contrast(1.02);
+}
+
+.dh-product-text {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 38%;
+  width: 100%;
+  padding: 0 34px;
+  color: #fff;
+}
+
+.dh-product-text h3 {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.dh-product-text strong {
+  display: block;
+  margin-bottom: 14px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.dh-product-text strong::after {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 4px;
+  margin: 11px 0 0;
+  background: #fff;
+}
+
+.dh-product-text p:not(.dh-product-eyebrow) {
+  margin: 0 0 16px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.dh-product-text div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.dh-product-text span {
+  padding: 5px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.dh-product-card > a {
+  position: absolute;
+  z-index: 3;
+  bottom: 38px;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 26px;
+  transform: translateX(-50%);
+  border: 1px solid #fff;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+}
+
+.dh-product-card:hover > a {
+  border-color: var(--dh-sky);
+  background: var(--dh-sky);
+}
+
+.dh-tech {
+  padding: 120px 0;
+  background: var(--dh-soft);
+}
+
+.dh-tech .dh-section-title h2 span {
+  color: var(--dh-sky);
+}
+
+.dh-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 34px;
+  margin: 88px 0 74px;
+}
+
+.dh-tech-item {
+  text-align: center;
+}
+
+.dh-tech-item svg {
+  margin-bottom: 34px;
+  color: var(--dh-blue);
+}
+
+.dh-tech-item h3 {
+  margin: 0 0 8px;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.dh-tech-subtitle {
+  margin: 0 0 16px;
+  color: #1f2937 !important;
+  font-size: 18px !important;
+  font-weight: 700;
+  line-height: 1.45 !important;
+}
+
+.dh-center {
+  text-align: center;
+}
+
+.dh-outline-button,
+.dh-topic a {
+  color: #313131;
+}
+
+.dh-right {
+  text-align: right;
+}
+
+.dh-news {
+  background: #fff;
+}
+
+.dh-topic {
+  cursor: pointer;
+}
+
+.dh-topic-visual {
+  position: relative;
+  display: grid;
+  height: 210px;
+  margin-bottom: 32px;
+  place-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(31, 87, 164, 0.88), rgba(65, 171, 225, 0.78)),
+    url("/images/clinical-platform-hero.png") center / cover;
+  color: #fff;
+}
+
+.dh-topic:nth-child(2) .dh-topic-visual {
+  background:
+    linear-gradient(135deg, rgba(18, 81, 72, 0.88), rgba(65, 171, 225, 0.7)),
+    url("/images/global-evidence-bg.png") center / cover;
+}
+
+.dh-topic:nth-child(3) .dh-topic-visual {
+  background:
+    linear-gradient(135deg, rgba(91, 41, 79, 0.78), rgba(31, 87, 164, 0.72)),
+    url("/images/biolab-global-factory-bg.png") center / cover;
+}
+
+.dh-topic h3 {
+  margin: 0;
+  overflow: hidden;
+  color: var(--dh-ink);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dh-topic h3::after {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 3px;
+  margin: 12px 0 16px;
+  background: #111;
+}
+
+.dh-topic p:not(.dh-topic-date) {
+  display: -webkit-box;
+  min-height: 86px;
+  margin: 0 0 24px;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.dh-pipeline {
+  background: #f7f8fa;
+}
+
+.dh-pipeline h2,
+.dh-services h2 {
+  max-width: 760px;
+}
+
+.dh-pipeline-grid,
+.dh-service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 54px;
+  background: var(--dh-line);
+  border: 1px solid var(--dh-line);
+}
+
+.dh-pipeline article,
+.dh-services article {
+  min-height: 210px;
+  padding: 28px;
+  background: #fff;
+  transition: background 0.2s ease;
+}
+
+.dh-pipeline article:hover,
+.dh-services article:hover {
+  background: #f9fdff;
+}
+
+.dh-pipeline article > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 22px;
+  color: var(--dh-blue);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dh-pipeline h3,
+.dh-services h3 {
+  margin: 0 0 14px;
+  color: var(--dh-ink);
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.dh-pipeline article p,
+.dh-services article p {
+  margin: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.dh-pipeline article strong {
+  color: #125148;
+  font-size: 13px;
+}
+
+.dh-services {
+  background: #fff;
+}
+
+.dh-services article svg {
+  margin-bottom: 20px;
+  color: var(--dh-sky);
+}
+
+.dh-contact {
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(5, 13, 24, 0.82), rgba(5, 13, 24, 0.7)),
+    url("/images/biolab-global-factory-bg.png") center / cover;
+  color: #fff;
+}
+
+.dh-contact .dh-kicker,
+.dh-contact h2,
+.dh-contact p {
+  color: #fff;
+}
+
+.dh-contact p {
+  max-width: 420px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dh-contact .contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.dh-contact .contact-form label {
+  display: grid;
+  gap: 8px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.dh-contact .contact-form .wide {
+  grid-column: 1 / -1;
+}
+
+.dh-contact .contact-form input,
+.dh-contact .contact-form select,
+.dh-contact .contact-form textarea {
+  width: 100%;
+  min-height: 56px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  outline: none;
+}
+
+.dh-contact .contact-form textarea {
+  min-height: 136px;
+  resize: vertical;
+}
+
+.dh-contact .contact-form input::placeholder,
+.dh-contact .contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.dh-contact .contact-form select option {
+  color: #111;
+}
+
+.dh-contact .contact-form button {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 58px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--dh-sky);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.dh-footer {
+  padding: 50px 0;
+  background: #2c2c2c;
+  color: #fff;
+}
+
+.dh-footer .dh-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.dh-footer strong {
+  font-family: var(--font-display), var(--font-ja), sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.12em;
+}
+
+.dh-footer p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: right;
+}
+
+@media (max-width: 980px) {
+  .dh-container {
+    width: min(100% - 34px, 760px);
+  }
+
+  .dh-nav {
+    height: 60px;
+  }
+
+  .dh-menu {
+    display: none;
+  }
+
+  .dh-mobile-toggle {
+    display: inline-flex;
+  }
+
+  .dh-mobile-panel {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    display: grid;
+    width: min(78vw, 330px);
+    background: rgba(246, 247, 249, 0.98);
+    box-shadow: -16px 30px 50px rgba(0, 0, 0, 0.18);
+  }
+
+  .dh-mobile-panel a {
+    padding: 18px 24px;
+    border-bottom: 1px solid #d9dde4;
+    color: #1e293b;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+  }
+
+  .dh-hero,
+  .dh-hero-inner {
+    min-height: 610px;
+  }
+
+  .dh-hero-copy {
+    text-align: center;
+  }
+
+  .dh-hero-inner {
+    justify-content: center;
+  }
+
+  .dh-hero-actions {
+    justify-content: center;
+  }
+
+  .dh-about,
+  .dh-products,
+  .dh-news,
+  .dh-pipeline,
+  .dh-services,
+  .dh-contact,
+  .dh-tech {
+    padding: 70px 0;
+  }
+
+  .dh-about-grid,
+  .dh-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .dh-section-title,
+  .dh-right {
+    text-align: center;
+  }
+
+  .dh-product-grid,
+  .dh-topic-grid,
+  .dh-tech-grid,
+  .dh-pipeline-grid,
+  .dh-service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dh-product-card {
+    min-height: 450px;
+  }
+
+  .dh-tech-grid {
+    gap: 46px;
+    margin: 58px 0 48px;
+  }
+
+  .dh-footer .dh-container {
+    display: block;
+    text-align: center;
+  }
+
+  .dh-footer p {
+    margin-top: 22px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .dh-logo {
+    font-size: 19px;
+  }
+
+  .dh-nav-tools > svg,
+  .dh-nav-tools > a {
+    display: none;
+  }
+
+  .dh-hero,
+  .dh-hero-inner {
+    min-height: 600px;
+  }
+
+  .dh-hero-copy h1 {
+    display: grid;
+    gap: 6px;
+    font-size: 38px;
+    line-height: 1.16;
+  }
+
+  .dh-hero-copy h1 .dh-hero-accent,
+  .dh-hero-line {
+    display: block;
+  }
+
+  .dh-hero-copy h2 {
+    font-size: 23px;
+  }
+
+  .dh-hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dh-about h2,
+  .dh-section-title h2,
+  .dh-pipeline h2,
+  .dh-services h2,
+  .dh-contact h2 {
+    font-size: 31px;
+  }
+
+  .dh-section-title p {
+    font-size: 16px;
+  }
+
+  .dh-product-text {
+    top: 30%;
+    padding: 0 26px;
+  }
+
+  .dh-product-text h3 {
+    font-size: 25px;
+  }
+
+  .dh-contact .contact-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dh-page .dh-hero,
+.dh-page .dh-product-card,
+.dh-page .dh-topic,
+.dh-page .dh-topic-visual,
+.dh-page .dh-menu-item,
+.dh-page .dh-about-text li {
+  position: relative !important;
+}
