@@ -3099,7 +3099,7 @@ h2 {
 }
 
 .dh-hero-image {
-  background-image: url("/images/biolab-global-factory-bg.png");
+  background-image: url("/images/clinical-platform-hero.png");
   background-position: center;
   background-size: cover;
   transform: scale(1.03);
@@ -3107,8 +3107,45 @@ h2 {
 
 .dh-hero-overlay {
   background:
-    linear-gradient(90deg, rgba(5, 12, 22, 0.28), rgba(5, 12, 22, 0.2) 36%, rgba(5, 12, 22, 0.62) 100%),
-    radial-gradient(circle at 64% 48%, rgba(65, 171, 225, 0.2), transparent 34%);
+    linear-gradient(90deg, rgba(8, 17, 31, 0.2), rgba(8, 17, 31, 0.16) 38%, rgba(8, 17, 31, 0.72) 100%),
+    radial-gradient(circle at 72% 42%, rgba(65, 171, 225, 0.3), transparent 34%),
+    radial-gradient(circle at 46% 48%, rgba(255, 255, 255, 0.44), transparent 30%);
+}
+
+.dh-bridge-art {
+  position: absolute;
+  left: 8vw;
+  bottom: 108px;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: auto 84px auto 84px auto;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.dh-bridge-art i {
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.14), rgba(65, 171, 225, 0.9), rgba(255, 255, 255, 0.14));
+}
+
+.dh-bridge-art strong {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  border: 1px solid rgba(65, 171, 225, 0.72);
+  border-radius: 999px;
+  padding: 0 14px;
+  color: #fff;
+  background: rgba(16, 29, 48, 0.46);
+  box-shadow: 0 12px 34px rgba(65, 171, 225, 0.16);
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(10px);
 }
 
 .dh-hero-inner {
@@ -3122,7 +3159,7 @@ h2 {
 }
 
 .dh-hero-copy {
-  width: min(520px, 100%);
+  width: min(620px, 100%);
   color: #fff;
   text-align: right;
 }
@@ -3140,10 +3177,11 @@ h2 {
   margin: 0;
   color: #fff;
   font-family: var(--font-display), var(--font-ja), sans-serif;
-  font-size: clamp(42px, 5.4vw, 70px);
+  font-size: clamp(54px, 6.4vw, 92px);
   font-weight: 400;
   letter-spacing: 0;
-  line-height: 1.04;
+  line-height: 0.98;
+  text-transform: uppercase;
 }
 
 .dh-hero-line {
@@ -3158,11 +3196,22 @@ h2 {
 .dh-hero-copy h2 {
   margin: 22px 0 0;
   color: #fff;
-  font-family: var(--font-serif), serif;
-  font-size: clamp(24px, 2.4vw, 34px);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1.45;
+  font-family: var(--font-display), var(--font-ja), sans-serif;
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.18;
+}
+
+.dh-hero-support {
+  max-width: 520px;
+  margin: 22px 0 0 auto !important;
+  color: rgba(255, 255, 255, 0.84) !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.9 !important;
+  text-transform: none !important;
 }
 
 .dh-hero-actions {
@@ -3760,11 +3809,20 @@ h2 {
   }
 
   .dh-hero-copy {
+    width: min(620px, 100%);
     text-align: center;
   }
 
   .dh-hero-inner {
     justify-content: center;
+  }
+
+  .dh-hero-support {
+    margin-right: auto !important;
+  }
+
+  .dh-bridge-art {
+    display: none;
   }
 
   .dh-hero-actions {
@@ -3835,11 +3893,21 @@ h2 {
     min-height: 600px;
   }
 
+  .dh-hero-image {
+    background-position: 47% center;
+  }
+
+  .dh-hero-copy > p {
+    margin-bottom: 14px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+  }
+
   .dh-hero-copy h1 {
     display: grid;
     gap: 6px;
-    font-size: 38px;
-    line-height: 1.16;
+    font-size: 45px;
+    line-height: 1.02;
   }
 
   .dh-hero-copy h1 .dh-hero-accent,
@@ -3848,7 +3916,23 @@ h2 {
   }
 
   .dh-hero-copy h2 {
-    font-size: 23px;
+    font-size: 22px;
+    line-height: 1.24;
+  }
+
+  .dh-hero-support {
+    max-width: 19.5rem;
+    font-size: 13px !important;
+    line-height: 1.75 !important;
+  }
+
+  .dh-bridge-art {
+    display: none;
+  }
+
+  .dh-bridge-art strong {
+    min-height: 24px;
+    padding: 0 9px;
   }
 
   .dh-hero-actions {
@@ -3862,6 +3946,8 @@ h2 {
   .dh-services h2,
   .dh-contact h2 {
     font-size: 31px;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
   }
 
   .dh-section-title p {

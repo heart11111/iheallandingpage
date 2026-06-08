@@ -90,17 +90,28 @@ export default function Home() {
         <section id="top" className="dh-hero">
           <div className="dh-hero-image" aria-hidden="true" />
           <div className="dh-hero-overlay" aria-hidden="true" />
+          <div className="dh-bridge-art" aria-hidden="true">
+            <span>KOREA</span>
+            <i />
+            <strong>BIOLAB Japan</strong>
+            <i />
+            <span>JAPAN</span>
+          </div>
           <div className="dh-container dh-hero-inner">
             <div className="dh-hero-copy">
-              <p>BIOLAB Japan</p>
+              <p>WE ARE BRIDGE!</p>
               <h1>
-                <span className="dh-hero-line">A bridge to the</span>
-                <span className="dh-hero-accent">future.</span>
+                <span className="dh-hero-line">KOREA TO</span>
+                <span className="dh-hero-accent">JAPAN</span>
               </h1>
               <h2>
-                素材の根拠から、<br />
-                日本B2Bヘルスケア流通へ。
+                CONNECT KOREA
+                <br />
+                WITH JAPAN
               </h2>
+              <p className="dh-hero-support">
+                韓国の機能性素材開発・製造力を、日本のB2Bヘルスケア市場へつなぐ事業ブリッジ。
+              </p>
               <div className="dh-hero-actions">
                 <a href="#products">素材を見る</a>
                 <a href="#contact">提携相談</a>
@@ -116,7 +127,9 @@ export default function Home() {
               <h2>
                 One-stop Solution for
                 <br />
-                Total Healthcare in JAPAN
+                Total Healthcare in
+                <br />
+                JAPAN
               </h2>
             </div>
             <div className="dh-about-text">
