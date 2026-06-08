@@ -2,7 +2,9 @@
 
 import { BadgeCheck, Factory, FlaskConical, Globe2, Microscope, Network, ShieldCheck } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
+import { CorporateFooter } from "@/components/CorporateParts";
 import { NavBar } from "@/components/NavBar";
+import { corporateNews, productGroups } from "@/lib/corporate";
 import { businessServices, natureIngredients, probioticsIngredients } from "@/lib/ingredients";
 import { useLenis } from "@/lib/useLenis";
 
@@ -13,6 +15,7 @@ const featuredCards = [
     subtitle: "用途別プロバイオティクス",
     copy: "女性、体脂肪、肝臓、鼻、ストレス、腸のコンディションに合わせて、菌株レベルで素材情報を整理します。",
     image: "images/biolab-cosmetic-science-bg.png",
+    href: "/products/probiotics",
     tags: ["MED01", "NVP-1702", "NVP-1703"],
   },
   {
@@ -21,6 +24,7 @@ const featuredCards = [
     subtitle: "自然由来機能性素材",
     copy: "記憶、肌、肝臓、免疫、男性健康など、製品カテゴリーに合わせた自然由来素材を提案します。",
     image: "images/global-evidence-bg.png",
+    href: "/products/nature",
     tags: ["ThinkGIN", "Applephenon", "Immulink MBG"],
   },
   {
@@ -29,6 +33,7 @@ const featuredCards = [
     subtitle: "商品化・供給設計",
     copy: "韓国メーカーの製造ネットワーク、日本側B2B販売、輸入・供給調整まで事業化の実務をつなぎます。",
     image: "images/biolab-global-factory-bg.png",
+    href: "/products/odm-oem",
     tags: ["Manufacturing", "Supply", "B2B"],
   },
 ];
@@ -155,7 +160,7 @@ export default function Home() {
                       ))}
                     </div>
                   </div>
-                  <a href="#pipeline" aria-label={`${card.title} 詳細`}>
+                <a href={card.href} aria-label={`${card.title} 詳細`}>
                     LEARN MORE
                   </a>
                 </article>
@@ -207,7 +212,7 @@ export default function Home() {
                   <p className="dh-topic-date">{topic.date}</p>
                   <h3>{topic.title}</h3>
                   <p>{topic.copy}</p>
-                  <a href="#contact">LEARN MORE</a>
+                  <a href="/contact">LEARN MORE</a>
                 </article>
               ))}
             </div>
@@ -219,7 +224,7 @@ export default function Home() {
             <p className="dh-kicker">INGREDIENT PIPELINE</p>
             <h2>用途別に整理された機能性素材ポートフォリオ。</h2>
             <div className="dh-pipeline-grid">
-              {[...probioticsIngredients.slice(0, 7), ...natureIngredients.slice(0, 5)].map((ingredient) => (
+              {productGroups.slice(0, 2).flatMap((group) => group.items.slice(0, 6)).map((ingredient) => (
                 <article key={ingredient.id}>
                   <div>
                     <span>{ingredient.category}</span>
@@ -228,6 +233,26 @@ export default function Home() {
                   <h3>{ingredient.name}</h3>
                   <p>{ingredient.summary}</p>
                   <strong>{ingredient.area}</strong>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="news" className="dh-news dh-home-news">
+          <div className="dh-container">
+            <div className="dh-section-title dh-right">
+              <h2>News</h2>
+              <p>BIOLAB Japanの事業展開、素材情報、提携相談に関する最新トピックです。</p>
+            </div>
+            <div className="dh-topic-grid">
+              {corporateNews.map((item) => (
+                <article className="dh-topic" key={item.slug}>
+                  <div className="dh-topic-visual" style={{ backgroundImage: `linear-gradient(135deg, rgba(31, 87, 164, 0.78), rgba(65, 171, 225, 0.68)), url(${item.image})` }} />
+                  <p className="dh-topic-date">{item.date}</p>
+                  <h3>{item.title}</h3>
+                  <p>{item.summary}</p>
+                  <a href="/news">LEARN MORE</a>
                 </article>
               ))}
             </div>
@@ -269,16 +294,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="dh-footer">
-        <div className="dh-container">
-          <strong>BIOLAB Japan</strong>
-          <p>
-            One-stop Solution for Total Healthcare in JAPAN
-            <br />
-            Korea R&amp;D / Functional Ingredients / ODM-OEM / Japan B2B Distribution
-          </p>
-        </div>
-      </footer>
+      <CorporateFooter />
     </div>
   );
 }

@@ -2,20 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { Globe2, Menu, Search, X } from "lucide-react";
-
-const productLinks = [
-  "Functional Probiotics",
-  "Nature-derived Ingredients",
-  "ODM/OEM",
-  "Brand Royalty",
-];
+import Link from "next/link";
+import { productGroups } from "@/lib/corporate";
 
 const links = [
-  { label: "ABOUT", href: "#about" },
-  { label: "PRODUCTS", href: "#products", children: productLinks },
-  { label: "TECHNOLOGY", href: "#technology" },
-  { label: "BUSINESS", href: "#business" },
-  { label: "CONTACT", href: "#contact" },
+  { label: "ABOUT", href: "/about" },
+  { label: "PRODUCTS", href: "/products", children: productGroups },
+  { label: "NEWS", href: "/news" },
+  { label: "RECRUITMENT", href: "/recruitment" },
+  { label: "CONTACT", href: "/contact" },
 ];
 
 export function NavBar() {
@@ -32,21 +27,21 @@ export function NavBar() {
   return (
     <header className={`dh-nav ${scrolled ? "dh-nav-scrolled" : ""}`}>
       <div className="dh-nav-inner">
-        <a className="dh-logo" href="#top" aria-label="BIOLAB Japan home">
+        <Link className="dh-logo" href="/" aria-label="BIOLAB Japan home">
           <span>BIOLAB</span>
           <b>Japan</b>
-        </a>
+        </Link>
 
         <nav className="dh-menu" aria-label="Primary navigation">
           {links.map((link) => (
             <div className="dh-menu-item" key={link.label}>
-              <a href={link.href}>{link.label}</a>
+              <Link href={link.href}>{link.label}</Link>
               {link.children ? (
                 <div className="dh-submenu">
                   {link.children.map((child) => (
-                    <a href="#pipeline" key={child}>
-                      {child}
-                    </a>
+                    <Link href={`/products/${child.slug}`} key={child.slug}>
+                      {child.menuLabel}
+                    </Link>
                   ))}
                 </div>
               ) : null}
@@ -56,9 +51,9 @@ export function NavBar() {
 
         <div className="dh-nav-tools">
           <Search size={17} aria-hidden="true" />
-          <a href="#contact" aria-label="Language">
+          <Link href="/contact" aria-label="Language">
             <Globe2 size={17} aria-hidden="true" />
-          </a>
+          </Link>
           <button type="button" className="dh-mobile-toggle" aria-label="メニュー" onClick={() => setOpen((value) => !value)}>
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -68,9 +63,9 @@ export function NavBar() {
       {open ? (
         <div className="dh-mobile-panel">
           {links.map((link) => (
-            <a href={link.href} key={link.label} onClick={() => setOpen(false)}>
+            <Link href={link.href} key={link.label} onClick={() => setOpen(false)}>
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
       ) : null}
