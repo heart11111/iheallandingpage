@@ -3345,6 +3345,22 @@ h2 {
   background: var(--dh-sky);
 }
 
+.dh-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  color: var(--dh-blue);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+}
+
+.dh-text-link:hover {
+  color: var(--dh-sky);
+}
+
 .dh-section-title {
   margin-bottom: 60px;
 }
@@ -3359,6 +3375,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
+  min-width: 0;
 }
 
 .dh-product-card {
@@ -3397,6 +3414,7 @@ h2 {
   z-index: 2;
   left: 0;
   top: 38%;
+  box-sizing: border-box;
   width: 100%;
   padding: 0 34px;
   color: #fff;
@@ -3408,6 +3426,8 @@ h2 {
   font-size: 28px;
   font-weight: 900;
   line-height: 1.15;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 
 .dh-product-text strong {
@@ -3516,6 +3536,46 @@ h2 {
   text-align: center;
 }
 
+.dh-home-cta {
+  padding: 96px 0;
+  background: linear-gradient(90deg, rgba(18, 30, 48, 0.94), rgba(18, 30, 48, 0.78)), url("/images/biolab-global-factory-bg.png") center / cover;
+  color: #fff;
+}
+
+.dh-home-cta .dh-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 52px;
+}
+
+.dh-home-cta .dh-kicker,
+.dh-home-cta h2,
+.dh-home-cta p {
+  color: #fff;
+}
+
+.dh-home-cta h2 {
+  max-width: 660px;
+  margin: 0;
+  font-family: var(--font-serif), serif;
+  font-size: clamp(32px, 3.2vw, 46px);
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.dh-home-cta p {
+  max-width: 640px;
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.85;
+}
+
+.dh-home-cta .dh-outline-button {
+  flex: 0 0 auto;
+  color: #fff;
+}
+
 .dh-outline-button,
 .dh-topic a {
   color: #313131;
@@ -3531,6 +3591,7 @@ h2 {
 
 .dh-topic {
   cursor: pointer;
+  min-width: 0;
 }
 
 .dh-topic-visual {
@@ -3559,6 +3620,8 @@ h2 {
 }
 
 .dh-topic h3 {
+  display: -webkit-box;
+  min-height: 60px;
   margin: 0;
   overflow: hidden;
   color: var(--dh-ink);
@@ -3566,7 +3629,9 @@ h2 {
   font-weight: 900;
   line-height: 1.35;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .dh-topic h3::after {
@@ -3879,6 +3944,15 @@ h2 {
     text-align: center;
   }
 
+  .dh-home-cta .dh-container {
+    display: block;
+    text-align: center;
+  }
+
+  .dh-home-cta .dh-outline-button {
+    margin-top: 28px;
+  }
+
   .dh-footer p {
     margin-top: 22px;
     text-align: center;
@@ -3967,7 +4041,8 @@ h2 {
   }
 
   .dh-product-text h3 {
-    font-size: 25px;
+    font-size: 23px;
+    line-height: 1.16;
   }
 
   .dh-contact .contact-form {
