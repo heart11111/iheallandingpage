@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Globe2, Menu, Search, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { productGroups } from "@/lib/corporate";
 
@@ -28,8 +29,7 @@ export function NavBar() {
     <header className={`dh-nav ${scrolled ? "dh-nav-scrolled" : ""}`}>
       <div className="dh-nav-inner">
         <Link className="dh-logo" href="/" aria-label="BIOLAB Japan home">
-          <span>BIOLAB</span>
-          <b>Japan</b>
+          <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={373} height={127} priority />
         </Link>
 
         <nav className="dh-menu" aria-label="Primary navigation">

@@ -1,4 +1,5 @@
 import { Mail, MapPin } from "lucide-react";
+import Image from "next/image";
 import type { Ingredient } from "@/lib/ingredients";
 
 type SubHeroProps = {
@@ -25,7 +26,9 @@ export function CorporateFooter() {
   return (
     <footer className="dh-footer">
       <div className="dh-container">
-        <strong>BIOLAB Japan</strong>
+        <strong className="dh-footer-logo">
+          <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={373} height={127} />
+        </strong>
         <p>
           <span>BIOLAB Japan</span>
           <br />

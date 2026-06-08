@@ -2972,20 +2972,27 @@ h2 {
 
 .dh-logo {
   display: inline-flex;
-  align-items: baseline;
-  gap: 8px;
-  color: #fff;
-  font-family: var(--font-display), var(--font-ja), sans-serif;
-  font-size: 24px;
-  letter-spacing: 0.12em;
+  align-items: center;
+  flex: 0 0 auto;
   text-decoration: none;
 }
 
-.dh-logo b {
-  color: var(--dh-sky);
-  font-family: var(--font-ja), sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.18em;
+.dh-logo img {
+  width: 139px;
+  height: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+.dh-footer-logo {
+  display: inline-flex;
+}
+
+.dh-footer-logo img {
+  width: 178px;
+  height: auto;
+  display: block;
+  filter: brightness(0) invert(1);
 }
 
 .dh-menu {
@@ -3879,8 +3886,8 @@ h2 {
 }
 
 @media (max-width: 560px) {
-  .dh-logo {
-    font-size: 19px;
+  .dh-logo img {
+    width: 124px;
   }
 
   .dh-nav-tools > svg,
