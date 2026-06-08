@@ -19,12 +19,11 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     <div className="dh-page">
       <NavBar />
       <main>
-        <CorporateSubHero title={group.title} copy={group.description} image={group.image} />
+        <CorporateSubHero title={group.title} copy={group.subtitle} image={group.image} compact />
         <section className="dh-product-detail">
           <div className="dh-container">
             <p className="dh-detail-primary">{group.eyebrow}</p>
-            <h1>{group.title}</h1>
-            <span>{group.subtitle}</span>
+            <h1>{group.subtitle}</h1>
             <p>{group.description}</p>
             {group.items.length ? (
               <IngredientList items={group.items} />

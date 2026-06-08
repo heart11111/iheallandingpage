@@ -7,11 +7,12 @@ type SubHeroProps = {
   copy: string;
   image?: string;
   align?: "left" | "right" | "center";
+  compact?: boolean;
 };
 
-export function CorporateSubHero({ title, copy, image = "/images/biolab-global-factory-bg.png", align = "left" }: SubHeroProps) {
+export function CorporateSubHero({ title, copy, image = "/images/biolab-global-factory-bg.png", align = "left", compact = false }: SubHeroProps) {
   return (
-    <section className={`dh-sub-hero dh-sub-${align}`}>
+    <section className={`dh-sub-hero dh-sub-${align}${compact ? " dh-sub-compact" : ""}`}>
       <div className="dh-sub-bg" style={{ backgroundImage: `url(${image})` }} aria-hidden="true" />
       <div className="dh-sub-overlay" aria-hidden="true" />
       <div className="dh-container">

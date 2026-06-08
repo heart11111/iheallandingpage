@@ -17,9 +17,9 @@ export const productGroups = [
     slug: "nature",
     menuLabel: "Nature Ingredients",
     eyebrow: "自然由来機能性素材",
-    title: "Nature-derived Ingredients",
-    subtitle: "自然由来素材ポートフォリオ",
-    image: "/images/global-evidence-bg.png",
+    title: "Nature Ingredients",
+    subtitle: "自然由来素材",
+    image: "/images/biolab-global-factory-bg.png",
     description:
       "記憶、肌、肝臓、免疫、男性健康など、商品カテゴリーに合わせた自然由来機能性素材を提案します。",
     items: natureIngredients,

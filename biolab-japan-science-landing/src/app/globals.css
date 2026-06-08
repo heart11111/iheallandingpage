@@ -3985,10 +3985,17 @@ h2 {
 }
 
 .dh-sub-hero {
+  position: relative;
+  box-sizing: border-box;
   min-height: 680px;
   overflow: hidden;
   padding-top: 340px;
   color: #fff;
+}
+
+.dh-sub-compact {
+  min-height: 460px;
+  padding-top: 210px;
 }
 
 .dh-sub-bg,
@@ -4026,6 +4033,13 @@ h2 {
   font-size: 25px;
   font-weight: 300;
   line-height: 1.48;
+}
+
+.dh-sub-compact p {
+  max-width: 620px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.55;
 }
 
 .dh-sub-right .dh-container {
@@ -4129,7 +4143,7 @@ h2 {
 .dh-news-page,
 .dh-recruitment-wrapper,
 .dh-contact-page {
-  padding: 105px 0 90px;
+  padding: 86px 0 90px;
   background: #fff;
 }
 
@@ -4147,7 +4161,7 @@ h2 {
   display: block;
   width: 100px;
   height: 2px;
-  margin: 20px auto 80px;
+  margin: 18px auto 52px;
   background: #41abe1;
 }
 
@@ -4174,7 +4188,7 @@ h2 {
 
 .dh-product-detail > .dh-container > p:not(.dh-detail-primary) {
   max-width: 760px;
-  margin: 0 auto 70px;
+  margin: 0 auto 82px;
   color: #666;
   font-size: 16px;
   line-height: 1.9;
@@ -4485,6 +4499,11 @@ h2 {
     text-align: center;
   }
 
+  .dh-sub-compact {
+    min-height: 430px;
+    padding-top: 185px;
+  }
+
   .dh-sub-right .dh-container {
     text-align: center;
   }
@@ -4574,11 +4593,11 @@ h2 {
 
   .dh-sub-hero h1 {
     max-width: 100%;
-    font-size: clamp(24px, 6vw, 30px) !important;
+    font-size: clamp(22px, 5.4vw, 28px) !important;
     line-height: 1.22 !important;
     white-space: normal !important;
-    overflow-wrap: normal !important;
-    word-break: keep-all !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
     text-wrap: balance;
   }
 
@@ -4605,14 +4624,38 @@ h2 {
     padding-top: 250px;
   }
 
+  .dh-sub-compact {
+    min-height: 390px;
+    padding-top: 170px;
+  }
+
   .dh-sub-hero h1 {
-    font-size: 24px !important;
+    max-width: 19.5rem;
+    margin-inline: auto;
+    font-size: 22px !important;
     letter-spacing: -0.01em;
   }
 
   .dh-sub-hero p {
     max-width: 19.5rem;
     text-wrap: pretty;
+  }
+}
+
+@media (max-width: 560px) {
+  .dh-product-detail h1 {
+    max-width: 21rem;
+    margin-inline: auto;
+    font-size: 27px;
+    line-height: 1.45;
+    overflow-wrap: normal;
+    word-break: keep-all;
+  }
+
+  .dh-product-detail > .dh-container > p:not(.dh-detail-primary) {
+    margin-bottom: 74px;
+    font-size: 15px;
+    line-height: 1.9;
   }
 }
 
