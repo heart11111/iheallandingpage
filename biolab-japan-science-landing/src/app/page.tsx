@@ -19,7 +19,7 @@ const featuredCards = [
     eyebrow: "Nature Ingredients",
     title: "Nature-derived functional materials",
     subtitle: "自然由来機能性素材",
-    image: "images/biolab-global-factory-bg.png",
+    image: "images/nature-ingredients-lab.png",
     href: "/products/nature",
   },
   {
