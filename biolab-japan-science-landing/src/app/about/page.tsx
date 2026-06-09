@@ -25,22 +25,32 @@ export default function AboutPage() {
       <NavBar />
       <main>
         <CorporateSubHero
-          title="leading the way for functional healthcare"
-          copy="韓国素材開発と日本B2B市場をつなぐ、BIOLAB Japanの事業構造です。"
+          title="Korea to Japan Healthcare Bridge"
+          copy="韓国素材開発と日本B2B市場をつなぎ、機能性ヘルスケア事業の価値を広げます。"
           image="/images/global-factory-bg.png"
+          compact
         />
-        <section className="dh-content-wrapper">
-          <div className="dh-container">
-            {aboutBlocks.map((block) => (
-              <div className="dh-about-row" key={block.label}>
-                <p>{block.label}</p>
-                <ul>
-                  <li>
-                    <span>{block.copy}</span>
-                  </li>
-                </ul>
+        <section className="dh-about-overview">
+          <div className="dh-container dh-about-overview-grid">
+            <div className="dh-about-overview-heading">
+              <p className="dh-kicker">ABOUT BIOLAB JAPAN</p>
+              <h2>Evidence, ingredients, and market access.</h2>
+            </div>
+            <div className="dh-about-overview-copy">
+              <p>
+                BIOLAB Japanは、韓国の機能性素材開発・製造・ブランド運営と、
+                日本の販売会社・メーカー・卸ネットワークをつなぐB2Bヘルスケア事業ブリッジです。
+              </p>
+              <div className="dh-about-card-grid">
+                {aboutBlocks.map((block, index) => (
+                  <article className="dh-about-card" key={block.label}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <h3>{block.label}</h3>
+                    <p>{block.copy}</p>
+                  </article>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </section>
         <section className="dh-sub-band">

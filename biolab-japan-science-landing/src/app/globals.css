@@ -4464,8 +4464,8 @@ h2 {
 }
 
 .dh-sub-compact {
-  min-height: 340px;
-  padding-top: 128px;
+  min-height: 300px;
+  padding-top: 116px;
 }
 
 .dh-sub-bg,
@@ -4530,6 +4530,81 @@ h2 {
   background: #fefefe;
 }
 
+.dh-about-overview {
+  padding: 48px 0 76px;
+  background:
+    linear-gradient(180deg, #fff 0%, #f7f9fc 100%);
+  border-top: 1px solid rgba(223, 230, 238, 0.75);
+}
+
+.dh-about-overview-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.dh-about-overview-heading {
+  max-width: 980px;
+}
+
+.dh-about-overview-heading h2 {
+  margin: 0;
+  color: #202226;
+  font-family: var(--font-serif), serif;
+  font-size: clamp(34px, 4.8vw, 64px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+}
+
+.dh-about-overview-copy > p {
+  max-width: 850px;
+  margin: 0 0 30px;
+  color: #4f5968;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.9;
+}
+
+.dh-about-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  border: 1px solid #dfe6ee;
+  background: #dfe6ee;
+}
+
+.dh-about-card {
+  min-height: 224px;
+  padding: 26px 26px;
+  background: #fff;
+}
+
+.dh-about-card span {
+  display: block;
+  margin-bottom: 28px;
+  color: #204da1;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.dh-about-card h3 {
+  margin: 0 0 16px;
+  color: #202226;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.dh-about-card p {
+  margin: 0;
+  color: #5f6976;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.85;
+}
+
 .dh-about-row {
   display: grid;
   grid-template-columns: 150px minmax(0, 1fr);
@@ -4571,6 +4646,7 @@ h2 {
 }
 
 .dh-sub-band {
+  position: relative;
   min-height: 520px;
   overflow: hidden;
   padding: 155px 0;
@@ -4578,6 +4654,7 @@ h2 {
 }
 
 .dh-sub-band .dh-container {
+  position: relative;
   z-index: 2;
 }
 
@@ -5052,8 +5129,8 @@ h2 {
   }
 
   .dh-sub-compact {
-    min-height: 320px;
-    padding-top: 118px;
+    min-height: 290px;
+    padding-top: 112px;
   }
 
   .dh-sub-right .dh-container {
@@ -5090,6 +5167,29 @@ h2 {
     min-height: 390px;
     padding: 112px 0;
     text-align: center;
+  }
+
+  .dh-about-overview {
+    padding: 44px 0 58px;
+  }
+
+  .dh-about-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .dh-about-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dh-about-card {
+    min-height: auto;
+    padding: 26px 24px;
+  }
+
+  .dh-about-overview-heading h2 {
+    font-size: clamp(32px, 7vw, 44px);
+    line-height: 1.08;
   }
 
   .dh-detail-grid,
@@ -5181,8 +5281,8 @@ h2 {
   }
 
   .dh-sub-compact {
-    min-height: 300px;
-    padding-top: 108px;
+    min-height: 280px;
+    padding-top: 104px;
   }
 
   .dh-sub-hero h1 {
@@ -5195,6 +5295,24 @@ h2 {
   .dh-sub-hero p {
     max-width: 19.5rem;
     text-wrap: pretty;
+  }
+
+  .dh-about-overview {
+    padding: 36px 0 52px;
+  }
+
+  .dh-about-overview-heading h2 {
+    font-size: clamp(28px, 8vw, 32px);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .dh-about-overview-copy > p,
+  .dh-about-card p {
+    font-size: 14px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
   }
 }
 
