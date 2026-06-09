@@ -3450,27 +3450,38 @@ h2 {
 }
 
 .dh-hero-copy {
-  width: min(960px, 100%);
+  width: min(1120px, 100%);
   color: #fff;
   text-align: center;
-  transform: translateY(8px);
+  transform: translateY(2px);
 }
 
 .dh-hero-kicker {
-  margin: 0 0 24px;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.24em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  margin: 0 auto 24px;
+  padding: 0 26px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(10, 20, 35, 0.26);
+  color: rgba(255, 255, 255, 0.96);
+  font-size: clamp(16px, 1.35vw, 20px);
+  font-weight: 900;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
+  box-shadow: 0 0 32px rgba(103, 232, 249, 0.16);
+  backdrop-filter: blur(10px);
   animation: heroTextIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
 }
 
 .dh-hero-copy h1 {
-  margin: 0;
+  width: 100%;
+  margin: 0 auto;
   color: #fff;
   font-family: var(--font-display), var(--font-ja), sans-serif;
-  font-size: clamp(74px, 10.2vw, 154px);
+  font-size: clamp(74px, 10vw, 150px);
   font-weight: 400;
   letter-spacing: 0;
   line-height: 0.82;
@@ -3496,13 +3507,14 @@ h2 {
 }
 
 .dh-hero-copy h2 {
-  margin: 34px 0 0;
+  margin: 30px auto 0;
+  max-width: 740px;
   color: #fff;
   font-family: var(--font-display), var(--font-ja), sans-serif;
-  font-size: clamp(30px, 3.5vw, 54px);
+  font-size: clamp(24px, 2.55vw, 38px);
   font-weight: 500;
   letter-spacing: 0.02em;
-  line-height: 1.06;
+  line-height: 1.12;
   animation: heroTextIn 1.12s cubic-bezier(0.16, 1, 0.3, 1) 0.56s both;
 }
 
@@ -4179,9 +4191,9 @@ h2 {
   }
 
   .dh-hero-copy {
-    width: min(720px, 100%);
+    width: min(760px, 100%);
     text-align: center;
-    transform: translateY(14px);
+    transform: translateY(4px);
   }
 
   .dh-hero-inner {
@@ -4312,15 +4324,17 @@ h2 {
   }
 
   .dh-hero-kicker {
-    margin-bottom: 14px;
-    font-size: 11px;
-    letter-spacing: 0.2em;
+    min-height: 34px;
+    margin-bottom: 16px;
+    padding: 0 18px;
+    font-size: 13px;
+    letter-spacing: 0.14em;
   }
 
   .dh-hero-copy h1 {
     display: grid;
     gap: 8px;
-    font-size: clamp(50px, 15.8vw, 66px);
+    font-size: clamp(48px, 15.2vw, 63px);
     line-height: 0.9;
   }
 
@@ -4330,14 +4344,14 @@ h2 {
   }
 
   .dh-hero-copy h2 {
-    margin-top: 26px;
-    font-size: clamp(23px, 7vw, 30px);
-    line-height: 1.12;
+    margin-top: 22px;
+    font-size: clamp(19px, 5.8vw, 25px);
+    line-height: 1.18;
   }
 
   .dh-hero-support {
     max-width: 20.5rem;
-    font-size: 13.5px !important;
+    font-size: 13px !important;
     line-height: 1.78 !important;
   }
 
