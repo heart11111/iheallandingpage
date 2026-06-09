@@ -62,16 +62,22 @@ export default function Home() {
         <section id="top" className="dh-hero">
           <div className="dh-hero-image" aria-hidden="true" />
           <div className="dh-hero-overlay" aria-hidden="true" />
-          <div className="dh-bridge-art" aria-hidden="true">
-            <span>KOREA</span>
-            <i />
-            <strong>BIOLAB Japan</strong>
-            <i />
-            <span>JAPAN</span>
+          <div className="dh-hero-lattice" aria-hidden="true" />
+          <div className="dh-hero-particles" aria-hidden="true">
+            {Array.from({ length: 32 }).map((_, index) => (
+              <span key={index} />
+            ))}
+          </div>
+          <div className="dh-hero-route" aria-hidden="true">
+            <span className="dh-route-point dh-route-korea">KOREA</span>
+            <i className="dh-route-line" />
+            <span className="dh-route-core">BIOLAB JAPAN</span>
+            <i className="dh-route-line" />
+            <span className="dh-route-point dh-route-japan">JAPAN</span>
           </div>
           <div className="dh-container dh-hero-inner">
             <div className="dh-hero-copy">
-              <p>WE ARE BRIDGE!</p>
+              <p className="dh-hero-kicker">WE ARE BRIDGE!</p>
               <h1>
                 <span className="dh-hero-line">KOREA TO</span>
                 <span className="dh-hero-accent">JAPAN</span>
