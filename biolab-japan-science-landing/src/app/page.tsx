@@ -88,7 +88,8 @@ export default function Home() {
                 WITH JAPAN
               </h2>
               <p className="dh-hero-support">
-                韓国の機能性素材開発・製造力を、日本のB2Bヘルスケア市場へつなぐ事業ブリッジ。
+                韓国の可能性を、日本の市場価値へ。機能性素材、製造、ブランド、流通をつなぎ、
+                次のヘルスケア事業をひらくビジネスブリッジです。
               </p>
               <div className="dh-hero-actions">
                 <a href="#products">素材を見る</a>
