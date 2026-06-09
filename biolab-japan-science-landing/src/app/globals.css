@@ -2950,7 +2950,7 @@ h2 {
   top: 0;
   left: 0;
   width: 100%;
-  height: 75px;
+  height: 68px;
   background: rgba(18, 30, 48, 0.64);
   border-bottom: 1px solid rgba(255, 255, 255, 0.13);
   transition: background 0.25s ease, box-shadow 0.25s ease;
@@ -2978,9 +2978,10 @@ h2 {
 }
 
 .dh-logo img {
-  width: 139px;
-  height: auto;
+  width: 124px;
+  height: 42px;
   display: block;
+  object-fit: contain;
   filter: brightness(0) invert(1);
 }
 
@@ -3010,12 +3011,12 @@ h2 {
   display: inline-flex;
   align-items: center;
   height: 100%;
-  padding: 0 13px;
-  border-bottom: 4px solid transparent;
+  padding: 0 12px;
+  border-bottom: 3px solid transparent;
   color: #fff;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   text-decoration: none;
   transition: border-color 0.2s ease, color 0.2s ease;
 }
@@ -3028,7 +3029,7 @@ h2 {
 
 .dh-submenu {
   position: absolute;
-  top: 75px;
+  top: 68px;
   left: 50%;
   display: grid;
   min-width: 230px;
@@ -3844,7 +3845,7 @@ h2 {
   }
 
   .dh-nav {
-    height: 60px;
+    height: 58px;
   }
 
   .dh-menu {
@@ -3857,7 +3858,7 @@ h2 {
 
   .dh-mobile-panel {
     position: fixed;
-    top: 60px;
+    top: 58px;
     right: 0;
     display: grid;
     width: min(78vw, 330px);
@@ -3961,7 +3962,8 @@ h2 {
 
 @media (max-width: 560px) {
   .dh-logo img {
-    width: 124px;
+    width: 112px;
+    height: 38px;
   }
 
   .dh-nav-tools > svg,
@@ -4062,15 +4064,15 @@ h2 {
 .dh-sub-hero {
   position: relative;
   box-sizing: border-box;
-  min-height: 680px;
+  min-height: 420px;
   overflow: hidden;
-  padding-top: 340px;
+  padding-top: 158px;
   color: #fff;
 }
 
 .dh-sub-compact {
-  min-height: 460px;
-  padding-top: 210px;
+  min-height: 340px;
+  padding-top: 128px;
 }
 
 .dh-sub-bg,
@@ -4080,13 +4082,13 @@ h2 {
 }
 
 .dh-sub-bg {
-  background-position: center;
+  background-position: center 42%;
   background-size: cover;
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .dh-sub-overlay {
-  background: linear-gradient(90deg, rgba(7, 13, 25, 0.52), rgba(7, 13, 25, 0.2) 46%, rgba(7, 13, 25, 0.52));
+  background: linear-gradient(90deg, rgba(7, 13, 25, 0.58), rgba(7, 13, 25, 0.24) 48%, rgba(7, 13, 25, 0.5));
 }
 
 .dh-sub-hero .dh-container {
@@ -4095,19 +4097,24 @@ h2 {
 }
 
 .dh-sub-hero h1 {
-  margin: 0 0 10px;
+  max-width: 780px;
+  margin: 0 0 12px;
   color: #fff;
-  font-size: 40px;
+  font-size: clamp(30px, 2.55vw, 36px);
   font-weight: 900;
-  line-height: 1.25;
+  line-height: 1.22;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.2);
 }
 
 .dh-sub-hero p {
   margin: 0;
   color: #fff;
-  font-size: 25px;
-  font-weight: 300;
-  line-height: 1.48;
+  max-width: 660px;
+  font-size: clamp(16px, 1.28vw, 18px);
+  font-weight: 500;
+  line-height: 1.7;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.22);
 }
 
 .dh-sub-compact p {
@@ -4126,51 +4133,54 @@ h2 {
 }
 
 .dh-content-wrapper {
-  padding: 180px 0 50px;
+  padding: 58px 0 36px;
   background: #fefefe;
 }
 
 .dh-about-row {
-  margin-bottom: 190px;
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+  margin: 0;
+  padding: 24px 0 28px;
+  border-bottom: 1px solid #edf0f3;
 }
 
 .dh-about-row > p {
-  float: left;
   margin: 0;
   color: #204da1;
-  font-size: 22px;
-  font-weight: 400;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 .dh-about-row ul {
   margin: 0;
-  padding-left: 190px;
+  padding: 0;
+  list-style: none;
   color: #2c2c2c;
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 15px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
 }
 
 .dh-about-row ul::after {
-  content: "";
-  display: block;
-  width: 105px;
-  height: 1px;
-  margin-top: 58px;
-  background: #204da1;
+  display: none;
 }
 
 .dh-about-row li {
-  margin-bottom: 60px;
+  margin: 0;
 }
 
 .dh-about-row span {
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .dh-sub-band {
-  min-height: 720px;
+  min-height: 520px;
   overflow: hidden;
-  padding: 250px 0;
+  padding: 155px 0;
   color: #fff;
 }
 
@@ -4181,28 +4191,29 @@ h2 {
 .dh-sub-band h2 {
   margin: 0 0 5px;
   color: #fff;
-  font-size: 40px;
+  font-size: clamp(32px, 3vw, 40px);
   font-weight: 900;
 }
 
 .dh-sub-band p {
-  margin: 0 0 60px;
+  margin: 0 0 34px;
   color: #fff;
-  font-size: 25px;
-  font-weight: 300;
-  line-height: 1.48;
+  font-size: clamp(18px, 1.55vw, 24px);
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 .dh-sub-band span {
   display: block;
+  max-width: 760px;
   color: #fff;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.7;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
 }
 
 .dh-values-wrapper {
-  padding: 110px 0;
+  padding: 84px 0;
   background: #ececec;
 }
 
@@ -4218,7 +4229,7 @@ h2 {
 .dh-news-page,
 .dh-recruitment-wrapper,
 .dh-contact-page {
-  padding: 86px 0 90px;
+  padding: 72px 0 86px;
   background: #fff;
 }
 
@@ -4246,7 +4257,7 @@ h2 {
 .dh-contact-page h1 {
   margin: 0 0 20px;
   color: #202226;
-  font-size: 35px;
+  font-size: clamp(30px, 2.6vw, 36px);
   font-weight: 900;
   text-align: center;
 }
@@ -4263,7 +4274,7 @@ h2 {
 
 .dh-product-detail > .dh-container > p:not(.dh-detail-primary) {
   max-width: 760px;
-  margin: 0 auto 82px;
+  margin: 0 auto 64px;
   color: #666;
   font-size: 16px;
   line-height: 1.9;
@@ -4279,8 +4290,8 @@ h2 {
 }
 
 .dh-detail-card {
-  min-height: 330px;
-  padding: 32px;
+  min-height: 540px;
+  padding: 30px 32px 28px;
   background: #fff;
 }
 
@@ -4294,8 +4305,8 @@ h2 {
 .dh-detail-card h2 {
   margin: 0 0 10px;
   color: #202226;
-  font-size: 24px;
-  line-height: 1.25;
+  font-size: 23px;
+  line-height: 1.28;
 }
 
 .dh-detail-card strong,
@@ -4304,6 +4315,13 @@ h2 {
   color: #2c2c2c;
   font-size: 14px;
   line-height: 1.6;
+}
+
+.dh-detail-card > span {
+  margin-top: 2px;
+  color: #204da1;
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .dh-detail-card ul {
@@ -4343,6 +4361,72 @@ h2 {
   font-size: 11px;
   font-style: normal;
   font-weight: 800;
+}
+
+.dh-detail-summary {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #edf1f6;
+}
+
+.dh-detail-summary h3,
+.dh-detail-materials h3,
+.dh-detail-evidence h3 {
+  margin: 0 0 10px;
+  color: #202226;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.dh-detail-summary p {
+  margin: 0;
+  color: #5e6876;
+  font-size: 12.5px;
+  line-height: 1.78;
+}
+
+.dh-detail-specs {
+  display: grid;
+  gap: 1px;
+  margin: 18px 0 0;
+  background: #e8eef7;
+}
+
+.dh-detail-card .dh-detail-specs div {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 16px;
+  padding: 10px 0;
+  background: #fff;
+}
+
+.dh-detail-specs dt {
+  color: #204da1;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.dh-detail-specs dd {
+  margin: 0;
+  color: #343a45;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.dh-detail-materials,
+.dh-detail-evidence {
+  margin-top: 20px;
+}
+
+.dh-detail-materials ul {
+  margin: 0;
+}
+
+.dh-detail-evidence div {
+  margin-top: 0;
 }
 
 .dh-process-list {
@@ -4569,14 +4653,14 @@ h2 {
 
 @media (max-width: 980px) {
   .dh-sub-hero {
-    min-height: 600px;
-    padding-top: 280px;
+    min-height: 380px;
+    padding-top: 132px;
     text-align: center;
   }
 
   .dh-sub-compact {
-    min-height: 430px;
-    padding-top: 185px;
+    min-height: 320px;
+    padding-top: 118px;
   }
 
   .dh-sub-right .dh-container {
@@ -4584,21 +4668,25 @@ h2 {
   }
 
   .dh-content-wrapper {
-    padding: 70px 0 0;
+    padding: 44px 0 10px;
   }
 
   .dh-about-row {
-    margin-bottom: 100px;
-    text-align: center;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 24px 0 28px;
+    text-align: left;
   }
 
   .dh-about-row > p {
     float: none;
-    margin-bottom: 30px;
+    margin-bottom: 0;
+    font-size: 18px;
   }
 
   .dh-about-row ul {
-    padding: 0 30px;
+    padding: 0;
+    font-size: 15px;
   }
 
   .dh-about-row ul::after {
@@ -4606,8 +4694,8 @@ h2 {
   }
 
   .dh-sub-band {
-    min-height: 600px;
-    padding: 200px 0;
+    min-height: 390px;
+    padding: 112px 0;
     text-align: center;
   }
 
@@ -4695,13 +4783,13 @@ h2 {
 
 @media (max-width: 520px) {
   .dh-sub-hero {
-    min-height: 540px;
-    padding-top: 250px;
+    min-height: 340px;
+    padding-top: 118px;
   }
 
   .dh-sub-compact {
-    min-height: 390px;
-    padding-top: 170px;
+    min-height: 300px;
+    padding-top: 108px;
   }
 
   .dh-sub-hero h1 {

@@ -45,24 +45,57 @@ export function CorporateFooter() {
 export function IngredientList({ items }: { items: Ingredient[] }) {
   return (
     <div className="dh-detail-grid">
-      {items.map((item) => (
-        <article className="dh-detail-card" key={item.id}>
-          <p>{item.category}</p>
-          <h2>{item.name}</h2>
-          <strong>{item.area}</strong>
-          <span>{item.intake}</span>
-          <ul>
-            {(item.strains || item.origin || []).slice(0, 5).map((text) => (
-              <li key={text}>{text}</li>
-            ))}
-          </ul>
-          <div>
-            {item.evidenceTags.slice(0, 3).map((tag) => (
-              <em key={tag}>{tag}</em>
-            ))}
-          </div>
-        </article>
-      ))}
+      {items.map((item) => {
+        const materials = item.strains || item.origin || [];
+        const materialLabel = item.strains ? "菌株構成" : "由来原料";
+
+        return (
+          <article className="dh-detail-card" key={item.id}>
+            <p>{item.category}</p>
+            <h2>{item.name}</h2>
+            <strong>{item.area}</strong>
+            <span>{item.intake}</span>
+
+            <section className="dh-detail-summary" aria-label={`${item.name} 概要`}>
+              <h3>素材概要</h3>
+              <p>{item.summary}</p>
+            </section>
+
+            <dl className="dh-detail-specs">
+              <div>
+                <dt>用途領域</dt>
+                <dd>{item.area}</dd>
+              </div>
+              <div>
+                <dt>摂取目安</dt>
+                <dd>{item.intake}</dd>
+              </div>
+              <div>
+                <dt>素材ライン</dt>
+                <dd>{item.line}</dd>
+              </div>
+            </dl>
+
+            <section className="dh-detail-materials" aria-label={`${item.name} ${materialLabel}`}>
+              <h3>{materialLabel}</h3>
+              <ul>
+                {materials.map((text) => (
+                  <li key={text}>{text}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="dh-detail-evidence" aria-label={`${item.name} 根拠情報`}>
+              <h3>根拠情報</h3>
+              <div>
+                {item.evidenceTags.map((tag) => (
+                  <em key={tag}>{tag}</em>
+                ))}
+              </div>
+            </section>
+          </article>
+        );
+      })}
     </div>
   );
 }
