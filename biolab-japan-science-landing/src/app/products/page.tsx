@@ -1,6 +1,6 @@
 import { CorporateFooter, CorporateSubHero } from "@/components/CorporateParts";
 import { NavBar } from "@/components/NavBar";
-import { productGroups } from "@/lib/corporate";
+import { productLinePages } from "@/lib/corporate";
 
 export default function ProductsPage() {
   return (
@@ -21,37 +21,21 @@ export default function ProductsPage() {
                 <br />
                 we focus on the ingredients.
               </h2>
-              <p>BIOLAB Japanの機能性素材、商品化、ブランド協業カテゴリです。</p>
+            <p>BIOLAB Japanの供給製品ラインは、Microbiome ProbioticsとFunctional Nature&apos;s Food Ingredientsを中心に構成します。</p>
             </div>
             <div className="dh-product-grid">
-              {productGroups.slice(0, 3).map((group) => (
-                <article className="dh-product-card" key={group.slug}>
+              {productLinePages.map((group, index) => (
+                <article className="dh-product-card" key={group.href}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={group.image} alt="" aria-hidden="true" />
+                  <img src={index === 0 ? "/images/biolab-cosmetic-science-bg.png" : "/images/biolab-global-factory-bg.png"} alt="" aria-hidden="true" />
                   <div className="dh-product-shade" aria-hidden="true" />
                   <div className="dh-product-text">
-                    <p className="dh-product-eyebrow">{group.eyebrow}</p>
-                    <h3>{group.title}</h3>
-                    <strong>{group.subtitle}</strong>
-                    <p>{group.description}</p>
+                    <p className="dh-product-eyebrow">SUPPLY PRODUCTS</p>
+                    <h3>{group.label}</h3>
+                    <strong>{group.items.length}素材</strong>
+                    <p>{group.summary}</p>
                   </div>
-                  <a href={`/products/${group.slug}`}>LEARN MORE</a>
-                </article>
-              ))}
-            </div>
-            <div className="dh-product-grid dh-product-grid-single">
-              {productGroups.slice(3).map((group) => (
-                <article className="dh-product-card" key={group.slug}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={group.image} alt="" aria-hidden="true" />
-                  <div className="dh-product-shade" aria-hidden="true" />
-                  <div className="dh-product-text">
-                    <p className="dh-product-eyebrow">{group.eyebrow}</p>
-                    <h3>{group.title}</h3>
-                    <strong>{group.subtitle}</strong>
-                    <p>{group.description}</p>
-                  </div>
-                  <a href={`/products/${group.slug}`}>LEARN MORE</a>
+                  <a href={group.href}>LEARN MORE</a>
                 </article>
               ))}
             </div>

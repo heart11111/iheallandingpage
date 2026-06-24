@@ -93,7 +93,7 @@ export default function Home() {
               </p>
               <div className="dh-hero-actions">
                 <a href="#products">素材を見る</a>
-                <a href="/contact">提携相談</a>
+                <a href="/communication/inquiries">提携相談</a>
               </div>
             </div>
           </div>
@@ -207,7 +207,7 @@ export default function Home() {
               <h2>Start a Korea-to-Japan healthcare project.</h2>
               <p>素材調達、ODM/OEM、日本B2B流通、ブランド協業についてはCONTACTページからご相談ください。</p>
             </div>
-            <Link className="dh-outline-button" href="/contact">CONTACT</Link>
+            <Link className="dh-outline-button" href="/communication/inquiries">CONTACT</Link>
           </div>
         </section>
       </main>

@@ -1,6 +1,92 @@
 import type { Ingredient } from "@/lib/ingredients";
 import { natureIngredients, probioticsIngredients } from "@/lib/ingredients";
 
+export const companyPages = [
+  {
+    label: "代表取締役 ご挨拶",
+    menuLabel: "CEO Message",
+    href: "/company/greeting",
+    summary: "BIOLAB Japanの代表メッセージと事業姿勢を紹介します。",
+  },
+  {
+    label: "ビジョン及び目標",
+    menuLabel: "Vision & Goals",
+    href: "/company/vision",
+    summary: "日本市場で目指すヘルスケア事業ブリッジの方向性を整理します。",
+  },
+];
+
+export const businessPages = [
+  {
+    label: "機能性素材供給",
+    menuLabel: "Ingredient Supply",
+    href: "/business/materials",
+    summary: "Microbiome ProbioticsとFunctional Nature's Food Ingredientsを製品目的別に提案します。",
+  },
+  {
+    label: "OEM/ODM Service",
+    menuLabel: "OEM/ODM Service",
+    href: "/business/odm-oem",
+    summary: "韓国製造ネットワークを活用し、処方・剤形・量産・供給条件を設計します。",
+  },
+  {
+    label: "Brand Management",
+    menuLabel: "Brand Management",
+    href: "/business/brand-management",
+    summary: "iHEALブランド運営経験をもとに、商品資料・チャネル・パートナー対応を支援します。",
+  },
+];
+
+export const communicationPages = [
+  {
+    label: "E-Catalog",
+    menuLabel: "E-Catalog",
+    href: "/communication/catalog",
+    summary: "素材供給、OEM/ODM、ブランド協業の検討に必要な情報をまとめます。",
+  },
+  {
+    label: "Customer Inquiries",
+    menuLabel: "Customer Inquiries",
+    href: "/communication/inquiries",
+    summary: "機能性素材、ODM/OEM、日本B2B流通、ブランド協業の相談を受け付けます。",
+  },
+  {
+    label: "コミュニケーションチャネル",
+    menuLabel: "Channels",
+    href: "/communication/channels",
+    summary: "BIOLAB Japan、BIOLAB Korea、iHEAL Mallへの公式導線を案内します。",
+  },
+];
+
+const natureProductIds = ["testofen", "thinkgin", "neulearn", "applephenon", "collagen", "pinitol", "immulink"];
+
+export const microbiomeProductItems = probioticsIngredients;
+export const natureProductItems = natureIngredients.filter((item) => natureProductIds.includes(item.id));
+
+export const productLinePages = [
+  {
+    label: "Microbiome Probiotics",
+    menuLabel: "Microbiome Probiotics",
+    href: "/products/microbiome-probiotics",
+    summary: "女性、体脂肪、認知、肝臓、鼻、ストレス、腸の7カテゴリを整理します。",
+    items: microbiomeProductItems,
+  },
+  {
+    label: "Functional Nature's Food Ingredients",
+    menuLabel: "Nature Ingredients",
+    href: "/products/nature-ingredients",
+    summary: "男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫の7カテゴリを整理します。",
+    items: natureProductItems,
+  },
+];
+
+export const siteMapGroups = [
+  { label: "会社紹介", menuLabel: "COMPANY", href: "/company", children: companyPages },
+  { label: "事業 & サービス", menuLabel: "BUSINESS", href: "/business", children: businessPages },
+  { label: "供給製品", menuLabel: "PRODUCTS", href: "/products", children: productLinePages },
+  { label: "お問い合わせ", menuLabel: "COMMUNICATION", href: "/communication", children: communicationPages },
+];
+
 export const productGroups = [
   {
     slug: "probiotics",

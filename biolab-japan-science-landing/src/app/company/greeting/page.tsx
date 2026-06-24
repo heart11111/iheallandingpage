@@ -1,0 +1,60 @@
+import { CorporateFooter, CorporateSubHero } from "@/components/CorporateParts";
+import { NavBar } from "@/components/NavBar";
+
+export default function GreetingPage() {
+  return (
+    <div className="dh-page">
+      <NavBar />
+      <main>
+        <CorporateSubHero
+          title="CEO Message"
+          copy="最も信頼できるヘルスケアパートナーとしてのBIOLAB Japanのご挨拶です。"
+          image="/images/global-factory-bg.png"
+          compact
+        />
+        <section className="dh-ceo-message">
+          <div className="dh-container dh-ceo-message-grid">
+            <aside className="dh-ceo-message-aside">
+              <div className="dh-ceo-message-label">
+                会社紹介
+                <span>(Company Overview)</span>
+              </div>
+              <blockquote>
+                “BIOLAB Japanは、最も信頼できる
+                <br />
+                ヘルスケアパートナーです。”
+              </blockquote>
+            </aside>
+            <div className="dh-ceo-message-copy">
+              <p className="dh-kicker">CEO MESSAGE</p>
+              <h2>代表取締役 ご挨拶</h2>
+              <div>
+                <p>BIOLAB Japanのウェブサイトをご覧いただき、誠にありがとうございます。</p>
+                <p>
+                  BIOLAB Japanは、韓国に本社を置く株式会社BIOLABの日本現地法人です。
+                  株式会社BIOLABは2017年の設立以来、人々の健康で幸せな暮らしに貢献するため、
+                  マイクロバイオーム分野の健康機能食品・ヘルスケア専門企業として、絶え間ない
+                  革新と努力を通じて持続的な成長を続けてきました。
+                </p>
+                <p>
+                  参入障壁が高く、競争の厳しい日本市場において、当社のiHEALブランドは
+                  専門プロバイオティクス領域で着実な成長を重ねており、現在は多様な機能性
+                  健康食品市場へと事業領域を広げています。BIOLAB Japanが供給する機能性素材は、
+                  ヒト試験、SCI国際学術論文、関連特許などの根拠に基づき検討された素材です。
+                </p>
+                <p>
+                  また、韓国の先進的な製造企業との緊密な協業とGMP製造システムにより生産される
+                  高品質な製品を供給しています。これまで積み重ねてきたノウハウと経験をもとに、
+                  日本のお客様のニーズに応える当社独自のTotal Healthcare Solutionを基盤として、
+                  多様な機能性食品素材の専門企業として、お客様の確かなパートナーとなることを
+                  目指してまいります。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <CorporateFooter />
+    </div>
+  );
+}

@@ -4200,7 +4200,7 @@ h2 {
     box-shadow: -16px 30px 50px rgba(0, 0, 0, 0.18);
   }
 
-  .dh-mobile-panel a {
+.dh-mobile-panel a {
     padding: 18px 24px;
     border-bottom: 1px solid #d9dde4;
     color: #1e293b;
@@ -4208,6 +4208,14 @@ h2 {
     font-weight: 800;
     letter-spacing: 0.12em;
     text-decoration: none;
+  }
+
+  .dh-mobile-panel .dh-mobile-sub-link {
+    padding-left: 38px;
+    background: #fff;
+    color: #475569;
+    font-size: 12px;
+    letter-spacing: 0.08em;
   }
 
   .dh-hero,
@@ -5204,6 +5212,149 @@ h2 {
   line-height: 1.55;
 }
 
+.dh-sitemap-section {
+  padding: 86px 0 96px;
+  background: #fff;
+}
+
+.dh-sitemap-section h1 {
+  max-width: 880px;
+  margin: 0 0 24px;
+  color: #111827;
+  font-size: clamp(34px, 4vw, 58px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.dh-lead-copy {
+  max-width: 860px;
+  margin: 0 0 38px;
+  color: #536071;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.9;
+}
+
+.dh-page-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid #dfe6ee;
+  background: #dfe6ee;
+}
+
+.dh-page-card {
+  min-height: 240px;
+  padding: 28px;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.dh-page-card:hover {
+  background: #f7fbff;
+  transform: translateY(-2px);
+}
+
+.dh-page-card span {
+  display: block;
+  margin-bottom: 30px;
+  color: #204da1;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.dh-page-card h2 {
+  margin: 0 0 16px;
+  color: #202226;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.dh-page-card p {
+  margin: 0;
+  color: #5f6976;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.85;
+}
+
+.dh-supply-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid #dfe6ee;
+  background: #dfe6ee;
+}
+
+.dh-supply-tabs article {
+  padding: 32px;
+  background: #fff;
+}
+
+.dh-supply-tabs span {
+  color: #204da1;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.dh-supply-tabs h2 {
+  margin: 18px 0 14px;
+  color: #111827;
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 900;
+  line-height: 1.16;
+}
+
+.dh-supply-tabs p {
+  margin: 0 0 22px;
+  color: #536071;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+.dh-supply-tabs ul {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 26px;
+  padding: 0;
+  list-style: none;
+}
+
+.dh-supply-tabs li {
+  color: #26323f;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.dh-supply-tabs a,
+.dh-item-link-grid a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  border: 1px solid #204da1;
+  padding: 0 16px;
+  color: #204da1;
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.dh-item-link-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 34px;
+}
+
 .dh-product-grid-single {
   grid-template-columns: minmax(0, 1fr);
   margin-top: 12px;
@@ -5300,6 +5451,8 @@ h2 {
 
   .dh-detail-grid,
   .dh-process-list,
+  .dh-page-card-grid,
+  .dh-supply-tabs,
   .dh-contact-page-grid {
     grid-template-columns: 1fr;
   }

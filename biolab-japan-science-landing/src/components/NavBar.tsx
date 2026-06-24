@@ -4,15 +4,7 @@ import { useEffect, useState } from "react";
 import { Globe2, Menu, Search, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { productGroups } from "@/lib/corporate";
-
-const links = [
-  { label: "ABOUT", href: "/about" },
-  { label: "PRODUCTS", href: "/products", children: productGroups },
-  { label: "NEWS", href: "/news" },
-  { label: "RECRUITMENT", href: "/recruitment" },
-  { label: "CONTACT", href: "/contact" },
-];
+import { siteMapGroups } from "@/lib/corporate";
 
 const externalLinks = [
   { label: "BIOLAB Korea", href: "https://biolabkr.com/" },
@@ -38,13 +30,13 @@ export function NavBar() {
         </Link>
 
         <nav className="dh-menu" aria-label="Primary navigation">
-          {links.map((link) => (
+          {siteMapGroups.map((link) => (
             <div className="dh-menu-item" key={link.label}>
-              <Link href={link.href}>{link.label}</Link>
+              <Link href={link.href}>{link.menuLabel}</Link>
               {link.children ? (
                 <div className="dh-submenu">
                   {link.children.map((child) => (
-                    <Link href={`/products/${child.slug}`} key={child.slug}>
+                    <Link href={child.href} key={child.href}>
                       {child.menuLabel}
                     </Link>
                   ))}
@@ -61,7 +53,7 @@ export function NavBar() {
             </a>
           ))}
           <Search size={17} aria-hidden="true" />
-          <Link href="/contact" aria-label="Language">
+          <Link href="/communication/inquiries" aria-label="Customer inquiries">
             <Globe2 size={17} aria-hidden="true" />
           </Link>
           <button type="button" className="dh-mobile-toggle" aria-label="メニュー" onClick={() => setOpen((value) => !value)}>
@@ -72,9 +64,14 @@ export function NavBar() {
 
       {open ? (
         <div className="dh-mobile-panel">
-          {links.map((link) => (
+          {siteMapGroups.map((link) => (
             <Link href={link.href} key={link.label} onClick={() => setOpen(false)}>
-              {link.label}
+              {link.menuLabel}
+            </Link>
+          ))}
+          {siteMapGroups.flatMap((link) => link.children).map((child) => (
+            <Link className="dh-mobile-sub-link" href={child.href} key={child.href} onClick={() => setOpen(false)}>
+              {child.menuLabel}
             </Link>
           ))}
           {externalLinks.map((link) => (

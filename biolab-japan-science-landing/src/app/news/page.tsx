@@ -26,7 +26,7 @@ export default function NewsPage() {
                     <p>{item.date}</p>
                     <h2>{item.title}</h2>
                     <span>{item.summary}</span>
-                    <a href="/contact">LEARN MORE</a>
+                    <a href="/communication/inquiries">LEARN MORE</a>
                   </div>
                 </article>
               ))}
