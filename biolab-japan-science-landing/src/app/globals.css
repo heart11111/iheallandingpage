@@ -3758,7 +3758,8 @@ h2 {
   position: absolute;
   z-index: 2;
   left: 0;
-  top: 38%;
+  top: auto;
+  bottom: 92px;
   box-sizing: border-box;
   width: 100%;
   padding: 0 34px;
@@ -3796,6 +3797,8 @@ h2 {
   color: rgba(255, 255, 255, 0.88);
   font-size: 14px;
   line-height: 1.65;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
 }
 
 .dh-product-text div {
@@ -3816,14 +3819,14 @@ h2 {
 .dh-product-card > a {
   position: absolute;
   z-index: 3;
-  bottom: 38px;
-  left: 50%;
+  bottom: 36px;
+  left: 34px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 34px;
   padding: 0 26px;
-  transform: translateX(-50%);
+  transform: none;
   border: 1px solid #fff;
   border-radius: 999px;
   color: #fff;
@@ -4501,8 +4504,13 @@ h2 {
   }
 
   .dh-product-text {
-    top: 30%;
+    top: auto;
+    bottom: 88px;
     padding: 0 26px;
+  }
+
+  .dh-product-card > a {
+    left: 26px;
   }
 
   .dh-product-text h3 {
