@@ -5295,6 +5295,39 @@ h2 {
   line-height: 1.85;
 }
 
+.dh-vision-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.dh-vision-card {
+  min-height: 252px;
+  border: 1px solid #dfe6ee;
+  border-top: 4px solid #2f70bf;
+  padding: 34px 32px;
+  background: #fff;
+  box-shadow: 0 16px 38px rgba(31, 49, 76, 0.06);
+}
+
+.dh-vision-card span {
+  display: block;
+  margin-bottom: 24px;
+  color: #204da1;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+.dh-vision-card p {
+  margin: 0;
+  color: #1f2937;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.78;
+  letter-spacing: 0;
+}
+
 .dh-supply-tabs {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -5463,6 +5496,7 @@ h2 {
   .dh-detail-grid,
   .dh-process-list,
   .dh-page-card-grid,
+  .dh-vision-card-grid,
   .dh-supply-tabs,
   .dh-contact-page-grid {
     grid-template-columns: 1fr;

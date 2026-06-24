@@ -1,11 +1,19 @@
 import { CorporateFooter, CorporateSubHero } from "@/components/CorporateParts";
 import { NavBar } from "@/components/NavBar";
 
-const goals = [
-  ["Vision", "韓国の機能性素材、製造、ブランド運営と日本のB2B市場をつなぐヘルスケア事業ブリッジを構築します。"],
-  ["Goal 01", "Microbiome Probioticsと自然由来機能性素材を、日本市場の製品企画に合わせて整理します。"],
-  ["Goal 02", "ODM/OEM、ブランド協業、販売会社向け供給を一体で設計し、事業化の速度を高めます。"],
-  ["Goal 03", "エビデンス、品質、供給安定性を重視し、長期的に信頼されるパートナーを目指します。"],
+const visionItems = [
+  [
+    "Vision",
+    "機能性ヘルスケアソリューションを超えて、韓国の素材開発・製造力と日本市場の事業機会をつなぐ信頼性の高い基準をつくります。",
+  ],
+  [
+    "Mission",
+    "Microbiome Probiotics、自然由来機能性素材、OEM/ODM、ブランド協業を一つの流れとして整理し、パートナーの製品化可能性を高めます。",
+  ],
+  [
+    "Goal",
+    "BIOLAB KoreaとBIOLAB Japanのネットワークを活用し、エビデンス、品質、供給安定性を備えた日韓ヘルスケア事業基盤を拡張します。",
+  ],
 ];
 
 export default function VisionPage() {
@@ -22,12 +30,15 @@ export default function VisionPage() {
         <section className="dh-sitemap-section">
           <div className="dh-container">
             <p className="dh-detail-primary">VISION</p>
-            <h1>ビジョン及び目標</h1>
-            <div className="dh-process-list">
-              {goals.map(([title, body]) => (
-                <article key={title}>
-                  <strong>{title}</strong>
-                  <h2>{title}</h2>
+            <h1>Beyond Functional Healthcare Solutions</h1>
+            <p className="dh-lead-copy">
+              BIOLAB Japanは、機能性素材、製品化、ブランド運営、日本市場への導入を接続し、
+              健康機能食品事業における信頼性の高いパートナーとなることを目指します。
+            </p>
+            <div className="dh-vision-card-grid">
+              {visionItems.map(([title, body]) => (
+                <article className="dh-vision-card" key={title}>
+                  <span>{title}</span>
                   <p>{body}</p>
                 </article>
               ))}
