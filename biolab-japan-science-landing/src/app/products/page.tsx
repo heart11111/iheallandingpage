@@ -38,7 +38,7 @@ export default function ProductsPage() {
                   />
                   <div className="dh-product-shade" aria-hidden="true" />
                   <div className="dh-product-text">
-                    <p className="dh-product-eyebrow">SUPPLY PRODUCTS</p>
+                    <p className="dh-product-eyebrow">{group.menuLabel}</p>
                     <h3>{group.label}</h3>
                     <strong>{group.items.length}素材</strong>
                     <p>{group.summary}</p>

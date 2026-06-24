@@ -24,13 +24,13 @@ export const businessPages = [
     summary: "Microbiome ProbioticsとFunctional Nature's Food Ingredientsを製品目的別に提案します。",
   },
   {
-    label: "OEM/ODM Service",
+    label: "OEM/ODMサービス",
     menuLabel: "OEM/ODM Service",
     href: "/business/odm-oem",
     summary: "韓国製造ネットワークを活用し、処方・剤形・量産・供給条件を設計します。",
   },
   {
-    label: "Brand Management",
+    label: "ブランドマネジメント",
     menuLabel: "Brand Management",
     href: "/business/brand-management",
     summary: "iHEALブランド運営経験をもとに、商品資料・チャネル・パートナー対応を支援します。",
@@ -39,13 +39,13 @@ export const businessPages = [
 
 export const communicationPages = [
   {
-    label: "E-Catalog",
+    label: "Eカタログ",
     menuLabel: "E-Catalog",
     href: "/communication/catalog",
     summary: "素材供給、OEM/ODM、ブランド協業の検討に必要な情報をまとめます。",
   },
   {
-    label: "Customer Inquiries",
+    label: "顧客お問い合わせ",
     menuLabel: "Customer Inquiries",
     href: "/communication/inquiries",
     summary: "機能性素材、ODM/OEM、日本B2B流通、ブランド協業の相談を受け付けます。",
@@ -65,14 +65,14 @@ export const natureProductItems = natureIngredients.filter((item) => natureProdu
 
 export const productLinePages = [
   {
-    label: "Microbiome Probiotics",
+    label: "個別認定型プロバイオティクス",
     menuLabel: "Microbiome Probiotics",
     href: "/products/microbiome-probiotics",
     summary: "女性、体脂肪、認知、肝臓、鼻、ストレス、腸の7カテゴリを整理します。",
     items: microbiomeProductItems,
   },
   {
-    label: "Functional Nature's Food Ingredients",
+    label: "機能性天然素材",
     menuLabel: "Nature Ingredients",
     href: "/products/nature-ingredients",
     summary: "男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫の7カテゴリを整理します。",

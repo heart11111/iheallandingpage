@@ -2,9 +2,24 @@ import { CorporateFooter, CorporateSubHero } from "@/components/CorporateParts";
 import { NavBar } from "@/components/NavBar";
 
 const channels = [
-  ["BIOLAB Japan", "日本B2B事業、機能性素材、ODM/OEM、ブランド協業の公式窓口です。", "/communication/inquiries"],
-  ["BIOLAB Korea", "韓国側の企業情報と素材・製品ポートフォリオを確認できます。", "https://biolabkr.com/"],
-  ["iHEAL Mall", "iHEALブランド商品の購入ページへ移動します。", "https://iheal.co.kr/main/index.php"],
+  {
+    label: "ビオラボジャパン",
+    ruby: "BIOLAB Japan",
+    body: "日本B2B事業、機能性素材、ODM/OEM、ブランド協業の公式窓口です。",
+    href: "/communication/inquiries",
+  },
+  {
+    label: "ビオラボコリア",
+    ruby: "BIOLAB Korea",
+    body: "韓国側の企業情報と素材・製品ポートフォリオを確認できます。",
+    href: "https://biolabkr.com/",
+  },
+  {
+    label: "アイヒールモール",
+    ruby: "iHEAL Mall",
+    body: "iHEALブランド商品の購入ページへ移動します。",
+    href: "https://iheal.co.kr/main/index.php",
+  },
 ];
 
 export default function ChannelsPage() {
@@ -23,11 +38,17 @@ export default function ChannelsPage() {
             <p className="dh-detail-primary">CHANNELS</p>
             <h1>コミュニケーションチャネル</h1>
             <div className="dh-page-card-grid">
-              {channels.map(([title, body, href]) => (
-                <a className="dh-page-card" href={href} key={title} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined}>
-                  <span>CHANNEL</span>
-                  <h2>{title}</h2>
-                  <p>{body}</p>
+              {channels.map((channel) => (
+                <a
+                  className="dh-page-card"
+                  href={channel.href}
+                  key={channel.href}
+                  target={channel.href.startsWith("http") ? "_blank" : undefined}
+                  rel={channel.href.startsWith("http") ? "noreferrer" : undefined}
+                >
+                  <span>{channel.ruby}</span>
+                  <h2>{channel.label}</h2>
+                  <p>{channel.body}</p>
                 </a>
               ))}
             </div>

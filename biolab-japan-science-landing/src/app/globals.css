@@ -3621,8 +3621,10 @@ h2 {
   color: var(--dh-blue);
   font-size: 12px;
   font-weight: 900;
+  line-height: 1.4;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .dh-about h2,
@@ -5058,12 +5060,24 @@ h2 {
 }
 
 .dh-process-list strong {
+  display: block;
   color: #204da1;
   font-size: 15px;
 }
 
+.dh-process-list span {
+  display: block;
+  margin-top: 12px;
+  color: #204da1;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  overflow-wrap: anywhere;
+}
+
 .dh-process-list h2 {
-  margin: 20px 0 12px;
+  margin: 16px 0 12px;
   font-size: 25px;
 }
 
@@ -5305,11 +5319,13 @@ h2 {
 
 .dh-page-card span {
   display: block;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   color: #204da1;
   font-size: 12px;
   font-weight: 900;
+  line-height: 1.4;
   letter-spacing: 0.12em;
+  overflow-wrap: anywhere;
 }
 
 .dh-page-card h2 {
@@ -5376,10 +5392,13 @@ h2 {
 }
 
 .dh-supply-tabs span {
+  display: block;
   color: #204da1;
   font-size: 12px;
   font-weight: 900;
+  line-height: 1.4;
   letter-spacing: 0.12em;
+  overflow-wrap: anywhere;
 }
 
 .dh-supply-tabs h2 {

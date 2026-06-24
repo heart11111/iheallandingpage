@@ -2,9 +2,24 @@ import { CorporateFooter, CorporateSubHero } from "@/components/CorporateParts";
 import { NavBar } from "@/components/NavBar";
 
 const catalogItems = [
-  ["Microbiome Probiotics", "用途別プロバイオティクス7カテゴリの素材情報を確認できます。", "/products/microbiome-probiotics"],
-  ["Functional Nature's Food Ingredients", "自然由来機能性素材7カテゴリの素材情報を確認できます。", "/products/nature-ingredients"],
-  ["OEM/ODM Service", "商品化、製造、供給条件の相談導線を確認できます。", "/business/odm-oem"],
+  {
+    label: "個別認定型プロバイオティクス",
+    ruby: "Microbiome Probiotics",
+    body: "用途別プロバイオティクス7カテゴリの素材情報を確認できます。",
+    href: "/products/microbiome-probiotics",
+  },
+  {
+    label: "機能性天然素材",
+    ruby: "Functional Nature's Food Ingredients",
+    body: "自然由来機能性素材7カテゴリの素材情報を確認できます。",
+    href: "/products/nature-ingredients",
+  },
+  {
+    label: "OEM/ODMサービス",
+    ruby: "OEM/ODM Service",
+    body: "商品化、製造、供給条件の相談導線を確認できます。",
+    href: "/business/odm-oem",
+  },
 ];
 
 export default function CatalogPage() {
@@ -23,11 +38,11 @@ export default function CatalogPage() {
             <p className="dh-detail-primary">E-CATALOG</p>
             <h1>E-Catalog</h1>
             <div className="dh-page-card-grid">
-              {catalogItems.map(([title, body, href]) => (
-                <a className="dh-page-card" href={href} key={title}>
-                  <span>CATALOG</span>
-                  <h2>{title}</h2>
-                  <p>{body}</p>
+              {catalogItems.map((item) => (
+                <a className="dh-page-card" href={item.href} key={item.href}>
+                  <span>{item.ruby}</span>
+                  <h2>{item.label}</h2>
+                  <p>{item.body}</p>
                 </a>
               ))}
             </div>

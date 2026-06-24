@@ -4,13 +4,15 @@ import { microbiomeProductItems, natureProductItems } from "@/lib/corporate";
 
 const lines = [
   {
-    label: "Microbiome Probiotics",
+    label: "個別認定型プロバイオティクス",
+    ruby: "Microbiome Probiotics",
     copy: "女性、体脂肪、認知、肝臓、鼻、ストレス、腸のコンディションに合わせたプロバイオティクス素材を検討します。",
     href: "/products/microbiome-probiotics",
     items: microbiomeProductItems,
   },
   {
-    label: "Functional Nature's Food Ingredients",
+    label: "機能性天然素材",
+    ruby: "Functional Nature's Food Ingredients",
     copy: "男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫などの自然由来機能性素材を提案します。",
     href: "/products/nature-ingredients",
     items: natureProductItems,
@@ -39,7 +41,7 @@ export default function MaterialsPage() {
             <div className="dh-supply-tabs">
               {lines.map((line) => (
                 <article key={line.label}>
-                  <span>{line.label}</span>
+                  <span>{line.ruby}</span>
                   <h2>{line.label}</h2>
                   <p>{line.copy}</p>
                   <ul>
