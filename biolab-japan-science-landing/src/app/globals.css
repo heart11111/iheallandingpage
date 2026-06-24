@@ -3203,6 +3203,24 @@ h2 {
   color: inherit;
 }
 
+.dh-nav-tools .dh-top-link {
+  align-items: center;
+  min-height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.dh-nav-tools .dh-top-link:hover {
+  border-color: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.16);
+}
+
 .dh-mobile-toggle {
   display: none;
   align-items: center;

@@ -14,6 +14,11 @@ const links = [
   { label: "CONTACT", href: "/contact" },
 ];
 
+const externalLinks = [
+  { label: "BIOLAB Korea", href: "https://biolabkr.com/" },
+  { label: "iHEAL Mall", href: "https://iheal.co.kr/main/index.php" },
+];
+
 export function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -50,6 +55,11 @@ export function NavBar() {
         </nav>
 
         <div className="dh-nav-tools">
+          {externalLinks.map((link) => (
+            <a className="dh-top-link" href={link.href} key={link.href} target="_blank" rel="noreferrer">
+              {link.label}
+            </a>
+          ))}
           <Search size={17} aria-hidden="true" />
           <Link href="/contact" aria-label="Language">
             <Globe2 size={17} aria-hidden="true" />
@@ -66,6 +76,11 @@ export function NavBar() {
             <Link href={link.href} key={link.label} onClick={() => setOpen(false)}>
               {link.label}
             </Link>
+          ))}
+          {externalLinks.map((link) => (
+            <a href={link.href} key={link.href} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>
+              {link.label}
+            </a>
           ))}
         </div>
       ) : null}
