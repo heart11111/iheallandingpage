@@ -21,13 +21,21 @@ export default function ProductsPage() {
                 <br />
                 we focus on the ingredients.
               </h2>
-            <p>BIOLAB Japanの供給製品ラインは、Microbiome ProbioticsとFunctional Nature&apos;s Food Ingredientsを中心に構成します。</p>
+              <p>BIOLAB Japanの供給製品ラインは、Microbiome ProbioticsとFunctional Nature&apos;s Food Ingredientsを中心に構成します。</p>
             </div>
-            <div className="dh-product-grid">
+            <div className="dh-product-grid dh-product-grid-two">
               {productLinePages.map((group, index) => (
                 <article className="dh-product-card" key={group.href}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={index === 0 ? "/images/biolab-cosmetic-science-bg.png" : "/images/biolab-global-factory-bg.png"} alt="" aria-hidden="true" />
+                  <img
+                    src={
+                      index === 0
+                        ? "/images/products-microbiome-probiotics-card.jpg"
+                        : "/images/products-functional-nature-card.jpg"
+                    }
+                    alt=""
+                    aria-hidden="true"
+                  />
                   <div className="dh-product-shade" aria-hidden="true" />
                   <div className="dh-product-text">
                     <p className="dh-product-eyebrow">SUPPLY PRODUCTS</p>
