@@ -1,3 +1,3 @@
-:HL["/_next/static/chunks/0kmmh.nz9jspr.css","style"]
+:HL["/_next/static/chunks/13-.z.ojlhsa3.css","style"]
 :HL["/_next/static/media/PretendardJPVariable-s.p.0_rm~pon-puwg.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"products","param":null,"prefetchHints":0,"slots":{"children":{"name":"microbiome-probiotics","param":null,"prefetchHints":0,"slots":{"children":{"name":"id","param":{"type":"d","key":"med02","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"xD3E_mGoDsATHST4gmtIe"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"products","param":null,"prefetchHints":0,"slots":{"children":{"name":"microbiome-probiotics","param":null,"prefetchHints":0,"slots":{"children":{"name":"id","param":{"type":"d","key":"med02","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"tdxrHimolRmh_uT__AuQk"}
