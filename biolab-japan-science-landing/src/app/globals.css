@@ -4896,6 +4896,15 @@ h2 {
   background: #41abe1;
 }
 
+.dh-product-detail .dh-detail-primary {
+  text-align: left;
+}
+
+.dh-product-detail .dh-detail-primary::after {
+  width: 76px;
+  margin: 16px 0 38px;
+}
+
 .dh-product-detail h1,
 .dh-news-page h1,
 .dh-recruitment-wrapper h1,
@@ -4905,6 +4914,13 @@ h2 {
   font-size: clamp(30px, 2.6vw, 36px);
   font-weight: 900;
   text-align: center;
+}
+
+.dh-product-detail h1 {
+  max-width: 880px;
+  margin: 0 0 18px;
+  text-align: left;
+  line-height: 1.2;
 }
 
 .dh-product-detail > .dh-container > span,
@@ -4919,25 +4935,31 @@ h2 {
 
 .dh-product-detail > .dh-container > p:not(.dh-detail-primary) {
   max-width: 760px;
-  margin: 0 auto 64px;
+  margin: 0 0 56px;
   color: #666;
   font-size: 16px;
   line-height: 1.9;
-  text-align: center;
+  text-align: left;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .dh-detail-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: #e3e6ea;
-  border: 1px solid #e3e6ea;
+  gap: 24px;
+  align-items: stretch;
 }
 
 .dh-detail-card {
   min-height: 540px;
+  border: 1px solid #dfe6ee;
   padding: 30px 32px 28px;
   background: #fff;
+}
+
+.dh-detail-grid-single {
+  grid-template-columns: minmax(0, 440px);
 }
 
 .dh-detail-card > p {
@@ -5078,7 +5100,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 26px;
-  margin-top: 80px;
+  margin-top: 56px;
 }
 
 .dh-process-list article {
@@ -5759,18 +5781,20 @@ h2 {
 
 @media (max-width: 560px) {
   .dh-product-detail h1 {
-    max-width: 21rem;
-    margin-inline: auto;
+    max-width: 100%;
+    margin-inline: 0;
     font-size: 27px;
     line-height: 1.45;
+    text-align: left;
     overflow-wrap: normal;
     word-break: keep-all;
   }
 
   .dh-product-detail > .dh-container > p:not(.dh-detail-primary) {
-    margin-bottom: 74px;
+    margin-bottom: 58px;
     font-size: 15px;
     line-height: 1.9;
+    text-align: left;
   }
 }
 

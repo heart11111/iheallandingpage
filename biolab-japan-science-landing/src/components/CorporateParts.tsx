@@ -44,7 +44,7 @@ export function CorporateFooter() {
 
 export function IngredientList({ items }: { items: Ingredient[] }) {
   return (
-    <div className="dh-detail-grid">
+    <div className={`dh-detail-grid${items.length === 1 ? " dh-detail-grid-single" : ""}`}>
       {items.map((item) => {
         const materials = item.strains || item.origin || [];
         const materialLabel = item.strains ? "菌株構成" : "由来原料";
