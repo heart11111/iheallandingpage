@@ -28,7 +28,7 @@ export function CorporateFooter() {
     <footer className="dh-footer">
       <div className="dh-container">
         <strong className="dh-footer-logo">
-          <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={373} height={127} />
+          <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={508} height={96} />
         </strong>
         <p>
           <span>BIOLAB Japan</span>

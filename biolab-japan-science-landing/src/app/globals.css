@@ -3097,11 +3097,10 @@ h2 {
 }
 
 .dh-logo img {
-  width: 124px;
-  height: 42px;
+  width: 192px;
+  height: auto;
   display: block;
   object-fit: contain;
-  filter: brightness(0) invert(1);
 }
 
 .dh-footer-logo {
@@ -3109,10 +3108,9 @@ h2 {
 }
 
 .dh-footer-logo img {
-  width: 178px;
+  width: 220px;
   height: auto;
   display: block;
-  filter: brightness(0) invert(1);
 }
 
 .dh-menu {
@@ -4305,8 +4303,8 @@ h2 {
 
 @media (max-width: 560px) {
   .dh-logo img {
-    width: 112px;
-    height: 38px;
+    width: 164px;
+    height: auto;
   }
 
   .dh-nav-tools > svg,

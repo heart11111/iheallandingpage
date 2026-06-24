@@ -29,7 +29,7 @@ export function NavBar() {
     <header className={`dh-nav ${scrolled ? "dh-nav-scrolled" : ""}`}>
       <div className="dh-nav-inner">
         <Link className="dh-logo" href="/" aria-label="BIOLAB Japan home">
-          <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={373} height={127} priority />
+          <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={508} height={96} priority />
         </Link>
 
         <nav className="dh-menu" aria-label="Primary navigation">
