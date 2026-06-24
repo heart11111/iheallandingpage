@@ -1,26 +1,18 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP, Tenor_Sans, Zen_Old_Mincho } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const notoSansJp = Noto_Sans_JP({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+const pretendardJp = localFont({
+  src: [
+    {
+      path: "./fonts/PretendardJPVariable.woff2",
+      weight: "45 920",
+      style: "normal",
+    },
+  ],
   variable: "--font-ja",
   display: "swap",
-});
-
-const zenOldMincho = Zen_Old_Mincho({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "900"],
-  variable: "--font-serif",
-  display: "swap",
-});
-
-const tenorSans = Tenor_Sans({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-display",
-  display: "swap",
+  fallback: ["Hiragino Sans", "Yu Gothic", "system-ui", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -36,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${notoSansJp.variable} ${zenOldMincho.variable} ${tenorSans.variable}`}>{children}</body>
+      <body className={pretendardJp.variable}>{children}</body>
     </html>
   );
 }

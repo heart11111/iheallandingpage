@@ -7,11 +7,19 @@
   box-sizing: border-box;
 }
 
+:root {
+  --font-display: var(--font-ja);
+  --font-serif: var(--font-ja);
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 0;
   max-width: 100%;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -24,6 +32,7 @@ body {
     radial-gradient(circle at 84% 12%, rgba(167, 139, 250, 0.12), transparent 22rem),
     linear-gradient(180deg, #fbfcfe 0%, var(--bg) 100%);
   font-family: var(--font-ja), "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+  font-feature-settings: "kern" 1;
   line-height: 1.65;
   word-break: normal;
 }
@@ -2003,9 +2012,9 @@ body::before {
 
 h1,
 h2 {
-  font-family: var(--font-serif), "Yu Mincho", "Hiragino Mincho ProN", serif;
-  font-weight: 500;
-  letter-spacing: 0.015em;
+  font-family: var(--font-ja), "Hiragino Sans", "Yu Gothic", sans-serif;
+  font-weight: 860;
+  letter-spacing: 0;
 }
 
 h1 {
@@ -2022,9 +2031,9 @@ h2 {
 
 h3,
 .lab-detail h3 {
-  font-family: var(--font-serif), "Yu Mincho", "Hiragino Mincho ProN", serif;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-family: var(--font-ja), "Hiragino Sans", "Yu Gothic", sans-serif;
+  font-weight: 780;
+  letter-spacing: 0;
 }
 
 .hero-section {
@@ -3055,7 +3064,7 @@ h2 {
   min-height: 100vh;
   background: #fff;
   color: var(--dh-ink);
-  font-family: var(--font-ja), "Noto Sans JP", system-ui, sans-serif;
+  font-family: var(--font-ja), "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
 }
 
 .dh-container {
@@ -3478,11 +3487,11 @@ h2 {
   width: 100%;
   margin: 0 auto;
   color: #fff;
-  font-family: var(--font-display), var(--font-ja), sans-serif;
+  font-family: var(--font-ja), "Hiragino Sans", "Yu Gothic", sans-serif;
   font-size: clamp(74px, 10vw, 150px);
-  font-weight: 400;
+  font-weight: 880;
   letter-spacing: 0;
-  line-height: 0.82;
+  line-height: 0.86;
   text-transform: uppercase;
   text-shadow: 0 0 28px rgba(255, 255, 255, 0.25), 0 0 56px rgba(65, 171, 225, 0.22);
 }
@@ -3508,11 +3517,11 @@ h2 {
   margin: 30px auto 0;
   max-width: 740px;
   color: #fff;
-  font-family: var(--font-display), var(--font-ja), sans-serif;
+  font-family: var(--font-ja), "Hiragino Sans", "Yu Gothic", sans-serif;
   font-size: clamp(24px, 2.55vw, 38px);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  line-height: 1.12;
+  font-weight: 760;
+  letter-spacing: 0;
+  line-height: 1.18;
   animation: heroTextIn 1.12s cubic-bezier(0.16, 1, 0.3, 1) 0.56s both;
 }
 
