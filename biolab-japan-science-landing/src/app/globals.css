@@ -3885,7 +3885,8 @@ h2 {
 }
 
 .dh-tech-item svg {
-  margin-bottom: 34px;
+  display: block;
+  margin: 0 auto 34px;
   color: var(--dh-blue);
 }
 
