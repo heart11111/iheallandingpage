@@ -4724,6 +4724,8 @@ h2 {
   font-weight: 900;
   line-height: 1.45;
   letter-spacing: 0;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .dh-ceo-message-copy {
@@ -4750,6 +4752,23 @@ h2 {
   font-weight: 600;
   line-height: 1.92;
   letter-spacing: 0;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .dh-ceo-message-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .dh-ceo-message-aside {
+    max-width: 100%;
+  }
+
+  .dh-ceo-message-aside blockquote {
+    max-width: 680px;
+  }
 }
 
 .dh-about-row {
