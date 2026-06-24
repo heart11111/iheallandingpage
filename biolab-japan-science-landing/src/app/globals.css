@@ -5182,19 +5182,54 @@ h2 {
   text-align: center;
 }
 
+.dh-recruitment-content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.dh-recruitment-lead {
+  max-width: 760px;
+  margin-right: auto;
+  margin-left: auto;
+  line-height: 1.8;
+}
+
+.dh-recruitment-list {
+  display: grid;
+  border: 1px solid #dfe6ee;
+  background: #fff;
+  text-align: left;
+}
+
 .dh-recruitment-wrapper section {
-  margin-bottom: 42px;
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  min-height: 76px;
+  margin: 0;
+  padding: 24px 30px;
+  border-bottom: 1px solid #dfe6ee;
+}
+
+.dh-recruitment-wrapper section:last-child {
+  border-bottom: 0;
 }
 
 .dh-recruitment-wrapper h2 {
-  margin: 0 0 10px;
+  margin: 0;
+  color: #111827;
   font-size: 16px;
+  font-weight: 900;
+  line-height: 1.45;
 }
 
 .dh-recruitment-wrapper section p {
   margin: 0;
-  color: #666;
+  color: #536071;
   font-size: 15px;
+  font-weight: 600;
+  line-height: 1.75;
 }
 
 .dh-contact-page {
@@ -5630,6 +5665,13 @@ h2 {
 
   .dh-ceo-message-aside blockquote {
     font-size: 21px;
+  }
+
+  .dh-recruitment-wrapper section {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 22px 20px;
+    text-align: center;
   }
 }
 

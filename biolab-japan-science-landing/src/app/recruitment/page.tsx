@@ -16,15 +16,19 @@ export default function RecruitmentPage() {
         <section className="dh-recruitment-wrapper">
           <div className="dh-container">
             <p className="dh-detail-primary">RECRUITMENT</p>
-            <div>
+            <div className="dh-recruitment-content">
               <h1>Become part of our business network.</h1>
-              <span>機能性ヘルスケア事業を日本市場で展開するための提携相談ページです。</span>
-              {partnerRows.map(([label, value]) => (
-                <section key={label}>
-                  <h2>{label}</h2>
-                  <p>{value}</p>
-                </section>
-              ))}
+              <span className="dh-recruitment-lead">
+                機能性ヘルスケア事業を日本市場で展開するための提携相談ページです。
+              </span>
+              <div className="dh-recruitment-list">
+                {partnerRows.map(([label, value]) => (
+                  <section key={label}>
+                    <h2>{label}</h2>
+                    <p>{value}</p>
+                  </section>
+                ))}
+              </div>
             </div>
           </div>
         </section>
