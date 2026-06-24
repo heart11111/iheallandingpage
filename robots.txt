@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://biolabjp.com
+Sitemap: https://biolabjp.com/sitemap.xml
