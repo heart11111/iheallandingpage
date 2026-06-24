@@ -4554,8 +4554,19 @@ h2 {
   text-align: right;
 }
 
+.dh-sub-right h1,
+.dh-sub-right p {
+  margin-left: auto;
+}
+
 .dh-sub-center .dh-container {
   text-align: center;
+}
+
+.dh-sub-center h1,
+.dh-sub-center p {
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .dh-content-wrapper {
