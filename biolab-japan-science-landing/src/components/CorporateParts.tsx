@@ -2,6 +2,7 @@ import { Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { IngredientCategoryBadge } from "@/components/IngredientCategoryBadge";
 import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
 import { ingredientPptDetails } from "@/lib/ingredientPptDetails";
 import type { Ingredient } from "@/lib/ingredients";
@@ -80,7 +81,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
               src={item.image}
               width={480}
             />
-            <p>{item.category}</p>
+            <IngredientCategoryBadge category={item.category} line={item.line} />
             <h2>{item.name}</h2>
             <strong>{item.area}</strong>
             <span>{item.intake}</span>

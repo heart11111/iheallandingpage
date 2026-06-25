@@ -3772,6 +3772,17 @@ h2 {
   color: #fff;
 }
 
+.dh-product-text .dh-category-badge {
+  --badge-bg: rgba(255, 255, 255, 0.14);
+  --badge-border: rgba(255, 255, 255, 0.34);
+  --badge-color: #ffffff;
+  --badge-icon-bg: rgba(255, 255, 255, 0.16);
+  margin: 0 0 16px;
+  padding: 8px 12px 8px 9px;
+  backdrop-filter: blur(8px);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.22);
+}
+
 .dh-product-text h3 {
   margin: 0 0 10px;
   color: #fff;
@@ -3820,6 +3831,22 @@ h2 {
   color: rgba(255, 255, 255, 0.92);
   font-size: 10px;
   font-weight: 800;
+}
+
+.dh-product-text .dh-category-badge {
+  padding: 8px 12px 8px 9px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.025em;
+}
+
+.dh-product-text .dh-category-badge > span {
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 .dh-product-card > a {
@@ -4993,11 +5020,70 @@ h2 {
   background: #f6f8fb;
 }
 
+.dh-category-badge {
+  --badge-bg: #f4f9ff;
+  --badge-border: #d5e8fb;
+  --badge-color: #204da1;
+  --badge-icon-bg: #ffffff;
+  display: inline-flex !important;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--badge-border);
+  border-radius: 999px;
+  background: var(--badge-bg);
+  padding: 7px 11px 7px 8px;
+  color: var(--badge-color);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.dh-category-badge > svg {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--badge-icon-bg);
+  padding: 3px;
+  color: currentColor;
+  box-sizing: content-box;
+}
+
+.dh-category-badge > span {
+  min-width: 0;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.dh-category-badge.is-nature {
+  --badge-bg: #f2fbf5;
+  --badge-border: #cbe9d5;
+  --badge-color: #2d6d50;
+}
+
+.dh-category-badge.is-category {
+  --badge-bg: #f7fbff;
+  --badge-border: #dce9ff;
+  --badge-color: #204da1;
+}
+
+.dh-line-badge {
+  font-size: 12.5px;
+}
+
 .dh-detail-card > p {
   margin: 0 0 12px;
   color: #204da1;
   font-size: 13px;
   font-weight: 900;
+}
+
+.dh-detail-card > .dh-category-badge {
+  margin: 0 0 14px;
 }
 
 .dh-detail-card h2 {
@@ -5020,6 +5106,17 @@ h2 {
   color: #204da1;
   font-size: 13px;
   font-weight: 800;
+}
+
+.dh-detail-card .dh-category-badge > span,
+.dh-ingredient-card .dh-category-badge > span,
+.dh-product-text .dh-category-badge > span {
+  display: inline;
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
 }
 
 .dh-detail-card ul {
@@ -6072,7 +6169,7 @@ h2 {
 .dh-ingredient-card div {
   display: grid;
   align-content: start;
-  gap: 8px;
+  gap: 9px;
   padding: 18px 18px 16px;
 }
 
@@ -6082,6 +6179,13 @@ h2 {
   font-size: 10px;
   font-weight: 900;
   letter-spacing: 0.12em;
+}
+
+.dh-ingredient-card .dh-category-badge {
+  margin-bottom: 2px;
+  padding: 6px 10px 6px 7px;
+  font-size: 11px;
+  letter-spacing: 0.035em;
 }
 
 .dh-ingredient-card h3 {
@@ -6096,6 +6200,21 @@ h2 {
   color: #586575;
   font-size: 12px;
   line-height: 1.45;
+}
+
+.dh-ingredient-card span.dh-category-badge {
+  color: var(--badge-color);
+  font-size: 11.5px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.dh-ingredient-card .dh-category-badge > span {
+  display: inline;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
 }
 
 .dh-ingredient-card em {

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { IngredientLineBadge } from "@/components/IngredientCategoryBadge";
 import type { Ingredient, IngredientLine } from "@/lib/ingredients";
 
 type LineFilter = "All" | IngredientLine;
@@ -151,7 +152,10 @@ export function ProductIngredientExplorer({ items, title, description }: Product
           >
             <Image alt="" aria-hidden="true" height={320} src={item.image} width={480} />
             <div>
-              <p>{item.line === "Functional Probiotics" ? "MICROBIOME PROBIOTICS" : "NATURE INGREDIENTS"}</p>
+              <IngredientLineBadge
+                label={item.line === "Functional Probiotics" ? "MICROBIOME PROBIOTICS" : "NATURE INGREDIENTS"}
+                line={item.line}
+              />
               <h3>{item.name}</h3>
               <strong>{item.area}</strong>
               <span>{item.intake}</span>
