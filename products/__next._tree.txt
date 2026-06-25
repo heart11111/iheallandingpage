@@ -2,4 +2,4 @@
 :HL["/_next/static/media/PretendardJPVariable-s.p.0_rm~pon-puwg.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/images/products-microbiome-probiotics-card-v2.webp","image"]
 :HL["/images/products-functional-nature-card-v2.webp","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"products","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"C3nqjnqNds-eBj7HGsBcn"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"products","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"hV7UohxRXxcM9-wV7GmAX"}
