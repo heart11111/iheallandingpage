@@ -14,6 +14,21 @@ type SubHeroProps = {
   compact?: boolean;
 };
 
+function joinSentences(sentences: string[]) {
+  return sentences
+    .map((sentence) => sentence.trim())
+    .filter(Boolean)
+    .join("");
+}
+
+function formatOriginCopy(title: string, items: string[]) {
+  if (items.length === 0) {
+    return `${title}は、用途と訴求設計に合わせて確認します。`;
+  }
+
+  return `${title} は、${items.join("、")}を中心に整理しています。素材の由来や菌株構成を先に確認できるため、商品企画時にどのカテゴリーへ展開しやすいかを把握しやすくしています。`;
+}
+
 export function CorporateSubHero({ title, copy, image = "/images/biolab-global-factory-bg.png", align = "left", compact = false }: SubHeroProps) {
   return (
     <section className={`dh-sub-hero dh-sub-${align}${compact ? " dh-sub-compact" : ""}`}>
@@ -124,12 +139,35 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 <div className="dh-ppt-evidence-head">
                   <p>{pptDetail.slideRef}</p>
                   <h3>{pptDetail.productName}</h3>
-                  <span>PPTXの原料詳細ページをもとに、訴求・由来・評価項目・グラフ構造をWeb向けに再構成しています。</span>
+                  <span>
+                    PPTXの原料詳細ページをもとに、素材の位置づけ、由来情報、評価項目、グラフ構造をWebで読みやすい説明として再構成しています。
+                  </span>
+                </div>
+
+                <div className="dh-ppt-narrative" aria-label={`${item.name} 詳細説明`}>
+                  <article>
+                    <h4>素材の位置づけ</h4>
+                    <p>
+                      {item.summary}
+                      {joinSentences(pptDetail.healthClaims)}
+                    </p>
+                  </article>
+                  <article>
+                    <h4>由来・構成</h4>
+                    <p>{formatOriginCopy(pptDetail.originTitle, pptDetail.originItems)}</p>
+                  </article>
+                  <article>
+                    <h4>評価資料の見方</h4>
+                    <p>
+                      {joinSentences(pptDetail.features)}
+                      下部のグラフは、PPTXで提示されている評価軸をWeb上で確認しやすいように再構成したものです。
+                    </p>
+                  </article>
                 </div>
 
                 <div className="dh-ppt-detail-columns">
                   <article>
-                    <h4>Health Claim</h4>
+                    <h4>確認ポイント</h4>
                     <ul>
                       {pptDetail.healthClaims.map((claim) => (
                         <li key={claim}>{claim}</li>
@@ -138,14 +176,14 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                   </article>
                   <article>
                     <h4>{pptDetail.originTitle}</h4>
-                    <ul>
+                    <div className="dh-ppt-origin-tags">
                       {pptDetail.originItems.map((origin) => (
-                        <li key={origin}>{origin}</li>
+                        <span key={origin}>{origin}</span>
                       ))}
-                    </ul>
+                    </div>
                   </article>
                   <article>
-                    <h4>Features / Human Evaluation</h4>
+                    <h4>評価項目</h4>
                     <ul>
                       {pptDetail.features.map((feature) => (
                         <li key={feature}>{feature}</li>

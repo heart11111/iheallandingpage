@@ -5074,16 +5074,16 @@ h2 {
 .dh-detail-features h3 {
   margin: 0 0 10px;
   color: #202226;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.03em;
 }
 
 .dh-detail-summary p {
   margin: 0;
-  color: #5e6876;
-  font-size: 12.5px;
-  line-height: 1.78;
+  color: #4f5d6e;
+  font-size: 14px;
+  line-height: 1.9;
 }
 
 .dh-detail-specs {
@@ -5103,17 +5103,17 @@ h2 {
 
 .dh-detail-specs dt {
   color: #204da1;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
 }
 
 .dh-detail-specs dd {
   margin: 0;
   color: #343a45;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
-  line-height: 1.55;
+  line-height: 1.65;
 }
 
 .dh-detail-materials,
@@ -5144,53 +5144,85 @@ h2 {
 }
 
 .dh-ppt-evidence {
-  margin-top: 26px;
-  border: 1px solid #dce7f4;
-  padding: 26px;
+  margin-top: 30px;
+  scroll-margin-top: 120px;
+  border: 1px solid #d7e4f2;
+  padding: 32px;
   background:
-    linear-gradient(135deg, rgba(65, 171, 225, 0.08), transparent 52%),
+    linear-gradient(135deg, rgba(65, 171, 225, 0.07), transparent 54%),
     #f8fbfe;
 }
 
 .dh-ppt-evidence-head {
   display: block !important;
-  max-width: 640px;
+  max-width: 760px;
 }
 
 .dh-ppt-evidence-head p,
 .dh-ppt-chart > div > p {
   margin: 0 0 8px;
   color: #204da1;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .dh-ppt-evidence-head h3 {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   color: #151b24;
-  font-size: 22px;
-  line-height: 1.25;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.22;
+  letter-spacing: 0;
 }
 
 .dh-ppt-evidence-head span {
-  color: #5b6877;
+  color: #4f5d6e;
+  font-size: 14.5px;
+  line-height: 1.9;
+}
+
+.dh-ppt-narrative {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px !important;
+  margin-top: 26px;
+}
+
+.dh-ppt-narrative article {
+  border: 1px solid #e0e9f5;
+  padding: 22px 24px;
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.dh-ppt-narrative h4 {
+  margin: 0 0 10px;
+  color: #204da1;
   font-size: 13px;
-  line-height: 1.75;
+  font-weight: 900;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+.dh-ppt-narrative p {
+  margin: 0;
+  color: #354052;
+  font-size: 15px;
+  line-height: 1.95;
+  letter-spacing: 0;
 }
 
 .dh-ppt-detail-columns {
   display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px !important;
-  margin-top: 22px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px !important;
+  margin-top: 18px;
 }
 
 .dh-ppt-detail-columns article {
   min-height: 100%;
   border: 1px solid #e0e9f5;
-  padding: 18px 18px 16px;
+  padding: 18px 20px;
   background: #fff;
 }
 
@@ -5198,33 +5230,50 @@ h2 {
 .dh-ppt-chart h4 {
   margin: 0 0 12px;
   color: #171d26;
-  font-size: 14px;
-  line-height: 1.35;
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: 0;
 }
 
 .dh-ppt-detail-columns ul {
   display: grid;
-  gap: 8px;
+  gap: 10px;
   margin: 0;
   padding: 0;
 }
 
 .dh-ppt-detail-columns li {
-  color: #586575;
-  font-size: 12px;
-  line-height: 1.65;
+  color: #4f5d6e;
+  font-size: 13.5px;
+  line-height: 1.75;
+}
+
+.dh-ppt-origin-tags {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 8px !important;
+}
+
+.dh-ppt-origin-tags span {
+  border: 1px solid #dce9ff;
+  background: #f7fbff;
+  padding: 7px 9px;
+  color: #204da1;
+  font-size: 12.5px;
+  font-weight: 800;
+  line-height: 1.35;
 }
 
 .dh-ppt-graph-grid {
   display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px !important;
-  margin-top: 16px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px !important;
+  margin-top: 18px;
 }
 
 .dh-ppt-chart {
   border: 1px solid #dbe7f4;
-  padding: 18px;
+  padding: 22px;
   background: #fff;
 }
 
@@ -5237,9 +5286,10 @@ h2 {
   margin: 0 0 16px;
   border: 1px solid #e0e9f5;
   background: #f7fafc;
-  padding: 6px 8px;
+  padding: 7px 9px;
   color: #204da1;
-  font-size: 11px;
+  font-size: 12px;
+  line-height: 1.45;
   white-space: normal;
 }
 
@@ -5262,15 +5312,15 @@ h2 {
 
 .dh-ppt-chart-bar strong {
   color: #1c2430;
-  font-size: 12px;
-  line-height: 1.35;
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .dh-ppt-chart-bar em {
   border: 0;
   padding: 0;
   color: #204da1;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 900;
 }
 
@@ -5308,8 +5358,8 @@ h2 {
 .dh-ppt-chart-bar small {
   grid-column: 2;
   color: #6b7786;
-  font-size: 11px;
-  line-height: 1.45;
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 .dh-ppt-notes {
@@ -5323,8 +5373,8 @@ h2 {
 .dh-ppt-notes p {
   margin: 0;
   color: #657182;
-  font-size: 11.5px;
-  line-height: 1.65;
+  font-size: 12.5px;
+  line-height: 1.75;
 }
 
 .dh-evidence-visual {
@@ -6375,9 +6425,25 @@ h2 {
   }
 
   .dh-ppt-evidence {
-    padding: 20px 16px;
+    padding: 22px 16px;
   }
 
+  .dh-ppt-evidence-head h3 {
+    font-size: 22px;
+  }
+
+  .dh-ppt-narrative article,
+  .dh-ppt-detail-columns article,
+  .dh-ppt-chart {
+    padding: 18px 16px;
+  }
+
+  .dh-ppt-narrative p {
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .dh-ppt-narrative,
   .dh-ppt-detail-columns,
   .dh-ppt-graph-grid,
   .dh-ppt-chart-bar {
