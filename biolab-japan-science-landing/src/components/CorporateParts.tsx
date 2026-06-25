@@ -15,19 +15,24 @@ type SubHeroProps = {
   compact?: boolean;
 };
 
-function joinSentences(sentences: string[]) {
-  return sentences
+function getOverviewCopy(item: Ingredient, detail: NonNullable<(typeof ingredientPptDetails)[string]>) {
+  const claim = detail.healthClaims[0] || "";
+  const feature = detail.features[0] || "";
+
+  return [item.summary, claim, feature]
     .map((sentence) => sentence.trim())
     .filter(Boolean)
-    .join("");
+    .join(" ");
 }
 
-function formatOriginCopy(title: string, items: string[]) {
-  if (items.length === 0) {
-    return `${title}は、用途と訴求設計に合わせて確認します。`;
-  }
-
-  return `${title} は、${items.join("、")}を中心に整理しています。素材の由来や菌株構成を先に確認できるため、商品企画時にどのカテゴリーへ展開しやすいかを把握しやすくしています。`;
+function formatPublicEvidenceNote(note: string) {
+  return note
+    .replaceAll("PPTXのネイティブチャートXML", "提供資料のチャートデータ")
+    .replaceAll("PPTX", "提供資料")
+    .replaceAll("PPT", "提供資料")
+    .replaceAll("スライド内", "資料内")
+    .replaceAll("スライドの", "資料の")
+    .replaceAll("スライド構造", "資料構造");
 }
 
 export function CorporateSubHero({ title, copy, image = "/images/biolab-global-factory-bg.png", align = "left", compact = false }: SubHeroProps) {
@@ -136,61 +141,44 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             </section>
 
             {showExtended && pptDetail && (
-              <section className="dh-ppt-evidence" aria-label={`${item.name} PPT evidence detail`}>
+              <section className="dh-ppt-evidence" aria-label={`${item.name} evidence detail`}>
                 <div className="dh-ppt-evidence-head">
-                  <p>{pptDetail.slideRef}</p>
+                  <p>Evidence Summary</p>
                   <h3>{pptDetail.productName}</h3>
-                  <span>
-                    PPTXの原料詳細ページをもとに、素材の位置づけ、由来情報、評価項目、グラフ構造をWebで読みやすい説明として再構成しています。
-                  </span>
+                  <span>{getOverviewCopy(item, pptDetail)}</span>
                 </div>
 
-                <div className="dh-ppt-narrative" aria-label={`${item.name} 詳細説明`}>
-                  <article>
-                    <h4>素材の位置づけ</h4>
-                    <p>
-                      {item.summary}
-                      {joinSentences(pptDetail.healthClaims)}
-                    </p>
-                  </article>
-                  <article>
-                    <h4>由来・構成</h4>
-                    <p>{formatOriginCopy(pptDetail.originTitle, pptDetail.originItems)}</p>
-                  </article>
-                  <article>
-                    <h4>評価資料の見方</h4>
-                    <p>
-                      {joinSentences(pptDetail.features)}
-                      下部のグラフは、PPTXで提示されている評価軸をWeb上で確認しやすいように再構成したものです。
-                    </p>
-                  </article>
-                </div>
-
-                <div className="dh-ppt-detail-columns">
-                  <article>
-                    <h4>確認ポイント</h4>
-                    <ul>
+                <div className="dh-ppt-summary-board">
+                  <section>
+                    <h4>主な訴求</h4>
+                    <div className="dh-ppt-summary-list">
                       {pptDetail.healthClaims.map((claim) => (
-                        <li key={claim}>{claim}</li>
+                        <span key={claim}>{claim}</span>
                       ))}
-                    </ul>
-                  </article>
-                  <article>
+                    </div>
+                  </section>
+                  <section>
                     <h4>{pptDetail.originTitle}</h4>
                     <div className="dh-ppt-origin-tags">
                       {pptDetail.originItems.map((origin) => (
                         <span key={origin}>{origin}</span>
                       ))}
                     </div>
-                  </article>
-                  <article>
+                  </section>
+                  <section>
                     <h4>評価項目</h4>
-                    <ul>
+                    <div className="dh-ppt-summary-list">
                       {pptDetail.features.map((feature) => (
-                        <li key={feature}>{feature}</li>
+                        <span key={feature}>{feature}</span>
                       ))}
-                    </ul>
-                  </article>
+                    </div>
+                  </section>
+                </div>
+
+                <div className="dh-ppt-chart-heading">
+                  <p>Evidence View</p>
+                  <h4>評価グラフ</h4>
+                  <span>下記は評価資料で提示されている指標を、Web上で比較しやすいように整理したものです。</span>
                 </div>
 
                 <div className="dh-ppt-graph-grid">
@@ -227,7 +215,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
 
                 <div className="dh-ppt-notes">
                   {pptDetail.graphNotes.map((note) => (
-                    <p key={note}>{note}</p>
+                    <p key={note}>{formatPublicEvidenceNote(note)}</p>
                   ))}
                 </div>
               </section>
