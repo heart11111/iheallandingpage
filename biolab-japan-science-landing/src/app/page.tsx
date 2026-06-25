@@ -12,14 +12,14 @@ const featuredCards = [
     eyebrow: "Functional Probiotics",
     title: "Application-specific strain portfolio",
     subtitle: "用途別プロバイオティクス",
-    image: "images/biolab-cosmetic-science-bg.png",
+    image: "images/products-microbiome-probiotics-card-v2.webp",
     href: "/products/probiotics",
   },
   {
     eyebrow: "Nature Ingredients",
     title: "Nature-derived functional materials",
     subtitle: "自然由来機能性素材",
-    image: "images/nature-ingredients-lab.png",
+    image: "images/products-functional-nature-card-v2.webp",
     href: "/products/nature",
   },
   {

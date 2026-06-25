@@ -94,7 +94,7 @@ export const productGroups = [
     eyebrow: "個別認定型・特許菌株",
     title: "Functional Probiotics",
     subtitle: "用途別プロバイオティクス",
-    image: "/images/biolab-cosmetic-science-bg.png",
+    image: "/images/products-microbiome-probiotics-card-v2.webp",
     description:
       "女性、体脂肪、認知、肝臓、鼻、ストレス、腸のコンディションに合わせて、菌株レベルで素材情報を整理します。",
     items: probioticsIngredients,
@@ -105,7 +105,7 @@ export const productGroups = [
     eyebrow: "自然由来機能性素材",
     title: "Nature Ingredients",
     subtitle: "自然由来素材",
-    image: "/images/biolab-global-factory-bg.png",
+    image: "/images/products-functional-nature-card-v2.webp",
     description:
       "記憶、肌、肝臓、免疫、男性健康など、商品カテゴリーに合わせた自然由来機能性素材を提案します。",
     items: natureIngredients,

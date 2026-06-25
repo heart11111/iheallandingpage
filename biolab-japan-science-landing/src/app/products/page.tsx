@@ -30,8 +30,8 @@ export default function ProductsPage() {
                   <img
                     src={
                       index === 0
-                        ? "/images/products-microbiome-probiotics-card.jpg"
-                        : "/images/products-functional-nature-card.jpg"
+                        ? "/images/products-microbiome-probiotics-card-v2.webp"
+                        : "/images/products-functional-nature-card-v2.webp"
                     }
                     alt=""
                     aria-hidden="true"

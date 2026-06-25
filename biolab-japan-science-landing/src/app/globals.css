@@ -3721,10 +3721,13 @@ h2 {
 .dh-product-grid-two {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+  width: min(100%, 1120px);
+  margin-inline: auto;
 }
 
 .dh-product-card {
   position: relative;
+  isolation: isolate;
   min-height: 470px;
   overflow: hidden;
   cursor: pointer;
@@ -3746,7 +3749,10 @@ h2 {
 }
 
 .dh-product-shade {
-  background: linear-gradient(180deg, rgba(2, 8, 15, 0.1), rgba(2, 8, 15, 0.56) 45%, rgba(2, 8, 15, 0.86));
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(2, 8, 15, 0.04), rgba(2, 8, 15, 0.45) 44%, rgba(2, 8, 15, 0.88)),
+    linear-gradient(90deg, rgba(2, 8, 15, 0.28), rgba(2, 8, 15, 0.02) 64%);
 }
 
 .dh-product-card:hover img {
@@ -3843,11 +3849,12 @@ h2 {
 
 .dh-product-grid-two .dh-product-card {
   min-height: 520px;
+  aspect-ratio: 1.08 / 1;
 }
 
 .dh-product-grid-two .dh-product-text {
   top: auto;
-  bottom: 96px;
+  bottom: 104px;
   max-width: 520px;
 }
 
@@ -3863,7 +3870,7 @@ h2 {
 
 .dh-product-grid-two .dh-product-card > a {
   left: 34px;
-  bottom: 36px;
+  bottom: 40px;
   transform: none;
 }
 
