@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Globe2, Menu, Search, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { siteMapGroups } from "@/lib/corporate";
@@ -52,10 +52,6 @@ export function NavBar() {
               {link.label}
             </a>
           ))}
-          <Search size={17} aria-hidden="true" />
-          <Link href="/communication/inquiries" aria-label="Customer inquiries">
-            <Globe2 size={17} aria-hidden="true" />
-          </Link>
           <button type="button" className="dh-mobile-toggle" aria-label="メニュー" onClick={() => setOpen((value) => !value)}>
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
