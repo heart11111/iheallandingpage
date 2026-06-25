@@ -12,6 +12,21 @@ export type IngredientEvidenceVisual = {
   summary: string;
   metrics: EvidenceMetric[];
   footnote: string;
+  slideRef?: string;
+  pptDetail?: {
+    productName: string;
+    healthClaims: string[];
+    originTitle: string;
+    originItems: string[];
+    features: string[];
+    graphNotes: string[];
+  };
+  graphPanels?: Array<{
+    title: string;
+    subtitle: string;
+    formula?: string;
+    metrics: EvidenceMetric[];
+  }>;
 };
 
 export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual> = {

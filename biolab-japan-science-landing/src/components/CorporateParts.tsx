@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
+import { ingredientPptDetails } from "@/lib/ingredientPptDetails";
 import type { Ingredient } from "@/lib/ingredients";
 
 type SubHeroProps = {
@@ -53,6 +54,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
         const materialLabel = item.strains ? "菌株構成" : "由来原料";
         const showExtended = !linkBase;
         const evidenceVisual = ingredientEvidenceVisuals[item.id];
+        const pptDetail = ingredientPptDetails[item.id];
         const content = (
           <>
             <Image
@@ -117,7 +119,82 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
               </div>
             </section>
 
-            {showExtended && evidenceVisual && (
+            {showExtended && pptDetail && (
+              <section className="dh-ppt-evidence" aria-label={`${item.name} PPT evidence detail`}>
+                <div className="dh-ppt-evidence-head">
+                  <p>{pptDetail.slideRef}</p>
+                  <h3>{pptDetail.productName}</h3>
+                  <span>PPTXの原料詳細ページをもとに、訴求・由来・評価項目・グラフ構造をWeb向けに再構成しています。</span>
+                </div>
+
+                <div className="dh-ppt-detail-columns">
+                  <article>
+                    <h4>Health Claim</h4>
+                    <ul>
+                      {pptDetail.healthClaims.map((claim) => (
+                        <li key={claim}>{claim}</li>
+                      ))}
+                    </ul>
+                  </article>
+                  <article>
+                    <h4>{pptDetail.originTitle}</h4>
+                    <ul>
+                      {pptDetail.originItems.map((origin) => (
+                        <li key={origin}>{origin}</li>
+                      ))}
+                    </ul>
+                  </article>
+                  <article>
+                    <h4>Features / Human Evaluation</h4>
+                    <ul>
+                      {pptDetail.features.map((feature) => (
+                        <li key={feature}>{feature}</li>
+                      ))}
+                    </ul>
+                  </article>
+                </div>
+
+                <div className="dh-ppt-graph-grid">
+                  {pptDetail.graphPanels.map((panel) => (
+                    <article className="dh-ppt-chart" key={panel.title}>
+                      <div>
+                        <p>{panel.subtitle}</p>
+                        <h4>{panel.title}</h4>
+                        {panel.formula && <code>{panel.formula}</code>}
+                      </div>
+                      <div className="dh-ppt-chart-bars">
+                        {panel.metrics.map((metric) => (
+                          <div className={`dh-ppt-chart-bar is-${metric.direction || "balanced"}`} key={metric.label}>
+                            <span>
+                              <strong>{metric.label}</strong>
+                              <em>{metric.displayValue || metric.detail}</em>
+                            </span>
+                            <i aria-hidden="true">
+                              <b
+                                style={
+                                  {
+                                    "--bar-value": `${Math.max(8, Math.min(100, metric.value))}%`,
+                                  } as CSSProperties
+                                }
+                              />
+                            </i>
+                            <small>{metric.detail}</small>
+                          </div>
+                        ))}
+                      </div>
+                    </article>
+                  ))}
+                </div>
+
+                <div className="dh-ppt-notes">
+                  {pptDetail.graphNotes.map((note) => (
+                    <p key={note}>{note}</p>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {showExtended && !pptDetail && evidenceVisual && (
               <section className="dh-evidence-visual" aria-label={`${item.name} evidence visual`}>
                 <div className="dh-evidence-visual-head">
                   <p>{evidenceVisual.sourceLabel}</p>
