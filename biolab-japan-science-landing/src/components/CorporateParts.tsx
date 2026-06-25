@@ -1,6 +1,8 @@
 import { Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
+import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
 import type { Ingredient } from "@/lib/ingredients";
 
 type SubHeroProps = {
@@ -50,6 +52,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
         const materials = item.strains || item.origin || [];
         const materialLabel = item.strains ? "菌株構成" : "由来原料";
         const showExtended = !linkBase;
+        const evidenceVisual = ingredientEvidenceVisuals[item.id];
         const content = (
           <>
             <Image
@@ -113,6 +116,37 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 ))}
               </div>
             </section>
+
+            {showExtended && evidenceVisual && (
+              <section className="dh-evidence-visual" aria-label={`${item.name} evidence visual`}>
+                <div className="dh-evidence-visual-head">
+                  <p>{evidenceVisual.sourceLabel}</p>
+                  <h3>{evidenceVisual.title}</h3>
+                  <span>{evidenceVisual.summary}</span>
+                </div>
+                <div className="dh-evidence-bars">
+                  {evidenceVisual.metrics.map((metric) => (
+                    <div className={`dh-evidence-bar is-${metric.direction || "balanced"}`} key={metric.label}>
+                      <div>
+                        <strong>{metric.label}</strong>
+                        <em>{metric.displayValue || metric.detail}</em>
+                      </div>
+                      <span aria-hidden="true">
+                        <i
+                          style={
+                            {
+                              "--bar-value": `${Math.max(8, Math.min(100, metric.value))}%`,
+                            } as CSSProperties
+                          }
+                        />
+                      </span>
+                      <small>{metric.detail}</small>
+                    </div>
+                  ))}
+                </div>
+                <p>{evidenceVisual.footnote}</p>
+              </section>
+            )}
 
             {showExtended && item.featurePoints && (
               <section className="dh-detail-features" aria-label={`${item.name} 詳細ポイント`}>
