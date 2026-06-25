@@ -18,12 +18,7 @@ export default function MicrobiomeProbioticsPage() {
             <p className="dh-detail-primary">PRODUCTS</p>
             <h1>Microbiome Probiotics</h1>
             <p>女性、体脂肪、認知、肝臓、鼻、ストレス、腸の7カテゴリを素材別に確認できます。</p>
-            <IngredientList items={microbiomeProductItems} />
-            <div className="dh-item-link-grid">
-              {microbiomeProductItems.map((item) => (
-                <a href={`/products/microbiome-probiotics/${item.id}`} key={item.id}>{item.name}</a>
-              ))}
-            </div>
+            <IngredientList items={microbiomeProductItems} linkBase="/products/microbiome-probiotics" />
           </div>
         </section>
       </main>

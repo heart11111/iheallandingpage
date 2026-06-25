@@ -1,5 +1,6 @@
 import { Mail, MapPin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import type { Ingredient } from "@/lib/ingredients";
 
 type SubHeroProps = {
@@ -42,15 +43,23 @@ export function CorporateFooter() {
   );
 }
 
-export function IngredientList({ items }: { items: Ingredient[] }) {
+export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkBase?: string }) {
   return (
     <div className={`dh-detail-grid${items.length === 1 ? " dh-detail-grid-single" : ""}`}>
       {items.map((item) => {
         const materials = item.strains || item.origin || [];
         const materialLabel = item.strains ? "菌株構成" : "由来原料";
-
-        return (
-          <article className="dh-detail-card" key={item.id}>
+        const showExtended = !linkBase;
+        const content = (
+          <>
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="dh-detail-card-image"
+              height={320}
+              src={item.image}
+              width={480}
+            />
             <p>{item.category}</p>
             <h2>{item.name}</h2>
             <strong>{item.area}</strong>
@@ -60,6 +69,17 @@ export function IngredientList({ items }: { items: Ingredient[] }) {
               <h3>素材概要</h3>
               <p>{item.summary}</p>
             </section>
+
+            {showExtended && item.healthClaims && (
+              <section className="dh-detail-claims" aria-label={`${item.name} 期待訴求`}>
+                <h3>期待訴求</h3>
+                <ul>
+                  {item.healthClaims.map((text) => (
+                    <li key={text}>{text}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
             <dl className="dh-detail-specs">
               <div>
@@ -93,6 +113,32 @@ export function IngredientList({ items }: { items: Ingredient[] }) {
                 ))}
               </div>
             </section>
+
+            {showExtended && item.featurePoints && (
+              <section className="dh-detail-features" aria-label={`${item.name} 詳細ポイント`}>
+                <h3>詳細ポイント</h3>
+                <ul>
+                  {item.featurePoints.map((text) => (
+                    <li key={text}>{text}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
+          </>
+        );
+
+        if (linkBase) {
+          return (
+            <Link className="dh-detail-card dh-detail-card-link" href={`${linkBase}/${item.id}`} key={item.id}>
+              {content}
+              <span className="dh-detail-card-cta">DETAIL</span>
+            </Link>
+          );
+        }
+
+        return (
+          <article className="dh-detail-card" key={item.id}>
+            {content}
           </article>
         );
       })}

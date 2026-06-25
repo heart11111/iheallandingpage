@@ -1,6 +1,7 @@
 import { CorporateFooter, CorporateSubHero } from "@/components/CorporateParts";
 import { NavBar } from "@/components/NavBar";
-import { productLinePages } from "@/lib/corporate";
+import { ProductIngredientExplorer } from "@/components/ProductIngredientExplorer";
+import { microbiomeProductItems, natureProductItems, productLinePages } from "@/lib/corporate";
 
 export default function ProductsPage() {
   return (
@@ -47,6 +48,11 @@ export default function ProductsPage() {
                 </article>
               ))}
             </div>
+            <ProductIngredientExplorer
+              description="上部のボタンでラインとカテゴリーを切り替え、各素材の詳細ページへ進めます。"
+              items={[...microbiomeProductItems, ...natureProductItems]}
+              title="素材別詳細インデックス"
+            />
           </div>
         </section>
       </main>
