@@ -3702,12 +3702,247 @@ h2 {
   margin-bottom: 60px;
 }
 
+.dh-section-title .dh-kicker {
+  margin: 0 0 16px;
+  color: var(--dh-blue);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
 .dh-section-title p {
   margin: 18px 0 0;
   max-width: 980px;
   font-size: 20px;
   line-height: 1.75;
   overflow-wrap: anywhere;
+}
+
+.dh-iheal-title {
+  margin-bottom: 74px;
+}
+
+.dh-iheal-product-list {
+  display: grid;
+  gap: 108px;
+  margin-bottom: 128px;
+}
+
+.dh-iheal-product {
+  display: grid;
+  gap: 28px;
+  color: #202226;
+}
+
+.dh-iheal-product-head p {
+  margin: 0 0 14px;
+  color: #333b48;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.dh-iheal-product-head h2 {
+  margin: 0;
+  color: #202226;
+  font-size: clamp(34px, 3.2vw, 46px);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.16;
+}
+
+.dh-iheal-product-body {
+  display: grid;
+  grid-template-columns: minmax(280px, 390px) minmax(0, 1fr);
+  gap: 58px;
+  align-items: start;
+}
+
+.dh-iheal-product-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid #edf0f3;
+  border-radius: 10px;
+  background: #f8fbfa;
+  object-fit: contain;
+  box-shadow: 0 18px 42px rgba(31, 64, 90, 0.08);
+}
+
+.dh-iheal-product-media dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 14px 0 0;
+  border: 1px solid #e4e8ee;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.dh-iheal-product-media div {
+  min-width: 0;
+  padding: 16px 10px;
+  text-align: center;
+}
+
+.dh-iheal-product-media div + div {
+  border-left: 1px solid #e4e8ee;
+}
+
+.dh-iheal-product-media dt {
+  margin: 0 0 8px;
+  color: #7b8390;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.dh-iheal-product-media dd {
+  margin: 0;
+  color: #202226;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+.dh-iheal-product-copy {
+  min-width: 0;
+  padding-top: 6px;
+}
+
+.dh-iheal-product-copy > p:first-child {
+  margin: 0 0 24px;
+  color: #353c46;
+  font-size: 16px;
+  line-height: 2;
+  word-break: keep-all;
+}
+
+.dh-iheal-product-copy section {
+  margin-top: 24px;
+}
+
+.dh-iheal-product-copy h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  color: #204da1;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.dh-iheal-product-copy h3::before {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: #204da1;
+}
+
+.dh-iheal-product-copy ul {
+  display: grid;
+  gap: 11px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dh-iheal-product-copy li {
+  position: relative;
+  padding-left: 17px;
+  color: #303844;
+  font-size: 15px;
+  line-height: 1.85;
+  word-break: keep-all;
+}
+
+.dh-iheal-product-copy li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: #d67fb1;
+}
+
+.dh-iheal-highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.dh-iheal-highlight-grid div {
+  min-width: 0;
+  border: 1px solid #e1e6ee;
+  border-radius: 10px;
+  padding: 16px 12px;
+  background: linear-gradient(180deg, #fff, #fbfcff);
+  text-align: center;
+}
+
+.dh-iheal-highlight-grid strong {
+  display: block;
+  color: #b16bc6;
+  font-size: 21px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.dh-iheal-highlight-grid span {
+  display: block;
+  margin-top: 8px;
+  color: #7a8290;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.dh-iheal-ingredients {
+  margin: 14px 0 0;
+  color: #626b77;
+  font-size: 13px;
+  line-height: 1.9;
+  word-break: keep-all;
+}
+
+.dh-iheal-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dh-iheal-badges span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  border: 1px solid #d8dfe9;
+  border-radius: 999px;
+  padding: 7px 14px;
+  color: #576170;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.dh-iheal-badges span:first-child {
+  border-color: #c6a2df;
+  background: #b16bc6;
+  color: #fff;
+}
+
+.dh-iheal-note {
+  margin: 24px 0 0;
+  color: #7b8390;
+  font-size: 12px;
+  line-height: 1.8;
+  word-break: keep-all;
 }
 
 .dh-product-grid,
@@ -6292,6 +6527,43 @@ h2 {
 }
 
 @media (max-width: 980px) {
+  .dh-iheal-title {
+    margin-bottom: 46px;
+  }
+
+  .dh-iheal-product-list {
+    gap: 76px;
+    margin-bottom: 92px;
+  }
+
+  .dh-iheal-product-body {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .dh-iheal-product-head h2 {
+    font-size: 32px;
+  }
+
+  .dh-iheal-product-media dl,
+  .dh-iheal-highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dh-iheal-product-media div + div {
+    border-top: 1px solid #e4e8ee;
+    border-left: 0;
+  }
+
+  .dh-iheal-product-copy > p:first-child {
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .dh-iheal-product-copy li {
+    font-size: 14px;
+  }
+
   .dh-sub-hero {
     min-height: 380px;
     padding-top: 132px;
@@ -6399,6 +6671,49 @@ h2 {
   .dh-ingredient-explorer {
     margin-top: 52px;
     padding-top: 48px;
+  }
+}
+
+@media (max-width: 760px) {
+  .dh-page .dh-iheal-product-body {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .dh-page .dh-iheal-product-media,
+  .dh-page .dh-iheal-product-copy {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .dh-page .dh-iheal-product-copy {
+    padding-top: 0;
+  }
+
+  .dh-page .dh-iheal-product-copy li,
+  .dh-page .dh-iheal-product-copy p,
+  .dh-page .dh-iheal-product-copy span,
+  .dh-page .dh-iheal-product-copy strong {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .dh-page .dh-product-grid-two {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dh-page .dh-product-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .dh-page .dh-product-card img,
+  .dh-page .dh-product-shade,
+  .dh-page .dh-product-text {
+    max-width: 100%;
   }
 }
 
