@@ -1,8 +1,5 @@
 :HL["/_next/static/chunks/00.3pras_d.xc.css","style"]
 :HL["/_next/static/media/PretendardJPVariable-s.p.0_rm~pon-puwg.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/images/iheal-products/venus-probiotics.webp","image"]
-:HL["/images/iheal-products/line-n-probiotics.webp","image"]
-:HL["/images/iheal-products/mediobiome-inner-clean-v.webp","image"]
 :HL["/images/products-microbiome-probiotics-card-v2.webp","image"]
 :HL["/images/products-functional-nature-card-v2.webp","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"products","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"yEzuANBjUcwiIkwL4dunz"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"products","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"MzB62mrBntykT6uX4x6i9"}
