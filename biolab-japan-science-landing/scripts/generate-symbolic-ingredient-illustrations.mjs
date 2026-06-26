@@ -100,6 +100,7 @@ const categoryAssets = [
     filename: "products-microbiome-probiotics-card-v2.webp",
     tone: ["#eef7ff", "#f5f0ff", "#1f57a4", "#4dbb78"],
     shapes: ["female", "gut", "microbes", "shield"],
+    cellLines: ["Microbiome", "Probiotics"],
   },
   {
     filename: "products-functional-nature-card-v2.webp",
@@ -107,6 +108,105 @@ const categoryAssets = [
     shapes: ["sprout", "apple", "leaf", "shield"],
   },
 ];
+
+const probioticCellVisuals = {
+  med01: ["L. salivarius MG242", "L. fermentum MG901", "L. plantarum MG989"],
+  med02: ["L. fermentum MG4231", "L. fermentum MG4244"],
+  nvp2106: ["L. mucosae NK41", "B. longum NK46"],
+  nvp1702: ["L. plantarum LC27", "B. longum LC67"],
+  nvp1703: ["L. plantarum IM76", "B. longum IM55"],
+  nvp1704: ["L. reuteri NK33", "B. adolescentis NK98"],
+  bifido: ["B. bifidum BGN4", "B. longum BORI", "B. lactis AD011"],
+};
+
+function escapeText(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function cellSvg(lines) {
+  const fontSize = lines.length <= 2 ? 66 : 48;
+  const lineHeight = lines.length <= 2 ? 78 : 60;
+  const startY = 320 - ((lines.length - 1) * lineHeight) / 2;
+  const text = lines
+    .map(
+      (line, index) =>
+        `<text x="480" y="${startY + index * lineHeight}" text-anchor="middle">${escapeText(line)}</text>`,
+    )
+    .join("\n");
+
+  return `
+  <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="cellBg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#21d4e8"/>
+        <stop offset="44%" stop-color="#34bce8"/>
+        <stop offset="100%" stop-color="#1795d4"/>
+      </linearGradient>
+      <radialGradient id="aquaGlow" cx="44%" cy="42%" r="58%">
+        <stop offset="0%" stop-color="#d9ffff" stop-opacity="0.72"/>
+        <stop offset="46%" stop-color="#8df7ff" stop-opacity="0.22"/>
+        <stop offset="100%" stop-color="#0d91ca" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="blurCell" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="10"/>
+      </filter>
+      <filter id="cellShadow" x="-40%" y="-40%" width="180%" height="180%">
+        <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#036b9a" flood-opacity="0.34"/>
+      </filter>
+      <filter id="textShadow" x="-20%" y="-40%" width="140%" height="180%">
+        <feDropShadow dx="0" dy="10" stdDeviation="5" flood-color="#066996" flood-opacity="0.52"/>
+      </filter>
+    </defs>
+    <rect width="960" height="640" fill="url(#cellBg)"/>
+    <rect width="960" height="640" fill="url(#aquaGlow)"/>
+    <g opacity="0.22" filter="url(#blurCell)">
+      <ellipse cx="118" cy="520" rx="140" ry="36" fill="#9bffff" transform="rotate(-46 118 520)"/>
+      <ellipse cx="858" cy="520" rx="170" ry="46" fill="#8efcff" transform="rotate(-14 858 520)"/>
+      <ellipse cx="258" cy="20" rx="168" ry="42" fill="#d8ffff" transform="rotate(-62 258 20)"/>
+    </g>
+    <g filter="url(#cellShadow)" opacity="0.92">
+      <ellipse cx="205" cy="177" rx="38" ry="126" fill="#79e9ff" stroke="#bffcff" stroke-width="5" transform="rotate(18 205 177)"/>
+      <ellipse cx="500" cy="256" rx="218" ry="48" fill="#89f4ff" stroke="#d6ffff" stroke-width="5" transform="rotate(-7 500 256)"/>
+      <ellipse cx="515" cy="436" rx="144" ry="42" fill="#64e6ff" stroke="#bdffff" stroke-width="5" transform="rotate(-55 515 436)"/>
+      <ellipse cx="804" cy="130" rx="32" ry="110" fill="#7de7ff" stroke="#c9fbff" stroke-width="5" transform="rotate(-26 804 130)"/>
+      <ellipse cx="146" cy="448" rx="36" ry="130" fill="#5cdff6" stroke="#c3fbff" stroke-width="5" transform="rotate(41 146 448)"/>
+      <ellipse cx="698" cy="488" rx="116" ry="31" fill="#70e5ff" stroke="#c7ffff" stroke-width="4" transform="rotate(-15 698 488)"/>
+      <ellipse cx="704" cy="186" rx="118" ry="26" fill="#82edff" stroke="#caffff" stroke-width="4" transform="rotate(-39 704 186)"/>
+      <ellipse cx="885" cy="306" rx="104" ry="28" fill="#63dff8" stroke="#c0fbff" stroke-width="4" transform="rotate(41 885 306)"/>
+    </g>
+    <g opacity="0.45">
+      <ellipse cx="310" cy="126" rx="22" ry="82" fill="none" stroke="#caffff" stroke-width="5" transform="rotate(4 310 126)"/>
+      <ellipse cx="783" cy="336" rx="20" ry="86" fill="none" stroke="#b8f8ff" stroke-width="4" transform="rotate(-31 783 336)"/>
+      <ellipse cx="665" cy="82" rx="18" ry="76" fill="none" stroke="#cbffff" stroke-width="4" transform="rotate(28 665 82)"/>
+      <ellipse cx="266" cy="334" rx="18" ry="78" fill="none" stroke="#c9ffff" stroke-width="3" transform="rotate(-28 266 334)"/>
+    </g>
+    <g opacity="0.36" fill="#eaffff">
+      ${Array.from({ length: 78 })
+        .map((_, index) => {
+          const x = 82 + ((index * 109) % 810);
+          const y = 70 + ((index * 71) % 500);
+          const r = 2 + (index % 4);
+          return `<circle cx="${x}" cy="${y}" r="${r}" opacity="${0.22 + (index % 5) * 0.08}"/>`;
+        })
+        .join("\n")}
+    </g>
+    <g
+      filter="url(#textShadow)"
+      fill="#ffffff"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="${fontSize}"
+      font-style="italic"
+      font-weight="900"
+      letter-spacing="-1"
+    >
+      ${text}
+    </g>
+  </svg>`;
+}
 
 function baseSvg({ tone, shapes }) {
   const [bg1, bg2, primary, accent] = tone;
@@ -213,7 +313,7 @@ await fs.mkdir(outDir, { recursive: true });
 await fs.mkdir(imageDir, { recursive: true });
 
 for (const asset of assets) {
-  const svg = baseSvg(asset);
+  const svg = probioticCellVisuals[asset.id] ? cellSvg(probioticCellVisuals[asset.id]) : baseSvg(asset);
   await sharp(Buffer.from(svg))
     .resize(width, height)
     .webp({ quality: 88, effort: 5 })
@@ -221,7 +321,7 @@ for (const asset of assets) {
 }
 
 for (const asset of categoryAssets) {
-  const svg = baseSvg(asset);
+  const svg = asset.cellLines ? cellSvg(asset.cellLines) : baseSvg(asset);
   await sharp(Buffer.from(svg))
     .resize(width, height)
     .webp({ quality: 88, effort: 5 })
