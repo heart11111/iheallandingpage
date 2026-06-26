@@ -4,6 +4,8 @@ import sharp from "sharp";
 
 const outDir = path.resolve("public/images/ingredients");
 const imageDir = path.resolve("public/images");
+const generatedImageDir = path.resolve("public/images/generated");
+const probioticBackgroundPath = path.join(generatedImageDir, "probiotic-cell-background.png");
 const width = 960;
 const height = 640;
 
@@ -208,6 +210,46 @@ function cellSvg(lines) {
   </svg>`;
 }
 
+function cellTextOverlaySvg(lines) {
+  const fontSize = lines.length <= 2 ? 66 : 48;
+  const lineHeight = lines.length <= 2 ? 78 : 60;
+  const startY = 320 - ((lines.length - 1) * lineHeight) / 2;
+  const text = lines
+    .map(
+      (line, index) =>
+        `<text x="480" y="${startY + index * lineHeight}" text-anchor="middle">${escapeText(line)}</text>`,
+    )
+    .join("\n");
+
+  return `
+  <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="textShadow" x="-20%" y="-40%" width="140%" height="180%">
+        <feDropShadow dx="0" dy="10" stdDeviation="5" flood-color="#066996" flood-opacity="0.62"/>
+      </filter>
+    </defs>
+    <g
+      filter="url(#textShadow)"
+      fill="#ffffff"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="${fontSize}"
+      font-style="italic"
+      font-weight="900"
+      letter-spacing="-1"
+    >
+      ${text}
+    </g>
+  </svg>`;
+}
+
+async function renderProbioticCellCard(lines, outputPath) {
+  await sharp(probioticBackgroundPath)
+    .resize(width, height, { fit: "cover", position: "center" })
+    .composite([{ input: Buffer.from(cellTextOverlaySvg(lines)), left: 0, top: 0 }])
+    .webp({ quality: 88, effort: 5 })
+    .toFile(outputPath);
+}
+
 function baseSvg({ tone, shapes }) {
   const [bg1, bg2, primary, accent] = tone;
   return `
@@ -311,9 +353,15 @@ function drawShape(shape, index, primary, accent) {
 
 await fs.mkdir(outDir, { recursive: true });
 await fs.mkdir(imageDir, { recursive: true });
+await fs.mkdir(generatedImageDir, { recursive: true });
 
 for (const asset of assets) {
-  const svg = probioticCellVisuals[asset.id] ? cellSvg(probioticCellVisuals[asset.id]) : baseSvg(asset);
+  if (probioticCellVisuals[asset.id]) {
+    await renderProbioticCellCard(probioticCellVisuals[asset.id], path.join(outDir, `${asset.id}.webp`));
+    continue;
+  }
+
+  const svg = baseSvg(asset);
   await sharp(Buffer.from(svg))
     .resize(width, height)
     .webp({ quality: 88, effort: 5 })
@@ -321,7 +369,12 @@ for (const asset of assets) {
 }
 
 for (const asset of categoryAssets) {
-  const svg = asset.cellLines ? cellSvg(asset.cellLines) : baseSvg(asset);
+  if (asset.cellLines) {
+    await renderProbioticCellCard(asset.cellLines, path.join(imageDir, asset.filename));
+    continue;
+  }
+
+  const svg = baseSvg(asset);
   await sharp(Buffer.from(svg))
     .resize(width, height)
     .webp({ quality: 88, effort: 5 })
