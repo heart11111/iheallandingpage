@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { CorporateFooter, CorporateSubHero, IngredientList } from "@/components/CorporateParts";
+import { CorporateFooter, CorporateSubHero, IngredientDetailArticle } from "@/components/CorporateParts";
 import { NavBar } from "@/components/NavBar";
 import { natureProductItems } from "@/lib/corporate";
 
@@ -25,7 +25,7 @@ export default async function NatureIngredientDetailPage({ params }: { params: P
             <p className="dh-detail-primary">FUNCTIONAL NATURE&apos;S FOOD INGREDIENTS</p>
             <h1>{item.name}</h1>
             <p>{item.summary}</p>
-            <IngredientList items={[item]} />
+            <IngredientDetailArticle item={item} />
           </div>
         </section>
       </main>

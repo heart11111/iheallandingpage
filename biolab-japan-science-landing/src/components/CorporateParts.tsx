@@ -284,6 +284,199 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
   );
 }
 
+export function IngredientDetailArticle({ item }: { item: Ingredient }) {
+  const materials = item.strains || item.origin || [];
+  const materialLabel = item.strains ? "菌株構成" : "由来原料";
+  const pptDetail = ingredientPptDetails[item.id];
+  const evidenceVisual = ingredientEvidenceVisuals[item.id];
+  const displayName = pptDetail?.productName || item.name;
+  const claims = pptDetail?.healthClaims || item.healthClaims || [];
+  const featureBlocks = [...(item.featurePoints || []), ...(pptDetail?.features || [])];
+  const originItems = pptDetail?.originItems?.length ? pptDetail.originItems : materials;
+  const overview = pptDetail ? getOverviewCopy(item, pptDetail) : item.summary;
+
+  return (
+    <article className="dh-ingredient-profile">
+      <div className="dh-ingredient-profile-hero">
+        <div className="dh-ingredient-profile-visual">
+          <Image
+            alt=""
+            aria-hidden="true"
+            height={520}
+            src={item.image}
+            width={780}
+          />
+        </div>
+        <div className="dh-ingredient-profile-summary">
+          <IngredientCategoryBadge category={item.category} line={item.line} />
+          <p>{item.line}</p>
+          <h2>{displayName}</h2>
+          <strong>{item.area}</strong>
+          <span>{overview}</span>
+        </div>
+      </div>
+
+      <div className="dh-ingredient-spec-panel">
+        <h3>基本情報</h3>
+        <dl>
+          <div>
+            <dt>素材名</dt>
+            <dd>{displayName}</dd>
+          </div>
+          <div>
+            <dt>機能性内容</dt>
+            <dd>{item.area}</dd>
+          </div>
+          <div>
+            <dt>一日摂取目安</dt>
+            <dd>{item.intake}</dd>
+          </div>
+          <div>
+            <dt>{materialLabel}</dt>
+            <dd>{originItems.join(" / ")}</dd>
+          </div>
+          <div>
+            <dt>用途分類</dt>
+            <dd>{item.category}</dd>
+          </div>
+          <div>
+            <dt>資料区分</dt>
+            <dd>{pptDetail?.slideRef || "BIOLAB Japan product material"}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div className="dh-ingredient-section-grid">
+        <section>
+          <p>Function</p>
+          <h3>機能性内容</h3>
+          <ul>
+            {claims.map((claim) => (
+              <li key={claim}>{claim}</li>
+            ))}
+          </ul>
+        </section>
+        <section>
+          <p>Feature</p>
+          <h3>特徴</h3>
+          <ul>
+            {featureBlocks.map((feature) => (
+              <li key={feature}>{feature}</li>
+            ))}
+          </ul>
+        </section>
+      </div>
+
+      <section className="dh-ingredient-origin-panel">
+        <div>
+          <p>Raw Material</p>
+          <h3>{pptDetail?.originTitle || materialLabel}</h3>
+        </div>
+        <ul>
+          {originItems.map((origin) => (
+            <li key={origin}>{origin}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="dh-ingredient-evidence-tags" aria-label={`${item.name} 根拠情報`}>
+        <p>Evidence & Documents</p>
+        <h3>根拠情報</h3>
+        <div>
+          {item.evidenceTags.map((tag) => (
+            <em key={tag}>{tag}</em>
+          ))}
+        </div>
+      </section>
+
+      {pptDetail && (
+        <section className="dh-ppt-evidence dh-ingredient-evidence-block" aria-label={`${item.name} evidence detail`}>
+          <div className="dh-ppt-evidence-head">
+            <p>Evidence Summary</p>
+            <h3>{pptDetail.productName}</h3>
+            <span>{overview}</span>
+          </div>
+
+          <div className="dh-ppt-chart-heading">
+            <p>Evidence View</p>
+            <h4>評価グラフ</h4>
+            <span>提供資料で提示されている指標を、Web上で比較しやすいようにHTMLグラフとして再構成しています。</span>
+          </div>
+
+          <div className="dh-ppt-graph-grid">
+            {pptDetail.graphPanels.map((panel) => (
+              <article className="dh-ppt-chart" key={panel.title}>
+                <div>
+                  <p>{panel.subtitle}</p>
+                  <h4>{panel.title}</h4>
+                  {panel.formula && <code>{panel.formula}</code>}
+                </div>
+                <div className="dh-ppt-chart-bars">
+                  {panel.metrics.map((metric) => (
+                    <div className={`dh-ppt-chart-bar is-${metric.direction || "balanced"}`} key={metric.label}>
+                      <span>
+                        <strong>{metric.label}</strong>
+                        <em>{metric.displayValue || metric.detail}</em>
+                      </span>
+                      <i aria-hidden="true">
+                        <b
+                          style={
+                            {
+                              "--bar-value": `${Math.max(8, Math.min(100, metric.value))}%`,
+                            } as CSSProperties
+                          }
+                        />
+                      </i>
+                      <small>{metric.detail}</small>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="dh-ppt-notes">
+            {pptDetail.graphNotes.map((note) => (
+              <p key={note}>{formatPublicEvidenceNote(note)}</p>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {!pptDetail && evidenceVisual && (
+        <section className="dh-evidence-visual dh-ingredient-evidence-block" aria-label={`${item.name} evidence visual`}>
+          <div className="dh-evidence-visual-head">
+            <p>{evidenceVisual.sourceLabel}</p>
+            <h3>{evidenceVisual.title}</h3>
+            <span>{evidenceVisual.summary}</span>
+          </div>
+          <div className="dh-evidence-bars">
+            {evidenceVisual.metrics.map((metric) => (
+              <div className={`dh-evidence-bar is-${metric.direction || "balanced"}`} key={metric.label}>
+                <div>
+                  <strong>{metric.label}</strong>
+                  <em>{metric.displayValue || metric.detail}</em>
+                </div>
+                <span aria-hidden="true">
+                  <i
+                    style={
+                      {
+                        "--bar-value": `${Math.max(8, Math.min(100, metric.value))}%`,
+                      } as CSSProperties
+                    }
+                  />
+                </span>
+                <small>{metric.detail}</small>
+              </div>
+            ))}
+          </div>
+          <p>{evidenceVisual.footnote}</p>
+        </section>
+      )}
+    </article>
+  );
+}
+
 export function ContactInfoBlocks() {
   return (
     <div className="dh-contact-info">

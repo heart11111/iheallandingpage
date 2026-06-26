@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { CorporateFooter, CorporateSubHero, IngredientList } from "@/components/CorporateParts";
+import { CorporateFooter, CorporateSubHero, IngredientDetailArticle } from "@/components/CorporateParts";
 import { NavBar } from "@/components/NavBar";
 import { microbiomeProductItems } from "@/lib/corporate";
 
@@ -25,7 +25,7 @@ export default async function MicrobiomeProductDetailPage({ params }: { params: 
             <p className="dh-detail-primary">MICROBIOME PROBIOTICS</p>
             <h1>{item.name}</h1>
             <p>{item.summary}</p>
-            <IngredientList items={[item]} />
+            <IngredientDetailArticle item={item} />
           </div>
         </section>
       </main>
