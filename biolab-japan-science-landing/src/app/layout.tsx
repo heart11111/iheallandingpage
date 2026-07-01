@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
 const pretendardJp = localFont({
@@ -16,9 +17,47 @@ const pretendardJp = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://biolabjp.com"),
   title: "BIOLAB Japan | Functional Healthcare Platform",
   description:
     "BIOLAB Japan connects Korean functional ingredients, ODM/OEM manufacturing, and Japan-side B2B healthcare distribution.",
+  alternates: {
+    canonical: "/",
+  },
+};
+
+const organizationStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://biolabjp.com/#organization",
+  name: "BIOLAB Japan",
+  url: "https://biolabjp.com/",
+  logo: "https://biolabjp.com/images/biolab-japan-ci.png",
+  parentOrganization: {
+    "@type": "Organization",
+    name: "BIOLAB Korea",
+    url: "https://biolabkr.com/",
+  },
+  email: "iheal.official@gmail.com",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "iheal.official@gmail.com",
+    contactType: "business inquiry",
+    availableLanguage: ["ja", "ko"],
+  },
+  sameAs: ["https://biolabkr.com/", "https://iheal.co.kr/main/index.php"],
+};
+
+const webSiteStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://biolabjp.com/#website",
+  name: "BIOLAB Japan",
+  url: "https://biolabjp.com/",
+  publisher: {
+    "@id": "https://biolabjp.com/#organization",
+  },
+  inLanguage: "ja-JP",
 };
 
 export default function RootLayout({
@@ -28,7 +67,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={pretendardJp.variable}>{children}</body>
+      <body className={pretendardJp.variable}>
+        <JsonLd data={[organizationStructuredData, webSiteStructuredData]} />
+        {children}
+      </body>
     </html>
   );
 }

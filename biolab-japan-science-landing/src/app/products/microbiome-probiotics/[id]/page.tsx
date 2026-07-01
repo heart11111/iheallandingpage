@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import { CorporateFooter, CorporateSubHero, IngredientDetailArticle } from "@/components/CorporateParts";
+import { JsonLd } from "@/components/JsonLd";
 import { NavBar } from "@/components/NavBar";
 import { microbiomeProductItems } from "@/lib/corporate";
+import { ingredientProductStructuredData } from "@/lib/structuredData";
 
 export function generateStaticParams() {
   return microbiomeProductItems.map((item) => ({ id: item.id }));
@@ -18,6 +20,7 @@ export default async function MicrobiomeProductDetailPage({ params }: { params: 
   return (
     <div className="dh-page">
       <NavBar />
+      <JsonLd data={ingredientProductStructuredData(item, `/products/microbiome-probiotics/${item.id}`)} />
       <main>
         <CorporateSubHero title={item.name} copy={item.area} image="/images/biolab-cosmetic-science-bg.png" compact />
         <section className="dh-product-detail">
