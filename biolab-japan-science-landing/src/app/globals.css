@@ -5882,7 +5882,7 @@ h2 {
 
 .dh-ppt-graph-grid {
   display: grid !important;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px !important;
   margin-top: 18px;
 }
@@ -5916,9 +5916,12 @@ h2 {
 .dh-ppt-chart-figure img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 220px;
+  max-width: 100%;
+  object-fit: contain;
   border: 1px solid #e5eef8;
   background: #fff;
+  margin: 0 auto;
 }
 
 .dh-ppt-chart-figure figcaption {

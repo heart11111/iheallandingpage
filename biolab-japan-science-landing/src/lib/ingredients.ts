@@ -73,7 +73,7 @@ export const probioticsIngredients: Ingredient[] = [
   },
   {
     id: "nvp1702",
-    name: "NVP-1702 / NVP-17902",
+    name: "NVP-1702",
     category: "肝臓",
     area: "肝の健康",
     summary: "デュオバイオーム技術によるアルコール性・非アルコール性肝改善用2種特許プロバイオティクス複合物。",
