@@ -5701,6 +5701,16 @@ h2 {
   line-height: 1.2;
 }
 
+.dh-ingredient-evidence-tags cite,
+.dh-detail-evidence cite {
+  display: block;
+  margin-top: 10px;
+  color: #6b7786;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.6;
+}
+
 .dh-ingredient-evidence-block {
   margin-top: 0;
 }
