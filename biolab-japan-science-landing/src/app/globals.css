@@ -5909,73 +5909,36 @@ h2 {
   white-space: normal;
 }
 
-.dh-ppt-chart-bars {
-  display: grid !important;
-  gap: 13px !important;
+.dh-ppt-chart-figure {
+  margin: 0;
 }
 
-.dh-ppt-chart-bar {
-  display: grid !important;
-  grid-template-columns: minmax(0, 128px) minmax(100px, 1fr);
-  gap: 8px 12px !important;
-  align-items: center;
+.dh-ppt-chart-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #e5eef8;
+  background: #fff;
 }
 
-.dh-ppt-chart-bar span {
+.dh-ppt-chart-figure figcaption {
   display: grid !important;
-  gap: 2px;
+  gap: 4px;
+  margin-top: 12px;
 }
 
-.dh-ppt-chart-bar strong {
+.dh-ppt-chart-figure figcaption p {
+  margin: 0;
   color: #1c2430;
   font-size: 13px;
-  line-height: 1.45;
+  line-height: 1.6;
 }
 
-.dh-ppt-chart-bar em {
-  border: 0;
-  padding: 0;
-  color: #204da1;
-  font-size: 12px;
-  font-weight: 900;
-}
-
-.dh-ppt-chart-bar i {
-  position: relative;
-  display: block;
-  height: 10px;
-  border-radius: 999px;
-  background: #e5eef8;
-  overflow: hidden;
-}
-
-.dh-ppt-chart-bar b {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: var(--bar-value);
-  border-radius: inherit;
-  background: linear-gradient(90deg, #204da1, #41abe1);
-  transform-origin: left center;
-  animation: dhEvidenceGrow 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.dh-ppt-chart-bar.is-up b {
-  background: linear-gradient(90deg, #2d6d50, #41abe1);
-}
-
-.dh-ppt-chart-bar.is-down b {
-  background: linear-gradient(90deg, #204da1, #28a8d8);
-}
-
-.dh-ppt-chart-bar.is-balanced b {
-  background: linear-gradient(90deg, #204da1, #8ba0cf);
-}
-
-.dh-ppt-chart-bar small {
-  grid-column: 2;
+.dh-ppt-chart-figure figcaption cite {
+  font-style: normal;
   color: #6b7786;
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 11.5px;
+  line-height: 1.5;
 }
 
 .dh-ppt-notes {
