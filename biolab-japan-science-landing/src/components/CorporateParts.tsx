@@ -25,6 +25,11 @@ function formatPublicEvidenceNote(note: string) {
     .replaceAll("スライド構造", "資料構造");
 }
 
+function getCitations(pptDetail: (typeof ingredientPptDetails)[string] | undefined) {
+  if (!pptDetail) return [];
+  return pptDetail.graphNotes.filter((note) => note.startsWith("出典"));
+}
+
 export function CorporateSubHero({ title, copy, image = "/images/biolab-global-factory-bg.png", align = "left", compact = false }: SubHeroProps) {
   return (
     <section className={`dh-sub-hero dh-sub-${align}${compact ? " dh-sub-compact" : ""}`}>
@@ -117,6 +122,9 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                   <em key={tag}>{tag}</em>
                 ))}
               </div>
+              {getCitations(pptDetail).map((citation) => (
+                <cite key={citation}>{citation}</cite>
+              ))}
             </section>
 
             {showExtended && pptDetail && (
@@ -329,6 +337,9 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
             <em key={tag}>{tag}</em>
           ))}
         </div>
+        {getCitations(pptDetail).map((citation) => (
+          <cite key={citation}>{citation}</cite>
+        ))}
       </section>
 
       {pptDetail && (
