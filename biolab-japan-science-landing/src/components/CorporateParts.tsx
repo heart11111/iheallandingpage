@@ -162,9 +162,8 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 </div>
 
                 <div className="dh-ppt-chart-heading">
-                  <p>Evidence View</p>
-                  <h4>資料内エビデンス画像</h4>
-                  <span>提供資料に掲載されている試験データ・グラフをそのまま掲載しています。</span>
+                  <p>Efficacy Evaluation</p>
+                  <h4>人体効能評価</h4>
                 </div>
 
                 <div className="dh-ppt-graph-grid">
@@ -264,7 +263,7 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
         <div className="dh-ingredient-profile-summary">
           <IngredientCategoryBadge category={item.category} line={item.line} />
           <p>{item.line}</p>
-          <h2>{displayName}</h2>
+          <h1>{displayName}</h1>
           <strong>{item.area}</strong>
           <span>{item.summary}</span>
         </div>
@@ -345,9 +344,8 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
       {pptDetail && (
         <section className="dh-ppt-evidence dh-ingredient-evidence-block" aria-label={`${item.name} evidence detail`}>
           <div className="dh-ppt-chart-heading">
-            <p>Evidence View</p>
-            <h4>資料内エビデンス画像</h4>
-            <span>提供資料に掲載されている試験データ・グラフをそのまま掲載しています。</span>
+            <p>Efficacy Evaluation</p>
+            <h4>人体効能評価</h4>
           </div>
 
           <div className="dh-ppt-graph-grid">

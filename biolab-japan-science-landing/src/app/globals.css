@@ -5523,7 +5523,7 @@ h2 {
   text-transform: uppercase;
 }
 
-.dh-ingredient-profile-summary h2 {
+.dh-ingredient-profile-summary h1 {
   margin: 0 0 12px;
   color: #111827;
   font-size: clamp(28px, 2.8vw, 42px);
@@ -5830,12 +5830,6 @@ h2 {
   color: #151b24;
   font-size: 20px;
   line-height: 1.35;
-}
-
-.dh-ppt-chart-heading span {
-  color: #5b6877;
-  font-size: 13px;
-  line-height: 1.7;
 }
 
 .dh-ppt-detail-columns {
@@ -6955,7 +6949,7 @@ h2 {
     max-width: 100%;
   }
 
-  .dh-page .dh-ingredient-profile-summary h2 {
+  .dh-page .dh-ingredient-profile-summary h1 {
     font-size: 27px;
   }
 

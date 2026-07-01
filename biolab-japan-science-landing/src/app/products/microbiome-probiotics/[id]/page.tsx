@@ -26,8 +26,6 @@ export default async function MicrobiomeProductDetailPage({ params }: { params: 
         <section className="dh-product-detail">
           <div className="dh-container">
             <p className="dh-detail-primary">MICROBIOME PROBIOTICS</p>
-            <h1>{item.name}</h1>
-            <p>{item.summary}</p>
             <IngredientDetailArticle item={item} />
           </div>
         </section>

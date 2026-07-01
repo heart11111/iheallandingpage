@@ -26,8 +26,6 @@ export default async function NatureIngredientDetailPage({ params }: { params: P
         <section className="dh-product-detail">
           <div className="dh-container">
             <p className="dh-detail-primary">FUNCTIONAL NATURE&apos;S FOOD INGREDIENTS</p>
-            <h1>{item.name}</h1>
-            <p>{item.summary}</p>
             <IngredientDetailArticle item={item} />
           </div>
         </section>
