@@ -106,7 +106,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   nvp1702: {
-    productName: "NVP-1702 / NVP-17902",
+    productName: "NVP-1702",
     healthClaims: [
       "デュオバイオーム技術による肝機能改善用2種特許プロバイオティクス複合物。",
       "93名のヒト適用試験とSCI論文で検証された、肝機能改善用特許乳酸菌。",
