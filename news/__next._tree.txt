@@ -1,6 +1,6 @@
-:HL["/_next/static/chunks/00.3pras_d.xc.css","style"]
+:HL["/_next/static/chunks/0pdmhlxh49pn..css","style"]
 :HL["/_next/static/media/PretendardJPVariable-s.p.0_rm~pon-puwg.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/images/biolab-global-factory-bg.png","image"]
 :HL["/images/global-evidence-bg.png","image"]
 :HL["/images/clinical-platform-hero.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"news","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"TjPjebexgfP_qDLSqXYgk"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"news","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"jthwVp_rLsd4fZqri7A-k"}
