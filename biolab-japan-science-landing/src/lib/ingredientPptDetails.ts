@@ -5,7 +5,6 @@ export type PptEvidenceImage = {
 };
 
 export type IngredientPptDetail = {
-  slideRef: string;
   productName: string;
   healthClaims: string[];
   originTitle: string;
@@ -17,14 +16,13 @@ export type IngredientPptDetail = {
 
 export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
   med01: {
-    slideRef: "PPTX Slide 06-07",
     productName: "iHEAL GINO 5 Formula - MED01",
     healthClaims: [
       "女性の膣健康向上に役立つプロバイオティクス複合物。",
       "膣炎の予防および改善に役立つ。膣内環境の改善に役立つ。",
       "101名のヒト適用試験とSCI論文(9編)で確認された、韓国女性の膣由来プロバイオティクス。",
     ],
-    originTitle: "Probiotics Strain",
+    originTitle: "使用菌株",
     originItems: [
       "L. plantarum MG989",
       "L. salivarius MG242",
@@ -34,8 +32,10 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
     features: [
       "健康な韓国女性の膣から分離した100%ヒト由来プロバイオティクス。",
+      "101名対象のヒト適用試験完了(19歳〜50歳の可妊期女性)。",
+      "国際特許保有(韓国・米国・欧州)、日本特許出願中。",
       "膣炎指標(Nugent score)の改善。",
-      "膣内乳酸菌の増殖と有害菌の抑制、膣内細菌叢の正常化。",
+      "膣内乳酸菌の増殖と有害菌の抑制による膣内細菌叢の正常化。",
       "膣分泌物の減少、膣灼熱感の減少、排尿痛の減少。",
     ],
     graphNotes: [
@@ -51,21 +51,22 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   med02: {
-    slideRef: "PPTX Slide 06-08",
     productName: "iHEAL DIT 2 Formula - MED02",
     healthClaims: [
       "脂肪細胞の分化抑制のための特許プロバイオティクス複合物。",
       "体重、体脂肪の減少および体質量の減少に役立つ。",
       "100名のヒト適用試験とSCI論文(6編)で検証された抗肥満向け特許乳酸菌。",
     ],
-    originTitle: "Probiotics Strain",
+    originTitle: "使用菌株",
     originItems: ["L. fermentum MG4231", "L. fermentum MG4244"],
     features: [
-      "小児期の脂肪細胞分化抑制による小児肥満の減少。",
+      "100名対象のヒト適用試験完了(過体重または肥満の成人)。",
+      "国際特許保有(韓国・米国・欧州)。",
+      "小児期の脂肪細胞分化抑制による小児肥満リスクの減少。",
       "成人期の中性脂肪蓄積による肥満・脂質異常症発生リスクの減少。",
-      "体脂肪量、体脂肪率、体重、BMIの変化を複数グラフで確認。",
+      "臨床データ(12週): 体脂肪量 約-1,200g(プラセボ約-400g)、体脂肪率 約-0.85%(プラセボ約-0.15%)、体重 約-2.1kg(プラセボ約-1.2kg)。",
     ],
-    graphNotes: ["バーグラフはPPTXに掲載された実測値をもとに再現。単位: 体脂肪量(g)、体脂肪率(%)、体重(kg)。"],
+    graphNotes: ["バーグラフは提供資料に掲載された実測値をもとに再現。単位: 体脂肪量(g)、体脂肪率(%)、体重(kg)。"],
     evidenceImages: [
       {
         src: "/images/ingredients/med02-evidence-1.webp",
@@ -74,18 +75,19 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   nvp2106: {
-    slideRef: "PPTX Slide 06-09",
     productName: "NVP-2106",
     healthClaims: [
       "デュオバイオーム技術による脳機能改善用2種特許プロバイオティクス複合物。",
       "60歳以上の記憶力低下高齢者120名を対象にしたヒト適用試験とSCI論文で検証。",
     ],
-    originTitle: "Probiotics Strain",
+    originTitle: "使用菌株",
     originItems: ["L. mucosae NK41", "B. longum NK46"],
     features: [
       "神経細胞損傷と記憶力低下の原因とされる「アミロイドベータ」の調整・低下。",
       "認知機能、記憶力、注意集中力の改善。",
-      "アルツハイマー病評価尺度であるADAS-Cog13総点の改善を主要指標として提示。",
+      "アルツハイマー病評価尺度ADAS-Cog13総点: 12週摂取でプラセボ対比202%改善(P=0.0318)。",
+      "記憶力総点: プラセボ対比207%改善。遅延単語再生: プラセボ対比1,514%改善(P=0.0037)。",
+      "注意集中力: 正反応数315%改善、誤反応数147%改善、脱落誤謬数315%改善(12週摂取時点)。",
     ],
     graphNotes: ["12週摂取時点でのADAS-Cog13総点、記憶力総点、遅延単語再生、注意集中力の実測データをそのまま掲載。"],
     evidenceImages: [
@@ -104,20 +106,18 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   nvp1702: {
-    slideRef: "PPTX Slide 06, 10",
     productName: "NVP-1702 / NVP-17902",
     healthClaims: [
       "デュオバイオーム技術による肝機能改善用2種特許プロバイオティクス複合物。",
       "93名のヒト適用試験とSCI論文で検証された、肝機能改善用特許乳酸菌。",
       "アルコール性・非アルコール性の損傷した肝の改善に向けた複合設計。",
     ],
-    originTitle: "Probiotics Strain",
+    originTitle: "使用菌株",
     originItems: ["L. plantarum LC27", "B. longum LC67"],
     features: [
-      "体内の肝解毒機能強化。",
-      "腸内エンドトキシンおよび血中エンドトキシンの改善。",
-      "非アルコール性肝損傷: ALT、AST、γ-GTP、疲労指標、血中炎症指標の改善。",
-      "アルコール性肝損傷: ALT、AST、γ-GTP、血中中性脂肪、血中炎症指標の改善。",
+      "体内の肝解毒機能強化、腸内エンドトキシンおよび血中エンドトキシンの改善。",
+      "非アルコール性肝損傷: ALT・AST・γ-GTP・疲労指標・血中炎症指標の改善(γ-GTP P=0.0292、ALT P=0.0332)。",
+      "アルコール性肝損傷: ALT・AST・γ-GTP・血中中性脂肪・血中炎症指標の改善(ALT P=0.0260/0.0397、AST P=0.0131、γ-GTP P=0.0229)。",
     ],
     graphNotes: ["非アルコール性・アルコール性それぞれの肝損傷グループのALT/AST/γ-GTP実測データをそのまま掲載。"],
     evidenceImages: [
@@ -132,19 +132,17 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   nvp1703: {
-    slideRef: "PPTX Slide 06, 11",
     productName: "NVP-1703",
     healthClaims: [
       "デュオバイオーム技術によるアレルギー性鼻炎改善用特許プロバイオティクス複合物。",
       "小児・青少年81名、成人95名の大規模ヒト適用試験を実施。",
       "免疫過敏反応に伴う鼻の状態改善を目的とした特許プロバイオティクス。",
     ],
-    originTitle: "Probiotics Strain",
+    originTitle: "使用菌株",
     originItems: ["L. plantarum IM76", "B. longum IM55"],
     features: [
-      "小児・青少年: TNSS(全体鼻症状点数)のDaily/Weekly評価で有意な改善。",
-      "IL-10、IL-22など炎症調節サイトカインの有意な改善。",
-      "成人: TNSS、鼻水、鼻づまり、鼻炎症状の改善、免疫グロブリンIgEの減少。",
+      "小児・青少年: TNSS(全体鼻症状点数)のDaily/Weekly評価で有意な改善、炎症調節サイトカインIL-10・IL-22の有意な改善。",
+      "成人: TNSS総点(P=0.029)、水様性鼻水(P=0.007)、鼻づまり(P=0.0098)の改善、免疫グロブリンIgEの減少。",
     ],
     graphNotes: ["小児・青少年群と成人群、それぞれのTNSS実測データをそのまま掲載。"],
     evidenceImages: [
@@ -159,19 +157,17 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   nvp1704: {
-    slideRef: "PPTX Slide 06, 12",
     productName: "NVP-1704",
     healthClaims: [
       "ストレス性疾患、うつ、不安、不眠症の改善に向けた特許プロバイオティクス複合物。",
       "ストレスを抱える韓国人156名の大規模ヒト適用試験を実施。",
     ],
-    originTitle: "Probiotics Strain",
+    originTitle: "使用菌株",
     originItems: ["L. reuteri NK33", "B. adolescentis NK98"],
     features: [
-      "うつ、不安、不眠症を含む睡眠の質の向上。",
-      "腸内ストレスマイクロバイオームの改善。",
-      "血中炎症性サイトカインIL-6の有意な減少を実現。",
-      "脳由来神経栄養因子であるBDNFの増加およびIL-6/BDNF比率の減少。",
+      "うつ、不安、不眠症を含む睡眠の質の向上、腸内ストレスマイクロバイオームの改善。",
+      "血中炎症性サイトカインIL-6の減少およびBDNFの増加、IL-6/BDNF比率の減少(P=0.041)。",
+      "摂取後の主要構成菌株 L. reuteri群とBifidobacterium群の増加。",
     ],
     graphNotes: ["BDI/BAI、PSQI/ISI、IL-6/BDNFの実測データをそのまま掲載。"],
     evidenceImages: [
@@ -190,24 +186,22 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   bifido: {
-    slideRef: "PPTX Slide 06, 13",
     productName: "Bifidobacterium Probiotics",
     healthClaims: [
       "腸の健康と排便活動に役立つヒト由来ビフィズス菌。",
       "母乳を与えられた健康な新生児の便由来、100%ヒト由来ビフィズス菌。",
     ],
-    originTitle: "Probiotics Strain",
+    originTitle: "使用菌株",
     originItems: [
       "B. bifidum BGN4 - GRAS No.814 / NDI No.1079",
       "B. longum BORI - GRAS No.813 / NDI No.1082",
       "B. lactis AD011 - GRAS No.952 / NDI No.1118",
     ],
     features: [
-      "FDA安全性認証: GRAS、NDI。",
-      "HALAL、KOSHER認証を取得。",
-      "症状別10件のヒト試験、80件の国際特許、260編以上のSCI論文規模。",
-      "12週摂取後のガス排出頻度上昇、腹部膨満感の改善。",
-      "参考: BGN4・BORIをベースとしたプロバイオティクス(40億CFU/日, 12週間)を65歳以上の高齢者が摂取した試験で、認知機能と気分の改善が確認された(ソウル大学校盆唐再生病院実施)。",
+      "米国食品医薬品局(FDA)安全性認証取得(GRAS・NDI)、HALAL・KOSHER認証も取得。",
+      "症状別10件のヒト試験、80件の国際特許、260編以上のSCI論文を保有する世界的なビフィズス菌。",
+      "12週間摂取後、ガス排出頻度の上昇と腹部膨満感の改善。",
+      "参考: BGN4・BORIをベースとしたプロバイオティクス(40億CFU/日、12週間)を65歳以上の高齢者が摂取した試験で、認知機能と気分の改善が確認された(ソウル大学校盆唐再生病院実施)。",
     ],
     graphNotes: [
       "12週摂取後のガス排出頻度・腹部膨満感の実測データをそのまま掲載。",
@@ -225,18 +219,18 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   testofen: {
-    slideRef: "PPTX Slide 14-15",
     productName: "Testofen",
     healthClaims: [
       "更年期男性の健康に向けた差別化された機能性素材。",
       "男性更年期症状の精神・心理、身体機能、性機能の3軸改善を提示。",
     ],
-    originTitle: "Origin Ingredient",
+    originTitle: "原料",
     originItems: ["ホロパ(フェヌグリーク)種子抽出物 Trigonella foenum-graecum"],
     features: [
+      "43歳〜75歳男性対象、12週間のヒト適用試験。",
       "男性ホルモンであるテストステロンの恒常性維持・向上。",
-      "韓国内の男性更年期関連素材の中で最も高いAMSデータを保有。",
-      "米国で最も普及している男性健康原料。",
+      "男性更年期症状(精神・心理の安定、身体機能の向上、性機能の向上)の大幅な改善。",
+      "韓国内の男性更年期関連素材の中で最も高いAMSデータを保有。米国で最も普及している男性健康原料。",
       "更年期男性向けの追加臨床データを保有。",
     ],
     graphNotes: [
@@ -257,20 +251,18 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   thinkgin: {
-    slideRef: "PPTX Slide 14, 16",
     productName: "ThinkGIN",
     healthClaims: [
       "記憶力および認知機能の改善に役立つ。",
       "一般紅参対比で圧倒的な「ジンセノサイド」を含有。",
     ],
-    originTitle: "Origin Ingredient",
+    originTitle: "原料",
     originItems: ["新芽人参抽出粉末 Panax ginseng C.A. Meyer sprout"],
     features: [
-      "記憶保存能力の強化。",
-      "神経細胞の炎症抑制。",
-      "睡眠の質、睡眠効率の増加。",
-      "シナプス可塑性の増加による記憶力・学習能力の向上。",
-      "即時想起力の増加、記憶力低下関連血液指標AChEの減少。",
+      "55歳〜75歳男女対象、12週間のヒト適用試験。",
+      "記憶保存能力の強化、神経細胞の炎症抑制。",
+      "睡眠の質・睡眠効率の増加、シナプス可塑性の増加による記憶力・学習能力の向上。",
+      "即時想起力の増加(SVLT総点でP<0.01)、記憶力低下関連血液指標AChEの減少。",
     ],
     graphNotes: ["SVLT即時想起点数、PSQI-K睡眠潜時、AChEの実測データをそのまま掲載。"],
     evidenceImages: [
@@ -289,18 +281,18 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   neulearn: {
-    slideRef: "PPTX Slide 14, 17",
     productName: "Neu learn",
     healthClaims: [
       "加齢により低下した認知機能の改善に役立つ。",
       "大脳灰白質容積の増加をf-MRIで確認・検証。",
     ],
-    originTitle: "Origin Ingredient",
+    originTitle: "原料",
     originItems: ["白キクラゲ酵素分解抽出物 Tremella fuciformis Beck-extract"],
     features: [
-      "主観的記憶減退症状質問票SMCQの低下を確認。",
-      "短期記憶遂行機能の改善。",
-      "計画機能の改善をf-MRI画像評価とともに確認。",
+      "40歳〜65歳男女対象、12週間のヒト適用試験。",
+      "主観的記憶減退症状質問票(SMCQ)の低下(600mg・1,200mgともにプラセボ対比有意差 P=0.007/P=0.002)。",
+      "短期記憶遂行機能の改善(P=0.001)、計画機能の改善(600mg P=0.08、1,200mg P=0.02)。",
+      "f-MRI(機能的磁気共鳴画像)で大脳灰白質容積の増加を確認。",
     ],
     graphNotes: ["SMCQ、短期記憶、遂行・計画機能、f-MRI画像の実測データをそのまま掲載。"],
     evidenceImages: [
@@ -319,15 +311,14 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   applephenon: {
-    slideRef: "PPTX Slide 14, 18",
     productName: "Applephenon",
     healthClaims: ["体脂肪低減に役立つダイエット向けの代表的なロングセラー原料。"],
-    originTitle: "Origin Ingredient",
+    originTitle: "原料",
     originItems: ["未熟リンゴ抽出物(青リンゴポリフェノール)"],
     features: [
+      "20歳〜55歳男女対象、12週間のヒト適用試験。",
       "未熟リンゴ250個分を濃縮する米国特許技術3種により、圧倒的な高濃縮ポリフェノールを含有。",
-      "中性脂肪の抑制・排出を通じた確実な体脂肪減少効果。",
-      "優れた体脂肪量減少効果。",
+      "中性脂肪の抑制・排出を通じた確実な体脂肪減少効果。摂取終了後4週間も効果が持続。",
     ],
     graphNotes: [
       "12週間の体脂肪減少と摂取終了後4週間の持続効果、16週間のBMI変化、CT撮影による内臓脂肪評価の実測データをそのまま掲載。",
@@ -351,19 +342,17 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   collagen: {
-    slideRef: "PPTX Slide 14, 19",
     productName: "Low-molecular Collagen Peptide AG",
     healthClaims: [
       "肌の潤いに役立つ。",
       "紫外線による皮膚ダメージからの皮膚健康維持に役立つ。",
     ],
-    originTitle: "Origin Ingredient",
+    originTitle: "原料",
     originItems: ["パンガシウス(Pangasius)の魚皮由来ゼラチン加水分解物", "500Da以下の低分子コラーゲンペプチド"],
     features: [
-      "明確な皮膚保湿の改善。",
-      "目元のしわ減少(肉眼評価・指標成分の両方で確認)。",
-      "皮膚総弾力の改善(生体弾力、純粋弾力)。",
-      "皮膚の粗さ改善。",
+      "30歳〜65歳女性対象、12週間のヒト適用試験。",
+      "明確な皮膚保湿の改善、目元のしわ減少(肉眼評価・指標成分の両方で確認)。",
+      "皮膚総弾力の改善(生体弾力・純粋弾力)、皮膚の粗さ改善。",
     ],
     graphNotes: ["皮膚保湿、総弾力(R2)、平均粗さ(Ra)、目元しわの実測データをそのまま掲載。"],
     evidenceImages: [
@@ -378,12 +367,15 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   dermania: {
-    slideRef: "PPTX Slide 14, 20",
     productName: "DermaNia",
     healthClaims: ["しわの生成抑制・しわケア、皮膚水分増加・保湿強化に役立つ。"],
-    originTitle: "Origin Ingredient",
+    originTitle: "原料",
     originItems: ["マコモ抽出物 Zizania latifolia(Wild rice)"],
-    features: ["皮膚水分の増加。", "12週間の臨床でしわ減少を確認。", "コラーゲン遺伝子の活性化、MMPs遺伝子の非活性化というメカニズム。"],
+    features: [
+      "成人女性対象、12週間のヒト適用試験。",
+      "皮膚水分の増加、しわ減少(いずれもプラセボ対比 P<0.05)。",
+      "メカニズム: コラーゲン遺伝子の活性化とMMPs遺伝子の非活性化により、しわ形成を抑制し保湿力を高める。",
+    ],
     graphNotes: [
       "しわ減少・皮膚水分増加の実測データをそのまま掲載。",
       "出典: 慶熙大学校皮膚バイオテクノロジーセンター実施試験",
@@ -402,12 +394,15 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   agrimony: {
-    slideRef: "PPTX Slide 14, 21",
     productName: "Agrimony extract",
     healthClaims: ["非アルコール性脂肪肝の改善に役立つ。", "肝脂肪量、ALT、ASTの低下を確認。"],
-    originTitle: "Origin Ingredient",
+    originTitle: "原料",
     originItems: ["アグリモニー(仙鶴草)抽出物 Agrimonia pilosa"],
-    features: ["ALT・AST値、特にALT数値の改善効果。", "脂肪肝指数(HSI)の改善。"],
+    features: [
+      "19歳〜70歳男女対象、13週間のヒト適用試験。",
+      "ALT値(P=0.025)・AST値(P=0.002)の改善効果。",
+      "脂肪肝指数(HSI)の改善(P=0.044)。",
+    ],
     graphNotes: ["ALT、AST、HSIのベースライン対8週間の実測データをそのまま掲載。"],
     evidenceImages: [
       {
@@ -417,16 +412,14 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   pinitol: {
-    slideRef: "PPTX Slide 14, 22",
     productName: "Pinitol",
     healthClaims: ["非アルコール性脂肪肝の改善に役立つ。", "肝の中性脂肪とコレステロールの減少を確認。"],
-    originTitle: "Origin Ingredient",
+    originTitle: "原料",
     originItems: ["キャロブ(Carob)の鞘から抽出・精製"],
     features: [
-      "損傷した肝細胞の改善・増加効果。",
-      "肝の中性脂肪細胞の減少とサイズの縮小。",
-      "脂肪肝含量とALT・AST値の低下。",
-      "抗酸化活性酵素GPxの増加、酸化ストレス指標MDAの低下。",
+      "脂肪肝のある成人60名対象、12週間のヒト適用試験。",
+      "損傷した肝細胞の改善・増加効果、肝の中性脂肪細胞の減少とサイズの縮小。",
+      "脂肪肝含量・ALT・AST値の低下(脂肪肝含量17.9%→15.2%, P=0.010)、抗酸化活性酵素GPxの増加(P=0.015)とMDAの低下(P=0.002)。",
     ],
     graphNotes: ["GPx/MDA、脂肪肝含量、ALT/ASTの実測データをそのまま掲載。"],
     evidenceImages: [
@@ -441,12 +434,12 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   acetobeta: {
-    slideRef: "PPTX Slide 14, 23",
     productName: "Aceto Beta",
     healthClaims: ["アセトアルデヒドを速やかに分解し、飲酒による肝負担と二日酔いの軽減に優れた効果。"],
-    originTitle: "Origin Ingredient",
+    originTitle: "原料",
     originItems: ["大豆発酵食酢培養物(酢酸菌由来)"],
     features: [
+      "20代〜40代成人40名対象のヒト適用試験。",
       "飲酒後のすっきりした朝の実感をサポート。",
       "ADH(アルコール脱水素酵素)の増加による血中アルコール濃度の減少。",
       "ALDH(アセトアルデヒド脱水素酵素)の増加による二日酔いの軽減。",
@@ -469,14 +462,14 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   immulink: {
-    slideRef: "PPTX Slide 14, 24",
     productName: "Immulink MBG",
     healthClaims: ["免疫機能の増進に役立つ。", "自然免疫と獲得免疫の両方の改善効果を実証。"],
-    originTitle: "Origin Ingredient",
+    originTitle: "原料",
     originItems: ["霊芝菌糸体抽出粉末 Ganoderma lucidum mycelium extract powder"],
     features: [
+      "18歳〜55歳男女対象、13週間のヒト適用試験。",
       "特許取得済みの超音波抽出技術。",
-      "自然免疫と獲得免疫の両方で8種の免疫因子の有意な改善を確認。",
+      "自然免疫(NK細胞数・活性)と獲得免疫(総リンパ球・T細胞・CD4/CD8比・血清IgA)の両方で8種の免疫因子の有意な改善を確認。",
       "高含有量のβ-グルカン(77%以上)。",
     ],
     graphNotes: ["自然免疫因子・獲得免疫因子8種の実測データをそのまま掲載。", "出典: Foods 2023, 12(3), 659. doi:10.3390/foods12030659"],
