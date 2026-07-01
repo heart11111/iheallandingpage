@@ -15,16 +15,6 @@ type SubHeroProps = {
   compact?: boolean;
 };
 
-function getOverviewCopy(item: Ingredient, detail: NonNullable<(typeof ingredientPptDetails)[string]>) {
-  const claim = detail.healthClaims[0] || "";
-  const feature = detail.features[0] || "";
-
-  return [item.summary, claim, feature]
-    .map((sentence) => sentence.trim())
-    .filter(Boolean)
-    .join(" ");
-}
-
 function formatPublicEvidenceNote(note: string) {
   return note
     .replaceAll("PPTXのネイティブチャートXML", "提供資料のチャートデータ")
@@ -96,17 +86,6 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
               <p>{item.summary}</p>
             </section>
 
-            {showExtended && item.healthClaims && (
-              <section className="dh-detail-claims" aria-label={`${item.name} 期待訴求`}>
-                <h3>期待訴求</h3>
-                <ul>
-                  {item.healthClaims.map((text) => (
-                    <li key={text}>{text}</li>
-                  ))}
-                </ul>
-              </section>
-            )}
-
             <dl className="dh-detail-specs">
               <div>
                 <dt>用途領域</dt>
@@ -145,7 +124,6 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 <div className="dh-ppt-evidence-head">
                   <p>Evidence Summary</p>
                   <h3>{pptDetail.productName}</h3>
-                  <span>{getOverviewCopy(item, pptDetail)}</span>
                 </div>
 
                 <div className="dh-ppt-summary-board">
@@ -231,17 +209,6 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 <p>{evidenceVisual.footnote}</p>
               </section>
             )}
-
-            {showExtended && item.featurePoints && (
-              <section className="dh-detail-features" aria-label={`${item.name} 詳細ポイント`}>
-                <h3>詳細ポイント</h3>
-                <ul>
-                  {item.featurePoints.map((text) => (
-                    <li key={text}>{text}</li>
-                  ))}
-                </ul>
-              </section>
-            )}
           </>
         );
 
@@ -270,10 +237,9 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
   const pptDetail = ingredientPptDetails[item.id];
   const evidenceVisual = ingredientEvidenceVisuals[item.id];
   const displayName = pptDetail?.productName || item.name;
-  const claims = pptDetail?.healthClaims || item.healthClaims || [];
-  const featureBlocks = [...(item.featurePoints || []), ...(pptDetail?.features || [])];
+  const claims = pptDetail?.healthClaims || [];
+  const featureBlocks = pptDetail?.features || [];
   const originItems = pptDetail?.originItems?.length ? pptDetail.originItems : materials;
-  const overview = pptDetail ? getOverviewCopy(item, pptDetail) : item.summary;
 
   return (
     <article className="dh-ingredient-profile">
@@ -292,7 +258,7 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
           <p>{item.line}</p>
           <h2>{displayName}</h2>
           <strong>{item.area}</strong>
-          <span>{overview}</span>
+          <span>{item.summary}</span>
         </div>
       </div>
 
@@ -318,10 +284,6 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
           <div>
             <dt>用途分類</dt>
             <dd>{item.category}</dd>
-          </div>
-          <div>
-            <dt>資料区分</dt>
-            <dd>{pptDetail?.slideRef || "BIOLAB Japan product material"}</dd>
           </div>
         </dl>
       </div>
@@ -360,7 +322,7 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
       </section>
 
       <section className="dh-ingredient-evidence-tags" aria-label={`${item.name} 根拠情報`}>
-        <p>Evidence & Documents</p>
+        <p>Evidence & Reference</p>
         <h3>根拠情報</h3>
         <div>
           {item.evidenceTags.map((tag) => (
@@ -371,12 +333,6 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
 
       {pptDetail && (
         <section className="dh-ppt-evidence dh-ingredient-evidence-block" aria-label={`${item.name} evidence detail`}>
-          <div className="dh-ppt-evidence-head">
-            <p>Evidence Summary</p>
-            <h3>{pptDetail.productName}</h3>
-            <span>{overview}</span>
-          </div>
-
           <div className="dh-ppt-chart-heading">
             <p>Evidence View</p>
             <h4>資料内エビデンス画像</h4>
