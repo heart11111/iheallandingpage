@@ -16,7 +16,7 @@ const featuredCards = [
     href: "/products/probiotics",
   },
   {
-    eyebrow: "Nature Ingredients",
+    eyebrow: "Functional Nature's Food Ingredients",
     title: "Nature-derived functional materials",
     subtitle: "自然由来機能性素材",
     image: "images/products-functional-nature-card-v2.webp",

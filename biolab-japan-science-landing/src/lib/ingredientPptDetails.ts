@@ -66,7 +66,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "成人期の中性脂肪蓄積による肥満・脂質異常症発生リスクの減少。",
       "臨床データ(12週): 体脂肪量 約-1,200g(プラセボ約-400g)、体脂肪率 約-0.85%(プラセボ約-0.15%)、体重 約-2.1kg(プラセボ約-1.2kg)。",
     ],
-    graphNotes: ["バーグラフは提供資料に掲載された実測値をもとに再現。単位: 体脂肪量(g)、体脂肪率(%)、体重(kg)。"],
+    graphNotes: ["体脂肪量(g)・体脂肪率(%)・体重(kg)の実測データをそのまま掲載。"],
     evidenceImages: [
       {
         src: "/images/ingredients/med02-evidence-1.webp",

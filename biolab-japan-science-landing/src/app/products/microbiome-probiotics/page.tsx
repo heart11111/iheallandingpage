@@ -8,7 +8,7 @@ export default function MicrobiomeProbioticsPage() {
       <NavBar />
       <main>
         <CorporateSubHero
-          title="Microbiome Probiotics"
+          title="Functional Probiotics"
           copy="用途別プロバイオティクス素材の全体リストです。"
           image="/images/biolab-cosmetic-science-bg.png"
           compact
@@ -16,7 +16,7 @@ export default function MicrobiomeProbioticsPage() {
         <section className="dh-product-detail">
           <div className="dh-container">
             <p className="dh-detail-primary">PRODUCTS</p>
-            <h1>Microbiome Probiotics</h1>
+            <h1>Functional Probiotics</h1>
             <p>女性、体脂肪、脳・記憶、肝臓、鼻、ストレス、腸の7種を素材別に確認できます。</p>
             <IngredientList items={microbiomeProductItems} linkBase="/products/microbiome-probiotics" />
           </div>
