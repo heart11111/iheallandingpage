@@ -4,7 +4,7 @@ import { NavBar } from "@/components/NavBar";
 const catalogItems = [
   {
     label: "個別認定型プロバイオティクス",
-    ruby: "Microbiome Probiotics",
+    ruby: "Functional Probiotics",
     body: "用途別プロバイオティクス7種の素材情報を確認できます。",
     href: "/products/microbiome-probiotics",
   },

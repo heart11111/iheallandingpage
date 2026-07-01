@@ -24,7 +24,7 @@ export default function ProductsPage() {
                 <br />
                 we focus on the ingredients.
               </h2>
-              <p>BIOLAB Japanの供給製品ラインは、Microbiome ProbioticsとFunctional Nature&apos;s Food Ingredientsを中心に構成します。</p>
+              <p>BIOLAB Japanの供給製品ラインは、Functional ProbioticsとFunctional Nature&apos;s Food Ingredientsを中心に構成します。</p>
             </div>
             <div className="dh-product-grid dh-product-grid-two">
               {productLinePages.map((group, index) => (

@@ -21,7 +21,7 @@ export const businessPages = [
     label: "機能性素材供給",
     menuLabel: "Ingredient Supply",
     href: "/business/materials",
-    summary: "Microbiome ProbioticsとFunctional Nature's Food Ingredientsを製品目的別に提案します。",
+    summary: "Functional ProbioticsとFunctional Nature's Food Ingredientsを製品目的別に提案します。",
   },
   {
     label: "OEM/ODMサービス",
@@ -77,14 +77,14 @@ export const natureProductItems = natureIngredients.filter((item) => natureProdu
 export const productLinePages = [
   {
     label: "個別認定型プロバイオティクス",
-    menuLabel: "Microbiome Probiotics",
+    menuLabel: "Functional Probiotics",
     href: "/products/microbiome-probiotics",
     summary: "女性、体脂肪、脳・記憶、肝臓、鼻、ストレス、腸の7種を整理します。",
     items: microbiomeProductItems,
   },
   {
     label: "機能性天然素材",
-    menuLabel: "Nature Ingredients",
+    menuLabel: "Functional Nature's Food Ingredients",
     href: "/products/nature-ingredients",
     summary: "男性健康、記憶、認知、体脂肪、肌、肝臓・血糖、二日酔い、免疫の10種を整理します。",
     items: natureProductItems,
@@ -112,9 +112,9 @@ export const productGroups = [
   },
   {
     slug: "nature",
-    menuLabel: "Nature Ingredients",
+    menuLabel: "Functional Nature's Food Ingredients",
     eyebrow: "自然由来機能性素材",
-    title: "Nature Ingredients",
+    title: "Functional Nature's Food Ingredients",
     subtitle: "自然由来素材",
     image: "/images/products-functional-nature-card-v2.webp",
     description:

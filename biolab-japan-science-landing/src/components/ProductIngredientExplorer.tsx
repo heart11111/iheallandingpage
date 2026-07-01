@@ -16,8 +16,8 @@ type ProductIngredientExplorerProps = {
 
 const lineOptions: Array<{ label: string; value: LineFilter }> = [
   { label: "All", value: "All" },
-  { label: "Microbiome Probiotics", value: "Functional Probiotics" },
-  { label: "Nature Ingredients", value: "Nature-derived Ingredients" },
+  { label: "Functional Probiotics", value: "Functional Probiotics" },
+  { label: "Functional Nature's Food Ingredients", value: "Nature-derived Ingredients" },
 ];
 
 function getIngredientHref(item: Ingredient) {
@@ -202,7 +202,7 @@ export function ProductIngredientExplorer({ items, title, description }: Product
             <Image alt="" aria-hidden="true" height={320} src={item.image} width={480} />
             <div>
               <IngredientLineBadge
-                label={item.line === "Functional Probiotics" ? "MICROBIOME PROBIOTICS" : "NATURE INGREDIENTS"}
+                label={item.line === "Functional Probiotics" ? "FUNCTIONAL PROBIOTICS" : "FUNCTIONAL NATURE'S FOOD INGREDIENTS"}
                 line={item.line}
               />
               <h3>{item.name}</h3>

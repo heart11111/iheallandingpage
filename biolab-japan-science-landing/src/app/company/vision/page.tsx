@@ -8,7 +8,7 @@ const visionItems = [
   ],
   [
     "Mission",
-    "Microbiome Probiotics、自然由来機能性素材、OEM/ODM、ブランド協業を一つの流れとして整理し、パートナーの製品化可能性を高めます。",
+    "Functional Probiotics、自然由来機能性素材、OEM/ODM、ブランド協業を一つの流れとして整理し、パートナーの製品化可能性を高めます。",
   ],
   [
     "Goal",
