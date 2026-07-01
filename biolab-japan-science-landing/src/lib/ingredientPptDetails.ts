@@ -1,10 +1,7 @@
-import type { EvidenceMetric } from "@/lib/ingredientEvidence";
-
-export type PptGraphPanel = {
-  title: string;
-  subtitle: string;
-  formula?: string;
-  metrics: EvidenceMetric[];
+export type PptEvidenceImage = {
+  src: string;
+  caption: string;
+  source?: string;
 };
 
 export type IngredientPptDetail = {
@@ -15,16 +12,17 @@ export type IngredientPptDetail = {
   originItems: string[];
   features: string[];
   graphNotes: string[];
-  graphPanels: PptGraphPanel[];
+  evidenceImages: PptEvidenceImage[];
 };
 
 export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
   med01: {
-    slideRef: "PPTX Slide 07",
+    slideRef: "PPTX Slide 06-07",
     productName: "iHEAL GINO 5 Formula - MED01",
     healthClaims: [
-      "女性の膣内健康向上を目的に、膣内有益菌の増殖と有害菌抑制の資料を整理。",
-      "101名のヒト適用試験とSCI論文で確認された、韓国女性の膣由来プロバイオティクス。",
+      "女性の膣健康向上に役立つプロバイオティクス複合物。",
+      "膣炎の予防および改善に役立つ。膣内環境の改善に役立つ。",
+      "101名のヒト適用試験とSCI論文(9編)で確認された、韓国女性の膣由来プロバイオティクス。",
     ],
     originTitle: "Probiotics Strain",
     originItems: [
@@ -35,188 +33,168 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "L. rhamnosus MG4288",
     ],
     features: [
-      "韓国女性の膣から分離した100%ヒト由来プロバイオティクス。",
-      "Nugent scoreを膣内環境評価の主要指標として整理。",
-      "膣内乳酸菌の増殖、有害菌抑制、菌叢バランス回復の資料を提示。",
-      "膣分泌物、灼熱感、排尿時の不快感に関する評価項目を確認。",
+      "健康な韓国女性の膣から分離した100%ヒト由来プロバイオティクス。",
+      "膣炎指標(Nugent score)の改善。",
+      "膣内乳酸菌の増殖と有害菌の抑制、膣内細菌叢の正常化。",
+      "膣分泌物の減少、膣灼熱感の減少、排尿痛の減少。",
     ],
     graphNotes: [
-      "Nugent scoreは生殖器感染の程度を示す指標で、スコアが低いほど感染程度が低いと説明されています。",
-      "参照: Nutrients 2023, 15(2), 331",
+      "Nugent scoreは生殖器感染の程度を示す指標で、スコアが低いほど感染程度が低いとされる。",
+      "出典: Nutrients 2023, 15(2), 331",
     ],
-    graphPanels: [
+    evidenceImages: [
       {
-        title: "Nugent score",
-        subtitle: "膣内環境指標の低下方向",
-        formula: "Nugent score ↓ = lower infection index",
-        metrics: [
-          { label: "Nugent score", detail: "スコア低下方向", value: 78, direction: "down" },
-          { label: "Beneficial bacteria", detail: "有益菌増殖方向", value: 72, direction: "up" },
-          { label: "Harmful bacteria", detail: "有害菌抑制方向", value: 66, direction: "down" },
-        ],
+        src: "/images/ingredients/med01-evidence-1.webp",
+        caption: "排尿痛(生理痛)・膣分泌物・膣灼熱感の変化(MED-01群 vs プラセボ群)",
+        source: "Nutrients 2023, 15(2), 331",
       },
     ],
   },
   med02: {
-    slideRef: "PPTX Slide 08",
+    slideRef: "PPTX Slide 06-08",
     productName: "iHEAL DIT 2 Formula - MED02",
     healthClaims: [
-      "脂肪細胞分化抑制を目的に設計された特許プロバイオティクス複合物。",
-      "100名のヒト試験とSCI論文で検証された抗肥満向け特許乳酸菌。",
+      "脂肪細胞の分化抑制のための特許プロバイオティクス複合物。",
+      "体重、体脂肪の減少および体質量の減少に役立つ。",
+      "100名のヒト適用試験とSCI論文(6編)で検証された抗肥満向け特許乳酸菌。",
     ],
     originTitle: "Probiotics Strain",
     originItems: ["L. fermentum MG4231", "L. fermentum MG4244"],
     features: [
-      "小児期の脂肪細胞分化抑制を通じた肥満リスク管理コンセプト。",
-      "成人期の中性脂肪蓄積、肥満、脂質異常症リスクに関する評価項目を整理。",
-      "体脂肪量、体脂肪率、体重、BMIの変化を複数グラフで提示。",
+      "小児期の脂肪細胞分化抑制による小児肥満の減少。",
+      "成人期の中性脂肪蓄積による肥満・脂質異常症発生リスクの減少。",
+      "体脂肪量、体脂肪率、体重、BMIの変化を複数グラフで確認。",
     ],
-    graphNotes: [
-      "BMIグラフはPPTXのネイティブチャートXMLから抽出した実数値を使用。",
-      "体脂肪量、体脂肪率、体重はスライド画像内グラフの方向性をHTMLで再構成。",
-    ],
-    graphPanels: [
+    graphNotes: ["バーグラフはPPTXに掲載された実測値をもとに再現。単位: 体脂肪量(g)、体脂肪率(%)、体重(kg)。"],
+    evidenceImages: [
       {
-        title: "BMI change",
-        subtitle: "MED-02群とPlacebo群の比較",
-        formula: "ΔBMI = BMI_after - BMI_baseline",
-        metrics: [
-          { label: "MED-02", detail: "BMI change", value: 70, displayValue: "-0.70 kg/m²", direction: "down" },
-          { label: "Placebo", detail: "BMI change", value: 44, displayValue: "-0.44 kg/m²", direction: "down" },
-        ],
-      },
-      {
-        title: "Body composition",
-        subtitle: "スライド内サブグラフの評価軸",
-        metrics: [
-          { label: "Fat mass", detail: "体脂肪量", value: 78, direction: "down" },
-          { label: "Fat percentage", detail: "体脂肪率", value: 72, direction: "down" },
-          { label: "Body weight", detail: "体重", value: 68, direction: "down" },
-        ],
+        src: "/images/ingredients/med02-evidence-1.webp",
+        caption: "体脂肪量変化・体脂肪率変化・体重変化(MED-02群 vs プラセボ群)",
       },
     ],
   },
   nvp2106: {
-    slideRef: "PPTX Slide 09",
+    slideRef: "PPTX Slide 06-09",
     productName: "NVP-2106",
     healthClaims: [
-      "デュオバイオーム技術の脳機能改善用2種特許プロバイオティクス複合物。",
-      "60歳以上の記憶力低下高齢者120名を対象にしたヒト試験とSCI論文で検証。",
+      "デュオバイオーム技術による脳機能改善用2種特許プロバイオティクス複合物。",
+      "60歳以上の記憶力低下高齢者120名を対象にしたヒト適用試験とSCI論文で検証。",
     ],
     originTitle: "Probiotics Strain",
     originItems: ["L. mucosae NK41", "B. longum NK46"],
     features: [
-      "神経細胞損傷と記憶力低下の原因として説明されるAmyloid beta調整・低下の評価軸。",
-      "認知機能、記憶力、注意集中力の改善方向を整理。",
+      "神経細胞損傷と記憶力低下の原因とされる「アミロイドベータ」の調整・低下。",
+      "認知機能、記憶力、注意集中力の改善。",
       "アルツハイマー病評価尺度であるADAS-Cog13総点の改善を主要指標として提示。",
     ],
-    graphNotes: ["スライドの評価項目を、脳機能関連の3指標グラフとしてHTML化。"],
-    graphPanels: [
+    graphNotes: ["12週摂取時点でのADAS-Cog13総点、記憶力総点、遅延単語再生、注意集中力の実測データをそのまま掲載。"],
+    evidenceImages: [
       {
-        title: "Brain function markers",
-        subtitle: "記憶・認知・注意集中",
-        formula: "Cognitive profile = ADAS-Cog13 + memory + attention",
-        metrics: [
-          { label: "ADAS-Cog13", detail: "総点改善方向", value: 74, direction: "down" },
-          { label: "Memory", detail: "記憶力", value: 70, direction: "up" },
-          { label: "Attention", detail: "注意集中力", value: 66, direction: "up" },
-        ],
+        src: "/images/ingredients/nvp2106-evidence-1.webp",
+        caption: "ADAS-Cog13総点の改善(12週摂取時点でプラセボ対比202%改善, P=0.0318)",
+      },
+      {
+        src: "/images/ingredients/nvp2106-evidence-2.webp",
+        caption: "記憶力総点の改善(プラセボ対比207%改善)と遅延単語再生の改善(プラセボ対比1,514%改善)",
+      },
+      {
+        src: "/images/ingredients/nvp2106-evidence-3.webp",
+        caption: "注意集中力: 正反応数315%改善、誤反応数147%改善、脱落誤謬数315%改善(12週摂取時点)",
       },
     ],
   },
   nvp1702: {
-    slideRef: "PPTX Slide 10",
+    slideRef: "PPTX Slide 06, 10",
     productName: "NVP-1702 / NVP-17902",
     healthClaims: [
-      "デュオバイオーム技術の肝機能改善用2種特許プロバイオティクス複合物。",
-      "70名のヒト試験とSCI論文で検証された、肝機能改善用特許乳酸菌。",
-      "アルコール性・非アルコール性の損傷肝コンテキストに向けた複合設計。",
+      "デュオバイオーム技術による肝機能改善用2種特許プロバイオティクス複合物。",
+      "93名のヒト適用試験とSCI論文で検証された、肝機能改善用特許乳酸菌。",
+      "アルコール性・非アルコール性の損傷した肝の改善に向けた複合設計。",
     ],
     originTitle: "Probiotics Strain",
     originItems: ["L. plantarum LC27", "B. longum LC67"],
     features: [
-      "体内の肝解毒機能強化を評価軸として整理。",
-      "腸内エンドトキシンおよび血中エンドトキシン改善方向を提示。",
-      "非アルコール性肝損傷: ALT、AST、γ-GTP、疲労指標、血中炎症指標を整理。",
-      "アルコール性肝損傷: ALT、AST、γ-GTP、血中中性脂肪、血中炎症指標を整理。",
+      "体内の肝解毒機能強化。",
+      "腸内エンドトキシンおよび血中エンドトキシンの改善。",
+      "非アルコール性肝損傷: ALT、AST、γ-GTP、疲労指標、血中炎症指標の改善。",
+      "アルコール性肝損傷: ALT、AST、γ-GTP、血中中性脂肪、血中炎症指標の改善。",
     ],
-    graphNotes: ["スライド内のアルコール性・非アルコール性肝損傷の二軸構造をHTMLで再構成。"],
-    graphPanels: [
+    graphNotes: ["非アルコール性・アルコール性それぞれの肝損傷グループのALT/AST/γ-GTP実測データをそのまま掲載。"],
+    evidenceImages: [
       {
-        title: "Liver enzyme panel",
-        subtitle: "ALT / AST / γ-GTP",
-        formula: "Liver profile = ALT + AST + γ-GTP",
-        metrics: [
-          { label: "ALT / AST", detail: "肝酵素指標", value: 74, direction: "down" },
-          { label: "γ-GTP", detail: "飲酒関連指標", value: 68, direction: "down" },
-          { label: "Inflammation", detail: "血中炎症指標", value: 62, direction: "down" },
-        ],
+        src: "/images/ingredients/nvp1702-evidence-1.webp",
+        caption: "非アルコール性肝損傷群: γ-GTP・ALT・ASTの12週間変化(NVP-1702群 vs プラセボ群、P=0.0292/P=0.0332)",
+      },
+      {
+        src: "/images/ingredients/nvp1702-evidence-2.webp",
+        caption: "アルコール性肝損傷群: ALT・AST・γ-GTPの12週間変化(P=0.0260/0.0397, P=0.0131, P=0.0229)",
       },
     ],
   },
   nvp1703: {
-    slideRef: "PPTX Slide 11",
+    slideRef: "PPTX Slide 06, 11",
     productName: "NVP-1703",
     healthClaims: [
-      "デュオバイオーム技術のアレルギー性鼻炎改善用特許プロバイオティクス複合物。",
-      "小児・青少年81名、成人95名の大規模ヒト試験資料を整理。",
+      "デュオバイオーム技術によるアレルギー性鼻炎改善用特許プロバイオティクス複合物。",
+      "小児・青少年81名、成人95名の大規模ヒト適用試験を実施。",
       "免疫過敏反応に伴う鼻の状態改善を目的とした特許プロバイオティクス。",
     ],
     originTitle: "Probiotics Strain",
     originItems: ["L. plantarum IM76", "B. longum IM55"],
     features: [
-      "小児・青少年: TNSSのDaily / Weekly評価で有意的改善方向を提示。",
-      "IL-10、IL-22など炎症調節サイトカインの改善方向を整理。",
-      "成人: TNSS、鼻水、鼻づまり、鼻炎症状、IgE減少方向を整理。",
+      "小児・青少年: TNSS(全体鼻症状点数)のDaily/Weekly評価で有意な改善。",
+      "IL-10、IL-22など炎症調節サイトカインの有意な改善。",
+      "成人: TNSS、鼻水、鼻づまり、鼻炎症状の改善、免疫グロブリンIgEの減少。",
     ],
-    graphNotes: ["PPTの小児・成人2群構造を、TNSSと免疫マーカーの比較パネルとして復元。"],
-    graphPanels: [
+    graphNotes: ["小児・青少年群と成人群、それぞれのTNSS実測データをそのまま掲載。"],
+    evidenceImages: [
       {
-        title: "TNSS response",
-        subtitle: "Daily / Weekly nasal symptom score",
-        metrics: [
-          { label: "Children / teens", detail: "TNSS改善方向", value: 76, direction: "down" },
-          { label: "Adults", detail: "TNSS改善方向", value: 72, direction: "down" },
-          { label: "IgE", detail: "免疫グロブリン指標", value: 62, direction: "down" },
-        ],
+        src: "/images/ingredients/nvp1703-evidence-1.webp",
+        caption: "小児・青少年対象ヒト適用試験: TNSS(Weekly/Daily)の有意な改善",
+      },
+      {
+        src: "/images/ingredients/nvp1703-evidence-2.webp",
+        caption: "成人対象ヒト適用試験: TNSS総点(P=0.029)、水様性鼻水(P=0.007)、鼻づまり(P=0.0098)の改善",
       },
     ],
   },
   nvp1704: {
-    slideRef: "PPTX Slide 12",
+    slideRef: "PPTX Slide 06, 12",
     productName: "NVP-1704",
     healthClaims: [
-      "ストレス性疾患、気分、不安、睡眠不調コンテキストに向けた特許プロバイオティクス複合物。",
-      "ストレスを持つ韓国人156名の大規模ヒト試験資料を整理。",
+      "ストレス性疾患、うつ、不安、不眠症の改善に向けた特許プロバイオティクス複合物。",
+      "ストレスを抱える韓国人156名の大規模ヒト適用試験を実施。",
     ],
     originTitle: "Probiotics Strain",
     originItems: ["L. reuteri NK33", "B. adolescentis NK98"],
     features: [
-      "気分、不安、睡眠の質に関する評価項目を整理。",
-      "腸内ストレスマイクロバイオーム改善方向を提示。",
-      "血中炎症性サイトカインIL-6の減少、BDNF増加、IL-6/BDNF比率低下を整理。",
-      "摂取後のL. reuteriグループとBifidobacteriumグループの増加方向を提示。",
+      "うつ、不安、不眠症を含む睡眠の質の向上。",
+      "腸内ストレスマイクロバイオームの改善。",
+      "血中炎症性サイトカインIL-6の有意な減少を実現。",
+      "脳由来神経栄養因子であるBDNFの増加およびIL-6/BDNF比率の減少。",
     ],
-    graphNotes: ["ストレス・睡眠・炎症指標を、PPTの評価軸に沿ってHTML指標化。"],
-    graphPanels: [
+    graphNotes: ["BDI/BAI、PSQI/ISI、IL-6/BDNFの実測データをそのまま掲載。"],
+    evidenceImages: [
       {
-        title: "Stress-sleep axis",
-        subtitle: "Mood / sleep / inflammatory markers",
-        formula: "Stress profile = IL-6 ↓ + BDNF ↑ + sleep quality ↑",
-        metrics: [
-          { label: "Sleep quality", detail: "睡眠の質", value: 70, direction: "up" },
-          { label: "IL-6", detail: "炎症性サイトカイン", value: 64, direction: "down" },
-          { label: "BDNF", detail: "脳由来神経栄養因子", value: 68, direction: "up" },
-        ],
+        src: "/images/ingredients/nvp1704-evidence-1.webp",
+        caption: "うつ・不安尺度BDI-II/BAI/BDI-II+BAIの改善(NVP-1704群 vs プラセボ群)",
+      },
+      {
+        src: "/images/ingredients/nvp1704-evidence-2.webp",
+        caption: "睡眠の質尺度PSQI(総合・日中機能不全)・不眠症重症度尺度ISIの改善",
+      },
+      {
+        src: "/images/ingredients/nvp1704-evidence-3.webp",
+        caption: "血液内炎症性サイトカインIL-6の減少およびBDNFの増加(P=0.041)",
       },
     ],
   },
   bifido: {
-    slideRef: "PPTX Slide 13",
+    slideRef: "PPTX Slide 06, 13",
     productName: "Bifidobacterium Probiotics",
     healthClaims: [
-      "腸の健康と排便活動をサポートするヒト由来ビフィズス菌。",
-      "母乳を摂取した健康な新生児の便由来、100%ヒト由来ビフィズス菌として整理。",
+      "腸の健康と排便活動に役立つヒト由来ビフィズス菌。",
+      "母乳を与えられた健康な新生児の便由来、100%ヒト由来ビフィズス菌。",
     ],
     originTitle: "Probiotics Strain",
     originItems: [
@@ -225,277 +203,292 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "B. lactis AD011 - GRAS No.952 / NDI No.1118",
     ],
     features: [
-      "FDA安全性認証資料: GRAS、NDI。",
-      "HALAL、KOSHER認証資料を整理。",
-      "症状別10件のヒト試験、80件の国際特許、260件のSCI論文規模を提示。",
-      "12週摂取後のガス排出頻度、腹部膨満感に関する評価項目を確認。",
+      "FDA安全性認証: GRAS、NDI。",
+      "HALAL、KOSHER認証を取得。",
+      "症状別10件のヒト試験、80件の国際特許、260編以上のSCI論文規模。",
+      "12週摂取後のガス排出頻度上昇、腹部膨満感の改善。",
+      "参考: BGN4・BORIをベースとしたプロバイオティクス(40億CFU/日, 12週間)を65歳以上の高齢者が摂取した試験で、認知機能と気分の改善が確認された(ソウル大学校盆唐再生病院実施)。",
     ],
-    graphNotes: ["スライド内の認証・臨床・特許・SCI規模を信頼性ダッシュボードとしてHTML化。"],
-    graphPanels: [
+    graphNotes: [
+      "12週摂取後のガス排出頻度・腹部膨満感の実測データをそのまま掲載。",
+      "出典: J Gerontol A Biol Sci Med Sci. 2021;76(1):32-40",
+    ],
+    evidenceImages: [
       {
-        title: "Evidence scale",
-        subtitle: "Certification / clinical / paper scale",
-        metrics: [
-          { label: "Clinical studies", detail: "症状別ヒト試験", value: 52, displayValue: "10", direction: "balanced" },
-          { label: "Patents", detail: "国際特許", value: 80, displayValue: "80", direction: "balanced" },
-          { label: "SCI papers", detail: "SCI論文", value: 92, displayValue: "260", direction: "balanced" },
-        ],
+        src: "/images/ingredients/bifido-evidence-1.webp",
+        caption: "米国食品医薬品局(FDA)GRAS・NDI認証(BGN4/BORI/AD011の登録番号)",
+      },
+      {
+        src: "/images/ingredients/bifido-evidence-2.webp",
+        caption: "12週摂取後、プラセボ対比でガス排出頻度が上昇し腹部膨満感が改善",
       },
     ],
   },
   testofen: {
-    slideRef: "PPTX Slide 15",
+    slideRef: "PPTX Slide 14-15",
     productName: "Testofen",
     healthClaims: [
       "更年期男性の健康に向けた差別化された機能性素材。",
-      "男性更年期症状の精神・心理、身体機能、性機能の3軸改善を訴求軸として整理。",
+      "男性更年期症状の精神・心理、身体機能、性機能の3軸改善を提示。",
     ],
     originTitle: "Origin Ingredient",
-    originItems: ["Fenugreek seed extract", "Trigonella foenum-graecum"],
+    originItems: ["ホロパ(フェヌグリーク)種子抽出物 Trigonella foenum-graecum"],
     features: [
-      "男性ホルモンであるテストステロンの恒常性維持・向上を評価軸として整理。",
-      "韓国内男性更年期関連素材の中で高いAMSデータを保有する素材として提示。",
-      "米国で大衆的に使われる男性健康原料として整理。",
-      "男性更年期向け追加臨床資料を保有。",
+      "男性ホルモンであるテストステロンの恒常性維持・向上。",
+      "韓国内の男性更年期関連素材の中で最も高いAMSデータを保有。",
+      "米国で最も普及している男性健康原料。",
+      "更年期男性向けの追加臨床データを保有。",
     ],
-    graphNotes: ["AMSはAging Males Symptomsの略で、中高年男性の更年期関連症状を質問票化した評価指標として説明されています。"],
-    graphPanels: [
+    graphNotes: [
+      "AMSはAging Males Symptomsの略で、中高年男性の更年期関連症状を質問票化した評価指標。韓国食品医薬品安全処(KFDA)はAMSを男性更年期評価の主要バイオマーカーに指定している。",
+      "出典: Rao A et al. The Aging Male. 2016 Jun;19(2):134-42",
+    ],
+    evidenceImages: [
       {
-        title: "AMS questionnaire score",
-        subtitle: "Mental / physical / sexual function",
-        formula: "AMS total = mental + physical + sexual symptoms",
-        metrics: [
-          { label: "Mental", detail: "精神・心理安定", value: 72, direction: "down" },
-          { label: "Physical", detail: "身体機能", value: 70, direction: "up" },
-          { label: "Sexual", detail: "性機能", value: 68, direction: "up" },
-        ],
+        src: "/images/ingredients/testofen-evidence-1.webp",
+        caption: "AMS総点の変化(Testofen群 vs プラセボ群、12週間)",
+        source: "Rao A et al. The Aging Male. 2016 Jun;19(2):134-42",
+      },
+      {
+        src: "/images/ingredients/testofen-evidence-2.webp",
+        caption: "身体機能スコア・性機能スコアの変化(12週間)",
+        source: "Rao A et al. The Aging Male. 2016 Jun;19(2):134-42",
       },
     ],
   },
   thinkgin: {
-    slideRef: "PPTX Slide 16",
+    slideRef: "PPTX Slide 14, 16",
     productName: "ThinkGIN",
     healthClaims: [
-      "記憶力および認知機能改善をサポートする素材として整理。",
-      "一般紅参比で高いジンセノサイド含有を訴求軸として提示。",
+      "記憶力および認知機能の改善に役立つ。",
+      "一般紅参対比で圧倒的な「ジンセノサイド」を含有。",
     ],
     originTitle: "Origin Ingredient",
-    originItems: ["Ginseng sprout extract powder", "Panax ginseng C.A. Meyer sprout"],
+    originItems: ["新芽人参抽出粉末 Panax ginseng C.A. Meyer sprout"],
     features: [
       "記憶保存能力の強化。",
-      "神経細胞炎症抑制。",
+      "神経細胞の炎症抑制。",
       "睡眠の質、睡眠効率の増加。",
-      "シナプス可塑性増加による記憶力・学習能力の向上方向。",
-      "即時回想力の増加、記憶力低下関連血液指標AChEの減少。",
+      "シナプス可塑性の増加による記憶力・学習能力の向上。",
+      "即時想起力の増加、記憶力低下関連血液指標AChEの減少。",
     ],
-    graphNotes: ["PPTの記憶・睡眠・AChE評価項目を、読みやすいHTML指標グラフとして整理。"],
-    graphPanels: [
+    graphNotes: ["SVLT即時想起点数、PSQI-K睡眠潜時、AChEの実測データをそのまま掲載。"],
+    evidenceImages: [
       {
-        title: "Memory and sleep profile",
-        subtitle: "Recall / sleep quality / AChE",
-        formula: "Memory profile = recall ↑ + sleep efficiency ↑ + AChE ↓",
-        metrics: [
-          { label: "Immediate recall", detail: "即時回想力", value: 74, direction: "up" },
-          { label: "Sleep efficiency", detail: "睡眠効率", value: 70, direction: "up" },
-          { label: "AChE", detail: "記憶関連血液指標", value: 66, direction: "down" },
-        ],
+        src: "/images/ingredients/thinkgin-evidence-1.webp",
+        caption: "記憶力低下関連血液指標AChEの減少(ThinkGIN群 vs プラセボ群)",
+      },
+      {
+        src: "/images/ingredients/thinkgin-evidence-2.webp",
+        caption: "SVLT即時想起点数の変化(総点でP<0.01、2次試行でP<0.05)",
+      },
+      {
+        src: "/images/ingredients/thinkgin-evidence-3.webp",
+        caption: "PSQI-K睡眠潜時スコアの改善(P<0.05)。睡眠の質と記憶力には深い関連があるとされる。",
       },
     ],
   },
   neulearn: {
-    slideRef: "PPTX Slide 17",
+    slideRef: "PPTX Slide 14, 17",
     productName: "Neu learn",
     healthClaims: [
-      "加齢により低下した認知機能改善をサポートする素材として整理。",
-      "大脳灰白質容積増加をf-MRIで確認・検証した資料を提示。",
+      "加齢により低下した認知機能の改善に役立つ。",
+      "大脳灰白質容積の増加をf-MRIで確認・検証。",
     ],
     originTitle: "Origin Ingredient",
-    originItems: ["Tremella fuciformis enzymatic extract", "White jelly mushroom enzymatic extract"],
+    originItems: ["白キクラゲ酵素分解抽出物 Tremella fuciformis Beck-extract"],
     features: [
-      "主観的記憶低下症状質問票SMCQの低下方向を確認。",
-      "短期記憶実行作業の改善。",
-      "計画機能改善をf-MRI画像評価軸とともに整理。",
+      "主観的記憶減退症状質問票SMCQの低下を確認。",
+      "短期記憶遂行機能の改善。",
+      "計画機能の改善をf-MRI画像評価とともに確認。",
     ],
-    graphNotes: ["PPTの3グラフ構成を、SMCQ、短期記憶、実行・計画機能の3パネルとしてHTML化。"],
-    graphPanels: [
+    graphNotes: ["SMCQ、短期記憶、遂行・計画機能、f-MRI画像の実測データをそのまま掲載。"],
+    evidenceImages: [
       {
-        title: "Cognitive function charts",
-        subtitle: "SMCQ / short-term memory / executive planning",
-        formula: "Cognitive response = SMCQ ↓ + short-term memory ↑ + planning ↑",
-        metrics: [
-          { label: "SMCQ", detail: "主観的記憶低下", value: 72, direction: "down" },
-          { label: "Short-term memory", detail: "短期記憶機能", value: 68, direction: "up" },
-          { label: "Planning", detail: "実行・計画機能", value: 66, direction: "up" },
-        ],
+        src: "/images/ingredients/neulearn-evidence-1.webp",
+        caption: "f-MRIで確認された大脳灰白質容積増加のクラスター(右側縁上回・右側中前頭回・右側頭頂回・左側被蓋)",
+      },
+      {
+        src: "/images/ingredients/neulearn-evidence-2.webp",
+        caption: "短期記憶の変化(P=0.001)・遂行計画機能の変化(P=0.02)",
+      },
+      {
+        src: "/images/ingredients/neulearn-evidence-3.webp",
+        caption: "主観的記憶減退症状質問票(SMCQ)の変化(600mg: P=0.007、1,200mg: P=0.002)",
       },
     ],
   },
   applephenon: {
-    slideRef: "PPTX Slide 18",
+    slideRef: "PPTX Slide 14, 18",
     productName: "Applephenon",
-    healthClaims: [
-      "体脂肪低減をサポートするダイエット向け代表素材として整理。",
-      "ダイエットカテゴリーの定番素材として提示。",
-    ],
+    healthClaims: ["体脂肪低減に役立つダイエット向けの代表的なロングセラー原料。"],
     originTitle: "Origin Ingredient",
-    originItems: ["Unripe apple extract", "High-concentration apple polyphenol"],
+    originItems: ["未熟リンゴ抽出物(青リンゴポリフェノール)"],
     features: [
-      "未熟リンゴ250個を濃縮する米国特許技術により、高濃度ポリフェノールを含有する素材として提示。",
-      "中性脂肪抑制・排出を通じた体脂肪低減コンセプト。",
-      "体脂肪量低減の評価資料を整理。",
+      "未熟リンゴ250個分を濃縮する米国特許技術3種により、圧倒的な高濃縮ポリフェノールを含有。",
+      "中性脂肪の抑制・排出を通じた確実な体脂肪減少効果。",
+      "優れた体脂肪量減少効果。",
     ],
-    graphNotes: ["12週摂取、摂取終了後4週持続、16週BMI、CTによる内臓脂肪評価のスライド構造をHTMLで再構成。"],
-    graphPanels: [
+    graphNotes: [
+      "12週間の体脂肪減少と摂取終了後4週間の持続効果、16週間のBMI変化、CT撮影による内臓脂肪評価の実測データをそのまま掲載。",
+      "出典: Journal of Oleo Science. 59(6) 321-338 (2010) / 56(8) 417-428 (2007)",
+    ],
+    evidenceImages: [
       {
-        title: "Diet evidence timeline",
-        subtitle: "12 weeks intake + 4 weeks follow-up",
-        formula: "Diet profile = body fat ↓ + BMI ↓ + visceral fat ↓",
-        metrics: [
-          { label: "Body fat", detail: "12週間体脂肪", value: 78, direction: "down" },
-          { label: "BMI", detail: "16週間BMI", value: 70, direction: "down" },
-          { label: "Visceral fat", detail: "CT撮影評価", value: 66, direction: "down" },
-        ],
+        src: "/images/ingredients/applephenon-evidence-1.webp",
+        caption: "体重・ウエスト周囲径・BMI・臀囲・腹部内臓脂肪・総腹部脂肪面積の減少(12週間摂取)",
+      },
+      {
+        src: "/images/ingredients/applephenon-evidence-2.webp",
+        caption: "12週摂取時のウエスト周囲径変化とその後の持続効果(摂取終了後4週間まで)",
+        source: "Journal of Oleo Science. 59(6) 321-338 (2010)",
+      },
+      {
+        src: "/images/ingredients/applephenon-evidence-3.webp",
+        caption: "16週間のBMI変化(Applephenon群 vs プラセボ群)",
+        source: "Journal of Oleo Science. 56(8) 417-428 (2007)",
       },
     ],
   },
   collagen: {
-    slideRef: "PPTX Slide 19",
+    slideRef: "PPTX Slide 14, 19",
     productName: "Low-molecular Collagen Peptide AG",
     healthClaims: [
-      "皮膚保湿をサポートする素材として整理。",
-      "紫外線による皮膚ダメージから皮膚健康を維持するコンセプトを提示。",
+      "肌の潤いに役立つ。",
+      "紫外線による皮膚ダメージからの皮膚健康維持に役立つ。",
     ],
     originTitle: "Origin Ingredient",
-    originItems: ["Pangasius fish skin gelatin hydrolysate", "Low-molecular collagen peptide"],
+    originItems: ["パンガシウス(Pangasius)の魚皮由来ゼラチン加水分解物", "500Da以下の低分子コラーゲンペプチド"],
     features: [
-      "皮膚保湿改善。",
-      "目元しわ減少を、肉眼評価と指標成分の両面で整理。",
-      "皮膚総弾力改善: 生体弾力、純粋弾力。",
-      "皮膚平均粗さ改善。",
+      "明確な皮膚保湿の改善。",
+      "目元のしわ減少(肉眼評価・指標成分の両方で確認)。",
+      "皮膚総弾力の改善(生体弾力、純粋弾力)。",
+      "皮膚の粗さ改善。",
     ],
-    graphNotes: ["皮膚保湿、総弾力R2、平均粗さRa、目元しわの評価グラフをHTMLパネルとして整理。"],
-    graphPanels: [
+    graphNotes: ["皮膚保湿、総弾力(R2)、平均粗さ(Ra)、目元しわの実測データをそのまま掲載。"],
+    evidenceImages: [
       {
-        title: "Skin health charts",
-        subtitle: "Moisture / elasticity / roughness",
-        formula: "Skin profile = moisture ↑ + R2 ↑ + Ra ↓",
-        metrics: [
-          { label: "Moisture", detail: "皮膚保湿", value: 76, direction: "up" },
-          { label: "Elasticity R2", detail: "皮膚総弾力", value: 70, direction: "up" },
-          { label: "Roughness Ra", detail: "平均粗さ", value: 64, direction: "down" },
-        ],
+        src: "/images/ingredients/collagen-evidence-1.webp",
+        caption: "皮膚保湿の改善(46.229→48.245)・皮膚総弾力R2の改善(0.694→0.726)(いずれも摂取前後で有意差)",
+      },
+      {
+        src: "/images/ingredients/collagen-evidence-2.webp",
+        caption: "目元しわの専門家評価改善(2.585→2.366, P<0.01)・皮膚平均粗さRaの改善(12.845→12.404)",
       },
     ],
   },
   dermania: {
-    slideRef: "PPTX Slide 20",
+    slideRef: "PPTX Slide 14, 20",
     productName: "DermaNia",
-    healthClaims: ["しわ生成抑制、しわケア、皮膚水分増加、保湿強化を訴求軸として整理。"],
+    healthClaims: ["しわの生成抑制・しわケア、皮膚水分増加・保湿強化に役立つ。"],
     originTitle: "Origin Ingredient",
-    originItems: ["Wild rice extract", "Zizania latifolia"],
-    features: ["皮膚水分増加。", "12週臨床でのしわ低減評価。", "コラーゲン遺伝子活性化、MMPs遺伝子非活性化のメカニズム構造。"],
-    graphNotes: ["PPTのメカニズム図を、活性化/非活性化の二軸図としてHTML化。"],
-    graphPanels: [
+    originItems: ["マコモ抽出物 Zizania latifolia(Wild rice)"],
+    features: ["皮膚水分の増加。", "12週間の臨床でしわ減少を確認。", "コラーゲン遺伝子の活性化、MMPs遺伝子の非活性化というメカニズム。"],
+    graphNotes: [
+      "しわ減少・皮膚水分増加の実測データをそのまま掲載。",
+      "出典: 慶熙大学校皮膚バイオテクノロジーセンター実施試験",
+    ],
+    evidenceImages: [
       {
-        title: "Skin mechanism",
-        subtitle: "Collagen gene / MMPs gene",
-        metrics: [
-          { label: "Collagen gene", detail: "活性化", value: 74, direction: "up" },
-          { label: "MMPs gene", detail: "非活性化", value: 66, direction: "down" },
-          { label: "Skin moisture", detail: "保湿増加", value: 70, direction: "up" },
-        ],
+        src: "/images/ingredients/dermania-evidence-1.webp",
+        caption: "しわ減少(ベースラインから12週間の変化、DermaNiA群 vs プラセボ群、P<0.05)",
+        source: "慶熙大学校皮膚バイオテクノロジーセンター実施",
+      },
+      {
+        src: "/images/ingredients/dermania-evidence-2.webp",
+        caption: "皮膚水分量の増加(ベースラインから12週間の変化、P<0.05)",
+        source: "慶熙大学校皮膚バイオテクノロジーセンター実施",
       },
     ],
   },
   agrimony: {
-    slideRef: "PPTX Slide 21",
+    slideRef: "PPTX Slide 14, 21",
     productName: "Agrimony extract",
-    healthClaims: ["非アルコール性脂肪肝改善をサポートする素材として整理。", "肝脂肪量、ALT、ASTの低下方向を提示。"],
+    healthClaims: ["非アルコール性脂肪肝の改善に役立つ。", "肝脂肪量、ALT、ASTの低下を確認。"],
     originTitle: "Origin Ingredient",
-    originItems: ["Agrimonia pilosa extract"],
-    features: ["ALT・AST、とくにALT数値の改善効果を評価。", "脂肪肝指数HSIの改善方向を整理。"],
-    graphNotes: ["Before / After、ALT、AST、HSIのスライド構造をHTMLグラフとして整理。"],
-    graphPanels: [
+    originItems: ["アグリモニー(仙鶴草)抽出物 Agrimonia pilosa"],
+    features: ["ALT・AST値、特にALT数値の改善効果。", "脂肪肝指数(HSI)の改善。"],
+    graphNotes: ["ALT、AST、HSIのベースライン対8週間の実測データをそのまま掲載。"],
+    evidenceImages: [
       {
-        title: "Before / after liver markers",
-        subtitle: "ALT / AST / HSI",
-        formula: "Liver index = ALT ↓ + AST ↓ + HSI ↓",
-        metrics: [
-          { label: "ALT", detail: "Before → After", value: 72, direction: "down" },
-          { label: "AST", detail: "Before → After", value: 66, direction: "down" },
-          { label: "HSI", detail: "脂肪肝指数", value: 68, direction: "down" },
-        ],
+        src: "/images/ingredients/agrimony-evidence-1.webp",
+        caption: "ALT値(P=0.025)・AST値(P=0.002)・脂肪肝指数HSI(P=0.044)の改善(ベースライン対8週間)",
       },
     ],
   },
   pinitol: {
-    slideRef: "PPTX Slide 22",
+    slideRef: "PPTX Slide 14, 22",
     productName: "Pinitol",
-    healthClaims: ["非アルコール性脂肪肝改善をサポートする素材として整理。", "肝の中性脂肪とコレステロール低下方向を提示。"],
+    healthClaims: ["非アルコール性脂肪肝の改善に役立つ。", "肝の中性脂肪とコレステロールの減少を確認。"],
     originTitle: "Origin Ingredient",
-    originItems: ["Carob pod extract", "Carob peel extract refined into functional ingredient"],
+    originItems: ["キャロブ(Carob)の鞘から抽出・精製"],
     features: [
       "損傷した肝細胞の改善・増加効果。",
-      "肝の中性脂肪細胞の減少とサイズ低下。",
-      "脂肪肝含量、ALT、ASTの低下方向。",
-      "抗酸化活性酵素GPxの増加、MDAの低下方向。",
+      "肝の中性脂肪細胞の減少とサイズの縮小。",
+      "脂肪肝含量とALT・AST値の低下。",
+      "抗酸化活性酵素GPxの増加、酸化ストレス指標MDAの低下。",
     ],
-    graphNotes: ["GPx/MDA、脂肪肝、ALT、ASTのスライド内評価軸をHTMLに再構成。"],
-    graphPanels: [
+    graphNotes: ["GPx/MDA、脂肪肝含量、ALT/ASTの実測データをそのまま掲載。"],
+    evidenceImages: [
       {
-        title: "Antioxidant and liver charts",
-        subtitle: "GPx / MDA / fatty liver / ALT / AST",
-        formula: "Liver response = GPx ↑ + MDA ↓ + ALT/AST ↓",
-        metrics: [
-          { label: "GPx", detail: "抗酸化活性酵素", value: 72, direction: "up" },
-          { label: "MDA", detail: "酸化ストレス指標", value: 64, direction: "down" },
-          { label: "ALT / AST", detail: "肝酵素", value: 70, direction: "down" },
-        ],
+        src: "/images/ingredients/pinitol-evidence-1.webp",
+        caption: "血漿GPxの増加(P=0.015)・尿中MDAの減少(P=0.002)(Pinitol群 vs プラセボ群)",
+      },
+      {
+        src: "/images/ingredients/pinitol-evidence-2.webp",
+        caption: "肝脂肪含量の減少(17.9%→15.2%, P=0.010)・ALT/AST値の減少(P=0.030/0.018, プラセボ対比P=0.040)",
       },
     ],
   },
   acetobeta: {
-    slideRef: "PPTX Slide 23",
+    slideRef: "PPTX Slide 14, 23",
     productName: "Aceto Beta",
-    healthClaims: ["アセトアルデヒドを速やかに分解し、飲酒による肝負担と二日酔い不快感の低減をサポートする素材として整理。"],
+    healthClaims: ["アセトアルデヒドを速やかに分解し、飲酒による肝負担と二日酔いの軽減に優れた効果。"],
     originTitle: "Origin Ingredient",
-    originItems: ["Soybean fermented vinegar culture", "Acetic acid bacteria"],
+    originItems: ["大豆発酵食酢培養物(酢酸菌由来)"],
     features: [
-      "飲酒後のすっきりした朝をサポートするコンセプト。",
-      "ADH: アルコール分解酵素の増加方向。",
-      "ALDH: アセトアルデヒド分解酵素の増加方向。",
+      "飲酒後のすっきりした朝の実感をサポート。",
+      "ADH(アルコール脱水素酵素)の増加による血中アルコール濃度の減少。",
+      "ALDH(アセトアルデヒド脱水素酵素)の増加による二日酔いの軽減。",
     ],
-    graphNotes: ["ADHとALDHの二酵素構造をHTMLで視覚化。"],
-    graphPanels: [
+    graphNotes: ["ADHとALDHの酵素変化、飲酒後のアセトアルデヒド・吐き気の実測データをそのまま掲載。", "出典: Journal of Agriculture & Life Science. 2016,50,223-31"],
+    evidenceImages: [
       {
-        title: "Alcohol metabolism enzymes",
-        subtitle: "ADH / ALDH",
-        formula: "Alcohol care = ADH ↑ + ALDH ↑",
-        metrics: [
-          { label: "ADH", detail: "Alcohol Dehydrogenase", value: 72, direction: "up" },
-          { label: "ALDH", detail: "Acetaldehyde Dehydrogenase", value: 76, direction: "up" },
-        ],
+        src: "/images/ingredients/acetobeta-evidence-1.webp",
+        caption: "ADH・ALDHの増加メカニズム(アルコール→アセトアルデヒド→酢酸の分解経路)",
+        source: "Journal of Agriculture & Life Science. 2016,50,223-31",
+      },
+      {
+        src: "/images/ingredients/acetobeta-evidence-2.webp",
+        caption: "飲酒0.25時間後の血中アセトアルデヒド変化量: プラセボ対比5倍の差",
+      },
+      {
+        src: "/images/ingredients/acetobeta-evidence-3.webp",
+        caption: "吐き気の改善効果 約70%(13名中9名)",
       },
     ],
   },
   immulink: {
-    slideRef: "PPTX Slide 24",
+    slideRef: "PPTX Slide 14, 24",
     productName: "Immulink MBG",
-    healthClaims: ["免疫機能増進をサポートする素材として整理。", "自然免疫と獲得免疫の両方の改善効果を提示。"],
+    healthClaims: ["免疫機能の増進に役立つ。", "自然免疫と獲得免疫の両方の改善効果を実証。"],
     originTitle: "Origin Ingredient",
-    originItems: ["Ganoderma lucidum mycelium extract powder"],
-    features: ["特許超音波抽出技術。", "自然免疫と獲得免疫の双方で、8種免疫因子の有意な改善方向を確認。"],
-    graphNotes: ["適応免疫因子と自然免疫因子の二群を、免疫ダッシュボードとしてHTML化。"],
-    graphPanels: [
+    originItems: ["霊芝菌糸体抽出粉末 Ganoderma lucidum mycelium extract powder"],
+    features: [
+      "特許取得済みの超音波抽出技術。",
+      "自然免疫と獲得免疫の両方で8種の免疫因子の有意な改善を確認。",
+      "高含有量のβ-グルカン(77%以上)。",
+    ],
+    graphNotes: ["自然免疫因子・獲得免疫因子8種の実測データをそのまま掲載。", "出典: Foods 2023, 12(3), 659. doi:10.3390/foods12030659"],
+    evidenceImages: [
       {
-        title: "Immune factor map",
-        subtitle: "Innate and adaptive immunity",
-        formula: "Immune profile = innate factors ↑ + adaptive factors ↑",
-        metrics: [
-          { label: "Innate immunity", detail: "自然免疫因子", value: 76, direction: "up" },
-          { label: "Adaptive immunity", detail: "獲得免疫因子", value: 72, direction: "up" },
-          { label: "8 factors", detail: "8種免疫因子", value: 84, direction: "balanced" },
-        ],
+        src: "/images/ingredients/immulink-evidence-1.webp",
+        caption: "自然免疫(NK細胞数・NK細胞細胞傷害活性)・獲得免疫(総リンパ球・T細胞・CD4/CD8比・血清IgA)8因子の有意な改善",
+        source: "Foods 2023, 12(3), 659. doi:10.3390/foods12030659",
+      },
+      {
+        src: "/images/ingredients/immulink-evidence-2.webp",
+        caption: "特長(β-グルカン77%以上、熱・pH安定性)とグローバル認証・登録状況(韓国・米国FDA GRAS・EU EFSA・台湾・中国ほか、Kosher・HALAL)",
       },
     ],
   },

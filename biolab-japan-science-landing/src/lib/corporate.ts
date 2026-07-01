@@ -58,7 +58,18 @@ export const communicationPages = [
   },
 ];
 
-const natureProductIds = ["testofen", "thinkgin", "neulearn", "applephenon", "collagen", "pinitol", "immulink"];
+const natureProductIds = [
+  "testofen",
+  "thinkgin",
+  "neulearn",
+  "applephenon",
+  "collagen",
+  "dermania",
+  "agrimony",
+  "pinitol",
+  "acetobeta",
+  "immulink",
+];
 
 export const microbiomeProductItems = probioticsIngredients;
 export const natureProductItems = natureIngredients.filter((item) => natureProductIds.includes(item.id));
@@ -68,14 +79,14 @@ export const productLinePages = [
     label: "個別認定型プロバイオティクス",
     menuLabel: "Microbiome Probiotics",
     href: "/products/microbiome-probiotics",
-    summary: "女性、体脂肪、認知、肝臓、鼻、ストレス、腸の7カテゴリを整理します。",
+    summary: "女性、体脂肪、脳・記憶、肝臓、鼻、ストレス、腸の7種を整理します。",
     items: microbiomeProductItems,
   },
   {
     label: "機能性天然素材",
     menuLabel: "Nature Ingredients",
     href: "/products/nature-ingredients",
-    summary: "男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫の7カテゴリを整理します。",
+    summary: "男性健康、記憶、認知、体脂肪、肌、肝臓・血糖、二日酔い、免疫の10種を整理します。",
     items: natureProductItems,
   },
 ];

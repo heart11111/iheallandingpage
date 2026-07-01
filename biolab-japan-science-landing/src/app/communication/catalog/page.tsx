@@ -5,13 +5,13 @@ const catalogItems = [
   {
     label: "個別認定型プロバイオティクス",
     ruby: "Microbiome Probiotics",
-    body: "用途別プロバイオティクス7カテゴリの素材情報を確認できます。",
+    body: "用途別プロバイオティクス7種の素材情報を確認できます。",
     href: "/products/microbiome-probiotics",
   },
   {
     label: "機能性天然素材",
     ruby: "Functional Nature's Food Ingredients",
-    body: "自然由来機能性素材7カテゴリの素材情報を確認できます。",
+    body: "自然由来機能性素材10種の素材情報を確認できます。",
     href: "/products/nature-ingredients",
   },
   {

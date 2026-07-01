@@ -17,7 +17,7 @@ export default function NatureIngredientsPage() {
           <div className="dh-container">
             <p className="dh-detail-primary">PRODUCTS</p>
             <h1>Functional Nature&apos;s Food Ingredients</h1>
-            <p>男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫の7カテゴリを素材別に確認できます。</p>
+            <p>男性健康、記憶、認知、体脂肪、肌、肝臓・血糖、二日酔い、免疫の10種を素材別に確認できます。</p>
             <IngredientList items={natureProductItems} linkBase="/products/nature-ingredients" />
           </div>
         </section>

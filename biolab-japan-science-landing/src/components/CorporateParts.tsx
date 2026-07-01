@@ -177,39 +177,19 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
 
                 <div className="dh-ppt-chart-heading">
                   <p>Evidence View</p>
-                  <h4>評価グラフ</h4>
-                  <span>下記は評価資料で提示されている指標を、Web上で比較しやすいように整理したものです。</span>
+                  <h4>資料内エビデンス画像</h4>
+                  <span>提供資料に掲載されている試験データ・グラフをそのまま掲載しています。</span>
                 </div>
 
                 <div className="dh-ppt-graph-grid">
-                  {pptDetail.graphPanels.map((panel) => (
-                    <article className="dh-ppt-chart" key={panel.title}>
-                      <div>
-                        <p>{panel.subtitle}</p>
-                        <h4>{panel.title}</h4>
-                        {panel.formula && <code>{panel.formula}</code>}
-                      </div>
-                      <div className="dh-ppt-chart-bars">
-                        {panel.metrics.map((metric) => (
-                          <div className={`dh-ppt-chart-bar is-${metric.direction || "balanced"}`} key={metric.label}>
-                            <span>
-                              <strong>{metric.label}</strong>
-                              <em>{metric.displayValue || metric.detail}</em>
-                            </span>
-                            <i aria-hidden="true">
-                              <b
-                                style={
-                                  {
-                                    "--bar-value": `${Math.max(8, Math.min(100, metric.value))}%`,
-                                  } as CSSProperties
-                                }
-                              />
-                            </i>
-                            <small>{metric.detail}</small>
-                          </div>
-                        ))}
-                      </div>
-                    </article>
+                  {pptDetail.evidenceImages.map((evidenceImage) => (
+                    <figure className="dh-ppt-chart dh-ppt-chart-figure" key={evidenceImage.src}>
+                      <Image alt={evidenceImage.caption} height={480} src={evidenceImage.src} width={720} />
+                      <figcaption>
+                        <p>{evidenceImage.caption}</p>
+                        {evidenceImage.source && <cite>出典: {evidenceImage.source}</cite>}
+                      </figcaption>
+                    </figure>
                   ))}
                 </div>
 
@@ -399,39 +379,19 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
 
           <div className="dh-ppt-chart-heading">
             <p>Evidence View</p>
-            <h4>評価グラフ</h4>
-            <span>提供資料で提示されている指標を、Web上で比較しやすいようにHTMLグラフとして再構成しています。</span>
+            <h4>資料内エビデンス画像</h4>
+            <span>提供資料に掲載されている試験データ・グラフをそのまま掲載しています。</span>
           </div>
 
           <div className="dh-ppt-graph-grid">
-            {pptDetail.graphPanels.map((panel) => (
-              <article className="dh-ppt-chart" key={panel.title}>
-                <div>
-                  <p>{panel.subtitle}</p>
-                  <h4>{panel.title}</h4>
-                  {panel.formula && <code>{panel.formula}</code>}
-                </div>
-                <div className="dh-ppt-chart-bars">
-                  {panel.metrics.map((metric) => (
-                    <div className={`dh-ppt-chart-bar is-${metric.direction || "balanced"}`} key={metric.label}>
-                      <span>
-                        <strong>{metric.label}</strong>
-                        <em>{metric.displayValue || metric.detail}</em>
-                      </span>
-                      <i aria-hidden="true">
-                        <b
-                          style={
-                            {
-                              "--bar-value": `${Math.max(8, Math.min(100, metric.value))}%`,
-                            } as CSSProperties
-                          }
-                        />
-                      </i>
-                      <small>{metric.detail}</small>
-                    </div>
-                  ))}
-                </div>
-              </article>
+            {pptDetail.evidenceImages.map((evidenceImage) => (
+              <figure className="dh-ppt-chart dh-ppt-chart-figure" key={evidenceImage.src}>
+                <Image alt={evidenceImage.caption} height={480} src={evidenceImage.src} width={720} />
+                <figcaption>
+                  <p>{evidenceImage.caption}</p>
+                  {evidenceImage.source && <cite>出典: {evidenceImage.source}</cite>}
+                </figcaption>
+              </figure>
             ))}
           </div>
 
