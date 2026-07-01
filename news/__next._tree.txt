@@ -3,4 +3,4 @@
 :HL["/images/biolab-global-factory-bg.png","image"]
 :HL["/images/global-evidence-bg.png","image"]
 :HL["/images/clinical-platform-hero.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"news","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"NWYzIQ_4tSwPzVKyroR2_"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"news","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"aZGvL9pAI2wM2hG4TW0xK"}
