@@ -230,11 +230,10 @@ export function ProductIngredientExplorer({ items, title, description, koTitle, 
             <Image
               alt=""
               aria-hidden="true"
-              height={960}
+              height={320}
               loading="eager"
               src={getIngredientCardImage(item.image)}
-              style={{ objectFit: "cover", objectPosition: "center" }}
-              width={720}
+              width={480}
             />
             <div>
               <IngredientLineBadge

@@ -7,7 +7,7 @@ import type { CSSProperties } from "react";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { IngredientCategoryBadge } from "@/components/IngredientCategoryBadge";
 import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
-import { getIngredientCardImage } from "@/lib/ingredientImages";
+import { getIngredientCardImage, getIngredientDisplayImage } from "@/lib/ingredientImages";
 import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
 import { ingredientPptDetails } from "@/lib/ingredientPptDetails";
 import type { Ingredient } from "@/lib/ingredients";
@@ -94,18 +94,17 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
         const showExtended = !linkBase;
         const evidenceVisual = ingredientEvidenceVisuals[item.id];
         const pptDetail = language === "ko" ? undefined : ingredientPptDetails[item.id];
-        const imageSrc = linkBase ? getIngredientCardImage(item.image) : item.image;
+        const imageSrc = linkBase ? getIngredientCardImage(item.image) : getIngredientDisplayImage(item.image);
         const content = (
           <>
             <Image
               alt=""
               aria-hidden="true"
               className="dh-detail-card-image"
-              height={linkBase ? 960 : 320}
+              height={320}
               loading={linkBase ? "eager" : "lazy"}
               src={imageSrc}
-              style={linkBase ? { objectFit: "cover", objectPosition: "center" } : undefined}
-              width={linkBase ? 720 : 480}
+              width={480}
             />
             <IngredientCategoryBadge category={item.category} line={item.line} />
             <h2>{item.name}</h2>
@@ -307,7 +306,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
             alt=""
             aria-hidden="true"
             height={520}
-            src={item.image}
+            src={getIngredientDisplayImage(item.image)}
             width={780}
           />
         </div>
