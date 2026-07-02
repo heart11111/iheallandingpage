@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { DevLanguageProvider } from "@/components/DevLanguageProvider";
 import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
@@ -68,8 +69,10 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={pretendardJp.variable}>
-        <JsonLd data={[organizationStructuredData, webSiteStructuredData]} />
-        {children}
+        <DevLanguageProvider>
+          <JsonLd data={[organizationStructuredData, webSiteStructuredData]} />
+          {children}
+        </DevLanguageProvider>
       </body>
     </html>
   );

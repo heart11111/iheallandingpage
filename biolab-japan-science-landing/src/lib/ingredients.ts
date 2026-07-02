@@ -25,6 +25,8 @@ export type Ingredient = {
   strains?: string[];
   origin?: string[];
   evidenceTags: string[];
+  healthClaims?: string[];
+  featurePoints?: string[];
   line: IngredientLine;
 };
 

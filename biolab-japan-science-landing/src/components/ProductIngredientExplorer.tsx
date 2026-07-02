@@ -3,7 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { IngredientLineBadge } from "@/components/IngredientCategoryBadge";
+import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
+import { getIngredientCardImage } from "@/lib/ingredientImages";
 import type { Ingredient, IngredientLine } from "@/lib/ingredients";
 
 type LineFilter = "All" | IngredientLine;
@@ -12,6 +15,8 @@ type ProductIngredientExplorerProps = {
   items: Ingredient[];
   title: string;
   description: string;
+  koTitle?: string;
+  koDescription?: string;
 };
 
 const lineOptions: Array<{ label: string; value: LineFilter }> = [
@@ -105,33 +110,50 @@ function getFilterFallbackScript() {
 `;
 }
 
-export function ProductIngredientExplorer({ items, title, description }: ProductIngredientExplorerProps) {
+export function ProductIngredientExplorer({ items, title, description, koTitle, koDescription }: ProductIngredientExplorerProps) {
+  const { language } = useDevLanguage();
   const [activeLine, setActiveLine] = useState<LineFilter>("All");
   const [activeCategory, setActiveCategory] = useState("All");
 
+  const displayItems = useMemo(() => {
+    return language === "ko" ? items.map((item) => getKoreanIngredient(item)) : items;
+  }, [items, language]);
+
+  const displayLineOptions = useMemo(() => {
+    return lineOptions.map((option) => ({
+      ...option,
+      label:
+        language === "ko" && option.value !== "All"
+          ? devKoreanLabels.line[option.value]
+          : language === "ko"
+            ? "전체"
+            : option.label,
+    }));
+  }, [language]);
+
   const visibleCategories = useMemo(() => {
     const next = new Set<string>(["All"]);
-    items.forEach((item) => {
+    displayItems.forEach((item) => {
       if (activeLine === "All" || item.line === activeLine) {
         next.add(item.category);
       }
     });
     return next;
-  }, [activeLine, items]);
+  }, [activeLine, displayItems]);
 
   const categories = useMemo(() => {
-    return ["All", ...Array.from(new Set(items.map((item) => item.category))).filter((category) => visibleCategories.has(category))];
-  }, [items, visibleCategories]);
+    return ["All", ...Array.from(new Set(displayItems.map((item) => item.category))).filter((category) => visibleCategories.has(category))];
+  }, [displayItems, visibleCategories]);
 
   const selectedCategory = visibleCategories.has(activeCategory) ? activeCategory : "All";
 
   const visibleItems = useMemo(() => {
-    return items.filter((item) => {
+    return displayItems.filter((item) => {
       const lineMatch = activeLine === "All" || item.line === activeLine;
       const categoryMatch = selectedCategory === "All" || item.category === selectedCategory;
       return lineMatch && categoryMatch;
     });
-  }, [activeLine, items, selectedCategory]);
+  }, [activeLine, displayItems, selectedCategory]);
 
   function handleLineChange(nextLine: LineFilter) {
     setActiveLine(nextLine);
@@ -147,16 +169,22 @@ export function ProductIngredientExplorer({ items, title, description }: Product
   }, []);
 
   return (
-    <section className="dh-ingredient-explorer" aria-label="Ingredient detail index" data-ingredient-filter-root>
+    <section
+      className="dh-ingredient-explorer"
+      aria-label="Ingredient detail index"
+      data-fallback-category="All"
+      data-fallback-line="All"
+      data-ingredient-filter-root
+    >
       <div className="dh-explorer-head">
         <p className="dh-detail-primary">INGREDIENT INDEX</p>
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <h2>{language === "ko" && koTitle ? koTitle : title}</h2>
+        <p>{language === "ko" && koDescription ? koDescription : description}</p>
       </div>
 
       <div className="dh-filter-stack" aria-label="Product filters">
         <div className="dh-filter-row" aria-label="Product line">
-          {lineOptions.map((option) => (
+          {displayLineOptions.map((option) => (
             <button
               aria-pressed={activeLine === option.value}
               className={activeLine === option.value ? "is-active" : ""}
@@ -179,14 +207,14 @@ export function ProductIngredientExplorer({ items, title, description }: Product
               onClick={() => setActiveCategory(option)}
               type="button"
             >
-              {option}
+              {language === "ko" && option === "All" ? "전체" : option}
             </button>
           ))}
         </div>
       </div>
 
       <div className="dh-ingredient-count" data-ingredient-count>
-        {visibleItems.length}素材
+        {language === "ko" ? `${visibleItems.length}개 소재` : `${visibleItems.length}素材`}
       </div>
 
       <div className="dh-ingredient-card-grid">
@@ -199,10 +227,24 @@ export function ProductIngredientExplorer({ items, title, description }: Product
             href={getIngredientHref(item)}
             key={item.id}
           >
-            <Image alt="" aria-hidden="true" height={320} src={item.image} width={480} />
+            <Image
+              alt=""
+              aria-hidden="true"
+              height={960}
+              loading="eager"
+              src={getIngredientCardImage(item.image)}
+              style={{ objectFit: "cover", objectPosition: "center" }}
+              width={720}
+            />
             <div>
               <IngredientLineBadge
-                label={item.line === "Functional Probiotics" ? "FUNCTIONAL PROBIOTICS" : "FUNCTIONAL NATURE'S FOOD INGREDIENTS"}
+                label={
+                  language === "ko"
+                    ? devKoreanLabels.line[item.line]
+                    : item.line === "Functional Probiotics"
+                      ? "MICROBIOME PROBIOTICS"
+                      : "NATURE INGREDIENTS"
+                }
                 line={item.line}
               />
               <h3>{item.name}</h3>

@@ -1,8 +1,13 @@
+"use client";
+
 import { Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { IngredientCategoryBadge } from "@/components/IngredientCategoryBadge";
+import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
+import { getIngredientCardImage } from "@/lib/ingredientImages";
 import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
 import { ingredientPptDetails } from "@/lib/ingredientPptDetails";
 import type { Ingredient } from "@/lib/ingredients";
@@ -10,6 +15,8 @@ import type { Ingredient } from "@/lib/ingredients";
 type SubHeroProps = {
   title: string;
   copy: string;
+  koTitle?: string;
+  koCopy?: string;
   image?: string;
   align?: "left" | "right" | "center";
   compact?: boolean;
@@ -30,14 +37,26 @@ function getCitations(pptDetail: (typeof ingredientPptDetails)[string] | undefin
   return pptDetail.graphNotes.filter((note) => note.startsWith("出典"));
 }
 
-export function CorporateSubHero({ title, copy, image = "/images/biolab-global-factory-bg.png", align = "left", compact = false }: SubHeroProps) {
+export function CorporateSubHero({
+  title,
+  copy,
+  koTitle,
+  koCopy,
+  image = "/images/biolab-global-factory-bg.png",
+  align = "left",
+  compact = false,
+}: SubHeroProps) {
+  const { language } = useDevLanguage();
+  const displayTitle = language === "ko" && koTitle ? koTitle : title;
+  const displayCopy = language === "ko" && koCopy ? koCopy : copy;
+
   return (
     <section className={`dh-sub-hero dh-sub-${align}${compact ? " dh-sub-compact" : ""}`}>
       <div className="dh-sub-bg" style={{ backgroundImage: `url(${image})` }} aria-hidden="true" />
       <div className="dh-sub-overlay" aria-hidden="true" />
       <div className="dh-container">
-        <h1>{title}</h1>
-        <p>{copy}</p>
+        <h1>{displayTitle}</h1>
+        <p>{displayCopy}</p>
       </div>
     </section>
   );
@@ -63,23 +82,30 @@ export function CorporateFooter() {
 }
 
 export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkBase?: string }) {
+  const { language } = useDevLanguage();
+  const labels = devKoreanLabels.detail;
+
   return (
     <div className={`dh-detail-grid${items.length === 1 ? " dh-detail-grid-single" : ""}`}>
-      {items.map((item) => {
+      {items.map((sourceItem) => {
+        const item = language === "ko" ? getKoreanIngredient(sourceItem) : sourceItem;
         const materials = item.strains || item.origin || [];
-        const materialLabel = item.strains ? "菌株構成" : "由来原料";
+        const materialLabel = language === "ko" ? (item.strains ? devKoreanLabels.materialLabel.strains : devKoreanLabels.materialLabel.origin) : item.strains ? "菌株構成" : "由来原料";
         const showExtended = !linkBase;
         const evidenceVisual = ingredientEvidenceVisuals[item.id];
-        const pptDetail = ingredientPptDetails[item.id];
+        const pptDetail = language === "ko" ? undefined : ingredientPptDetails[item.id];
+        const imageSrc = linkBase ? getIngredientCardImage(item.image) : item.image;
         const content = (
           <>
             <Image
               alt=""
               aria-hidden="true"
               className="dh-detail-card-image"
-              height={320}
-              src={item.image}
-              width={480}
+              height={linkBase ? 960 : 320}
+              loading={linkBase ? "eager" : "lazy"}
+              src={imageSrc}
+              style={linkBase ? { objectFit: "cover", objectPosition: "center" } : undefined}
+              width={linkBase ? 720 : 480}
             />
             <IngredientCategoryBadge category={item.category} line={item.line} />
             <h2>{item.name}</h2>
@@ -87,22 +113,33 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             <span>{item.intake}</span>
 
             <section className="dh-detail-summary" aria-label={`${item.name} 概要`}>
-              <h3>素材概要</h3>
+              <h3>{language === "ko" ? labels.summary : "素材概要"}</h3>
               <p>{item.summary}</p>
             </section>
 
+            {showExtended && item.healthClaims && (
+              <section className="dh-detail-claims" aria-label={`${item.name} 期待訴求`}>
+                <h3>{language === "ko" ? labels.claims : "期待訴求"}</h3>
+                <ul>
+                  {item.healthClaims.map((text) => (
+                    <li key={text}>{text}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
             <dl className="dh-detail-specs">
               <div>
-                <dt>用途領域</dt>
+                <dt>{language === "ko" ? labels.area : "用途領域"}</dt>
                 <dd>{item.area}</dd>
               </div>
               <div>
-                <dt>摂取目安</dt>
+                <dt>{language === "ko" ? labels.intake : "摂取目安"}</dt>
                 <dd>{item.intake}</dd>
               </div>
               <div>
-                <dt>素材ライン</dt>
-                <dd>{item.line}</dd>
+                <dt>{language === "ko" ? labels.line : "素材ライン"}</dt>
+                <dd>{language === "ko" ? devKoreanLabels.line[item.line] : item.line}</dd>
               </div>
             </dl>
 
@@ -116,7 +153,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             </section>
 
             <section className="dh-detail-evidence" aria-label={`${item.name} 根拠情報`}>
-              <h3>根拠情報</h3>
+              <h3>{language === "ko" ? labels.evidence : "根拠情報"}</h3>
               <div>
                 {item.evidenceTags.map((tag) => (
                   <em key={tag}>{tag}</em>
@@ -186,7 +223,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
               </section>
             )}
 
-            {showExtended && !pptDetail && evidenceVisual && (
+            {language !== "ko" && showExtended && !pptDetail && evidenceVisual && (
               <section className="dh-evidence-visual" aria-label={`${item.name} evidence visual`}>
                 <div className="dh-evidence-visual-head">
                   <p>{evidenceVisual.sourceLabel}</p>
@@ -216,6 +253,17 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 <p>{evidenceVisual.footnote}</p>
               </section>
             )}
+
+            {showExtended && item.featurePoints && (
+              <section className="dh-detail-features" aria-label={`${item.name} 詳細ポイント`}>
+                <h3>{language === "ko" ? labels.features : "詳細ポイント"}</h3>
+                <ul>
+                  {item.featurePoints.map((text) => (
+                    <li key={text}>{text}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
           </>
         );
 
@@ -238,10 +286,13 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
   );
 }
 
-export function IngredientDetailArticle({ item }: { item: Ingredient }) {
+export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient }) {
+  const { language } = useDevLanguage();
+  const item = language === "ko" ? getKoreanIngredient(sourceItem) : sourceItem;
+  const labels = devKoreanLabels.detail;
   const materials = item.strains || item.origin || [];
-  const materialLabel = item.strains ? "菌株構成" : "由来原料";
-  const pptDetail = ingredientPptDetails[item.id];
+  const materialLabel = language === "ko" ? (item.strains ? devKoreanLabels.materialLabel.strains : devKoreanLabels.materialLabel.origin) : item.strains ? "菌株構成" : "由来原料";
+  const pptDetail = language === "ko" ? undefined : ingredientPptDetails[item.id];
   const evidenceVisual = ingredientEvidenceVisuals[item.id];
   const displayName = pptDetail?.productName || item.name;
   const claims = pptDetail?.healthClaims || [];
@@ -262,26 +313,26 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
         </div>
         <div className="dh-ingredient-profile-summary">
           <IngredientCategoryBadge category={item.category} line={item.line} />
-          <p>{item.line}</p>
-          <h1>{displayName}</h1>
+          <p>{language === "ko" ? devKoreanLabels.line[sourceItem.line] : item.line}</p>
+          <h2>{displayName}</h2>
           <strong>{item.area}</strong>
           <span>{item.summary}</span>
         </div>
       </div>
 
       <div className="dh-ingredient-spec-panel">
-        <h3>基本情報</h3>
+        <h3>{language === "ko" ? labels.specs : "基本情報"}</h3>
         <dl>
           <div>
-            <dt>素材名</dt>
+            <dt>{language === "ko" ? labels.materialName : "素材名"}</dt>
             <dd>{displayName}</dd>
           </div>
           <div>
-            <dt>機能性内容</dt>
+            <dt>{language === "ko" ? labels.functionalContent : "機能性内容"}</dt>
             <dd>{item.area}</dd>
           </div>
           <div>
-            <dt>一日摂取目安</dt>
+            <dt>{language === "ko" ? labels.intake : "一日摂取目安"}</dt>
             <dd>{item.intake}</dd>
           </div>
           <div>
@@ -289,8 +340,12 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
             <dd>{originItems.join(" / ")}</dd>
           </div>
           <div>
-            <dt>用途分類</dt>
+            <dt>{language === "ko" ? labels.category : "用途分類"}</dt>
             <dd>{item.category}</dd>
+          </div>
+          <div>
+            <dt>{language === "ko" ? labels.documentType : "資料区分"}</dt>
+            <dd>{pptDetail ? "BIOLAB Japan product material" : "BIOLAB Japan ingredient summary"}</dd>
           </div>
         </dl>
       </div>
@@ -298,7 +353,7 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
       <div className="dh-ingredient-section-grid">
         <section>
           <p>Function</p>
-          <h3>機能性内容</h3>
+          <h3>{language === "ko" ? labels.function : "機能性内容"}</h3>
           <ul>
             {claims.map((claim) => (
               <li key={claim}>{claim}</li>
@@ -307,7 +362,7 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
         </section>
         <section>
           <p>Feature</p>
-          <h3>特徴</h3>
+          <h3>{language === "ko" ? labels.feature : "特徴"}</h3>
           <ul>
             {featureBlocks.map((feature) => (
               <li key={feature}>{feature}</li>
@@ -319,7 +374,7 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
       <section className="dh-ingredient-origin-panel">
         <div>
           <p>Raw Material</p>
-          <h3>{pptDetail?.originTitle || materialLabel}</h3>
+          <h3>{language === "ko" ? labels.rawMaterial : pptDetail?.originTitle || materialLabel}</h3>
         </div>
         <ul>
           {originItems.map((origin) => (
@@ -329,8 +384,8 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
       </section>
 
       <section className="dh-ingredient-evidence-tags" aria-label={`${item.name} 根拠情報`}>
-        <p>Evidence & Reference</p>
-        <h3>根拠情報</h3>
+        <p>Evidence & Documents</p>
+        <h3>{language === "ko" ? labels.documents : "根拠情報"}</h3>
         <div>
           {item.evidenceTags.map((tag) => (
             <em key={tag}>{tag}</em>
@@ -368,7 +423,7 @@ export function IngredientDetailArticle({ item }: { item: Ingredient }) {
         </section>
       )}
 
-      {!pptDetail && evidenceVisual && (
+      {language !== "ko" && !pptDetail && evidenceVisual && (
         <section className="dh-evidence-visual dh-ingredient-evidence-block" aria-label={`${item.name} evidence visual`}>
           <div className="dh-evidence-visual-head">
             <p>{evidenceVisual.sourceLabel}</p>

@@ -1,8 +1,10 @@
 import { CorporateFooter, CorporateSubHero } from "@/components/CorporateParts";
+import { LocalizedText } from "@/components/DevLanguageProvider";
 import { IngredientLineBadge } from "@/components/IngredientCategoryBadge";
 import { NavBar } from "@/components/NavBar";
 import { ProductIngredientExplorer } from "@/components/ProductIngredientExplorer";
 import { microbiomeProductItems, natureProductItems, productLinePages } from "@/lib/corporate";
+import { devKoreanLabels } from "@/lib/devKorean";
 
 export default function ProductsPage() {
   return (
@@ -12,6 +14,8 @@ export default function ProductsPage() {
         <CorporateSubHero
           title="Products"
           copy="成功的な商品開発の核となる素材と根拠情報に集中します。"
+          koTitle="제품"
+          koCopy="성공적인 상품 개발의 핵심이 되는 소재와 근거 정보를 중심으로 정리합니다."
           image="/images/biolab-cosmetic-science-bg.png"
           align="center"
         />
@@ -20,11 +24,29 @@ export default function ProductsPage() {
             <div className="dh-section-title">
               <p className="dh-kicker">Ingredient Supply Lines</p>
               <h2>
-                Before you create the product,
-                <br />
-                we focus on the ingredients.
+                <LocalizedText
+                  ja={
+                    <>
+                      Before you create the product,
+                      <br />
+                      we focus on the ingredients.
+                    </>
+                  }
+                  ko={
+                    <>
+                      제품을 만들기 전에,
+                      <br />
+                      먼저 소재와 근거를 정리합니다.
+                    </>
+                  }
+                />
               </h2>
-              <p>BIOLAB Japanの供給製品ラインは、Functional ProbioticsとFunctional Nature&apos;s Food Ingredientsを中心に構成します。</p>
+              <p>
+                <LocalizedText
+                  ja="BIOLAB Japanの供給製品ラインは、Microbiome ProbioticsとFunctional Nature's Food Ingredientsを中心に構成します。"
+                  ko="BIOLAB Japan의 공급 제품 라인은 기능성 프로바이오틱스와 기능성 천연소재를 중심으로 구성합니다."
+                />
+              </p>
             </div>
             <div className="dh-product-grid dh-product-grid-two">
               {productLinePages.map((group, index) => (
@@ -42,12 +64,32 @@ export default function ProductsPage() {
                   <div className="dh-product-shade" aria-hidden="true" />
                   <div className="dh-product-text">
                     <IngredientLineBadge
-                      label={group.menuLabel}
+                      label={
+                        index === 0
+                          ? group.menuLabel
+                          : group.menuLabel
+                      }
                       line={index === 0 ? "Functional Probiotics" : "Nature-derived Ingredients"}
                     />
-                    <h3>{group.label}</h3>
-                    <strong>{group.items.length}素材</strong>
-                    <p>{group.summary}</p>
+                    <h3>
+                      <LocalizedText
+                        ja={group.label}
+                        ko={index === 0 ? devKoreanLabels.line["Functional Probiotics"] : devKoreanLabels.line["Nature-derived Ingredients"]}
+                      />
+                    </h3>
+                    <strong>
+                      <LocalizedText ja={`${group.items.length}素材`} ko={`${group.items.length}개 소재`} />
+                    </strong>
+                    <p>
+                      <LocalizedText
+                        ja={group.summary}
+                        ko={
+                          index === 0
+                            ? "여성, 체지방, 인지, 간, 코, 스트레스, 장 건강 등 용도별 프로바이오틱스 소재를 정리합니다."
+                            : "남성 건강, 기억, 인지, 체지방, 피부, 간·혈당, 면역 등 자연 유래 기능성 소재를 정리합니다."
+                        }
+                      />
+                    </p>
                   </div>
                   <a href={group.href}>LEARN MORE</a>
                 </article>
@@ -56,6 +98,8 @@ export default function ProductsPage() {
             <ProductIngredientExplorer
               description="上部のボタンでラインとカテゴリーを切り替え、各素材の詳細ページへ進めます。"
               items={[...microbiomeProductItems, ...natureProductItems]}
+              koDescription="상단 버튼으로 라인과 카테고리를 전환하고, 각 소재의 상세 페이지로 이동할 수 있습니다."
+              koTitle="소재별 상세 인덱스"
               title="素材別詳細インデックス"
             />
           </div>

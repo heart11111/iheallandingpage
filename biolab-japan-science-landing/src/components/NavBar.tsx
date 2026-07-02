@@ -4,16 +4,37 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { siteMapGroups } from "@/lib/corporate";
+import { devKoreanLabels } from "@/lib/devKorean";
 
 const externalLinks = [
   { label: "BIOLAB Korea", href: "https://biolabkr.com/" },
   { label: "iHEAL Mall", href: "https://iheal.co.kr/main/index.php" },
 ];
 
+const koreanMenuLabels: Record<string, string> = {
+  "/company": "회사소개",
+  "/company/greeting": "대표 인사말",
+  "/company/vision": "비전 및 목표",
+  "/business": "사업/서비스",
+  "/business/materials": "기능성 소재 공급",
+  "/business/odm-oem": "OEM/ODM 서비스",
+  "/business/brand-management": "브랜드 매니지먼트",
+  "/products": "제품",
+  "/products/microbiome-probiotics": "프로바이오틱스",
+  "/products/nature-ingredients": "천연소재",
+  "/communication": "문의",
+  "/communication/catalog": "E-카탈로그",
+  "/communication/inquiries": "고객 문의",
+  "/communication/channels": "채널",
+};
+
 export function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { language, setLanguage } = useDevLanguage();
+  const menuLabel = (href: string, fallback: string) => (language === "ko" ? koreanMenuLabels[href] || fallback : fallback);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -32,12 +53,12 @@ export function NavBar() {
         <nav className="dh-menu" aria-label="Primary navigation">
           {siteMapGroups.map((link) => (
             <div className="dh-menu-item" key={link.label}>
-              <Link href={link.href}>{link.menuLabel}</Link>
+              <Link href={link.href}>{menuLabel(link.href, link.menuLabel)}</Link>
               {link.children ? (
                 <div className="dh-submenu">
                   {link.children.map((child) => (
                     <Link href={child.href} key={child.href}>
-                      {child.menuLabel}
+                      {menuLabel(child.href, child.menuLabel)}
                     </Link>
                   ))}
                 </div>
@@ -52,6 +73,24 @@ export function NavBar() {
               {link.label}
             </a>
           ))}
+          <div className="dh-dev-language-toggle" aria-label={devKoreanLabels.language}>
+            <button
+              type="button"
+              className={language === "ja" ? "is-active" : ""}
+              aria-pressed={language === "ja"}
+              onClick={() => setLanguage("ja")}
+            >
+              {devKoreanLabels.ja}
+            </button>
+            <button
+              type="button"
+              className={language === "ko" ? "is-active" : ""}
+              aria-pressed={language === "ko"}
+              onClick={() => setLanguage("ko")}
+            >
+              {devKoreanLabels.ko}
+            </button>
+          </div>
           <button type="button" className="dh-mobile-toggle" aria-label="メニュー" onClick={() => setOpen((value) => !value)}>
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -62,12 +101,12 @@ export function NavBar() {
         <div className="dh-mobile-panel">
           {siteMapGroups.map((link) => (
             <Link href={link.href} key={link.label} onClick={() => setOpen(false)}>
-              {link.menuLabel}
+              {menuLabel(link.href, link.menuLabel)}
             </Link>
           ))}
           {siteMapGroups.flatMap((link) => link.children).map((child) => (
             <Link className="dh-mobile-sub-link" href={child.href} key={child.href} onClick={() => setOpen(false)}>
-              {child.menuLabel}
+              {menuLabel(child.href, child.menuLabel)}
             </Link>
           ))}
           {externalLinks.map((link) => (
@@ -75,6 +114,14 @@ export function NavBar() {
               {link.label}
             </a>
           ))}
+          <div className="dh-mobile-language-toggle" aria-label={devKoreanLabels.language}>
+            <button type="button" className={language === "ja" ? "is-active" : ""} onClick={() => setLanguage("ja")}>
+              일본어
+            </button>
+            <button type="button" className={language === "ko" ? "is-active" : ""} onClick={() => setLanguage("ko")}>
+              한국어
+            </button>
+          </div>
         </div>
       ) : null}
     </header>
