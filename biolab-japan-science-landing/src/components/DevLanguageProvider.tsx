@@ -29,7 +29,7 @@ export function DevLanguageProvider({ children }: { children: ReactNode }) {
 }
 
 export function useDevLanguage() {
-  const [language, setLanguageState] = useState<DevLanguage>(readLanguage);
+  const [language, setLanguageState] = useState<DevLanguage>("ja");
 
   useEffect(() => {
     const syncLanguage = () => {
@@ -38,6 +38,7 @@ export function useDevLanguage() {
       applyDocumentLanguage(nextLanguage);
     };
 
+    syncLanguage();
     window.addEventListener("storage", syncLanguage);
     window.addEventListener(CHANGE_EVENT, syncLanguage);
     return () => {

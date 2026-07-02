@@ -3,7 +3,7 @@ import { CorporateFooter, CorporateSubHero, IngredientDetailArticle } from "@/co
 import { JsonLd } from "@/components/JsonLd";
 import { NavBar } from "@/components/NavBar";
 import { microbiomeProductItems } from "@/lib/corporate";
-import { koreanIngredientCopy } from "@/lib/devKorean";
+import { devKoreanPageCopy } from "@/lib/devKorean";
 import { ingredientProductStructuredData } from "@/lib/structuredData";
 
 export function generateStaticParams() {
@@ -18,18 +18,16 @@ export default async function MicrobiomeProductDetailPage({ params }: { params: 
     notFound();
   }
 
-  const koItem = koreanIngredientCopy[item.id];
-
   return (
     <div className="dh-page">
       <NavBar />
       <JsonLd data={ingredientProductStructuredData(item, `/products/microbiome-probiotics/${item.id}`)} />
       <main>
         <CorporateSubHero
-          title={item.name}
-          copy={item.area}
-          koTitle={koItem?.name || item.name}
-          koCopy={koItem?.area}
+          title="Functional Probiotics"
+          copy="用途別プロバイオティクス素材"
+          koTitle={devKoreanPageCopy.microbiome.title}
+          koCopy={devKoreanPageCopy.detailPrimary.microbiome}
           image="/images/biolab-cosmetic-science-bg.png"
           compact
         />
