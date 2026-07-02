@@ -143,7 +143,7 @@ export const natureIngredients: Ingredient[] = [
     area: "記憶・認知機能",
     summary: "記憶力・認知機能改善に役立つ、一般紅参より高濃度のジンセノサイドを含む新芽人参抽出粉末。",
     intake: "450mg/day",
-    image: "/images/ingredients/thinkgin.webp",
+    image: "/images/ingredients/thinkgin-upscaled.png",
     origin: ["新芽人参抽出粉末 Panax ginseng C.A. Meyer sprout", "韓国産・韓国個別認定型素材"],
     evidenceTags: ["ヒト臨床試験", "記憶・睡眠", "ジンセノサイド高含有"],
     line: "Nature-derived Ingredients",
@@ -174,7 +174,7 @@ export const natureIngredients: Ingredient[] = [
   },
   {
     id: "collagen",
-    name: "Low-molecular Collagen Peptide AG",
+    name: "Long-pep collagen peptide AG",
     category: "肌",
     area: "皮膚水分・弾力",
     summary: "紫外線による皮膚ダメージからの皮膚健康維持、目元のしわ・肌の潤いに役立つ低分子コラーゲンペプチド。",

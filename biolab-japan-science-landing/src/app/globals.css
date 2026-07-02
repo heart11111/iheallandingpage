@@ -4138,6 +4138,14 @@ h2 {
   letter-spacing: 0.025em;
 }
 
+.dh-product-text .dh-category-badge.is-nature,
+.dh-product-text .dh-category-badge.is-probiotics {
+  --badge-bg: rgba(10, 22, 26, 0.56);
+  --badge-border: rgba(255, 255, 255, 0.42);
+  --badge-color: #ffffff;
+  --badge-icon-bg: rgba(255, 255, 255, 0.16);
+}
+
 .dh-product-text .dh-category-badge > span {
   border: 0;
   padding: 0;
@@ -5294,13 +5302,36 @@ h2 {
 }
 
 .dh-detail-card-link {
-  display: block;
+  display: flex;
+  min-height: 430px;
+  flex-direction: column;
+  padding: 22px;
   color: inherit;
   text-decoration: none;
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
     transform 0.2s ease;
+}
+
+.dh-detail-card-link .dh-detail-card-image {
+  height: 148px;
+  margin-bottom: 18px;
+}
+
+.dh-detail-card-link h2 {
+  min-height: 58px;
+  margin-bottom: 12px;
+}
+
+.dh-detail-card-link > strong {
+  min-height: 44px;
+}
+
+.dh-detail-card-link > span:not(.dh-detail-card-cta) {
+  min-height: 44px;
+  color: #204da1;
+  font-weight: 900;
 }
 
 .dh-detail-card-link:hover {
@@ -5528,9 +5559,171 @@ h2 {
   margin-top: 0;
 }
 
+.dh-origin-composition-cards {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px !important;
+  margin-top: 16px;
+}
+
+.dh-ingredient-origin-panel .dh-origin-composition-cards {
+  grid-column: 1 / -1;
+  margin-top: 2px;
+}
+
+.dh-origin-composition-cards figure {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #dbe7f4;
+  background: #fff;
+}
+
+.dh-origin-composition-cards img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 431 / 295;
+  object-fit: cover;
+}
+
+.dh-origin-composition-cards figcaption {
+  display: grid;
+  gap: 2px;
+  padding: 9px 10px 10px;
+  background: #eef6ff;
+  color: #182235;
+  font-size: 11px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.dh-origin-composition-cards figcaption strong {
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.dh-origin-composition-cards figcaption span {
+  color: #34445a;
+  font-weight: 700;
+}
+
+.dh-origin-composition-table {
+  grid-column: 1 / -1;
+  display: grid !important;
+  gap: 10px !important;
+  margin-top: 16px;
+  border: 1px solid #dbe7f4;
+  background: #fbfdff;
+  padding: 16px;
+}
+
+.dh-origin-composition-table > strong {
+  color: #17335a;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.dh-origin-composition-table > p {
+  margin: 0;
+  color: #4c5a6d;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.dh-origin-composition-table > div {
+  display: grid !important;
+  gap: 8px !important;
+  overflow-x: auto;
+}
+
+.dh-origin-composition-table table {
+  width: 100%;
+  min-width: 0;
+  border-collapse: collapse;
+  background: #fff;
+  color: #243044;
+  font-size: 11.5px;
+  line-height: 1.35;
+  text-align: center;
+  table-layout: fixed;
+}
+
+.dh-origin-composition-table th,
+.dh-origin-composition-table td {
+  border: 1px solid #cfe3d1;
+  padding: 7px 8px;
+  white-space: nowrap;
+}
+
+.dh-origin-composition-table thead th {
+  background: #eef9ec;
+  color: #2b6c3e;
+  font-weight: 900;
+}
+
+.dh-origin-composition-table tbody th {
+  width: 128px;
+  background: #f7fbf5;
+  color: #21364d;
+  font-weight: 900;
+  text-align: left;
+}
+
+.dh-origin-composition-table tbody td {
+  font-weight: 700;
+}
+
+.dh-origin-composition-tab-panel {
+  display: grid;
+  gap: 0;
+  border: 1px solid #dfe8f3;
+  background: #f7fbff;
+  padding: 0;
+}
+
+.dh-origin-composition-tabs {
+  display: flex !important;
+  gap: 6px !important;
+  border-bottom: 1px solid #dbe7f4;
+  background: #eef6ff;
+  padding: 12px 16px 0;
+}
+
+.dh-origin-composition-tabs span {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d4e5f5;
+  border-bottom-color: #fff;
+  background: #fff;
+  padding: 10px 16px;
+  color: #17335a;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.dh-origin-composition-tab-panel .dh-origin-composition-table {
+  grid-column: auto;
+  margin-top: 0;
+  border: 0;
+  background: #fff;
+  padding: 18px 18px 20px;
+}
+
+.dh-origin-composition-tab-panel .dh-origin-composition-table > strong {
+  font-size: 17px;
+}
+
+.dh-origin-composition-tab-panel .dh-origin-composition-table > p {
+  color: #41abe1;
+  font-weight: 900;
+}
+
 .dh-detail-card-cta {
   width: fit-content;
-  margin-top: 22px;
+  margin-top: auto;
   border-bottom: 2px solid #41abe1;
   color: #204da1;
   font-size: 12px;
@@ -5681,12 +5874,15 @@ h2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+  min-width: 0;
 }
 
 .dh-ingredient-section-grid section {
+  min-width: 0;
   padding: 32px 34px;
 }
 
+.dh-ingredient-spec-panel p,
 .dh-ingredient-section-grid p,
 .dh-ingredient-origin-panel p,
 .dh-ingredient-evidence-tags p {
@@ -5714,7 +5910,8 @@ h2 {
   color: #4b5563;
   font-size: 15px;
   line-height: 1.85;
-  word-break: keep-all;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .dh-ingredient-section-grid li::before,
@@ -5729,6 +5926,78 @@ h2 {
   background: #41abe1;
 }
 
+.dh-feature-mechanism {
+  margin: 24px 0 0;
+  padding: 12px;
+  border: 1px solid #dbe7f4;
+  background: #fff;
+}
+
+.dh-feature-mechanism img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #e5eef8;
+}
+
+.dh-feature-mechanism[data-feature-kind="certification"] {
+  display: grid;
+  justify-items: center;
+  max-width: 540px;
+  margin: 22px auto 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.dh-feature-mechanism[data-feature-kind="certification"] img {
+  width: min(100%, 520px);
+  border: 1px solid #dbe7f4;
+  background: #fff;
+}
+
+.dh-feature-mechanism[data-feature-kind="certification"] figcaption {
+  display: none;
+}
+
+.dh-feature-mechanism figcaption {
+  margin-top: 10px;
+  color: #223044;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.dh-below-summary-evidence {
+  display: grid;
+  justify-items: center;
+  border: 1px solid #dfe6ee;
+  background: #fff;
+  padding: 22px 24px;
+}
+
+.dh-below-summary-evidence figure {
+  width: min(100%, 860px);
+  margin: 0;
+}
+
+.dh-below-summary-evidence img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #dbe7f4;
+  background: #fff;
+}
+
+.dh-below-summary-evidence figcaption {
+  margin-top: 10px;
+  color: #223044;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.6;
+  text-align: left;
+}
+
 .dh-ingredient-origin-panel,
 .dh-ingredient-evidence-tags {
   padding: 32px 34px;
@@ -5736,14 +6005,35 @@ h2 {
 
 .dh-ingredient-origin-panel {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  gap: 28px;
+  grid-template-columns: 1fr;
+  gap: 22px;
   align-items: start;
 }
 
 .dh-ingredient-origin-panel ul {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  max-width: 920px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 12px;
   margin: 0;
+}
+
+.dh-ingredient-origin-panel li {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  border: 1px solid #dbe7f4;
+  background: #f8fbff;
+  padding: 12px 16px 12px 36px;
+  color: #263243;
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.dh-ingredient-origin-panel li::before {
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .dh-ingredient-evidence-tags div {
@@ -5767,11 +6057,91 @@ h2 {
 .dh-ingredient-evidence-tags cite,
 .dh-detail-evidence cite {
   display: block;
-  margin-top: 10px;
-  color: #6b7786;
-  font-size: 12px;
+  border: 1px solid #d8e6f5;
+  border-left: 4px solid #41abe1;
+  background: #f8fbff;
+  padding: 12px 14px;
+  color: #253247;
+  font-size: 14px;
   font-style: normal;
-  line-height: 1.6;
+  font-weight: 700;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.dh-ingredient-evidence-tags cite {
+  margin-top: 18px;
+}
+
+.dh-ingredient-evidence-tags cite + cite,
+.dh-detail-evidence cite + cite {
+  margin-top: 8px;
+}
+
+.dh-detail-evidence cite {
+  margin-top: 10px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+}
+
+.dh-study-note {
+  display: grid !important;
+  gap: 12px !important;
+  margin-top: 14px !important;
+  border: 1px solid #d8e6f5;
+  background: #fbfdff;
+  padding: 16px;
+}
+
+.dh-study-note > strong {
+  color: #17335a;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.dh-study-note dl {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  background: #e5eef8;
+}
+
+.dh-study-note dl div,
+.dh-detail-card .dh-study-note dl div {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 0;
+  margin: 0 !important;
+  background: #fff;
+}
+
+.dh-study-note dt,
+.dh-study-note dd {
+  margin: 0;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.dh-study-note dt {
+  background: #f1f7fd;
+  color: #204da1;
+  font-weight: 900;
+}
+
+.dh-study-note dd {
+  color: #263243;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.dh-study-note p {
+  margin: 0;
+  color: #5b6677;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.55;
 }
 
 .dh-ingredient-evidence-block {
@@ -5949,15 +6319,29 @@ h2 {
 
 .dh-ppt-graph-grid {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 16px !important;
   margin-top: 18px;
+  align-items: start;
+}
+
+.dh-ppt-graph-grid[data-evidence-count="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.dh-ppt-graph-grid[data-evidence-count="3"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.dh-ppt-graph-grid[data-evidence-count="4"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .dh-ppt-chart {
   border: 1px solid #dbe7f4;
-  padding: 22px;
+  padding: 18px;
   background: #fff;
+  min-width: 0;
 }
 
 .dh-ppt-chart > div {
@@ -5980,12 +6364,24 @@ h2 {
   margin: 0;
 }
 
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-shape="wide"] {
+  grid-column: 1 / -1;
+  padding: 12px;
+}
+
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-1.webp"] {
+  grid-column: 1 / -1;
+}
+
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-1.webp"] img {
+  max-width: min(100%, 430px);
+}
+
 .dh-ppt-chart-figure img {
   display: block;
   width: 100%;
-  height: 220px;
+  height: auto;
   max-width: 100%;
-  object-fit: contain;
   border: 1px solid #e5eef8;
   background: #fff;
   margin: 0 auto;
@@ -5993,37 +6389,31 @@ h2 {
 
 .dh-ppt-chart-figure figcaption {
   display: grid !important;
-  gap: 4px;
-  margin-top: 12px;
+  gap: 6px;
+  width: 100%;
+  margin: 14px auto 0;
+  border: 1px solid #d8e6f5;
+  border-left: 4px solid #41abe1;
+  background: #f8fbff;
+  padding: 11px 13px;
 }
 
 .dh-ppt-chart-figure figcaption p {
   margin: 0;
-  color: #1c2430;
-  font-size: 13px;
-  line-height: 1.6;
+  color: #142033;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
 }
 
 .dh-ppt-chart-figure figcaption cite {
   font-style: normal;
-  color: #6b7786;
-  font-size: 11.5px;
-  line-height: 1.5;
-}
-
-.dh-ppt-notes {
-  display: grid !important;
-  gap: 8px !important;
-  margin-top: 16px;
-  border-top: 1px solid #e1e9f4;
-  padding-top: 14px;
-}
-
-.dh-ppt-notes p {
-  margin: 0;
-  color: #657182;
-  font-size: 12.5px;
-  line-height: 1.75;
+  color: #4d5b6e;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 
 .dh-evidence-visual {
@@ -7108,6 +7498,10 @@ h2 {
     padding: 22px 20px;
     text-align: center;
   }
+
+  .dh-origin-composition-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -7278,6 +7672,10 @@ h2 {
   .dh-ppt-detail-columns,
   .dh-ppt-graph-grid,
   .dh-ppt-chart-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .dh-ppt-graph-grid[data-evidence-count] {
     grid-template-columns: 1fr;
   }
 

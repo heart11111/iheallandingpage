@@ -12,7 +12,7 @@ export default function CommunicationPage() {
           title="Communication"
           copy="カタログ確認、顧客問い合わせ、公式チャネルを案内します。"
           koTitle="문의사항"
-          koCopy="E-카탈로그, 고객 문의, 공식 커뮤니케이션 채널을 안내합니다."
+          koCopy="E-카탈로그, 고객 문의, 공식 커뮤니케이션 채널입니다."
           image="/images/clinical-platform-hero.png"
           compact
         />

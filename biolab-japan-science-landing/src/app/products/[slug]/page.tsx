@@ -16,6 +16,13 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     notFound();
   }
 
+  const ingredientLinkBase =
+    group.slug === "probiotics"
+      ? "/products/microbiome-probiotics"
+      : group.slug === "nature"
+        ? "/products/nature-ingredients"
+        : undefined;
+
   return (
     <div className="dh-page">
       <NavBar />
@@ -40,7 +47,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               <LocalizedText ja={group.description} ko={group.koDescription} />
             </p>
             {group.items.length ? (
-              <IngredientList items={group.items} />
+              <IngredientList items={group.items} linkBase={ingredientLinkBase} />
             ) : (
               <div className="dh-process-list">
                 {[
@@ -48,7 +55,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                     "01",
                     "Planning",
                     "カテゴリー、摂取量、剤形、販売チャネルを整理します。",
-                    "카테고리, 섭취량, 제형, 판매 채널을 정리합니다.",
+                    "카테고리, 섭취량, 제형, 판매 채널.",
                   ],
                   [
                     "02",
@@ -60,7 +67,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                     "03",
                     "Supply",
                     "輸入、通関、卸供給、日本側販売導線を事業計画に接続します。",
-                    "제조 상품 수입/통관, 도매 공급, 일본 판매 도선을 사업 계획에 연결합니다.",
+                    "제조 상품 수입/통관, 도매 공급, 일본 판매 경로를 사업 계획에 연결합니다.",
                   ],
                 ].map((row) => (
                   <article key={row[0]}>

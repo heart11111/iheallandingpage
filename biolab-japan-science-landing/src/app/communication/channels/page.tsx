@@ -16,7 +16,7 @@ const channels = [
     koLabel: "비오랩 코리아",
     ruby: "BIOLAB Korea",
     body: "韓国側の企業情報と素材・製品ポートフォリオを確認できます。",
-    koBody: "한국 측 기업 정보와 소재·제품 포트폴리오를 확인할 수 있습니다.",
+    koBody: "한국 측 기업 정보와 소재·제품 포트폴리오 페이지입니다.",
     href: "https://biolabkr.com/",
   },
   {

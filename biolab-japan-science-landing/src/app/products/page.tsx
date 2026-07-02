@@ -4,7 +4,6 @@ import { IngredientLineBadge } from "@/components/IngredientCategoryBadge";
 import { NavBar } from "@/components/NavBar";
 import { ProductIngredientExplorer } from "@/components/ProductIngredientExplorer";
 import { microbiomeProductItems, natureProductItems, productLinePages } from "@/lib/corporate";
-import { devKoreanLabels } from "@/lib/devKorean";
 
 export default function ProductsPage() {
   return (
@@ -15,7 +14,7 @@ export default function ProductsPage() {
           title="Products"
           copy="成功的な商品開発の核となる素材と根拠情報に集中します。"
           koTitle="제품"
-          koCopy="성공적인 상품 개발의 핵심이 되는 소재와 근거 정보를 중심으로 정리합니다."
+          koCopy="성공적인 상품 개발의 핵심이 되는 소재와 근거 정보입니다."
           image="/images/biolab-cosmetic-science-bg.png"
           align="center"
         />
@@ -36,7 +35,7 @@ export default function ProductsPage() {
                     <>
                       제품을 만들기 전에,
                       <br />
-                      먼저 소재와 근거를 정리합니다.
+                      소재와 근거가 먼저입니다.
                     </>
                   }
                 />
@@ -55,8 +54,8 @@ export default function ProductsPage() {
                   <img
                     src={
                       index === 0
-                        ? "/images/products-microbiome-probiotics-card-v2.webp"
-                        : "/images/products-functional-nature-card-v2.webp"
+                        ? "/images/products-microbiome-probiotics-card-v3.webp"
+                        : "/images/products-functional-nature-card-v3.webp"
                     }
                     alt=""
                     aria-hidden="true"
@@ -74,7 +73,21 @@ export default function ProductsPage() {
                     <h3>
                       <LocalizedText
                         ja={group.label}
-                        ko={index === 0 ? devKoreanLabels.line["Functional Probiotics"] : devKoreanLabels.line["Nature-derived Ingredients"]}
+                        ko={
+                          index === 0 ? (
+                            <>
+                              Functional Probiotics
+                              <br />
+                              line
+                            </>
+                          ) : (
+                            <>
+                              Functional Nature‘s
+                              <br />
+                              food ingredients Line
+                            </>
+                          )
+                        }
                       />
                     </h3>
                     <strong>
@@ -85,8 +98,8 @@ export default function ProductsPage() {
                         ja={group.summary}
                         ko={
                           index === 0
-                            ? "여성, 체지방, 인지, 간, 코, 스트레스, 장 건강 등 용도별 프로바이오틱스 소재를 정리합니다."
-                            : "남성 건강, 기억, 인지, 체지방, 피부, 간·혈당, 면역 등 자연 유래 기능성 소재를 정리합니다."
+                            ? "여성, 체지방, 인지, 간, 코, 스트레스, 장 건강 등 용도별 프로바이오틱스 소재입니다."
+                            : "남성 건강, 기억, 인지, 체지방, 피부, 간·혈당, 면역 등 자연 유래 기능성 소재입니다."
                         }
                       />
                     </p>
@@ -98,7 +111,7 @@ export default function ProductsPage() {
             <ProductIngredientExplorer
               description="上部のボタンでラインとカテゴリーを切り替え、各素材の詳細ページへ進めます。"
               items={[...microbiomeProductItems, ...natureProductItems]}
-              koDescription="상단 버튼으로 라인과 카테고리를 전환하고, 각 소재의 상세 페이지로 이동할 수 있습니다."
+              koDescription="라인과 카테고리별 소재 상세 인덱스입니다."
               koTitle="소재별 상세 인덱스"
               title="素材別詳細インデックス"
             />

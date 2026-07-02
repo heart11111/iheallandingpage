@@ -11,7 +11,7 @@ const lines = [
     ruby: "Functional Probiotics",
     koRuby: "Ⅰ. Functional Probiotics line",
     copy: "女性、体脂肪、認知、肝臓、鼻、ストレス、腸のコンディションに合わせたプロバイオティクス素材を検討します。",
-    koCopy: "여성 질건강, 체지방 감소, 뇌건강, 코건강, 간건강, 스트레스·수면, 장건강 소재를 인체시험 완료 기준으로 검토합니다.",
+    koCopy: "여성 질건강, 체지방, 뇌건강, 코건강, 간건강, 스트레스·수면, 장건강 영역의 인체시험 완료 프로바이오틱스 소재입니다.",
     href: "/products/microbiome-probiotics",
     items: microbiomeProductItems,
   },
@@ -21,7 +21,7 @@ const lines = [
     ruby: "Functional Nature's Food Ingredients",
     koRuby: "Ⅱ. Functional Nature‘s food ingredients Line",
     copy: "男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫などの自然由来機能性素材を提案します。モロシル、発酵紅参、ジンセンベリーなど、韓国の幅広い機能性素材ネットワークへのアクセスもご相談いただけます。",
-    koCopy: "남성 갱년기, 체지방 감소, 인지 개선, 피부보습, 간건강, 홍삼 등 자연 유래 기능성 소재를 제안합니다. 모로오렌지추출물(Morosil), 발효홍삼, 진생베리 등 한국 기능성 소재 네트워크도 상담 가능합니다.",
+    koCopy: "남성 갱년기, 체지방, 인지, 피부보습, 간건강, 홍삼 등 자연 유래 기능성 소재입니다. 모로오렌지추출물(Morosil), 발효홍삼, 진생베리 등 한국 기능성 소재 네트워크도 상담 가능합니다.",
     href: "/products/nature-ingredients",
     items: natureProductItems,
   },
@@ -36,7 +36,7 @@ export default function MaterialsPage() {
           title="Functional Ingredient Supply"
           copy="製品目的に合わせた機能性素材と根拠資料を一緒に検討します。"
           koTitle="기능성 식품 소재 사업"
-          koCopy="제품 목적에 맞춘 기능성 소재와 인체시험 완료 근거 자료를 함께 검토합니다."
+          koCopy="제품 목적에 맞춘 기능성 소재와 인체시험 완료 근거 자료입니다."
           image="/images/global-evidence-bg.png"
           compact
         />

@@ -39,18 +39,18 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
       { label: "Beneficial bacteria", detail: "有用菌増殖サポート", value: 72, direction: "up" },
       { label: "Patent strain set", detail: "5種特許乳酸菌", value: 86, displayValue: "5 strains", direction: "balanced" },
     ],
-    footnote: "PPTXの臨床・特許情報を、公開ページ向けに指標マップとして再構成しています。",
+    footnote: "臨床・特許情報を、公開ページ向けに指標マップとして整理しています。",
   },
   med02: {
     title: "BMI reduction chart",
     sourceLabel: "100名ヒト試験 / BMI kg/m2",
-    summary: "PPTX内のBMIチャートをHTMLバーで再構成。MED-02群とPlacebo群の変化量を比較します。",
+    summary: "BMIチャートをHTMLバーで整理。MED-02群とPlacebo群の変化量を比較します。",
     metrics: [
       { label: "MED-02", detail: "BMI change", value: 70, displayValue: "-0.70 kg/m2", direction: "down" },
       { label: "Placebo", detail: "BMI change", value: 44, displayValue: "-0.44 kg/m2", direction: "down" },
       { label: "Body fat indicators", detail: "体脂肪量・体脂肪率・BMI", value: 76, direction: "down" },
     ],
-    footnote: "BMI数値はPPTX内チャートデータを参照し、その他は同スライドの評価指標を要約しています。",
+    footnote: "BMI数値と評価指標を公開ページ向けに整理しています。",
   },
   nvp2106: {
     title: "Cognitive function markers",
@@ -61,7 +61,7 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
       { label: "Memory", detail: "記憶・学習関連", value: 70, direction: "up" },
       { label: "Attention", detail: "注意集中サポート", value: 66, direction: "up" },
     ],
-    footnote: "PPTXの高齢者対象試験・認知評価項目を、ウェブ表示用に再構成しています。",
+    footnote: "高齢者対象試験・認知評価項目を、ウェブ表示用に整理しています。",
   },
   nvp1702: {
     title: "Liver health indicators",
@@ -83,7 +83,7 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
       { label: "Nasal comfort", detail: "鼻水・鼻づまり", value: 70, direction: "down" },
       { label: "Immune markers", detail: "IgE / IL-10 / IL-22", value: 64, direction: "balanced" },
     ],
-    footnote: "PPTXの小児・青少年・成人試験資料を、B2B説明用の指標として整理しています。",
+    footnote: "小児・青少年・成人試験資料を、B2B説明用の指標として整理しています。",
   },
   nvp1704: {
     title: "Stress and sleep profile",
@@ -105,7 +105,7 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
       { label: "Patent scale", detail: "80 patents", value: 80, displayValue: "80", direction: "balanced" },
       { label: "SCI papers", detail: "260 SCI papers", value: 92, displayValue: "260", direction: "balanced" },
     ],
-    footnote: "PPTXの認証・論文・特許規模の情報を、ウェブ用の信頼性指標として再構成しています。",
+    footnote: "認証・論文・特許規模の情報を、ウェブ用の信頼性指標として整理しています。",
   },
   testofen: {
     title: "AMS score structure",
@@ -116,7 +116,7 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
       { label: "Physical function", detail: "身体機能向上", value: 70, direction: "up" },
       { label: "Sexual function", detail: "男性健康領域", value: 68, direction: "up" },
     ],
-    footnote: "PPTXのAMS説明と機能評価文言を、公開ページ用の視覚要素として整理しています。",
+    footnote: "AMS説明と機能評価文言を、公開ページ用の視覚要素として整理しています。",
   },
   thinkgin: {
     title: "Memory and sleep markers",
@@ -127,7 +127,7 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
       { label: "AChE marker", detail: "記憶関連血液指標", value: 66, direction: "down" },
       { label: "Sleep quality", detail: "睡眠の質・効率", value: 70, direction: "up" },
     ],
-    footnote: "PPTXの記憶・睡眠関連指標を、ウェブ用HTMLグラフとして再構成しています。",
+    footnote: "記憶・睡眠関連指標を、ウェブ用HTMLグラフとして整理しています。",
   },
   neulearn: {
     title: "Cognitive function map",
@@ -138,7 +138,7 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
       { label: "Short-term memory", detail: "短期記憶機能", value: 68, direction: "up" },
       { label: "Executive planning", detail: "f-MRI評価軸", value: 66, direction: "up" },
     ],
-    footnote: "PPTXの3つの認知評価グラフを、ひとつのHTML指標構造として整理しています。",
+    footnote: "3つの認知評価グラフを、ひとつのHTML指標構造として整理しています。",
   },
   applephenon: {
     title: "Diet evidence timeline",
@@ -149,7 +149,7 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
       { label: "BMI", detail: "16週間BMI推移", value: 70, direction: "down" },
       { label: "Visceral fat", detail: "CT撮影評価", value: 66, direction: "down" },
     ],
-    footnote: "PPTXの体脂肪・BMI・内臓脂肪グラフの見出しを基準に、ウェブチャート化しています。",
+    footnote: "体脂肪・BMI・内臓脂肪グラフの見出しを基準に、ウェブチャート化しています。",
   },
   collagen: {
     title: "Skin health profile",
@@ -160,7 +160,7 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
       { label: "Elasticity R2", detail: "皮膚総弾力", value: 70, direction: "up" },
       { label: "Roughness Ra", detail: "平均粗さ", value: 64, direction: "down" },
     ],
-    footnote: "PPTX内の皮膚指標グラフを、詳細ページ用HTMLプロファイルとして再構成しています。",
+    footnote: "皮膚指標グラフを、詳細ページ用HTMLプロファイルとして整理しています。",
   },
   pinitol: {
     title: "Liver and antioxidant markers",
@@ -171,7 +171,7 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
       { label: "MDA", detail: "酸化ストレス指標", value: 66, direction: "down" },
       { label: "ALT / AST", detail: "肝酵素指標", value: 72, direction: "down" },
     ],
-    footnote: "PPTXのGPx/MDAおよび脂肪肝指標を、ひとつの視覚資料として整理しています。",
+    footnote: "GPx/MDAおよび脂肪肝指標を、ひとつの視覚資料として整理しています。",
   },
   immulink: {
     title: "Innate and adaptive immunity",
@@ -182,6 +182,6 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
       { label: "Adaptive immunity", detail: "獲得免疫因子", value: 72, direction: "up" },
       { label: "Beta-glucan", detail: "β-グルカンリッチ", value: 82, direction: "balanced" },
     ],
-    footnote: "PPTXの免疫因子説明を、ウェブで読みやすい二軸構造として再構成しています。",
+    footnote: "免疫因子説明を、ウェブで読みやすい二軸構造として整理しています。",
   },
 };

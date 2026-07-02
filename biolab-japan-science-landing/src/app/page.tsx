@@ -226,7 +226,7 @@ export default function Home() {
             <div>
               <p className="dh-kicker">CONTACT</p>
               <h2>{isKorean ? "기능성 헬스케어 사업 프로젝트를 시작하세요." : "Start a Korea-to-Japan healthcare project."}</h2>
-              <p>{isKorean ? "기능성 식품 소재 사업, ODM/OEM, 일본 B2B 유통, Brand Royalty는 CONTACT 페이지에서 상담해 주세요." : "素材調達、ODM/OEM、日本B2B流通、ブランド協業についてはCONTACTページからご相談ください。"}</p>
+              <p>{isKorean ? "상담 항목: 기능성 식품 소재 사업, ODM/OEM, 일본 B2B 유통, Brand Royalty." : "素材調達、ODM/OEM、日本B2B流通、ブランド協業についてはCONTACTページからご相談ください。"}</p>
             </div>
             <Link className="dh-outline-button" href="/communication/inquiries">CONTACT</Link>
           </div>

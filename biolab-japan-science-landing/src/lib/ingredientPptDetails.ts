@@ -38,14 +38,16 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "膣内乳酸菌の増殖と有害菌の抑制による膣内細菌叢の正常化。",
       "膣分泌物の減少、膣灼熱感の減少、排尿痛の減少。",
     ],
-    graphNotes: [
-      "Nugent scoreは生殖器感染の程度を示す指標で、スコアが低いほど感染程度が低いとされる。",
-      "出典: Nutrients 2023, 15(2), 331",
-    ],
+    graphNotes: ["出典: Nutrients 2023, 15(2), 331"],
     evidenceImages: [
       {
         src: "/images/ingredients/med01-evidence-1.webp",
         caption: "排尿痛(生理痛)・膣分泌物・膣灼熱感の変化(MED-01群 vs プラセボ群)",
+        source: "Nutrients 2023, 15(2), 331",
+      },
+      {
+        src: "/images/ingredients/med01-evidence-2.png",
+        caption: "Nugent scoreの変化(MED-01群 vs プラセボ群、スコアが低いほど感染程度が低い)",
         source: "Nutrients 2023, 15(2), 331",
       },
     ],
@@ -66,11 +68,15 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "成人期の中性脂肪蓄積による肥満・脂質異常症発生リスクの減少。",
       "臨床データ(12週): 体脂肪量 約-1,200g(プラセボ約-400g)、体脂肪率 約-0.85%(プラセボ約-0.15%)、体重 約-2.1kg(プラセボ約-1.2kg)。",
     ],
-    graphNotes: ["体脂肪量(g)・体脂肪率(%)・体重(kg)の実測データをそのまま掲載。"],
+    graphNotes: [],
     evidenceImages: [
       {
         src: "/images/ingredients/med02-evidence-1.webp",
         caption: "体脂肪量変化・体脂肪率変化・体重変化(MED-02群 vs プラセボ群)",
+      },
+      {
+        src: "/images/ingredients/med02-evidence-2.png",
+        caption: "BMI変化量(MED-02群 -0.70 kg/m2、プラセボ群 -0.44 kg/m2)",
       },
     ],
   },
@@ -89,7 +95,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "記憶力総点: プラセボ対比207%改善。遅延単語再生: プラセボ対比1,514%改善(P=0.0037)。",
       "注意集中力: 正反応数315%改善、誤反応数147%改善、脱落誤謬数315%改善(12週摂取時点)。",
     ],
-    graphNotes: ["12週摂取時点でのADAS-Cog13総点、記憶力総点、遅延単語再生、注意集中力の実測データをそのまま掲載。"],
+    graphNotes: [],
     evidenceImages: [
       {
         src: "/images/ingredients/nvp2106-evidence-1.webp",
@@ -119,7 +125,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "非アルコール性肝損傷: ALT・AST・γ-GTP・疲労指標・血中炎症指標の改善(γ-GTP P=0.0292、ALT P=0.0332)。",
       "アルコール性肝損傷: ALT・AST・γ-GTP・血中中性脂肪・血中炎症指標の改善(ALT P=0.0260/0.0397、AST P=0.0131、γ-GTP P=0.0229)。",
     ],
-    graphNotes: ["非アルコール性・アルコール性それぞれの肝損傷グループのALT/AST/γ-GTP実測データをそのまま掲載。"],
+    graphNotes: [],
     evidenceImages: [
       {
         src: "/images/ingredients/nvp1702-evidence-1.webp",
@@ -128,6 +134,10 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       {
         src: "/images/ingredients/nvp1702-evidence-2.webp",
         caption: "アルコール性肝損傷群: ALT・AST・γ-GTPの12週間変化(P=0.0260/0.0397, P=0.0131, P=0.0229)",
+      },
+      {
+        src: "/images/ingredients/nvp1702-evidence-3.png",
+        caption: "肝損傷メカニズム: LPS/TNF-αとALT・AST・γ-GTP指標の関係",
       },
     ],
   },
@@ -144,7 +154,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "小児・青少年: TNSS(全体鼻症状点数)のDaily/Weekly評価で有意な改善、炎症調節サイトカインIL-10・IL-22の有意な改善。",
       "成人: TNSS総点(P=0.029)、水様性鼻水(P=0.007)、鼻づまり(P=0.0098)の改善、免疫グロブリンIgEの減少。",
     ],
-    graphNotes: ["小児・青少年群と成人群、それぞれのTNSS実測データをそのまま掲載。"],
+    graphNotes: [],
     evidenceImages: [
       {
         src: "/images/ingredients/nvp1703-evidence-1.webp",
@@ -153,6 +163,10 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       {
         src: "/images/ingredients/nvp1703-evidence-2.webp",
         caption: "成人対象ヒト適用試験: TNSS総点(P=0.029)、水様性鼻水(P=0.007)、鼻づまり(P=0.0098)の改善",
+      },
+      {
+        src: "/images/ingredients/nvp1703-evidence-3.jpeg",
+        caption: "免疫過敏反応および鼻状態改善メカニズム(IgE、IL-10、RCAT/TNSS評価の流れ)",
       },
     ],
   },
@@ -169,7 +183,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "血中炎症性サイトカインIL-6の減少およびBDNFの増加、IL-6/BDNF比率の減少(P=0.041)。",
       "摂取後の主要構成菌株 L. reuteri群とBifidobacterium群の増加。",
     ],
-    graphNotes: ["BDI/BAI、PSQI/ISI、IL-6/BDNFの実測データをそのまま掲載。"],
+    graphNotes: [],
     evidenceImages: [
       {
         src: "/images/ingredients/nvp1704-evidence-1.webp",
@@ -203,18 +217,19 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "12週間摂取後、ガス排出頻度の上昇と腹部膨満感の改善。",
       "参考: BGN4・BORIをベースとしたプロバイオティクス(40億CFU/日、12週間)を65歳以上の高齢者が摂取した試験で、認知機能と気分の改善が確認された(ソウル大学校盆唐再生病院実施)。",
     ],
-    graphNotes: [
-      "12週摂取後のガス排出頻度・腹部膨満感の実測データをそのまま掲載。",
-      "出典: J Gerontol A Biol Sci Med Sci. 2021;76(1):32-40",
-    ],
+    graphNotes: ["出典: J Gerontol A Biol Sci Med Sci. 2021;76(1):32-40"],
     evidenceImages: [
-      {
-        src: "/images/ingredients/bifido-evidence-1.webp",
-        caption: "米国食品医薬品局(FDA)GRAS・NDI認証(BGN4/BORI/AD011の登録番号)",
-      },
       {
         src: "/images/ingredients/bifido-evidence-2.webp",
         caption: "12週摂取後、プラセボ対比でガス排出頻度が上昇し腹部膨満感が改善",
+      },
+      {
+        src: "/images/ingredients/bifido-evidence-6.png",
+        caption: "BGN4・BORI配合プロバイオティクスの高齢者対象ヒト試験資料",
+      },
+      {
+        src: "/images/ingredients/bifido-evidence-1.webp",
+        caption: "米国食品医薬品局(FDA)GRAS・NDI認証(BGN4/BORI/AD011の登録番号)",
       },
     ],
   },
@@ -234,8 +249,9 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "更年期男性向けの追加臨床データを保有。",
     ],
     graphNotes: [
-      "AMSはAging Males Symptomsの略で、中高年男性の更年期関連症状を質問票化した評価指標。韓国食品医薬品安全処(KFDA)はAMSを男性更年期評価の主要バイオマーカーに指定している。",
       "出典: Rao A et al. The Aging Male. 2016 Jun;19(2):134-42",
+      "出典: Muscle synthesis - Sachin Wankhede, et al., 2015",
+      "出典: Sexual function - Elizabeth Steels, et al., 2011",
     ],
     evidenceImages: [
       {
@@ -246,6 +262,11 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       {
         src: "/images/ingredients/testofen-evidence-2.webp",
         caption: "身体機能スコア・性機能スコアの変化(12週間)",
+        source: "Rao A et al. The Aging Male. 2016 Jun;19(2):134-42",
+      },
+      {
+        src: "/images/ingredients/testofen-evidence-3.webp",
+        caption: "精神・心理スコアの変化(Testofen群 vs プラセボ群、12週間)",
         source: "Rao A et al. The Aging Male. 2016 Jun;19(2):134-42",
       },
     ],
@@ -264,7 +285,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "睡眠の質・睡眠効率の増加、シナプス可塑性の増加による記憶力・学習能力の向上。",
       "即時想起力の増加(SVLT総点でP<0.01)、記憶力低下関連血液指標AChEの減少。",
     ],
-    graphNotes: ["SVLT即時想起点数、PSQI-K睡眠潜時、AChEの実測データをそのまま掲載。"],
+    graphNotes: [],
     evidenceImages: [
       {
         src: "/images/ingredients/thinkgin-evidence-1.webp",
@@ -294,18 +315,18 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "短期記憶遂行機能の改善(P=0.001)、計画機能の改善(600mg P=0.08、1,200mg P=0.02)。",
       "f-MRI(機能的磁気共鳴画像)で大脳灰白質容積の増加を確認。",
     ],
-    graphNotes: ["SMCQ、短期記憶、遂行・計画機能、f-MRI画像の実測データをそのまま掲載。"],
+    graphNotes: [],
     evidenceImages: [
       {
-        src: "/images/ingredients/neulearn-evidence-1.webp",
+        src: "/images/ingredients/neulearn-evidence-1-clean.png",
         caption: "f-MRIで確認された大脳灰白質容積増加のクラスター(右側縁上回・右側中前頭回・右側頭頂回・左側被蓋)",
       },
       {
-        src: "/images/ingredients/neulearn-evidence-2.webp",
+        src: "/images/ingredients/neulearn-evidence-2-clean.png",
         caption: "短期記憶の変化(P=0.001)・遂行計画機能の変化(P=0.02)",
       },
       {
-        src: "/images/ingredients/neulearn-evidence-3.webp",
+        src: "/images/ingredients/neulearn-evidence-3-clean.png",
         caption: "主観的記憶減退症状質問票(SMCQ)の変化(600mg: P=0.007、1,200mg: P=0.002)",
       },
     ],
@@ -320,10 +341,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "未熟リンゴ250個分を濃縮する米国特許技術3種により、圧倒的な高濃縮ポリフェノールを含有。",
       "中性脂肪の抑制・排出を通じた確実な体脂肪減少効果。摂取終了後4週間も効果が持続。",
     ],
-    graphNotes: [
-      "12週間の体脂肪減少と摂取終了後4週間の持続効果、16週間のBMI変化、CT撮影による内臓脂肪評価の実測データをそのまま掲載。",
-      "出典: Journal of Oleo Science. 59(6) 321-338 (2010) / 56(8) 417-428 (2007)",
-    ],
+    graphNotes: ["出典: Journal of Oleo Science. 59(6) 321-338 (2010) / 56(8) 417-428 (2007)"],
     evidenceImages: [
       {
         src: "/images/ingredients/applephenon-evidence-1.webp",
@@ -339,10 +357,15 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
         caption: "16週間のBMI変化(Applephenon群 vs プラセボ群)",
         source: "Journal of Oleo Science. 56(8) 417-428 (2007)",
       },
+      {
+        src: "/images/ingredients/applephenon-evidence-4.jpeg",
+        caption: "CT撮影による腹部内臓脂肪評価(摂取前後の比較)",
+        source: "Journal of Oleo Science. 59(6) 321-338 (2010) / 56(8) 417-428 (2007)",
+      },
     ],
   },
   collagen: {
-    productName: "Low-molecular Collagen Peptide AG",
+    productName: "Long-pep collagen peptide AG",
     healthClaims: [
       "肌の潤いに役立つ。",
       "紫外線による皮膚ダメージからの皮膚健康維持に役立つ。",
@@ -354,14 +377,14 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "明確な皮膚保湿の改善、目元のしわ減少(肉眼評価・指標成分の両方で確認)。",
       "皮膚総弾力の改善(生体弾力・純粋弾力)、皮膚の粗さ改善。",
     ],
-    graphNotes: ["皮膚保湿、総弾力(R2)、平均粗さ(Ra)、目元しわの実測データをそのまま掲載。"],
+    graphNotes: [],
     evidenceImages: [
       {
-        src: "/images/ingredients/collagen-evidence-1.webp",
+        src: "/images/ingredients/collagen-evidence-1-clean.png",
         caption: "皮膚保湿の改善(46.229→48.245)・皮膚総弾力R2の改善(0.694→0.726)(いずれも摂取前後で有意差)",
       },
       {
-        src: "/images/ingredients/collagen-evidence-2.webp",
+        src: "/images/ingredients/collagen-evidence-2-clean.png",
         caption: "目元しわの専門家評価改善(2.585→2.366, P<0.01)・皮膚平均粗さRaの改善(12.845→12.404)",
       },
     ],
@@ -376,10 +399,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "皮膚水分の増加、しわ減少(いずれもプラセボ対比 P<0.05)。",
       "メカニズム: コラーゲン遺伝子の活性化とMMPs遺伝子の非活性化により、しわ形成を抑制し保湿力を高める。",
     ],
-    graphNotes: [
-      "しわ減少・皮膚水分増加の実測データをそのまま掲載。",
-      "出典: 慶熙大学校皮膚バイオテクノロジーセンター実施試験",
-    ],
+    graphNotes: ["出典: 慶熙大学校皮膚バイオテクノロジーセンター実施試験"],
     evidenceImages: [
       {
         src: "/images/ingredients/dermania-evidence-1.webp",
@@ -390,6 +410,10 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
         src: "/images/ingredients/dermania-evidence-2.webp",
         caption: "皮膚水分量の増加(ベースラインから12週間の変化、P<0.05)",
         source: "慶熙大学校皮膚バイオテクノロジーセンター実施",
+      },
+      {
+        src: "/images/ingredients/dermania-evidence-3.png",
+        caption: "メカニズム: コラーゲン遺伝子活性化とMMPs遺伝子非活性化によるしわ・保湿ケア",
       },
     ],
   },
@@ -403,11 +427,23 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "ALT値(P=0.025)・AST値(P=0.002)の改善効果。",
       "脂肪肝指数(HSI)の改善(P=0.044)。",
     ],
-    graphNotes: ["ALT、AST、HSIのベースライン対8週間の実測データをそのまま掲載。"],
-    evidenceImages: [
-      {
-        src: "/images/ingredients/agrimony-evidence-1.webp",
-        caption: "ALT値(P=0.025)・AST値(P=0.002)・脂肪肝指数HSI(P=0.044)の改善(ベースライン対8週間)",
+      graphNotes: [],
+      evidenceImages: [
+        {
+          src: "/images/ingredients/agrimony-alt-evidence.png",
+          caption: "ALT値の減少",
+        },
+        {
+          src: "/images/ingredients/agrimony-ast-evidence.png",
+          caption: "AST値の減少",
+        },
+        {
+          src: "/images/ingredients/agrimony-hsi-evidence.png",
+          caption: "HSI値の減少",
+        },
+        {
+          src: "/images/ingredients/agrimony-evidence-2.jpeg",
+        caption: "脂肪肝組織の比較画像(正常肝、脂肪肝、抽出物摂取後の組織変化)",
       },
     ],
   },
@@ -421,7 +457,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "損傷した肝細胞の改善・増加効果、肝の中性脂肪細胞の減少とサイズの縮小。",
       "脂肪肝含量・ALT・AST値の低下(脂肪肝含量17.9%→15.2%, P=0.010)、抗酸化活性酵素GPxの増加(P=0.015)とMDAの低下(P=0.002)。",
     ],
-    graphNotes: ["GPx/MDA、脂肪肝含量、ALT/ASTの実測データをそのまま掲載。"],
+    graphNotes: [],
     evidenceImages: [
       {
         src: "/images/ingredients/pinitol-evidence-1.webp",
@@ -444,7 +480,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "ADH(アルコール脱水素酵素)の増加による血中アルコール濃度の減少。",
       "ALDH(アセトアルデヒド脱水素酵素)の増加による二日酔いの軽減。",
     ],
-    graphNotes: ["ADHとALDHの酵素変化、飲酒後のアセトアルデヒド・吐き気の実測データをそのまま掲載。", "出典: Journal of Agriculture & Life Science. 2016,50,223-31"],
+    graphNotes: ["出典: Journal of Agriculture & Life Science. 2016,50,223-31"],
     evidenceImages: [
       {
         src: "/images/ingredients/acetobeta-evidence-1.webp",
@@ -471,17 +507,19 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "特許取得済みの超音波抽出技術。",
       "自然免疫(NK細胞数・活性)と獲得免疫(総リンパ球・T細胞・CD4/CD8比・血清IgA)の両方で8種の免疫因子の有意な改善を確認。",
       "高含有量のβ-グルカン(77%以上)。",
+      "構造的特徴: β-1,3およびβ-1,6の短鎖、Acetylationなどを含む複雑な鎖構造。",
+      "熱安定性(~261°C)、pH安定性(pH1-11)、無味・無臭。",
+      "グローバル認証・登録: 韓国、米国(FDA GRAS)、欧州(EFSA)、台湾、中国、マレーシア、タイ、メキシコなどに登録。",
+      "有機認証、Non-GMO、グルテンフリー、Kosher、HALAL認証。",
+      "獲得免疫改善: 総リンパ球数、Tリンパ球(CD3+)、ヘルパーTリンパ球(CD4+)、細胞傷害性Tリンパ球(CD8+)、CD4/CD8比、血清IgAグロブリン濃度の増加。",
+      "自然免疫改善: NK cell数およびNK cell活性の増加。",
     ],
-    graphNotes: ["自然免疫因子・獲得免疫因子8種の実測データをそのまま掲載。", "出典: Foods 2023, 12(3), 659. doi:10.3390/foods12030659"],
+    graphNotes: ["出典: Foods 2023, 12(3), 659. doi:10.3390/foods12030659"],
     evidenceImages: [
       {
         src: "/images/ingredients/immulink-evidence-1.webp",
         caption: "自然免疫(NK細胞数・NK細胞細胞傷害活性)・獲得免疫(総リンパ球・T細胞・CD4/CD8比・血清IgA)8因子の有意な改善",
         source: "Foods 2023, 12(3), 659. doi:10.3390/foods12030659",
-      },
-      {
-        src: "/images/ingredients/immulink-evidence-2.webp",
-        caption: "特長(β-グルカン77%以上、熱・pH安定性)とグローバル認証・登録状況(韓国・米国FDA GRAS・EU EFSA・台湾・中国ほか、Kosher・HALAL)",
       },
     ],
   },

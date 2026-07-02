@@ -16,7 +16,7 @@ export const companyPages = [
     menuLabel: "Vision & Goals",
     href: "/company/vision",
     summary: "日本市場で目指すヘルスケア事業ブリッジの方向性を整理します。",
-    koSummary: "일본 시장에서 지향하는 기능성 헬스케어 사업 브리지의 방향성을 정리합니다.",
+    koSummary: "일본 시장에서 지향하는 기능성 헬스케어 사업 브리지의 방향성입니다.",
   },
 ];
 
@@ -27,7 +27,7 @@ export const businessPages = [
     menuLabel: "Ingredient Supply",
     href: "/business/materials",
     summary: "Functional ProbioticsとFunctional Nature's Food Ingredientsを製品目的別に提案します。",
-    koSummary: "Probiotics Strain by Application과 Nature’s food ingredients by Application을 제품 목적별로 제안합니다.",
+    koSummary: "Probiotics Strain by Application 7종과 Nature’s food ingredients by Application 10종 소재 라인업입니다.",
   },
   {
     label: "OEM/ODMサービス",
@@ -54,7 +54,7 @@ export const communicationPages = [
     menuLabel: "E-Catalog",
     href: "/communication/catalog",
     summary: "素材供給、OEM/ODM、ブランド協業の検討に必要な情報をまとめます。",
-    koSummary: "기능성 식품 소재 사업, ODM/OEM & Brand Royalty 검토에 필요한 정보를 정리합니다.",
+    koSummary: "기능성 식품 소재 사업, ODM/OEM & Brand Royalty 검토용 자료입니다.",
   },
   {
     label: "顧客お問い合わせ",
@@ -70,7 +70,7 @@ export const communicationPages = [
     menuLabel: "Channels",
     href: "/communication/channels",
     summary: "BIOLAB Japan、BIOLAB Korea、iHEAL Mallへの公式導線を案内します。",
-    koSummary: "BIOLAB Japan, BIOLAB Korea, iHEAL Mall 공식 연결 경로를 안내합니다.",
+    koSummary: "BIOLAB Japan, BIOLAB Korea, iHEAL Mall 공식 연결 경로입니다.",
   },
 ];
 
@@ -97,7 +97,7 @@ export const productLinePages = [
     menuLabel: "Functional Probiotics",
     href: "/products/microbiome-probiotics",
     summary: "女性、体脂肪、脳・記憶、肝臓、鼻、ストレス、腸の7種を整理します。",
-    koSummary: "여성 질건강, 체지방 감소, 뇌건강, 코건강, 간건강, 스트레스·수면, 장건강 소재를 정리합니다.",
+    koSummary: "여성 질건강, 체지방, 뇌건강, 코건강, 간건강, 스트레스·수면, 장건강 영역의 프로바이오틱스 7종입니다.",
     items: microbiomeProductItems,
   },
   {
@@ -106,7 +106,7 @@ export const productLinePages = [
     menuLabel: "Functional Nature's Food Ingredients",
     href: "/products/nature-ingredients",
     summary: "男性健康、記憶、認知、体脂肪、肌、肝臓・血糖、二日酔い、免疫の10種を整理します。",
-    koSummary: "남성 갱년기, 체지방 감소, 인지 개선, 피부보습, 간건강, 홍삼 등 자연 유래 기능성 소재를 정리합니다.",
+    koSummary: "남성 갱년기, 체지방, 인지, 피부보습, 간건강, 홍삼 등 자연 유래 기능성 소재 10종입니다.",
     items: natureProductItems,
   },
 ];
@@ -128,11 +128,11 @@ export const productGroups = [
     koTitle: "Functional Probiotics line",
     subtitle: "用途別プロバイオティクス",
     koSubtitle: "Probiotics Strain by Application",
-    image: "/images/products-microbiome-probiotics-card-v2.webp",
+    image: "/images/products-microbiome-probiotics-card-v3.webp",
     description:
       "女性、体脂肪、認知、肝臓、鼻、ストレス、腸のコンディションに合わせて、菌株レベルで素材情報を整理します。",
     koDescription:
-      "여성 질건강, 체지방 감소, 뇌건강, 코건강, 간건강, 스트레스·수면, 장건강을 중심으로 인체시험 완료 소재를 정리합니다.",
+      "여성 질건강, 체지방, 뇌건강, 코건강, 간건강, 스트레스·수면, 장건강 영역의 인체시험 완료 프로바이오틱스 소재입니다.",
     items: probioticsIngredients,
   },
   {
@@ -144,11 +144,11 @@ export const productGroups = [
     koTitle: "Functional Nature‘s food ingredients Line",
     subtitle: "自然由来素材",
     koSubtitle: "Nature’s food ingredients by Application",
-    image: "/images/products-functional-nature-card-v2.webp",
+    image: "/images/products-functional-nature-card-v3.webp",
     description:
       "記憶、肌、肝臓、免疫、男性健康など、商品カテゴリーに合わせた自然由来機能性素材を提案します。",
     koDescription:
-      "남성 갱년기, 체지방 감소, 인지 개선, 피부보습, 간건강, 홍삼 등 상품 카테고리에 맞는 자연 유래 기능성 소재를 제안합니다.",
+      "남성 갱년기, 체지방, 인지, 피부보습, 간건강, 홍삼 등 상품 카테고리별 자연 유래 기능성 소재입니다.",
     items: natureIngredients,
   },
   {
@@ -205,7 +205,7 @@ export const corporateNews = [
     summary:
       "プロバイオティクスと自然由来機能性素材を、カテゴリー、摂取量、エビデンスタグ別に整理しました。",
     koSummary:
-      "Probiotics Strain by Application과 Nature’s food ingredients by Application을 카테고리와 근거 자료 기준으로 정리했습니다.",
+      "Probiotics Strain by Application 7종과 Nature’s food ingredients by Application 10종 포트폴리오입니다.",
     image: "/images/global-evidence-bg.png",
   },
   {
@@ -244,7 +244,7 @@ export const partnerRows = [
     label: "進行方法",
     value: "問い合わせ受付後、カテゴリー、発売時期、必要資料を確認して個別にご案内します。",
     koLabel: "진행 방법",
-    koValue: "문의 접수 후 카테고리, 출시 시기, 필요 자료를 확인해 개별 안내합니다.",
+    koValue: "문의 접수 후 카테고리, 출시 시기, 필요 자료를 확인합니다.",
   },
   {
     label: "提出資料",

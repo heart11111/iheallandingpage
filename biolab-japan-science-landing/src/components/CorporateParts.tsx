@@ -22,32 +22,246 @@ type SubHeroProps = {
   compact?: boolean;
 };
 
-function formatPublicEvidenceNote(note: string) {
-  return note
-    .replaceAll("PPTXのネイティブチャートXML", "提供資料のチャートデータ")
-    .replaceAll("PPTX", "提供資料")
-    .replaceAll("PPT", "提供資料")
-    .replaceAll("スライド内", "資料内")
-    .replaceAll("スライドの", "資料の")
-    .replaceAll("スライド構造", "資料構造");
-}
-
-function getCitations(pptDetail: (typeof ingredientPptDetails)[string] | undefined) {
+function getEvidenceReferences(pptDetail: (typeof ingredientPptDetails)[string] | undefined, isKorean: boolean) {
   if (!pptDetail) return [];
-  return pptDetail.graphNotes.filter((note) => note.startsWith("出典"));
+  const imageSources = pptDetail.evidenceImages.map((image) => image.source).filter((source): source is string => Boolean(source));
+  const noteSources = pptDetail.graphNotes.filter((note) => note.startsWith("出典:")).map((note) => note.replace("出典:", "").trim());
+  const references = [...imageSources, ...noteSources];
+  const normalizedReferences = references.flatMap((reference) => {
+    const entries = reference.split(/\s+\/\s+/).map((entry) => entry.trim()).filter(Boolean);
+    if (reference.includes("Journal of Oleo Science.")) {
+      return entries.map((entry) => (/^\d/.test(entry) ? `Journal of Oleo Science. ${entry}` : entry));
+    }
+    return entries;
+  });
+  return Array.from(new Set(normalizedReferences)).map((reference) => {
+    const localizedReference = reference
+      .replace(/^Muscle synthesis - /, isKorean ? "근육합성 - " : "筋肉合成 - ")
+      .replace(/^Sexual function - /, isKorean ? "성기능 증진 - " : "性機能増進 - ");
+    return `${isKorean ? "출처" : "出典"}: ${localizedReference}`;
+  });
 }
 
-function getEvidenceNote(note: string, isKorean: boolean) {
-  const publicNote = formatPublicEvidenceNote(note);
-  if (!isKorean) return publicNote;
-  if (publicNote.startsWith("出典:")) return publicNote.replace("出典:", "출처:");
-  return "제공 자료의 그래프와 근거 이미지를 원료 상세 페이지에서 확인하기 쉽게 구성했습니다.";
+const koreanEvidenceCaptions: Record<string, string> = {
+  "/images/ingredients/med01-evidence-1.webp": "배뇨통, 질 분비물, 질 작열감 변화(MED-01군 vs 플라세보군)",
+  "/images/ingredients/med01-evidence-2.png": "Nugent score 변화(MED-01군 vs 플라세보군, 점수가 낮을수록 감염 정도가 낮음)",
+  "/images/ingredients/med02-evidence-1.webp": "체지방량, 체지방률, 체중 변화(MED-02군 vs 플라세보군)",
+  "/images/ingredients/med02-evidence-2.png": "BMI 변화량(MED-02군 -0.70 kg/m2, 플라세보군 -0.44 kg/m2)",
+  "/images/ingredients/nvp2106-evidence-1.webp": "ADAS-Cog13 총점 개선(12주 섭취 시 플라세보 대비 202% 개선, P=0.0318)",
+  "/images/ingredients/nvp2106-evidence-2.webp": "기억력 총점 개선 및 지연 단어 회상 개선(플라세보 대비 207%, 1,514%)",
+  "/images/ingredients/nvp2106-evidence-3.webp": "주의집중력 지표 개선(정반응 수, 오반응 수, 누락 오류 수)",
+  "/images/ingredients/nvp1702-evidence-1.webp": "비알코올성 간손상군의 γ-GTP, ALT, AST 12주 변화(NVP-1702군 vs 플라세보군)",
+  "/images/ingredients/nvp1702-evidence-2.webp": "알코올성 간손상군의 ALT, AST, γ-GTP 12주 변화",
+  "/images/ingredients/nvp1702-evidence-3.png": "간 손상 메커니즘 도식(LPS/TNF-α와 ALT, AST, γ-GTP 지표 관계)",
+  "/images/ingredients/nvp1703-evidence-1.webp": "소아·청소년 대상 인체적용시험: TNSS 주간/일간 점수 개선",
+  "/images/ingredients/nvp1703-evidence-2.webp": "성인 대상 인체적용시험: TNSS 총점, 수양성 콧물, 코막힘 개선",
+  "/images/ingredients/nvp1703-evidence-3.jpeg": "면역과민반응 및 코 상태 개선 메커니즘(IgE, IL-10, RCAT/TNSS)",
+  "/images/ingredients/nvp1704-evidence-1.webp": "우울·불안 척도 BDI-II, BAI, BDI-II+BAI 개선",
+  "/images/ingredients/nvp1704-evidence-2.webp": "수면의 질 PSQI 및 불면증 심각도 ISI 개선",
+  "/images/ingredients/nvp1704-evidence-3.webp": "혈중 염증성 사이토카인 IL-6 감소, BDNF 증가 및 IL-6/BDNF 비율 감소",
+  "/images/ingredients/bifido-evidence-2.webp": "12주 섭취 후 가스 배출 빈도 증가 및 복부 팽만감 개선",
+  "/images/ingredients/bifido-evidence-6.png": "BGN4·BORI 배합 프로바이오틱스의 고령자 대상 인체시험 자료",
+  "/images/ingredients/bifido-evidence-1.webp": "FDA GRAS·NDI 등록 번호(BGN4, BORI, AD011)",
+  "/images/ingredients/testofen-evidence-1.webp": "AMS 총점 변화(Testofen군 vs 플라세보군, 12주)",
+  "/images/ingredients/testofen-evidence-2.webp": "신체 기능 점수 및 성 기능 점수 변화(12주)",
+  "/images/ingredients/testofen-evidence-3.webp": "정신·심리 점수 변화(Testofen군 vs 플라세보군, 12주)",
+  "/images/ingredients/thinkgin-evidence-1.webp": "기억력 저하 관련 혈액 지표 AChE 감소(ThinkGIN군 vs 플라세보군)",
+  "/images/ingredients/thinkgin-evidence-2.webp": "SVLT 즉시 회상 점수 변화(총점 및 2차 시도 점수)",
+  "/images/ingredients/thinkgin-evidence-3.webp": "PSQI-K 수면 잠복기 점수 개선",
+  "/images/ingredients/neulearn-evidence-1-clean.png": "f-MRI로 확인한 대뇌 회백질 용적 증가 클러스터",
+  "/images/ingredients/neulearn-evidence-2-clean.png": "단기 기억 및 수행·계획 기능 변화",
+  "/images/ingredients/neulearn-evidence-3-clean.png": "주관적 기억감퇴 증상 설문(SMCQ) 점수 변화",
+  "/images/ingredients/applephenon-evidence-1.webp": "12주 섭취 후 체중, 허리둘레, BMI, 엉덩이둘레, 복부 내장지방 및 총복부지방면적 감소",
+  "/images/ingredients/applephenon-evidence-2.webp": "12주 섭취 시 허리둘레 변화 및 섭취 종료 후 4주 지속 효과",
+  "/images/ingredients/applephenon-evidence-3.webp": "16주간 BMI 변화(Applephenon군 vs 플라세보군)",
+  "/images/ingredients/applephenon-evidence-4.jpeg": "CT 촬영 기반 복부 내장지방 평가(섭취 전후 비교)",
+  "/images/ingredients/collagen-evidence-1-clean.png": "피부 보습 및 피부 총탄력 R2 개선",
+  "/images/ingredients/collagen-evidence-2-clean.png": "눈가 주름 전문가 평가 및 피부 평균 거칠기 Ra 개선",
+  "/images/ingredients/dermania-evidence-1.webp": "12주 섭취 후 주름 감소 변화(DermaNiA군 vs 플라세보군)",
+  "/images/ingredients/dermania-evidence-2.webp": "12주 섭취 후 피부 수분량 증가 변화",
+  "/images/ingredients/dermania-evidence-3.png": "주름·보습 케어 메커니즘(콜라겐 유전자 활성화, MMPs 유전자 비활성화)",
+  "/images/ingredients/agrimony-alt-evidence.png": "ALT 수치 감소",
+  "/images/ingredients/agrimony-ast-evidence.png": "AST 수치 감소",
+  "/images/ingredients/agrimony-hsi-evidence.png": "HSI 수치 감소",
+  "/images/ingredients/agrimony-evidence-2.jpeg": "지방간 조직 비교 이미지(정상 간, 지방간, 추출물 섭취 후 조직 변화)",
+  "/images/ingredients/pinitol-evidence-1.webp": "혈장 GPx 증가 및 요중 MDA 감소(Pinitol군 vs 플라세보군)",
+  "/images/ingredients/pinitol-evidence-2.webp": "간 지방 함량, ALT, AST 수치 감소",
+  "/images/ingredients/acetobeta-evidence-1.webp": "ADH·ALDH 증가에 따른 알코올 분해 경로 도식",
+  "/images/ingredients/acetobeta-evidence-2.webp": "음주 0.25시간 후 혈중 아세트알데히드 변화량",
+  "/images/ingredients/acetobeta-evidence-3.webp": "음주 후 메스꺼움 개선 효과",
+  "/images/ingredients/immulink-evidence-1.webp": "자연면역 및 획득면역 8개 면역 인자 개선",
+};
+
+const wideEvidenceImages = new Set([
+  "/images/ingredients/agrimony-evidence-2.jpeg",
+  "/images/ingredients/bifido-evidence-6.png",
+  "/images/ingredients/collagen-evidence-1-clean.png",
+  "/images/ingredients/collagen-evidence-2-clean.png",
+  "/images/ingredients/dermania-evidence-3.png",
+  "/images/ingredients/immulink-evidence-1.webp",
+  "/images/ingredients/med01-evidence-1.webp",
+  "/images/ingredients/med02-evidence-1.webp",
+  "/images/ingredients/neulearn-evidence-1-clean.png",
+  "/images/ingredients/neulearn-evidence-2-clean.png",
+  "/images/ingredients/neulearn-evidence-3-clean.png",
+  "/images/ingredients/nvp1702-evidence-1.webp",
+  "/images/ingredients/nvp1702-evidence-2.webp",
+  "/images/ingredients/nvp1703-evidence-1.webp",
+  "/images/ingredients/nvp1703-evidence-2.webp",
+  "/images/ingredients/nvp1704-evidence-1.webp",
+  "/images/ingredients/nvp1704-evidence-2.webp",
+  "/images/ingredients/nvp1704-evidence-3.webp",
+  "/images/ingredients/nvp2106-evidence-2.webp",
+  "/images/ingredients/nvp2106-evidence-3.webp",
+  "/images/ingredients/pinitol-evidence-1.webp",
+  "/images/ingredients/pinitol-evidence-2.webp",
+]);
+
+const featureEvidenceImages: Record<string, string> = {
+  acetobeta: "/images/ingredients/acetobeta-evidence-1.webp",
+  bifido: "/images/ingredients/bifido-evidence-1.webp",
+  nvp1703: "/images/ingredients/nvp1703-evidence-3.jpeg",
+};
+
+const belowSummaryEvidenceImages = new Set(["/images/ingredients/dermania-evidence-3.png"]);
+
+const originCompositionImages: Record<string, { alt: string; src: string }[]> = {
+  bifido: [
+    {
+      alt: "B. bifidum BGN4 - GRAS No.814 / NDI No.1079",
+      src: "/images/ingredients/bifido-strain-bgn4.webp",
+    },
+    {
+      alt: "B. longum BORI - GRAS No.813 / NDI No.1082",
+      src: "/images/ingredients/bifido-strain-bori.webp",
+    },
+    {
+      alt: "B. lactis AD011 - GRAS No.952 / NDI No.1118",
+      src: "/images/ingredients/bifido-strain-ad011.webp",
+    },
+  ],
+};
+
+const originCompositionTables: Record<
+  string,
+  {
+    captionJa: string;
+    captionKo: string;
+    columns: string[];
+    rows: { labelJa: string; labelKo: string; values: string[] }[];
+    titleJa: string;
+    titleKo: string;
+  }
+> = {
+  thinkgin: {
+    titleJa: "ジンセノサイド含有量比較",
+    titleKo: "진세노사이드 함량 비교",
+    captionJa: "一般紅参(6年根)と新芽人参抽出粉末のジンセノサイド組成比較",
+    captionKo: "일반홍삼(6년근)과 새싹인삼추출분말의 진세노사이드 성분 비교",
+    columns: ["Rg1", "Re", "Rf", "Rh1", "Rg2", "Rb1", "Rc", "Rb2", "Rb3", "Rd", "F2", "Rg3", "Rk1", "Rg5"],
+    rows: [
+      {
+        labelJa: "一般紅参(6年根)",
+        labelKo: "일반홍삼(6년근)",
+        values: ["4.1", "1.2", "1.3", "1.7", "3.4", "13.5", "N.D", "1.7", "0.3", "0.9", "N.D", "0.7", "0.2", "0.3"],
+      },
+      {
+        labelJa: "新芽人参抽出粉末",
+        labelKo: "새싹인삼추출분말",
+        values: ["11.0", "28.6", "1.7", "1.1", "1.8", "6.3", "6.3", "6.4", "1.7", "18.3", "5.4", "0.5", "N.D", "0.7"],
+      },
+    ],
+  },
+};
+
+const originCompositionEvidenceImages: Record<string, string[]> = {
+  bifido: ["/images/ingredients/bifido-evidence-1.webp", "/images/ingredients/bifido-evidence-6.png"],
+};
+
+type LocalizedStudyNote = {
+  items: { labelJa: string; labelKo: string; valueJa: string; valueKo: string }[];
+  noteJa?: string;
+  noteKo?: string;
+  titleJa: string;
+  titleKo: string;
+};
+
+const evidenceStudyNotes: Record<string, LocalizedStudyNote> = {
+  bifido: {
+    titleJa: "ヒト適用試験条件",
+    titleKo: "인체적용시험 조건",
+    items: [
+      { labelJa: "試験対象", labelKo: "시험대상", valueJa: "65歳以上の高齢者", valueKo: "65세 이상의 노인" },
+      {
+        labelJa: "試験条件",
+        labelKo: "시험조건",
+        valueJa: "12週間、BGN4・BORIベースのプロバイオティクスを40億CFU/日摂取",
+        valueKo: "12주간 BGN4, BORI 기반 프로바이오틱스를 40억 CFU/일 섭취",
+      },
+      { labelJa: "試験場所", labelKo: "시험장소", valueJa: "ソウル大学校盆唐再生病院", valueKo: "서울대학교 분당재생병원" },
+      {
+        labelJa: "出典",
+        labelKo: "출처",
+        valueJa:
+          "Probiotic Supplementation Improves Cognitive Function and Mood with Changes in Gut Microbiota in Community-Dwelling Older Adults: A Randomized, Double-Blind, Placebo-Controlled, Multi center Trial. J Gerontol A Biol Sci Med Sci. 2021;76(1):32-40",
+        valueKo:
+          "Probiotic Supplementation Improves Cognitive Function and Mood with Changes in Gut Microbiota in Community-Dwelling Older Adults: A Randomized, Double-Blind, Placebo-Controlled, Multi center Trial. J Gerontol A Biol Sci Med Sci. 2021;76(1):32-40",
+      },
+    ],
+    noteJa: "ヒト適用試験結果がすべての人に同一に適用されるものではありません。",
+    noteKo: "인체적용시험결과가 모든 사람에게 동일하게 적용되는 것은 아닙니다.",
+  },
+};
+
+function getChartEvidenceImages(pptDetail: (typeof ingredientPptDetails)[string] | undefined, excludedSources: string[]) {
+  if (!pptDetail) return [];
+  return pptDetail.evidenceImages.filter((image) => !excludedSources.includes(image.src));
 }
 
-function getEvidenceCaption(caption: string, item: Ingredient, index: number, isKorean: boolean) {
+function OriginCompositionTab({ isKorean, table }: { isKorean: boolean; table: (typeof originCompositionTables)[string] }) {
+  return (
+    <section className="dh-origin-composition-tab-panel" aria-label={isKorean ? table.titleKo : table.titleJa}>
+      <div className="dh-origin-composition-tabs" aria-hidden="true">
+        <span className="is-active">{isKorean ? "조성 비교" : "組成比較"}</span>
+      </div>
+      <div className="dh-origin-composition-table">
+        <strong>{isKorean ? table.titleKo : table.titleJa}</strong>
+        <p>{isKorean ? table.captionKo : table.captionJa}</p>
+        <div>
+          {[0, 7].map((start) => {
+            const columns = table.columns.slice(start, start + 7);
+            return (
+              <table key={start}>
+                <thead>
+                  <tr>
+                    <th>{isKorean ? "구분" : "区分"}</th>
+                    {columns.map((column) => (
+                      <th key={column}>{column}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {table.rows.map((row) => (
+                    <tr key={`${row.labelKo}-${start}`}>
+                      <th>{isKorean ? row.labelKo : row.labelJa}</th>
+                      {row.values.slice(start, start + 7).map((value, index) => (
+                        <td key={`${row.labelKo}-${columns[index]}`}>{value}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function getEvidenceCaption(src: string, caption: string, isKorean: boolean) {
   if (!isKorean) return caption;
-  const tag = item.evidenceTags[index] || item.area;
-  return `${item.name} ${tag} 근거 자료 ${index + 1}`;
+  return koreanEvidenceCaptions[src] || caption;
 }
 
 function getEvidenceSource(source: string | undefined, isKorean: boolean) {
@@ -85,7 +299,7 @@ export function CorporateFooter() {
     <footer className="dh-footer">
       <div className="dh-container">
         <strong className="dh-footer-logo">
-          <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={508} height={96} />
+          <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={508} height={96} loading="eager" />
         </strong>
         <p>
           <span>BIOLAB Japan</span>
@@ -118,6 +332,31 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
         const detailClaims = isKorean ? item.healthClaims || [] : pptDetail?.healthClaims || item.healthClaims || [];
         const detailOriginItems = isKorean ? materials : pptDetail?.originItems?.length ? pptDetail.originItems : materials;
         const detailFeatures = isKorean ? item.featurePoints || [] : pptDetail?.features || item.featurePoints || [];
+        const evidenceReferences = getEvidenceReferences(pptDetail, isKorean);
+        const featureImageSrc = featureEvidenceImages[sourceItem.id];
+        const featureImage = pptDetail?.evidenceImages.find((image) => image.src === featureImageSrc);
+        const excludedEvidenceSources = [featureImageSrc, ...(originCompositionEvidenceImages[sourceItem.id] || [])].filter((source): source is string => Boolean(source));
+        const chartEvidenceImages = getChartEvidenceImages(pptDetail, excludedEvidenceSources);
+        const originImages = originCompositionImages[sourceItem.id] || [];
+        const originTable = originCompositionTables[sourceItem.id];
+        const studyNote = evidenceStudyNotes[sourceItem.id];
+        const compactContent = (
+          <>
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="dh-detail-card-image"
+              height={320}
+              loading="eager"
+              src={imageSrc}
+              width={480}
+            />
+            <IngredientCategoryBadge category={item.category} line={item.line} />
+            <h2>{item.name}</h2>
+            <strong>{item.area}</strong>
+            <span>{item.intake}</span>
+          </>
+        );
         const content = (
           <>
             <Image
@@ -140,8 +379,8 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             </section>
 
             {showExtended && detailClaims && detailClaims.length > 0 && (
-              <section className="dh-detail-claims" aria-label={`${item.name} 期待訴求`}>
-                <h3>{isKorean ? labels.claims : "期待訴求"}</h3>
+              <section className="dh-detail-claims" aria-label={`${item.name} Health Claim`}>
+                <h3>{isKorean ? labels.claims : "Health Claim"}</h3>
                 <ul>
                   {detailClaims.map((text) => (
                     <li key={text}>{text}</li>
@@ -172,19 +411,41 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                   <li key={text}>{text}</li>
                 ))}
               </ul>
+              {originImages.length > 0 && (
+                <div className="dh-origin-composition-cards">
+                  {originImages.map((originImage) => (
+                    <figure key={originImage.src}>
+                      <Image alt={originImage.alt} height={295} loading="eager" src={originImage.src} width={431} />
+                    </figure>
+                  ))}
+                </div>
+              )}
             </section>
 
-            <section className="dh-detail-evidence" aria-label={`${item.name} 根拠情報`}>
-              <h3>{isKorean ? labels.evidence : "根拠情報"}</h3>
-              <div>
-                {item.evidenceTags.map((tag) => (
-                  <em key={tag}>{tag}</em>
+            {originTable && <OriginCompositionTab isKorean={isKorean} table={originTable} />}
+
+            {evidenceReferences.length > 0 && (
+              <section className="dh-detail-evidence" aria-label={`${item.name} references`}>
+                <h3>{isKorean ? "레퍼런스" : "参考文献"}</h3>
+                {evidenceReferences.map((reference) => (
+                  <cite key={reference}>{reference}</cite>
                 ))}
-              </div>
-              {getCitations(pptDetail).map((citation) => (
-                <cite key={citation}>{citation}</cite>
-              ))}
-            </section>
+                {studyNote && (
+                  <div className="dh-study-note">
+                    <strong>{isKorean ? studyNote.titleKo : studyNote.titleJa}</strong>
+                    <dl>
+                      {studyNote.items.map((studyItem) => (
+                        <div key={studyItem.labelJa}>
+                          <dt>{isKorean ? studyItem.labelKo : studyItem.labelJa}</dt>
+                          <dd>{isKorean ? studyItem.valueKo : studyItem.valueJa}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                    {(isKorean ? studyNote.noteKo : studyNote.noteJa) && <p>{isKorean ? studyNote.noteKo : studyNote.noteJa}</p>}
+                  </div>
+                )}
+              </section>
+            )}
 
             {showExtended && pptDetail && (
               <section className="dh-ppt-evidence" aria-label={`${item.name} evidence detail`}>
@@ -195,7 +456,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
 
                 <div className="dh-ppt-summary-board">
                   <section>
-                    <h4>{isKorean ? labels.claims : "主な訴求"}</h4>
+                    <h4>{isKorean ? labels.claims : "Health Claim"}</h4>
                     <div className="dh-ppt-summary-list">
                       {detailClaims.map((claim) => (
                         <span key={claim}>{claim}</span>
@@ -211,7 +472,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                     </div>
                   </section>
                   <section>
-                    <h4>{isKorean ? labels.features : "評価項目"}</h4>
+                    <h4>{isKorean ? labels.features : "Features / 人体効能評価"}</h4>
                     <div className="dh-ppt-summary-list">
                       {detailFeatures.map((feature) => (
                         <span key={feature}>{feature}</span>
@@ -225,23 +486,30 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                   <h4>{isKorean ? "인체적용시험 및 근거 자료" : "人体効能評価"}</h4>
                 </div>
 
-                <div className="dh-ppt-graph-grid">
-                  {pptDetail.evidenceImages.map((evidenceImage, index) => (
-                    <figure className="dh-ppt-chart dh-ppt-chart-figure" key={evidenceImage.src}>
-                      <Image alt={getEvidenceCaption(evidenceImage.caption, item, index, isKorean)} height={480} src={evidenceImage.src} width={720} />
+                <div className="dh-ppt-graph-grid" data-evidence-count={chartEvidenceImages.length}>
+                  {chartEvidenceImages.map((evidenceImage, index) => (
+                    <figure
+                      className="dh-ppt-chart dh-ppt-chart-figure"
+                      data-evidence-index={index + 1}
+                      data-evidence-shape={wideEvidenceImages.has(evidenceImage.src) ? "wide" : undefined}
+                      data-evidence-src={evidenceImage.src}
+                      key={evidenceImage.src}
+                    >
+                      <Image
+                        alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
+                        height={480}
+                        loading="eager"
+                        src={evidenceImage.src}
+                        width={720}
+                      />
                       <figcaption>
-                        <p>{getEvidenceCaption(evidenceImage.caption, item, index, isKorean)}</p>
+                        <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
                         {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
                       </figcaption>
                     </figure>
                   ))}
                 </div>
 
-                <div className="dh-ppt-notes">
-                  {Array.from(new Set(pptDetail.graphNotes.map((note) => getEvidenceNote(note, isKorean)))).map((note) => (
-                    <p key={note}>{note}</p>
-                  ))}
-                </div>
               </section>
             )}
 
@@ -277,13 +545,25 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             )}
 
             {showExtended && item.featurePoints && (
-              <section className="dh-detail-features" aria-label={`${item.name} 詳細ポイント`}>
-                <h3>{isKorean ? labels.features : "詳細ポイント"}</h3>
+              <section className="dh-detail-features" aria-label={`${item.name} Features / efficacy evaluation`}>
+                <h3>{isKorean ? labels.features : "Features / 人体効能評価"}</h3>
                 <ul>
                   {item.featurePoints.map((text) => (
                     <li key={text}>{text}</li>
                   ))}
                 </ul>
+                {featureImage && (
+                  <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
+                    <Image
+                      alt={getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}
+                      height={480}
+                      loading="eager"
+                      src={featureImage.src}
+                      width={720}
+                    />
+                    <figcaption>{getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}</figcaption>
+                  </figure>
+                )}
               </section>
             )}
           </>
@@ -292,7 +572,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
         if (linkBase) {
           return (
             <Link className="dh-detail-card dh-detail-card-link" href={`${linkBase}/${item.id}`} key={item.id}>
-              {content}
+              {compactContent}
               <span className="dh-detail-card-cta">DETAIL</span>
             </Link>
           );
@@ -321,6 +601,19 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
   const claims = isKorean ? item.healthClaims || [] : pptDetail?.healthClaims || item.healthClaims || [];
   const featureBlocks = isKorean ? item.featurePoints || [] : pptDetail?.features || item.featurePoints || [];
   const originItems = isKorean ? materials : pptDetail?.originItems?.length ? pptDetail.originItems : materials;
+  const evidenceReferences = getEvidenceReferences(pptDetail, isKorean);
+  const featureImageSrc = featureEvidenceImages[sourceItem.id];
+  const featureImage = pptDetail?.evidenceImages.find((image) => image.src === featureImageSrc);
+  const belowSummaryImages = pptDetail?.evidenceImages.filter((image) => belowSummaryEvidenceImages.has(image.src)) || [];
+  const excludedEvidenceSources = [
+    featureImageSrc,
+    ...belowSummaryImages.map((image) => image.src),
+    ...(originCompositionEvidenceImages[sourceItem.id] || []),
+  ].filter((source): source is string => Boolean(source));
+  const chartEvidenceImages = getChartEvidenceImages(pptDetail, excludedEvidenceSources);
+  const originImages = originCompositionImages[sourceItem.id] || [];
+  const originTable = originCompositionTables[sourceItem.id];
+  const studyNote = evidenceStudyNotes[sourceItem.id];
 
   return (
     <article className="dh-ingredient-profile">
@@ -344,6 +637,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
       </div>
 
       <div className="dh-ingredient-spec-panel">
+        <p>Basic Information</p>
         <h3>{isKorean ? labels.specs : "基本情報"}</h3>
         <dl>
           <div>
@@ -362,21 +656,13 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
             <dt>{materialLabel}</dt>
             <dd>{originItems.join(" / ")}</dd>
           </div>
-          <div>
-            <dt>{isKorean ? labels.category : "用途分類"}</dt>
-            <dd>{item.category}</dd>
-          </div>
-          <div>
-            <dt>{isKorean ? labels.documentType : "資料区分"}</dt>
-            <dd>{isKorean ? (pptDetail ? "BIOLAB Japan 원료 상세 자료" : "BIOLAB Japan 원료 요약") : pptDetail ? "BIOLAB Japan product material" : "BIOLAB Japan ingredient summary"}</dd>
-          </div>
         </dl>
       </div>
 
       <div className="dh-ingredient-section-grid">
         <section>
-          <p>Function</p>
-          <h3>{isKorean ? labels.function : "機能性内容"}</h3>
+          <p>Health Claim</p>
+          <h3>{isKorean ? labels.function : "Health Claim"}</h3>
           <ul>
             {claims.map((claim) => (
               <li key={claim}>{claim}</li>
@@ -384,15 +670,44 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           </ul>
         </section>
         <section>
-          <p>Feature</p>
-          <h3>{isKorean ? labels.feature : "特徴"}</h3>
+          <p>Features / Efficacy Evaluation</p>
+          <h3>{isKorean ? labels.feature : "Features / 人体効能評価"}</h3>
           <ul>
             {featureBlocks.map((feature) => (
               <li key={feature}>{feature}</li>
             ))}
           </ul>
+          {featureImage && (
+            <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
+              <Image
+                alt={getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}
+                height={480}
+                loading="eager"
+                src={featureImage.src}
+                width={720}
+              />
+              <figcaption>{getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}</figcaption>
+            </figure>
+          )}
         </section>
       </div>
+
+      {belowSummaryImages.length > 0 && (
+        <div className="dh-below-summary-evidence">
+          {belowSummaryImages.map((evidenceImage) => (
+            <figure key={evidenceImage.src}>
+              <Image
+                alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
+                height={287}
+                loading="eager"
+                src={evidenceImage.src}
+                width={1100}
+              />
+              <figcaption>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
 
       <section className="dh-ingredient-origin-panel">
         <div>
@@ -404,20 +719,42 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
             <li key={origin}>{origin}</li>
           ))}
         </ul>
+        {originImages.length > 0 && (
+          <div className="dh-origin-composition-cards">
+            {originImages.map((originImage) => (
+              <figure key={originImage.src}>
+                <Image alt={originImage.alt} height={295} loading="eager" src={originImage.src} width={431} />
+              </figure>
+            ))}
+          </div>
+        )}
       </section>
 
-      <section className="dh-ingredient-evidence-tags" aria-label={`${item.name} 根拠情報`}>
-        <p>Evidence & Documents</p>
-        <h3>{isKorean ? labels.documents : "根拠情報"}</h3>
-        <div>
-          {item.evidenceTags.map((tag) => (
-            <em key={tag}>{tag}</em>
+      {originTable && <OriginCompositionTab isKorean={isKorean} table={originTable} />}
+
+      {evidenceReferences.length > 0 && (
+        <section className="dh-ingredient-evidence-tags" aria-label={`${item.name} references`}>
+          <p>Evidence & References</p>
+          <h3>{isKorean ? "레퍼런스" : "参考文献"}</h3>
+          {evidenceReferences.map((reference) => (
+            <cite key={reference}>{reference}</cite>
           ))}
-        </div>
-        {getCitations(pptDetail).map((citation) => (
-          <cite key={citation}>{citation}</cite>
-        ))}
-      </section>
+          {studyNote && (
+            <div className="dh-study-note">
+              <strong>{isKorean ? studyNote.titleKo : studyNote.titleJa}</strong>
+              <dl>
+                {studyNote.items.map((studyItem) => (
+                  <div key={studyItem.labelJa}>
+                    <dt>{isKorean ? studyItem.labelKo : studyItem.labelJa}</dt>
+                    <dd>{isKorean ? studyItem.valueKo : studyItem.valueJa}</dd>
+                  </div>
+                ))}
+              </dl>
+              {(isKorean ? studyNote.noteKo : studyNote.noteJa) && <p>{isKorean ? studyNote.noteKo : studyNote.noteJa}</p>}
+            </div>
+          )}
+        </section>
+      )}
 
       {pptDetail && (
         <section className="dh-ppt-evidence dh-ingredient-evidence-block" aria-label={`${item.name} evidence detail`}>
@@ -426,23 +763,30 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
             <h4>{isKorean ? "인체적용시험 및 근거 자료" : "人体効能評価"}</h4>
           </div>
 
-          <div className="dh-ppt-graph-grid">
-            {pptDetail.evidenceImages.map((evidenceImage, index) => (
-              <figure className="dh-ppt-chart dh-ppt-chart-figure" key={evidenceImage.src}>
-                <Image alt={getEvidenceCaption(evidenceImage.caption, item, index, isKorean)} height={480} src={evidenceImage.src} width={720} />
+          <div className="dh-ppt-graph-grid" data-evidence-count={chartEvidenceImages.length}>
+            {chartEvidenceImages.map((evidenceImage, index) => (
+              <figure
+                className="dh-ppt-chart dh-ppt-chart-figure"
+                data-evidence-index={index + 1}
+                data-evidence-shape={wideEvidenceImages.has(evidenceImage.src) ? "wide" : undefined}
+                data-evidence-src={evidenceImage.src}
+                key={evidenceImage.src}
+              >
+              <Image
+                alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
+                height={480}
+                loading="eager"
+                src={evidenceImage.src}
+                width={720}
+              />
                 <figcaption>
-                  <p>{getEvidenceCaption(evidenceImage.caption, item, index, isKorean)}</p>
+                  <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
                   {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
                 </figcaption>
               </figure>
             ))}
           </div>
 
-          <div className="dh-ppt-notes">
-            {Array.from(new Set(pptDetail.graphNotes.map((note) => getEvidenceNote(note, isKorean)))).map((note) => (
-              <p key={note}>{note}</p>
-            ))}
-          </div>
         </section>
       )}
 
@@ -500,7 +844,7 @@ export function ContactInfoBlocks() {
         <h2>{isKorean ? "제휴 문의" : "Partnership Inquiry"}</h2>
         <p>
           {isKorean
-            ? "기능성 식품 소재 사업, ODM/OEM, 일본 B2B 유통, iHEAL 브랜드 사용에 대한 상품 로열티 사업을 상담해 주세요."
+            ? "상담 항목: 기능성 식품 소재 사업, ODM/OEM, 일본 B2B 유통, iHEAL 브랜드 사용에 대한 상품 로열티 사업."
             : "機能性素材、ODM/OEM、日本B2B流通、iHEALブランド協業についてご相談ください。"}
         </p>
       </div>

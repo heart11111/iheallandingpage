@@ -8,7 +8,7 @@ const catalogItems = [
     koLabel: "Probiotics Strain by Application",
     ruby: "Functional Probiotics",
     body: "用途別プロバイオティクス7種の素材情報を確認できます。",
-    koBody: "여성 질건강, 체지방 감소, 뇌건강 등 7종의 Probiotics Strain 정보를 확인할 수 있습니다.",
+    koBody: "여성 질건강, 체지방, 뇌건강, 코건강, 간건강, 스트레스·수면, 장건강 영역의 Probiotics Strain 7종 자료입니다.",
     href: "/products/microbiome-probiotics",
   },
   {
@@ -16,7 +16,7 @@ const catalogItems = [
     koLabel: "Nature’s food ingredients by Application",
     ruby: "Functional Nature's Food Ingredients",
     body: "自然由来機能性素材10種の素材情報を確認できます。",
-    koBody: "남성 갱년기, 체지방 감소, 인지 개선, 피부보습 등 자연 유래 기능성 소재 정보를 확인할 수 있습니다.",
+    koBody: "남성 갱년기, 체지방, 인지, 피부보습, 간건강, 홍삼 등 Nature’s food ingredients 10종 자료입니다.",
     href: "/products/nature-ingredients",
   },
   {
@@ -24,7 +24,7 @@ const catalogItems = [
     koLabel: "ODM/OEM & Brand Royalty",
     ruby: "OEM/ODM Service",
     body: "商品化、製造、供給条件の相談導線を確認できます。",
-    koBody: "상품화, 제조, 공급 조건과 iHEAL 브랜드 사용에 대한 상품 로열티 사업 상담 도선을 확인할 수 있습니다.",
+    koBody: "상품화, 제조, 공급 조건과 iHEAL 브랜드 사용에 대한 상품 로열티 사업 상담 경로입니다.",
     href: "/business/odm-oem",
   },
 ];
@@ -38,7 +38,7 @@ export default function CatalogPage() {
           title="E-Catalog"
           copy="素材供給、OEM/ODM、ブランド協業の検討に必要な情報をまとめます。"
           koTitle="E-카탈로그"
-          koCopy="기능성 식품 소재 사업, ODM/OEM & Brand Royalty 검토에 필요한 정보를 정리합니다."
+          koCopy="기능성 식품 소재 사업, ODM/OEM & Brand Royalty 검토용 자료입니다."
           image="/images/global-evidence-bg.png"
           compact
         />
