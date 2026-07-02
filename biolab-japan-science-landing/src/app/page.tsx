@@ -13,8 +13,8 @@ const featuredCards = [
     eyebrow: "Functional Probiotics",
     title: "Application-specific strain portfolio",
     subtitle: "用途別プロバイオティクス",
-    koTitle: "용도별 프로바이오틱스",
-    koSubtitle: "기능성 프로바이오틱스",
+    koTitle: "Probiotics Strain by Application",
+    koSubtitle: "Ⅰ. Functional Probiotics line",
     image: "images/products-microbiome-probiotics-card-v2.webp",
     href: "/products/probiotics",
   },
@@ -22,8 +22,8 @@ const featuredCards = [
     eyebrow: "Functional Nature's Food Ingredients",
     title: "Nature-derived functional materials",
     subtitle: "自然由来機能性素材",
-    koTitle: "자연 유래 기능성 소재",
-    koSubtitle: "기능성 천연소재",
+    koTitle: "Nature’s food ingredients by Application",
+    koSubtitle: "Ⅱ. Functional Nature‘s food ingredients Line",
     image: "images/products-functional-nature-card-v2.webp",
     href: "/products/nature",
   },
@@ -31,8 +31,8 @@ const featuredCards = [
     eyebrow: "ODM / OEM",
     title: "Market-ready product planning",
     subtitle: "商品化・供給設計",
-    koTitle: "시장 전개형 상품 기획",
-    koSubtitle: "상품화 및 공급 설계",
+    koTitle: "ODM/OEM & Brand Royalty",
+    koSubtitle: "상품 개발 및 ODM / OEM 생산",
     image: "images/biolab-global-factory-bg.png",
     href: "/products/odm-oem",
   },
@@ -104,7 +104,7 @@ export default function Home() {
               </h2>
               <p className="dh-hero-support">
                 {isKorean
-                  ? "한국의 가능성을 일본 시장 가치로 연결합니다. 기능성 소재, 제조, 브랜드, 유통을 이어 다음 헬스케어 사업을 여는 비즈니스 브리지입니다."
+                  ? "한국의 가능성을 일본 시장 가치로 연결합니다. 기능성 식품 소재 사업, ODM/OEM & Brand Royalty, 일본 B2B 유통을 이어 다음 헬스케어 사업을 여는 비즈니스 브리지입니다."
                   : "韓国の可能性を、日本の市場価値へ。機能性素材、製造、ブランド、流通をつなぎ、次のヘルスケア事業をひらくビジネスブリッジです。"}
               </p>
               <div className="dh-hero-actions">
@@ -149,7 +149,7 @@ export default function Home() {
                 <br />
                 we focus on the ingredients.
               </h2>
-              <p>{isKorean ? "성공적인 상품 개발의 핵심이 되는 소재와 근거 정보에 집중합니다." : "成功的な商品開発の核となる素材と根拠情報に集中します。"}</p>
+              <p>{isKorean ? "제품을 만들기 전에 대한민국 식약처(KFDA) 인증 개별인정형 기능성 소재와 근거 정보에 집중합니다." : "成功的な商品開発の核となる素材と根拠情報に集中します。"}</p>
             </div>
             <div className="dh-product-grid">
               {featuredCards.map((card) => (
@@ -179,7 +179,11 @@ export default function Home() {
                 <br />
                 <span>evidence-led growth</span> is what matters to us.
               </h2>
-              <p>より確かな素材情報を、より広い市場展開へつなげることがBIOLAB Japanの価値です。</p>
+              <p>
+                {isKorean
+                  ? "더 확실한 소재 정보를 더 넓은 일본 시장 전개로 연결하는 것이 BIOLAB Japan의 가치입니다."
+                  : "より確かな素材情報を、より広い市場展開へつなげることがBIOLAB Japanの価値です。"}
+              </p>
             </div>
             <div className="dh-tech-grid">
               {techValues.map((item) => (
@@ -208,8 +212,8 @@ export default function Home() {
                 <article className="dh-topic" key={item.slug}>
                   <div className="dh-topic-visual" style={{ backgroundImage: `linear-gradient(135deg, rgba(31, 87, 164, 0.78), rgba(65, 171, 225, 0.68)), url(${item.image})` }} />
                   <p className="dh-topic-date">{item.date}</p>
-                  <h3>{item.title}</h3>
-                  <p>{item.summary}</p>
+                  <h3>{isKorean ? item.koTitle : item.title}</h3>
+                  <p>{isKorean ? item.koSummary : item.summary}</p>
                   <a href="/news">LEARN MORE</a>
                 </article>
               ))}
@@ -221,8 +225,8 @@ export default function Home() {
           <div className="dh-container">
             <div>
               <p className="dh-kicker">CONTACT</p>
-              <h2>Start a Korea-to-Japan healthcare project.</h2>
-              <p>{isKorean ? "소재 조달, ODM/OEM, 일본 B2B 유통, 브랜드 협업은 CONTACT 페이지에서 상담해 주세요." : "素材調達、ODM/OEM、日本B2B流通、ブランド協業についてはCONTACTページからご相談ください。"}</p>
+              <h2>{isKorean ? "기능성 헬스케어 사업 프로젝트를 시작하세요." : "Start a Korea-to-Japan healthcare project."}</h2>
+              <p>{isKorean ? "기능성 식품 소재 사업, ODM/OEM, 일본 B2B 유통, Brand Royalty는 CONTACT 페이지에서 상담해 주세요." : "素材調達、ODM/OEM、日本B2B流通、ブランド協業についてはCONTACTページからご相談ください。"}</p>
             </div>
             <Link className="dh-outline-button" href="/communication/inquiries">CONTACT</Link>
           </div>

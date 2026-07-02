@@ -4,57 +4,73 @@ import { natureIngredients, probioticsIngredients } from "@/lib/ingredients";
 export const companyPages = [
   {
     label: "代表取締役 ご挨拶",
+    koLabel: "대표이사 인사말",
     menuLabel: "CEO Message",
     href: "/company/greeting",
     summary: "BIOLAB Japanの代表メッセージと事業姿勢を紹介します。",
+    koSummary: "BIOLAB Japan의 대표 메시지와 사업 방향을 소개합니다.",
   },
   {
     label: "ビジョン及び目標",
+    koLabel: "비전 및 목표",
     menuLabel: "Vision & Goals",
     href: "/company/vision",
     summary: "日本市場で目指すヘルスケア事業ブリッジの方向性を整理します。",
+    koSummary: "일본 시장에서 지향하는 기능성 헬스케어 사업 브리지의 방향성을 정리합니다.",
   },
 ];
 
 export const businessPages = [
   {
     label: "機能性素材供給",
+    koLabel: "기능성 식품 소재 사업",
     menuLabel: "Ingredient Supply",
     href: "/business/materials",
     summary: "Functional ProbioticsとFunctional Nature's Food Ingredientsを製品目的別に提案します。",
+    koSummary: "Probiotics Strain by Application과 Nature’s food ingredients by Application을 제품 목적별로 제안합니다.",
   },
   {
     label: "OEM/ODMサービス",
+    koLabel: "ODM/OEM & Brand Royalty",
     menuLabel: "OEM/ODM Service",
     href: "/business/odm-oem",
     summary: "韓国製造ネットワークを活用し、処方・剤形・量産・供給条件を設計します。",
+    koSummary: "일본 내 브랜드 유통사 전용 상품 개발 및 ODM / OEM 생산을 설계합니다.",
   },
   {
     label: "ブランドマネジメント",
+    koLabel: "Brand Royalty",
     menuLabel: "Brand Management",
     href: "/business/brand-management",
     summary: "iHEALブランド運営経験をもとに、商品資料・チャネル・パートナー対応を支援します。",
+    koSummary: "iHEAL 브랜드 사용에 대한 상품 로열티 사업과 브랜드 협업을 지원합니다.",
   },
 ];
 
 export const communicationPages = [
   {
     label: "Eカタログ",
+    koLabel: "E-카탈로그",
     menuLabel: "E-Catalog",
     href: "/communication/catalog",
     summary: "素材供給、OEM/ODM、ブランド協業の検討に必要な情報をまとめます。",
+    koSummary: "기능성 식품 소재 사업, ODM/OEM & Brand Royalty 검토에 필요한 정보를 정리합니다.",
   },
   {
     label: "顧客お問い合わせ",
+    koLabel: "고객 문의",
     menuLabel: "Customer Inquiries",
     href: "/communication/inquiries",
     summary: "機能性素材、ODM/OEM、日本B2B流通、ブランド協業の相談を受け付けます。",
+    koSummary: "기능성 소재, ODM/OEM, 일본 B2B 유통, 브랜드 협업 상담을 접수합니다.",
   },
   {
     label: "コミュニケーションチャネル",
+    koLabel: "커뮤니케이션 채널",
     menuLabel: "Channels",
     href: "/communication/channels",
     summary: "BIOLAB Japan、BIOLAB Korea、iHEAL Mallへの公式導線を案内します。",
+    koSummary: "BIOLAB Japan, BIOLAB Korea, iHEAL Mall 공식 연결 경로를 안내합니다.",
   },
 ];
 
@@ -77,16 +93,20 @@ export const natureProductItems = natureIngredients.filter((item) => natureProdu
 export const productLinePages = [
   {
     label: "個別認定型プロバイオティクス",
+    koLabel: "Probiotics Strain by Application",
     menuLabel: "Functional Probiotics",
     href: "/products/microbiome-probiotics",
     summary: "女性、体脂肪、脳・記憶、肝臓、鼻、ストレス、腸の7種を整理します。",
+    koSummary: "여성 질건강, 체지방 감소, 뇌건강, 코건강, 간건강, 스트레스·수면, 장건강 소재를 정리합니다.",
     items: microbiomeProductItems,
   },
   {
     label: "機能性天然素材",
+    koLabel: "Nature’s food ingredients by Application",
     menuLabel: "Functional Nature's Food Ingredients",
     href: "/products/nature-ingredients",
     summary: "男性健康、記憶、認知、体脂肪、肌、肝臓・血糖、二日酔い、免疫の10種を整理します。",
+    koSummary: "남성 갱년기, 체지방 감소, 인지 개선, 피부보습, 간건강, 홍삼 등 자연 유래 기능성 소재를 정리합니다.",
     items: natureProductItems,
   },
 ];
@@ -103,44 +123,64 @@ export const productGroups = [
     slug: "probiotics",
     menuLabel: "Functional Probiotics",
     eyebrow: "個別認定型・特許菌株",
+    koEyebrow: "개별인정형 기능성 소재 / 특허 유산균",
     title: "Functional Probiotics",
+    koTitle: "Functional Probiotics line",
     subtitle: "用途別プロバイオティクス",
+    koSubtitle: "Probiotics Strain by Application",
     image: "/images/products-microbiome-probiotics-card-v2.webp",
     description:
       "女性、体脂肪、認知、肝臓、鼻、ストレス、腸のコンディションに合わせて、菌株レベルで素材情報を整理します。",
+    koDescription:
+      "여성 질건강, 체지방 감소, 뇌건강, 코건강, 간건강, 스트레스·수면, 장건강을 중심으로 인체시험 완료 소재를 정리합니다.",
     items: probioticsIngredients,
   },
   {
     slug: "nature",
     menuLabel: "Functional Nature's Food Ingredients",
     eyebrow: "自然由来機能性素材",
+    koEyebrow: "인체시험 완료 / 자연 유래 기능성 소재",
     title: "Functional Nature's Food Ingredients",
+    koTitle: "Functional Nature‘s food ingredients Line",
     subtitle: "自然由来素材",
+    koSubtitle: "Nature’s food ingredients by Application",
     image: "/images/products-functional-nature-card-v2.webp",
     description:
       "記憶、肌、肝臓、免疫、男性健康など、商品カテゴリーに合わせた自然由来機能性素材を提案します。",
+    koDescription:
+      "남성 갱년기, 체지방 감소, 인지 개선, 피부보습, 간건강, 홍삼 등 상품 카테고리에 맞는 자연 유래 기능성 소재를 제안합니다.",
     items: natureIngredients,
   },
   {
     slug: "odm-oem",
     menuLabel: "ODM/OEM",
     eyebrow: "商品化・供給設計",
+    koEyebrow: "상품 개발 및 ODM/OEM 생산",
     title: "ODM / OEM Planning",
+    koTitle: "ODM/OEM & Brand Royalty",
     subtitle: "韓国製造ネットワーク連携",
+    koSubtitle: "한국 Major 제조업체 Direct 생산 및 납품",
     image: "/images/biolab-global-factory-bg.png",
     description:
       "韓国主要メーカーとの製造ネットワークを活用し、日本市場向けの処方、剤形、量産、供給条件を設計します。",
+    koDescription:
+      "한국 Major 제조업체 Direct 생산 및 납품, 제조 상품 수입/통관, 일본 내 브랜드 유통사 전용 상품 개발을 연결합니다.",
     items: [] as Ingredient[],
   },
   {
     slug: "brand-royalty",
     menuLabel: "Brand Royalty",
     eyebrow: "ブランド協業",
+    koEyebrow: "상품 로열티 사업",
     title: "Brand Royalty",
+    koTitle: "Brand Royalty",
     subtitle: "iHEALブランド活用",
+    koSubtitle: "iHEAL 브랜드 사용에 대한 상품 로열티 사업",
     image: "/images/clinical-platform-hero.png",
     description:
       "iHEALブランド、共同商品化、販売会社向け商品展開を含めたロイヤリティ型の事業協業を検討します。",
+    koDescription:
+      "iHEAL 브랜드 사용에 대한 상품 로열티 사업과 일본 내 브랜드 유통사 전용 상품 개발 협업을 검토합니다.",
     items: [] as Ingredient[],
   },
 ];
@@ -150,35 +190,74 @@ export const corporateNews = [
     slug: "korea-japan-bridge",
     date: "2026.06.08",
     title: "韓国R&Dから日本B2B流通までをつなぐ事業構造を整理",
+    koTitle: "한국 R&D부터 일본 B2B 유통까지 연결하는 사업 구조 정리",
     summary:
       "BIOLAB Japanは、素材開発、製造、ブランド管理、日本側販売ネットワークを一体で設計する事業ブリッジとして機能します。",
+    koSummary:
+      "BIOLAB Japan은 한국의 소재 개발, 제조, 브랜드 관리와 일본 측 판매 네트워크를 하나로 설계하는 사업 브리지입니다.",
     image: "/images/biolab-global-factory-bg.png",
   },
   {
     slug: "ingredient-portfolio",
     date: "2026.06.08",
     title: "用途別機能性素材ポートフォリオを日本向けに再構成",
+    koTitle: "용도별 기능성 식품 소재 포트폴리오를 일본 시장 기준으로 재구성",
     summary:
       "プロバイオティクスと自然由来機能性素材を、カテゴリー、摂取量、エビデンスタグ別に整理しました。",
+    koSummary:
+      "Probiotics Strain by Application과 Nature’s food ingredients by Application을 카테고리와 근거 자료 기준으로 정리했습니다.",
     image: "/images/global-evidence-bg.png",
   },
   {
     slug: "partnership-inquiry",
     date: "2026.06.08",
     title: "ODM/OEM・素材調達・ブランド協業の相談受付を開始",
+    koTitle: "ODM/OEM, 소재 조달, Brand Royalty 상담 접수",
     summary:
       "機能性素材の調達、日本B2B流通、iHEALブランド協業に関する相談をWebフォームから受け付けます。",
+    koSummary:
+      "기능성 식품 소재 사업, 일본 B2B 유통, iHEAL 브랜드 사용에 대한 상품 로열티 사업 상담을 접수합니다.",
     image: "/images/clinical-platform-hero.png",
   },
 ];
 
 export const partnerRows = [
-  ["募集領域", "機能性素材調達、ODM/OEM商品開発、日本B2B流通、ブランド協業"],
-  ["対象企業", "販売会社、健康食品ブランド、メーカー、卸、商品企画会社"],
-  ["提案素材", "プロバイオティクス、自然由来機能性素材、iHEALブランド活用"],
-  ["進行方法", "問い合わせ受付後、カテゴリー、発売時期、必要資料を確認して個別にご案内します。"],
-  ["提出資料", "会社概要、検討カテゴリー、希望素材、想定販売チャネル"],
-  ["連絡方法", "CONTACTページのフォームよりお問い合わせください。"],
+  {
+    label: "募集領域",
+    value: "機能性素材調達、ODM/OEM商品開発、日本B2B流通、ブランド協業",
+    koLabel: "모집 영역",
+    koValue: "기능성 식품 소재 사업, ODM/OEM 상품 개발, 일본 B2B 유통, Brand Royalty",
+  },
+  {
+    label: "対象企業",
+    value: "販売会社、健康食品ブランド、メーカー、卸、商品企画会社",
+    koLabel: "대상 기업",
+    koValue: "판매회사, 건강기능식품 브랜드, 제조사, 도매, 상품 기획사",
+  },
+  {
+    label: "提案素材",
+    value: "プロバイオティクス、自然由来機能性素材、iHEALブランド活用",
+    koLabel: "제안 소재",
+    koValue: "Functional Probiotics line, Functional Nature‘s food ingredients Line, iHEAL 브랜드 활용",
+  },
+  {
+    label: "進行方法",
+    value: "問い合わせ受付後、カテゴリー、発売時期、必要資料を確認して個別にご案内します。",
+    koLabel: "진행 방법",
+    koValue: "문의 접수 후 카테고리, 출시 시기, 필요 자료를 확인해 개별 안내합니다.",
+  },
+  {
+    label: "提出資料",
+    value: "会社概要、検討カテゴリー、希望素材、想定販売チャネル",
+    koLabel: "제출 자료",
+    koValue: "회사 소개, 검토 카테고리, 희망 소재, 예상 판매 채널",
+  },
+  {
+    label: "連絡方法",
+    value: "CONTACTページのフォームよりお問い合わせください。",
+    koLabel: "연락 방법",
+    koValue: "CONTACT 페이지의 문의 폼으로 연락해 주세요.",
+  },
 ];
 
 export function getProductGroup(slug: string) {

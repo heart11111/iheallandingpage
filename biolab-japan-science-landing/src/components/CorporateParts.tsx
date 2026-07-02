@@ -458,17 +458,28 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
 }
 
 export function ContactInfoBlocks() {
+  const { language } = useDevLanguage();
+  const isKorean = language === "ko";
+
   return (
     <div className="dh-contact-info">
       <div>
         <MapPin size={24} aria-hidden="true" />
         <h2>BIOLAB Japan</h2>
-        <p>Japan-side B2B healthcare platform connecting Korean functional ingredients and manufacturing.</p>
+        <p>
+          {isKorean
+            ? "한국 기능성 소재와 제조 네트워크를 일본 B2B 헬스케어 시장에 연결하는 플랫폼입니다."
+            : "Japan-side B2B healthcare platform connecting Korean functional ingredients and manufacturing."}
+        </p>
       </div>
       <div>
         <Mail size={26} aria-hidden="true" />
-        <h2>Partnership Inquiry</h2>
-        <p>機能性素材、ODM/OEM、日本B2B流通、iHEALブランド協業についてご相談ください。</p>
+        <h2>{isKorean ? "제휴 문의" : "Partnership Inquiry"}</h2>
+        <p>
+          {isKorean
+            ? "기능성 식품 소재 사업, ODM/OEM, 일본 B2B 유통, iHEAL 브랜드 사용에 대한 상품 로열티 사업을 상담해 주세요."
+            : "機能性素材、ODM/OEM、日本B2B流通、iHEALブランド協業についてご相談ください。"}
+        </p>
       </div>
     </div>
   );

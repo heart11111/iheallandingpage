@@ -1,4 +1,5 @@
 import { CorporateFooter, CorporateSubHero } from "@/components/CorporateParts";
+import { LocalizedText } from "@/components/DevLanguageProvider";
 import { NavBar } from "@/components/NavBar";
 
 const aboutBlocks = [
@@ -6,16 +7,22 @@ const aboutBlocks = [
     label: "Vision",
     copy:
       "Beyond Functional Healthcare Solutions. BIOLAB Japanは、機能性素材の根拠情報を起点に、日本市場で展開できるヘルスケア事業を設計します。",
+    koCopy:
+      "Vision Beyond Functional Healthcare Solution’s. BIOLAB Japan은 기능성 소재의 근거 정보를 시작점으로 일본 시장에서 전개 가능한 헬스케어 사업을 설계합니다.",
   },
   {
     label: "Mission",
     copy:
       "日本の機能性ヘルスケア産業において、韓国R&D、製造、ODM/OEM、ブランド運営をつなぐリーディングカンパニーを目指します。",
+    koCopy:
+      "일본 기능성 헬스케어 산업에서 한국 R&D, 제조, ODM/OEM, 브랜드 운영을 연결하는 리딩 기업으로 도약하는 것을 목표로 합니다.",
   },
   {
     label: "Business",
     copy:
       "韓国側の開発・ソーシング・製造・ブランド管理と、日本側の販売・マーケティング・卸供給・新規事業開拓を接続します。",
+    koCopy:
+      "한국 측 개발, 소싱, 제조, 브랜드 관리와 일본 측 판매, 마케팅, 도매 공급, 신규 사업 개척을 연결합니다.",
   },
 ];
 
@@ -27,6 +34,8 @@ export default function AboutPage() {
         <CorporateSubHero
           title="Korea to Japan Healthcare Bridge"
           copy="韓国素材開発と日本B2B市場をつなぎ、機能性ヘルスケア事業の価値を広げます。"
+          koTitle="Korea to Japan Healthcare Bridge"
+          koCopy="한국 소재 개발과 일본 B2B 시장을 연결해 기능성 헬스케어 사업의 가치를 넓힙니다."
           image="/images/global-factory-bg.png"
           compact
         />
@@ -34,19 +43,30 @@ export default function AboutPage() {
           <div className="dh-container dh-about-overview-grid">
             <div className="dh-about-overview-heading">
               <p className="dh-kicker">ABOUT BIOLAB JAPAN</p>
-              <h2>Evidence, ingredients, and market access.</h2>
+              <h2>
+                <LocalizedText ja="Evidence, ingredients, and market access." ko="근거, 소재, 그리고 일본 시장 접근." />
+              </h2>
             </div>
             <div className="dh-about-overview-copy">
               <p>
-                BIOLAB Japanは、韓国の機能性素材開発・製造・ブランド運営と、
-                日本の販売会社・メーカー・卸ネットワークをつなぐB2Bヘルスケア事業ブリッジです。
+                <LocalizedText
+                  ja={
+                    <>
+                      BIOLAB Japanは、韓国の機能性素材開発・製造・ブランド運営と、
+                      日本の販売会社・メーカー・卸ネットワークをつなぐB2Bヘルスケア事業ブリッジです。
+                    </>
+                  }
+                  ko="BIOLAB Japan은 한국의 기능성 소재 개발·제조·브랜드 운영과 일본의 판매회사·제조사·도매 네트워크를 연결하는 B2B 헬스케어 사업 브리지입니다."
+                />
               </p>
               <div className="dh-about-card-grid">
                 {aboutBlocks.map((block, index) => (
                   <article className="dh-about-card" key={block.label}>
                     <span>{String(index + 1).padStart(2, "0")}</span>
                     <h3>{block.label}</h3>
-                    <p>{block.copy}</p>
+                    <p>
+                      <LocalizedText ja={block.copy} ko={block.koCopy} />
+                    </p>
                   </article>
                 ))}
               </div>
@@ -57,34 +77,41 @@ export default function AboutPage() {
           <div className="dh-container dh-ceo-message-grid">
             <aside className="dh-ceo-message-aside">
               <div className="dh-ceo-message-label">
-                会社紹介
+                <LocalizedText ja="会社紹介" ko="회사소개" />
                 <span>(Company Overview)</span>
               </div>
               <blockquote>
-                “BIOLAB Japanは、最も信頼できる
+                “<LocalizedText ja="BIOLAB Japanは、最も信頼できる" ko="비오랩 재팬은 가장 믿을 수 있는" />
                 <br />
-                ヘルスケアパートナーです。”
+                <LocalizedText ja="ヘルスケアパートナーです。" ko="헬스케어 파트너입니다." />”
               </blockquote>
             </aside>
             <div className="dh-ceo-message-copy">
               <p className="dh-kicker">CEO MESSAGE</p>
-              <h2>代表取締役 ご挨拶</h2>
+              <h2>
+                <LocalizedText ja="代表取締役 ご挨拶" ko="대표이사 인사말" />
+              </h2>
               <div>
-                <p>BIOLAB Japanのウェブサイトをご覧いただき、誠にありがとうございます。</p>
                 <p>
-                  {
-                    "BIOLAB Japanは、韓国に本社を置く株式会社BIOLABの日本現地法人です。株式会社BIOLABは2017年の設立以来、人々の健康で幸せな暮らしに貢献するため、マイクロバイオーム分野の健康機能食品・ヘルスケア専門企業として、絶え間ない革新と努力を通じて持続的な成長を続けてきました。"
-                  }
+                  <LocalizedText ja="BIOLAB Japanのウェブサイトをご覧いただき、誠にありがとうございます。" ko="비오랩 재팬을 방문해 주셔서 감사합니다." />
                 </p>
                 <p>
-                  {
-                    "参入障壁が高く、競争の厳しい日本市場において、当社のiHEALブランドは専門プロバイオティクス領域で着実な成長を重ねており、現在は多様な機能性健康食品市場へと事業領域を広げています。BIOLAB Japanが供給する機能性素材は、ヒト試験、SCI国際学術論文、関連特許などの根拠に基づき検討された素材です。"
-                  }
+                  <LocalizedText
+                    ja="BIOLAB Japanは、韓国に本社を置く株式会社BIOLABの日本現地法人です。株式会社BIOLABは2017年の設立以来、人々の健康で幸せな暮らしに貢献するため、マイクロバイオーム分野の健康機能食品・ヘルスケア専門企業として、絶え間ない革新と努力を通じて持続的な成長を続けてきました。"
+                    ko="비오랩 재팬은 한국에 본사를 두고 있는 (주)비오랩의 일본 현지법인 입니다. (주)비오랩은 2017년 창립 이래 마이크로바이옴 분야의 건강기능식품 헬스케어 전문 기업으로 성장해 왔습니다."
+                  />
                 </p>
                 <p>
-                  {
-                    "また、韓国の先進的な製造企業との緊密な協業とGMP製造システムにより生産される高品質な製品を供給しています。これまで積み重ねてきたノウハウと経験をもとに、日本のお客様のニーズに応える当社独自のTotal Healthcare Solutionを基盤として、多様な機能性食品素材の専門企業として、お客様の確かなパートナーとなることを目指してまいります。"
-                  }
+                  <LocalizedText
+                    ja="参入障壁が高く、競争の厳しい日本市場において、当社のiHEALブランドは専門プロバイオティクス領域で着実な成長を重ねており、現在は多様な機能性健康食品市場へと事業領域を広げています。BIOLAB Japanが供給する機能性素材は、ヒト試験、SCI国際学術論文、関連特許などの根拠に基づき検討された素材です。"
+                    ko="당사의 iHEAL 브랜드는 일본시장에서 전문 프로바이오틱스 영역을 중심으로 성장하고 있으며, BIOLAB Japan이 공급하는 기능성 소재는 인체시험, SCI 국제학술논문, 관련 특허를 기반으로 검토된 소재입니다."
+                  />
+                </p>
+                <p>
+                  <LocalizedText
+                    ja="また、韓国の先進的な製造企業との緊密な協業とGMP製造システムにより生産される高品質な製品を供給しています。これまで積み重ねてきたノウハウと経験をもとに、日本のお客様のニーズに応える当社独自のTotal Healthcare Solutionを基盤として、多様な機能性食品素材の専門企業として、お客様の確かなパートナーとなることを目指してまいります。"
+                    ko="한국의 선진 제조기업들과의 협업과 GMP 제조 시스템을 기반으로 제품을 공급하며, Total Healthcare Solution을 바탕으로 다양한 기능성 식품 소재 전문기업이 되겠습니다."
+                  />
                 </p>
               </div>
             </div>
@@ -96,12 +123,15 @@ export default function AboutPage() {
           <div className="dh-container">
             <h2>A bridge to the future.</h2>
             <p>
-              Evidence-backed ingredients,
+              <LocalizedText ja="Evidence-backed ingredients," ko="근거 기반 기능성 소재," />
               <br />
-              ODM/OEM planning, and Japan-side B2B growth.
+              <LocalizedText ja="ODM/OEM planning, and Japan-side B2B growth." ko="ODM/OEM 기획, 일본 B2B 성장." />
             </p>
             <span>
-              BIOLAB Japanは、素材の根拠、商品化、供給、販売ネットワークを一つの流れとして設計します。
+              <LocalizedText
+                ja="BIOLAB Japanは、素材の根拠、商品化、供給、販売ネットワークを一つの流れとして設計します。"
+                ko="BIOLAB Japan은 소재 근거, 상품화, 공급, 판매 네트워크를 하나의 흐름으로 설계합니다."
+              />
             </span>
           </div>
         </section>
@@ -109,15 +139,21 @@ export default function AboutPage() {
           <div className="dh-container">
             <div className="dh-tech-grid">
               <div>
-                <p className="dh-value-title">研究開発</p>
+                <p className="dh-value-title">
+                  <LocalizedText ja="研究開発" ko="연구개발" />
+                </p>
                 <p>RESEARCH & DEVELOPMENT</p>
               </div>
               <div>
-                <p className="dh-value-title">根拠資料</p>
+                <p className="dh-value-title">
+                  <LocalizedText ja="根拠資料" ko="근거 자료" />
+                </p>
                 <p>EVIDENCE ARCHITECTURE</p>
               </div>
               <div>
-                <p className="dh-value-title">事業連携</p>
+                <p className="dh-value-title">
+                  <LocalizedText ja="事業連携" ko="사업 연계" />
+                </p>
                 <p>GLOBAL BUSINESS BRIDGE</p>
               </div>
             </div>
