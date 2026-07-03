@@ -29,7 +29,11 @@ const koreanEvidenceSources: Record<string, string> = {
 
 function getLocalizedEvidenceSourceText(source: string, isKorean: boolean) {
   if (!isKorean) return source;
-  return koreanEvidenceSources[source] || source;
+  return (koreanEvidenceSources[source] || source)
+    .replaceAll("慶熙大学校", "경희대학교")
+    .replaceAll("皮膚バイオテクノロジーセンター", "피부바이오테크놀로지센터")
+    .replaceAll("実施試験", "실시 시험")
+    .replaceAll("実施", "실시");
 }
 
 function getEvidenceReferences(pptDetail: (typeof ingredientPptDetails)[string] | undefined, isKorean: boolean) {
