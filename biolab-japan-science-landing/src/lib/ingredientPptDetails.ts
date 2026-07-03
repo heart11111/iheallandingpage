@@ -484,7 +484,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     evidenceImages: [
       {
         src: "/images/ingredients/acetobeta-evidence-1.webp",
-        caption: "ADH・ALDHの増加メカニズム(アルコール→アセトアルデヒド→酢酸の分解経路)",
+        caption: "アルコールがアセトアルデヒドを経て酢酸へ分解される流れ",
         source: "Journal of Agriculture & Life Science. 2016,50,223-31",
       },
       {

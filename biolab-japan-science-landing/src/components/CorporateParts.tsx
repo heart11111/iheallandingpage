@@ -86,7 +86,7 @@ const koreanEvidenceCaptions: Record<string, string> = {
   "/images/ingredients/agrimony-evidence-2.jpeg": "지방간 조직 비교 이미지(정상 간, 지방간, 추출물 섭취 후 조직 변화)",
   "/images/ingredients/pinitol-evidence-1.webp": "혈장 GPx 증가 및 요중 MDA 감소(Pinitol군 vs 플라세보군)",
   "/images/ingredients/pinitol-evidence-2.webp": "간 지방 함량, ALT, AST 수치 감소",
-  "/images/ingredients/acetobeta-evidence-1.webp": "ADH·ALDH 증가에 따른 알코올 분해 경로 도식",
+  "/images/ingredients/acetobeta-evidence-1.webp": "알코올이 아세트알데히드를 거쳐 초산으로 분해되는 과정",
   "/images/ingredients/acetobeta-evidence-2.webp": "음주 0.25시간 후 혈중 아세트알데히드 변화량",
   "/images/ingredients/acetobeta-evidence-3.webp": "음주 후 메스꺼움 개선 효과",
   "/images/ingredients/immulink-evidence-1.webp": "자연면역 및 획득면역 8개 면역 인자 개선",
@@ -118,9 +118,23 @@ const wideEvidenceImages = new Set([
 ]);
 
 const featureEvidenceImages: Record<string, string> = {
-  acetobeta: "/images/ingredients/acetobeta-evidence-1.webp",
   bifido: "/images/ingredients/bifido-evidence-1.webp",
   nvp1703: "/images/ingredients/nvp1703-evidence-3.jpeg",
+};
+
+const mechanismEvidenceImages: Record<string, string> = {
+  acetobeta: "/images/ingredients/acetobeta-evidence-1.webp",
+};
+
+const mechanismEvidenceCopy: Record<string, { bodyJa: string; bodyKo: string; titleJa: string; titleKo: string }> = {
+  acetobeta: {
+    titleJa: "アルコール分解の流れ",
+    titleKo: "알코올 분해 경로",
+    bodyJa:
+      "アルコールはADHによりアセトアルデヒドへ、さらにALDHにより酢酸へ分解されます。この図はその流れと、Aceto Beta摂取時に確認した血中アルコール濃度・二日酔い感の低下を整理した資料です。",
+    bodyKo:
+      "알코올은 ADH를 거쳐 아세트알데히드로, 다시 ALDH를 거쳐 초산으로 분해됩니다. 이 도식은 그 흐름과 Aceto Beta 섭취 시 확인한 혈중 알코올 농도 및 숙취감 감소 데이터를 함께 정리한 자료입니다.",
+  },
 };
 
 const belowSummaryEvidenceImages = new Set(["/images/ingredients/dermania-evidence-3.png"]);
@@ -335,7 +349,10 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
         const evidenceReferences = getEvidenceReferences(pptDetail, isKorean);
         const featureImageSrc = featureEvidenceImages[sourceItem.id];
         const featureImage = pptDetail?.evidenceImages.find((image) => image.src === featureImageSrc);
-        const excludedEvidenceSources = [featureImageSrc, ...(originCompositionEvidenceImages[sourceItem.id] || [])].filter((source): source is string => Boolean(source));
+        const mechanismImageSrc = mechanismEvidenceImages[sourceItem.id];
+        const mechanismImage = pptDetail?.evidenceImages.find((image) => image.src === mechanismImageSrc);
+        const mechanismCopy = mechanismEvidenceCopy[sourceItem.id];
+        const excludedEvidenceSources = [featureImageSrc, mechanismImageSrc, ...(originCompositionEvidenceImages[sourceItem.id] || [])].filter((source): source is string => Boolean(source));
         const chartEvidenceImages = getChartEvidenceImages(pptDetail, excludedEvidenceSources);
         const originImages = originCompositionImages[sourceItem.id] || [];
         const originTable = originCompositionTables[sourceItem.id];
@@ -566,6 +583,26 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 )}
               </section>
             )}
+
+            {showExtended && mechanismImage && mechanismCopy && (
+              <section className="dh-mechanism-panel" aria-label={`${item.name} mechanism`}>
+                <div>
+                  <p>{isKorean ? "Mechanism" : "Mechanism"}</p>
+                  <h3>{isKorean ? mechanismCopy.titleKo : mechanismCopy.titleJa}</h3>
+                  <span>{isKorean ? mechanismCopy.bodyKo : mechanismCopy.bodyJa}</span>
+                </div>
+                <figure>
+                  <Image
+                    alt={getEvidenceCaption(mechanismImage.src, mechanismImage.caption, isKorean)}
+                    height={480}
+                    loading="eager"
+                    src={mechanismImage.src}
+                    width={720}
+                  />
+                  <figcaption>{getEvidenceCaption(mechanismImage.src, mechanismImage.caption, isKorean)}</figcaption>
+                </figure>
+              </section>
+            )}
           </>
         );
 
@@ -604,9 +641,13 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
   const evidenceReferences = getEvidenceReferences(pptDetail, isKorean);
   const featureImageSrc = featureEvidenceImages[sourceItem.id];
   const featureImage = pptDetail?.evidenceImages.find((image) => image.src === featureImageSrc);
+  const mechanismImageSrc = mechanismEvidenceImages[sourceItem.id];
+  const mechanismImage = pptDetail?.evidenceImages.find((image) => image.src === mechanismImageSrc);
+  const mechanismCopy = mechanismEvidenceCopy[sourceItem.id];
   const belowSummaryImages = pptDetail?.evidenceImages.filter((image) => belowSummaryEvidenceImages.has(image.src)) || [];
   const excludedEvidenceSources = [
     featureImageSrc,
+    mechanismImageSrc,
     ...belowSummaryImages.map((image) => image.src),
     ...(originCompositionEvidenceImages[sourceItem.id] || []),
   ].filter((source): source is string => Boolean(source));
@@ -691,6 +732,26 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           )}
         </section>
       </div>
+
+      {mechanismImage && mechanismCopy && (
+        <section className="dh-mechanism-panel" aria-label={`${item.name} mechanism`}>
+          <div>
+            <p>Mechanism</p>
+            <h3>{isKorean ? mechanismCopy.titleKo : mechanismCopy.titleJa}</h3>
+            <span>{isKorean ? mechanismCopy.bodyKo : mechanismCopy.bodyJa}</span>
+          </div>
+          <figure>
+            <Image
+              alt={getEvidenceCaption(mechanismImage.src, mechanismImage.caption, isKorean)}
+              height={480}
+              loading="eager"
+              src={mechanismImage.src}
+              width={720}
+            />
+            <figcaption>{getEvidenceCaption(mechanismImage.src, mechanismImage.caption, isKorean)}</figcaption>
+          </figure>
+        </section>
+      )}
 
       {belowSummaryImages.length > 0 && (
         <div className="dh-below-summary-evidence">
