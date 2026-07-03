@@ -23,7 +23,7 @@ const koreanMenuLabels: Record<string, string> = {
   "/business/brand-management": "Brand Royalty",
   "/products": "제품",
   "/products/microbiome-probiotics": "Functional Probiotics line",
-  "/products/nature-ingredients": "Functional Nature's Food Ingredients Line",
+  "/products/nature-ingredients": "Functional Nature‘s food ingredients Line",
   "/communication": "문의",
   "/communication/catalog": "E-카탈로그",
   "/communication/inquiries": "개발 문의",

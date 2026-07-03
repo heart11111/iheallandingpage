@@ -22,7 +22,7 @@ type ProductIngredientExplorerProps = {
 const lineOptions: Array<{ label: string; value: LineFilter }> = [
   { label: "All", value: "All" },
   { label: "Functional Probiotics line", value: "Functional Probiotics" },
-  { label: "Functional Nature's Food Ingredients Line", value: "Nature-derived Ingredients" },
+  { label: "Functional Nature‘s food ingredients Line", value: "Nature-derived Ingredients" },
 ];
 
 const individuallyRecognizedProbiotics = new Set(["med01", "med02", "nvp2106", "nvp1702", "nvp1703", "nvp1704"]);
@@ -253,7 +253,7 @@ export function ProductIngredientExplorer({ items, title, description, koTitle, 
                 label={
                   item.line === "Functional Probiotics"
                     ? "Functional Probiotics line"
-                    : "Functional Nature's Food Ingredients Line"
+                    : "Functional Nature‘s food ingredients Line"
                 }
                 line={item.line}
               />

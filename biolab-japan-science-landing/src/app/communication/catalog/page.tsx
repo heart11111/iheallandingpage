@@ -14,7 +14,7 @@ const catalogItems = [
   {
     label: "機能性天然素材",
     koLabel: "Nature’s food ingredients by Application",
-    ruby: "Functional Nature's Food Ingredients Line",
+    ruby: "Functional Nature‘s food ingredients Line",
     body: "自然由来機能性素材10種の素材情報を確認できます。",
     koBody: "남성 갱년기, 체지방, 인지, 피부보습, 간건강, 홍삼 등 Nature’s food ingredients 10종 자료입니다.",
     href: "/products/nature-ingredients",

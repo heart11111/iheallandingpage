@@ -5402,6 +5402,7 @@ h2 {
 
 .dh-line-badge {
   font-size: 12.5px;
+  text-transform: none;
 }
 
 .dh-detail-card > p {

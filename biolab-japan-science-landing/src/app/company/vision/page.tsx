@@ -11,7 +11,7 @@ const visionItems = [
   {
     title: "Mission",
     body: "Functional Probiotics、自然由来機能性素材、OEM/ODM、ブランド協業を一つの流れとして整理し、パートナーの製品化可能性を高めます。",
-    koBody: "Our Mission. 일본 기능성 헬스케어 산업에서 리딩 기업으로 도약하기 위한 Functional Probiotics line, Functional Nature's Food Ingredients Line, ODM/OEM & Brand Royalty 등 통합 솔루션을 제공합니다.",
+    koBody: "Our Mission. 일본 기능성 헬스케어 산업에서 리딩 기업으로 도약하기 위한 Functional Probiotics line, Functional Nature‘s food ingredients Line, ODM/OEM & Brand Royalty 등 통합 솔루션을 제공합니다.",
   },
   {
     title: "Goal",

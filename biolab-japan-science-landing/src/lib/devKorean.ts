@@ -37,7 +37,7 @@ export const devKoreanLabels = {
   },
   line: {
     "Functional Probiotics": "Functional Probiotics line",
-    "Nature-derived Ingredients": "Functional Nature's Food Ingredients Line",
+    "Nature-derived Ingredients": "Functional Nature‘s food ingredients Line",
   } satisfies Record<IngredientLine, string>,
 };
 
@@ -49,7 +49,7 @@ export const devKoreanPageCopy = {
     primary: "기능성 식품 원료 사업",
   },
   nature: {
-    title: "Functional Nature's Food Ingredients Line",
+    title: "Functional Nature‘s food ingredients Line",
     copy: "Nature’s food ingredients by Application 인체시험 완료 소재 10종입니다.",
     lead: "남성 갱년기, 체지방, 인지, 피부보습, 간건강, 홍삼 등 자연 유래 기능성 소재입니다.",
     primary: "기능성 식품 원료 사업",

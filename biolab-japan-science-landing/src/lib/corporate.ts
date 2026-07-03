@@ -26,7 +26,7 @@ export const businessPages = [
     koLabel: "기능성 식품 원료 사업",
     menuLabel: "Ingredient Supply",
     href: "/business/materials",
-    summary: "Functional Probiotics lineとFunctional Nature's Food Ingredients Lineを製品目的別に提案します。",
+    summary: "Functional Probiotics lineとFunctional Nature‘s food ingredients Lineを製品目的別に提案します。",
     koSummary: "Probiotics Strain by Application 7종과 Nature’s food ingredients by Application 10종 소재 라인업입니다.",
   },
   {
@@ -103,7 +103,7 @@ export const productLinePages = [
   {
     label: "機能性天然素材",
     koLabel: "Nature’s food ingredients by Application",
-    menuLabel: "Functional Nature's Food Ingredients Line",
+    menuLabel: "Functional Nature‘s food ingredients Line",
     href: "/products/nature-ingredients",
     summary: "男性健康、記憶、認知、体脂肪、肌、肝臓・血糖、二日酔い、免疫の10種を整理します。",
     koSummary: "남성 갱년기, 체지방, 인지, 피부보습, 간건강, 홍삼 등 자연 유래 기능성 소재 10종입니다.",
@@ -137,11 +137,11 @@ export const productGroups = [
   },
   {
     slug: "nature",
-    menuLabel: "Functional Nature's Food Ingredients Line",
+    menuLabel: "Functional Nature‘s food ingredients Line",
     eyebrow: "自然由来機能性素材",
     koEyebrow: "인체시험 완료 / 자연 유래 기능성 소재",
-    title: "Functional Nature's Food Ingredients Line",
-    koTitle: "Functional Nature's Food Ingredients Line",
+    title: "Functional Nature‘s food ingredients Line",
+    koTitle: "Functional Nature‘s food ingredients Line",
     subtitle: "自然由来素材",
     koSubtitle: "Nature’s food ingredients by Application",
     image: "/images/products-functional-nature-card-v3.webp",
@@ -238,7 +238,7 @@ export const partnerRows = [
     label: "提案素材",
     value: "プロバイオティクス、自然由来機能性素材、iHEALブランド活用",
     koLabel: "제안 소재",
-    koValue: "Functional Probiotics line, Functional Nature's Food Ingredients Line, iHEAL 브랜드 활용",
+    koValue: "Functional Probiotics line, Functional Nature‘s food ingredients Line, iHEAL 브랜드 활용",
   },
   {
     label: "進行方法",

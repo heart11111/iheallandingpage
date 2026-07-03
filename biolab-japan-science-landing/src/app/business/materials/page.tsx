@@ -18,8 +18,8 @@ const lines = [
   {
     label: "機能性天然素材",
     koLabel: "Nature’s food ingredients by Application",
-    ruby: "Functional Nature's Food Ingredients Line",
-    koRuby: "Ⅱ. Functional Nature's Food Ingredients Line",
+    ruby: "Functional Nature‘s food ingredients Line",
+    koRuby: "Ⅱ. Functional Nature‘s food ingredients Line",
     copy: "男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫などの自然由来機能性素材を提案します。モロシル、発酵紅参、ジンセンベリーなど、韓国の幅広い機能性素材ネットワークへのアクセスもご相談いただけます。",
     koCopy: "남성 갱년기, 체지방, 인지, 피부보습, 간건강, 홍삼 등 자연 유래 기능성 소재입니다. 모로오렌지추출분말(Morosil®), 발효홍삼, 진생베리 등 한국 기능성 소재 네트워크도 상담 가능합니다.",
     href: "/products/nature-ingredients",
