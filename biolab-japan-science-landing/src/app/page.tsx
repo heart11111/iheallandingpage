@@ -227,11 +227,11 @@ export default function Home() {
         <section id="contact" className="dh-home-cta">
           <div className="dh-container">
             <div>
-              <p className="dh-kicker">CONTACT</p>
+              <p className="dh-kicker">CONTACT US</p>
               <h2>{isKorean ? "기능성 헬스케어 사업 프로젝트를 시작하세요." : "Start a Korea-to-Japan healthcare project."}</h2>
-              <p>{isKorean ? "상담 항목: 기능성 식품 원료 사업, ODM/OEM, 일본 B2B 유통, Brand Royalty." : "素材調達、ODM/OEM、日本B2B流通、ブランド協業についてはCONTACTページからご相談ください。"}</p>
+              <p>{isKorean ? "상담 항목: 기능성 식품 원료 사업, ODM/OEM, 일본 B2B 유통, Brand Royalty." : "素材調達、ODM/OEM、日本B2B流通、ブランド協業についてはお問い合わせページからご相談ください。"}</p>
             </div>
-            <Link className="dh-outline-button" href="/communication/inquiries">CONTACT</Link>
+            <Link className="dh-outline-button" href="/communication/inquiries">CONTACT US</Link>
           </div>
         </section>
       </main>
