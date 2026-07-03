@@ -37,7 +37,16 @@ export default function VisionPage() {
           <div className="dh-container">
             <p className="dh-detail-primary">VISION</p>
             <h1>
-              <LocalizedText ja="Beyond Functional Healthcare Solutions" ko="한국과 일본의 B2B 사업 기회를 연결합니다." />
+              <LocalizedText
+                ja="Beyond Functional Healthcare Solutions"
+                ko={
+                  <>
+                    한국과 일본의
+                    <br />
+                    B2B 사업 기회를 연결합니다.
+                  </>
+                }
+              />
             </h1>
             <p className="dh-lead-copy">
               <LocalizedText
