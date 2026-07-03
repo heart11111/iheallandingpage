@@ -844,7 +844,7 @@ export function ContactInfoBlocks() {
         <h2>{isKorean ? "제휴 문의" : "Partnership Inquiry"}</h2>
         <p>
           {isKorean
-            ? "상담 항목: 기능성 식품 소재 사업, ODM/OEM, 일본 B2B 유통, iHEAL 브랜드 사용에 대한 상품 로열티 사업."
+            ? "상담 항목: 기능성 식품 원료 사업, ODM/OEM, 일본 B2B 유통, iHEAL 브랜드 사용에 대한 상품 로열티 사업."
             : "機能性素材、ODM/OEM、日本B2B流通、iHEALブランド協業についてご相談ください。"}
         </p>
       </div>

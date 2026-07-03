@@ -17,7 +17,7 @@ export default function ContactPage() {
             <span>
               <LocalizedText
                 ja="機能性素材、ODM/OEM、日本B2B流通、ブランド協業についてお問い合わせください。"
-                ko="기능성 식품 소재 사업, ODM/OEM, 일본 B2B 유통, Brand Royalty에 대해 문의해 주세요."
+                ko="기능성 식품 원료 사업, ODM/OEM, 일본 B2B 유통, Brand Royalty에 대해 문의해 주세요."
               />
             </span>
             <div className="dh-contact-page-grid">

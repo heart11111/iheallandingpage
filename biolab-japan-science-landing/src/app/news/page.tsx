@@ -12,7 +12,7 @@ export default function NewsPage() {
           title="News"
           copy="BIOLAB Japanの事業展開、素材情報、提携相談に関する最新トピックです。"
           koTitle="뉴스"
-          koCopy="BIOLAB Japan의 사업 전개, 기능성 식품 소재 사업, 제휴 상담 관련 최신 토픽입니다."
+          koCopy="BIOLAB Japan의 사업 전개, 기능성 식품 원료 사업, 제휴 상담 관련 최신 토픽입니다."
           image="/images/global-evidence-bg.png"
           align="center"
         />

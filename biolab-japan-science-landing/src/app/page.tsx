@@ -10,7 +10,7 @@ import { useLenis } from "@/lib/useLenis";
 
 const featuredCards = [
   {
-    eyebrow: "Functional Probiotics",
+    eyebrow: "Functional Probiotics line",
     title: "Application-specific strain portfolio",
     subtitle: "用途別プロバイオティクス",
     koTitle: "Probiotics Strain by Application",
@@ -19,11 +19,11 @@ const featuredCards = [
     href: "/products/probiotics",
   },
   {
-    eyebrow: "Functional Nature's Food Ingredients",
+    eyebrow: "Functional Nature's Food Ingredients Line",
     title: "Nature-derived functional materials",
     subtitle: "自然由来機能性素材",
     koTitle: "Nature’s food ingredients by Application",
-    koSubtitle: "Ⅱ. Functional Nature‘s food ingredients Line",
+    koSubtitle: "Ⅱ. Functional Nature's Food Ingredients Line",
     image: "images/products-functional-nature-card-v2.webp",
     href: "/products/nature",
   },
@@ -31,7 +31,7 @@ const featuredCards = [
     eyebrow: "ODM / OEM",
     title: "Market-ready product planning",
     subtitle: "商品化・供給設計",
-    koTitle: "ODM/OEM & Brand Royalty",
+    koTitle: "ODM/OEM",
     koSubtitle: "상품 개발 및 ODM / OEM 생산",
     image: "images/biolab-global-factory-bg.png",
     href: "/products/odm-oem",
@@ -104,7 +104,7 @@ export default function Home() {
               </h2>
               <p className="dh-hero-support">
                 {isKorean
-                  ? "한국의 가능성을 일본 시장 가치로 연결합니다. 기능성 식품 소재 사업, ODM/OEM & Brand Royalty, 일본 B2B 유통을 이어 다음 헬스케어 사업을 여는 비즈니스 브리지입니다."
+                  ? "한국의 가능성을 일본 시장으로 연결합니다. 기능성 식품 원료 사업, ODM/OEM & Brand Royalty, 일본 B2B 유통을 이어 일본에서 헬스케어 사업을 여는 비즈니스 다리 역할을 합니다."
                   : "韓国の可能性を、日本の市場価値へ。機能性素材、製造、ブランド、流通をつなぎ、次のヘルスケア事業をひらくビジネスブリッジです。"}
               </p>
               <div className="dh-hero-actions">
@@ -128,7 +128,7 @@ export default function Home() {
             <div className="dh-about-text">
               <p>
                 {isKorean
-                  ? "BIOLAB Japan은 한국의 기능성 소재 개발, 제조, ODM/OEM, 브랜드 관리와 일본의 판매사·제조사·도매 네트워크를 연결하는 헬스케어 사업 브리지입니다."
+                  ? "BIOLAB Japan은 한국의 기능성 원료 개발, 제조, ODM/OEM을 일본의 판매사·제조사·도매 네트워크와 연결하는 KOREA TO JAPAN 헬스케어 사업 브리지입니다."
                   : "BIOLAB Japanは、韓国の機能性素材開発、製造、ODM/OEM、ブランド管理と、日本側の販売会社・メーカー・卸ネットワークをつなぐヘルスケア事業ブリッジです。"}
               </p>
               <Link className="dh-text-link" href="/about">
@@ -181,7 +181,7 @@ export default function Home() {
               </h2>
               <p>
                 {isKorean
-                  ? "더 확실한 소재 정보를 더 넓은 일본 시장 전개로 연결하는 것이 BIOLAB Japan의 가치입니다."
+                  ? "더 확실한 소재를 더 넓은 일본 시장 전개로 연결하는 것이 BIOLAB Japan의 가치입니다."
                   : "より確かな素材情報を、より広い市場展開へつなげることがBIOLAB Japanの価値です。"}
               </p>
             </div>
@@ -226,7 +226,7 @@ export default function Home() {
             <div>
               <p className="dh-kicker">CONTACT</p>
               <h2>{isKorean ? "기능성 헬스케어 사업 프로젝트를 시작하세요." : "Start a Korea-to-Japan healthcare project."}</h2>
-              <p>{isKorean ? "상담 항목: 기능성 식품 소재 사업, ODM/OEM, 일본 B2B 유통, Brand Royalty." : "素材調達、ODM/OEM、日本B2B流通、ブランド協業についてはCONTACTページからご相談ください。"}</p>
+              <p>{isKorean ? "상담 항목: 기능성 식품 원료 사업, ODM/OEM, 일본 B2B 유통, Brand Royalty." : "素材調達、ODM/OEM、日本B2B流通、ブランド協業についてはCONTACTページからご相談ください。"}</p>
             </div>
             <Link className="dh-outline-button" href="/communication/inquiries">CONTACT</Link>
           </div>

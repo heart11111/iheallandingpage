@@ -12,7 +12,7 @@ export default function BusinessPage() {
           title="Business & Service"
           copy="機能性素材供給、OEM/ODM、Brand Managementを日本市場向けに設計します。"
           koTitle="사업/서비스"
-          koCopy="기능성 식품 소재 사업, ODM/OEM & Brand Royalty를 일본 시장 기준으로 설계합니다."
+          koCopy="기능성 식품 원료 사업, ODM/OEM, Brand Royalty를 일본 시장 기준으로 설계합니다."
           image="/images/biolab-global-factory-bg.png"
           compact
         />

@@ -8,7 +8,7 @@ const channels = [
     koLabel: "비오랩 재팬",
     ruby: "BIOLAB Japan",
     body: "日本B2B事業、機能性素材、ODM/OEM、ブランド協業の公式窓口です。",
-    koBody: "일본 B2B 사업, 기능성 식품 소재 사업, ODM/OEM & Brand Royalty 공식 창구입니다.",
+    koBody: "일본 B2B 사업, 기능성 식품 원료 사업, ODM/OEM, Brand Royalty 공식 창구입니다.",
     href: "/communication/inquiries",
   },
   {

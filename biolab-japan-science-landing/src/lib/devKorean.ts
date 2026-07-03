@@ -37,7 +37,7 @@ export const devKoreanLabels = {
   },
   line: {
     "Functional Probiotics": "Functional Probiotics line",
-    "Nature-derived Ingredients": "Functional Nature‘s food ingredients Line",
+    "Nature-derived Ingredients": "Functional Nature's Food Ingredients Line",
   } satisfies Record<IngredientLine, string>,
 };
 
@@ -46,13 +46,13 @@ export const devKoreanPageCopy = {
     title: "Functional Probiotics line",
     copy: "Probiotics Strain by Application 인체시험 완료 소재 7종입니다.",
     lead: "여성 질건강, 체지방, 뇌건강, 코건강, 간건강, 스트레스·수면, 장건강 영역의 프로바이오틱스 소재입니다.",
-    primary: "기능성 식품 소재 사업",
+    primary: "기능성 식품 원료 사업",
   },
   nature: {
-    title: "Functional Nature‘s food ingredients Line",
+    title: "Functional Nature's Food Ingredients Line",
     copy: "Nature’s food ingredients by Application 인체시험 완료 소재 10종입니다.",
     lead: "남성 갱년기, 체지방, 인지, 피부보습, 간건강, 홍삼 등 자연 유래 기능성 소재입니다.",
-    primary: "기능성 식품 소재 사업",
+    primary: "기능성 식품 원료 사업",
   },
   detailPrimary: {
     microbiome: "Probiotics Strain by Application",
@@ -125,7 +125,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     summary: "듀오바이옴 기술로 만든 간 기능 개선용 2종 특허 프로바이오틱스 복합물입니다.",
     healthClaims: [
       "듀오바이옴 기술로 만든 간 기능 개선용 2종 특허 프로바이오틱스 복합물입니다.",
-      "93명 인체시험과 SCI 논문으로 검증된 간기능 개선용 특허 유산균입니다.",
+      "비알코올성 93명·알코올성 70명 인체적용시험 2건과 SCI 논문으로 검증된 간기능 개선용 특허 유산균입니다.",
       "알코올성·비알코올성으로 손상된 간을 함께 고려한 복합 설계입니다.",
     ],
     featurePoints: [
@@ -133,7 +133,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "비알코올성 간손상: ALT·AST·γ-GTP와 피로지표, 혈중 염증지표가 개선됐습니다(γ-GTP P=0.0292, ALT P=0.0332).",
       "알코올성 간손상: ALT·AST·γ-GTP와 혈중 중성지방, 혈중 염증지표가 개선됐습니다(ALT P=0.0260/0.0397, AST P=0.0131, γ-GTP P=0.0229).",
     ],
-    evidenceTags: ["93명 인체시험", "ALT/AST/γ-GTP", "SCI 논문"],
+    evidenceTags: ["인체시험 2건(93명/70명)", "ALT/AST/γ-GTP", "SCI 논문"],
   },
   nvp1703: {
     category: "코",
@@ -210,7 +210,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     summary: "기억력·인지 기능 개선에 도움을 줄 수 있으며, 일반 홍삼보다 훨씬 많은 ‘진세노사이드’를 함유합니다.",
     healthClaims: [
       "기억력과 인지 기능 개선에 도움을 줄 수 있습니다.",
-      "일반 홍삼에 비해 압도적으로 많은 ‘진세노사이드’를 함유합니다.",
+      "일반 홍삼에 비해 고농도의 ‘진세노사이드’를 함유합니다.",
     ],
     featurePoints: [
       "55~75세 남녀를 대상으로 12주간 인체적용시험을 진행했습니다.",
@@ -240,7 +240,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     origin: ["흰목이버섯효소분해추출물 (Tremella fuciformis Beck-extract)"],
   },
   applephenon: {
-    name: "풋사과추출물 (Applephenon)",
+    name: "풋사과추출물 애플페논(Applephenon®)",
     category: "체지방",
     area: "체지방 감소",
     summary: "체지방 감소에 도움을 줄 수 있는, 다이어트 대표 스테디셀러 원료입니다.",
@@ -251,7 +251,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     featurePoints: [
       "20~55세 남녀를 대상으로 12주간 인체적용시험을 진행했습니다.",
       "풋사과 250개분을 농축하는 3종의 미국 특허기술로, 고농축 폴리페놀을 함유합니다.",
-      "중성지방을 억제·배출해 확실하게 체지방을 줄이고, 섭취를 멈춘 뒤에도 4주간 효과가 지속됐습니다.",
+      "중성지방 억제·배출과 관련된 체지방 감소 데이터를 보유하고, 섭취를 멈춘 뒤에도 4주간 효과가 지속됐습니다.",
     ],
     evidenceTags: ["체지방 감소", "고농축 폴리페놀", "지속 효과"],
     origin: ["풋사과추출물"],
@@ -333,7 +333,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "아세트알데하이드를 빠르게 분해해 음주로 인한 간 부담과 숙취를 줄여줍니다.",
     ],
     featurePoints: [
-      "20~40대 성인 40명을 대상으로 인체적용시험을 진행했습니다.",
+      "20~40대 성인 30명을 대상으로 인체적용시험을 진행했습니다.",
       "음주 다음 날 아침의 개운한 컨디션을 돕습니다.",
       "알코올을 분해하는 효소 ADH(알코올 탈수소효소)가 늘어 혈중 알코올 농도가 낮아집니다.",
       "아세트알데하이드를 분해하는 효소 ALDH(아세트알데하이드 탈수소효소)가 늘어 숙취를 줄여줍니다.",

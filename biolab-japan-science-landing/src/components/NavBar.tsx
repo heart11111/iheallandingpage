@@ -18,15 +18,15 @@ const koreanMenuLabels: Record<string, string> = {
   "/company/greeting": "대표 인사말",
   "/company/vision": "비전 및 목표",
   "/business": "사업/서비스",
-  "/business/materials": "기능성 식품 소재 사업",
+  "/business/materials": "기능성 식품 원료 사업",
   "/business/odm-oem": "OEM/ODM 서비스",
   "/business/brand-management": "Brand Royalty",
   "/products": "제품",
   "/products/microbiome-probiotics": "Functional Probiotics line",
-  "/products/nature-ingredients": "Nature’s food ingredients Line",
+  "/products/nature-ingredients": "Functional Nature's Food Ingredients Line",
   "/communication": "문의",
   "/communication/catalog": "E-카탈로그",
-  "/communication/inquiries": "고객 문의",
+  "/communication/inquiries": "개발 문의",
   "/communication/channels": "채널",
 };
 

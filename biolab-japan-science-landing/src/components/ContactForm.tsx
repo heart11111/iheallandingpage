@@ -101,8 +101,8 @@ export function ContactForm() {
       </label>
       <label>
         {isKorean ? "상담 영역" : "相談領域"}
-        <select name="interest" defaultValue={isKorean ? "기능성 식품 소재 사업" : "機能性素材の調達"}>
-          <option>{isKorean ? "기능성 식품 소재 사업" : "機能性素材の調達"}</option>
+        <select name="interest" defaultValue={isKorean ? "기능성 식품 원료 사업" : "機能性素材の調達"}>
+          <option>{isKorean ? "기능성 식품 원료 사업" : "機能性素材の調達"}</option>
           <option>{isKorean ? "ODM/OEM 상품 개발" : "ODM/OEM商品開発"}</option>
           <option>{isKorean ? "일본 B2B 유통" : "日本B2B流通"}</option>
           <option>{isKorean ? "iHEAL 브랜드 사용에 대한 상품 로열티 사업" : "iHEALブランド協業"}</option>

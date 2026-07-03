@@ -17,7 +17,7 @@ const steps = [
     koLabel: "ODM / OEM 생산",
     ruby: "Manufacturing",
     body: "韓国GMP製造ネットワークと連携し、試作、量産、供給条件を調整します。",
-    koBody: "한국 Major 제조업체 Direct 생산 및 납품 네트워크와 연계해 시제품, 양산, 공급 조건을 조율합니다.",
+    koBody: "한국 Major 제조업체 Direct 생산 및 납품 네트워크와 연계해 시제품, 양산, 공급을 제공합니다.",
   },
   {
     num: "03",
@@ -37,8 +37,8 @@ export default function OdmOemPage() {
         <CorporateSubHero
           title="OEM / ODM Service"
           copy="韓国製造ネットワークを活用し、日本市場向けの商品化を支援します。"
-          koTitle="ODM/OEM & Brand Royalty"
-          koCopy="한국 제조 네트워크를 활용해 일본 시장용 상품화와 브랜드 로열티 사업을 지원합니다."
+          koTitle="ODM/OEM"
+          koCopy="한국 제조 네트워크를 활용해 일본 시장용 상품화를 지원합니다."
           image="/images/biolab-global-factory-bg.png"
           compact
         />
@@ -46,7 +46,7 @@ export default function OdmOemPage() {
           <div className="dh-container">
             <p className="dh-detail-primary">OEM / ODM</p>
             <h1>
-              <LocalizedText ja="OEM/ODM Service" ko="ODM/OEM & Brand Royalty" />
+              <LocalizedText ja="OEM/ODM Service" ko="ODM/OEM" />
             </h1>
             <p>
               <LocalizedText

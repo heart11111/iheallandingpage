@@ -115,7 +115,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     productName: "NVP-1702",
     healthClaims: [
       "デュオバイオーム技術による、肝機能の改善に向けた2種の特許プロバイオティクス複合物です。",
-      "93名のヒト試験とSCI論文で確認された、肝機能改善向けの特許乳酸菌です。",
+      "非アルコール性93名・アルコール性70名のヒト試験2件とSCI論文で確認された、肝機能改善向けの特許乳酸菌です。",
       "アルコール性・非アルコール性で傷んだ肝臓のケアを考えた複合設計です。",
     ],
     originTitle: "使用菌株",
@@ -275,7 +275,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     productName: "ThinkGIN",
     healthClaims: [
       "記憶力と認知機能の改善に役立ちます。",
-      "一般的な紅参に比べて、圧倒的に多くの「ジンセノサイド」を含みます。",
+      "一般紅参より高濃度の「ジンセノサイド」を含有。",
     ],
     originTitle: "原料",
     originItems: ["新芽人参抽出粉末 Panax ginseng C.A. Meyer sprout"],
@@ -339,7 +339,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     features: [
       "20〜55歳の男女を対象に、12週間のヒト試験を行いました。",
       "未熟リンゴ250個分を濃縮する3種の米国特許技術で、高濃度のポリフェノールを含みます。",
-      "中性脂肪の抑制・排出によってしっかり体脂肪を減らし、摂取をやめた後も4週間は効果が続きました。",
+      "中性脂肪の抑制・排出を通じた体脂肪減少効果。摂取終了後4週間も効果が持続。",
     ],
     graphNotes: ["出典: Journal of Oleo Science. 59(6) 321-338 (2010) / 56(8) 417-428 (2007)"],
     evidenceImages: [
@@ -374,7 +374,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originItems: ["パンガシウス(Pangasius)の魚皮由来ゼラチン加水分解物", "500Da以下の低分子コラーゲンペプチド"],
     features: [
       "30〜65歳の女性を対象に、12週間のヒト試験を行いました。",
-      "肌の保湿がはっきり改善し、目元の小じわも減りました(肉眼評価・指標成分の両方で確認)。",
+      "皮膚保湿指標の改善、目元の小じわ減少が確認されました(肉眼評価・指標成分の両方で確認)。",
       "肌全体の弾力(生体弾力・純粋弾力)が高まり、肌のキメも整いました。",
     ],
     graphNotes: [],
@@ -475,7 +475,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originTitle: "原料",
     originItems: ["大豆発酵食酢培養物(酢酸菌由来)"],
     features: [
-      "20〜40代の成人40名を対象にヒト試験を行いました。",
+      "20〜40代の成人30名を対象にヒト試験を行いました。",
       "飲んだ翌朝の、すっきりとした目覚めをサポートします。",
       "アルコールを分解する酵素ADH(アルコール脱水素酵素)が増え、血中アルコール濃度が下がります。",
       "アセトアルデヒドを分解する酵素ALDH(アセトアルデヒド脱水素酵素)が増え、二日酔いをやわらげます。",

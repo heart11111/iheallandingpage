@@ -24,7 +24,7 @@ export default async function MicrobiomeProductDetailPage({ params }: { params: 
       <JsonLd data={ingredientProductStructuredData(item, `/products/microbiome-probiotics/${item.id}`)} />
       <main>
         <CorporateSubHero
-          title="Functional Probiotics"
+          title="Functional Probiotics line"
           copy="用途別プロバイオティクス素材"
           koTitle={devKoreanPageCopy.microbiome.title}
           koCopy={devKoreanPageCopy.detailPrimary.microbiome}
