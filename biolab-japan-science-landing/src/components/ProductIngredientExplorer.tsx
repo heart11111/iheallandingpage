@@ -25,6 +25,15 @@ const lineOptions: Array<{ label: string; value: LineFilter }> = [
   { label: "Functional Nature's Food Ingredients Line", value: "Nature-derived Ingredients" },
 ];
 
+const individuallyRecognizedProbiotics = new Set(["med01", "med02", "nvp2106", "nvp1702", "nvp1703", "nvp1704"]);
+
+function isIndividuallyRecognized(item: Ingredient) {
+  if (individuallyRecognizedProbiotics.has(item.id)) return true;
+
+  const searchable = [...(item.origin ?? []), ...item.evidenceTags, ...(item.healthClaims ?? []), ...(item.featurePoints ?? [])];
+  return searchable.some((value) => /個別認定型|개별인정|KFDA/.test(value));
+}
+
 function getIngredientHref(item: Ingredient) {
   const base =
     item.line === "Functional Probiotics"
@@ -118,6 +127,10 @@ export function ProductIngredientExplorer({ items, title, description, koTitle, 
   const displayItems = useMemo(() => {
     return language === "ko" ? items.map((item) => getKoreanIngredient(item)) : items;
   }, [items, language]);
+
+  const individuallyRecognizedIds = useMemo(() => {
+    return new Set(items.filter((item) => isIndividuallyRecognized(item)).map((item) => item.id));
+  }, [items]);
 
   const displayLineOptions = useMemo(() => {
     return lineOptions.map((option) => ({
@@ -244,6 +257,9 @@ export function ProductIngredientExplorer({ items, title, description, koTitle, 
                 }
                 line={item.line}
               />
+              {individuallyRecognizedIds.has(item.id) ? (
+                <span className="dh-recognition-chip">{language === "ko" ? "개별인정형" : "個別認定型素材"}</span>
+              ) : null}
               <h3>{item.name}</h3>
               <strong>{item.area}</strong>
               <span>{item.intake}</span>
