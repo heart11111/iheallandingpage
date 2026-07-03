@@ -198,7 +198,7 @@ export const natureIngredients: Ingredient[] = [
   },
   {
     id: "agrimony",
-    name: "Agrimony extract",
+    name: "アグリモニー抽出物 (Agrimonia pilosa)",
     category: "肝臓",
     area: "非アルコール性脂肪肝健康",
     summary: "非アルコール性脂肪肝の改善に役立つアグリモニー(仙鶴草)由来素材。",

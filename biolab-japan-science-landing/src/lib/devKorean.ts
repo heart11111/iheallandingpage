@@ -291,7 +291,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     origin: ["줄풀추출물 Zizania latifolia (Wild rice)"],
   },
   agrimony: {
-    name: "아그리모니 (Agrimonia pilosa)",
+    name: "아그리모니추출물 (Agrimonia pilosa)",
     category: "간",
     area: "비알코올성 지방간",
     summary: "비알코올성 지방간 개선에 도움을 줄 수 있으며, 지방간 함량과 ALT·AST 감소를 확인한 소재입니다.",
@@ -305,7 +305,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "지방간 지수(HSI)도 개선됐습니다(P=0.044).",
     ],
     evidenceTags: ["ALT", "AST", "HSI"],
-    origin: ["아그리모니 (Agrimonia pilosa)"],
+    origin: ["아그리모니추출물 (Agrimonia pilosa)"],
   },
   pinitol: {
     name: "피니톨",

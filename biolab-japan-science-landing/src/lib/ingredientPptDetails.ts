@@ -418,7 +418,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   agrimony: {
-    productName: "Agrimony extract",
+    productName: "アグリモニー抽出物 (Agrimonia pilosa)",
     healthClaims: ["非アルコール性脂肪肝の改善に役立ちます。", "肝脂肪量やALT・ASTの低下を確認しています。"],
     originTitle: "原料",
     originItems: ["アグリモニー(仙鶴草)抽出物 Agrimonia pilosa"],
