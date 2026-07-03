@@ -4194,23 +4194,23 @@ h2 {
 }
 
 .dh-product-grid-two .dh-product-card {
-  min-height: 520px;
-  aspect-ratio: 1.08 / 1;
+  min-height: 470px;
+  aspect-ratio: 1.16 / 1;
 }
 
 .dh-product-grid-two .dh-product-text {
-  top: 232px;
+  top: 170px;
   bottom: auto;
-  max-width: 520px;
+  max-width: 500px;
 }
 
 .dh-product-grid-two .dh-product-text h3 {
-  max-width: 14em;
-  font-size: clamp(26px, 3vw, 34px);
+  max-width: 14.5em;
+  font-size: clamp(27px, 2.65vw, 34px);
 }
 
 .dh-product-grid-two .dh-product-text p:not(.dh-product-eyebrow) {
-  max-width: 30em;
+  max-width: 34em;
   margin-bottom: 0;
 }
 
