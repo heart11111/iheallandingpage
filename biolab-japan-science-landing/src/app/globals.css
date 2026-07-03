@@ -6951,10 +6951,10 @@ h2 {
 }
 
 .dh-vision-card {
-  min-height: 252px;
+  min-height: 236px;
   border: 1px solid #dfe6ee;
   border-top: 4px solid #2f70bf;
-  padding: 34px 32px;
+  padding: 34px 30px;
   background: #fff;
   box-shadow: 0 16px 38px rgba(31, 49, 76, 0.06);
 }
@@ -6971,10 +6971,13 @@ h2 {
 .dh-vision-card p {
   margin: 0;
   color: #1f2937;
-  font-size: 18px;
-  font-weight: 800;
-  line-height: 1.78;
+  font-size: 16px;
+  font-weight: 750;
+  line-height: 1.95;
   letter-spacing: 0;
+  line-break: strict;
+  overflow-wrap: normal;
+  text-wrap: pretty;
 }
 
 .dh-supply-tabs {
