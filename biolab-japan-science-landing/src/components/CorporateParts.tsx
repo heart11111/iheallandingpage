@@ -22,6 +22,16 @@ type SubHeroProps = {
   compact?: boolean;
 };
 
+const koreanEvidenceSources: Record<string, string> = {
+  "慶熙大学校皮膚バイオテクノロジーセンター実施": "경희대학교 피부바이오테크놀로지센터 실시",
+  "慶熙大学校皮膚バイオテクノロジーセンター実施試験": "경희대학교 피부바이오테크놀로지센터 실시 시험",
+};
+
+function getLocalizedEvidenceSourceText(source: string, isKorean: boolean) {
+  if (!isKorean) return source;
+  return koreanEvidenceSources[source] || source;
+}
+
 function getEvidenceReferences(pptDetail: (typeof ingredientPptDetails)[string] | undefined, isKorean: boolean) {
   if (!pptDetail) return [];
   const imageSources = pptDetail.evidenceImages.map((image) => image.source).filter((source): source is string => Boolean(source));
@@ -35,7 +45,7 @@ function getEvidenceReferences(pptDetail: (typeof ingredientPptDetails)[string] 
     return entries;
   });
   return Array.from(new Set(normalizedReferences)).map((reference) => {
-    const localizedReference = reference
+    const localizedReference = getLocalizedEvidenceSourceText(reference, isKorean)
       .replace(/^Muscle synthesis - /, isKorean ? "근육합성 - " : "筋肉合成 - ")
       .replace(/^Sexual function - /, isKorean ? "성기능 증진 - " : "性機能増進 - ");
     return `${isKorean ? "출처" : "出典"}: ${localizedReference}`;
@@ -280,7 +290,7 @@ function getEvidenceCaption(src: string, caption: string, isKorean: boolean) {
 
 function getEvidenceSource(source: string | undefined, isKorean: boolean) {
   if (!source) return undefined;
-  return `${isKorean ? "출처" : "出典"}: ${source}`;
+  return `${isKorean ? "출처" : "出典"}: ${getLocalizedEvidenceSourceText(source, isKorean)}`;
 }
 
 export function CorporateSubHero({
