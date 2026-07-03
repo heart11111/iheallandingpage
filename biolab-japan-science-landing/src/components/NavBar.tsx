@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,20 +31,12 @@ const koreanMenuLabels: Record<string, string> = {
 };
 
 export function NavBar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { language, setLanguage } = useDevLanguage();
   const menuLabel = (href: string, fallback: string) => (language === "ko" ? koreanMenuLabels[href] || fallback : fallback);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header className={`dh-nav ${scrolled ? "dh-nav-scrolled" : ""}`}>
+    <header className="dh-nav">
       <div className="dh-nav-inner">
         <Link className="dh-logo" href="/" aria-label="BIOLAB Japan home">
           <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={508} height={96} priority />
