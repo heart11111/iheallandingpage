@@ -5304,6 +5304,21 @@ h2 {
   overflow-wrap: anywhere;
 }
 
+.dh-brand-royalty-visual {
+  width: min(100%, 520px);
+  margin: -22px 0 48px;
+  overflow: hidden;
+  border: 1px solid #dde7ef;
+  background: #f7fbff;
+}
+
+.dh-brand-royalty-visual img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 19 / 9;
+  object-fit: cover;
+}
+
 .dh-detail-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -51,6 +51,14 @@ export default function BrandManagementPage() {
                 ko="기능성 소재, 제품 자료, 판매 채널, iHEAL 브랜드 사용에 대한 상품 로열티 사업을 일체형으로 관리합니다."
               />
             </p>
+            <figure className="dh-brand-royalty-visual">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/brand-royalty-support.webp"
+                alt=""
+                aria-hidden="true"
+              />
+            </figure>
             <div className="dh-process-list">
               {services.map((service, index) => (
                 <article key={service.ruby}>
