@@ -4083,6 +4083,10 @@ h2 {
   min-height: 34px;
 }
 
+#products .dh-product-grid:not(.dh-product-grid-two) .dh-product-text {
+  top: 185px;
+}
+
 .dh-product-text .dh-category-badge {
   --badge-bg: rgba(255, 255, 255, 0.14);
   --badge-border: rgba(255, 255, 255, 0.34);

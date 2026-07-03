@@ -13,8 +13,9 @@ const featuredCards = [
     eyebrow: "Functional Probiotics line",
     title: "Application-specific strain portfolio",
     subtitle: "用途別プロバイオティクス",
-    koTitle: "Probiotics Strain by Application",
-    koSubtitle: "Ⅰ. Functional Probiotics line",
+    koTitle: "프로바이오틱스 소재",
+    koSubtitle: "용도별 7개 영역",
+    koDescription: "여성·체지방·인지 등 제품 목적별 균주 포트폴리오입니다.",
     image: "images/products-microbiome-probiotics-card-v2.webp",
     href: "/products/microbiome-probiotics",
   },
@@ -22,8 +23,9 @@ const featuredCards = [
     eyebrow: "Functional Nature‘s food ingredients Line",
     title: "Nature-derived functional materials",
     subtitle: "自然由来機能性素材",
-    koTitle: "Nature’s food ingredients by Application",
-    koSubtitle: "Ⅱ. Functional Nature‘s food ingredients Line",
+    koTitle: "기능성 천연소재",
+    koSubtitle: "용도별 10개 영역",
+    koDescription: "남성 건강·기억·인지 등 자연 유래 소재를 정리했습니다.",
     image: "images/products-functional-nature-card-v2.webp",
     href: "/products/nature-ingredients",
   },
@@ -33,6 +35,7 @@ const featuredCards = [
     subtitle: "商品化・供給設計",
     koTitle: "ODM/OEM",
     koSubtitle: "상품 개발 및 ODM / OEM 생산",
+    koDescription: "한국 제조 네트워크를 바탕으로 제품 기획과 생산을 연결합니다.",
     image: "images/biolab-global-factory-bg.png",
     href: "/products/odm-oem",
   },
@@ -164,6 +167,7 @@ export default function Home() {
                     <p className="dh-product-eyebrow">{card.eyebrow}</p>
                     <h3>{isKorean ? card.koTitle : card.title}</h3>
                     <strong>{isKorean ? card.koSubtitle : card.subtitle}</strong>
+                    {isKorean && <p>{card.koDescription}</p>}
                   </div>
                   <a href={card.href} aria-label={`${card.title} 詳細`}>
                     LEARN MORE
