@@ -3627,6 +3627,7 @@ h2 {
 
 .dh-hero-actions a,
 .dh-outline-button,
+.dh-tech-link,
 .dh-topic a {
   display: inline-flex;
   align-items: center;
@@ -3651,6 +3652,7 @@ h2 {
 }
 
 .dh-hero-actions a:hover,
+.dh-tech-link:hover,
 .dh-outline-button:hover,
 .dh-topic:hover a {
   border-color: var(--dh-sky);
@@ -3714,6 +3716,11 @@ h2 {
   color: var(--dh-muted);
   font-size: 15px;
   line-height: 1.9;
+}
+
+.dh-tech-link {
+  margin-top: 26px;
+  color: #1f2937;
 }
 
 .dh-about-text p {
@@ -4226,7 +4233,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 34px;
-  margin: 88px 0 74px;
+  margin: 88px 0 0;
 }
 
 .dh-tech-item {
@@ -4699,7 +4706,7 @@ h2 {
 
   .dh-tech-grid {
     gap: 46px;
-    margin: 58px 0 48px;
+    margin: 58px 0 0;
   }
 
   .dh-footer .dh-container {

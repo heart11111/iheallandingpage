@@ -16,7 +16,7 @@ const featuredCards = [
     koTitle: "Probiotics Strain by Application",
     koSubtitle: "Ⅰ. Functional Probiotics line",
     image: "images/products-microbiome-probiotics-card-v2.webp",
-    href: "/products/probiotics",
+    href: "/products/microbiome-probiotics",
   },
   {
     eyebrow: "Functional Nature‘s food ingredients Line",
@@ -25,7 +25,7 @@ const featuredCards = [
     koTitle: "Nature’s food ingredients by Application",
     koSubtitle: "Ⅱ. Functional Nature‘s food ingredients Line",
     image: "images/products-functional-nature-card-v2.webp",
-    href: "/products/nature",
+    href: "/products/nature-ingredients",
   },
   {
     eyebrow: "ODM / OEM",
@@ -45,6 +45,7 @@ const techValues = [
     copy: "韓国の素材開発、製造、ブランド管理を日本市場向けの事業設計につなげます。",
     koTitle: "연구개발",
     koCopy: "한국의 소재 개발, 제조, 브랜드 관리를 일본 시장용 사업 설계로 연결합니다.",
+    href: "/business/materials",
     icon: Microscope,
   },
   {
@@ -53,6 +54,7 @@ const techValues = [
     copy: "ヒト臨床試験、SCI論文、特許、認証資料を素材別に整理し、B2B提案に活用します。",
     koTitle: "근거 자료",
     koCopy: "인체적용시험, SCI 논문, 특허, 인증 자료를 소재별로 정리해 B2B 제안에 활용합니다.",
+    href: "/products",
     icon: ShieldCheck,
   },
   {
@@ -61,6 +63,7 @@ const techValues = [
     copy: "日本の販売会社、メーカー、卸、ブランド事業者へ展開できる供給線を構築します。",
     koTitle: "사업 연계",
     koCopy: "일본 판매사, 제조사, 도매, 브랜드 사업자로 확장 가능한 공급선을 구축합니다.",
+    href: "/business/odm-oem",
     icon: Globe2,
   },
 ];
@@ -108,7 +111,7 @@ export default function Home() {
                   : "韓国の可能性を、日本の市場価値へ。機能性素材、製造、ブランド、流通をつなぎ、次のヘルスケア事業をひらくビジネスブリッジです。"}
               </p>
               <div className="dh-hero-actions">
-                <a href="#products">{isKorean ? "소재 보기" : "素材を見る"}</a>
+                <a href="/products">{isKorean ? "소재 보기" : "素材を見る"}</a>
                 <a href="/communication/inquiries">{isKorean ? "제휴 상담" : "提携相談"}</a>
               </div>
             </div>
@@ -192,11 +195,11 @@ export default function Home() {
                   <h3>{isKorean ? item.koTitle : item.title}</h3>
                   <p className="dh-tech-subtitle">{item.subtitle}</p>
                   <p>{isKorean ? item.koCopy : item.copy}</p>
+                  <Link className="dh-tech-link" href={item.href}>
+                    LEARN MORE
+                  </Link>
                 </article>
               ))}
-            </div>
-            <div className="dh-center">
-              <Link className="dh-outline-button" href="/about">LEARN MORE</Link>
             </div>
           </div>
         </section>
