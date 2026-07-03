@@ -4061,12 +4061,16 @@ h2 {
   position: absolute;
   z-index: 2;
   left: 0;
-  top: auto;
-  bottom: 92px;
+  top: 210px;
+  bottom: auto;
   box-sizing: border-box;
   width: 100%;
   padding: 0 34px;
   color: #fff;
+}
+
+.dh-product-text .dh-product-eyebrow {
+  min-height: 34px;
 }
 
 .dh-product-text .dh-category-badge {
@@ -4074,6 +4078,9 @@ h2 {
   --badge-border: rgba(255, 255, 255, 0.34);
   --badge-color: #ffffff;
   --badge-icon-bg: rgba(255, 255, 255, 0.16);
+  display: inline-flex;
+  min-height: 38px;
+  max-width: 100%;
   margin: 0 0 16px;
   padding: 8px 12px 8px 9px;
   backdrop-filter: blur(8px);
@@ -4087,7 +4094,7 @@ h2 {
   font-weight: 900;
   line-height: 1.15;
   overflow-wrap: anywhere;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 .dh-product-text strong {
@@ -4185,8 +4192,8 @@ h2 {
 }
 
 .dh-product-grid-two .dh-product-text {
-  top: auto;
-  bottom: 104px;
+  top: 232px;
+  bottom: auto;
   max-width: 520px;
 }
 
