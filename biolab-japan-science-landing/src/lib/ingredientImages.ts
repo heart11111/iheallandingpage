@@ -1,4 +1,4 @@
-const INGREDIENT_IMAGE_VERSION = "c7a86c2";
+const INGREDIENT_IMAGE_VERSION = "20260703-clean-probiotics";
 
 function withIngredientImageVersion(image: string) {
   return image.startsWith("/images/ingredients/") ? `${image}?v=${INGREDIENT_IMAGE_VERSION}` : image;
