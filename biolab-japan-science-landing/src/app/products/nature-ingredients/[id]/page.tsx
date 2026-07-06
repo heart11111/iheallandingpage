@@ -24,7 +24,7 @@ export default async function NatureIngredientDetailPage({ params }: { params: P
       <JsonLd data={ingredientProductStructuredData(item, `/products/nature-ingredients/${item.id}`)} />
       <main>
         <CorporateSubHero
-          title="Functional Nature‘s food ingredients Line"
+          title="Ⅱ. Functional Nature‘s food ingredients Line"
           copy="自然由来機能性素材"
           koTitle={devKoreanPageCopy.nature.title}
           koCopy={devKoreanPageCopy.detailPrimary.nature}

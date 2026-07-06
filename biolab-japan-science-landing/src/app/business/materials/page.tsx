@@ -8,20 +8,20 @@ const lines = [
   {
     label: "個別認定型プロバイオティクス",
     koLabel: "Probiotics Strain by Application",
-    ruby: "Functional Probiotics line",
+    ruby: "Ⅰ. Functional Probiotics line",
     koRuby: "Ⅰ. Functional Probiotics line",
     copy: "女性、体脂肪、認知、肝臓、鼻、ストレス、腸のコンディションに合わせたプロバイオティクス素材を検討します。",
-    koCopy: "여성 질건강, 체지방, 뇌건강, 코건강, 간건강, 스트레스·수면, 장건강 영역의 인체시험 완료 프로바이오틱스 소재입니다.",
+    koCopy: "질내 마이크로바이옴, 체지방·항비만, 인지·기억, 간건강, 면역 과민반응에 따른 코 상태, 스트레스·수면·릴랙스, 장건강·배변활동 영역의 인체시험 완료 프로바이오틱스 소재입니다.",
     href: "/products/microbiome-probiotics",
     items: microbiomeProductItems,
   },
   {
     label: "機能性天然素材",
     koLabel: "Nature’s food ingredients by Application",
-    ruby: "Functional Nature‘s food ingredients Line",
+    ruby: "Ⅱ. Functional Nature‘s food ingredients Line",
     koRuby: "Ⅱ. Functional Nature‘s food ingredients Line",
     copy: "男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫などの自然由来機能性素材を提案します。モロシル、発酵紅参、ジンセンベリーなど、韓国の幅広い機能性素材ネットワークへのアクセスもご相談いただけます。",
-    koCopy: "남성 갱년기, 체지방, 인지, 피부보습, 간건강, 홍삼 등 자연 유래 기능성 소재입니다. 모로오렌지추출분말(Morosil®), 발효홍삼, 진생베리 등 한국 기능성 소재 네트워크도 상담 가능합니다.",
+    koCopy: "남성 갱년기·남성 건강, 기억·인지 기능, 노화 관련 인지기능, 다이어트·체지방, 피부 수분·탄력, 주름·보습, 비알코올성 지방간 건강, 간·혈당 건강, 알코올 대사 지원, 면역기능 영역의 자연 유래 기능성 소재입니다. 모로오렌지추출분말(Morosil®), 발효홍삼, 진생베리 등 한국 기능성 소재 네트워크도 상담 가능합니다.",
     href: "/products/nature-ingredients",
     items: natureProductItems,
   },
@@ -36,7 +36,7 @@ export default function MaterialsPage() {
           title="Functional Ingredient Supply"
           copy="製品目的に合わせた機能性素材と根拠資料を一緒に検討します。"
           koTitle="기능성 식품 원료 사업"
-          koCopy="제품 목적에 맞춘 기능성 소재와 인체시험 완료 근거 자료입니다."
+          koCopy="제품 목적에 맞춰 기능성 소재와 인체시험 근거를 함께 검토합니다."
           image="/images/global-evidence-bg.png"
           compact
         />

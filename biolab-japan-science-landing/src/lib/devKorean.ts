@@ -4,6 +4,7 @@ export type KoreanIngredientCopy = {
   name?: string;
   category: string;
   area: string;
+  intake?: string;
   summary: string;
   healthClaims: string[];
   featurePoints: string[];
@@ -36,22 +37,22 @@ export const devKoreanLabels = {
     functionalContent: "기능성 내용",
   },
   line: {
-    "Functional Probiotics": "Functional Probiotics line",
-    "Nature-derived Ingredients": "Functional Nature‘s food ingredients Line",
+    "Functional Probiotics": "Ⅰ. Functional Probiotics line",
+    "Nature-derived Ingredients": "Ⅱ. Functional Nature‘s food ingredients Line",
   } satisfies Record<IngredientLine, string>,
 };
 
 export const devKoreanPageCopy = {
   microbiome: {
-    title: "Functional Probiotics line",
+    title: "Ⅰ. Functional Probiotics line",
     copy: "Probiotics Strain by Application 인체시험 완료 소재 7종입니다.",
-    lead: "여성 질건강, 체지방, 뇌건강, 코건강, 간건강, 스트레스·수면, 장건강 영역의 프로바이오틱스 소재입니다.",
+    lead: "질내 마이크로바이옴, 체지방·항비만, 인지·기억, 간건강, 면역 과민반응에 따른 코 상태, 스트레스·수면·릴랙스, 장건강·배변활동 영역의 프로바이오틱스 소재입니다.",
     primary: "기능성 식품 원료 사업",
   },
   nature: {
-    title: "Functional Nature‘s food ingredients Line",
+    title: "Ⅱ. Functional Nature‘s food ingredients Line",
     copy: "Nature’s food ingredients by Application 인체시험 완료 소재 10종입니다.",
-    lead: "남성 갱년기, 체지방, 인지, 피부보습, 간건강, 홍삼 등 자연 유래 기능성 소재입니다.",
+    lead: "남성 갱년기·남성 건강, 기억·인지 기능, 노화 관련 인지기능, 다이어트·체지방, 피부 수분·탄력, 주름·보습, 비알코올성 지방간 건강, 간·혈당 건강, 알코올 대사 지원, 면역기능 영역의 자연 유래 기능성 소재입니다.",
     primary: "기능성 식품 원료 사업",
   },
   detailPrimary: {
@@ -65,6 +66,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "iHEAL GINO 5 Formula – MED01",
     category: "여성",
     area: "여성 질건강",
+    intake: "50억 CFU/day (5×10⁹ CFU/day)",
     summary: "한국 여성의 질에서 분리한 유산균으로, 여성 질건강을 돕는 프로바이오틱스 복합물입니다.",
     healthClaims: [
       "여성의 질건강을 돕는 프로바이오틱스 복합물입니다.",
@@ -85,6 +87,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "iHEAL DIT 2 Formula – MED02",
     category: "체지방",
     area: "체지방 감소",
+    intake: "50억 CFU/day (5×10⁹ CFU/day)",
     summary: "지방세포의 분화를 억제하는 특허 프로바이오틱스 복합물로, 항비만 특허 유산균입니다.",
     healthClaims: [
       "지방세포의 분화를 억제하는 특허 프로바이오틱스 복합물입니다.",
@@ -103,7 +106,8 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
   nvp2106: {
     name: "NVP-2106",
     category: "뇌·기억",
-    area: "뇌건강",
+    area: "인지·기억력 개선",
+    intake: "100억 CFU/day (1×10¹⁰ CFU/day)",
     summary: "듀오바이옴 기술로 만든 뇌 기능 개선용 2종 특허 프로바이오틱스 복합물입니다.",
     healthClaims: [
       "듀오바이옴 기술로 만든 뇌 기능 개선용 2종 특허 프로바이오틱스 복합물입니다.",
@@ -121,7 +125,8 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
   nvp1702: {
     name: "NVP-1702",
     category: "간",
-    area: "간건강",
+    area: "간건강 개선",
+    intake: "100억 CFU/day (1×10¹⁰ CFU/day)",
     summary: "듀오바이옴 기술로 만든 간 기능 개선용 2종 특허 프로바이오틱스 복합물입니다.",
     healthClaims: [
       "듀오바이옴 기술로 만든 간 기능 개선용 2종 특허 프로바이오틱스 복합물입니다.",
@@ -133,12 +138,13 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "비알코올성 간손상: ALT·AST·γ-GTP와 피로지표, 혈중 염증지표가 개선됐습니다(γ-GTP P=0.0292, ALT P=0.0332).",
       "알코올성 간손상: ALT·AST·γ-GTP와 혈중 중성지방, 혈중 염증지표가 개선됐습니다(ALT P=0.0260/0.0397, AST P=0.0131, γ-GTP P=0.0229).",
     ],
-    evidenceTags: ["인체시험 2건(93명/70명)", "ALT/AST/γ-GTP", "SCI 논문"],
+    evidenceTags: ["비알코올성 93명", "알코올성 70명", "SCI 논문"],
   },
   nvp1703: {
     category: "코",
     name: "NVP-1703",
-    area: "코건강",
+    area: "코 상태 개선",
+    intake: "100억 CFU/day (1×10¹⁰ CFU/day)",
     summary: "듀오바이옴 기술로 만든 알레르기성 비염 개선용 특허 프로바이오틱스 복합물입니다.",
     healthClaims: [
       "듀오바이옴 기술로 만든 알레르기성 비염 개선용 특허 프로바이오틱스 복합물입니다.",
@@ -154,7 +160,8 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
   nvp1704: {
     name: "NVP-1704",
     category: "스트레스",
-    area: "스트레스, 수면",
+    area: "스트레스·수면 개선",
+    intake: "50억 CFU/day (5×10⁹ CFU/day)",
     summary: "스트레스성 질환과 우울·불안·불면 개선용 특허 프로바이오틱스 복합물입니다.",
     healthClaims: [
       "스트레스성 질환과 우울·불안·불면 개선용 특허 프로바이오틱스 복합물입니다.",
@@ -171,6 +178,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "Bifidobacterium Probiotics",
     category: "장",
     area: "장건강",
+    intake: "용도별 설계",
     summary: "모유를 먹고 자란 건강한 신생아의 분변에서 얻은 100% 인체 유래 비피더스 유산균입니다.",
     healthClaims: [
       "장건강과 원활한 배변활동에 도움을 주는 인체 유래 비피더스 유산균입니다.",
@@ -187,7 +195,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
   testofen: {
     name: "Testofen®",
     category: "남성",
-    area: "남성 갱년기",
+    area: "남성 갱년기 증상 완화",
     summary: "갱년기 남성 건강을 위한 차별화된 기능성 소재입니다.",
     healthClaims: [
       "갱년기를 맞은 남성 건강을 위한 차별화된 기능성 소재입니다.",
@@ -206,7 +214,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
   thinkgin: {
     name: "ThinkGIN",
     category: "기억",
-    area: "기억력·인지 기능",
+    area: "기억력·인지기능 개선",
     summary: "기억력·인지 기능 개선에 도움을 줄 수 있으며, 일반 홍삼보다 훨씬 많은 ‘진세노사이드’를 함유합니다.",
     healthClaims: [
       "기억력과 인지 기능 개선에 도움을 줄 수 있습니다.",
@@ -224,7 +232,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
   neulearn: {
     name: "Neu learn",
     category: "인지",
-    area: "인지 개선",
+    area: "인지기능 개선",
     summary: "노화로 저하된 인지기능 개선에 도움을 줄 수 있는 흰목이버섯 효소분해추출물입니다.",
     healthClaims: [
       "노화로 저하된 인지기능 개선에 도움을 줄 수 있습니다.",
@@ -259,7 +267,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
   collagen: {
     name: "저분자콜라겐펩타이드 AG",
     category: "피부",
-    area: "피부보습",
+    area: "피부보습·피부건강",
     summary: "피부보습과 자외선 손상으로부터의 피부건강 유지에 도움을 줄 수 있는 저분자 콜라겐 펩타이드입니다.",
     healthClaims: [
       "피부보습에 도움을 줄 수 있습니다.",
@@ -276,7 +284,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
   dermania: {
     name: "DermaNia",
     category: "피부",
-    area: "피부 수분·주름",
+    area: "피부 수분·주름 개선",
     summary: "주름 생성 억제와 피부 수분 증가·보습 강화에 도움을 줄 수 있는 줄풀(Wild rice) 추출물입니다.",
     healthClaims: [
       "주름 생성 억제와 주름 케어에 도움을 줄 수 있습니다.",
@@ -293,7 +301,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
   agrimony: {
     name: "아그리모니추출물 (Agrimonia pilosa)",
     category: "간",
-    area: "비알코올성 지방간",
+    area: "비알코올성 지방간 개선",
     summary: "비알코올성 지방간 개선에 도움을 줄 수 있으며, 지방간 함량과 ALT·AST 감소를 확인한 소재입니다.",
     healthClaims: [
       "비알코올성 지방간 개선에 도움을 줄 수 있습니다.",
@@ -310,7 +318,8 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
   pinitol: {
     name: "피니톨",
     category: "간",
-    area: "간건강",
+    area: "간건강·혈당건강 개선",
+    intake: "간건강 300mg/day·혈당건강 1.2g/day",
     summary: "비알코올성 지방간 개선에 도움을 줄 수 있으며, 간의 중성지방과 콜레스테롤 감소를 확인한 소재입니다.",
     healthClaims: [
       "비알코올성 지방간 개선에 도움을 줄 수 있습니다.",
@@ -344,7 +353,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
   immulink: {
     name: "Immulink MBG",
     category: "면역",
-    area: "면역기능",
+    area: "면역기능 증진",
     summary: "면역기능 증진에 도움을 줄 수 있으며, 선천·후천 면역 개선 효과를 입증한 소재입니다.",
     healthClaims: [
       "면역기능 증진에 도움을 줄 수 있습니다.",
@@ -376,6 +385,7 @@ export function getKoreanIngredient(item: Ingredient): Ingredient {
     name: copy.name || item.name,
     category: copy.category,
     area: copy.area,
+    intake: copy.intake || item.intake,
     summary: copy.summary,
     origin: copy.origin || item.origin,
     healthClaims: copy.healthClaims,

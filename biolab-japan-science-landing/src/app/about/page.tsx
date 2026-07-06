@@ -81,9 +81,21 @@ export default function AboutPage() {
                 <span>(Company Overview)</span>
               </div>
               <blockquote>
-                “<LocalizedText ja="BIOLAB Japanは、最も信頼できる" ko="비오랩 재팬은 가장 믿을 수 있는" />
-                <br />
-                <LocalizedText ja="ヘルスケアパートナーです。" ko="헬스케어 파트너입니다." />”
+                <LocalizedText
+                  ja={
+                    <>
+                      <span>“BIOLAB Japanは、最も信頼できる</span>
+                      <span>ヘルスケアパートナーです。”</span>
+                    </>
+                  }
+                  ko={
+                    <>
+                      <span>“비오랩 재팬은</span>
+                      <span>가장 믿을 수 있는</span>
+                      <span>헬스케어 파트너입니다.”</span>
+                    </>
+                  }
+                />
               </blockquote>
             </aside>
             <div className="dh-ceo-message-copy">

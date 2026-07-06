@@ -145,11 +145,25 @@ const mechanismEvidenceCopy: Record<string, { bodyJa: string; bodyKo: string; ti
     titleJa: "アルコール分解の流れ",
     titleKo: "알코올 분해 경로",
     bodyJa:
-      "アルコールはADHによりアセトアルデヒドへ、さらにALDHにより酢酸へ分解されます。この図はその流れと、Aceto Beta摂取時に確認した血中アルコール濃度・二日酔い感の低下を整理した資料です。",
+      "アルコールはADHによりアセトアルデヒドへ分解され、さらにALDHにより酢酸へ変換されます。Aceto Betaはこの分解経路をサポートし、飲酒後のアルコールとアセトアルデヒドの負担を軽減する設計です。",
     bodyKo:
-      "알코올은 ADH를 거쳐 아세트알데히드로, 다시 ALDH를 거쳐 초산으로 분해됩니다. 이 도식은 그 흐름과 Aceto Beta 섭취 시 확인한 혈중 알코올 농도 및 숙취감 감소 데이터를 함께 정리한 자료입니다.",
+      "알코올은 ADH에 의해 아세트알데히드로 분해되고, 다시 ALDH에 의해 초산으로 전환됩니다. Aceto Beta는 이 분해 경로를 도와 음주 후 알코올과 아세트알데히드 부담을 낮추는 설계입니다.",
   },
 };
+
+function renderIngredientName(name: string) {
+  const formulaMatch = name.match(/^(.*?Formula)\s*[–-]\s*(MED\d+)$/);
+  if (formulaMatch) {
+    return (
+      <>
+        <span>{formulaMatch[1]}</span>
+        <span>– {formulaMatch[2]}</span>
+      </>
+    );
+  }
+
+  return name;
+}
 
 const belowSummaryEvidenceImages = new Set(["/images/ingredients/dermania-evidence-3.png"]);
 
@@ -215,6 +229,32 @@ type LocalizedStudyNote = {
 };
 
 const evidenceStudyNotes: Record<string, LocalizedStudyNote> = {
+  nvp1702: {
+    titleJa: "ヒト試験の区分",
+    titleKo: "인체적용시험 구분",
+    items: [
+      {
+        labelJa: "非アルコール性",
+        labelKo: "비알코올성",
+        valueJa: "93名対象。ALT・AST・γ-GTP、疲労指標、血中炎症指標を確認",
+        valueKo: "93명 대상. ALT·AST·γ-GTP, 피로지표, 혈중 염증지표 확인",
+      },
+      {
+        labelJa: "アルコール性",
+        labelKo: "알코올성",
+        valueJa: "70名対象。ALT・AST・γ-GTP、血中中性脂肪、血中炎症指標を確認",
+        valueKo: "70명 대상. ALT·AST·γ-GTP, 혈중 중성지방, 혈중 염증지표 확인",
+      },
+      {
+        labelJa: "根拠",
+        labelKo: "근거",
+        valueJa: "ヒト試験2件とSCI論文をもとに整理",
+        valueKo: "인체적용시험 2건과 SCI 논문을 기준으로 정리",
+      },
+    ],
+    noteJa: "非アルコール性とアルコール性は別試験として区分して表記しています。",
+    noteKo: "비알코올성 시험과 알코올성 시험은 별도 시험으로 구분해 표기했습니다.",
+  },
   bifido: {
     titleJa: "ヒト適用試験条件",
     titleKo: "인체적용시험 조건",
@@ -461,20 +501,23 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 {evidenceReferences.map((reference) => (
                   <cite key={reference}>{reference}</cite>
                 ))}
-                {studyNote && (
-                  <div className="dh-study-note">
-                    <strong>{isKorean ? studyNote.titleKo : studyNote.titleJa}</strong>
-                    <dl>
-                      {studyNote.items.map((studyItem) => (
-                        <div key={studyItem.labelJa}>
-                          <dt>{isKorean ? studyItem.labelKo : studyItem.labelJa}</dt>
-                          <dd>{isKorean ? studyItem.valueKo : studyItem.valueJa}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                    {(isKorean ? studyNote.noteKo : studyNote.noteJa) && <p>{isKorean ? studyNote.noteKo : studyNote.noteJa}</p>}
-                  </div>
-                )}
+              </section>
+            )}
+
+            {studyNote && (
+              <section className="dh-detail-evidence" aria-label={`${item.name} study conditions`}>
+                <div className="dh-study-note">
+                  <strong>{isKorean ? studyNote.titleKo : studyNote.titleJa}</strong>
+                  <dl>
+                    {studyNote.items.map((studyItem) => (
+                      <div key={studyItem.labelJa}>
+                        <dt>{isKorean ? studyItem.labelKo : studyItem.labelJa}</dt>
+                        <dd>{isKorean ? studyItem.valueKo : studyItem.valueJa}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  {(isKorean ? studyNote.noteKo : studyNote.noteJa) && <p>{isKorean ? studyNote.noteKo : studyNote.noteJa}</p>}
+                </div>
               </section>
             )}
 
@@ -685,7 +728,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
         <div className="dh-ingredient-profile-summary">
           <IngredientCategoryBadge category={item.category} line={item.line} />
           <p>{isKorean ? devKoreanLabels.line[sourceItem.line] : item.line}</p>
-          <h2>{displayName}</h2>
+          <h2>{renderIngredientName(displayName)}</h2>
           <strong>{item.area}</strong>
           <span>{item.summary}</span>
         </div>
@@ -814,20 +857,25 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           {evidenceReferences.map((reference) => (
             <cite key={reference}>{reference}</cite>
           ))}
-          {studyNote && (
-            <div className="dh-study-note">
-              <strong>{isKorean ? studyNote.titleKo : studyNote.titleJa}</strong>
-              <dl>
-                {studyNote.items.map((studyItem) => (
-                  <div key={studyItem.labelJa}>
-                    <dt>{isKorean ? studyItem.labelKo : studyItem.labelJa}</dt>
-                    <dd>{isKorean ? studyItem.valueKo : studyItem.valueJa}</dd>
-                  </div>
-                ))}
-              </dl>
-              {(isKorean ? studyNote.noteKo : studyNote.noteJa) && <p>{isKorean ? studyNote.noteKo : studyNote.noteJa}</p>}
-            </div>
-          )}
+        </section>
+      )}
+
+      {studyNote && (
+        <section className="dh-ingredient-evidence-tags" aria-label={`${item.name} study conditions`}>
+          <p>Evidence & References</p>
+          <h3>{isKorean ? "시험 구분" : "試験区分"}</h3>
+          <div className="dh-study-note">
+            <strong>{isKorean ? studyNote.titleKo : studyNote.titleJa}</strong>
+            <dl>
+              {studyNote.items.map((studyItem) => (
+                <div key={studyItem.labelJa}>
+                  <dt>{isKorean ? studyItem.labelKo : studyItem.labelJa}</dt>
+                  <dd>{isKorean ? studyItem.valueKo : studyItem.valueJa}</dd>
+                </div>
+              ))}
+            </dl>
+            {(isKorean ? studyNote.noteKo : studyNote.noteJa) && <p>{isKorean ? studyNote.noteKo : studyNote.noteJa}</p>}
+          </div>
         </section>
       )}
 

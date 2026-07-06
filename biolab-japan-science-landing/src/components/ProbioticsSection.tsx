@@ -5,7 +5,7 @@ export function ProbioticsSection() {
   return (
     <SectionShell
       id="probiotics"
-      eyebrow="Functional Probiotics line"
+      eyebrow="Ⅰ. Functional Probiotics line"
       title="菌株を、訴求ではなく検討順で整理する。"
       copy="装飾的なチャートではなく、用途領域、根拠タイプ、菌株構成、摂取目安の順にB2B検討情報を読み取れる構成です。"
     >

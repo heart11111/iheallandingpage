@@ -4201,29 +4201,35 @@ h2 {
 }
 
 .dh-product-grid-two .dh-product-card {
-  min-height: 470px;
-  aspect-ratio: 1.16 / 1;
+  min-height: 520px;
+  aspect-ratio: 1.08 / 1;
 }
 
 .dh-product-grid-two .dh-product-text {
-  top: 170px;
-  bottom: auto;
+  top: auto;
+  bottom: 128px;
   max-width: 500px;
 }
 
 .dh-product-grid-two .dh-product-text h3 {
-  max-width: 14.5em;
-  font-size: clamp(27px, 2.65vw, 34px);
+  max-width: 13.2em;
+  margin-bottom: 12px;
+  font-size: clamp(28px, 2.28vw, 32px);
+  line-height: 1.12;
 }
 
 .dh-product-grid-two .dh-product-text p:not(.dh-product-eyebrow) {
-  max-width: 34em;
+  display: -webkit-box;
+  max-width: 36em;
   margin-bottom: 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .dh-product-grid-two .dh-product-card > a {
   left: 34px;
-  bottom: 40px;
+  bottom: 46px;
   transform: none;
 }
 
@@ -5089,12 +5095,16 @@ h2 {
   padding-left: 18px;
   border-left: 4px solid #2f70bf;
   color: #111827;
-  font-size: clamp(22px, 2vw, 30px);
+  font-size: clamp(23px, 1.8vw, 29px);
   font-weight: 900;
-  line-height: 1.45;
+  line-height: 1.42;
   letter-spacing: 0;
   word-break: keep-all;
   overflow-wrap: normal;
+}
+
+.dh-ceo-message-aside blockquote span {
+  display: block;
 }
 
 .dh-ceo-message-copy {
@@ -5816,13 +5826,21 @@ h2 {
   text-transform: uppercase;
 }
 
-.dh-ingredient-profile-summary h1 {
+.dh-ingredient-profile-summary h1,
+.dh-ingredient-profile-summary h2 {
   margin: 0 0 12px;
   color: #111827;
-  font-size: clamp(28px, 2.8vw, 42px);
+  font-size: clamp(30px, 2.45vw, 38px);
   font-weight: 900;
-  line-height: 1.14;
-  overflow-wrap: anywhere;
+  line-height: 1.18;
+  letter-spacing: 0;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+.dh-ingredient-profile-summary h1 > span,
+.dh-ingredient-profile-summary h2 > span {
+  display: block;
 }
 
 .dh-ingredient-profile-summary strong {
@@ -7009,11 +7027,15 @@ h2 {
   color: #1f2937;
   font-size: 16px;
   font-weight: 750;
-  line-height: 1.95;
+  line-height: 1.82;
   letter-spacing: 0;
   line-break: strict;
   overflow-wrap: normal;
   text-wrap: pretty;
+}
+
+.dh-vision-card p > span {
+  display: block;
 }
 
 .dh-supply-tabs {
@@ -7514,7 +7536,8 @@ h2 {
     max-width: 100%;
   }
 
-  .dh-page .dh-ingredient-profile-summary h1 {
+  .dh-page .dh-ingredient-profile-summary h1,
+  .dh-page .dh-ingredient-profile-summary h2 {
     font-size: 27px;
   }
 

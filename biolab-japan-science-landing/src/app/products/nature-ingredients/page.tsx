@@ -10,7 +10,7 @@ export default function NatureIngredientsPage() {
       <NavBar />
       <main>
         <CorporateSubHero
-          title="Functional Nature‘s food ingredients Line"
+          title="Ⅱ. Functional Nature‘s food ingredients Line"
           copy="自然由来機能性素材の全体リストです。"
           koTitle={devKoreanPageCopy.nature.title}
           koCopy={devKoreanPageCopy.nature.copy}
@@ -23,7 +23,7 @@ export default function NatureIngredientsPage() {
               <LocalizedText ja="PRODUCTS" ko={devKoreanPageCopy.nature.primary} />
             </p>
             <h1>
-              <LocalizedText ja="Functional Nature‘s food ingredients Line" ko={devKoreanPageCopy.nature.title} />
+              <LocalizedText ja="Ⅱ. Functional Nature‘s food ingredients Line" ko={devKoreanPageCopy.nature.title} />
             </h1>
             <p>
               <LocalizedText

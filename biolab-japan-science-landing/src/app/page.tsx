@@ -10,22 +10,22 @@ import { useLenis } from "@/lib/useLenis";
 
 const featuredCards = [
   {
-    eyebrow: "Functional Probiotics line",
+    eyebrow: "Ⅰ. Functional Probiotics line",
     title: "Application-specific strain portfolio",
     subtitle: "用途別プロバイオティクス",
     koTitle: "프로바이오틱스 소재",
     koSubtitle: "용도별 7개 영역",
-    koDescription: "여성·체지방·인지 등 제품 목적별 균주 포트폴리오입니다.",
+    koDescription: "여성·체지방·인지 등 제품 목적에 맞춰 균주를 검토합니다.",
     image: "images/products-microbiome-probiotics-card-v2.webp",
     href: "/products/microbiome-probiotics",
   },
   {
-    eyebrow: "Functional Nature‘s food ingredients Line",
+    eyebrow: "Ⅱ. Functional Nature‘s food ingredients Line",
     title: "Nature-derived functional materials",
     subtitle: "自然由来機能性素材",
     koTitle: "기능성 천연소재",
     koSubtitle: "용도별 10개 영역",
-    koDescription: "남성 건강·기억·인지 등 자연 유래 소재를 정리했습니다.",
+    koDescription: "남성 건강·기억·인지 등 제품 목적에 맞춰 자연 유래 소재를 검토합니다.",
     image: "images/products-functional-nature-card-v2.webp",
     href: "/products/nature-ingredients",
   },

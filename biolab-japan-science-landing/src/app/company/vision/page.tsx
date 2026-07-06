@@ -5,18 +5,22 @@ import { NavBar } from "@/components/NavBar";
 const visionItems = [
   {
     title: "Vision",
-    body: "韓国の素材開発・製造力と日本市場の事業機会をつなぎ、信頼されるヘルスケア事業基盤をつくります。",
-    koBody: "한국과 일본의 B2B 사업 기회를 연결합니다.",
+    body: ["韓国の素材開発・製造力と", "日本市場の事業機会をつなぎ、", "信頼されるヘルスケア事業基盤をつくります。"],
+    koBody: ["한국과 일본의", "B2B 사업 기회를 연결합니다."],
   },
   {
     title: "Mission",
-    body: "Functional Probiotics、自然由来機能性素材、OEM/ODMを一体で整理し、製品化までの流れを支えます。",
-    koBody: "Our Mission. 일본 기능성 헬스케어 산업에서 리딩 기업으로 도약하기 위한 Functional Probiotics line, Functional Nature‘s food ingredients Line, ODM/OEM & Brand Royalty 등 통합 솔루션을 제공합니다.",
+    body: ["Functional Probiotics、", "自然由来機能性素材、OEM/ODMを", "一体で整理し、製品化までの流れを支えます。"],
+    koBody: [
+      "Ⅰ. Functional Probiotics line,",
+      "Ⅱ. Functional Nature‘s food ingredients Line,",
+      "ODM/OEM & Brand Royalty 등 통합 솔루션을 제공합니다.",
+    ],
   },
   {
     title: "Goal",
-    body: "BIOLAB KoreaとBIOLAB Japanのネットワークを活用し、エビデンス・品質・供給安定性を備えた事業基盤を広げます。",
-    koBody: "대한민국 식약처(KFDA) 인증 개별인정형 기능성 소재와 한국 Major 제조업체 Direct 생산 및 납품 네트워크를 기반으로 일본 헬스케어 사업 기반을 확장합니다.",
+    body: ["BIOLAB KoreaとBIOLAB Japanの", "ネットワークを活用し、", "エビデンス・品質・供給安定性を備えた", "事業基盤を広げます。"],
+    koBody: ["대한민국 식약처(KFDA) 인증", "개별인정형 기능성 소재를", "일본 헬스케어 파트너에게 제공합니다."],
   },
 ];
 
@@ -64,7 +68,14 @@ export default function VisionPage() {
                 <article className="dh-vision-card" key={item.title}>
                   <span>{item.title}</span>
                   <p>
-                    <LocalizedText ja={item.body} ko={item.koBody} />
+                    <LocalizedText
+                      ja={item.body.map((line) => (
+                        <span key={line}>{line}</span>
+                      ))}
+                      ko={item.koBody.map((line) => (
+                        <span key={line}>{line}</span>
+                      ))}
+                    />
                   </p>
                 </article>
               ))}

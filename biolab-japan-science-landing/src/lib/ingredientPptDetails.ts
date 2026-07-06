@@ -365,13 +365,13 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
   },
   collagen: {
-    productName: "Long-pep collagen peptide AG",
+    productName: "低分子コラーゲンペプチドAG",
     healthClaims: [
       "肌の潤いをサポートします。",
       "紫外線による肌ダメージから、肌の健康を守るのに役立ちます。",
     ],
     originTitle: "原料",
-    originItems: ["パンガシウス(Pangasius)の魚皮由来ゼラチン加水分解物", "500Da以下の低分子コラーゲンペプチド"],
+    originItems: ["Long-pep collagen peptide AG", "パンガシウス(Pangasius)の魚皮由来ゼラチン加水分解物", "500Da以下の低分子コラーゲンペプチド"],
     features: [
       "30〜65歳の女性を対象に、12週間のヒト試験を行いました。",
       "皮膚保湿指標の改善、目元の小じわ減少が確認されました(肉眼評価・指標成分の両方で確認)。",
