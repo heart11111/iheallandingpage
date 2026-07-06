@@ -108,6 +108,7 @@ const koreanEvidenceCaptions: Record<string, string> = {
 
 const wideEvidenceImages = new Set([
   "/images/ingredients/agrimony-evidence-2.jpeg",
+  "/images/ingredients/agrimony-evidence-2-ja.webp",
   "/images/ingredients/bifido-evidence-6.png",
   "/images/ingredients/collagen-evidence-1-clean.png",
   "/images/ingredients/collagen-evidence-2-clean.png",
@@ -130,6 +131,15 @@ const wideEvidenceImages = new Set([
   "/images/ingredients/pinitol-evidence-1.webp",
   "/images/ingredients/pinitol-evidence-2.webp",
 ]);
+
+const japaneseEvidenceImages: Record<string, string> = {
+  "/images/ingredients/agrimony-evidence-2.jpeg": "/images/ingredients/agrimony-evidence-2-ja.webp",
+};
+
+function getLocalizedEvidenceImageSrc(src: string, isKorean: boolean) {
+  if (isKorean) return src;
+  return japaneseEvidenceImages[src] || src;
+}
 
 const featureEvidenceImages: Record<string, string> = {
   bifido: "/images/ingredients/bifido-evidence-1.webp",
@@ -561,27 +571,31 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 </div>
 
                 <div className="dh-ppt-graph-grid" data-evidence-count={chartEvidenceImages.length}>
-                  {chartEvidenceImages.map((evidenceImage, index) => (
-                    <figure
-                      className="dh-ppt-chart dh-ppt-chart-figure"
-                      data-evidence-index={index + 1}
-                      data-evidence-shape={wideEvidenceImages.has(evidenceImage.src) ? "wide" : undefined}
-                      data-evidence-src={evidenceImage.src}
-                      key={evidenceImage.src}
-                    >
-                      <Image
-                        alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
-                        height={480}
-                        loading="eager"
-                        src={evidenceImage.src}
-                        width={720}
-                      />
-                      <figcaption>
-                        <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
-                        {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
-                      </figcaption>
-                    </figure>
-                  ))}
+                  {chartEvidenceImages.map((evidenceImage, index) => {
+                    const imageSrc = getLocalizedEvidenceImageSrc(evidenceImage.src, isKorean);
+
+                    return (
+                      <figure
+                        className="dh-ppt-chart dh-ppt-chart-figure"
+                        data-evidence-index={index + 1}
+                        data-evidence-shape={wideEvidenceImages.has(imageSrc) ? "wide" : undefined}
+                        data-evidence-src={imageSrc}
+                        key={imageSrc}
+                      >
+                        <Image
+                          alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
+                          height={480}
+                          loading="eager"
+                          src={imageSrc}
+                          width={720}
+                        />
+                        <figcaption>
+                          <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
+                          {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
+                        </figcaption>
+                      </figure>
+                    );
+                  })}
                 </div>
 
               </section>
@@ -887,27 +901,31 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           </div>
 
           <div className="dh-ppt-graph-grid" data-evidence-count={chartEvidenceImages.length}>
-            {chartEvidenceImages.map((evidenceImage, index) => (
-              <figure
-                className="dh-ppt-chart dh-ppt-chart-figure"
-                data-evidence-index={index + 1}
-                data-evidence-shape={wideEvidenceImages.has(evidenceImage.src) ? "wide" : undefined}
-                data-evidence-src={evidenceImage.src}
-                key={evidenceImage.src}
-              >
-              <Image
-                alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
-                height={480}
-                loading="eager"
-                src={evidenceImage.src}
-                width={720}
-              />
-                <figcaption>
-                  <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
-                  {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
-                </figcaption>
-              </figure>
-            ))}
+            {chartEvidenceImages.map((evidenceImage, index) => {
+              const imageSrc = getLocalizedEvidenceImageSrc(evidenceImage.src, isKorean);
+
+              return (
+                <figure
+                  className="dh-ppt-chart dh-ppt-chart-figure"
+                  data-evidence-index={index + 1}
+                  data-evidence-shape={wideEvidenceImages.has(imageSrc) ? "wide" : undefined}
+                  data-evidence-src={imageSrc}
+                  key={imageSrc}
+                >
+                  <Image
+                    alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
+                    height={480}
+                    loading="eager"
+                    src={imageSrc}
+                    width={720}
+                  />
+                  <figcaption>
+                    <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
+                    {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
+                  </figcaption>
+                </figure>
+              );
+            })}
           </div>
 
         </section>
