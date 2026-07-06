@@ -6480,12 +6480,35 @@ h2 {
   padding: 12px;
 }
 
-.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-1.webp"] {
-  grid-column: 1 / -1;
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-1.webp"],
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-3.webp"] {
+  display: grid !important;
+  align-content: start;
+  justify-items: center;
+  order: 1;
 }
 
-.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-1.webp"] img {
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-2.webp"] {
+  grid-column: 1 / -1;
+  order: 2;
+}
+
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-1.webp"] img,
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-3.webp"] img {
   max-width: min(100%, 430px);
+}
+
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-1.webp"] figcaption,
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-3.webp"] figcaption {
+  max-width: 430px;
+}
+
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-2.webp"] img {
+  max-width: min(100%, 760px);
+}
+
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-2.webp"] figcaption {
+  max-width: 760px;
 }
 
 .dh-ppt-chart-figure img {
@@ -7821,6 +7844,13 @@ h2 {
 
   .dh-ppt-graph-grid[data-evidence-count] {
     grid-template-columns: 1fr;
+  }
+
+  .dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-1.webp"],
+  .dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-2.webp"],
+  .dh-ppt-chart.dh-ppt-chart-figure[data-evidence-src="/images/ingredients/testofen-evidence-3.webp"] {
+    grid-column: auto;
+    order: 0;
   }
 
   .dh-ppt-chart-bar small {
