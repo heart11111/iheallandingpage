@@ -114,8 +114,8 @@ export default function Home() {
                   : "韓国の可能性を、日本の市場価値へ。機能性素材、製造、ブランド、流通をつなぎ、次のヘルスケア事業をひらくビジネスブリッジです。"}
               </p>
               <div className="dh-hero-actions">
-                <a href="/products">{isKorean ? "소재 보기" : "素材を見る"}</a>
-                <a href="/communication/inquiries">{isKorean ? "제휴 상담" : "提携相談"}</a>
+                <Link href="/products">{isKorean ? "소재 보기" : "素材を見る"}</Link>
+                <Link href="/communication/inquiries">{isKorean ? "제휴 상담" : "提携相談"}</Link>
               </div>
             </div>
           </div>
