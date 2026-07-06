@@ -94,7 +94,7 @@ export const productLinePages = [
   {
     label: "個別認定型プロバイオティクス",
     koLabel: "Probiotics Strain by Application",
-    menuLabel: "Ⅰ. Functional Probiotics line",
+    menuLabel: "Functional Probiotics",
     href: "/products/microbiome-probiotics",
     summary: "女性、体脂肪、脳・記憶、肝臓、鼻、ストレス、腸の7種を整理します。",
     koSummary: "질내 마이크로바이옴, 체지방·항비만, 인지·기억, 간건강, 면역 과민반응에 따른 코 상태, 스트레스·수면·릴랙스, 장건강·배변활동 영역의 프로바이오틱스 7종입니다.",
@@ -103,7 +103,7 @@ export const productLinePages = [
   {
     label: "機能性天然素材",
     koLabel: "Nature’s food ingredients by Application",
-    menuLabel: "Ⅱ. Functional Nature‘s food ingredients Line",
+    menuLabel: "Functional Nature‘s food ingredients",
     href: "/products/nature-ingredients",
     summary: "男性健康、記憶、認知、体脂肪、肌、肝臓・血糖、二日酔い、免疫の10種を整理します。",
     koSummary: "남성 갱년기·남성 건강, 기억·인지 기능, 노화 관련 인지기능, 다이어트·체지방, 피부 수분·탄력, 주름·보습, 간·혈당 건강, 알코올 대사 지원, 면역기능 영역의 자연 유래 기능성 소재 10종입니다.",
@@ -121,11 +121,11 @@ export const siteMapGroups = [
 export const productGroups = [
   {
     slug: "probiotics",
-    menuLabel: "Ⅰ. Functional Probiotics line",
+    menuLabel: "Functional Probiotics",
     eyebrow: "個別認定型・特許菌株",
     koEyebrow: "개별인정형 기능성 소재 / 특허 유산균",
-    title: "Ⅰ. Functional Probiotics line",
-    koTitle: "Ⅰ. Functional Probiotics line",
+    title: "Functional Probiotics",
+    koTitle: "Functional Probiotics",
     subtitle: "用途別プロバイオティクス",
     koSubtitle: "Probiotics Strain by Application",
     image: "/images/products-microbiome-probiotics-card-v3.webp",
@@ -137,11 +137,11 @@ export const productGroups = [
   },
   {
     slug: "nature",
-    menuLabel: "Ⅱ. Functional Nature‘s food ingredients Line",
+    menuLabel: "Functional Nature‘s food ingredients",
     eyebrow: "自然由来機能性素材",
     koEyebrow: "인체시험 완료 / 자연 유래 기능성 소재",
-    title: "Ⅱ. Functional Nature‘s food ingredients Line",
-    koTitle: "Ⅱ. Functional Nature‘s food ingredients Line",
+    title: "Functional Nature‘s food ingredients",
+    koTitle: "Functional Nature‘s food ingredients",
     subtitle: "自然由来素材",
     koSubtitle: "Nature’s food ingredients by Application",
     image: "/images/products-functional-nature-card-v3.webp",
@@ -205,7 +205,7 @@ export const corporateNews = [
     summary:
       "プロバイオティクスと自然由来機能性素材を、カテゴリー、摂取量、エビデンスタグ別に整理しました。",
     koSummary:
-      "Ⅰ. Functional Probiotics line 7종과 Ⅱ. Functional Nature‘s food ingredients Line 10종을 용도별로 정리했습니다.",
+      "Functional Probiotics 7종과 Functional Nature‘s food ingredients 10종을 용도별로 정리했습니다.",
     image: "/images/global-evidence-bg.png",
   },
   {
@@ -238,7 +238,7 @@ export const partnerRows = [
     label: "提案素材",
     value: "プロバイオティクス、自然由来機能性素材、iHEALブランド活用",
     koLabel: "제안 소재",
-    koValue: "Ⅰ. Functional Probiotics line, Ⅱ. Functional Nature‘s food ingredients Line, iHEAL 브랜드 활용",
+    koValue: "Functional Probiotics, Functional Nature‘s food ingredients, iHEAL 브랜드 활용",
   },
   {
     label: "進行方法",

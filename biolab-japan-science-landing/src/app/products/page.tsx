@@ -42,7 +42,7 @@ export default function ProductsPage() {
               </h2>
               <p>
                 <LocalizedText
-                  ja="BIOLAB Japanの供給製品ラインは、Ⅰ. Functional Probiotics lineとⅡ. Functional Nature‘s food ingredients Lineを中心に構成します。"
+                  ja="BIOLAB Japanの供給製品ラインは、Functional ProbioticsとFunctional Nature‘s food ingredientsを中心に構成します。"
                   ko="BIOLAB Japan의 공급 제품 라인은 기능성 프로바이오틱스와 기능성 천연소재를 중심으로 구성합니다."
                 />
               </p>
@@ -75,17 +75,9 @@ export default function ProductsPage() {
                         ja={group.label}
                         ko={
                           index === 0 ? (
-                            <>
-                              Ⅰ. Functional Probiotics
-                              <br />
-                              line
-                            </>
+                            "Functional Probiotics"
                           ) : (
-                            <>
-                              Ⅱ. Functional Nature‘s
-                              <br />
-                              food ingredients Line
-                            </>
+                            "Functional Nature‘s food ingredients"
                           )
                         }
                       />

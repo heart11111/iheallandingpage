@@ -10,7 +10,7 @@ import { useLenis } from "@/lib/useLenis";
 
 const featuredCards = [
   {
-    eyebrow: "Ⅰ. Functional Probiotics line",
+    eyebrow: "Functional Probiotics",
     title: "Application-specific strain portfolio",
     subtitle: "用途別プロバイオティクス",
     koTitle: "프로바이오틱스 소재",
@@ -20,7 +20,7 @@ const featuredCards = [
     href: "/products/microbiome-probiotics",
   },
   {
-    eyebrow: "Ⅱ. Functional Nature‘s food ingredients Line",
+    eyebrow: "Functional Nature‘s food ingredients",
     title: "Nature-derived functional materials",
     subtitle: "自然由来機能性素材",
     koTitle: "기능성 천연소재",
