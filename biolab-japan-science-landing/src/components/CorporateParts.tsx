@@ -56,8 +56,15 @@ function getEvidenceReferences(pptDetail: (typeof ingredientPptDetails)[string] 
   });
 }
 
-const EMPHASIS_PATTERN =
-  /(P\s*[=<>≤≥]\s*0?\.\d+)|([+-]?\d[\d,]*(?:\.\d+)?\s?(?:%|kg\/m2|kg|mg|g|CFU|억|명|名|人|편|編|건|種|종|점|배))/g;
+// Statistical notation (p-values) is de-emphasised so it does not interrupt the
+// sentence, while the outcome figures a reader is looking for are highlighted.
+const STAT_PATTERN = /[Pp]\s*[=<>≤≥]\s*0?\.\d+(?:\s*\/\s*(?:[Pp]\s*[=<>≤≥]\s*)?0?\.\d+)*/;
+const FIGURE_PATTERN = /[+-]?\d[\d,]*(?:\.\d+)?\s?(?:%|kg\/m2|kg|mg|g|CFU|억|명|名|人|편|編|건|種|종|점|배)/;
+const EMPHASIS_PATTERN = new RegExp(`(${STAT_PATTERN.source})|(${FIGURE_PATTERN.source})`, "g");
+
+function hasStatNotation(items: string[]) {
+  return items.some((item) => new RegExp(STAT_PATTERN.source).test(item));
+}
 
 function renderEmphasized(text: string): ReactNode {
   const matches = Array.from(text.matchAll(EMPHASIS_PATTERN));
@@ -68,11 +75,29 @@ function renderEmphasized(text: string): ReactNode {
   matches.forEach((match, index) => {
     const start = match.index ?? 0;
     if (start > cursor) nodes.push(text.slice(cursor, start));
-    nodes.push(<strong key={`em-${index}`}>{match[0]}</strong>);
+    nodes.push(
+      match[1] ? (
+        <small className="dh-stat-note" key={`stat-${index}`}>
+          {match[0]}
+        </small>
+      ) : (
+        <strong key={`em-${index}`}>{match[0]}</strong>
+      ),
+    );
     cursor = start + match[0].length;
   });
   if (cursor < text.length) nodes.push(text.slice(cursor));
   return nodes;
+}
+
+function StatLegend({ isKorean }: { isKorean: boolean }) {
+  return (
+    <p className="dh-stat-legend">
+      {isKorean
+        ? "P는 그 결과가 우연히 나왔을 확률입니다. 0.05보다 작으면 위약(플라세보) 대비 의미 있는 차이로 봅니다."
+        : "Pはその結果が偶然である確率です。0.05未満であれば、プラセボ比で意味のある差と判断します。"}
+    </p>
+  );
 }
 
 function renderMultiline(items: string[]): ReactNode {
@@ -594,6 +619,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                         <span key={feature}>{renderEmphasized(feature)}</span>
                       ))}
                     </div>
+                    {hasStatNotation(detailFeatures) && <StatLegend isKorean={isKorean} />}
                   </section>
                 </div>
 
@@ -672,6 +698,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                     <li key={text}>{renderEmphasized(text)}</li>
                   ))}
                 </ul>
+                {hasStatNotation(item.featurePoints) && <StatLegend isKorean={isKorean} />}
                 {featureImage && (
                   <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
                     <Image
@@ -844,6 +871,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
               <li key={feature}>{renderEmphasized(feature)}</li>
             ))}
           </ul>
+          {hasStatNotation(featureBlocks) && <StatLegend isKorean={isKorean} />}
           {featureImage && (
             <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
               <Image

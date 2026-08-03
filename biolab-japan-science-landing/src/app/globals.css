@@ -7065,6 +7065,35 @@ h2 {
   content: " ";
 }
 
+/* Statistical notation reads as a quiet annotation next to the outcome it
+   qualifies, so prose stays scannable without dropping the evidence. */
+.dh-stat-note {
+  color: #7c8899;
+  font-size: 0.86em;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* Qualified so it outranks the eyebrow `p` styling that each of these panels
+   applies to its first paragraph. */
+.dh-stat-legend,
+.dh-ingredient-section-grid section > .dh-stat-legend,
+.dh-ppt-summary-board section > .dh-stat-legend,
+.dh-detail-features > .dh-stat-legend,
+.dh-detail-claims > .dh-stat-legend {
+  margin: 16px 0 0;
+  border-top: 1px solid #eef2f7;
+  padding-top: 12px;
+  color: #8894a5;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .dh-supply-tabs {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
