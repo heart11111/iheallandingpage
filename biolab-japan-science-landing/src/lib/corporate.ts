@@ -204,22 +204,26 @@ export const corporateNews = [
     region: "JP",
     outlet: "日本経済新聞(適時開示)",
     koOutlet: "닛케이(적시공시)",
-    title: "日本経済新聞の適時開示情報に掲載されました",
-    koTitle: "닛케이 적시공시 정보에 게재되었습니다",
-    summary: "日本経済新聞が提供する適時開示情報(TDnet)に掲載された開示資料です。",
-    koSummary: "니혼게이자이신문이 제공하는 적시공시 정보(TDnet)에 게재된 공시 자료입니다.",
+    title: "「iHEAL」ブランドの日本国内における独占販売代理店契約の締結に関するお知らせ",
+    koTitle: "「iHEAL」 브랜드 일본 국내 독점 판매대리점 계약 체결 공시",
+    summary:
+      "ジェリービーンズグループ(東証 3070)が適時開示。BIOLABが「iHEAL」ブランド製品の製造・供給を担い、日本国内の独占販売権を同社が取得する三者契約です。",
+    koSummary:
+      "젤리빈즈그룹(도쿄증권거래소 3070)의 적시공시입니다. BIOLAB이 iHEAL 브랜드 제품의 제조·공급을 맡고, 일본 국내 독점 판매권을 젤리빈즈그룹이 취득하는 3자 계약입니다.",
     href: "https://www.nikkei.com/nkd/disclosure/tdnr/20260618573508/",
   },
   {
     slug: "prtimes-jellybeans",
-    date: "2026.06",
+    date: "2026.06.18",
     region: "JP",
-    outlet: "PR TIMES(ジェリービーンズ 公式)",
-    koOutlet: "PR TIMES(젤리빈즈 공식)",
-    title: "ジェリービーンズ公式プレスリリースが配信されました",
-    koTitle: "젤리빈즈 공식 보도자료가 배포되었습니다",
-    summary: "PR TIMESで配信された公式プレスリリースです。全文は配信元でご覧いただけます。",
-    koSummary: "PR TIMES를 통해 배포된 공식 보도자료입니다. 전문은 배포처에서 확인하실 수 있습니다.",
+    outlet: "PR TIMES(ジェリービーンズグループ 公式)",
+    koOutlet: "PR TIMES(젤리빈즈그룹 공식)",
+    title: "「iHEAL」ブランドの日本国内における独占販売代理店契約の締結に関するお知らせ",
+    koTitle: "「iHEAL」 브랜드 일본 국내 독점 판매대리점 계약 체결 보도자료",
+    summary:
+      "上記適時開示に合わせて配信された公式プレスリリースです。韓国発フェムケア・インナーケアブランド「iHEAL」の日本展開について案内しています。",
+    koSummary:
+      "위 적시공시와 함께 배포된 공식 보도자료입니다. 한국발 펨케어·이너케어 브랜드 iHEAL의 일본 전개를 안내합니다.",
     href: "https://prtimes.jp/main/html/rd/p/000000131.000069992.html",
   },
   {

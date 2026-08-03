@@ -542,8 +542,6 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
               </div>
             </dl>
 
-            {showExtended && supplySpec && <SupplySpecPanel isKorean={isKorean} spec={supplySpec} />}
-
             <section className="dh-detail-materials" aria-label={`${item.name} ${materialLabel}`}>
               <h3>{materialLabel}</h3>
               <ul>
@@ -564,14 +562,8 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
 
             {originTable && <OriginCompositionTab isKorean={isKorean} table={originTable} />}
 
-            {evidenceReferences.length > 0 && (
-              <section className="dh-detail-evidence" aria-label={`${item.name} references`}>
-                <h3>{isKorean ? "레퍼런스" : "参考文献"}</h3>
-                {evidenceReferences.map((reference) => (
-                  <cite key={reference}>{reference}</cite>
-                ))}
-              </section>
-            )}
+            {showExtended && supplySpec && <SupplySpecPanel isKorean={isKorean} spec={supplySpec} />}
+
 
             {studyNote && (
               <section className="dh-detail-evidence" aria-label={`${item.name} study conditions`}>
@@ -738,6 +730,15 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 </figure>
               </section>
             )}
+
+            {evidenceReferences.length > 0 && (
+              <section className="dh-detail-evidence" aria-label={`${item.name} references`}>
+                <h3>{isKorean ? "레퍼런스" : "参考文献"}</h3>
+                {evidenceReferences.map((reference) => (
+                  <cite key={reference}>{reference}</cite>
+                ))}
+              </section>
+            )}
           </>
         );
 
@@ -833,6 +834,29 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
         </dl>
       </div>
 
+      <section className="dh-ingredient-origin-panel">
+        <div>
+          <p>Raw Material</p>
+          <h3>{isKorean ? labels.rawMaterial : pptDetail?.originTitle || materialLabel}</h3>
+        </div>
+        <ul>
+          {originItems.map((origin) => (
+            <li key={origin}>{origin}</li>
+          ))}
+        </ul>
+        {originImages.length > 0 && (
+          <div className="dh-origin-composition-cards">
+            {originImages.map((originImage) => (
+              <figure key={originImage.src}>
+                <Image alt={originImage.alt} height={295} loading="eager" src={originImage.src} width={431} />
+              </figure>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {originTable && <OriginCompositionTab isKorean={isKorean} table={originTable} />}
+
       {supplySpec && <SupplySpecPanel isKorean={isKorean} spec={supplySpec} />}
 
       <div className="dh-ingredient-section-grid">
@@ -903,39 +927,6 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
             </figure>
           ))}
         </div>
-      )}
-
-      <section className="dh-ingredient-origin-panel">
-        <div>
-          <p>Raw Material</p>
-          <h3>{isKorean ? labels.rawMaterial : pptDetail?.originTitle || materialLabel}</h3>
-        </div>
-        <ul>
-          {originItems.map((origin) => (
-            <li key={origin}>{origin}</li>
-          ))}
-        </ul>
-        {originImages.length > 0 && (
-          <div className="dh-origin-composition-cards">
-            {originImages.map((originImage) => (
-              <figure key={originImage.src}>
-                <Image alt={originImage.alt} height={295} loading="eager" src={originImage.src} width={431} />
-              </figure>
-            ))}
-          </div>
-        )}
-      </section>
-
-      {originTable && <OriginCompositionTab isKorean={isKorean} table={originTable} />}
-
-      {evidenceReferences.length > 0 && (
-        <section className="dh-ingredient-evidence-tags" aria-label={`${item.name} references`}>
-          <p>Evidence & References</p>
-          <h3>{isKorean ? "레퍼런스" : "参考文献"}</h3>
-          {evidenceReferences.map((reference) => (
-            <cite key={reference}>{reference}</cite>
-          ))}
-        </section>
       )}
 
       {studyNote && (
@@ -1028,6 +1019,16 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
             ))}
           </div>
           <p>{evidenceVisual.footnote}</p>
+        </section>
+      )}
+
+      {evidenceReferences.length > 0 && (
+        <section className="dh-ingredient-evidence-tags" aria-label={`${item.name} references`}>
+          <p>Evidence &amp; References</p>
+          <h3>{isKorean ? "레퍼런스" : "参考文献"}</h3>
+          {evidenceReferences.map((reference) => (
+            <cite key={reference}>{reference}</cite>
+          ))}
         </section>
       )}
     </article>
