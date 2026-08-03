@@ -441,7 +441,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "傷んだ肝細胞の改善・増加が見られ、肝臓の中性脂肪細胞は数が減り、サイズも小さくなりました。",
       "肝脂肪含量・ALT・AST値が低下し(肝脂肪含量17.9%→15.2%, P=0.010)、抗酸化酵素GPxが増え(P=0.015)、MDAが低下しました(P=0.002)。",
     ],
-    graphNotes: [],
+    graphNotes: ["出典: Lee et al. J Nutr Biochem. 2019;68:33-41"],
     evidenceImages: [
       {
         src: "/images/ingredients/pinitol-evidence-1.webp",
@@ -459,7 +459,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originTitle: "原料",
     originItems: ["大豆発酵食酢培養物(酢酸菌由来)"],
     features: [
-      "20〜40代の成人30名を対象にヒト試験を行いました。",
+      "満19歳以上40歳未満の男女30名を対象にヒト試験を行いました。",
       "飲んだ翌朝の、すっきりとした目覚めをサポートします。",
       "アルコールを分解する酵素ADH(アルコール脱水素酵素)が増え、血中アルコール濃度が下がります。",
       "アセトアルデヒドを分解する酵素ALDH(アセトアルデヒド脱水素酵素)が増え、二日酔いをやわらげます。",
