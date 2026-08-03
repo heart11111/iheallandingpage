@@ -7036,7 +7036,7 @@ h2 {
   box-shadow: 0 16px 38px rgba(31, 49, 76, 0.06);
 }
 
-.dh-vision-card span {
+.dh-vision-card > span {
   display: block;
   margin-bottom: 24px;
   color: #204da1;
@@ -7058,7 +7058,11 @@ h2 {
 }
 
 .dh-vision-card p > span {
-  display: block;
+  display: inline;
+}
+
+.dh-vision-card p > span:not(:last-child)::after {
+  content: " ";
 }
 
 .dh-supply-tabs {
@@ -7102,17 +7106,31 @@ h2 {
 
 .dh-supply-tabs ul {
   display: grid;
-  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 20px;
   margin: 0 0 26px;
-  padding: 0;
+  padding: 16px 0 0;
+  border-top: 1px solid #e7ecf3;
   list-style: none;
 }
 
 .dh-supply-tabs li {
+  position: relative;
+  padding-left: 15px;
   color: #26323f;
   font-size: 14px;
   font-weight: 700;
   line-height: 1.45;
+}
+
+.dh-supply-tabs li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.56em;
+  width: 6px;
+  height: 6px;
+  background: #204da1;
 }
 
 .dh-supply-tabs a,
@@ -7468,6 +7486,10 @@ h2 {
   .dh-vision-card-grid,
   .dh-supply-tabs,
   .dh-contact-page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dh-supply-tabs ul {
     grid-template-columns: 1fr;
   }
 

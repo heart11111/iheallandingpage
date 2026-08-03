@@ -3,7 +3,7 @@
 import { Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { IngredientCategoryBadge } from "@/components/IngredientCategoryBadge";
 import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
@@ -54,6 +54,29 @@ function getEvidenceReferences(pptDetail: (typeof ingredientPptDetails)[string] 
       .replace(/^Sexual function - /, isKorean ? "성기능 증진 - " : "性機能増進 - ");
     return `${isKorean ? "출처" : "出典"}: ${localizedReference}`;
   });
+}
+
+const EMPHASIS_PATTERN =
+  /(P\s*[=<>≤≥]\s*0?\.\d+)|([+-]?\d[\d,]*(?:\.\d+)?\s?(?:%|kg\/m2|kg|mg|g|CFU|억|명|名|人|편|編|건|種|종|점|배))/g;
+
+function renderEmphasized(text: string): ReactNode {
+  const matches = Array.from(text.matchAll(EMPHASIS_PATTERN));
+  if (matches.length === 0) return text;
+
+  const nodes: ReactNode[] = [];
+  let cursor = 0;
+  matches.forEach((match, index) => {
+    const start = match.index ?? 0;
+    if (start > cursor) nodes.push(text.slice(cursor, start));
+    nodes.push(<strong key={`em-${index}`}>{match[0]}</strong>);
+    cursor = start + match[0].length;
+  });
+  if (cursor < text.length) nodes.push(text.slice(cursor));
+  return nodes;
+}
+
+function renderMultiline(items: string[]): ReactNode {
+  return items.flatMap((item, index) => (index === 0 ? [item] : [<br key={`br-${index}`} />, item]));
 }
 
 const koreanEvidenceCaptions: Record<string, string> = {
@@ -148,6 +171,7 @@ const featureEvidenceImages: Record<string, string> = {
 
 const mechanismEvidenceImages: Record<string, string> = {
   acetobeta: "/images/ingredients/acetobeta-evidence-1.webp",
+  nvp1702: "/images/ingredients/nvp1702-evidence-3.png",
 };
 
 const mechanismEvidenceCopy: Record<string, { bodyJa: string; bodyKo: string; titleJa: string; titleKo: string }> = {
@@ -158,6 +182,14 @@ const mechanismEvidenceCopy: Record<string, { bodyJa: string; bodyKo: string; ti
       "アルコールはADHによりアセトアルデヒドへ分解され、さらにALDHにより酢酸へ変換されます。Aceto Betaはこの分解経路をサポートし、飲酒後のアルコールとアセトアルデヒドの負担を軽減する設計です。",
     bodyKo:
       "알코올은 ADH에 의해 아세트알데히드로 분해되고, 다시 ALDH에 의해 초산으로 전환됩니다. Aceto Beta는 이 분해 경로를 도와 음주 후 알코올과 아세트알데히드 부담을 낮추는 설계입니다.",
+  },
+  nvp1702: {
+    titleJa: "肝損傷メカニズム",
+    titleKo: "간 손상 메커니즘",
+    bodyJa:
+      "腸内・血中のLPS(内毒素)と炎症シグナルTNF-αが増えると、肝損傷指標であるALT・AST・γ-GTPも上昇します。NVP-1702はこの炎症経路を整え、肝損傷指標の改善をサポートする設計です。",
+    bodyKo:
+      "장내·혈중 LPS(내독소)와 염증 신호물질 TNF-α가 늘면 간 손상 지표인 ALT·AST·γ-GTP도 함께 높아집니다. NVP-1702는 이 염증 경로를 조절해 간 손상 지표 개선에 도움을 주는 설계입니다.",
   },
 };
 
@@ -464,7 +496,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 <h3>{isKorean ? labels.claims : "Health Claim"}</h3>
                 <ul>
                   {detailClaims.map((text) => (
-                    <li key={text}>{text}</li>
+                    <li key={text}>{renderEmphasized(text)}</li>
                   ))}
                 </ul>
               </section>
@@ -543,7 +575,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                     <h4>{isKorean ? labels.claims : "Health Claim"}</h4>
                     <div className="dh-ppt-summary-list">
                       {detailClaims.map((claim) => (
-                        <span key={claim}>{claim}</span>
+                        <span key={claim}>{renderEmphasized(claim)}</span>
                       ))}
                     </div>
                   </section>
@@ -559,7 +591,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                     <h4>{isKorean ? labels.features : "Features / 人体効能評価"}</h4>
                     <div className="dh-ppt-summary-list">
                       {detailFeatures.map((feature) => (
-                        <span key={feature}>{feature}</span>
+                        <span key={feature}>{renderEmphasized(feature)}</span>
                       ))}
                     </div>
                   </section>
@@ -637,7 +669,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 <h3>{isKorean ? labels.features : "Features / 人体効能評価"}</h3>
                 <ul>
                   {item.featurePoints.map((text) => (
-                    <li key={text}>{text}</li>
+                    <li key={text}>{renderEmphasized(text)}</li>
                   ))}
                 </ul>
                 {featureImage && (
@@ -766,10 +798,33 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           </div>
           <div>
             <dt>{materialLabel}</dt>
-            <dd>{originItems.join(" / ")}</dd>
+            <dd>{renderMultiline(originItems)}</dd>
           </div>
         </dl>
       </div>
+
+      <section className="dh-ingredient-origin-panel">
+        <div>
+          <p>Raw Material</p>
+          <h3>{isKorean ? labels.rawMaterial : pptDetail?.originTitle || materialLabel}</h3>
+        </div>
+        <ul>
+          {originItems.map((origin) => (
+            <li key={origin}>{origin}</li>
+          ))}
+        </ul>
+        {originImages.length > 0 && (
+          <div className="dh-origin-composition-cards">
+            {originImages.map((originImage) => (
+              <figure key={originImage.src}>
+                <Image alt={originImage.alt} height={295} loading="eager" src={originImage.src} width={431} />
+              </figure>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {originTable && <OriginCompositionTab isKorean={isKorean} table={originTable} />}
 
       <div className="dh-ingredient-section-grid">
         <section>
@@ -777,7 +832,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           <h3>{isKorean ? labels.function : "Health Claim"}</h3>
           <ul>
             {claims.map((claim) => (
-              <li key={claim}>{claim}</li>
+              <li key={claim}>{renderEmphasized(claim)}</li>
             ))}
           </ul>
         </section>
@@ -786,7 +841,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           <h3>{isKorean ? labels.feature : "Features / 人体効能評価"}</h3>
           <ul>
             {featureBlocks.map((feature) => (
-              <li key={feature}>{feature}</li>
+              <li key={feature}>{renderEmphasized(feature)}</li>
             ))}
           </ul>
           {featureImage && (
@@ -840,29 +895,6 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           ))}
         </div>
       )}
-
-      <section className="dh-ingredient-origin-panel">
-        <div>
-          <p>Raw Material</p>
-          <h3>{isKorean ? labels.rawMaterial : pptDetail?.originTitle || materialLabel}</h3>
-        </div>
-        <ul>
-          {originItems.map((origin) => (
-            <li key={origin}>{origin}</li>
-          ))}
-        </ul>
-        {originImages.length > 0 && (
-          <div className="dh-origin-composition-cards">
-            {originImages.map((originImage) => (
-              <figure key={originImage.src}>
-                <Image alt={originImage.alt} height={295} loading="eager" src={originImage.src} width={431} />
-              </figure>
-            ))}
-          </div>
-        )}
-      </section>
-
-      {originTable && <OriginCompositionTab isKorean={isKorean} table={originTable} />}
 
       {evidenceReferences.length > 0 && (
         <section className="dh-ingredient-evidence-tags" aria-label={`${item.name} references`}>
