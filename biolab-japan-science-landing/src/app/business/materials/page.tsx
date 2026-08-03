@@ -20,11 +20,18 @@ const lines = [
     koLabel: "Nature’s food ingredients by Application",
     ruby: "Functional Nature‘s food ingredients",
     koRuby: "Functional Nature‘s food ingredients",
-    copy: "男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫などの自然由来機能性素材を提案します。モロシル、発酵紅参、ジンセンベリーなど、韓国の幅広い機能性素材ネットワークへのアクセスもご相談いただけます。",
-    koCopy: "남성 갱년기·남성 건강, 기억·인지 기능, 노화 관련 인지기능, 다이어트·체지방, 피부 수분·탄력, 주름·보습, 비알코올성 지방간 건강, 간·혈당 건강, 알코올 대사 지원, 면역기능 영역의 자연 유래 기능성 소재입니다. 모로오렌지추출분말(Morosil®), 발효홍삼, 진생베리 등 한국 기능성 소재 네트워크도 상담 가능합니다.",
+    copy: "男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫などの自然由来機能性素材を提案します。",
+    koCopy: "남성 갱년기·남성 건강, 기억·인지 기능, 노화 관련 인지기능, 다이어트·체지방, 피부 수분·탄력, 주름·보습, 비알코올성 지방간 건강, 간·혈당 건강, 알코올 대사 지원, 면역기능 영역의 자연 유래 기능성 소재입니다.",
     href: "/products/nature-ingredients",
     items: natureProductItems,
   },
+];
+
+const networkItems = [
+  { ja: "モロオレンジ抽出物(Morosil®)", ko: "모로오렌지추출물(Morosil®)" },
+  { ja: "発酵紅参", ko: "발효홍삼" },
+  { ja: "ジンセンベリー", ko: "진생베리" },
+  { ja: "グッドバランス穀物酵素", ko: "굿 밸런스 곡물효소" },
 ];
 
 export default function MaterialsPage() {
@@ -86,6 +93,26 @@ export default function MaterialsPage() {
                 </article>
               ))}
             </div>
+
+            <section className="dh-network-materials">
+              <p>Ingredient Network</p>
+              <h2>
+                <LocalizedText ja="相談可能な素材ネットワーク" ko="상담 가능 소재 네트워크" />
+              </h2>
+              <p className="dh-network-materials-lead">
+                <LocalizedText
+                  ja="上記の正式取扱素材とは別に、韓国の素材開発ネットワークを通じて調達を検討できる素材です。ヒト適用試験資料の有無は素材ごとに個別にご確認ください。"
+                  ko="위 정식 취급 소재와는 별도로, 한국 소재 개발 네트워크를 통해 조달을 검토할 수 있는 소재입니다. 인체적용시험 자료 보유 여부는 소재별로 개별 확인이 필요합니다."
+                />
+              </p>
+              <ul>
+                {networkItems.map((networkItem) => (
+                  <li key={networkItem.ko}>
+                    <LocalizedText ja={networkItem.ja} ko={networkItem.ko} />
+                  </li>
+                ))}
+              </ul>
+            </section>
           </div>
         </section>
       </main>

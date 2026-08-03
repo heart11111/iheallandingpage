@@ -9,7 +9,10 @@ import { IngredientCategoryBadge } from "@/components/IngredientCategoryBadge";
 import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
 import { getIngredientCardImage, getIngredientDisplayImage } from "@/lib/ingredientImages";
 import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
+import { ingredientGlossary } from "@/lib/ingredientGlossary";
 import { ingredientPptDetails } from "@/lib/ingredientPptDetails";
+import { ingredientSupplySpecs, supplySpecLabels } from "@/lib/ingredientSupplySpecs";
+import type { IngredientSupplySpec } from "@/lib/ingredientSupplySpecs";
 import type { Ingredient } from "@/lib/ingredients";
 
 type SubHeroProps = {
@@ -101,8 +104,8 @@ const koreanEvidenceCaptions: Record<string, string> = {
   "/images/ingredients/pinitol-evidence-1.webp": "혈장 GPx 증가 및 요중 MDA 감소(Pinitol군 vs 플라세보군)",
   "/images/ingredients/pinitol-evidence-2.webp": "간 지방 함량, ALT, AST 수치 감소",
   "/images/ingredients/acetobeta-evidence-1.webp": "알코올이 아세트알데히드를 거쳐 초산으로 분해되는 과정",
-  "/images/ingredients/acetobeta-evidence-2.webp": "음주 0.25시간 후 혈중 아세트알데히드 변화량",
-  "/images/ingredients/acetobeta-evidence-3.webp": "음주 후 메스꺼움 개선 효과",
+  "/images/ingredients/acetobeta-evidence-2.webp": "음주 0.25시간 후 혈중 아세트알데히드 변화량: 플라세보 대비 5배 차이",
+  "/images/ingredients/acetobeta-evidence-3.webp": "메스꺼움 개선 효과 약 70%(13명 중 9명)",
   "/images/ingredients/immulink-evidence-1.webp": "자연면역 및 획득면역 8개 면역 인자 개선",
 };
 
@@ -291,6 +294,58 @@ const evidenceStudyNotes: Record<string, LocalizedStudyNote> = {
   },
 };
 
+const supplySpecOrder = ["forms", "standard", "certification", "studyDesign"] as const;
+
+function SupplySpecPanel({ isKorean, spec }: { isKorean: boolean; spec: IngredientSupplySpec }) {
+  const rows = supplySpecOrder.flatMap((key) => {
+    const value = spec[key];
+    return value ? [{ key, label: supplySpecLabels.rows[key], value }] : [];
+  });
+
+  if (rows.length === 0) return null;
+
+  return (
+    <section className="dh-ingredient-supply-panel">
+      <p>{supplySpecLabels.eyebrow}</p>
+      <h3>{isKorean ? supplySpecLabels.titleKo : supplySpecLabels.titleJa}</h3>
+      <dl>
+        {rows.map((row) => (
+          <div key={row.key}>
+            <dt>{isKorean ? row.label.ko : row.label.ja}</dt>
+            <dd>{isKorean ? row.value.ko : row.value.ja}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  );
+}
+
+function GlossaryLegend({ entries, isKorean }: { entries: (typeof ingredientGlossary)[string]; isKorean: boolean }) {
+  return (
+    <div className="dh-stat-legend">
+      {entries.map((entry) => (
+        <p key={entry.term}>
+          <strong>{entry.term}</strong>
+          {isKorean ? entry.ko : entry.ja}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+function getSharedEvidenceSource(images: { source?: string }[]) {
+  if (images.length < 2) return undefined;
+  const first = images[0].source;
+  if (!first) return undefined;
+  return images.every((image) => image.source === first) ? first : undefined;
+}
+
+function getOriginItems(item: Ingredient, pptDetail: (typeof ingredientPptDetails)[string] | undefined, isKorean: boolean) {
+  if (item.strains) return item.strains;
+  if (isKorean) return item.origin || [];
+  return pptDetail?.originItems?.length ? pptDetail.originItems : item.origin || [];
+}
+
 function getChartEvidenceImages(pptDetail: (typeof ingredientPptDetails)[string] | undefined, excludedSources: string[]) {
   if (!pptDetail) return [];
   return pptDetail.evidenceImages.filter((image) => !excludedSources.includes(image.src));
@@ -400,7 +455,6 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
     <div className={`dh-detail-grid${items.length === 1 ? " dh-detail-grid-single" : ""}`}>
       {items.map((sourceItem) => {
         const item = isKorean ? getKoreanIngredient(sourceItem) : sourceItem;
-        const materials = item.strains || item.origin || [];
         const materialLabel = isKorean ? (item.strains ? devKoreanLabels.materialLabel.strains : devKoreanLabels.materialLabel.origin) : item.strains ? "菌株構成" : "由来原料";
         const showExtended = !linkBase;
         const evidenceVisual = ingredientEvidenceVisuals[item.id];
@@ -408,7 +462,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
         const imageSrc = linkBase ? getIngredientCardImage(item.image) : getIngredientDisplayImage(item.image);
         const detailName = isKorean ? item.name : pptDetail?.productName || item.name;
         const detailClaims = isKorean ? item.healthClaims || [] : pptDetail?.healthClaims || item.healthClaims || [];
-        const detailOriginItems = isKorean ? materials : pptDetail?.originItems?.length ? pptDetail.originItems : materials;
+        const detailOriginItems = getOriginItems(item, pptDetail, isKorean);
         const detailFeatures = isKorean ? item.featurePoints || [] : pptDetail?.features || item.featurePoints || [];
         const evidenceReferences = getEvidenceReferences(pptDetail, isKorean);
         const featureImageSrc = featureEvidenceImages[sourceItem.id];
@@ -421,6 +475,9 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
         const originImages = originCompositionImages[sourceItem.id] || [];
         const originTable = originCompositionTables[sourceItem.id];
         const studyNote = evidenceStudyNotes[sourceItem.id];
+        const supplySpec = ingredientSupplySpecs[sourceItem.id];
+        const glossaryEntries = ingredientGlossary[sourceItem.id];
+        const sharedEvidenceSource = getSharedEvidenceSource(chartEvidenceImages);
         const compactContent = (
           <>
             <Image
@@ -484,6 +541,8 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 <dd>{isKorean ? devKoreanLabels.line[item.line] : item.line}</dd>
               </div>
             </dl>
+
+            {showExtended && supplySpec && <SupplySpecPanel isKorean={isKorean} spec={supplySpec} />}
 
             <section className="dh-detail-materials" aria-label={`${item.name} ${materialLabel}`}>
               <h3>{materialLabel}</h3>
@@ -591,13 +650,18 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                         />
                         <figcaption>
                           <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
-                          {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
+                          {!sharedEvidenceSource && getEvidenceSource(evidenceImage.source, isKorean) && (
+                            <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>
+                          )}
                         </figcaption>
                       </figure>
                     );
                   })}
                 </div>
 
+                {sharedEvidenceSource && <cite className="dh-evidence-group-source">{getEvidenceSource(sharedEvidenceSource, isKorean)}</cite>}
+
+                {glossaryEntries && <GlossaryLegend entries={glossaryEntries} isKorean={isKorean} />}
               </section>
             )}
 
@@ -701,14 +765,13 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
   const isKorean = language === "ko";
   const item = isKorean ? getKoreanIngredient(sourceItem) : sourceItem;
   const labels = devKoreanLabels.detail;
-  const materials = item.strains || item.origin || [];
   const materialLabel = isKorean ? (item.strains ? devKoreanLabels.materialLabel.strains : devKoreanLabels.materialLabel.origin) : item.strains ? "菌株構成" : "由来原料";
   const pptDetail = ingredientPptDetails[sourceItem.id];
   const evidenceVisual = ingredientEvidenceVisuals[item.id];
   const displayName = isKorean ? item.name : pptDetail?.productName || item.name;
   const claims = isKorean ? item.healthClaims || [] : pptDetail?.healthClaims || item.healthClaims || [];
   const featureBlocks = isKorean ? item.featurePoints || [] : pptDetail?.features || item.featurePoints || [];
-  const originItems = isKorean ? materials : pptDetail?.originItems?.length ? pptDetail.originItems : materials;
+  const originItems = getOriginItems(item, pptDetail, isKorean);
   const evidenceReferences = getEvidenceReferences(pptDetail, isKorean);
   const featureImageSrc = featureEvidenceImages[sourceItem.id];
   const featureImage = pptDetail?.evidenceImages.find((image) => image.src === featureImageSrc);
@@ -726,6 +789,9 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
   const originImages = originCompositionImages[sourceItem.id] || [];
   const originTable = originCompositionTables[sourceItem.id];
   const studyNote = evidenceStudyNotes[sourceItem.id];
+  const supplySpec = ingredientSupplySpecs[sourceItem.id];
+  const glossaryEntries = ingredientGlossary[sourceItem.id];
+  const sharedEvidenceSource = getSharedEvidenceSource(chartEvidenceImages);
 
   return (
     <article className="dh-ingredient-profile">
@@ -764,12 +830,10 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
             <dt>{isKorean ? labels.intake : "一日摂取目安"}</dt>
             <dd>{item.intake}</dd>
           </div>
-          <div>
-            <dt>{materialLabel}</dt>
-            <dd>{originItems.join(" / ")}</dd>
-          </div>
         </dl>
       </div>
+
+      {supplySpec && <SupplySpecPanel isKorean={isKorean} spec={supplySpec} />}
 
       <div className="dh-ingredient-section-grid">
         <section>
@@ -921,13 +985,18 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
                   />
                   <figcaption>
                     <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
-                    {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
+                    {!sharedEvidenceSource && getEvidenceSource(evidenceImage.source, isKorean) && (
+                      <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>
+                    )}
                   </figcaption>
                 </figure>
               );
             })}
           </div>
 
+          {sharedEvidenceSource && <cite className="dh-evidence-group-source">{getEvidenceSource(sharedEvidenceSource, isKorean)}</cite>}
+
+          {glossaryEntries && <GlossaryLegend entries={glossaryEntries} isKorean={isKorean} />}
         </section>
       )}
 

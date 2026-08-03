@@ -16,7 +16,7 @@ const featuredCards = [
     koTitle: "프로바이오틱스 소재",
     koSubtitle: "용도별 7개 영역",
     koDescription: "여성·체지방·인지 등 제품 목적에 맞춰 균주를 검토합니다.",
-    image: "images/products-microbiome-probiotics-card-v2.webp",
+    image: "/images/products-microbiome-probiotics-card-v3.webp",
     href: "/products/microbiome-probiotics",
   },
   {
@@ -26,7 +26,7 @@ const featuredCards = [
     koTitle: "기능성 천연소재",
     koSubtitle: "용도별 10개 영역",
     koDescription: "남성 건강·기억·인지 등 제품 목적에 맞춰 자연 유래 소재를 검토합니다.",
-    image: "images/products-functional-nature-card-v2.webp",
+    image: "/images/products-functional-nature-card-v3.webp",
     href: "/products/nature-ingredients",
   },
   {
@@ -36,7 +36,7 @@ const featuredCards = [
     koTitle: "ODM/OEM",
     koSubtitle: "상품 개발 및 ODM / OEM 생산",
     koDescription: "한국 제조 네트워크를 바탕으로 제품 기획과 생산을 연결합니다.",
-    image: "images/biolab-global-factory-bg.png",
+    image: "/images/biolab-global-factory-bg.png",
     href: "/products/odm-oem",
   },
 ];
@@ -215,15 +215,25 @@ export default function Home() {
               <p>{isKorean ? "BIOLAB Japan의 사업 전개, 소재 정보, 제휴 상담 관련 최신 토픽입니다." : "BIOLAB Japanの事業展開、素材情報、提携相談に関する最新トピックです。"}</p>
             </div>
             <div className="dh-topic-grid">
-              {corporateNews.map((item) => (
+              {corporateNews.slice(0, 3).map((item) => (
                 <article className="dh-topic" key={item.slug}>
-                  <div className="dh-topic-visual" style={{ backgroundImage: `linear-gradient(135deg, rgba(31, 87, 164, 0.78), rgba(65, 171, 225, 0.68)), url(${item.image})` }} />
+                  <div className="dh-topic-outlet">
+                    <span data-region={item.region}>{item.region}</span>
+                    <strong>{isKorean ? item.koOutlet : item.outlet}</strong>
+                  </div>
                   <p className="dh-topic-date">{item.date}</p>
                   <h3>{isKorean ? item.koTitle : item.title}</h3>
                   <p>{isKorean ? item.koSummary : item.summary}</p>
-                  <a href="/news">LEARN MORE</a>
+                  <a href={item.href} target="_blank" rel="noreferrer noopener">
+                    {isKorean ? "기사 보기" : "記事を見る"}
+                  </a>
                 </article>
               ))}
+            </div>
+            <div className="dh-news-more">
+              <Link className="dh-outline-button" href="/news">
+                {isKorean ? "뉴스 전체보기" : "ニュース一覧"}
+              </Link>
             </div>
           </div>
         </section>

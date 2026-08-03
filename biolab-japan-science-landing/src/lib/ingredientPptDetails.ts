@@ -8,7 +8,8 @@ export type IngredientPptDetail = {
   productName: string;
   healthClaims: string[];
   originTitle: string;
-  originItems: string[];
+  /** Japanese-only origin wording. Strain-based items resolve from `Ingredient.strains` instead. */
+  originItems?: string[];
   features: string[];
   graphNotes: string[];
   evidenceImages: PptEvidenceImage[];
@@ -23,13 +24,6 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "韓国女性の膣から分離した乳酸菌で、101名のヒト試験とSCI論文9編で確認されています。",
     ],
     originTitle: "使用菌株",
-    originItems: [
-      "L. plantarum MG989",
-      "L. salivarius MG242",
-      "L. fermentum MG901",
-      "L. paracasei MG4272",
-      "L. rhamnosus MG4288",
-    ],
     features: [
       "健康な韓国女性の膣から分離した、100%ヒト由来のプロバイオティクスです。",
       "19〜50歳の妊娠可能年齢の女性101名を対象にヒト試験を行いました。",
@@ -60,7 +54,6 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "100名のヒト試験とSCI論文6編で確認された、抗肥満向けの特許乳酸菌です。",
     ],
     originTitle: "使用菌株",
-    originItems: ["L. fermentum MG4231", "L. fermentum MG4244"],
     features: [
       "過体重または肥満の成人100名を対象にヒト試験を行いました。",
       "韓国・米国・欧州で国際特許を取得しています。",
@@ -87,7 +80,6 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "60歳以上で記憶力が低下した高齢者120名のヒト試験とSCI論文で確認されています。",
     ],
     originTitle: "使用菌株",
-    originItems: ["L. mucosae NK41", "B. longum NK46"],
     features: [
       "神経細胞の損傷や記憶力低下の原因とされる「アミロイドβ」の調整・低減に働きかけます。",
       "認知機能・記憶力・注意集中力の改善が見られました。",
@@ -119,7 +111,6 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "アルコール性・非アルコール性で傷んだ肝臓のケアを考えた複合設計です。",
     ],
     originTitle: "使用菌株",
-    originItems: ["L. plantarum LC27", "B. longum LC67"],
     features: [
       "肝臓の解毒機能を高め、腸内・血中のエンドトキシンを改善します。",
       "非アルコール性肝障害: ALT・AST・γ-GTP、疲労指標や血中炎症指標が改善しました(γ-GTP P=0.0292、ALT P=0.0332)。",
@@ -149,7 +140,6 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "免疫の過敏な反応にともなう鼻の状態の改善を目指した特許プロバイオティクスです。",
     ],
     originTitle: "使用菌株",
-    originItems: ["L. plantarum IM76", "B. longum IM55"],
     features: [
       "小児・青少年: 鼻症状スコアTNSSがDaily/Weeklyで有意に改善し、炎症を抑えるサイトカインIL-10・IL-22も有意に改善しました。",
       "成人: TNSS総点(P=0.029)、水様性の鼻水(P=0.007)、鼻づまり(P=0.0098)が改善し、免疫グロブリンIgEも減少しました。",
@@ -177,7 +167,6 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "ストレスを抱える韓国人156名という大規模なヒト試験を行いました。",
     ],
     originTitle: "使用菌株",
-    originItems: ["L. reuteri NK33", "B. adolescentis NK98"],
     features: [
       "うつ・不安・不眠を含めた睡眠の質が向上し、腸内のストレス関連マイクロバイオームも改善しました。",
       "血中の炎症性サイトカインIL-6が減り、BDNFが増えて、IL-6/BDNF比が低下しました(P=0.041)。",
@@ -206,11 +195,6 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "母乳で育った健康な新生児の便から採取した、100%ヒト由来のビフィズス菌です。",
     ],
     originTitle: "使用菌株",
-    originItems: [
-      "B. bifidum BGN4 - GRAS No.814 / NDI No.1079",
-      "B. longum BORI - GRAS No.813 / NDI No.1082",
-      "B. lactis AD011 - GRAS No.952 / NDI No.1118",
-    ],
     features: [
       "米国食品医薬品局(FDA)の安全性認証(GRAS・NDI)に加え、HALAL・KOSHER認証も取得しています。",
       "症状別に10件のヒト試験、80件の国際特許、260編以上のSCI論文を持つ世界的なビフィズス菌です。",

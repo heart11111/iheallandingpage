@@ -25,8 +25,12 @@ export default function NewsPage() {
             <div className="dh-news-board">
               {corporateNews.map((item) => (
                 <article key={item.slug}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={item.image} alt="" aria-hidden="true" />
+                  <div className="dh-news-outlet">
+                    <span data-region={item.region}>{item.region}</span>
+                    <strong>
+                      <LocalizedText ja={item.outlet} ko={item.koOutlet} />
+                    </strong>
+                  </div>
                   <div>
                     <p>{item.date}</p>
                     <h2>
@@ -35,7 +39,9 @@ export default function NewsPage() {
                     <span>
                       <LocalizedText ja={item.summary} ko={item.koSummary} />
                     </span>
-                    <a href="/communication/inquiries">LEARN MORE</a>
+                    <a href={item.href} target="_blank" rel="noreferrer noopener">
+                      <LocalizedText ja="記事を見る" ko="기사 보기" />
+                    </a>
                   </div>
                 </article>
               ))}
