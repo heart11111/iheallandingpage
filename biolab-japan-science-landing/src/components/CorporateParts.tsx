@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, MapPin } from "lucide-react";
+import { ArrowRight, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
@@ -492,7 +492,10 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             <IngredientCategoryBadge category={item.category} line={item.line} />
             <h2>{item.name}</h2>
             <strong>{item.area}</strong>
-            <span>{item.intake}</span>
+            <span className="dh-detail-card-intake">
+              <em>{isKorean ? "1일 섭취 기준" : "一日摂取目安"}</em>
+              {item.intake}
+            </span>
           </>
         );
         const content = (
@@ -740,7 +743,10 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
           return (
             <Link className="dh-detail-card dh-detail-card-link" href={`${linkBase}/${item.id}`} key={item.id}>
               {compactContent}
-              <span className="dh-detail-card-cta">DETAIL</span>
+              <span className="dh-detail-card-cta">
+                DETAIL
+                <ArrowRight aria-hidden="true" size={13} strokeWidth={3} />
+              </span>
             </Link>
           );
         }

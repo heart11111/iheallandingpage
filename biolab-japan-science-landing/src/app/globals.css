@@ -5360,24 +5360,55 @@ h2 {
     transform 0.2s ease;
 }
 
+/* The image runs the full width of the card by cancelling the card padding,
+   rather than sitting inset like a framed thumbnail. */
 .dh-detail-card-link .dh-detail-card-image {
-  height: 148px;
-  margin-bottom: 18px;
+  width: calc(100% + 44px);
+  /* Overrides the `img { max-width: 100% }` reset, which would otherwise clamp
+     the negative-margin bleed back to the padded content width. */
+  max-width: none;
+  height: 176px;
+  margin: -22px -22px 20px;
 }
 
 .dh-detail-card-link h2 {
-  min-height: 58px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .dh-detail-card-link > strong {
-  min-height: 44px;
+  margin-bottom: 12px;
+  color: #46525f;
+  font-size: 13px;
+  font-weight: 700;
 }
 
-.dh-detail-card-link > span:not(.dh-detail-card-cta) {
-  min-height: 44px;
-  color: #204da1;
+/* Qualified to outrank `.dh-detail-card span { display: block }` and the chip
+   styling `.dh-detail-card em` applies to every em in the card. */
+.dh-detail-card > .dh-detail-card-intake,
+.dh-ingredient-card .dh-ingredient-card-intake {
+  display: grid;
+  gap: 3px;
+  margin-bottom: 18px;
+  color: #46525f;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.dh-ingredient-card .dh-ingredient-card-intake {
+  margin-bottom: 0;
+  font-size: 12px;
+}
+
+.dh-detail-card > .dh-detail-card-intake > em,
+.dh-ingredient-card .dh-ingredient-card-intake > em {
+  border: 0;
+  padding: 0;
+  color: #93a0b0;
+  font-size: 10.5px;
+  font-style: normal;
   font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .dh-detail-card-link:hover {
@@ -5768,14 +5799,26 @@ h2 {
   font-weight: 900;
 }
 
+/* Qualified so `margin-top: auto` is not overridden by the `.dh-detail-card >
+   span` margin, which would leave the CTA floating mid-card on short cards. */
+.dh-detail-card > .dh-detail-card-cta,
 .dh-detail-card-cta {
+  display: inline-flex !important;
   width: fit-content;
+  align-items: center;
+  gap: 6px;
   margin-top: auto;
   border-bottom: 2px solid #41abe1;
+  padding-bottom: 2px;
   color: #204da1;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.12em;
+  transition: gap 0.2s ease;
+}
+
+.dh-detail-card-link:hover .dh-detail-card-cta {
+  gap: 10px;
 }
 
 .dh-ingredient-profile {
@@ -7240,6 +7283,14 @@ h2 {
   color: #fff;
 }
 
+/* Category chips are a refinement of the line above them, so they sit in their
+   own indented band instead of reading as a second peer row. */
+.dh-filter-row-soft {
+  margin-left: 2px;
+  border-left: 2px solid #e3eaf3;
+  padding: 2px 0 2px 14px;
+}
+
 .dh-filter-row-soft button {
   min-height: 36px;
   border-color: #e0e7ef;
@@ -7267,10 +7318,20 @@ h2 {
   margin-top: 18px;
 }
 
+/* The index carries every ingredient, so wide screens get a fourth column
+   instead of a very long three-column scroll. */
+@media (min-width: 1560px) {
+  .dh-ingredient-card-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Vertical card with a full-width image banner, matching the ingredient list
+   pages. The previous 128px image column left the text roughly 150px wide,
+   which forced the line badge, the chip and most titles to wrap. */
 .dh-ingredient-card {
-  display: grid;
-  grid-template-columns: 128px minmax(0, 1fr);
-  min-height: 168px;
+  display: flex;
+  flex-direction: column;
   border: 1px solid #dfe6ee;
   background: #fff;
   color: inherit;
@@ -7288,20 +7349,38 @@ h2 {
   transform: translateY(-2px);
 }
 
+/* The index mixes greyscale microscopy with colour food photography; easing the
+   saturation keeps one grid from reading as two unrelated sets. */
 .dh-ingredient-card img {
-  width: 128px;
-  height: 100%;
-  min-height: 168px;
+  width: 100%;
+  height: 152px;
+  flex: 0 0 auto;
   object-fit: cover;
   object-position: center;
   background: #f6f8fb;
+  filter: saturate(0.92);
 }
 
-.dh-ingredient-card div {
-  display: grid;
-  align-content: start;
+.dh-ingredient-card > div {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 9px;
   padding: 18px 18px 16px;
+}
+
+.dh-ingredient-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+}
+
+.dh-ingredient-card-intake {
+  display: grid;
+  gap: 3px;
 }
 
 .dh-ingredient-card p {
@@ -7363,15 +7442,24 @@ h2 {
   line-height: inherit;
 }
 
-.dh-ingredient-card em {
+.dh-ingredient-card-cta {
+  display: inline-flex;
   width: fit-content;
-  margin-top: 4px;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+  padding-top: 4px;
   border-bottom: 2px solid #41abe1;
   color: #204da1;
   font-size: 11px;
   font-style: normal;
   font-weight: 900;
   letter-spacing: 0.12em;
+  transition: gap 0.2s ease;
+}
+
+.dh-ingredient-card:hover .dh-ingredient-card-cta {
+  gap: 9px;
 }
 
 .dh-product-grid-single {
