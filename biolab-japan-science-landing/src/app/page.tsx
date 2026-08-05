@@ -115,7 +115,7 @@ export default function Home() {
               </p>
               <div className="dh-hero-actions">
                 <Link href="/products">{isKorean ? "소재 보기" : "素材を見る"}</Link>
-                <Link href="/communication/inquiries">{isKorean ? "제휴 상담" : "提携相談"}</Link>
+                <Link href="/contact">{isKorean ? "제휴 상담" : "提携相談"}</Link>
               </div>
             </div>
           </div>
@@ -235,7 +235,7 @@ export default function Home() {
               <h2>{isKorean ? "기능성 헬스케어 사업 프로젝트를 시작하세요." : "Start a Korea-to-Japan healthcare project."}</h2>
               <p>{isKorean ? "상담 항목: 기능성 식품 원료 사업, ODM/OEM, 일본 B2B 유통, Brand Royalty." : "素材調達、ODM/OEM、日本B2B流通、ブランド協業についてはお問い合わせページからご相談ください。"}</p>
             </div>
-            <Link className="dh-outline-button" href="/communication/inquiries">CONTACT US</Link>
+            <Link className="dh-outline-button" href="/contact">CONTACT US</Link>
           </div>
         </section>
       </main>

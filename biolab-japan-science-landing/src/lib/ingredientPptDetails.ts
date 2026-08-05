@@ -122,8 +122,10 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originItems: ["L. plantarum LC27", "B. longum LC67"],
     features: [
       "肝臓の解毒機能を高め、腸内・血中のエンドトキシンを改善します。",
-      "非アルコール性肝障害: ALT・AST・γ-GTP、疲労指標や血中炎症指標が改善しました(γ-GTP P=0.0292、ALT P=0.0332)。",
-      "アルコール性肝障害: ALT・AST・γ-GTP、血中中性脂肪や血中炎症指標が改善しました(ALT P=0.0260/0.0397、AST P=0.0131、γ-GTP P=0.0229)。",
+      "非アルコール性肝障害: 肝障害の指標であるALT・AST・γ-GTPが低下しました(γ-GTP P=0.0292、ALT P=0.0332)。",
+      "非アルコール性肝障害: 疲労指標と血中炎症指標もあわせて改善しました。",
+      "アルコール性肝障害: 肝障害の指標であるALT・AST・γ-GTPが低下しました(ALT P=0.0260/0.0397、AST P=0.0131、γ-GTP P=0.0229)。",
+      "アルコール性肝障害: 血中中性脂肪と血中炎症指標もあわせて改善しました。",
     ],
     graphNotes: [],
     evidenceImages: [
@@ -151,8 +153,10 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originTitle: "使用菌株",
     originItems: ["L. plantarum IM76", "B. longum IM55"],
     features: [
-      "小児・青少年: 鼻症状スコアTNSSがDaily/Weeklyで有意に改善し、炎症を抑えるサイトカインIL-10・IL-22も有意に改善しました。",
-      "成人: TNSS総点(P=0.029)、水様性の鼻水(P=0.007)、鼻づまり(P=0.0098)が改善し、免疫グロブリンIgEも減少しました。",
+      "小児・青少年: 鼻症状スコア(TNSS)がDaily・Weeklyともに有意に改善しました。",
+      "小児・青少年: 炎症を抑えるサイトカインIL-10・IL-22も有意に改善しました。",
+      "成人: 鼻の症状が全体的に改善しました。TNSS総点(P=0.029)、水様性の鼻水(P=0.007)、鼻づまり(P=0.0098)。",
+      "成人: アレルギー反応に関わる免疫グロブリンIgEが減少しました。",
     ],
     graphNotes: [],
     evidenceImages: [
@@ -311,8 +315,9 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originItems: ["白キクラゲ酵素分解抽出物 Tremella fuciformis Beck-extract"],
     features: [
       "40〜65歳の男女を対象に、12週間のヒト試験を行いました。",
-      "主観的な記憶減退の質問票(SMCQ)スコアが低下しました(600mg・1,200mgともプラセボ比で有意、P=0.007/P=0.002)。",
-      "短期記憶の遂行機能が改善し(P=0.001)、計画機能も改善しました(600mg P=0.08、1,200mg P=0.02)。",
+      "自覚される記憶力の低下が軽減しました。記憶減退の質問票(SMCQ)スコアが低下し、600mg・1,200mgともプラセボ比で有意(P=0.007/P=0.002)。",
+      "短期記憶の遂行機能が改善しました(P=0.001)。",
+      "計画を立てて実行する機能も改善しました(600mg P=0.08、1,200mg P=0.02)。",
       "f-MRI(機能的磁気共鳴画像)で、大脳の灰白質容積の増加を確認しました。",
     ],
     graphNotes: [],
@@ -455,7 +460,9 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     features: [
       "脂肪肝のある成人60名を対象に、12週間のヒト試験を行いました。",
       "傷んだ肝細胞の改善・増加が見られ、肝臓の中性脂肪細胞は数が減り、サイズも小さくなりました。",
-      "肝脂肪含量・ALT・AST値が低下し(肝脂肪含量17.9%→15.2%, P=0.010)、抗酸化酵素GPxが増え(P=0.015)、MDAが低下しました(P=0.002)。",
+      "肝臓に蓄積した脂肪が減りました。肝脂肪含量 17.9% → 15.2% (P=0.010)。",
+      "肝障害の指標であるALT・AST値が低下しました。",
+      "抗酸化力が高まりました。抗酸化酵素GPxの増加(P=0.015)、酸化ストレス指標MDAの減少(P=0.002)。",
     ],
     graphNotes: [],
     evidenceImages: [

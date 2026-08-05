@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { DevLanguageProvider } from "@/components/DevLanguageProvider";
 import { JsonLd } from "@/components/JsonLd";
+import { companyContact } from "@/lib/corporate";
 import "./globals.css";
 
 const pretendardJp = localFont({
@@ -32,6 +33,7 @@ const organizationStructuredData = {
   "@type": "Organization",
   "@id": "https://biolabjp.com/#organization",
   name: "BIOLAB Japan",
+  legalName: companyContact.legalName,
   url: "https://biolabjp.com/",
   logo: "https://biolabjp.com/images/biolab-japan-ci.png",
   parentOrganization: {
@@ -39,10 +41,19 @@ const organizationStructuredData = {
     name: "BIOLAB Korea",
     url: "https://biolabkr.com/",
   },
-  email: "iheal.official@gmail.com",
+  email: companyContact.email,
+  telephone: companyContact.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: companyContact.address.ja,
+    addressLocality: companyContact.address.city,
+    addressRegion: companyContact.address.region,
+    addressCountry: companyContact.address.country,
+  },
   contactPoint: {
     "@type": "ContactPoint",
-    email: "iheal.official@gmail.com",
+    email: companyContact.email,
+    telephone: companyContact.phone,
     contactType: "business inquiry",
     availableLanguage: ["ja", "ko"],
   },

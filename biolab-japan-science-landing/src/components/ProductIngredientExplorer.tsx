@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -249,21 +250,29 @@ export function ProductIngredientExplorer({ items, title, description, koTitle, 
               width={480}
             />
             <div>
-              <IngredientLineBadge
-                label={
-                  item.line === "Functional Probiotics"
-                    ? "Functional Probiotics"
-                    : "Functional Nature‘s food ingredients"
-                }
-                line={item.line}
-              />
-              {individuallyRecognizedIds.has(item.id) ? (
-                <span className="dh-recognition-chip">{language === "ko" ? "개별인정형" : "個別認定型素材"}</span>
-              ) : null}
+              <div className="dh-ingredient-card-badges">
+                <IngredientLineBadge
+                  label={
+                    item.line === "Functional Probiotics"
+                      ? "Functional Probiotics"
+                      : "Functional Nature‘s food ingredients"
+                  }
+                  line={item.line}
+                />
+                {individuallyRecognizedIds.has(item.id) ? (
+                  <span className="dh-recognition-chip">{language === "ko" ? "개별인정형" : "個別認定型素材"}</span>
+                ) : null}
+              </div>
               <h3>{item.name}</h3>
               <strong>{item.area}</strong>
-              <span>{item.intake}</span>
-              <em>DETAIL</em>
+              <span className="dh-ingredient-card-intake">
+                <em>{language === "ko" ? "1일 섭취 기준" : "一日摂取目安"}</em>
+                {item.intake}
+              </span>
+              <em className="dh-ingredient-card-cta">
+                DETAIL
+                <ArrowRight aria-hidden="true" size={12} strokeWidth={3} />
+              </em>
             </div>
           </Link>
         ))}

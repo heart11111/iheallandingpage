@@ -1,11 +1,12 @@
 "use client";
 
-import { Mail, MapPin } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { IngredientCategoryBadge } from "@/components/IngredientCategoryBadge";
+import { companyContact } from "@/lib/corporate";
 import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
 import { getIngredientCardImage, getIngredientDisplayImage } from "@/lib/ingredientImages";
 import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
@@ -54,6 +55,54 @@ function getEvidenceReferences(pptDetail: (typeof ingredientPptDetails)[string] 
       .replace(/^Sexual function - /, isKorean ? "성기능 증진 - " : "性機能増進 - ");
     return `${isKorean ? "출처" : "出典"}: ${localizedReference}`;
   });
+}
+
+// Statistical notation (p-values) is de-emphasised so it does not interrupt the
+// sentence, while the outcome figures a reader is looking for are highlighted.
+const STAT_PATTERN = /[Pp]\s*[=<>≤≥]\s*0?\.\d+(?:\s*\/\s*(?:[Pp]\s*[=<>≤≥]\s*)?0?\.\d+)*/;
+const FIGURE_PATTERN = /[+-]?\d[\d,]*(?:\.\d+)?\s?(?:%|kg\/m2|kg|mg|g|CFU|억|명|名|人|편|編|건|種|종|점|배)/;
+const EMPHASIS_PATTERN = new RegExp(`(${STAT_PATTERN.source})|(${FIGURE_PATTERN.source})`, "g");
+
+function hasStatNotation(items: string[]) {
+  return items.some((item) => new RegExp(STAT_PATTERN.source).test(item));
+}
+
+function renderEmphasized(text: string): ReactNode {
+  const matches = Array.from(text.matchAll(EMPHASIS_PATTERN));
+  if (matches.length === 0) return text;
+
+  const nodes: ReactNode[] = [];
+  let cursor = 0;
+  matches.forEach((match, index) => {
+    const start = match.index ?? 0;
+    if (start > cursor) nodes.push(text.slice(cursor, start));
+    nodes.push(
+      match[1] ? (
+        <small className="dh-stat-note" key={`stat-${index}`}>
+          {match[0]}
+        </small>
+      ) : (
+        <strong key={`em-${index}`}>{match[0]}</strong>
+      ),
+    );
+    cursor = start + match[0].length;
+  });
+  if (cursor < text.length) nodes.push(text.slice(cursor));
+  return nodes;
+}
+
+function StatLegend({ isKorean }: { isKorean: boolean }) {
+  return (
+    <p className="dh-stat-legend">
+      {isKorean
+        ? "P는 그 결과가 우연히 나왔을 확률입니다. 0.05보다 작으면 위약(플라세보) 대비 의미 있는 차이로 봅니다."
+        : "Pはその結果が偶然である確率です。0.05未満であれば、プラセボ比で意味のある差と判断します。"}
+    </p>
+  );
+}
+
+function renderMultiline(items: string[]): ReactNode {
+  return items.flatMap((item, index) => (index === 0 ? [item] : [<br key={`br-${index}`} />, item]));
 }
 
 const koreanEvidenceCaptions: Record<string, string> = {
@@ -148,6 +197,7 @@ const featureEvidenceImages: Record<string, string> = {
 
 const mechanismEvidenceImages: Record<string, string> = {
   acetobeta: "/images/ingredients/acetobeta-evidence-1.webp",
+  nvp1702: "/images/ingredients/nvp1702-evidence-3.png",
 };
 
 const mechanismEvidenceCopy: Record<string, { bodyJa: string; bodyKo: string; titleJa: string; titleKo: string }> = {
@@ -158,6 +208,14 @@ const mechanismEvidenceCopy: Record<string, { bodyJa: string; bodyKo: string; ti
       "アルコールはADHによりアセトアルデヒドへ分解され、さらにALDHにより酢酸へ変換されます。Aceto Betaはこの分解経路をサポートし、飲酒後のアルコールとアセトアルデヒドの負担を軽減する設計です。",
     bodyKo:
       "알코올은 ADH에 의해 아세트알데히드로 분해되고, 다시 ALDH에 의해 초산으로 전환됩니다. Aceto Beta는 이 분해 경로를 도와 음주 후 알코올과 아세트알데히드 부담을 낮추는 설계입니다.",
+  },
+  nvp1702: {
+    titleJa: "肝損傷メカニズム",
+    titleKo: "간 손상 메커니즘",
+    bodyJa:
+      "腸内・血中のLPS(内毒素)と炎症シグナルTNF-αが増えると、肝損傷指標であるALT・AST・γ-GTPも上昇します。NVP-1702はこの炎症経路を整え、肝損傷指標の改善をサポートする設計です。",
+    bodyKo:
+      "장내·혈중 LPS(내독소)와 염증 신호물질 TNF-α가 늘면 간 손상 지표인 ALT·AST·γ-GTP도 함께 높아집니다. NVP-1702는 이 염증 경로를 조절해 간 손상 지표 개선에 도움을 주는 설계입니다.",
   },
 };
 
@@ -373,19 +431,25 @@ export function CorporateSubHero({
 }
 
 export function CorporateFooter() {
+  const { language } = useDevLanguage();
+  const isKorean = language === "ko";
+
   return (
     <footer className="dh-footer">
       <div className="dh-container">
         <strong className="dh-footer-logo">
           <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={508} height={96} loading="eager" />
         </strong>
-        <p>
-          <span>BIOLAB Japan</span>
-          <br />
-          One-stop Solution for Total Healthcare in JAPAN
-          <br />
-          Korea R&amp;D / Functional Ingredients / ODM-OEM / Japan B2B Distribution
-        </p>
+        <address className="dh-footer-contact">
+          <span className="dh-footer-company">{companyContact.legalName}</span>
+          <span>{isKorean ? companyContact.address.ko : companyContact.address.ja}</span>
+          <span>
+            <a href={companyContact.phoneHref}>{companyContact.phone}</a>
+            <i aria-hidden="true">|</i>
+            {/* Inquiries are funnelled through the form rather than a mail client. */}
+            <Link href="/contact">{isKorean ? "문의하기" : "お問い合わせ"}</Link>
+          </span>
+        </address>
       </div>
     </footer>
   );
@@ -435,7 +499,10 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             <IngredientCategoryBadge category={item.category} line={item.line} />
             <h2>{item.name}</h2>
             <strong>{item.area}</strong>
-            <span>{item.intake}</span>
+            <span className="dh-detail-card-intake">
+              <em>{isKorean ? "1일 섭취 기준" : "一日摂取目安"}</em>
+              {item.intake}
+            </span>
           </>
         );
         const content = (
@@ -464,7 +531,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 <h3>{isKorean ? labels.claims : "Health Claim"}</h3>
                 <ul>
                   {detailClaims.map((text) => (
-                    <li key={text}>{text}</li>
+                    <li key={text}>{renderEmphasized(text)}</li>
                   ))}
                 </ul>
               </section>
@@ -543,7 +610,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                     <h4>{isKorean ? labels.claims : "Health Claim"}</h4>
                     <div className="dh-ppt-summary-list">
                       {detailClaims.map((claim) => (
-                        <span key={claim}>{claim}</span>
+                        <span key={claim}>{renderEmphasized(claim)}</span>
                       ))}
                     </div>
                   </section>
@@ -559,9 +626,10 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                     <h4>{isKorean ? labels.features : "Features / 人体効能評価"}</h4>
                     <div className="dh-ppt-summary-list">
                       {detailFeatures.map((feature) => (
-                        <span key={feature}>{feature}</span>
+                        <span key={feature}>{renderEmphasized(feature)}</span>
                       ))}
                     </div>
+                    {hasStatNotation(detailFeatures) && <StatLegend isKorean={isKorean} />}
                   </section>
                 </div>
 
@@ -637,9 +705,10 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 <h3>{isKorean ? labels.features : "Features / 人体効能評価"}</h3>
                 <ul>
                   {item.featurePoints.map((text) => (
-                    <li key={text}>{text}</li>
+                    <li key={text}>{renderEmphasized(text)}</li>
                   ))}
                 </ul>
+                {hasStatNotation(item.featurePoints) && <StatLegend isKorean={isKorean} />}
                 {featureImage && (
                   <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
                     <Image
@@ -681,7 +750,10 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
           return (
             <Link className="dh-detail-card dh-detail-card-link" href={`${linkBase}/${item.id}`} key={item.id}>
               {compactContent}
-              <span className="dh-detail-card-cta">DETAIL</span>
+              <span className="dh-detail-card-cta">
+                DETAIL
+                <ArrowRight aria-hidden="true" size={13} strokeWidth={3} />
+              </span>
             </Link>
           );
         }
@@ -766,10 +838,33 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           </div>
           <div>
             <dt>{materialLabel}</dt>
-            <dd>{originItems.join(" / ")}</dd>
+            <dd>{renderMultiline(originItems)}</dd>
           </div>
         </dl>
       </div>
+
+      <section className="dh-ingredient-origin-panel">
+        <div>
+          <p>Raw Material</p>
+          <h3>{isKorean ? labels.rawMaterial : pptDetail?.originTitle || materialLabel}</h3>
+        </div>
+        <ul>
+          {originItems.map((origin) => (
+            <li key={origin}>{origin}</li>
+          ))}
+        </ul>
+        {originImages.length > 0 && (
+          <div className="dh-origin-composition-cards">
+            {originImages.map((originImage) => (
+              <figure key={originImage.src}>
+                <Image alt={originImage.alt} height={295} loading="eager" src={originImage.src} width={431} />
+              </figure>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {originTable && <OriginCompositionTab isKorean={isKorean} table={originTable} />}
 
       <div className="dh-ingredient-section-grid">
         <section>
@@ -777,7 +872,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           <h3>{isKorean ? labels.function : "Health Claim"}</h3>
           <ul>
             {claims.map((claim) => (
-              <li key={claim}>{claim}</li>
+              <li key={claim}>{renderEmphasized(claim)}</li>
             ))}
           </ul>
         </section>
@@ -786,9 +881,10 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           <h3>{isKorean ? labels.feature : "Features / 人体効能評価"}</h3>
           <ul>
             {featureBlocks.map((feature) => (
-              <li key={feature}>{feature}</li>
+              <li key={feature}>{renderEmphasized(feature)}</li>
             ))}
           </ul>
+          {hasStatNotation(featureBlocks) && <StatLegend isKorean={isKorean} />}
           {featureImage && (
             <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
               <Image
@@ -840,29 +936,6 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           ))}
         </div>
       )}
-
-      <section className="dh-ingredient-origin-panel">
-        <div>
-          <p>Raw Material</p>
-          <h3>{isKorean ? labels.rawMaterial : pptDetail?.originTitle || materialLabel}</h3>
-        </div>
-        <ul>
-          {originItems.map((origin) => (
-            <li key={origin}>{origin}</li>
-          ))}
-        </ul>
-        {originImages.length > 0 && (
-          <div className="dh-origin-composition-cards">
-            {originImages.map((originImage) => (
-              <figure key={originImage.src}>
-                <Image alt={originImage.alt} height={295} loading="eager" src={originImage.src} width={431} />
-              </figure>
-            ))}
-          </div>
-        )}
-      </section>
-
-      {originTable && <OriginCompositionTab isKorean={isKorean} table={originTable} />}
 
       {evidenceReferences.length > 0 && (
         <section className="dh-ingredient-evidence-tags" aria-label={`${item.name} references`}>
@@ -973,22 +1046,65 @@ export function ContactInfoBlocks() {
     <div className="dh-contact-info">
       <div>
         <MapPin size={24} aria-hidden="true" />
-        <h2>BIOLAB Japan</h2>
-        <p>
-          {isKorean
-            ? "한국 기능성 소재와 제조 네트워크를 일본 B2B 헬스케어 시장에 연결하는 플랫폼입니다."
-            : "Japan-side B2B healthcare platform connecting Korean functional ingredients and manufacturing."}
-        </p>
+        <h2>{companyContact.legalName}</h2>
+        <p>{isKorean ? companyContact.address.ko : companyContact.address.ja}</p>
+        {isKorean ? <p className="dh-contact-note">{companyContact.address.ja}</p> : null}
       </div>
       <div>
-        <Mail size={26} aria-hidden="true" />
-        <h2>{isKorean ? "제휴 문의" : "Partnership Inquiry"}</h2>
+        <Phone size={24} aria-hidden="true" />
+        <h2>{isKorean ? "전화" : "お電話"}</h2>
         <p>
+          <a href={companyContact.phoneHref}>{companyContact.phone}</a>
+        </p>
+      </div>
+      {/* No mailto: inquiries are submitted through the form on this page so they
+          land in one inbox with the enquiry type attached. */}
+      <div>
+        <Mail size={26} aria-hidden="true" />
+        <h2>{isKorean ? "문의 접수" : "お問い合わせ"}</h2>
+        <p>
+          {isKorean
+            ? "이 페이지의 문의 폼으로 보내주시면 담당자가 확인 후 연락드립니다."
+            : "このページのフォームからお送りください。担当者より折り返しご連絡いたします。"}
+        </p>
+        <p className="dh-contact-note">
           {isKorean
             ? "상담 항목: 기능성 식품 원료 사업, ODM/OEM, 일본 B2B 유통, iHEAL 브랜드 사용에 대한 상품 로열티 사업."
             : "機能性素材、ODM/OEM、日本B2B流通、iHEALブランド協業についてご相談ください。"}
         </p>
       </div>
     </div>
+  );
+}
+
+export function CompanyLocationMap() {
+  const { language } = useDevLanguage();
+  const isKorean = language === "ko";
+  const query = encodeURIComponent(companyContact.mapQuery);
+
+  return (
+    <section className="dh-contact-map" aria-label={isKorean ? "오시는 길" : "アクセス"}>
+      <p className="dh-detail-primary">LOCATION</p>
+      <h2>{isKorean ? "오시는 길" : "アクセス"}</h2>
+      <p>{isKorean ? companyContact.address.ko : companyContact.address.ja}</p>
+      <div className="dh-contact-map-frame">
+        <iframe
+          title={isKorean ? `${companyContact.legalName} 위치 지도` : `${companyContact.legalName} 所在地の地図`}
+          src={`https://www.google.com/maps?q=${query}&hl=${isKorean ? "ko" : "ja"}&z=17&output=embed`}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allowFullScreen
+        />
+      </div>
+      <a
+        className="dh-contact-map-link"
+        href={`https://www.google.com/maps/search/?api=1&query=${query}`}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {isKorean ? "Google 지도에서 열기" : "Google マップで開く"}
+        <ArrowRight size={14} aria-hidden="true" />
+      </a>
+    </section>
   );
 }

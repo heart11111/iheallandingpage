@@ -49,6 +49,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteUrl}${route}/`,
     lastModified,
     changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : route === "/communication/inquiries" ? 0.8 : 0.7,
+    priority: route === "" ? 1 : route === "/contact" ? 0.9 : 0.7,
   }));
 }

@@ -35,7 +35,7 @@ export default function NewsPage() {
                     <span>
                       <LocalizedText ja={item.summary} ko={item.koSummary} />
                     </span>
-                    <a href="/communication/inquiries">LEARN MORE</a>
+                    <a href="/contact">LEARN MORE</a>
                   </div>
                 </article>
               ))}
