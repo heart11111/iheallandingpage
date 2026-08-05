@@ -3571,11 +3571,13 @@ h2 {
   margin: 0 auto;
   color: #fff;
   font-family: var(--font-ja), "Hiragino Sans", "Yu Gothic", sans-serif;
-  font-size: clamp(74px, 10vw, 150px);
+  /* Sized for the three-line positioning statement rather than the two short
+     words it replaced, and left in sentence case so it reads as written. */
+  font-size: clamp(38px, 5.4vw, 78px);
   font-weight: 880;
-  letter-spacing: 0;
-  line-height: 0.86;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  text-transform: none;
   text-shadow: 0 0 28px rgba(255, 255, 255, 0.25), 0 0 56px rgba(65, 171, 225, 0.22);
 }
 
@@ -3584,16 +3586,14 @@ h2 {
   animation: heroTextIn 1.18s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both;
 }
 
+/* Solid brand blue rather than the previous white-to-pink gradient: pink is not
+   in the palette, and clipping the gradient to the text dropped the glow that
+   keeps the line legible over the photograph. */
 .dh-hero-copy h1 .dh-hero-accent {
   display: block;
-  color: #fff;
-  background: linear-gradient(92deg, #ffffff 0%, #67e8f9 35%, #ffffff 52%, #d42f4e 84%);
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  text-shadow: none;
-  -webkit-text-fill-color: transparent;
-  animation: heroTextIn 1.18s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both, heroShine 4.2s ease-in-out 1.2s infinite;
+  color: #7fd4f5;
+  text-shadow: 0 0 26px rgba(65, 171, 225, 0.5), 0 2px 30px rgba(10, 30, 60, 0.45);
+  animation: heroTextIn 1.18s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
 }
 
 .dh-hero-copy h2 {
@@ -3729,6 +3729,44 @@ h2 {
 .dh-about-text p {
   margin: 0 0 26px;
   font-size: 17px;
+}
+
+/* Vision and mission: the official English statement leads, with a plain
+   explanation under it so the claim is actually understandable. */
+.dh-vision-brief {
+  display: grid;
+  gap: 26px;
+  margin: 0 0 28px;
+}
+
+.dh-vision-brief dt {
+  color: #41abe1;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.dh-vision-brief dd {
+  display: grid;
+  gap: 8px;
+  margin: 9px 0 0;
+  padding-left: 16px;
+  border-left: 2px solid #dfe6ee;
+}
+
+.dh-vision-brief strong {
+  color: #111827;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.42;
+  letter-spacing: -0.01em;
+}
+
+.dh-vision-brief span {
+  color: var(--dh-muted);
+  font-size: 15px;
+  line-height: 1.85;
 }
 
 .dh-about-text ul {
@@ -4809,9 +4847,9 @@ h2 {
 
   .dh-hero-copy h1 {
     display: grid;
-    gap: 8px;
-    font-size: clamp(48px, 15.2vw, 63px);
-    line-height: 0.9;
+    gap: 4px;
+    font-size: clamp(26px, 7.4vw, 40px);
+    line-height: 1.1;
   }
 
   .dh-hero-copy h1 .dh-hero-accent,
@@ -7061,27 +7099,45 @@ h2 {
   align-self: stretch;
 }
 
-/* Location map. The frame grows into whatever height the column has left, so
-   the two columns stay level without hardcoding a height per breakpoint. */
+/* Directions lead the column, so this block carries the icon, name and address
+   in the same visual language as the phone and inquiry blocks below it. */
 .dh-contact-map {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  padding-top: 30px;
-  border-top: 1px solid #dfe6ee;
+  position: relative;
+  padding-left: 50px;
+}
+
+.dh-contact-map > svg {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  color: #41abe1;
 }
 
 .dh-contact-map h2 {
-  margin: 0 0 14px;
+  margin: 0 0 8px;
   color: #111827;
   font-size: 17px;
   font-weight: 900;
 }
 
+.dh-contact-map-company {
+  margin: 0;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.dh-contact-map-address {
+  margin: 4px 0 0;
+  color: #666;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
 .dh-contact-map-frame {
   position: relative;
-  flex: 1 1 auto;
-  min-height: 210px;
+  aspect-ratio: 4 / 3;
+  margin-top: 16px;
   border: 1px solid #dfe6ee;
   background: #f6f8fb;
   overflow: hidden;
@@ -7115,12 +7171,204 @@ h2 {
   gap: 10px;
 }
 
-/* Single-column below this width, so there is no sibling to match — give the
-   map its own ratio instead of stretching. */
-@media (max-width: 980px) {
-  .dh-contact-map-frame {
-    aspect-ratio: 4 / 3;
-    min-height: 0;
+/* The phone and inquiry blocks sit under the directions block, so a rule
+   between them keeps the three groups readable as separate items. */
+.dh-contact-aside > .dh-contact-info {
+  padding-top: 30px;
+  border-top: 1px solid #dfe6ee;
+}
+
+/* ---- Business map -------------------------------------------------------
+   Three nodes on one axis: Korea supplies, Japan sells, BIOLAB Japan is the
+   link between them. Colour carries the direction — Korea in the deep brand
+   navy, Japan in the lighter brand blue — so the eye travels left to right
+   without needing arrows or flag colours. */
+
+.dh-bizmap {
+  padding: 96px 0 104px;
+  background: #f5f8fc;
+}
+
+.dh-bizmap-flow {
+  display: grid;
+  grid-template-columns: auto minmax(40px, 1fr) auto minmax(40px, 1fr) auto;
+  align-items: center;
+  margin-top: 56px;
+}
+
+.dh-bizmap-node {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 5px;
+  width: 176px;
+  height: 176px;
+  border: 1px solid #cdd9e8;
+  border-radius: 999px;
+  background: #fff;
+  text-align: center;
+}
+
+.dh-bizmap-node strong {
+  color: #204da1;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+.dh-bizmap-node span {
+  color: #7c8899;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.dh-bizmap-node[data-side="japan"] strong {
+  color: #2f95c9;
+}
+
+.dh-bizmap-hub {
+  width: 196px;
+  height: 196px;
+  border-color: transparent;
+  background: #16305c;
+  box-shadow: 0 22px 48px rgba(22, 48, 92, 0.24);
+}
+
+.dh-bizmap-hub strong {
+  color: #fff;
+  font-size: 21px;
+}
+
+.dh-bizmap-hub span {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.dh-bizmap-link {
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+  padding: 0 14px;
+}
+
+.dh-bizmap-link b {
+  color: #4a5a70;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.dh-bizmap-link i {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #204da1, #41abe1);
+}
+
+.dh-bizmap-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 46px;
+}
+
+.dh-bizmap-panel {
+  border: 1px solid #dfe6ee;
+  border-top: 3px solid #204da1;
+  background: #fff;
+  padding: 28px 30px 30px;
+}
+
+.dh-bizmap-panel[data-side="japan"] {
+  border-top-color: #41abe1;
+}
+
+.dh-bizmap-panel-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+
+.dh-bizmap-panel-head b {
+  color: #204da1;
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.dh-bizmap-panel[data-side="japan"] .dh-bizmap-panel-head b {
+  color: #2f95c9;
+}
+
+.dh-bizmap-panel-head span {
+  color: #93a0b0;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.dh-bizmap-panel ul {
+  display: grid;
+  gap: 11px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dh-bizmap-panel li {
+  position: relative;
+  padding-left: 16px;
+  color: #46525f;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.dh-bizmap-panel li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.66em;
+  width: 5px;
+  height: 5px;
+  background: #41abe1;
+}
+
+.dh-bizmap-note {
+  margin: 20px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid #eef2f7;
+  color: #8894a5;
+  font-size: 13px;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .dh-bizmap-flow {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 0;
+  }
+
+  /* Vertical axis on narrow screens: the connector rotates so the three nodes
+     still read as one line rather than three unrelated circles. */
+  .dh-bizmap-link {
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+  }
+
+  .dh-bizmap-link i {
+    width: 1px;
+    height: 42px;
+    background: linear-gradient(180deg, #204da1, #41abe1);
+  }
+
+  .dh-bizmap-panels {
+    grid-template-columns: 1fr;
   }
 }
 

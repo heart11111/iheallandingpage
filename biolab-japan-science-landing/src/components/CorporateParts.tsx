@@ -1045,12 +1045,6 @@ export function ContactInfoBlocks() {
   return (
     <div className="dh-contact-info">
       <div>
-        <MapPin size={24} aria-hidden="true" />
-        <h2>{companyContact.legalName}</h2>
-        <p>{isKorean ? companyContact.address.ko : companyContact.address.ja}</p>
-        {isKorean ? <p className="dh-contact-note">{companyContact.address.ja}</p> : null}
-      </div>
-      <div>
         <Phone size={24} aria-hidden="true" />
         <h2>{isKorean ? "전화" : "お電話"}</h2>
         <p>
@@ -1082,11 +1076,17 @@ export function CompanyLocationMap() {
   const isKorean = language === "ko";
   const query = encodeURIComponent(companyContact.mapQuery);
 
-  // No eyebrow and no address line in this block — the contact details directly
-  // above already carry both, and repeating them squeezed the map itself.
+  // This block leads the contact column, so it carries the registered name and
+  // address that the phone and inquiry blocks below no longer repeat.
   return (
     <section className="dh-contact-map" aria-label={isKorean ? "오시는 길" : "アクセス"}>
+      <MapPin size={24} aria-hidden="true" />
       <h2>{isKorean ? "오시는 길" : "アクセス"}</h2>
+      <p className="dh-contact-map-company">{companyContact.legalName}</p>
+      <p className="dh-contact-map-address">
+        {isKorean ? companyContact.address.ko : companyContact.address.ja}
+      </p>
+      {isKorean ? <p className="dh-contact-note">{companyContact.address.ja}</p> : null}
       <div className="dh-contact-map-frame">
         <iframe
           title={isKorean ? `${companyContact.legalName} 위치 지도` : `${companyContact.legalName} 所在地の地図`}
