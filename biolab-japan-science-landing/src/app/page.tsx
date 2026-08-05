@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Globe2, Microscope, ShieldCheck } from "lucide-react";
+import { ArrowRight, Globe2, Microscope, Rocket, ShieldCheck, Telescope } from "lucide-react";
 import Link from "next/link";
 import { CorporateFooter } from "@/components/CorporateParts";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
@@ -189,6 +189,9 @@ export default function Home() {
             </div>
             <div className="dh-vision-cards">
               <article data-kind="vision" data-reveal="0">
+                <span className="dh-vision-icon" aria-hidden="true">
+                  <Telescope size={22} strokeWidth={1.8} />
+                </span>
                 <p className="dh-vision-card-label">Vision</p>
                 <h3>Beyond Functional Healthcare Solutions</h3>
                 <p>
@@ -198,6 +201,9 @@ export default function Home() {
                 </p>
               </article>
               <article data-kind="mission" data-reveal="1">
+                <span className="dh-vision-icon" aria-hidden="true">
+                  <Rocket size={22} strokeWidth={1.8} />
+                </span>
                 <p className="dh-vision-card-label">Our Mission</p>
                 <h3>Leap to become a leading company for functional healthcare industry in Japan</h3>
                 <p>
