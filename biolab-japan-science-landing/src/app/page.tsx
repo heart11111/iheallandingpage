@@ -16,7 +16,9 @@ const featuredCards = [
     koTitle: "프로바이오틱스 소재",
     koSubtitle: "용도별 7개 영역",
     koDescription: "여성·체지방·인지 등 제품 목적에 맞춰 균주를 검토합니다.",
-    image: "images/products-microbiome-probiotics-card-v2.webp",
+    // v2 has a "Microbiome Probiotics" wordmark burnt into the photograph, which
+    // collided with the card's own eyebrow and cannot be translated.
+    image: "images/products-microbiome-probiotics-card-v3.webp",
     href: "/products/microbiome-probiotics",
   },
   {
@@ -137,11 +139,6 @@ export default function Home() {
                 <span className="dh-hero-line">for Total Healthcare</span>
                 <span className="dh-hero-accent">in JAPAN</span>
               </h1>
-              <h2>
-                CONNECT KOREA
-                <br />
-                WITH JAPAN
-              </h2>
               <p className="dh-hero-support">
                 {isKorean
                   ? "한국의 가능성을 일본 시장으로 연결합니다. 기능성 식품 원료 사업, ODM/OEM & Brand Royalty, 일본 B2B 유통을 이어 일본에서 헬스케어 사업을 여는 비즈니스 다리 역할을 합니다."
@@ -155,48 +152,43 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="dh-about">
-          <div className="dh-container dh-about-grid">
-            <div>
+        <section id="about" className="dh-about dh-vision-section">
+          <div className="dh-container">
+            <div className="dh-vision-head">
               <p className="dh-kicker">VISION &amp; MISSION</p>
               <h2>
-                BIOLAB Japan&rsquo;s
-                <br />
-                Vision &amp; Mission.
+                BIOLAB Japan&rsquo;s Vision &amp; Mission.
               </h2>
+              <p className="dh-vision-lead">
+                {isKorean
+                  ? "무엇을 목표로 일본 시장에서 사업을 하는지에 대한 BIOLAB Japan의 답입니다."
+                  : "BIOLAB Japanが日本市場で何を目指して事業を行うのか、その答えです。"}
+              </p>
             </div>
-            <div className="dh-about-text">
-              <dl className="dh-vision-brief">
-                <div>
-                  <dt>Vision</dt>
-                  <dd>
-                    <strong>Beyond Functional Healthcare Solutions</strong>
-                    <span>
-                      {isKorean
-                        ? "기능성 소재의 공급을 넘어, 일본 시장에서 헬스케어 사업이 성립하도록 근거·제조·유통을 함께 설계합니다."
-                        : "機能性素材を供給するだけでなく、日本市場でヘルスケア事業が成り立つように、エビデンス・製造・流通までを一体で設計します。"}
-                    </span>
-                  </dd>
-                </div>
-                <div>
-                  <dt>Our Mission</dt>
-                  <dd>
-                    <strong>
-                      Leap to become a leading company for functional healthcare industry in Japan
-                    </strong>
-                    <span>
-                      {isKorean
-                        ? "일본 기능성 헬스케어 산업을 이끄는 기업으로 도약하는 것이 BIOLAB Japan의 목표입니다."
-                        : "日本の機能性ヘルスケア産業をリードする企業へ飛躍することが、BIOLAB Japanの目標です。"}
-                    </span>
-                  </dd>
-                </div>
-              </dl>
-              <Link className="dh-text-link" href="/company/vision">
-                {isKorean ? "비전 및 목표 보기" : "Vision & Goalsを見る"}
-                <ArrowRight size={15} aria-hidden="true" />
-              </Link>
+            <div className="dh-vision-cards">
+              <article data-kind="vision">
+                <p className="dh-vision-card-label">Vision</p>
+                <h3>Beyond Functional Healthcare Solutions</h3>
+                <p>
+                  {isKorean
+                    ? "기능성 소재의 공급을 넘어, 일본 시장에서 헬스케어 사업이 성립하도록 근거·제조·유통을 함께 설계합니다."
+                    : "機能性素材を供給するだけでなく、日本市場でヘルスケア事業が成り立つように、エビデンス・製造・流通までを一体で設計します。"}
+                </p>
+              </article>
+              <article data-kind="mission">
+                <p className="dh-vision-card-label">Our Mission</p>
+                <h3>Leap to become a leading company for functional healthcare industry in Japan</h3>
+                <p>
+                  {isKorean
+                    ? "일본 기능성 헬스케어 산업을 이끄는 기업으로 도약하는 것이 BIOLAB Japan의 목표입니다."
+                    : "日本の機能性ヘルスケア産業をリードする企業へ飛躍することが、BIOLAB Japanの目標です。"}
+                </p>
+              </article>
             </div>
+            <Link className="dh-text-link dh-vision-link" href="/company/vision">
+              {isKorean ? "비전 및 목표 보기" : "Vision & Goalsを見る"}
+              <ArrowRight size={15} aria-hidden="true" />
+            </Link>
           </div>
         </section>
 
