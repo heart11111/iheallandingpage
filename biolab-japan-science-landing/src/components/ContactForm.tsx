@@ -44,11 +44,26 @@ export function ContactForm() {
     setError("");
 
     try {
+      const fields = Object.fromEntries(new FormData(form)) as Record<string, string>;
+      const senderName = [fields.name, fields.company].filter(Boolean).join(" / ");
+
       const payload = {
         access_key: ACCESS_KEY,
-        subject: "BIOLAB Japan 提携相談",
-        from_name: "BIOLAB Japan Landing Page",
-        ...Object.fromEntries(new FormData(form)),
+        ...fields,
+        // Web3Forms already falls back to the `email` field for Reply-To, but
+        // setting it explicitly means replying in the mail client always reaches
+        // the person who submitted rather than the notify@ sender address.
+        replyto: fields.email,
+        // Name the sender and summarise the enquiry so the inbox is scannable
+        // without opening each message.
+        from_name: senderName || "BIOLAB Japan Contact Form",
+        subject: [
+          "[BIOLAB Japan]",
+          fields.interest || (isKorean ? "문의" : "お問い合わせ"),
+          senderName && `- ${senderName}`,
+        ]
+          .filter(Boolean)
+          .join(" "),
       };
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
