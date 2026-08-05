@@ -446,7 +446,8 @@ export function CorporateFooter() {
           <span>
             <a href={companyContact.phoneHref}>{companyContact.phone}</a>
             <i aria-hidden="true">|</i>
-            <a href={`mailto:${companyContact.email}`}>{companyContact.email}</a>
+            {/* Inquiries are funnelled through the form rather than a mail client. */}
+            <Link href="/contact">{isKorean ? "문의하기" : "お問い合わせ"}</Link>
           </span>
         </address>
       </div>
@@ -1056,11 +1057,15 @@ export function ContactInfoBlocks() {
           <a href={companyContact.phoneHref}>{companyContact.phone}</a>
         </p>
       </div>
+      {/* No mailto: inquiries are submitted through the form on this page so they
+          land in one inbox with the enquiry type attached. */}
       <div>
         <Mail size={26} aria-hidden="true" />
-        <h2>{isKorean ? "이메일" : "メール"}</h2>
+        <h2>{isKorean ? "문의 접수" : "お問い合わせ"}</h2>
         <p>
-          <a href={`mailto:${companyContact.email}`}>{companyContact.email}</a>
+          {isKorean
+            ? "이 페이지의 문의 폼으로 보내주시면 담당자가 확인 후 연락드립니다."
+            : "このページのフォームからお送りください。担当者より折り返しご連絡いたします。"}
         </p>
         <p className="dh-contact-note">
           {isKorean
