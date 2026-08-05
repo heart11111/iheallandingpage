@@ -6,10 +6,12 @@ import { ArrowRight } from "lucide-react";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
 
 // Web3Forms lets a fully static site receive form submissions without a backend.
-// The access key is safe to expose in client code (it only routes to the
-// destination inbox configured on web3forms.com). Set it as the
-// NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY env / repo variable.
-const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+// The access key is public by design: it only routes to the inbox configured on
+// web3forms.com, and it ships in the client bundle either way, so committing it
+// exposes nothing that deploying would not. NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
+// still overrides it, which is how the key gets rotated without a code change.
+const DEFAULT_ACCESS_KEY = "3e5df5e8-b710-40d4-bcfe-fc56d0dc0feb";
+const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || DEFAULT_ACCESS_KEY;
 const FALLBACK_EMAIL = process.env.NEXT_PUBLIC_CONTACT_FALLBACK_EMAIL;
 
 type Status = "idle" | "submitting" | "success" | "error";

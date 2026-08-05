@@ -1082,11 +1082,11 @@ export function CompanyLocationMap() {
   const isKorean = language === "ko";
   const query = encodeURIComponent(companyContact.mapQuery);
 
+  // No eyebrow and no address line in this block — the contact details directly
+  // above already carry both, and repeating them squeezed the map itself.
   return (
     <section className="dh-contact-map" aria-label={isKorean ? "오시는 길" : "アクセス"}>
-      <p className="dh-detail-primary">LOCATION</p>
       <h2>{isKorean ? "오시는 길" : "アクセス"}</h2>
-      <p>{isKorean ? companyContact.address.ko : companyContact.address.ja}</p>
       <div className="dh-contact-map-frame">
         <iframe
           title={isKorean ? `${companyContact.legalName} 위치 지도` : `${companyContact.legalName} 所在地の地図`}
