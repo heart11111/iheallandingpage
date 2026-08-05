@@ -42,7 +42,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     evidenceImages: [
       {
         src: "/images/ingredients/med01-evidence-1.webp",
-        caption: "排尿痛(生理痛)・腟分泌物・腟灼熱感の変化(MED-01群 vs プラセボ群)",
+        caption: "排尿痛・腟分泌物・腟灼熱感の変化(MED-01群 vs プラセボ群)",
         source: "Nutrients 2023, 15(2), 331",
       },
       {
@@ -122,20 +122,20 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originItems: ["L. plantarum LC27", "B. longum LC67"],
     features: [
       "肝臓の解毒機能を高め、腸内・血中のエンドトキシンを改善します。",
-      "非アルコール性肝障害: 肝障害の指標であるALT・AST・γ-GTPが低下しました(γ-GTP P=0.0292、ALT P=0.0332)。",
+      "非アルコール性肝障害: 肝障害の指標であるALT・AST・γ-GTPが低下しました(ALT P=0.0260/0.0397、AST P=0.0131、γ-GTP P=0.0229)。",
       "非アルコール性肝障害: 疲労指標と血中炎症指標もあわせて改善しました。",
-      "アルコール性肝障害: 肝障害の指標であるALT・AST・γ-GTPが低下しました(ALT P=0.0260/0.0397、AST P=0.0131、γ-GTP P=0.0229)。",
+      "アルコール性肝障害: 肝障害の指標であるALT・γ-GTPが低下しました(γ-GTP P=0.0292、ALT P=0.0332)。",
       "アルコール性肝障害: 血中中性脂肪と血中炎症指標もあわせて改善しました。",
     ],
     graphNotes: [],
     evidenceImages: [
       {
         src: "/images/ingredients/nvp1702-evidence-1.webp",
-        caption: "非アルコール性肝損傷群: γ-GTP・ALT・ASTの12週間変化(NVP-1702群 vs プラセボ群、P=0.0292/P=0.0332)",
+        caption: "アルコール性肝損傷群: γ-GTP・ALT・ASTの12週間変化(NVP-1702群 vs プラセボ群、γ-GTP P=0.0292、ALT P=0.0332)",
       },
       {
         src: "/images/ingredients/nvp1702-evidence-2.webp",
-        caption: "アルコール性肝損傷群: ALT・AST・γ-GTPの12週間変化(P=0.0260/0.0397, P=0.0131, P=0.0229)",
+        caption: "非アルコール性肝損傷群: ALT・AST・γ-GTPの12週間変化(ALT P=0.0260/0.0397, AST P=0.0131, γ-GTP P=0.0229)",
       },
       {
         src: "/images/ingredients/nvp1702-evidence-3.png",
