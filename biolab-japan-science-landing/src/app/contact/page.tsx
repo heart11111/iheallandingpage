@@ -22,11 +22,10 @@ export default function ContactPage() {
             </span>
             <div className="dh-contact-page-grid">
               <ContactForm />
-              {/* The form is the taller column, so the map fills the space left
-                  under the contact details rather than starting a new band. */}
+              {/* Directions first, then phone, then the inquiry note. */}
               <div className="dh-contact-aside">
-                <ContactInfoBlocks />
                 <CompanyLocationMap />
+                <ContactInfoBlocks />
               </div>
             </div>
           </div>

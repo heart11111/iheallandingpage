@@ -41,6 +41,39 @@ const featuredCards = [
   },
 ];
 
+// Business map, from the corporate deck: Korea supplies and manufactures, Japan
+// sells and distributes, and BIOLAB Japan is the link that makes the two work
+// as one line.
+const businessMapSides = [
+  {
+    side: "korea",
+    region: "KOREA",
+    mode: "B2B",
+    role: "R&D ・ 製造",
+    koRole: "R&D · 제조",
+    items: [
+      { ja: "素材開発・ソーシング", ko: "소재 개발·소싱" },
+      { ja: "直接供給（メーカー直送）", ko: "직접 공급(제조사 직납)" },
+      { ja: "生産", ko: "생산" },
+      { ja: "ブランド管理", ko: "브랜드 관리" },
+    ],
+    note: "Together with best Manufacturers!",
+  },
+  {
+    side: "japan",
+    region: "JAPAN",
+    mode: "Commerce",
+    role: "販売 ・ 流通",
+    koRole: "판매 · 유통",
+    items: [
+      { ja: "販売・マーケティング", ko: "영업·마케팅" },
+      { ja: "供給（販売代理店・メーカー・卸）", ko: "공급(판매사·제조사·도매)" },
+      { ja: "販売ネットワークの拡大", ko: "판매 네트워크 확대" },
+      { ja: "新規事業の開拓", ko: "신규 사업 개척" },
+    ],
+  },
+];
+
 const techValues = [
   {
     title: "研究開発",
@@ -100,8 +133,9 @@ export default function Home() {
             <div className="dh-hero-copy">
               <p className="dh-hero-kicker">WE ARE BRIDGE!</p>
               <h1>
-                <span className="dh-hero-line">KOREA TO</span>
-                <span className="dh-hero-accent">JAPAN</span>
+                <span className="dh-hero-line">One-stop Solution</span>
+                <span className="dh-hero-line">for Total Healthcare</span>
+                <span className="dh-hero-accent">in JAPAN</span>
               </h1>
               <h2>
                 CONNECT KOREA
@@ -124,21 +158,42 @@ export default function Home() {
         <section id="about" className="dh-about">
           <div className="dh-container dh-about-grid">
             <div>
-              <p className="dh-kicker">ABOUT BIOLAB JAPAN</p>
+              <p className="dh-kicker">VISION &amp; MISSION</p>
               <h2>
-                Korea to Japan
+                BIOLAB Japan&rsquo;s
                 <br />
-                Healthcare Bridge.
+                Vision &amp; Mission.
               </h2>
             </div>
             <div className="dh-about-text">
-              <p>
-                {isKorean
-                  ? "BIOLAB Japan은 한국의 기능성 원료 개발, 제조, ODM/OEM을 일본의 판매사·제조사·도매 네트워크와 연결하는 KOREA TO JAPAN 헬스케어 사업 브리지입니다."
-                  : "BIOLAB Japanは、韓国の機能性素材開発、製造、ODM/OEM、ブランド管理と、日本側の販売会社・メーカー・卸ネットワークをつなぐヘルスケア事業ブリッジです。"}
-              </p>
-              <Link className="dh-text-link" href="/about">
-                {isKorean ? "회사 소개 보기" : "ABOUTを見る"}
+              <dl className="dh-vision-brief">
+                <div>
+                  <dt>Vision</dt>
+                  <dd>
+                    <strong>Beyond Functional Healthcare Solutions</strong>
+                    <span>
+                      {isKorean
+                        ? "기능성 소재의 공급을 넘어, 일본 시장에서 헬스케어 사업이 성립하도록 근거·제조·유통을 함께 설계합니다."
+                        : "機能性素材を供給するだけでなく、日本市場でヘルスケア事業が成り立つように、エビデンス・製造・流通までを一体で設計します。"}
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Our Mission</dt>
+                  <dd>
+                    <strong>
+                      Leap to become a leading company for functional healthcare industry in Japan
+                    </strong>
+                    <span>
+                      {isKorean
+                        ? "일본 기능성 헬스케어 산업을 이끄는 기업으로 도약하는 것이 BIOLAB Japan의 목표입니다."
+                        : "日本の機能性ヘルスケア産業をリードする企業へ飛躍することが、BIOLAB Japanの目標です。"}
+                    </span>
+                  </dd>
+                </div>
+              </dl>
+              <Link className="dh-text-link" href="/company/vision">
+                {isKorean ? "비전 및 목표 보기" : "Vision & Goalsを見る"}
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
             </div>
@@ -172,6 +227,68 @@ export default function Home() {
                   <a href={card.href} aria-label={`${card.title} 詳細`}>
                     LEARN MORE
                   </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="business-map" className="dh-bizmap">
+          <div className="dh-container">
+            <div className="dh-section-title">
+              <p className="dh-kicker">OUR BUSINESS MAP</p>
+              <h2>
+                Korea to Japan,
+                <br />
+                one continuous supply line.
+              </h2>
+              <p>
+                {isKorean
+                  ? "한국은 개발과 제조를, 일본은 판매와 유통을 맡고, BIOLAB Japan이 그 사이를 이어 하나의 공급선으로 만듭니다."
+                  : "韓国が開発と製造を、日本が販売と流通を担い、BIOLAB Japanがその間をつないで一本の供給線にします。"}
+              </p>
+            </div>
+
+            <div className="dh-bizmap-flow">
+              <div className="dh-bizmap-node" data-side="korea">
+                <strong>KOREA</strong>
+                <span>{isKorean ? businessMapSides[0].koRole : businessMapSides[0].role}</span>
+              </div>
+              <div className="dh-bizmap-link" aria-hidden="true">
+                <b>B2B</b>
+                <i />
+              </div>
+              <div className="dh-bizmap-node dh-bizmap-hub">
+                <strong>
+                  BIOLAB
+                  <br />
+                  Japan
+                </strong>
+                <span>{isKorean ? "브리지" : "ブリッジ"}</span>
+              </div>
+              <div className="dh-bizmap-link" aria-hidden="true">
+                <b>Commerce</b>
+                <i />
+              </div>
+              <div className="dh-bizmap-node" data-side="japan">
+                <strong>JAPAN</strong>
+                <span>{isKorean ? businessMapSides[1].koRole : businessMapSides[1].role}</span>
+              </div>
+            </div>
+
+            <div className="dh-bizmap-panels">
+              {businessMapSides.map((group) => (
+                <article className="dh-bizmap-panel" data-side={group.side} key={group.side}>
+                  <p className="dh-bizmap-panel-head">
+                    <b>{group.mode}</b>
+                    <span>{group.region}</span>
+                  </p>
+                  <ul>
+                    {group.items.map((item) => (
+                      <li key={item.ja}>{isKorean ? item.ko : item.ja}</li>
+                    ))}
+                  </ul>
+                  {group.note ? <p className="dh-bizmap-note">&ldquo;{group.note}&rdquo;</p> : null}
                 </article>
               ))}
             </div>
