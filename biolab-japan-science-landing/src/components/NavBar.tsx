@@ -24,10 +24,10 @@ const koreanMenuLabels: Record<string, string> = {
   "/products": "제품",
   "/products/microbiome-probiotics": "Functional Probiotics",
   "/products/nature-ingredients": "Functional Nature‘s food ingredients",
-  "/communication": "문의",
+  "/communication": "자료 및 채널",
   "/communication/catalog": "E-카탈로그",
-  "/communication/inquiries": "개발 문의",
   "/communication/channels": "채널",
+  "/contact": "문의하기",
 };
 
 export function NavBar() {

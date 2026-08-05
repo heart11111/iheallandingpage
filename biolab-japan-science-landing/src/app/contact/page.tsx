@@ -1,5 +1,5 @@
 import { ContactForm } from "@/components/ContactForm";
-import { ContactInfoBlocks, CorporateFooter } from "@/components/CorporateParts";
+import { CompanyLocationMap, ContactInfoBlocks, CorporateFooter } from "@/components/CorporateParts";
 import { LocalizedText } from "@/components/DevLanguageProvider";
 import { NavBar } from "@/components/NavBar";
 
@@ -16,14 +16,15 @@ export default function ContactPage() {
             </h1>
             <span>
               <LocalizedText
-                ja="機能性素材、ODM/OEM、日本B2B流通、ブランド協業についてお問い合わせください。"
-                ko="기능성 식품 원료 사업, ODM/OEM, 일본 B2B 유통, Brand Royalty에 대해 문의해 주세요."
+                ja="機能性素材の調達、ODM/OEM商品開発、日本B2B流通、iHEALブランド協業の開発相談を受け付けます。"
+                ko="기능성 식품 원료 사업, ODM/OEM 상품 개발, 일본 B2B 유통, iHEAL 브랜드 사용에 대한 상품 로열티 사업의 개발 상담을 접수합니다."
               />
             </span>
             <div className="dh-contact-page-grid">
               <ContactForm />
               <ContactInfoBlocks />
             </div>
+            <CompanyLocationMap />
           </div>
         </section>
       </main>

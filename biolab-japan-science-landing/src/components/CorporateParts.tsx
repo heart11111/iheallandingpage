@@ -1,11 +1,12 @@
 "use client";
 
-import { ArrowRight, Mail, MapPin } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { IngredientCategoryBadge } from "@/components/IngredientCategoryBadge";
+import { companyContact } from "@/lib/corporate";
 import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
 import { getIngredientCardImage, getIngredientDisplayImage } from "@/lib/ingredientImages";
 import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
@@ -430,19 +431,24 @@ export function CorporateSubHero({
 }
 
 export function CorporateFooter() {
+  const { language } = useDevLanguage();
+  const isKorean = language === "ko";
+
   return (
     <footer className="dh-footer">
       <div className="dh-container">
         <strong className="dh-footer-logo">
           <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={508} height={96} loading="eager" />
         </strong>
-        <p>
-          <span>BIOLAB Japan</span>
-          <br />
-          One-stop Solution for Total Healthcare in JAPAN
-          <br />
-          Korea R&amp;D / Functional Ingredients / ODM-OEM / Japan B2B Distribution
-        </p>
+        <address className="dh-footer-contact">
+          <span className="dh-footer-company">{companyContact.legalName}</span>
+          <span>{isKorean ? companyContact.address.ko : companyContact.address.ja}</span>
+          <span>
+            <a href={companyContact.phoneHref}>{companyContact.phone}</a>
+            <i aria-hidden="true">|</i>
+            <a href={`mailto:${companyContact.email}`}>{companyContact.email}</a>
+          </span>
+        </address>
       </div>
     </footer>
   );
@@ -1039,22 +1045,61 @@ export function ContactInfoBlocks() {
     <div className="dh-contact-info">
       <div>
         <MapPin size={24} aria-hidden="true" />
-        <h2>BIOLAB Japan</h2>
+        <h2>{companyContact.legalName}</h2>
+        <p>{isKorean ? companyContact.address.ko : companyContact.address.ja}</p>
+        {isKorean ? <p className="dh-contact-note">{companyContact.address.ja}</p> : null}
+      </div>
+      <div>
+        <Phone size={24} aria-hidden="true" />
+        <h2>{isKorean ? "전화" : "お電話"}</h2>
         <p>
-          {isKorean
-            ? "한국 기능성 소재와 제조 네트워크를 일본 B2B 헬스케어 시장에 연결하는 플랫폼입니다."
-            : "Japan-side B2B healthcare platform connecting Korean functional ingredients and manufacturing."}
+          <a href={companyContact.phoneHref}>{companyContact.phone}</a>
         </p>
       </div>
       <div>
         <Mail size={26} aria-hidden="true" />
-        <h2>{isKorean ? "제휴 문의" : "Partnership Inquiry"}</h2>
+        <h2>{isKorean ? "이메일" : "メール"}</h2>
         <p>
+          <a href={`mailto:${companyContact.email}`}>{companyContact.email}</a>
+        </p>
+        <p className="dh-contact-note">
           {isKorean
             ? "상담 항목: 기능성 식품 원료 사업, ODM/OEM, 일본 B2B 유통, iHEAL 브랜드 사용에 대한 상품 로열티 사업."
             : "機能性素材、ODM/OEM、日本B2B流通、iHEALブランド協業についてご相談ください。"}
         </p>
       </div>
     </div>
+  );
+}
+
+export function CompanyLocationMap() {
+  const { language } = useDevLanguage();
+  const isKorean = language === "ko";
+  const query = encodeURIComponent(companyContact.mapQuery);
+
+  return (
+    <section className="dh-contact-map" aria-label={isKorean ? "오시는 길" : "アクセス"}>
+      <p className="dh-detail-primary">LOCATION</p>
+      <h2>{isKorean ? "오시는 길" : "アクセス"}</h2>
+      <p>{isKorean ? companyContact.address.ko : companyContact.address.ja}</p>
+      <div className="dh-contact-map-frame">
+        <iframe
+          title={isKorean ? `${companyContact.legalName} 위치 지도` : `${companyContact.legalName} 所在地の地図`}
+          src={`https://www.google.com/maps?q=${query}&hl=${isKorean ? "ko" : "ja"}&z=17&output=embed`}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allowFullScreen
+        />
+      </div>
+      <a
+        className="dh-contact-map-link"
+        href={`https://www.google.com/maps/search/?api=1&query=${query}`}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {isKorean ? "Google 지도에서 열기" : "Google マップで開く"}
+        <ArrowRight size={14} aria-hidden="true" />
+      </a>
+    </section>
   );
 }

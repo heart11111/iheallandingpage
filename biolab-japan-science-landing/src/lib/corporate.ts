@@ -47,6 +47,24 @@ export const businessPages = [
   },
 ];
 
+// Single source of truth for the registered company details, so the footer, the
+// contact page and the Organization structured data can never drift apart.
+export const companyContact = {
+  legalName: "BIOLAB JAPAN LTD",
+  phone: "080-7447-9666",
+  // tel: links need the international form; the label stays as printed.
+  phoneHref: "tel:+818074479666",
+  email: "iheal.official@gmail.com",
+  address: {
+    ja: "横浜市南区別所2丁目29番2-1号",
+    ko: "요코하마시 미나미구 벳쇼 2초메 29번 2-1호",
+    city: "横浜市",
+    region: "神奈川県",
+    country: "JP",
+  },
+  mapQuery: "横浜市南区別所2丁目29番2-1号",
+};
+
 export const communicationPages = [
   {
     label: "Eカタログ",
@@ -55,14 +73,6 @@ export const communicationPages = [
     href: "/communication/catalog",
     summary: "素材供給、OEM/ODM、ブランド協業の検討に必要な情報をまとめます。",
     koSummary: "기능성 식품 원료 사업, ODM/OEM, Brand Royalty 검토에 필요한 정보를 안내합니다.",
-  },
-  {
-    label: "開発お問い合わせ",
-    koLabel: "개발 문의",
-    menuLabel: "Development Inquiries",
-    href: "/communication/inquiries",
-    summary: "機能性素材、ODM/OEM、日本B2B流通、ブランド協業の開発相談を受け付けます。",
-    koSummary: "기능성 원료, ODM/OEM, 일본 B2B 유통, 브랜드 협업 개발 상담을 접수합니다.",
   },
   {
     label: "コミュニケーションチャネル",
@@ -111,11 +121,14 @@ export const productLinePages = [
   },
 ];
 
+// Contact is a top-level destination rather than a child of Communication, so
+// an inquiry never takes more than one click from any page.
 export const siteMapGroups = [
   { label: "会社紹介", menuLabel: "COMPANY", href: "/company", children: companyPages },
   { label: "事業 & サービス", menuLabel: "BUSINESS", href: "/business", children: businessPages },
   { label: "供給製品", menuLabel: "PRODUCTS", href: "/products", children: productLinePages },
-  { label: "お問い合わせ", menuLabel: "COMMUNICATION", href: "/communication", children: communicationPages },
+  { label: "資料 & チャネル", menuLabel: "COMMUNICATION", href: "/communication", children: communicationPages },
+  { label: "お問い合わせ", menuLabel: "CONTACT US", href: "/contact", children: [] },
 ];
 
 export const productGroups = [

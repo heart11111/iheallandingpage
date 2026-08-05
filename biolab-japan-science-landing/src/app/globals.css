@@ -4579,6 +4579,43 @@ h2 {
   text-align: right;
 }
 
+/* Registered company details, so the footer answers "who and where" rather than
+   repeating the marketing tagline. */
+.dh-footer-contact {
+  display: grid;
+  gap: 5px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  font-style: normal;
+  line-height: 1.7;
+  text-align: right;
+}
+
+.dh-footer-company {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.dh-footer-contact a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  transition: border-color 0.2s ease;
+}
+
+.dh-footer-contact a:hover,
+.dh-footer-contact a:focus-visible {
+  border-color: #41abe1;
+}
+
+.dh-footer-contact i {
+  margin: 0 8px;
+  color: rgba(255, 255, 255, 0.32);
+  font-style: normal;
+}
+
 @media (max-width: 980px) {
   .dh-container {
     width: min(100% - 34px, 760px);
@@ -6988,6 +7025,91 @@ h2 {
   color: #666;
   font-size: 15px;
   line-height: 1.55;
+}
+
+.dh-contact-info p + p {
+  margin-top: 6px;
+}
+
+.dh-contact-info a {
+  color: #204da1;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid #cbd7e6;
+  transition: border-color 0.2s ease;
+}
+
+.dh-contact-info a:hover,
+.dh-contact-info a:focus-visible {
+  border-color: #41abe1;
+}
+
+.dh-contact-note {
+  color: #8894a5 !important;
+  font-size: 13px !important;
+}
+
+/* Location map. The iframe is ratio-boxed so it never overflows the column and
+   needs no fixed pixel height per breakpoint. */
+.dh-contact-map {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid #dfe6ee;
+}
+
+.dh-contact-map h2 {
+  margin: 0 0 10px;
+  color: #111827;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.dh-contact-map > p {
+  margin: 0 0 20px;
+  color: #4b5563;
+  font-size: 15px;
+}
+
+.dh-contact-map-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 1px solid #dfe6ee;
+  background: #f6f8fb;
+  overflow: hidden;
+}
+
+.dh-contact-map-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.dh-contact-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  border-bottom: 2px solid #41abe1;
+  padding-bottom: 2px;
+  color: #204da1;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.dh-contact-map-link:hover,
+.dh-contact-map-link:focus-visible {
+  gap: 10px;
+}
+
+@media (max-width: 720px) {
+  .dh-contact-map-frame {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 .dh-sitemap-section {
