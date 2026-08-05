@@ -13,7 +13,7 @@ const visionItems = [
     body: ["Functional Probiotics、", "自然由来機能性素材、OEM/ODMを", "一体で整理し、製品化までの流れを支えます。"],
     koBody: [
       "Functional Probiotics,",
-      "Functional Nature‘s food ingredients,",
+      "Functional Nature’s food ingredients,",
       "ODM/OEM & Brand Royalty 등 통합 솔루션을 제공합니다.",
     ],
   },

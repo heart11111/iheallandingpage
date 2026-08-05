@@ -18,9 +18,9 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
   med01: {
     productName: "iHEAL GINO 5 Formula - MED01",
     healthClaims: [
-      "女性の膣の健康をサポートするプロバイオティクス複合物です。",
-      "膣炎の予防・改善と、膣内環境を健やかに保つのに役立ちます。",
-      "韓国女性の膣から分離した乳酸菌で、101名のヒト試験とSCI論文9編で確認されています。",
+      "女性の腟の健康をサポートするプロバイオティクス複合物です。",
+      "腟炎の予防・改善と、腟内環境を健やかに保つのに役立ちます。",
+      "韓国女性の腟から分離した乳酸菌で、101名のヒト臨床試験とSCI論文9編で確認されています。",
     ],
     originTitle: "使用菌株",
     originItems: [
@@ -31,18 +31,18 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       "L. rhamnosus MG4288",
     ],
     features: [
-      "健康な韓国女性の膣から分離した、100%ヒト由来のプロバイオティクスです。",
-      "19〜50歳の妊娠可能年齢の女性101名を対象にヒト試験を行いました。",
+      "健康な韓国女性の腟から分離した、100%ヒト由来のプロバイオティクスです。",
+      "19〜50歳の妊娠可能年齢の女性101名を対象にヒト臨床試験を行いました。",
       "韓国・米国・欧州で国際特許を取得し、日本でも特許を出願中です。",
-      "膣炎の指標であるNugent score(膣分泌物のGram染色で膣内細菌叢を0〜10点で評価する指標)が改善しました。",
-      "膣内の乳酸菌が増えて有害菌が抑えられ、膣内フローラが正常な状態に整います。",
-      "膣分泌物や膣の灼熱感、排尿痛の軽減が見られました。",
+      "腟炎の指標であるNugent score(腟分泌物のGram染色で腟内細菌叢を0〜10点で評価する指標)が改善しました。",
+      "腟内の乳酸菌が増えて有害菌が抑えられ、腟内フローラが正常な状態に整います。",
+      "腟分泌物や腟の灼熱感、排尿痛の軽減が見られました。",
     ],
     graphNotes: ["出典: Nutrients 2023, 15(2), 331"],
     evidenceImages: [
       {
         src: "/images/ingredients/med01-evidence-1.webp",
-        caption: "排尿痛(生理痛)・膣分泌物・膣灼熱感の変化(MED-01群 vs プラセボ群)",
+        caption: "排尿痛(生理痛)・腟分泌物・腟灼熱感の変化(MED-01群 vs プラセボ群)",
         source: "Nutrients 2023, 15(2), 331",
       },
       {
@@ -57,12 +57,12 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     healthClaims: [
       "脂肪細胞の分化を抑える特許プロバイオティクス複合物です。",
       "体重や体脂肪の減少、BMI(体格指数)の低下をサポートします。",
-      "100名のヒト試験とSCI論文6編で確認された、抗肥満向けの特許乳酸菌です。",
+      "100名のヒト臨床試験とSCI論文6編で確認された、抗肥満向けの特許乳酸菌です。",
     ],
     originTitle: "使用菌株",
     originItems: ["L. fermentum MG4231", "L. fermentum MG4244"],
     features: [
-      "過体重または肥満の成人100名を対象にヒト試験を行いました。",
+      "過体重または肥満の成人100名を対象にヒト臨床試験を行いました。",
       "韓国・米国・欧州で国際特許を取得しています。",
       "子どものうちから脂肪細胞の分化を抑え、小児肥満のリスクを下げます。",
       "大人になってからの中性脂肪の蓄積による肥満や脂質異常症のリスクも抑えます。",
@@ -84,7 +84,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     productName: "NVP-2106",
     healthClaims: [
       "デュオバイオーム技術による、脳機能の改善に向けた2種の特許プロバイオティクス複合物です。",
-      "60歳以上で記憶力が低下した高齢者120名のヒト試験とSCI論文で確認されています。",
+      "60歳以上で記憶力が低下した高齢者120名のヒト臨床試験とSCI論文で確認されています。",
     ],
     originTitle: "使用菌株",
     originItems: ["L. mucosae NK41", "B. longum NK46"],
@@ -115,7 +115,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     productName: "NVP-1702",
     healthClaims: [
       "デュオバイオーム技術による、肝機能の改善に向けた2種の特許プロバイオティクス複合物です。",
-      "非アルコール性93名・アルコール性70名のヒト試験2件とSCI論文で確認された、肝機能改善向けの特許乳酸菌です。",
+      "非アルコール性93名・アルコール性70名のヒト臨床試験2件とSCI論文で確認された、肝機能改善向けの特許乳酸菌です。",
       "アルコール性・非アルコール性で傷んだ肝臓のケアを考えた複合設計です。",
     ],
     originTitle: "使用菌株",
@@ -147,7 +147,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     productName: "NVP-1703",
     healthClaims: [
       "デュオバイオーム技術による、アレルギー性鼻炎の改善に向けた特許プロバイオティクス複合物です。",
-      "小児・青少年81名、成人95名という大規模なヒト試験を行いました。",
+      "小児・青少年81名、成人95名という大規模なヒト臨床試験を行いました。",
       "免疫の過敏な反応にともなう鼻の状態の改善を目指した特許プロバイオティクスです。",
     ],
     originTitle: "使用菌株",
@@ -178,7 +178,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     productName: "NVP-1704",
     healthClaims: [
       "ストレス性の不調やうつ・不安・不眠の改善に向けた特許プロバイオティクス複合物です。",
-      "ストレスを抱える韓国人156名という大規模なヒト試験を行いました。",
+      "ストレスを抱える韓国人156名という大規模なヒト臨床試験を行いました。",
     ],
     originTitle: "使用菌株",
     originItems: ["L. reuteri NK33", "B. adolescentis NK98"],
@@ -217,7 +217,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
     features: [
       "米国食品医薬品局(FDA)の安全性認証(GRAS・NDI)に加え、HALAL・KOSHER認証も取得しています。",
-      "症状別に10件のヒト試験、80件の国際特許、260編以上のSCI論文を持つ世界的なビフィズス菌です。",
+      "症状別に10件のヒト臨床試験、80件の国際特許、260編以上のSCI論文を持つ世界的なビフィズス菌です。",
       "12週間の摂取で、ガスの排出頻度が上がり、お腹の張りが和らぎました。",
       "参考: BGN4・BORIをベースとしたプロバイオティクス(40億CFU/日、12週間)を65歳以上の高齢者が摂取した試験で、認知機能と気分の改善が確認されました(ソウル大学校盆唐病院実施)。",
     ],
@@ -229,7 +229,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
       },
       {
         src: "/images/ingredients/bifido-evidence-6.png",
-        caption: "BGN4・BORI配合プロバイオティクスの高齢者対象ヒト試験資料",
+        caption: "BGN4・BORI配合プロバイオティクスの高齢者対象ヒト臨床試験資料",
       },
       {
         src: "/images/ingredients/bifido-evidence-1.webp",
@@ -246,7 +246,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originTitle: "原料",
     originItems: ["ホロパ(フェヌグリーク)種子抽出物 Trigonella foenum-graecum"],
     features: [
-      "43〜75歳の男性を対象に、12週間のヒト試験を行いました。",
+      "43〜75歳の男性を対象に、12週間のヒト臨床試験を行いました。",
       "男性ホルモンであるテストステロンの恒常性を保ち、高めます。",
       "男性更年期の症状(精神・心理の安定、身体機能の向上、性機能の向上)が大きく改善しました。",
       "韓国内の男性更年期関連素材の中で最も高いAMSデータを持ち、米国でも最も普及している男性向け原料です。",
@@ -284,7 +284,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originTitle: "原料",
     originItems: ["新芽人参抽出粉末 Panax ginseng C.A. Meyer sprout"],
     features: [
-      "55〜75歳の男女を対象に、12週間のヒト試験を行いました。",
+      "55〜75歳の男女を対象に、12週間のヒト臨床試験を行いました。",
       "記憶を保つ力を高め、神経細胞の炎症を抑えます。",
       "睡眠の質・効率が上がり、シナプス可塑性の向上によって記憶力や学習能力が高まります。",
       "即時想起力が向上し(SVLT総点でP<0.01)、記憶力低下に関わる血液指標AChEが減少しました。",
@@ -314,7 +314,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originTitle: "原料",
     originItems: ["白キクラゲ酵素分解抽出物 Tremella fuciformis Beck-extract"],
     features: [
-      "40〜65歳の男女を対象に、12週間のヒト試験を行いました。",
+      "40〜65歳の男女を対象に、12週間のヒト臨床試験を行いました。",
       "自覚される記憶力の低下が軽減しました。記憶減退の質問票(SMCQ)スコアが低下し、600mg・1,200mgともプラセボ比で有意(P=0.007/P=0.002)。",
       "短期記憶の遂行機能が改善しました(P=0.001)。",
       "計画を立てて実行する機能も改善しました(600mg P=0.08、1,200mg P=0.02)。",
@@ -342,7 +342,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originTitle: "原料",
     originItems: ["未熟リンゴ抽出物(青リンゴポリフェノール)"],
     features: [
-      "20〜55歳の男女を対象に、12週間のヒト試験を行いました。",
+      "20〜55歳の男女を対象に、12週間のヒト臨床試験を行いました。",
       "未熟リンゴ250個分を濃縮する3種の米国特許技術で、高濃度のポリフェノールを含みます。",
       "中性脂肪の抑制・排出を通じた体脂肪減少効果。摂取終了後4週間も効果が持続。",
     ],
@@ -378,7 +378,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originTitle: "原料",
     originItems: ["Long-pep collagen peptide AG", "パンガシウス(Pangasius)の魚皮由来ゼラチン加水分解物", "500Da以下の低分子コラーゲンペプチド"],
     features: [
-      "30〜65歳の女性を対象に、12週間のヒト試験を行いました。",
+      "30〜65歳の女性を対象に、12週間のヒト臨床試験を行いました。",
       "皮膚保湿指標の改善、目元の小じわ減少が確認されました(肉眼評価・指標成分の両方で確認)。",
       "肌全体の弾力(生体弾力・純粋弾力)が高まり、肌のキメも整いました。",
     ],
@@ -400,7 +400,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originTitle: "原料",
     originItems: ["マコモ抽出物 Zizania latifolia(Wild rice)"],
     features: [
-      "成人女性を対象に、12週間のヒト試験を行いました。",
+      "成人女性を対象に、12週間のヒト臨床試験を行いました。",
       "肌の水分が増え、しわが減りました(いずれもプラセボ比 P<0.05)。",
       "仕組み: コラーゲン遺伝子を活性化しMMPs遺伝子の働きを抑えることで、しわの形成を抑え、保湿力を高めます。",
     ],
@@ -428,7 +428,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originTitle: "原料",
     originItems: ["アグリモニー(仙鶴草)抽出物 Agrimonia pilosa"],
     features: [
-      "19〜70歳の男女を対象に、13週間のヒト試験を行いました。",
+      "19〜70歳の男女を対象に、13週間のヒト臨床試験を行いました。",
       "ALT値(P=0.025)・AST値(P=0.002)の改善が見られました。",
       "脂肪肝指数(HSI)も改善しました(P=0.044)。",
     ],
@@ -458,7 +458,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originTitle: "原料",
     originItems: ["キャロブ(Carob)の鞘から抽出・精製"],
     features: [
-      "脂肪肝のある成人60名を対象に、12週間のヒト試験を行いました。",
+      "脂肪肝のある成人60名を対象に、12週間のヒト臨床試験を行いました。",
       "傷んだ肝細胞の改善・増加が見られ、肝臓の中性脂肪細胞は数が減り、サイズも小さくなりました。",
       "肝臓に蓄積した脂肪が減りました。肝脂肪含量 17.9% → 15.2% (P=0.010)。",
       "肝障害の指標であるALT・AST値が低下しました。",
@@ -482,7 +482,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originTitle: "原料",
     originItems: ["大豆発酵食酢培養物(酢酸菌由来)"],
     features: [
-      "20〜40代の成人30名を対象にヒト試験を行いました。",
+      "20〜40代の成人30名を対象にヒト臨床試験を行いました。",
       "飲んだ翌朝の、すっきりとした目覚めをサポートします。",
       "アルコールを分解する酵素ADH(アルコール脱水素酵素)が増え、血中アルコール濃度が下がります。",
       "アセトアルデヒドを分解する酵素ALDH(アセトアルデヒド脱水素酵素)が増え、二日酔いをやわらげます。",
@@ -510,7 +510,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     originTitle: "原料",
     originItems: ["霊芝菌糸体抽出粉末 Ganoderma lucidum mycelium extract powder"],
     features: [
-      "18〜55歳の男女を対象に、13週間のヒト試験を行いました。",
+      "18〜55歳の男女を対象に、13週間のヒト臨床試験を行いました。",
       "特許を取得した超音波抽出技術を用いています。",
       "自然免疫(NK細胞数・活性)と獲得免疫(総リンパ球・T細胞・CD4/CD8比・血清IgA)の両方で、8種の免疫指標が有意に改善しました。",
       "β-グルカンを77%以上と高濃度で含みます。",

@@ -32,10 +32,10 @@ export type IngredientEvidenceVisual = {
 export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual> = {
   med01: {
     title: "Vaginal microbiome balance",
-    sourceLabel: "101名ヒト試験 / Nugent score",
-    summary: "膣内環境、Nugent score、有用菌・有害菌バランスをひとつの指標構造として整理します。",
+    sourceLabel: "101名ヒト臨床試験 / Nugent score",
+    summary: "腟内環境、Nugent score、有用菌・有害菌バランスをひとつの指標構造として整理します。",
     metrics: [
-      { label: "Nugent score", detail: "膣炎指標の改善方向", value: 78, direction: "down" },
+      { label: "Nugent score", detail: "腟炎指標の改善方向", value: 78, direction: "down" },
       { label: "Beneficial bacteria", detail: "有用菌増殖サポート", value: 72, direction: "up" },
       { label: "Patent strain set", detail: "5種特許乳酸菌", value: 86, displayValue: "5 strains", direction: "balanced" },
     ],
@@ -43,7 +43,7 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
   },
   med02: {
     title: "BMI reduction chart",
-    sourceLabel: "100名ヒト試験 / BMI kg/m2",
+    sourceLabel: "100名ヒト臨床試験 / BMI kg/m2",
     summary: "BMIチャートをHTMLバーで整理。MED-02群とPlacebo群の変化量を比較します。",
     metrics: [
       { label: "MED-02", detail: "BMI change", value: 70, displayValue: "-0.70 kg/m2", direction: "down" },
@@ -66,13 +66,13 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
   nvp1702: {
     title: "Liver health indicators",
     sourceLabel: "ALT / AST / gamma-GTP",
-    summary: "アルコール性・非アルコール性の肝健康文脈で、肝酵素と炎症関連指標を整理します。",
+    summary: "アルコール性・非アルコール性の肝機能文脈で、肝酵素と炎症関連指標を整理します。",
     metrics: [
       { label: "ALT / AST", detail: "肝酵素指標", value: 74, direction: "down" },
       { label: "gamma-GTP", detail: "飲酒関連指標", value: 68, direction: "down" },
       { label: "Inflammation", detail: "炎症・中性脂肪関連", value: 62, direction: "down" },
     ],
-    footnote: "資料内の肝健康評価項目を、方向性中心のHTMLチャートとして再構成しています。",
+    footnote: "資料内の肝機能評価項目を、方向性中心のHTMLチャートとして再構成しています。",
   },
   nvp1703: {
     title: "Nasal comfort response",
@@ -87,7 +87,7 @@ export const ingredientEvidenceVisuals: Record<string, IngredientEvidenceVisual>
   },
   nvp1704: {
     title: "Stress and sleep profile",
-    sourceLabel: "156名ヒト試験 / BDI, BAI, PSQI, ISI",
+    sourceLabel: "156名ヒト臨床試験 / BDI, BAI, PSQI, ISI",
     summary: "ストレス、気分バランス、睡眠の質を複数の心理・睡眠指標で整理します。",
     metrics: [
       { label: "Stress mood", detail: "BDI / BAI", value: 72, direction: "down" },

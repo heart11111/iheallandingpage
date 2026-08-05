@@ -12,7 +12,7 @@ export default function ProductsPage() {
       <main>
         <CorporateSubHero
           title="Products"
-          copy="成功的な商品開発の核となる素材と根拠情報に集中します。"
+          copy="商品開発の成功を支える素材と根拠情報に集中します。"
           koTitle="제품"
           koCopy="성공적인 상품 개발의 핵심이 되는 소재와 근거 정보입니다."
           image="/images/biolab-cosmetic-science-bg.png"
@@ -42,7 +42,7 @@ export default function ProductsPage() {
               </h2>
               <p>
                 <LocalizedText
-                  ja="BIOLAB Japanの供給製品ラインは、Functional ProbioticsとFunctional Nature‘s food ingredientsを中心に構成します。"
+                  ja="BIOLAB Japanの供給製品ラインは、Functional ProbioticsとFunctional Nature’s food ingredientsを中心に構成します。"
                   ko="BIOLAB Japan의 공급 제품 라인은 기능성 프로바이오틱스와 기능성 천연소재를 중심으로 구성합니다."
                 />
               </p>
@@ -77,7 +77,7 @@ export default function ProductsPage() {
                           index === 0 ? (
                             "Functional Probiotics"
                           ) : (
-                            "Functional Nature‘s food ingredients"
+                            "Functional Nature’s food ingredients"
                           )
                         }
                       />

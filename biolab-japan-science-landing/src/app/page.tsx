@@ -24,7 +24,7 @@ const featuredCards = [
     href: "/products/microbiome-probiotics",
   },
   {
-    eyebrow: "Functional Nature‘s food ingredients",
+    eyebrow: "Functional Nature’s food ingredients",
     title: "Nature-derived functional materials",
     subtitle: "自然由来機能性素材",
     koTitle: "기능성 천연소재",
@@ -61,7 +61,7 @@ const businessMapSides = [
       { ja: "生産", ko: "생산" },
       { ja: "ブランド管理", ko: "브랜드 관리" },
     ],
-    note: "Together with best Manufacturers!",
+    note: "Together with the best manufacturers",
   },
   {
     side: "japan",
@@ -152,7 +152,7 @@ export default function Home() {
               </h1>
               <p className="dh-hero-support">
                 {isKorean
-                  ? "한국의 가능성을 일본 시장으로 연결합니다. 기능성 식품 원료 사업, ODM/OEM & Brand Royalty, 일본 B2B 유통을 이어 일본에서 헬스케어 사업을 여는 비즈니스 다리 역할을 합니다."
+                  ? "한국의 가능성을 일본 시장으로 연결합니다. 기능성 식품 원료 사업, ODM/OEM & Brand Royalty, 일본 B2B 유통을 이어 일본에서 헬스케어 사업을 여는 비즈니스 브리지 역할을 합니다."
                   : "韓国の可能性を、日本の市場価値へ。機能性素材、製造、ブランド、流通をつなぎ、次のヘルスケア事業をひらくビジネスブリッジです。"}
               </p>
               <div className="dh-hero-actions">
@@ -224,7 +224,7 @@ export default function Home() {
                 <br />
                 we focus on the ingredients.
               </h2>
-              <p>{isKorean ? "제품을 만들기 전에 대한민국 식약처(KFDA) 인증 개별인정형 기능성 소재와 근거 정보에 집중합니다." : "成功的な商品開発の核となる素材と根拠情報に集中します。"}</p>
+              <p>{isKorean ? "제품을 만들기 전에 대한민국 식약처(KFDA) 인증 개별인정형 기능성 소재와 근거 정보에 집중합니다." : "商品開発の成功を支える素材と根拠情報に集中します。"}</p>
             </div>
             <div className="dh-product-grid">
               {featuredCards.map((card, index) => (

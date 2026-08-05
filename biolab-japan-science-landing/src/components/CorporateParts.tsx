@@ -123,7 +123,7 @@ const koreanEvidenceCaptions: Record<string, string> = {
   "/images/ingredients/nvp1704-evidence-2.webp": "수면의 질 PSQI 및 불면증 심각도 ISI 개선",
   "/images/ingredients/nvp1704-evidence-3.webp": "혈중 염증성 사이토카인 IL-6 감소, BDNF 증가 및 IL-6/BDNF 비율 감소",
   "/images/ingredients/bifido-evidence-2.webp": "12주 섭취 후 가스 배출 빈도 증가 및 복부 팽만감 개선",
-  "/images/ingredients/bifido-evidence-6.png": "BGN4·BORI 배합 프로바이오틱스의 고령자 대상 인체시험 자료",
+  "/images/ingredients/bifido-evidence-6.png": "BGN4·BORI 배합 프로바이오틱스의 고령자 대상 인체적용시험 자료",
   "/images/ingredients/bifido-evidence-1.webp": "FDA GRAS·NDI 등록 번호(BGN4, BORI, AD011)",
   "/images/ingredients/testofen-evidence-1.webp": "AMS 총점 변화(Testofen군 vs 플라세보군, 12주)",
   "/images/ingredients/testofen-evidence-2.webp": "신체 기능 점수 및 성 기능 점수 변화(12주)",
@@ -298,7 +298,7 @@ type LocalizedStudyNote = {
 
 const evidenceStudyNotes: Record<string, LocalizedStudyNote> = {
   nvp1702: {
-    titleJa: "ヒト試験の区分",
+    titleJa: "ヒト臨床試験の区分",
     titleKo: "인체적용시험 구분",
     items: [
       {
@@ -316,7 +316,7 @@ const evidenceStudyNotes: Record<string, LocalizedStudyNote> = {
       {
         labelJa: "根拠",
         labelKo: "근거",
-        valueJa: "ヒト試験2件とSCI論文をもとに整理",
+        valueJa: "ヒト臨床試験2件とSCI論文をもとに整理",
         valueKo: "인체적용시험 2건과 SCI 논문을 기준으로 정리",
       },
     ],
