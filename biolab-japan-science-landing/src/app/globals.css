@@ -7049,30 +7049,39 @@ h2 {
   font-size: 13px !important;
 }
 
-/* Location map. The iframe is ratio-boxed so it never overflows the column and
-   needs no fixed pixel height per breakpoint. */
+/* The contact details and the map share the right column, so the map absorbs
+   the space the shorter column would otherwise leave empty. */
+.dh-contact-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  min-width: 0;
+  /* Stretch to the form's height so the map fills the gap instead of
+     overshooting it. */
+  align-self: stretch;
+}
+
+/* Location map. The frame grows into whatever height the column has left, so
+   the two columns stay level without hardcoding a height per breakpoint. */
 .dh-contact-map {
-  margin-top: 56px;
-  padding-top: 40px;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding-top: 30px;
   border-top: 1px solid #dfe6ee;
 }
 
 .dh-contact-map h2 {
-  margin: 0 0 10px;
+  margin: 0 0 14px;
   color: #111827;
-  font-size: 24px;
+  font-size: 17px;
   font-weight: 900;
-}
-
-.dh-contact-map > p {
-  margin: 0 0 20px;
-  color: #4b5563;
-  font-size: 15px;
 }
 
 .dh-contact-map-frame {
   position: relative;
-  aspect-ratio: 16 / 9;
+  flex: 1 1 auto;
+  min-height: 210px;
   border: 1px solid #dfe6ee;
   background: #f6f8fb;
   overflow: hidden;
@@ -7106,9 +7115,12 @@ h2 {
   gap: 10px;
 }
 
-@media (max-width: 720px) {
+/* Single-column below this width, so there is no sibling to match — give the
+   map its own ratio instead of stretching. */
+@media (max-width: 980px) {
   .dh-contact-map-frame {
     aspect-ratio: 4 / 3;
+    min-height: 0;
   }
 }
 
