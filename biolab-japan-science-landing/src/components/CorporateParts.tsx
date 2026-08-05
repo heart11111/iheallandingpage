@@ -6,7 +6,7 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { IngredientCategoryBadge } from "@/components/IngredientCategoryBadge";
-import { companyContact } from "@/lib/corporate";
+import { companyContact, siteMapGroups } from "@/lib/corporate";
 import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
 import { getIngredientCardImage, getIngredientDisplayImage } from "@/lib/ingredientImages";
 import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
@@ -430,6 +430,13 @@ export function CorporateSubHero({
   );
 }
 
+// The footer used to be logo + address only; a B2B visitor's last scroll stop
+// now doubles as a sitemap so no page is more than one click away.
+const footerExternalLinks = [
+  { label: "BIOLAB Korea", href: "https://biolabkr.com/" },
+  { label: "iHEAL Mall", href: "https://iheal.co.kr/main/index.php" },
+];
+
 export function CorporateFooter() {
   const { language } = useDevLanguage();
   const isKorean = language === "ko";
@@ -437,19 +444,66 @@ export function CorporateFooter() {
   return (
     <footer className="dh-footer">
       <div className="dh-container">
-        <strong className="dh-footer-logo">
-          <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={508} height={96} loading="eager" />
-        </strong>
-        <address className="dh-footer-contact">
-          <span className="dh-footer-company">{companyContact.legalName}</span>
-          <span>{isKorean ? companyContact.address.ko : companyContact.address.ja}</span>
-          <span>
-            <a href={companyContact.phoneHref}>{companyContact.phone}</a>
-            <i aria-hidden="true">|</i>
-            {/* Inquiries are funnelled through the form rather than a mail client. */}
-            <Link href="/contact">{isKorean ? "문의하기" : "お問い合わせ"}</Link>
-          </span>
-        </address>
+        <div className="dh-footer-top">
+          <div className="dh-footer-brand">
+            <strong className="dh-footer-logo">
+              <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={508} height={96} loading="eager" />
+            </strong>
+            <p className="dh-footer-tagline">
+              {isKorean
+                ? "한국의 기능성 소재를 일본 시장으로 잇는 비즈니스 브리지"
+                : "韓国の機能性素材を日本市場へつなぐビジネスブリッジ"}
+            </p>
+            <address className="dh-footer-contact">
+              <span className="dh-footer-company">{companyContact.legalName}</span>
+              <span>{isKorean ? companyContact.address.ko : companyContact.address.ja}</span>
+              <span>
+                <a href={companyContact.phoneHref}>{companyContact.phone}</a>
+                <i aria-hidden="true">|</i>
+                {/* Inquiries are funnelled through the form rather than a mail client. */}
+                <Link href="/contact">{isKorean ? "문의하기" : "お問い合わせ"}</Link>
+              </span>
+            </address>
+          </div>
+          <nav className="dh-footer-nav" aria-label={isKorean ? "푸터 메뉴" : "フッターメニュー"}>
+            {siteMapGroups
+              .filter((group) => group.children.length > 0)
+              .map((group) => (
+                <div className="dh-footer-col" key={group.href}>
+                  <p>
+                    <Link href={group.href}>{group.menuLabel}</Link>
+                  </p>
+                  <ul>
+                    {group.children.map((child) => (
+                      <li key={child.href}>
+                        <Link href={child.href}>{isKorean ? child.koLabel : child.label}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            <div className="dh-footer-col">
+              <p>
+                <Link href="/contact">CONTACT</Link>
+              </p>
+              <ul>
+                <li>
+                  <Link href="/contact">{isKorean ? "문의하기" : "お問い合わせ"}</Link>
+                </li>
+                {footerExternalLinks.map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href} target="_blank" rel="noreferrer">
+                      {link.label} ↗
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div className="dh-footer-bottom">
+          <span>© 2026 {companyContact.legalName}. All rights reserved.</span>
+        </div>
       </div>
     </footer>
   );
