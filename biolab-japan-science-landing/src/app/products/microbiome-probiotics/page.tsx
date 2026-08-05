@@ -27,7 +27,7 @@ export default function MicrobiomeProbioticsPage() {
             </h1>
             <p>
               <LocalizedText
-                ja="女性、体脂肪、認知、肝臓、鼻、ストレス、腸の7カテゴリを素材別に確認できます。"
+                ja="ヒト臨床試験を終えた個別認定型プロバイオティクス7種です。女性・体脂肪・認知・肝臓・鼻・ストレス・腸の用途別に、菌株と根拠資料（ヒト臨床試験・SCI論文・特許）を整理しています。"
                 ko={devKoreanPageCopy.microbiome.lead}
               />
             </p>

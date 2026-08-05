@@ -10,21 +10,30 @@ import { corporateNews } from "@/lib/corporate";
 import { useLenis } from "@/lib/useLenis";
 import { useReveal } from "@/lib/useReveal";
 
+// Two evidence-backed ingredient lines lead; ODM/OEM is a service, so it is
+// tagged and linked to the real service page rather than the empty
+// /products/odm-oem ingredient list.
 const featuredCards = [
   {
+    kind: "material" as const,
     eyebrow: "Functional Probiotics",
+    tag: "ヒト臨床試験完了・7種",
+    koTag: "인체적용시험 완료 · 7종",
     title: "Application-specific strain portfolio",
     subtitle: "用途別プロバイオティクス",
     koTitle: "프로바이오틱스 소재",
     koSubtitle: "용도별 7개 영역",
     koDescription: "여성·체지방·인지 등 제품 목적에 맞춰 균주를 검토합니다.",
     // v2 has a "Microbiome Probiotics" wordmark burnt into the photograph, which
-    // collided with the card's own eyebrow and cannot be translated.
+    // collided with the card’s own eyebrow and cannot be translated.
     image: "images/products-microbiome-probiotics-card-v3.webp",
     href: "/products/microbiome-probiotics",
   },
   {
+    kind: "material" as const,
     eyebrow: "Functional Nature’s food ingredients",
+    tag: "ヒト臨床試験完了・10種",
+    koTag: "인체적용시험 완료 · 10종",
     title: "Nature-derived functional materials",
     subtitle: "自然由来機能性素材",
     koTitle: "기능성 천연소재",
@@ -34,14 +43,17 @@ const featuredCards = [
     href: "/products/nature-ingredients",
   },
   {
+    kind: "service" as const,
     eyebrow: "ODM / OEM",
+    tag: "SERVICE",
+    koTag: "서비스",
     title: "Market-ready product planning",
     subtitle: "商品化・供給設計",
     koTitle: "ODM/OEM",
     koSubtitle: "상품 개발 및 ODM / OEM 생산",
     koDescription: "한국 제조 네트워크를 바탕으로 제품 기획과 생산을 연결합니다.",
     image: "images/biolab-global-factory-bg.png",
-    href: "/products/odm-oem",
+    href: "/business/odm-oem",
   },
 ];
 
@@ -234,18 +246,21 @@ export default function Home() {
             </div>
             <div className="dh-product-grid">
               {featuredCards.map((card, index) => (
-                <article className="dh-product-card" data-reveal={String(index)} key={card.title}>
+                <article className="dh-product-card" data-kind={card.kind} data-reveal={String(index)} key={card.title}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={card.image} alt="" aria-hidden="true" />
                   <div className="dh-product-shade" aria-hidden="true" />
                   <div className="dh-product-text">
+                    <span className="dh-product-tag" data-kind={card.kind}>
+                      {isKorean ? card.koTag : card.tag}
+                    </span>
                     <p className="dh-product-eyebrow">{card.eyebrow}</p>
                     <h3>{isKorean ? card.koTitle : card.title}</h3>
                     <strong>{isKorean ? card.koSubtitle : card.subtitle}</strong>
                     {isKorean && <p>{card.koDescription}</p>}
                   </div>
                   <a href={card.href} aria-label={`${card.title} 詳細`}>
-                    LEARN MORE
+                    {card.kind === "service" ? (isKorean ? "서비스 보기" : "サービスを見る") : "LEARN MORE"}
                   </a>
                 </article>
               ))}

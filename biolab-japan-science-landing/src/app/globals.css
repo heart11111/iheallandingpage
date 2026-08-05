@@ -9136,3 +9136,49 @@ h2 {
   font-weight: 600;
   font-style: normal;
 }
+
+/* ============================================================================
+   2026-08 refresh, pass 3: PRODUCTS arrangement. A small tag chip separates the
+   two evidence-backed ingredient lines from the ODM/OEM service card, and the
+   service card is toned down so the materials lead.
+   ========================================================================== */
+
+.dh-product-tag {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin: 0 0 12px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: rgba(103, 232, 249, 0.16);
+  color: #bff0fb;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.dh-product-tag[data-kind="service"] {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  letter-spacing: 0.18em;
+}
+
+/* The service card is a supporting option, not a third ingredient line — a
+   quieter scrim and a desaturated image let the two material cards lead. */
+.dh-product-card[data-kind="service"] img {
+  filter: saturate(0.82) brightness(0.92);
+}
+
+.dh-product-card[data-kind="service"] .dh-product-shade {
+  background:
+    linear-gradient(180deg, rgba(9, 15, 24, 0.24) 0%, rgba(9, 15, 24, 0.52) 40%, rgba(9, 15, 24, 0.86) 100%),
+    linear-gradient(90deg, rgba(9, 15, 24, 0.4), rgba(9, 15, 24, 0.1) 70%);
+}
+
+/* The /products line cards carry the evidence line in <strong>; give it room. */
+.dh-product-grid-two .dh-product-text strong {
+  font-size: 13.5px;
+  letter-spacing: 0.01em;
+}

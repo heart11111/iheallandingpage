@@ -46,13 +46,13 @@ export const devKoreanPageCopy = {
   microbiome: {
     title: "Functional Probiotics",
     copy: "Probiotics Strain by Application 인체적용시험 완료 소재 7종입니다.",
-    lead: "질내 마이크로바이옴, 체지방·항비만, 인지·기억, 간건강, 면역 과민반응에 따른 코 상태, 스트레스·수면·릴랙스, 장건강·배변활동 영역의 프로바이오틱스 소재입니다.",
+    lead: "인체적용시험을 마친 개별인정형 프로바이오틱스 7종입니다. 질 건강·체지방·인지·간·코·스트레스·장 용도별로 균주와 근거 자료(인체적용시험·SCI 논문·특허)를 정리했습니다.",
     primary: "기능성 식품 원료 사업",
   },
   nature: {
     title: "Functional Nature’s food ingredients",
     copy: "Nature’s food ingredients by Application 인체적용시험 완료 소재 10종입니다.",
-    lead: "남성 갱년기·남성 건강, 기억·인지 기능, 노화 관련 인지기능, 다이어트·체지방, 피부 수분·탄력, 주름·보습, 비알코올성 지방간 건강, 간·혈당 건강, 알코올 대사 지원, 면역기능 영역의 자연 유래 기능성 소재입니다.",
+    lead: "인체적용시험을 마친 자연 유래 기능성 소재 10종입니다. 남성 건강·기억·인지·체지방·피부·간·혈당·숙취·면역 용도별로 원료와 근거 자료를 정리했습니다.",
     primary: "기능성 식품 원료 사업",
   },
   detailPrimary: {

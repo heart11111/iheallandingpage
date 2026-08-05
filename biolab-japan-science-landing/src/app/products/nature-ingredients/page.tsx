@@ -27,7 +27,7 @@ export default function NatureIngredientsPage() {
             </h1>
             <p>
               <LocalizedText
-                ja="男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫の7カテゴリを素材別に確認できます。"
+                ja="ヒト臨床試験を終えた自然由来の機能性素材10種です。男性の健康・記憶・認知・体脂肪・肌・肝臓・血糖・二日酔い・免疫の用途別に、原料と根拠資料を整理しています。"
                 ko={devKoreanPageCopy.nature.lead}
               />
             </p>
