@@ -1,5 +1,5 @@
 :HL["/_next/static/chunks/0sdh14gucfh1n.css","style"]
-:HL["/_next/static/chunks/0j-n5aow4h06h.css","style"]
+:HL["/_next/static/chunks/0hvt0e.gixocm.css","style"]
 :HL["/_next/static/media/PretendardJPVariable-s.p.0_rm~pon-puwg.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/images/brand-royalty-support.webp","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"business","param":null,"prefetchHints":0,"slots":{"children":{"name":"brand-management","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"0Zn_5UwZe_xygDS3Zvx1e"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"business","param":null,"prefetchHints":0,"slots":{"children":{"name":"brand-management","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"_k652x9YiIDdAx8r9Olet"}
