@@ -28,6 +28,7 @@
   .side .h{font-size:11px;font-weight:700;letter-spacing:.4px;color:#6b7280;text-transform:uppercase;margin-bottom:6px;display:flex;gap:8px;align-items:center}
   .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;color:#fff}
   .b-chart{background:#12857e}.b-done{background:#1f9d55}.b-image{background:#556}
+  .st-ok{background:#1f9d55}.st-approve{background:#2b6cb0}.st-wait{background:#8a94a6}.st-demo{background:#7c3aed}
   .side img{width:100%;display:block;border:1px solid #eee;border-radius:6px;background:#fafafa}
   .fname{font-size:10px;color:#9aa3af;margin-top:4px;font-family:monospace}
   .after-box{border:1px dashed #cfd6dd;border-radius:8px;padding:10px;height:100%;display:flex;flex-direction:column;justify-content:center}
@@ -63,6 +64,26 @@ let LANG="ko"; const L=o=>typeof o==="string"?o:(o&&(o[LANG]||o.ko));
 const T={headnote:{ko:"왼쪽=라이브 원본, 오른쪽=HTML/SVG 재현. 원본 양식(제목·축·막대·라인·에러바·점 수치·유의표시)과 값을 맞췄습니다. 정확 수치가 없는 그래프는 <b>근사값</b>(캡션 표기). 사진·도식은 이미지 유지. <b>승인 전까지 깃 반영 안 함.</b> 원본이 안 보이면 브라우저에서 여세요.",ja:"左=原本、右=HTML再現。<b>承認まで反映しません。</b>",en:"Left=original, right=HTML recreation. <b>Not committed.</b>"},
  MED:{ko:"MED-02",ja:"MED-02",en:"MED-02"},MED01:{ko:"MED-01",ja:"MED-01",en:"MED-01"},NVP:{ko:"NVP-2106",ja:"NVP-2106",en:"NVP-2106"},placebo:{ko:"위약",ja:"プラセボ",en:"Placebo"},weeks:{ko:"주",ja:"週",en:"Weeks"},before:{ko:"섭취 전",ja:"摂取前",en:"Before"},after:{ko:"섭취 후",ja:"摂取後",en:"After"},test:{ko:"시험군",ja:"試験群",en:"Test"},ctrl:{ko:"대조군",ja:"対照群",en:"Control"},base:{ko:"Baseline",ja:"Baseline",en:"Baseline"},wk8:{ko:"8주",ja:"8週",en:"8 Weeks"}};
 const PL={ko:"위약",ja:"プラセボ",en:"Placebo"};
+/* 작업 상태 배지: ok=반영완료, approve=수정·승인대기, wait=작업대기, demo=오버레이 데모 */
+const STAT={
+ "med01-evidence-1.webp":"ok","med01-evidence-2.png":"ok",
+ "med02-evidence-1.webp":"ok","med02-evidence-2.png":"ok",
+ "nvp2106-evidence-1.webp":"ok","nvp2106-evidence-2.webp":"wait","nvp2106-evidence-3.webp":"ok",
+ "nvp1702-evidence-1.webp":"approve","nvp1702-evidence-2.webp":"ok",
+ "nvp1703-evidence-1.webp":"demo","nvp1703-evidence-2.webp":"wait",
+ "nvp1704-evidence-1.webp":"approve","nvp1704-evidence-2.webp":"approve","nvp1704-evidence-3.webp":"wait",
+ "testofen-evidence-1.webp":"ok","testofen-evidence-2.webp":"ok","testofen-evidence-3.webp":"ok",
+ "thinkgin-evidence-1.webp":"ok","thinkgin-evidence-2.webp":"ok","thinkgin-evidence-3.webp":"ok",
+ "neulearn-evidence-2-clean.png":"ok","neulearn-evidence-3-clean.png":"ok",
+ "applephenon-evidence-1.webp":"ok","applephenon-evidence-3.webp":"ok",
+ "collagen-evidence-1-clean.png":"wait","collagen-evidence-2-clean.png":"wait",
+ "dermania-evidence-1.webp":"wait","dermania-evidence-2.webp":"ok",
+ "agrimony-alt-evidence.png":"ok","agrimony-ast-evidence.png":"ok","agrimony-hsi-evidence.png":"ok",
+ "pinitol-evidence-1.webp":"ok","pinitol-evidence-2.webp":"ok",
+ "acetobeta-evidence-2.webp":"ok","acetobeta-evidence-3.webp":"ok",
+ "bifido-evidence-2.webp":"wait","immulink-evidence-1.webp":"wait"
+};
+const STLABEL={ok:"✅ 반영완료",approve:"🟦 수정·승인대기",wait:"⬜ 작업대기",demo:"🟡 오버레이 데모"};
 const NS="http://www.w3.org/2000/svg";
 const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in(a||{}))e.setAttribute(k,a[k]);return e;};
 const txt=(x,y,s,a)=>{const e=el("text",Object.assign({x,y},a||{}));e.textContent=s;return e;};
@@ -255,7 +276,7 @@ function render(){
       im.src=SRC;bf.appendChild(im);bf.appendChild(fn);
       const af=document.createElement("div");af.className="side";
       if(buildKey&&BUILD[buildKey]){const b=BUILD[buildKey],capText=L(b.cap)||"",needsCheck=/근사값|approx|近似/i.test(capText);
-        af.innerHTML='<div class="h">AFTER · HTML <span class="badge '+(needsCheck?'b-image':'b-done')+'">'+(needsCheck?'수치확인':'완성')+'</span></div>';
+        af.innerHTML='<div class="h">AFTER · HTML <span class="badge '+(needsCheck?'b-image':'b-done')+'">'+(needsCheck?'수치확인':'완성')+'</span>'+(STAT[buildKey]?' <span class="badge st-'+STAT[buildKey]+'">'+STLABEL[STAT[buildKey]]+'</span>':'')+'</div>';
         const box=document.createElement("div");box.className="after-box";
         const pill=document.createElement("div");pill.className="pillt";pill.textContent=L(b.pill);box.appendChild(pill);
         box.appendChild(b.legendItems?legendCustom(b.legendItems):b.legend==="med"?legendMED():b.legend==="med01"?legendMED01():legendNVP());
