@@ -26,9 +26,9 @@ export default function ProductsPage() {
                 <LocalizedText
                   ja={
                     <>
-                      Before you create the product,
+                      It all starts
                       <br />
-                      we focus on the ingredients.
+                      with the ingredients.
                     </>
                   }
                   ko={

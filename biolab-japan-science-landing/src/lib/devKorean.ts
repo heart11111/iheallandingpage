@@ -125,7 +125,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
   nvp1702: {
     name: "NVP-1702",
     category: "간",
-    area: "간건강 개선",
+    area: "알코올성·비알코올성 간기능 개선",
     intake: "100억 CFU/day (1×10¹⁰ CFU/day)",
     summary: "듀오바이옴 기술로 만든 간 기능 개선용 2종 특허 프로바이오틱스 복합물입니다.",
     healthClaims: [

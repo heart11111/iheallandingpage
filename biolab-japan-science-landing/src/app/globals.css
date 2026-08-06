@@ -9182,3 +9182,25 @@ h2 {
   font-size: 13.5px;
   letter-spacing: 0.01em;
 }
+
+/* The stubby 22×4 white dash under the count reads as an orphaned line on the
+   wide two-up cards; a thin full-width hairline separates count from summary
+   more cleanly. */
+.dh-product-grid-two .dh-product-text strong::after {
+  width: 100%;
+  max-width: 240px;
+  height: 1px;
+  margin: 13px 0 0;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* Hero stats strip removed; the KOREA→JAPAN route recedes to a faint
+   background element rather than a foreground stat row. */
+.dh-hero-route {
+  opacity: 0.38;
+  filter: blur(0.5px);
+}
+
+.dh-hero-route .dh-route-core {
+  box-shadow: none;
+}

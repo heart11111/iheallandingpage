@@ -5,7 +5,6 @@ import Link from "next/link";
 import { CorporateFooter } from "@/components/CorporateParts";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { NavBar } from "@/components/NavBar";
-import { CountUp } from "@/components/CountUp";
 import { corporateNews } from "@/lib/corporate";
 import { useLenis } from "@/lib/useLenis";
 import { useReveal } from "@/lib/useReveal";
@@ -90,14 +89,6 @@ const businessMapSides = [
   },
 ];
 
-// Portfolio counts, derived from the ingredient data: 7 probiotics + 10
-// nature-derived materials. Keep in sync with lib/ingredients.ts.
-const heroStats = [
-  { value: 17, ja: "機能性素材", ko: "기능성 소재", unitJa: "種", unitKo: "종" },
-  { value: 7, ja: "用途別プロバイオティクス", ko: "용도별 프로바이오틱스", unitJa: "種", unitKo: "종" },
-  { value: 10, ja: "自然由来機能性素材", ko: "자연 유래 기능성 소재", unitJa: "種", unitKo: "종" },
-];
-
 const techValues = [
   {
     title: "研究開発",
@@ -171,17 +162,6 @@ export default function Home() {
                 <Link href="/products">{isKorean ? "소재 보기" : "素材を見る"}</Link>
                 <Link href="/contact">{isKorean ? "제휴 상담" : "提携相談"}</Link>
               </div>
-              <dl className="dh-hero-stats">
-                {heroStats.map((stat) => (
-                  <div key={stat.ja}>
-                    <dt>{isKorean ? stat.ko : stat.ja}</dt>
-                    <dd>
-                      <CountUp value={stat.value} />
-                      <span>{isKorean ? stat.unitKo : stat.unitJa}</span>
-                    </dd>
-                  </div>
-                ))}
-              </dl>
             </div>
           </div>
         </section>
@@ -236,11 +216,9 @@ export default function Home() {
           <div className="dh-container">
             <div className="dh-section-title" data-reveal="">
               <h2>
-                Before you create
+                It all starts
                 <br />
-                the product,
-                <br />
-                we focus on the ingredients.
+                with the ingredients.
               </h2>
               <p>{isKorean ? "제품을 만들기 전에 대한민국 식약처(KFDA) 인증 개별인정형 기능성 소재와 근거 정보에 집중합니다." : "商品開発の成功を支える素材と根拠情報に集中します。"}</p>
             </div>
