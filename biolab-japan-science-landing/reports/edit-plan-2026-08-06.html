@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BIOLAB Japan — 수정 요청 반영 계획 (2026-08-06)</title>
+<style>
+  :root{--bg:#f4f6f9;--card:#fff;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--brand:#0f2233;--accent:#12857e;--soft:#f0f4f8;
+    --ready:#1f9d55;--readybg:#e6f6ec;--confirm:#b45309;--confirmbg:#fdf3e5;--hold:#8a94a6;--holdbg:#eef0f3;--asset:#2b6cb0;--assetbg:#e7f0fb;}
+  @media(prefers-color-scheme:dark){:root{--bg:#0e1420;--card:#161d2b;--ink:#e6eaf0;--muted:#9aa6b6;--line:#28303f;--brand:#0b1220;--accent:#2fb3aa;--soft:#1b2432;
+    --readybg:#13301f;--confirmbg:#33260f;--holdbg:#222a37;--assetbg:#152a44;}}
+  :root[data-theme="dark"]{--bg:#0e1420;--card:#161d2b;--ink:#e6eaf0;--muted:#9aa6b6;--line:#28303f;--brand:#0b1220;--accent:#2fb3aa;--soft:#1b2432;
+    --readybg:#13301f;--confirmbg:#33260f;--holdbg:#222a37;--assetbg:#152a44;}
+  :root[data-theme="light"]{--bg:#f4f6f9;--card:#fff;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--brand:#0f2233;--accent:#12857e;--soft:#f0f4f8;
+    --readybg:#e6f6ec;--confirmbg:#fdf3e5;--holdbg:#eef0f3;--assetbg:#e7f0fb;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Noto Sans JP",Arial,sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:30px 20px 70px}
+  header.top{background:var(--brand);color:#fff;border-radius:16px;padding:24px 28px;margin-bottom:22px}
+  header.top h1{margin:0 0 6px;font-size:21px}
+  header.top p{margin:0;color:#b8c6d6;font-size:13px}
+  h2{font-size:17px;margin:30px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line);display:flex;gap:9px;align-items:center}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:var(--accent);color:#fff;border-radius:7px;font-size:13px;font-weight:800}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 14px;font-size:12px}
+  .badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap}
+  .b-ready{background:var(--readybg);color:var(--ready)}.b-confirm{background:var(--confirmbg);color:var(--confirm)}
+  .b-hold{background:var(--holdbg);color:var(--hold)}.b-asset{background:var(--assetbg);color:var(--asset)}
+  .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:8px 0}
+  table{border-collapse:collapse;width:100%;min-width:720px;font-size:13px;background:var(--card)}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--soft);font-size:11.5px;color:var(--muted);font-weight:700}
+  tr:last-child td{border-bottom:none}
+  td.no{font-weight:800;color:var(--accent);white-space:nowrap}
+  code{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;background:var(--soft);padding:1px 5px;border-radius:5px}
+  .loc{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0}
+  .card h3{margin:0 0 8px;font-size:14px}
+  .ja{background:var(--soft);border-left:3px solid var(--accent);border-radius:8px;padding:8px 12px;margin:6px 0;font-size:13.5px}
+  .ja b{color:var(--accent)}
+  .q{background:var(--confirmbg);border:1px solid var(--confirm);border-radius:10px;padding:6px 12px;margin:8px 0;font-size:13px}
+  .del{text-decoration:line-through;color:var(--muted)}
+  footer{margin-top:36px;font-size:12px;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>수정 요청 반영 계획</h1>
+    <p>BIOLAB Japan 홈페이지 · 15개 요청 항목 위치·변경안 정리 · <b>계획만(코드 미변경)</b> · 2026-08-06</p>
+  </header>
+
+  <div class="legend">
+    <span class="badge b-ready">✅ 준비완료(바로 반영 가능)</span>
+    <span class="badge b-confirm">⚠️ 확인필요(의도·문구 확정 후)</span>
+    <span class="badge b-asset">🖼️ 에셋 필요(새 이미지)</span>
+    <span class="badge b-hold">⏸️ 보류(요청대로 나중에)</span>
+  </div>
+
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th>#</th><th>요청</th><th>위치</th><th>변경안</th><th>상태</th></tr></thead>
+    <tbody>
+      <tr><td class="no">1</td>
+        <td>풋사과 이미지를 새싹 인삼 이미지로</td>
+        <td class="loc">page.tsx:45<br>corporate.ts:160<br>products/page.tsx:58</td>
+        <td>PRODUCTS 자연소재 카드 이미지(<code>products-functional-nature-card-v2/v3.webp</code>)를 새싹삼 이미지로 교체</td>
+        <td><span class="badge b-asset">🖼️ 에셋 필요</span></td></tr>
+
+      <tr><td class="no">2</td>
+        <td>토탈 헬스케어를 3줄로</td>
+        <td class="loc">page.tsx:155–158<br>(히어로 h1)</td>
+        <td>히어로 헤드라인 줄바꿈을 3줄로. 현재 3줄(One-stop Solution / for Total Healthcare / in JAPAN)이라 <b>원하는 3줄 분할</b> 확인 필요</td>
+        <td><span class="badge b-confirm">⚠️ 확인필요</span></td></tr>
+
+      <tr><td class="no">3</td>
+        <td>"BIOLAB Japan's Vision &amp; Mission." 일본어로</td>
+        <td class="loc">page.tsx:178</td>
+        <td>하드코딩 영문 제목을 JA 전환 렌더로. JA: <b>「BIOLAB Japanのビジョン・ミッション」</b> (KO는 유지 또는 "비전과 미션")</td>
+        <td><span class="badge b-ready">✅ 준비완료</span></td></tr>
+
+      <tr><td class="no">4·5</td>
+        <td>"It all starts / with the ingredients." + "BIOLAB Japan Functional ingredients" / "Our Pipe-line(…)"</td>
+        <td class="loc">page.tsx:222–226<br>(#products)</td>
+        <td>PRODUCTS 섹션에 eyebrow <code>Our Pipeline — BIOLAB Japan Functional Ingredients</code> 추가(오타 funtuinal→functional). 헤드라인 유지 여부 확인</td>
+        <td><span class="badge b-confirm">⚠️ 확인필요</span></td></tr>
+
+      <tr><td class="no">6</td>
+        <td>"Korea to Japan, one continuous supply line." 제거</td>
+        <td class="loc">page.tsx:257–261<br>(#business-map)</td>
+        <td>해당 <code>&lt;h2&gt;</code> 제거. 섹션(비즈니스 맵 흐름)은 유지, 리드 문단만 남길지 확인</td>
+        <td><span class="badge b-ready">✅ 준비완료</span></td></tr>
+
+      <tr><td class="no">7</td>
+        <td>"Empowering healthcare brands to build evidence-led growth is what matters to us."</td>
+        <td class="loc">page.tsx:318–322<br>(#technology)</td>
+        <td>동일 문구가 <b>이미 존재</b>. 유지로 간주 — 혹시 6번 위치로 <b>이동</b>을 원하시는지 확인</td>
+        <td><span class="badge b-confirm">⚠️ 확인필요</span></td></tr>
+
+      <tr><td class="no">8</td>
+        <td>"비오랩 재팬이 공급하는 모든 소재는 … 안전성 입증" → 일본어 문구로</td>
+        <td class="loc">page.tsx:226<br>(#products 리드문단, 추정)</td>
+        <td>JA: <b>「BIOLAB Japanが供給するすべての素材は、確かなヒト臨床試験とSCI論文に基づき、安全性が実証されています。」</b> — 넣을 섹션 확인</td>
+        <td><span class="badge b-confirm">⚠️ 확인필요</span></td></tr>
+
+      <tr><td class="no">9·11</td>
+        <td>アクセス / BIOLAB JAPAN LTD → "영업사무소"로 별도 표기 (주소 유지)</td>
+        <td class="loc">CorporateParts.tsx:1220<br>corporate.ts:53</td>
+        <td>アクセス 블록에서 회사명에 <b>営業事務所 / 영업사무소</b> 라벨 병기. 주소(横浜市南区別所2丁目29番2-1号) 그대로</td>
+        <td><span class="badge b-ready">✅ 준비완료</span></td></tr>
+
+      <tr><td class="no">10</td>
+        <td>지도가 안좋음 → 약도로 수정</td>
+        <td class="loc">CorporateParts.tsx (dh-contact-map)</td>
+        <td>지도를 약도(도식) 이미지로 교체 — <b>요청대로 나중에</b></td>
+        <td><span class="badge b-hold">⏸️ 보류</span></td></tr>
+
+      <tr><td class="no">12</td>
+        <td>NVP-1703 균주 이미지 공란으로 비우기</td>
+        <td class="loc">CorporateParts.tsx:927<br>(profile visual)</td>
+        <td>NVP-1703 상세의 대표/균주 이미지(<code>nvp1703.webp</code>)를 빈 플레이스홀더로. <b>정확히 어느 이미지</b>인지 확인(대표 이미지 vs 별도 균주 컷)</td>
+        <td><span class="badge b-confirm">⚠️ 확인필요</span></td></tr>
+
+      <tr><td class="no">13</td>
+        <td>브랜드 Asset → 브랜드 Management</td>
+        <td class="loc">business/brand-management/page.tsx:9</td>
+        <td>ruby <code class="del">Brand Asset</code> → <code>Brand Management</code> (라벨 「ブランド資産整理」도 함께 조정할지 확인)</td>
+        <td><span class="badge b-ready">✅ 준비완료</span></td></tr>
+
+      <tr><td class="no">14</td>
+        <td>planning → planning &amp; development</td>
+        <td class="loc">page.tsx:53</td>
+        <td>ODM/OEM 카드 타이틀 "Market-ready product planning" → <b>"…planning &amp; development"</b></td>
+        <td><span class="badge b-ready">✅ 준비완료</span></td></tr>
+
+      <tr><td class="no">15</td>
+        <td>ODM OEM 생산 → 서비스로</td>
+        <td class="loc">page.tsx:56</td>
+        <td>KO 서브타이틀 "상품 개발 및 ODM / OEM <span class="del">생산</span>" → "…ODM / OEM <b>서비스</b>" (JA 「商品化・供給設計」 유지/조정 확인)</td>
+        <td><span class="badge b-ready">✅ 준비완료</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2><span class="n">A</span>일본어 문구 초안</h2>
+  <div class="card">
+    <div class="ja"><b>#3 Vision &amp; Mission 제목</b><br>BIOLAB Japanのビジョン・ミッション</div>
+    <div class="ja"><b>#8 소재 안전성 문구</b><br>BIOLAB Japanが供給するすべての素材は、確かなヒト臨床試験とSCI論文に基づき、安全性が実証されています。</div>
+    <div class="ja"><b>#9 영업사무소 라벨</b><br>営業事務所 (KO: 영업사무소)</div>
+  </div>
+
+  <h2><span class="n">B</span>먼저 확정이 필요한 항목</h2>
+  <div class="card">
+    <div class="q"><b>#2</b> 히어로 "Total Healthcare"를 어떻게 3줄로? (현재도 3줄) — 예: ① One-stop Solution / ② for Total Healthcare / ③ in JAPAN 유지인지, 다른 분할인지.</div>
+    <div class="q"><b>#4·5</b> PRODUCTS 섹션에 <code>Our Pipeline — BIOLAB Japan Functional Ingredients</code>를 <u>eyebrow로 추가</u>하는 방향이 맞는지, 기존 "It all starts with the ingredients." 헤드라인은 유지인지.</div>
+    <div class="q"><b>#7</b> "Empowering…" 문구는 그대로 두면 되는지(이미 존재), 아니면 6번(Korea to Japan) 자리로 옮기는지.</div>
+    <div class="q"><b>#8</b> 소재 안전성 JA 문구를 어느 섹션에 넣을지 (PRODUCTS 리드문단 교체 제안).</div>
+    <div class="q"><b>#12</b> NVP-1703에서 비울 "균주 이미지"가 상세 대표 이미지(nvp1703.webp)인지, 별도 균주 컷인지.</div>
+  </div>
+
+  <h2><span class="n">C</span>에셋 의존</h2>
+  <div class="card">
+    <p style="margin:0"><b>#1 새싹삼 이미지</b> — 자연소재 카드용 이미지가 필요합니다. ① 직접 제공해 주시거나 ② 제가 이미지 생성 툴로 만들어 드릴 수 있습니다(카드 비율 4:5 세로, 어두운 배경 오버레이 대응). 어느 쪽으로 할지 알려주세요.</p>
+  </div>
+
+  <footer>수정계획(코드 미변경) · 약도(#10)는 요청대로 보류 · BIOLAB Japan · 2026-08-06</footer>
+</div>
+<script>(function(){var r=document.documentElement;try{var t=localStorage.getItem('theme');if(t)r.setAttribute('data-theme',t);}catch(e){}})();</script>
+</body>
+</html>
