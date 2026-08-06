@@ -157,7 +157,7 @@ const koreanEvidenceCaptions: Record<string, string> = {
 
 const wideEvidenceImages = new Set([
   "/images/ingredients/agrimony-evidence-2.jpeg",
-  "/images/ingredients/agrimony-evidence-2-ja.webp",
+  "/images/ingredients/agrimony-evidence-2-photos.webp",
   "/images/ingredients/bifido-evidence-6.png",
   "/images/ingredients/collagen-evidence-1-clean.png",
   "/images/ingredients/collagen-evidence-2-clean.png",
@@ -181,11 +181,27 @@ const wideEvidenceImages = new Set([
   "/images/ingredients/pinitol-evidence-2.webp",
 ]);
 
-const japaneseEvidenceImages: Record<string, string> = {
-  "/images/ingredients/agrimony-evidence-2.jpeg": "/images/ingredients/agrimony-evidence-2-ja.webp",
+const japaneseEvidenceImages: Record<string, string> = {};
+
+// Images whose baked-in captions are cropped away; the neutral photo is served to
+// every language and the labels are rendered as bilingual HTML text below it.
+const neutralEvidenceImages: Record<string, string> = {
+  "/images/ingredients/agrimony-evidence-2.jpeg": "/images/ingredients/agrimony-evidence-2-photos.webp",
+};
+
+type HistologyLabels = { arrow?: { ja: string; ko: string }; panels: { ja: string; ko: string }[] };
+const histologyPanelCaptions: Record<string, HistologyLabels> = {
+  "/images/ingredients/agrimony-evidence-2.jpeg": {
+    arrow: { ko: "지방세포", ja: "脂肪細胞" },
+    panels: [
+      { ko: "고지방식 섭취 후 지방세포 수", ja: "高脂肪食摂取後の脂肪細胞数" },
+      { ko: "고지방식과 특허유산균 섭취 후 지방세포 수", ja: "高脂肪食と特許乳酸菌摂取後の脂肪細胞数" },
+    ],
+  },
 };
 
 function getLocalizedEvidenceImageSrc(src: string, isKorean: boolean) {
+  if (neutralEvidenceImages[src]) return neutralEvidenceImages[src];
   if (isKorean) return src;
   return japaneseEvidenceImages[src] || src;
 }
@@ -711,6 +727,23 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                           src={imageSrc}
                           width={720}
                         />
+                        {histologyPanelCaptions[evidenceImage.src] && (
+                          <div className="dh-histo-labels">
+                            {histologyPanelCaptions[evidenceImage.src].arrow && (
+                              <p className="dh-histo-arrow">
+                                <span aria-hidden="true">↘</span>{" "}
+                                {isKorean
+                                  ? histologyPanelCaptions[evidenceImage.src].arrow!.ko
+                                  : histologyPanelCaptions[evidenceImage.src].arrow!.ja}
+                              </p>
+                            )}
+                            <div className="dh-histo-panels">
+                              {histologyPanelCaptions[evidenceImage.src].panels.map((panel) => (
+                                <p key={panel.ko}>{isKorean ? panel.ko : panel.ja}</p>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                         <figcaption>
                           <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
                           {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
@@ -1046,6 +1079,23 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
                     src={imageSrc}
                     width={720}
                   />
+                  {histologyPanelCaptions[evidenceImage.src] && (
+                    <div className="dh-histo-labels">
+                      {histologyPanelCaptions[evidenceImage.src].arrow && (
+                        <p className="dh-histo-arrow">
+                          <span aria-hidden="true">↘</span>{" "}
+                          {isKorean
+                            ? histologyPanelCaptions[evidenceImage.src].arrow!.ko
+                            : histologyPanelCaptions[evidenceImage.src].arrow!.ja}
+                        </p>
+                      )}
+                      <div className="dh-histo-panels">
+                        {histologyPanelCaptions[evidenceImage.src].panels.map((panel) => (
+                          <p key={panel.ko}>{isKorean ? panel.ko : panel.ja}</p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                   <figcaption>
                     <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
                     {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
