@@ -106,7 +106,7 @@ function barChart(cfg){
     }else{/* two-sided I-beam (source shows H): caps at both ±SD */
       const eu=Y(v+b.err),ed=Y(v-b.err);svg.appendChild(el("line",{x1:cx,y1:eu,x2:cx,y2:ed,stroke:"#333","stroke-width":1.1}));svg.appendChild(el("line",{x1:cx-4,y1:eu,x2:cx+4,y2:eu,stroke:"#333","stroke-width":1.1}));svg.appendChild(el("line",{x1:cx-4,y1:ed,x2:cx+4,y2:ed,stroke:"#333","stroke-width":1.1}));}}
     if(cfg.showval&&!b.noval)svg.appendChild(txt(cx,(v<b0?(b.err?Y(v-b.err)+13:top+hgt+13):(b.err?Y(v+b.err)-5:top-5)),fmt(v),{"text-anchor":"middle","font-size":9,fill:"#555"}));
-    if(b.mark)svg.appendChild(txt(cx,(v<b0?(b.err?Y(v-b.err)+25:top+hgt+25):(b.err?Y(v+b.err)-16:top-16)),b.mark,{"text-anchor":"middle","font-size":11,fill:"#b3243a","font-weight":700}));
+    if(b.mark)svg.appendChild(txt(cx,(v<b0?(b.err?Y(v-b.err)+27:top+hgt+27):(b.err?Y(v+b.err)-18:top-18)),b.mark,{"text-anchor":"middle","font-size":15,fill:"#b3243a","font-weight":800}));
     if(b.label!=null)svg.appendChild(txt(cx,h-30,L(b.label),{"text-anchor":"middle","font-size":11,fill:"#111827","font-weight":700}));
     if(b.sub!=null)svg.appendChild(txt(cx,h-16,L(b.sub),{"text-anchor":"middle","font-size":9.5,fill:"#6b7280"}));});
   (cfg.glabels||[]).forEach(g=>{const gx=(m.l+slot*g.i0+slot/2+m.l+slot*g.i1+slot/2)/2;svg.appendChild(txt(gx,h-15,L(g.t),{"text-anchor":"middle","font-size":10,fill:"#111827","font-weight":700}));});
