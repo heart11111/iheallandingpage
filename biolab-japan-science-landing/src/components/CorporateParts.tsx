@@ -5,7 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
+import { EvidenceChart } from "@/components/EvidenceChart";
 import { IngredientCategoryBadge } from "@/components/IngredientCategoryBadge";
+import { hasChart } from "@/lib/evidenceCharts";
 import { companyContact, siteMapGroups } from "@/lib/corporate";
 import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
 import { getIngredientCardImage, getIngredientDisplayImage } from "@/lib/ingredientImages";
@@ -188,6 +190,30 @@ const japaneseEvidenceImages: Record<string, string> = {};
 const neutralEvidenceImages: Record<string, string> = {
   "/images/ingredients/agrimony-evidence-2.jpeg": "/images/ingredients/agrimony-evidence-2-photos.webp",
 };
+
+// Approved review-file charts that are ported to live as SVG (replacing the
+// original image). Keep this list to charts confirmed correct in the review;
+// everything else keeps its source image.
+const liveChartEvidence = new Set<string>([
+  "med01-evidence-1.webp",
+  "med01-evidence-2.png",
+  "med02-evidence-1.webp",
+  "med02-evidence-2.png",
+  "testofen-evidence-1.webp",
+  "testofen-evidence-2.webp",
+  "testofen-evidence-3.webp",
+  "applephenon-evidence-1.webp",
+  "applephenon-evidence-3.webp",
+  "dermania-evidence-1.webp",
+  "dermania-evidence-2.webp",
+  "nvp2106-evidence-1.webp",
+  "nvp2106-evidence-3.webp",
+]);
+
+function getLiveChartKey(src: string): string | null {
+  const key = src.split("/").pop() || "";
+  return liveChartEvidence.has(key) && hasChart(key) ? key : null;
+}
 
 type HistologyLabels = { arrow?: { ja: string; ko: string }; panels: { ja: string; ko: string }[] };
 const histologyPanelCaptions: Record<string, HistologyLabels> = {
@@ -720,13 +746,17 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                         data-evidence-src={imageSrc}
                         key={imageSrc}
                       >
-                        <Image
-                          alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
-                          height={480}
-                          loading="eager"
-                          src={imageSrc}
-                          width={720}
-                        />
+                        {getLiveChartKey(evidenceImage.src) ? (
+                          <EvidenceChart chartKey={getLiveChartKey(evidenceImage.src)!} lang={isKorean ? "ko" : "ja"} />
+                        ) : (
+                          <Image
+                            alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
+                            height={480}
+                            loading="eager"
+                            src={imageSrc}
+                            width={720}
+                          />
+                        )}
                         {histologyPanelCaptions[evidenceImage.src] && (
                           <div className="dh-histo-labels">
                             {histologyPanelCaptions[evidenceImage.src].arrow && (
@@ -1072,13 +1102,17 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
                   data-evidence-src={imageSrc}
                   key={imageSrc}
                 >
-                  <Image
-                    alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
-                    height={480}
-                    loading="eager"
-                    src={imageSrc}
-                    width={720}
-                  />
+                  {getLiveChartKey(evidenceImage.src) ? (
+                    <EvidenceChart chartKey={getLiveChartKey(evidenceImage.src)!} lang={isKorean ? "ko" : "ja"} />
+                  ) : (
+                    <Image
+                      alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
+                      height={480}
+                      loading="eager"
+                      src={imageSrc}
+                      width={720}
+                    />
+                  )}
                   {histologyPanelCaptions[evidenceImage.src] && (
                     <div className="dh-histo-labels">
                       {histologyPanelCaptions[evidenceImage.src].arrow && (
