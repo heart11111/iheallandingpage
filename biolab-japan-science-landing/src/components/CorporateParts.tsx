@@ -215,6 +215,93 @@ function getLiveChartKey(src: string): string | null {
   return liveChartEvidence.has(key) && hasChart(key) ? key : null;
 }
 
+// Evidence images that carry baked-in Korean text. We pre-render a text-free
+// base image (the Korean painted out with the local background colour) and lay
+// translated text on top for non-KO viewers, positioned in the image's own
+// viewBox so it scales on any screen. KO viewers see the untouched original.
+type OverlayText = {
+  x: number; // anchor x (per `anchor`)
+  y: number; // baseline of the first line
+  fs?: number;
+  lh?: number;
+  anchor?: "start" | "middle" | "end";
+  lines: string[];
+};
+type ImageOverlay = { base: string; viewBox: string; fg?: string; ja: OverlayText[]; en?: OverlayText[] };
+
+const evidenceImageOverlays: Record<string, ImageOverlay> = {
+  // f-MRI brain clusters — dark grey-green panel, white labels.
+  "/images/ingredients/neulearn-evidence-1-clean.png": {
+    base: "/images/ingredients/neulearn-evidence-1-notext.png",
+    viewBox: "0 0 1860 615",
+    fg: "#ffffff",
+    ja: [
+      { x: 82, y: 100, fs: 30, lines: ["右脳"] },
+      { x: 269, y: 100, fs: 30, lines: ["左脳"] },
+      { x: 501, y: 68, fs: 27, lines: ["右 縁上回"] },
+      { x: 831, y: 68, fs: 27, lines: ["右 中前頭回"] },
+      { x: 1150, y: 68, fs: 27, lines: ["右 中心後回"] },
+      { x: 1495, y: 68, fs: 27, lines: ["左 楔前部"] },
+    ],
+  },
+  // ThinkGIN PSQI-K bar chart — white background, dark caption text.
+  "/images/ingredients/thinkgin-evidence-3.webp": {
+    base: "/images/ingredients/thinkgin-evidence-3-notext.webp",
+    viewBox: "0 0 545 353",
+    fg: "#111111",
+    ja: [
+      { x: 392, y: 278, fs: 13, lh: 22, lines: ["ピッツバーグ睡眠質指数、", "記憶力と睡眠には深い関連があります"] },
+    ],
+  },
+};
+
+function EvidenceFigureImage({
+  src,
+  imageSrc,
+  caption,
+  isKorean,
+}: {
+  src: string;
+  imageSrc: string;
+  caption: string;
+  isKorean: boolean;
+}) {
+  const overlay = evidenceImageOverlays[src];
+  // KO keeps the original (baked-Korean) image; other languages get the
+  // text-free base image plus a translated-text overlay.
+  if (!overlay || isKorean) {
+    return <Image alt={caption} height={480} loading="eager" src={imageSrc} width={720} />;
+  }
+  const boxes = overlay.ja;
+  return (
+    <div className="dh-evidence-overlay-wrap">
+      <Image alt={caption} height={480} loading="eager" src={overlay.base} width={720} />
+      <svg className="dh-evidence-overlay" viewBox={overlay.viewBox} preserveAspectRatio="none" aria-hidden="true">
+        {boxes.map((box, i) => {
+          const fs = box.fs || 14;
+          return (
+            <g key={i}>
+              {box.lines.map((line, j) => (
+                <text
+                  key={j}
+                  x={box.x}
+                  y={box.y + j * (box.lh || fs + 4)}
+                  fill={overlay.fg || "#111"}
+                  fontSize={fs}
+                  fontWeight={600}
+                  textAnchor={box.anchor || "middle"}
+                >
+                  {line}
+                </text>
+              ))}
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
 type HistologyLabels = { arrow?: { ja: string; ko: string }; panels: { ja: string; ko: string }[] };
 const histologyPanelCaptions: Record<string, HistologyLabels> = {
   "/images/ingredients/agrimony-evidence-2.jpeg": {
@@ -749,12 +836,11 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                         {getLiveChartKey(evidenceImage.src) ? (
                           <EvidenceChart chartKey={getLiveChartKey(evidenceImage.src)!} lang={isKorean ? "ko" : "ja"} />
                         ) : (
-                          <Image
-                            alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
-                            height={480}
-                            loading="eager"
-                            src={imageSrc}
-                            width={720}
+                          <EvidenceFigureImage
+                            caption={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
+                            imageSrc={imageSrc}
+                            isKorean={isKorean}
+                            src={evidenceImage.src}
                           />
                         )}
                         {histologyPanelCaptions[evidenceImage.src] && (
@@ -1105,12 +1191,11 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
                   {getLiveChartKey(evidenceImage.src) ? (
                     <EvidenceChart chartKey={getLiveChartKey(evidenceImage.src)!} lang={isKorean ? "ko" : "ja"} />
                   ) : (
-                    <Image
-                      alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
-                      height={480}
-                      loading="eager"
-                      src={imageSrc}
-                      width={720}
+                    <EvidenceFigureImage
+                      caption={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
+                      imageSrc={imageSrc}
+                      isKorean={isKorean}
+                      src={evidenceImage.src}
                     />
                   )}
                   {histologyPanelCaptions[evidenceImage.src] && (

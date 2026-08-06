@@ -324,7 +324,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     evidenceImages: [
       {
         src: "/images/ingredients/neulearn-evidence-1-clean.png",
-        caption: "f-MRIで確認された大脳灰白質容積増加のクラスター(右側縁上回・右側中前頭回・右側頭頂回・左側被蓋)",
+        caption: "f-MRIで確認された大脳灰白質容積増加のクラスター(右側縁上回・右側中前頭回・右側中心後回・左側楔前部)",
       },
       {
         src: "/images/ingredients/neulearn-evidence-2-clean.png",
