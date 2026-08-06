@@ -6657,6 +6657,39 @@ h2 {
   margin: 0;
 }
 
+/* Bilingual HTML captions for histology photos whose baked-in text was cropped away */
+.dh-histo-labels {
+  margin-top: 8px;
+}
+
+.dh-histo-labels .dh-histo-arrow {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #b3243a;
+}
+
+.dh-histo-labels .dh-histo-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.dh-histo-labels .dh-histo-panels p {
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #1f2937;
+}
+
+@media (max-width: 520px) {
+  .dh-histo-labels .dh-histo-panels p {
+    font-size: 12px;
+  }
+}
+
 .dh-ppt-chart.dh-ppt-chart-figure[data-evidence-shape="wide"] {
   grid-column: 1 / -1;
   padding: 12px;
