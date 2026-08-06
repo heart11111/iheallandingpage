@@ -61,10 +61,10 @@
     <thead><tr><th>#</th><th>요청</th><th>위치</th><th>변경안</th><th>상태</th></tr></thead>
     <tbody>
       <tr><td class="no">1</td>
-        <td>풋사과 이미지를 새싹 인삼 이미지로</td>
+        <td>원료 페이지 자연소재 카드의 초록 사과(애플페논) 이미지를 새싹삼 원물 사진으로</td>
         <td class="loc">page.tsx:45<br>corporate.ts:160<br>products/page.tsx:58</td>
-        <td>PRODUCTS 자연소재 카드 이미지(<code>products-functional-nature-card-v2/v3.webp</code>)를 새싹삼 이미지로 교체</td>
-        <td><span class="badge b-asset">🖼️ 에셋 필요</span></td></tr>
+        <td>자연소재 카드 배경 <code>products-functional-nature-card-v2/v3.webp</code>(초록 사과)를 <b>보유 중인 새싹삼 원물 사진 <code>thinkgin-upscaled.png</code></b>로 교체. ※ 카드가 어두운 그라데이션+흰 글자라, 흰 배경 스튜디오컷을 그대로 쓰면 대비가 약함 → C 참고</td>
+        <td><span class="badge b-confirm">⚠️ 확인필요(방식)</span></td></tr>
 
       <tr><td class="no">2</td>
         <td>토탈 헬스케어를 3줄로</td>
@@ -157,9 +157,11 @@
     <div class="q"><b>#12</b> NVP-1703에서 비울 "균주 이미지"가 상세 대표 이미지(nvp1703.webp)인지, 별도 균주 컷인지.</div>
   </div>
 
-  <h2><span class="n">C</span>에셋 의존</h2>
+  <h2><span class="n">C</span>#1 카드 이미지 처리 방식</h2>
   <div class="card">
-    <p style="margin:0"><b>#1 새싹삼 이미지</b> — 자연소재 카드용 이미지가 필요합니다. ① 직접 제공해 주시거나 ② 제가 이미지 생성 툴로 만들어 드릴 수 있습니다(카드 비율 4:5 세로, 어두운 배경 오버레이 대응). 어느 쪽으로 할지 알려주세요.</p>
+    <p style="margin:0 0 6px"><b>새싹삼 원물 사진은 이미 보유</b>(<code>thinkgin-upscaled.png</code>) — 새 에셋 불필요. 다만 자연소재 카드는 <b>어두운 그라데이션 위에 흰 글자</b> 구조라, 흰 배경 사진을 그대로 깔면 상단이 밝아 글자 대비가 떨어집니다. 처리 방식만 정해 주세요:</p>
+    <div class="q"><b>A안</b> 사진을 그대로 사용 + 카드 오버레이(그라데이션)만 살짝 강화 → 빠름</div>
+    <div class="q"><b>B안</b> 카드용으로 크롭·톤 조정한 버전을 새로 만들어 사용(현재 사과 카드와 톤 매칭) → 결과물 더 깔끔</div>
   </div>
 
   <footer>수정계획(코드 미변경) · 약도(#10)는 요청대로 보류 · BIOLAB Japan · 2026-08-06</footer>
