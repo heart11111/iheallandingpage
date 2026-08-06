@@ -77,7 +77,7 @@ export const probioticsIngredients: Ingredient[] = [
     id: "nvp1702",
     name: "NVP-1702",
     category: "肝臓",
-    area: "肝機能の改善",
+    area: "アルコール性・非アルコール性の肝機能改善",
     summary: "デュオバイオーム技術による、アルコール性・非アルコール性の肝機能改善を目的とした2菌株の特許プロバイオティクス複合物です。",
     intake: "100億 CFU/day (1×10¹⁰ CFU/day)",
     image: "/images/ingredients/nvp1702.webp",
