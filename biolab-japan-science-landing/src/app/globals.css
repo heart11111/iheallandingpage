@@ -6668,6 +6668,44 @@ h2 {
   margin: 0;
 }
 
+/* Live evidence charts ported from the review SVG engine. The engine relies on
+   these CSS custom properties and hides bars/lines until a scroll-triggered
+   `.show` class appears; here they render immediately and fully visible. */
+.dh-evidence-chart {
+  --brand: #0b6b8a;
+  --brand2: #12a19a;
+  --placebo: #b6bcc4;
+  --accent: #e8730c;
+  --purple: #8e2c8e;
+  --pill: #12857e;
+  --grid: #e5e7eb;
+  width: 100%;
+  min-width: 0;
+}
+
+.dh-evidence-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.dh-evidence-chart text {
+  font-family: inherit;
+}
+
+.dh-evidence-chart .barRect {
+  transform: none !important;
+}
+
+.dh-evidence-chart .lp {
+  stroke-dashoffset: 0 !important;
+}
+
+.dh-evidence-chart .dot {
+  opacity: 1 !important;
+}
+
 /* Bilingual HTML captions for histology photos whose baked-in text was cropped away */
 .dh-histo-labels {
   margin-top: 8px;
