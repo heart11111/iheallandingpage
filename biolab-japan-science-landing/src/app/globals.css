@@ -4185,8 +4185,19 @@ h2 {
   text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
 }
 
+/* Flow the overlay text instead of pinning it at a fixed offset, so the card
+   grows to fit — the KO cards carry an extra description line that used to be
+   clipped by the card's fixed height + overflow:hidden. */
 #products .dh-product-grid:not(.dh-product-grid-two) .dh-product-text {
-  top: 185px;
+  position: relative;
+  top: auto;
+  bottom: auto;
+  padding-top: 172px;
+  padding-bottom: 84px;
+}
+
+#products .dh-product-grid:not(.dh-product-grid-two) .dh-product-card {
+  height: auto;
 }
 
 .dh-product-text .dh-category-badge {
