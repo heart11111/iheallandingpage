@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BIOLAB Japan — 작업 현황 대시보드 (2026-08-06)</title>
+<style>
+  :root{
+    --bg:#f4f6f9; --card:#ffffff; --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb;
+    --brand:#0f2233; --accent:#12857e; --soft:#f0f4f8;
+    --ok:#1f9d55; --okbg:#e6f6ec; --img:#556; --imgbg:#eceef2;
+    --wait:#8a94a6; --waitbg:#eef0f3; --appr:#2b6cb0; --apprbg:#e7f0fb;
+    --demo:#7c3aed; --demobg:#f0e9fd; --warn:#b45309; --warnbg:#fdf3e5;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#0e1420;--card:#161d2b;--ink:#e6eaf0;--muted:#9aa6b6;--line:#28303f;
+      --brand:#0b1220;--accent:#2fb3aa;--soft:#1b2432;
+      --okbg:#13301f;--imgbg:#232a36;--waitbg:#222a37;--apprbg:#152a44;--demobg:#241a3d;--warnbg:#33260f;}
+  }
+  :root[data-theme="dark"]{--bg:#0e1420;--card:#161d2b;--ink:#e6eaf0;--muted:#9aa6b6;--line:#28303f;
+    --brand:#0b1220;--accent:#2fb3aa;--soft:#1b2432;
+    --okbg:#13301f;--imgbg:#232a36;--waitbg:#222a37;--apprbg:#152a44;--demobg:#241a3d;--warnbg:#33260f;}
+  :root[data-theme="light"]{--bg:#f4f6f9;--card:#fff;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;
+    --brand:#0f2233;--accent:#12857e;--soft:#f0f4f8;
+    --okbg:#e6f6ec;--imgbg:#eceef2;--waitbg:#eef0f3;--apprbg:#e7f0fb;--demobg:#f0e9fd;--warnbg:#fdf3e5;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Noto Sans JP",Arial,sans-serif}
+  .wrap{max-width:1060px;margin:0 auto;padding:30px 20px 70px}
+  header.top{background:var(--brand);color:#fff;border-radius:16px;padding:26px 28px;margin-bottom:26px}
+  header.top h1{margin:0 0 6px;font-size:22px;letter-spacing:-.01em}
+  header.top p{margin:0;color:#b8c6d6;font-size:13px}
+  .metarow{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.18);color:#e8eef5;font-size:12px;padding:4px 11px;border-radius:20px}
+  h2{font-size:17px;margin:34px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line);
+    display:flex;align-items:center;gap:9px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;
+    background:var(--accent);color:#fff;border-radius:7px;font-size:13px;font-weight:800}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:12px 0;
+    box-shadow:0 1px 3px rgba(16,34,51,.05)}
+  .card h3{margin:0 0 4px;font-size:14.5px}
+  .card .hash{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--muted)}
+  .card ul{margin:8px 0 0;padding-left:18px}
+  .card li{font-size:13.5px;margin:3px 0}
+  .badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap}
+  .b-ok{background:var(--okbg);color:var(--ok)} .b-img{background:var(--imgbg);color:var(--img)}
+  .b-wait{background:var(--waitbg);color:var(--wait)} .b-appr{background:var(--apprbg);color:var(--appr)}
+  .b-demo{background:var(--demobg);color:var(--demo)} .b-warn{background:var(--warnbg);color:var(--warn)}
+  .b-live{background:var(--okbg);color:var(--ok)}
+  .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:10px 0}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:13px;background:var(--card)}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--soft);font-size:12px;color:var(--muted);font-weight:700;position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td.mat{font-weight:600}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px;font-size:12px}
+  .note{font-size:12.5px;color:var(--muted);background:var(--soft);border-left:3px solid var(--accent);
+    border-radius:8px;padding:10px 13px;margin:12px 0}
+  .checkline{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line)}
+  .checkline:last-child{border-bottom:none}
+  .checkline .st{flex:0 0 auto;margin-top:1px}
+  .checkline .tx{font-size:13.5px}
+  .checkline .tx small{display:block;color:var(--muted);font-size:12px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+  footer{margin-top:40px;font-size:12px;color:var(--muted);text-align:center}
+  .kx{color:var(--accent);font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <h1>BIOLAB Japan — 랜딩페이지 작업 현황</h1>
+    <p>biolabjp.com · 라이브 반영 / 차트 이식 / 남은 피드백 정리 · 기준일 2026-08-06</p>
+    <div class="metrow metarow">
+      <span class="chip">🟢 라이브 반영 3건(이번 세션)</span>
+      <span class="chip">📊 차트 라이브 이식 13개</span>
+      <span class="chip">배포: GitHub Pages(main → 자동)</span>
+    </div>
+  </header>
+
+  <!-- 1 -->
+  <h2><span class="n">1</span>라이브(main)에 반영 완료</h2>
+
+  <div class="card">
+    <h3>아그리모니 지방간 조직사진 — 한글 제거 + KO/JA HTML 라벨 <span class="badge b-live">LIVE</span></h3>
+    <div class="hash">commit 8a3082d</div>
+    <ul>
+      <li>이미지에서 하단 한글 캡션 띠를 크롭하고, 사진 안 "지방세포" 글자는 주변 조직으로 자연 제거(빨간 화살표는 유지) → 언어중립 이미지 <code>agrimony-evidence-2-photos.webp</code></li>
+      <li>패널 캡션·화살표 범례를 <span class="kx">KO/JA 전환</span> HTML로 사진 아래 렌더 (지방세포/脂肪細胞, 高脂肪食摂取後の脂肪細胞数 등)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>홈 뉴스 섹션 숨김 + 제품카드 텍스트 잘림 수정 <span class="badge b-live">LIVE</span></h3>
+    <div class="hash">commit 86f965c</div>
+    <ul>
+      <li>뉴스 섹션을 <code>SHOW_NEWS=false</code> 플래그로 숨김 — <span class="kx">한 줄 true로 즉시 복구</span> 가능(추후 실제 기사 투입 시)</li>
+      <li>홈 PRODUCTS 카드 오버레이 텍스트를 flow 레이아웃으로 바꿔 카드가 내용에 맞춰 늘어나도록 → KO 설명줄 잘림 해소(KO/JA 모두 확인)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>승인·완성 차트 → 라이브 제품페이지에 SVG로 이식 <span class="badge b-live">LIVE</span></h3>
+    <div class="hash">commit 8b5bcbb</div>
+    <ul>
+      <li>검토본(charts-review.html)의 SVG 엔진을 그대로 모듈화(<code>evidenceCharts.ts</code> + <code>EvidenceChart.tsx</code>) → 렌더가 검토본과 동일</li>
+      <li>승인된 13개 차트의 이미지를 실제 SVG 차트로 교체 · <span class="kx">KO/JA 전환</span> + 출처 인용 유지 · 6개 페이지 실제 렌더 확인</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>이전 라운드 반영분(요약) <span class="badge b-ok">반영완료</span></h3>
+    <ul>
+      <li>히어로/PRODUCTS 개편, 디자인 토큰·모션, JA/KO 어색 카피 정비</li>
+      <li>NVP-1702 알코올성·비알코올성 라벨 교정, MED-01 배뇨통 오기 수정</li>
+    </ul>
+  </div>
+
+  <!-- 2 -->
+  <h2><span class="n">2</span>차트 라이브 이식 현황 (소재별)</h2>
+  <div class="legend">
+    <span class="badge b-live">🟢 라이브 SVG</span>
+    <span class="badge b-appr">🟦 승인대기</span>
+    <span class="badge b-wait">⬜ 작업대기</span>
+    <span class="badge b-img">🖼️ 이미지 유지(도식·사진)</span>
+    <span class="badge b-demo">🟡 오버레이 데모</span>
+  </div>
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th>소재</th><th>차트 항목</th><th>상태</th></tr></thead>
+      <tbody>
+        <tr><td class="mat">MED-01 (여성)</td><td>배뇨통·질분비물·질작열감 / Nugent score</td><td><span class="badge b-live">🟢 라이브 SVG</span></td></tr>
+        <tr><td class="mat">MED-02 (체지방)</td><td>체지방 3지표 / BMI 변화</td><td><span class="badge b-live">🟢 라이브 SVG</span></td></tr>
+        <tr><td class="mat">NVP-2106 (뇌·기억)</td><td>Total Score, 주의집중력 3패널</td><td><span class="badge b-live">🟢 라이브 SVG</span></td></tr>
+        <tr><td class="mat">NVP-2106 (뇌·기억)</td><td>기억력 총점·지연 단어회상</td><td><span class="badge b-appr">🟦 승인대기</span></td></tr>
+        <tr><td class="mat">Testofen (남성)</td><td>AMS 총점 / 신체·성기능(분리) / 정신·심리</td><td><span class="badge b-live">🟢 라이브 SVG</span></td></tr>
+        <tr><td class="mat">Applephenon (체지방)</td><td>체지방 지표 / 16주 BMI</td><td><span class="badge b-live">🟢 라이브 SVG</span></td></tr>
+        <tr><td class="mat">Applephenon</td><td>허리둘레(데이터 중복 우려)</td><td><span class="badge b-img">🖼️ 이미지 유지</span></td></tr>
+        <tr><td class="mat">DermaNiA (피부)</td><td>주름 감소 / 수분 증가</td><td><span class="badge b-live">🟢 라이브 SVG</span></td></tr>
+        <tr><td class="mat">NVP-1702 (간)</td><td>γGTP/ALT/AST (2세트)</td><td><span class="badge b-appr">🟦 승인대기</span></td></tr>
+        <tr><td class="mat">NVP-1703 (코)</td><td>소아 TNSS(오버레이) / 성인 TNSS</td><td><span class="badge b-demo">🟡 데모</span> · <span class="badge b-wait">⬜ 작업대기</span></td></tr>
+        <tr><td class="mat">NVP-1704 (스트레스)</td><td>BDI/BAI · PSQI/ISI · IL-6/BDNF</td><td><span class="badge b-appr">🟦 승인대기</span> · <span class="badge b-wait">⬜ 작업대기</span></td></tr>
+        <tr><td class="mat">ThinkGIN (기억)</td><td>AChE / SVLT / PSQI-K</td><td><span class="badge b-wait">⬜ 작업대기</span></td></tr>
+        <tr><td class="mat">Neulearn (인지)</td><td>단기기억·집행 / SMCQ</td><td><span class="badge b-wait">⬜ 작업대기</span></td></tr>
+        <tr><td class="mat">Agrimony (간)</td><td>ALT / AST / HSI</td><td><span class="badge b-wait">⬜ 작업대기</span></td></tr>
+        <tr><td class="mat">Pinitol (간)</td><td>GPx/MDA / 간지방·ALT·AST</td><td><span class="badge b-wait">⬜ 작업대기</span></td></tr>
+        <tr><td class="mat">AcetoBeta (숙취)</td><td>아세트알데하이드 / 메스꺼움</td><td><span class="badge b-wait">⬜ 작업대기</span></td></tr>
+        <tr><td class="mat">Bifido (장)</td><td>가스 배출·복부 팽만</td><td><span class="badge b-wait">⬜ 작업대기</span></td></tr>
+        <tr><td class="mat">Immulink (면역)</td><td>8종 면역지표</td><td><span class="badge b-wait">⬜ 작업대기</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">🟢 라이브 SVG = 제품 상세페이지에서 이미지 대신 실제 SVG 차트로 표시(KO/JA 전환). 나머지는 아직 원본 이미지 유지 — 아래 3번의 수정·승인 후 같은 방식으로 라이브 세트에 추가됩니다. 사진·도식(CT, f-MRI, 메커니즘 등)은 계속 이미지로 둡니다.</div>
+
+  <!-- 3 -->
+  <h2><span class="n">3</span>남은 차트 피드백 (검토본에서 처리 예정)</h2>
+  <div class="card">
+    <div class="checkline"><span class="st badge b-warn">확인필요</span><span class="tx">Agrimony ALT/AST/HSI — 원본은 <b>H형(양측) 에러바</b>인데 T로 바뀐 것 복구<small>지난 배치에서 두 방향 기본값으로 복구했으나 라이브 이식 전 재확인 필요</small></span></div>
+    <div class="checkline"><span class="st badge b-warn">확인필요</span><span class="tx">Immulink 8종 면역지표 — 수치 다수 오차 + H형 에러바<small>원본 이미지와 값 대조 필요</small></span></div>
+    <div class="checkline"><span class="st badge b-warn">확인필요</span><span class="tx">Bifido 가스 배출·복부 팽만 — 수치 틀림, 원본 대조 수정</span></div>
+    <div class="checkline"><span class="st badge b-warn">확인필요</span><span class="tx">NVP-1704 BDI/BAI · PSQI/ISI — 근사치 값 비전 재검증</span></div>
+    <div class="checkline"><span class="st badge b-wait">작업대기</span><span class="tx">Collagen — ††† 유의표시와 글자 겹침 해소 + 시험군/대조군 범례 측면으로</span></div>
+    <div class="checkline"><span class="st badge b-wait">작업대기</span><span class="tx">ThinkGIN AChE — 물결(축 단절) 렌더 개선</span></div>
+    <div class="checkline"><span class="st badge b-wait">작업대기</span><span class="tx">Neulearn SMCQ — 원본의 "흰목이버섯 추출물" 표기 반영</span></div>
+    <div class="checkline"><span class="st badge b-wait">작업대기</span><span class="tx">NVP-1703 성인 TNSS — 좌측 y눈금 촘촘히 + 사라진 글자 복구</span></div>
+    <div class="checkline"><span class="st badge b-wait">작업대기</span><span class="tx">Pinitol — 상승/감소 방향표시 직관화 + 위약/피니톨 범례 추가</span></div>
+    <div class="checkline"><span class="st badge b-wait">작업대기</span><span class="tx">AcetoBeta 메스꺼움 — 말풍선 안 끊기게 정리</span></div>
+    <div class="checkline"><span class="st badge b-ok">부분완료</span><span class="tx">SVLT 별표 키움 · 16주 BMI 문구 반복(엔진 마크 확대 적용)<small>검토본 반영, 라이브엔 재추출 필요</small></span></div>
+    <div class="checkline"><span class="st badge b-img">이미지 유지</span><span class="tx">NVP-1704 IL-6/BDNF 개별변화 2패널, NVP-2106 기억력 — HTML 재현 어려워 이미지 유지(요청대로)</span></div>
+  </div>
+
+  <!-- 4 -->
+  <h2><span class="n">4</span>다음 단계</h2>
+  <div class="card">
+    <ul>
+      <li><b>①</b> 위 3번 항목을 검토본(charts-review.html)에서 수정 → 브라우저로 확인 요청</li>
+      <li><b>②</b> 승인해주신 항목을 <code>evidenceCharts.ts</code>에 재동기화 후 <span class="kx">liveChartEvidence 세트에 추가</span> → 라이브 배포</li>
+      <li><b>③</b> 뉴스 실제 기사 준비되면 <code>SHOW_NEWS=true</code> 한 줄로 복구</li>
+    </ul>
+  </div>
+
+  <footer>BIOLAB Japan landing · 작업 현황 자동 정리 · 2026-08-06</footer>
+
+</div>
+<script>
+  // 뷰어 테마 토글이 data-theme를 심으면 그걸 우선 적용(양방향)
+  (function(){var r=document.documentElement;try{var t=localStorage.getItem('theme');if(t)r.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+</body>
+</html>
