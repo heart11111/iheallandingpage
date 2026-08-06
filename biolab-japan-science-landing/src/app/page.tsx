@@ -1,28 +1,39 @@
 "use client";
 
-import { ArrowRight, Globe2, Microscope, ShieldCheck } from "lucide-react";
+import { ArrowRight, Globe2, Microscope, Rocket, ShieldCheck, Telescope } from "lucide-react";
 import Link from "next/link";
 import { CorporateFooter } from "@/components/CorporateParts";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { NavBar } from "@/components/NavBar";
+import { CountUp } from "@/components/CountUp";
 import { corporateNews } from "@/lib/corporate";
 import { useLenis } from "@/lib/useLenis";
+import { useReveal } from "@/lib/useReveal";
 
+// Two evidence-backed ingredient lines lead; ODM/OEM is a service, so it is
+// tagged and linked to the real service page rather than the empty
+// /products/odm-oem ingredient list.
 const featuredCards = [
   {
+    kind: "material" as const,
     eyebrow: "Functional Probiotics",
+    tag: "ヒト臨床試験完了・7種",
+    koTag: "인체적용시험 완료 · 7종",
     title: "Application-specific strain portfolio",
     subtitle: "用途別プロバイオティクス",
     koTitle: "프로바이오틱스 소재",
     koSubtitle: "용도별 7개 영역",
     koDescription: "여성·체지방·인지 등 제품 목적에 맞춰 균주를 검토합니다.",
     // v2 has a "Microbiome Probiotics" wordmark burnt into the photograph, which
-    // collided with the card's own eyebrow and cannot be translated.
+    // collided with the card’s own eyebrow and cannot be translated.
     image: "images/products-microbiome-probiotics-card-v3.webp",
     href: "/products/microbiome-probiotics",
   },
   {
-    eyebrow: "Functional Nature‘s food ingredients",
+    kind: "material" as const,
+    eyebrow: "Functional Nature’s food ingredients",
+    tag: "ヒト臨床試験完了・10種",
+    koTag: "인체적용시험 완료 · 10종",
     title: "Nature-derived functional materials",
     subtitle: "自然由来機能性素材",
     koTitle: "기능성 천연소재",
@@ -32,14 +43,17 @@ const featuredCards = [
     href: "/products/nature-ingredients",
   },
   {
+    kind: "service" as const,
     eyebrow: "ODM / OEM",
+    tag: "SERVICE",
+    koTag: "서비스",
     title: "Market-ready product planning",
     subtitle: "商品化・供給設計",
     koTitle: "ODM/OEM",
     koSubtitle: "상품 개발 및 ODM / OEM 생산",
     koDescription: "한국 제조 네트워크를 바탕으로 제품 기획과 생산을 연결합니다.",
     image: "images/biolab-global-factory-bg.png",
-    href: "/products/odm-oem",
+    href: "/business/odm-oem",
   },
 ];
 
@@ -59,7 +73,7 @@ const businessMapSides = [
       { ja: "生産", ko: "생산" },
       { ja: "ブランド管理", ko: "브랜드 관리" },
     ],
-    note: "Together with best Manufacturers!",
+    note: "Together with the best manufacturers",
   },
   {
     side: "japan",
@@ -74,6 +88,14 @@ const businessMapSides = [
       { ja: "新規事業の開拓", ko: "신규 사업 개척" },
     ],
   },
+];
+
+// Portfolio counts, derived from the ingredient data: 7 probiotics + 10
+// nature-derived materials. Keep in sync with lib/ingredients.ts.
+const heroStats = [
+  { value: 17, ja: "機能性素材", ko: "기능성 소재", unitJa: "種", unitKo: "종" },
+  { value: 7, ja: "用途別プロバイオティクス", ko: "용도별 프로바이오틱스", unitJa: "種", unitKo: "종" },
+  { value: 10, ja: "自然由来機能性素材", ko: "자연 유래 기능성 소재", unitJa: "種", unitKo: "종" },
 ];
 
 const techValues = [
@@ -108,6 +130,7 @@ const techValues = [
 
 export default function Home() {
   useLenis();
+  useReveal();
   const { language } = useDevLanguage();
   const isKorean = language === "ko";
 
@@ -141,20 +164,31 @@ export default function Home() {
               </h1>
               <p className="dh-hero-support">
                 {isKorean
-                  ? "한국의 가능성을 일본 시장으로 연결합니다. 기능성 식품 원료 사업, ODM/OEM & Brand Royalty, 일본 B2B 유통을 이어 일본에서 헬스케어 사업을 여는 비즈니스 다리 역할을 합니다."
+                  ? "한국의 가능성을 일본 시장으로 연결합니다. 기능성 식품 원료 사업, ODM/OEM & Brand Royalty, 일본 B2B 유통을 이어 일본에서 헬스케어 사업을 여는 비즈니스 브리지 역할을 합니다."
                   : "韓国の可能性を、日本の市場価値へ。機能性素材、製造、ブランド、流通をつなぎ、次のヘルスケア事業をひらくビジネスブリッジです。"}
               </p>
               <div className="dh-hero-actions">
                 <Link href="/products">{isKorean ? "소재 보기" : "素材を見る"}</Link>
                 <Link href="/contact">{isKorean ? "제휴 상담" : "提携相談"}</Link>
               </div>
+              <dl className="dh-hero-stats">
+                {heroStats.map((stat) => (
+                  <div key={stat.ja}>
+                    <dt>{isKorean ? stat.ko : stat.ja}</dt>
+                    <dd>
+                      <CountUp value={stat.value} />
+                      <span>{isKorean ? stat.unitKo : stat.unitJa}</span>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
             </div>
           </div>
         </section>
 
         <section id="about" className="dh-about dh-vision-section">
           <div className="dh-container">
-            <div className="dh-vision-head">
+            <div className="dh-vision-head" data-reveal="">
               <p className="dh-kicker">VISION &amp; MISSION</p>
               <h2>
                 BIOLAB Japan&rsquo;s Vision &amp; Mission.
@@ -166,7 +200,10 @@ export default function Home() {
               </p>
             </div>
             <div className="dh-vision-cards">
-              <article data-kind="vision">
+              <article data-kind="vision" data-reveal="0">
+                <span className="dh-vision-icon" aria-hidden="true">
+                  <Telescope size={22} strokeWidth={1.8} />
+                </span>
                 <p className="dh-vision-card-label">Vision</p>
                 <h3>Beyond Functional Healthcare Solutions</h3>
                 <p>
@@ -175,7 +212,10 @@ export default function Home() {
                     : "機能性素材を供給するだけでなく、日本市場でヘルスケア事業が成り立つように、エビデンス・製造・流通までを一体で設計します。"}
                 </p>
               </article>
-              <article data-kind="mission">
+              <article data-kind="mission" data-reveal="1">
+                <span className="dh-vision-icon" aria-hidden="true">
+                  <Rocket size={22} strokeWidth={1.8} />
+                </span>
                 <p className="dh-vision-card-label">Our Mission</p>
                 <h3>Leap to become a leading company for functional healthcare industry in Japan</h3>
                 <p>
@@ -194,7 +234,7 @@ export default function Home() {
 
         <section id="products" className="dh-products">
           <div className="dh-container">
-            <div className="dh-section-title">
+            <div className="dh-section-title" data-reveal="">
               <h2>
                 Before you create
                 <br />
@@ -202,22 +242,25 @@ export default function Home() {
                 <br />
                 we focus on the ingredients.
               </h2>
-              <p>{isKorean ? "제품을 만들기 전에 대한민국 식약처(KFDA) 인증 개별인정형 기능성 소재와 근거 정보에 집중합니다." : "成功的な商品開発の核となる素材と根拠情報に集中します。"}</p>
+              <p>{isKorean ? "제품을 만들기 전에 대한민국 식약처(KFDA) 인증 개별인정형 기능성 소재와 근거 정보에 집중합니다." : "商品開発の成功を支える素材と根拠情報に集中します。"}</p>
             </div>
             <div className="dh-product-grid">
-              {featuredCards.map((card) => (
-                <article className="dh-product-card" key={card.title}>
+              {featuredCards.map((card, index) => (
+                <article className="dh-product-card" data-kind={card.kind} data-reveal={String(index)} key={card.title}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={card.image} alt="" aria-hidden="true" />
                   <div className="dh-product-shade" aria-hidden="true" />
                   <div className="dh-product-text">
+                    <span className="dh-product-tag" data-kind={card.kind}>
+                      {isKorean ? card.koTag : card.tag}
+                    </span>
                     <p className="dh-product-eyebrow">{card.eyebrow}</p>
                     <h3>{isKorean ? card.koTitle : card.title}</h3>
                     <strong>{isKorean ? card.koSubtitle : card.subtitle}</strong>
                     {isKorean && <p>{card.koDescription}</p>}
                   </div>
                   <a href={card.href} aria-label={`${card.title} 詳細`}>
-                    LEARN MORE
+                    {card.kind === "service" ? (isKorean ? "서비스 보기" : "サービスを見る") : "LEARN MORE"}
                   </a>
                 </article>
               ))}
@@ -227,7 +270,7 @@ export default function Home() {
 
         <section id="business-map" className="dh-bizmap">
           <div className="dh-container">
-            <div className="dh-section-title">
+            <div className="dh-section-title" data-reveal="">
               <p className="dh-kicker">OUR BUSINESS MAP</p>
               <h2>
                 Korea to Japan,
@@ -241,7 +284,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="dh-bizmap-flow">
+            <div className="dh-bizmap-flow" data-reveal="">
               <div className="dh-bizmap-node" data-side="korea">
                 <strong>KOREA</strong>
                 <span>{isKorean ? businessMapSides[0].koRole : businessMapSides[0].role}</span>
@@ -269,8 +312,8 @@ export default function Home() {
             </div>
 
             <div className="dh-bizmap-panels">
-              {businessMapSides.map((group) => (
-                <article className="dh-bizmap-panel" data-side={group.side} key={group.side}>
+              {businessMapSides.map((group, index) => (
+                <article className="dh-bizmap-panel" data-side={group.side} data-reveal={String(index)} key={group.side}>
                   <p className="dh-bizmap-panel-head">
                     <b>{group.mode}</b>
                     <span>{group.region}</span>
@@ -289,7 +332,7 @@ export default function Home() {
 
         <section id="technology" className="dh-tech">
           <div className="dh-container">
-            <div className="dh-section-title">
+            <div className="dh-section-title" data-reveal="">
               <h2>
                 Empowering healthcare brands to build
                 <br />
@@ -302,8 +345,8 @@ export default function Home() {
               </p>
             </div>
             <div className="dh-tech-grid">
-              {techValues.map((item) => (
-                <article className="dh-tech-item" key={item.title}>
+              {techValues.map((item, index) => (
+                <article className="dh-tech-item" data-reveal={String(index)} key={item.title}>
                   <item.icon size={62} strokeWidth={1.4} aria-hidden="true" />
                   <h3>{isKorean ? item.koTitle : item.title}</h3>
                   <p className="dh-tech-subtitle">{item.subtitle}</p>
@@ -319,14 +362,16 @@ export default function Home() {
 
         <section id="news" className="dh-news dh-home-news">
           <div className="dh-container">
-            <div className="dh-section-title dh-right">
+            <div className="dh-section-title" data-reveal="">
               <h2>News</h2>
               <p>{isKorean ? "BIOLAB Japan의 사업 전개, 소재 정보, 제휴 상담 관련 최신 토픽입니다." : "BIOLAB Japanの事業展開、素材情報、提携相談に関する最新トピックです。"}</p>
             </div>
             <div className="dh-topic-grid">
-              {corporateNews.map((item) => (
-                <article className="dh-topic" key={item.slug}>
-                  <div className="dh-topic-visual" style={{ backgroundImage: `linear-gradient(135deg, rgba(31, 87, 164, 0.78), rgba(65, 171, 225, 0.68)), url(${item.image})` }} />
+              {corporateNews.map((item, index) => (
+                <article className="dh-topic" data-reveal={String(index)} key={item.slug}>
+                  {/* Light brand wash only — the previous duotone flattened all
+                      three photos into the same washed-out blue. */}
+                  <div className="dh-topic-visual" style={{ backgroundImage: `linear-gradient(160deg, rgba(13, 38, 66, 0.34), rgba(65, 171, 225, 0.12)), url(${item.image})` }} />
                   <p className="dh-topic-date">{item.date}</p>
                   <h3>{isKorean ? item.koTitle : item.title}</h3>
                   <p>{isKorean ? item.koSummary : item.summary}</p>
@@ -338,7 +383,7 @@ export default function Home() {
         </section>
 
         <section id="contact" className="dh-home-cta">
-          <div className="dh-container">
+          <div className="dh-container" data-reveal="">
             <div>
               <p className="dh-kicker">CONTACT US</p>
               <h2>{isKorean ? "기능성 헬스케어 사업 프로젝트를 시작하세요." : "Start a Korea-to-Japan healthcare project."}</h2>

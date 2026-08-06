@@ -38,21 +38,21 @@ export const devKoreanLabels = {
   },
   line: {
     "Functional Probiotics": "Functional Probiotics",
-    "Nature-derived Ingredients": "Functional Nature‘s food ingredients",
+    "Nature-derived Ingredients": "Functional Nature’s food ingredients",
   } satisfies Record<IngredientLine, string>,
 };
 
 export const devKoreanPageCopy = {
   microbiome: {
     title: "Functional Probiotics",
-    copy: "Probiotics Strain by Application 인체시험 완료 소재 7종입니다.",
-    lead: "질내 마이크로바이옴, 체지방·항비만, 인지·기억, 간건강, 면역 과민반응에 따른 코 상태, 스트레스·수면·릴랙스, 장건강·배변활동 영역의 프로바이오틱스 소재입니다.",
+    copy: "Probiotics Strain by Application 인체적용시험 완료 소재 7종입니다.",
+    lead: "인체적용시험을 마친 개별인정형 프로바이오틱스 7종입니다. 질 건강·체지방·인지·간·코·스트레스·장 용도별로 균주와 근거 자료(인체적용시험·SCI 논문·특허)를 정리했습니다.",
     primary: "기능성 식품 원료 사업",
   },
   nature: {
-    title: "Functional Nature‘s food ingredients",
-    copy: "Nature’s food ingredients by Application 인체시험 완료 소재 10종입니다.",
-    lead: "남성 갱년기·남성 건강, 기억·인지 기능, 노화 관련 인지기능, 다이어트·체지방, 피부 수분·탄력, 주름·보습, 비알코올성 지방간 건강, 간·혈당 건강, 알코올 대사 지원, 면역기능 영역의 자연 유래 기능성 소재입니다.",
+    title: "Functional Nature’s food ingredients",
+    copy: "Nature’s food ingredients by Application 인체적용시험 완료 소재 10종입니다.",
+    lead: "인체적용시험을 마친 자연 유래 기능성 소재 10종입니다. 남성 건강·기억·인지·체지방·피부·간·혈당·숙취·면역 용도별로 원료와 근거 자료를 정리했습니다.",
     primary: "기능성 식품 원료 사업",
   },
   detailPrimary: {
@@ -81,7 +81,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "질 내 유산균이 늘고 유해균이 억제되어 질 내 균총이 정상 상태로 회복됩니다.",
       "질 분비물, 질 작열감, 배뇨통이 줄었습니다.",
     ],
-    evidenceTags: ["101명 인체시험", "SCI 논문 9편", "Nugent score"],
+    evidenceTags: ["101명 인체적용시험", "SCI 논문 9편", "Nugent score"],
   },
   med02: {
     name: "iHEAL DIT 2 Formula – MED02",
@@ -101,7 +101,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "성인기 중성지방 축적으로 인한 비만·이상지질혈증 위험도 줄여줍니다.",
       "임상 데이터(12주): 체지방량 약 -1,200g(위약 약 -400g), 체지방률 약 -0.85%(위약 약 -0.15%), 체중 약 -2.1kg(위약 약 -1.2kg).",
     ],
-    evidenceTags: ["100명 인체시험", "SCI 논문 6편", "BMI 감소"],
+    evidenceTags: ["100명 인체적용시험", "SCI 논문 6편", "BMI 감소"],
   },
   nvp2106: {
     name: "NVP-2106",
@@ -111,7 +111,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     summary: "듀오바이옴 기술로 만든 뇌 기능 개선용 2종 특허 프로바이오틱스 복합물입니다.",
     healthClaims: [
       "듀오바이옴 기술로 만든 뇌 기능 개선용 2종 특허 프로바이오틱스 복합물입니다.",
-      "60세 이상 기억력 저하 노인 120명의 인체시험과 SCI 논문으로 검증됐습니다.",
+      "60세 이상 기억력 저하 노인 120명의 인체적용시험과 SCI 논문으로 검증됐습니다.",
     ],
     featurePoints: [
       "신경세포 손상과 기억력 저하의 원인으로 꼽히는 ‘아밀로이드 베타’를 조절·저하시킵니다.",
@@ -120,7 +120,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "기억력 총점은 위약 대비 207%, 지연 단어 회상은 위약 대비 1,514% 개선됐습니다(P=0.0037).",
       "주의 집중력은 정반응 수 315%, 오반응 수 147%, 누락 오류 수 315% 개선됐습니다(12주 섭취 시점).",
     ],
-    evidenceTags: ["120명 인체시험", "ADAS-Cog13", "기억력 개선"],
+    evidenceTags: ["120명 인체적용시험", "ADAS-Cog13", "기억력 개선"],
   },
   nvp1702: {
     name: "NVP-1702",
@@ -150,7 +150,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     summary: "듀오바이옴 기술로 만든 알레르기성 비염 개선용 특허 프로바이오틱스 복합물입니다.",
     healthClaims: [
       "듀오바이옴 기술로 만든 알레르기성 비염 개선용 특허 프로바이오틱스 복합물입니다.",
-      "소아·청소년 81명, 성인 95명 규모의 대규모 인체시험을 진행했습니다.",
+      "소아·청소년 81명, 성인 95명 규모의 대규모 인체적용시험을 진행했습니다.",
       "면역 과민반응에 따른 코 상태 개선을 목표로 한 특허 프로바이오틱스입니다.",
     ],
     featurePoints: [
@@ -169,14 +169,14 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     summary: "스트레스성 질환과 우울·불안·불면 개선용 특허 프로바이오틱스 복합물입니다.",
     healthClaims: [
       "스트레스성 질환과 우울·불안·불면 개선용 특허 프로바이오틱스 복합물입니다.",
-      "스트레스를 겪는 한국인 156명 규모의 대규모 인체시험을 진행했습니다.",
+      "스트레스를 겪는 한국인 156명 규모의 대규모 인체적용시험을 진행했습니다.",
     ],
     featurePoints: [
       "우울·불안·불면을 포함한 수면의 질이 좋아지고, 장내 스트레스 관련 마이크로바이옴도 개선됐습니다.",
       "혈중 염증성 사이토카인 IL-6가 줄고 BDNF가 늘어, IL-6/BDNF 비율이 낮아졌습니다(P=0.041).",
       "섭취 후 주요 구성균인 L. reuteri 그룹과 Bifidobacterium 그룹이 늘었습니다.",
     ],
-    evidenceTags: ["156명 인체시험", "IL-6", "BDNF"],
+    evidenceTags: ["156명 인체적용시험", "IL-6", "BDNF"],
   },
   bifido: {
     name: "Bifidobacterium Probiotics",
@@ -190,7 +190,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     ],
     featurePoints: [
       "미국 식품의약국(FDA) 안전성 인증(GRAS·NDI)에 더해 HALAL·KOSHER 인증도 받았습니다.",
-      "증상별 10건의 인체시험, 80건의 국제 특허, 260편 이상의 SCI 논문을 보유한 세계적인 비피더스 유산균입니다.",
+      "증상별 10건의 인체적용시험, 80건의 국제 특허, 260편 이상의 SCI 논문을 보유한 세계적인 비피더스 유산균입니다.",
       "12주 섭취 후 가스 배출 빈도가 늘고 복부 팽만감이 줄었습니다.",
       "참고: BGN4·BORI를 배합한 프로바이오틱스(40억 CFU/일)를 65세 이상 고령자가 12주간 섭취한 시험에서 인지기능과 기분 개선이 확인됐습니다(서울대학교 분당병원 실시).",
     ],
@@ -212,7 +212,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "한국 내 남성 갱년기 관련 소재 중 가장 높은 AMS 데이터를 보유하고, 미국에서도 가장 대중적인 남성 건강 원료입니다.",
       "갱년기 남성을 위한 추가 임상 데이터도 갖추고 있습니다.",
     ],
-    evidenceTags: ["KFDA 개별인정", "AMS", "12주 인체시험"],
+    evidenceTags: ["KFDA 개별인정", "AMS", "12주 인체적용시험"],
     origin: ["호로파종자추출물 (Trigonella foenum-graecum)"],
   },
   thinkgin: {

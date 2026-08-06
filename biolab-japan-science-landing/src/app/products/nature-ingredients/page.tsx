@@ -10,7 +10,7 @@ export default function NatureIngredientsPage() {
       <NavBar />
       <main>
         <CorporateSubHero
-          title="Functional Nature‘s food ingredients"
+          title="Functional Nature’s food ingredients"
           copy="自然由来機能性素材の全体リストです。"
           koTitle={devKoreanPageCopy.nature.title}
           koCopy={devKoreanPageCopy.nature.copy}
@@ -23,11 +23,11 @@ export default function NatureIngredientsPage() {
               <LocalizedText ja="PRODUCTS" ko={devKoreanPageCopy.nature.primary} />
             </p>
             <h1>
-              <LocalizedText ja="Functional Nature‘s food ingredients" ko={devKoreanPageCopy.nature.title} />
+              <LocalizedText ja="Functional Nature’s food ingredients" ko={devKoreanPageCopy.nature.title} />
             </h1>
             <p>
               <LocalizedText
-                ja="男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫の7カテゴリを素材別に確認できます。"
+                ja="ヒト臨床試験を終えた自然由来の機能性素材10種です。男性の健康・記憶・認知・体脂肪・肌・肝臓・血糖・二日酔い・免疫の用途別に、原料と根拠資料を整理しています。"
                 ko={devKoreanPageCopy.nature.lead}
               />
             </p>

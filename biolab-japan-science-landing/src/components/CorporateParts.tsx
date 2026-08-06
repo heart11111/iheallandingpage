@@ -6,7 +6,7 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { IngredientCategoryBadge } from "@/components/IngredientCategoryBadge";
-import { companyContact } from "@/lib/corporate";
+import { companyContact, siteMapGroups } from "@/lib/corporate";
 import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
 import { getIngredientCardImage, getIngredientDisplayImage } from "@/lib/ingredientImages";
 import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
@@ -113,8 +113,8 @@ const koreanEvidenceCaptions: Record<string, string> = {
   "/images/ingredients/nvp2106-evidence-1.webp": "ADAS-Cog13 총점 개선(12주 섭취 시 플라세보 대비 202% 개선, P=0.0318)",
   "/images/ingredients/nvp2106-evidence-2.webp": "기억력 총점 개선 및 지연 단어 회상 개선(플라세보 대비 207%, 1,514%)",
   "/images/ingredients/nvp2106-evidence-3.webp": "주의집중력 지표 개선(정반응 수, 오반응 수, 누락 오류 수)",
-  "/images/ingredients/nvp1702-evidence-1.webp": "비알코올성 간손상군의 γ-GTP, ALT, AST 12주 변화(NVP-1702군 vs 플라세보군)",
-  "/images/ingredients/nvp1702-evidence-2.webp": "알코올성 간손상군의 ALT, AST, γ-GTP 12주 변화",
+  "/images/ingredients/nvp1702-evidence-1.webp": "알코올성 간손상군의 γ-GTP, ALT, AST 12주 변화(NVP-1702군 vs 플라세보군)",
+  "/images/ingredients/nvp1702-evidence-2.webp": "비알코올성 간손상군의 ALT, AST, γ-GTP 12주 변화",
   "/images/ingredients/nvp1702-evidence-3.png": "간 손상 메커니즘 도식(LPS/TNF-α와 ALT, AST, γ-GTP 지표 관계)",
   "/images/ingredients/nvp1703-evidence-1.webp": "소아·청소년 대상 인체적용시험: TNSS 주간/일간 점수 개선",
   "/images/ingredients/nvp1703-evidence-2.webp": "성인 대상 인체적용시험: TNSS 총점, 수양성 콧물, 코막힘 개선",
@@ -123,7 +123,7 @@ const koreanEvidenceCaptions: Record<string, string> = {
   "/images/ingredients/nvp1704-evidence-2.webp": "수면의 질 PSQI 및 불면증 심각도 ISI 개선",
   "/images/ingredients/nvp1704-evidence-3.webp": "혈중 염증성 사이토카인 IL-6 감소, BDNF 증가 및 IL-6/BDNF 비율 감소",
   "/images/ingredients/bifido-evidence-2.webp": "12주 섭취 후 가스 배출 빈도 증가 및 복부 팽만감 개선",
-  "/images/ingredients/bifido-evidence-6.png": "BGN4·BORI 배합 프로바이오틱스의 고령자 대상 인체시험 자료",
+  "/images/ingredients/bifido-evidence-6.png": "BGN4·BORI 배합 프로바이오틱스의 고령자 대상 인체적용시험 자료",
   "/images/ingredients/bifido-evidence-1.webp": "FDA GRAS·NDI 등록 번호(BGN4, BORI, AD011)",
   "/images/ingredients/testofen-evidence-1.webp": "AMS 총점 변화(Testofen군 vs 플라세보군, 12주)",
   "/images/ingredients/testofen-evidence-2.webp": "신체 기능 점수 및 성 기능 점수 변화(12주)",
@@ -298,7 +298,7 @@ type LocalizedStudyNote = {
 
 const evidenceStudyNotes: Record<string, LocalizedStudyNote> = {
   nvp1702: {
-    titleJa: "ヒト試験の区分",
+    titleJa: "ヒト臨床試験の区分",
     titleKo: "인체적용시험 구분",
     items: [
       {
@@ -316,7 +316,7 @@ const evidenceStudyNotes: Record<string, LocalizedStudyNote> = {
       {
         labelJa: "根拠",
         labelKo: "근거",
-        valueJa: "ヒト試験2件とSCI論文をもとに整理",
+        valueJa: "ヒト臨床試験2件とSCI論文をもとに整理",
         valueKo: "인체적용시험 2건과 SCI 논문을 기준으로 정리",
       },
     ],
@@ -430,6 +430,13 @@ export function CorporateSubHero({
   );
 }
 
+// The footer used to be logo + address only; a B2B visitor's last scroll stop
+// now doubles as a sitemap so no page is more than one click away.
+const footerExternalLinks = [
+  { label: "BIOLAB Korea", href: "https://biolabkr.com/" },
+  { label: "iHEAL Mall", href: "https://iheal.co.kr/main/index.php" },
+];
+
 export function CorporateFooter() {
   const { language } = useDevLanguage();
   const isKorean = language === "ko";
@@ -437,19 +444,66 @@ export function CorporateFooter() {
   return (
     <footer className="dh-footer">
       <div className="dh-container">
-        <strong className="dh-footer-logo">
-          <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={508} height={96} loading="eager" />
-        </strong>
-        <address className="dh-footer-contact">
-          <span className="dh-footer-company">{companyContact.legalName}</span>
-          <span>{isKorean ? companyContact.address.ko : companyContact.address.ja}</span>
-          <span>
-            <a href={companyContact.phoneHref}>{companyContact.phone}</a>
-            <i aria-hidden="true">|</i>
-            {/* Inquiries are funnelled through the form rather than a mail client. */}
-            <Link href="/contact">{isKorean ? "문의하기" : "お問い合わせ"}</Link>
-          </span>
-        </address>
+        <div className="dh-footer-top">
+          <div className="dh-footer-brand">
+            <strong className="dh-footer-logo">
+              <Image src="/images/biolab-japan-ci.png" alt="BIOLAB Japan" width={508} height={96} loading="eager" />
+            </strong>
+            <p className="dh-footer-tagline">
+              {isKorean
+                ? "한국의 기능성 소재를 일본 시장으로 잇는 비즈니스 브리지"
+                : "韓国の機能性素材を日本市場へつなぐビジネスブリッジ"}
+            </p>
+            <address className="dh-footer-contact">
+              <span className="dh-footer-company">{companyContact.legalName}</span>
+              <span>{isKorean ? companyContact.address.ko : companyContact.address.ja}</span>
+              <span>
+                <a href={companyContact.phoneHref}>{companyContact.phone}</a>
+                <i aria-hidden="true">|</i>
+                {/* Inquiries are funnelled through the form rather than a mail client. */}
+                <Link href="/contact">{isKorean ? "문의하기" : "お問い合わせ"}</Link>
+              </span>
+            </address>
+          </div>
+          <nav className="dh-footer-nav" aria-label={isKorean ? "푸터 메뉴" : "フッターメニュー"}>
+            {siteMapGroups
+              .filter((group) => group.children.length > 0)
+              .map((group) => (
+                <div className="dh-footer-col" key={group.href}>
+                  <p>
+                    <Link href={group.href}>{group.menuLabel}</Link>
+                  </p>
+                  <ul>
+                    {group.children.map((child) => (
+                      <li key={child.href}>
+                        <Link href={child.href}>{isKorean ? child.koLabel : child.label}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            <div className="dh-footer-col">
+              <p>
+                <Link href="/contact">CONTACT</Link>
+              </p>
+              <ul>
+                <li>
+                  <Link href="/contact">{isKorean ? "문의하기" : "お問い合わせ"}</Link>
+                </li>
+                {footerExternalLinks.map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href} target="_blank" rel="noreferrer">
+                      {link.label} ↗
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div className="dh-footer-bottom">
+          <span>© 2026 {companyContact.legalName}. All rights reserved.</span>
+        </div>
       </div>
     </footer>
   );

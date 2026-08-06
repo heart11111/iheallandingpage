@@ -14,7 +14,7 @@ const catalogItems = [
   {
     label: "機能性天然素材",
     koLabel: "Nature’s food ingredients by Application",
-    ruby: "Functional Nature‘s food ingredients",
+    ruby: "Functional Nature’s food ingredients",
     body: "自然由来機能性素材10種の素材情報を確認できます。",
     koBody: "남성 갱년기·남성 건강, 기억·인지 기능, 노화 관련 인지기능, 다이어트·체지방, 피부 수분·탄력, 주름·보습, 간·혈당 건강, 알코올 대사 지원, 면역기능 영역의 Nature’s food ingredients 10종을 확인할 수 있습니다.",
     href: "/products/nature-ingredients",

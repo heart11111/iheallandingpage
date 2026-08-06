@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
@@ -23,7 +23,7 @@ const koreanMenuLabels: Record<string, string> = {
   "/business/brand-management": "Brand Royalty",
   "/products": "제품",
   "/products/microbiome-probiotics": "Functional Probiotics",
-  "/products/nature-ingredients": "Functional Nature‘s food ingredients",
+  "/products/nature-ingredients": "Functional Nature’s food ingredients",
   "/communication": "자료 및 채널",
   "/communication/catalog": "E-카탈로그",
   "/communication/channels": "채널",
@@ -63,6 +63,7 @@ export function NavBar() {
           {externalLinks.map((link) => (
             <a className="dh-top-link" href={link.href} key={link.href} target="_blank" rel="noreferrer">
               {link.label}
+              <ArrowUpRight size={13} aria-hidden="true" />
             </a>
           ))}
           <div className="dh-dev-language-toggle" aria-label={devKoreanLabels.language}>

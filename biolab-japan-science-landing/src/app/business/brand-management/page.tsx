@@ -8,7 +8,7 @@ const services = [
     koLabel: "브랜드 자산 정리",
     ruby: "Brand Asset",
     body: "iHEALブランド運営経験をもとに、商品資料、訴求軸、チャネル別情報を整理します。",
-    koBody: "iHEAL 브랜드 운영 경험을 바탕으로 한 상품 자료, 소구 축, 채널별 정보입니다.",
+    koBody: "iHEAL 브랜드 운영 경험을 바탕으로 한 상품 자료, 소구 포인트, 채널별 정보입니다.",
   },
   {
     label: "パートナーシップ",

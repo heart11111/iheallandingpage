@@ -5,7 +5,7 @@ export function NatureIngredientsSection() {
   return (
     <SectionShell
       id="nature"
-      eyebrow="Functional Nature‘s food ingredients"
+      eyebrow="Functional Nature’s food ingredients"
       title="自然由来機能性素材のポートフォリオ。"
       copy="男性健康、記憶、体脂肪、肌、肝臓、免疫など、日本市場向けの商品企画に活用できる素材群です。"
       dark

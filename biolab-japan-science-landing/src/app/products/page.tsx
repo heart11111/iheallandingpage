@@ -12,7 +12,7 @@ export default function ProductsPage() {
       <main>
         <CorporateSubHero
           title="Products"
-          copy="成功的な商品開発の核となる素材と根拠情報に集中します。"
+          copy="商品開発の成功を支える素材と根拠情報に集中します。"
           koTitle="제품"
           koCopy="성공적인 상품 개발의 핵심이 되는 소재와 근거 정보입니다."
           image="/images/biolab-cosmetic-science-bg.png"
@@ -42,7 +42,7 @@ export default function ProductsPage() {
               </h2>
               <p>
                 <LocalizedText
-                  ja="BIOLAB Japanの供給製品ラインは、Functional ProbioticsとFunctional Nature‘s food ingredientsを中心に構成します。"
+                  ja="BIOLAB Japanの供給製品ラインは、Functional ProbioticsとFunctional Nature’s food ingredientsを中心に構成します。"
                   ko="BIOLAB Japan의 공급 제품 라인은 기능성 프로바이오틱스와 기능성 천연소재를 중심으로 구성합니다."
                 />
               </p>
@@ -63,11 +63,7 @@ export default function ProductsPage() {
                   <div className="dh-product-shade" aria-hidden="true" />
                   <div className="dh-product-text">
                     <IngredientLineBadge
-                      label={
-                        index === 0
-                          ? group.menuLabel
-                          : group.menuLabel
-                      }
+                      label={group.menuLabel}
                       line={index === 0 ? "Functional Probiotics" : "Nature-derived Ingredients"}
                     />
                     <h3>
@@ -77,26 +73,24 @@ export default function ProductsPage() {
                           index === 0 ? (
                             "Functional Probiotics"
                           ) : (
-                            "Functional Nature‘s food ingredients"
+                            "Functional Nature’s food ingredients"
                           )
                         }
                       />
                     </h3>
                     <strong>
-                      <LocalizedText ja={`${group.items.length}素材`} ko={`${group.items.length}개 소재`} />
+                      <LocalizedText
+                        ja={`${group.items.length}素材・ヒト臨床試験完了`}
+                        ko={`${group.items.length}개 소재 · 인체적용시험 완료`}
+                      />
                     </strong>
                     <p>
-                      <LocalizedText
-                        ja={group.summary}
-                        ko={
-                          index === 0
-                            ? "여성, 체지방, 인지, 간, 코, 스트레스, 장 건강 등 용도별 프로바이오틱스 소재입니다."
-                            : "남성 건강, 기억, 인지, 체지방, 피부, 간·혈당, 면역 등 자연 유래 기능성 소재입니다."
-                        }
-                      />
+                      <LocalizedText ja={group.summary} ko={group.koSummary} />
                     </p>
                   </div>
-                  <a href={group.href}>LEARN MORE</a>
+                  <a href={group.href}>
+                    <LocalizedText ja="ラインを見る" ko="라인 상세 보기" />
+                  </a>
                 </article>
               ))}
             </div>
