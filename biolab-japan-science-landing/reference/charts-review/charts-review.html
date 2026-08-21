@@ -16,17 +16,32 @@
   .seg button{background:#16324a;color:#cfe0ee;border:0;padding:5px 12px;font-size:12px;cursor:pointer}
   .seg button.on{background:#2f9e97;color:#fff;font-weight:700}
   .controls label{font-size:11px;color:#9fb3c8;display:flex;gap:6px;align-items:center}
-  .wrap{max-width:1180px;margin:0 auto;padding:18px}
+  .wrap{max-width:1480px;margin:0 auto;padding:18px}
   .note{font-size:13px;color:#374151;background:#fff;border:1px solid var(--grid);border-left:4px solid var(--brand2);padding:12px 14px;border-radius:8px;margin-bottom:18px;line-height:1.6}
   .legendbar{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;margin:6px 0 16px}
   .legendbar span{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--grid);padding:3px 9px;border-radius:20px}
   .dotb{width:10px;height:10px;border-radius:50%}
   .dotb.lg{width:22px;height:22px;border:2px solid rgba(0,0,0,.08);box-shadow:inset 0 0 0 2px #fff}
   h2.prod{font-size:14px;margin:22px 0 8px;color:#0f2233;border-bottom:2px solid #dbe2e8;padding-bottom:6px}
-  .ba{display:grid;grid-template-columns:1fr 1fr 64px;gap:12px;background:#fff;border:1px solid var(--grid);border-radius:12px;padding:12px;margin:10px 0;box-shadow:0 1px 3px rgba(16,34,51,.05);align-items:stretch}
-  .ba.ba-exact{border-color:#86efac;background:linear-gradient(90deg,#fff 0%,#fff 92%,#ecfdf5 100%)}
-  .ba.ba-approx{border-color:#fcd34d;background:linear-gradient(90deg,#fff 0%,#fff 92%,#fffbeb 100%)}
+  .ba{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.05fr) minmax(220px,280px) 64px;gap:12px;background:#fff;border:1px solid var(--grid);border-radius:12px;padding:12px;margin:10px 0;box-shadow:0 1px 3px rgba(16,34,51,.05);align-items:stretch}
+  .ba.ba-exact{border-color:#86efac;background:linear-gradient(90deg,#fff 0%,#fff 88%,#ecfdf5 100%)}
+  .ba.ba-approx{border-color:#fcd34d;background:linear-gradient(90deg,#fff 0%,#fff 88%,#fffbeb 100%)}
+  .ba.ba-crit{border-color:#fca5a5;box-shadow:0 0 0 1px rgba(185,28,28,.12)}
+  @media(max-width:1100px){.ba{grid-template-columns:1fr 1fr;}.fix-rail,.mark-rail{grid-column:1/-1}}
   @media(max-width:720px){.ba{grid-template-columns:1fr;}.mark-rail{min-height:56px;padding-top:4px}}
+  .fix-rail{background:#fff5f5;border:1px solid #fecaca;border-left:4px solid #dc2626;border-radius:8px;padding:10px 11px;min-width:0;align-self:stretch}
+  .fix-rail .fh{font-size:11px;font-weight:800;color:#b91c1c;letter-spacing:.02em;margin:0 0 6px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .fix-rail .sev{font-size:10px;font-weight:800;padding:2px 7px;border-radius:10px;color:#fff}
+  .fix-rail .sev.critical{background:#b91c1c}
+  .fix-rail .sev.major{background:#dc2626}
+  .fix-rail .sev.minor{background:#f97316}
+  .fix-rail .sev.ok{background:#059669}
+  .fix-rail .sev.na{background:#94a3b8}
+  .fix-rail .sec{font-size:10px;font-weight:800;color:#991b1b;margin:8px 0 3px}
+  .fix-rail ul{margin:0;padding-left:16px;color:#991b1b;font-size:11px;line-height:1.45}
+  .fix-rail li{margin:2px 0}
+  .fix-rail .okmsg{font-size:11px;color:#047857;font-weight:600;line-height:1.45}
+  .fix-rail .namsg{font-size:11px;color:#64748b;line-height:1.45}
   .side{min-width:0}
   .side .h{font-size:11px;font-weight:700;letter-spacing:.4px;color:#6b7280;text-transform:uppercase;margin-bottom:6px;display:flex;gap:8px;align-items:center}
   .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;color:#fff}
@@ -62,7 +77,7 @@
     <div class="sub">원본↔HTML 비교 · Exact 교차검증 반영(2026-08-21) · 라이브 제품 차트는 미반영</div></div>
   <div class="controls">
     <div class="seg" id="lang"><button data-l="ko" class="on">KR</button><button data-l="ja">JP</button><button data-l="en">EN</button></div>
-    <label>폭 <input id="w" type="range" min="380" max="1180" value="1180"><span id="wv">100%</span></label>
+    <label>폭 <input id="w" type="range" min="380" max="1480" value="1480"><span id="wv">100%</span></label>
   </div>
 </header>
 <div class="wrap" id="stage">
@@ -71,12 +86,13 @@
     <span><i class="dotb lg" style="background:#059669"></i>오른쪽 큰 초록 원 = Exact 교차검증 <b>반영됨</b></span>
     <span><i class="dotb lg" style="background:#d97706"></i>주황 원 = Approx·승인대기(이번 라운드 반영)</span>
     <span><i class="dotb lg" style="background:#cbd5e1"></i>회색 = 이번 Exact 패치 대상 아님 / 이미지 유지</span>
+    <span style="border-color:#fecaca;color:#991b1b"><i class="dotb lg" style="background:#dc2626"></i>빨간 패널 = 비전 대조 차이점 · 수정안 (미적용, 기록만)</span>
   </div>
 </div>
 <script>
 const IMG="https://biolabjp.com/images/ingredients/";
 let LANG="ko"; const L=o=>typeof o==="string"?o:(o&&(o[LANG]||o.ko));
-const T={headnote:{ko:"왼쪽=라이브 원본, 오른쪽=HTML/SVG 재현. 원본 양식(제목·축·막대·라인·에러바·점 수치·유의표시)과 값을 맞췄습니다. 2026-08-21 다중모델 교차검증 반영(Exact·부호). 정확 수치 없는 항목만 <b>근사값</b>. 사진·도식은 이미지 유지. <b>라이브 제품 SVG는 퍼블리시 전 미반영</b> — 이 문서는 원본↔재현 비교용.",ja:"左=原本、右=HTML再現。<b>承認まで反映しません。</b>",en:"Left=original, right=HTML recreation. <b>Not committed.</b>"},
+const T={headnote:{ko:"왼쪽=라이브 원본, 가운데=HTML/SVG 재현, <b style='color:#b91c1c'>빨간 패널=비전 모델 전수 대조 차이점·수정안</b>(아직 코드 미적용). 2026-08-21 Exact 교차검증+비전 감사. 사진·도식은 이미지 유지. <b>라이브 제품 SVG는 퍼블리시 전 미반영</b>.",ja:"左=原本、中央=HTML、<b style='color:#b91c1c'>赤=ビジョン差分・修正案</b>。<b>承認まで反映しません。</b>",en:"Left=original, center=HTML, <b style='color:#b91c1c'>red=vision diffs &amp; fix proposals</b>. <b>Not live.</b>"},
  MED:{ko:"MED-02",ja:"MED-02",en:"MED-02"},MED01:{ko:"MED-01",ja:"MED-01",en:"MED-01"},NVP:{ko:"NVP-2106",ja:"NVP-2106",en:"NVP-2106"},placebo:{ko:"위약",ja:"プラセボ",en:"Placebo"},weeks:{ko:"주",ja:"週",en:"Weeks"},before:{ko:"섭취 전",ja:"摂取前",en:"Before"},after:{ko:"섭취 후",ja:"摂取後",en:"After"},test:{ko:"시험군",ja:"試験群",en:"Test"},ctrl:{ko:"대조군",ja:"対照群",en:"Control"},base:{ko:"Baseline",ja:"Baseline",en:"Baseline"},wk8:{ko:"8주",ja:"8週",en:"8 Weeks"}};
 const PL={ko:"위약",ja:"プラセボ",en:"Placebo"};
 const NS="http://www.w3.org/2000/svg";
@@ -247,6 +263,49 @@ const INV=[
  ["숙취 · AcetoBeta",[["acetobeta-evidence-1.webp","image",null,{ko:"분해경로 도식 → 이미지 유지",ja:"分解経路図",en:"Pathway"}],["acetobeta-evidence-2.webp","chart","acetobeta-evidence-2.webp"],["acetobeta-evidence-3.webp","chart","acetobeta-evidence-3.webp"]]],
  ["면역 · Immulink",[["immulink-evidence-1.webp","chart","immulink-evidence-1.webp"]]]
 ];
+
+/* 2026-08-21 비전 전수 대조: 원본 이미지 vs HTML 재현 — 수정안(미적용) */
+const FIXES={
+"med01-evidence-1.webp":{sev:"minor",diffs:["패널 제목이 원본 `배뇨통(생리통) ↓` 대비 축약(`배뇨통 ↓`) — 의도적 오기 수정일 수 있음","에러 길이·y범위를 픽셀 대비 재캘리브 여지"],fixes:["작열감 위약 +0.1·상향 tip(`err1`) 유지","패널별 SEM 길이를 원본 비율로 미세 조정"]},
+"med01-evidence-2.png":{sev:"ok",diffs:["수치·tip-only·`*` 브라켓 대체로 일치"],fixes:["X축 Groups·막대 테두리만 미세 정렬"]},
+"med02-evidence-1.webp":{sev:"major",diffs:["원본 MED 막대에 tip-only 미세 에러바 있음 → HTML에 에러바 없음","PL 에러는 원본에서 거의 없음"],fixes:["MED에 `err`+`err1:true` 추가(PL은 생략 또는 극소)","라벤더 titleBox 톤 유지"]},
+"med02-evidence-2.png":{sev:"critical",diffs:["에러바가 양방향 H로 막대 속을 관통(원본은 tip-outward 하향만)","`showval` 수치 라벨이 원본에 없음","yMax 0.4로 상단 여백이 원본과 다름"],fixes:["`err1:true`로 tip-only","`showval` 제거","yMax≈0에 가깝게 · 값 −0.70/−0.44 유지"]},
+"nvp2106-evidence-1.webp":{sev:"major",diffs:["Improvement/Worsening 화살표가 작·저대비·시리즈 사이에 끼인 느낌","0 기준선이 모서리에 붙음(원본은 약간 떠 있음)","우측 사이드 범례·하단 202% 캡션 약함"],fixes:["화살표를 플롯 밖 사이드 축 범례로·대비↑","`yMax` 패딩으로 0선 float","하단 `섭취 12주째 · 202%` 캡션 복원"]},
+"nvp2106-evidence-2.webp":{sev:"critical",diffs:["Memory 위약 6주 HTML +0.3(악화) vs 원본은 약 −0.3(개선) — 부호 반대","Q4 NVP 종점 HTML −0.9 vs 원본 ≈−1.1; 위약 −0.06은 캡션 역산 추정","화살표/0선 가독성 동일 이슈"],fixes:["원본 이미지 트레이싱으로 Memory·Q4 곡선 재구축","화살표 사이드 범례·0선 float 공통 수정"]},
+"nvp2106-evidence-3.webp":{sev:"major",diffs:["원본 좌하단 각주 `*p<0.05, ***p<0.001, baseline adjusted ANCOVA` 누락","원본에 에러바 없음 — HTML에도 넣지 말 것","브라켓·색 톤이 원본보다 무거움"],fixes:["하단 각주 복원","에러바 추가 금지","브라켓 선 두께·빨강 강도 완화"]},
+"nvp1702-evidence-1.webp":{sev:"critical",diffs:["에러캡 크기가 원본 대비 과대(특히 Placebo γ-GTP 12W)","패널 하단 Exact 서술 문장·빨간 P 위치가 약함"],fixes:["`err`(SD) 크기를 원본 위스커 비율로 재매칭","P를 포인트 아래·빨강 · 패널 footer Exact 문장 복원"]},
+"nvp1702-evidence-2.webp":{sev:"major",diffs:["Placebo 마커가 filled square(원본 open□)","γGTP yMax·P 배치 미세 불일치"],fixes:["Placebo open square","γGTP y스케일·P색을 원본에 맞춤"]},
+"nvp1703-evidence-1.webp":{sev:"major",diffs:["Daily 색/마커가 원본(파란□/빨간●)과 다름(흑/회·점선)","Daily `*` 유의 마커 다수 누락","Weekly 제목은 수정됨"],fixes:["Daily 원본 색·마커·`*` 배열 복원","위약 점선/실선 원본 확인 후 통일"]},
+"nvp1703-evidence-2.webp":{sev:"critical",diffs:["원본 전 포인트 SE 위스커 있음 → HTML `twoLine`에 `e` 없음(에러바 완전 누락)","시점별 복수 빨간 P가 패널당 1개로 축소","Exact 배지이나 시각적으로 Exact 아님"],fixes:["SEM/SD `err` 배열 추가","TNSS·콧물·코막힘 시점별 P 전부 반영","패널 하단 캡션·01/02 헤더 그룹 복원"]},
+"nvp1704-evidence-1.webp":{sev:"minor",diffs:["수치·through 에러는 Exact에 근접","Placebo open□·plot 배경·별표 하단 배치가 원본과 다름"],fixes:["Placebo open square · `*`를 포인트 아래 · 연파란 plot fill"]},
+"nvp1704-evidence-2.webp":{sev:"major",diffs:["시리즈 끝 라벨(`NVP-1704`/`위약`)이 8주 점·에러바와 겹침","원본은 범례 박스, end-label 없음","PSQI를 `p=0.068` 텍스트로(원본 `*`)"],fixes:["`noEndLabel:true` · 상단 범례만","우측 여백 확보 · 3패널 간격 정리","PSQI를 `*`로(수치는 유지 OK)"]},
+"nvp1704-evidence-3.webp":{sev:"critical",diffs:["IL-6/BDNF 막대 에러바 관통형(`err` only, `err1` 없음)","p괄호 오른쪽 줄기↔위약 위스커 겹침","원본 우측 spaghetti(개인선)를 2점 mean 라인으로 대체"],fixes:["막대 `err1:true` tip-only","브라켓·위스커 겹침 완화","spaghetti는 개별선 데이터 또는 이미지 유지"]},
+"bifido-evidence-2.webp":{sev:"minor",diffs:["Placebo dashed(원본 실선·원)","x라벨 Wk 축약 · `#` 빨강"],fixes:["Placebo 실선+circle · `noEndLabel`","x `Week 4/8/12` · `#` 검정"]},
+"testofen-evidence-1.webp":{sev:"major",diffs:["선 끝 텍스트 라벨(원본 없음)","y범위 7~12 vs 원본 7~11 느낌","굵은 L축·실선 그리드 약함"],fixes:["`noEndLabel:true`","yMax=11 · 에러바 검정 통일","축/그리드 톤 원본화"]},
+"testofen-evidence-2.webp":{sev:"major",diffs:["end-label · 하단 범례/Rao 각주 누락","마커·제목 배치 차이"],fixes:["`noEndLabel`+하단 범례·출처","패널 제목을 상단 텍스트로"]},
+"testofen-evidence-3.webp":{sev:"major",diffs:["end-label · 시작점≈40 vs 원본≈42 가능","제목 빨강·중복"],fixes:["`noEndLabel` · 0주≈42 재확인","제목/축 색 모노톤"]},
+"thinkgin-evidence-1.webp":{sev:"major",diffs:["원본 에러바 없음인데 HTML through `err` 추가","axis break는 있음 · 별표 `** p=0.003` vs 원본 `*`","라벨 위치가 막대 위가 아님"],fixes:["`err` 제거","별표 `*` · 라벨 막대 상단 · break 유지"]},
+"thinkgin-evidence-2.webp":{sev:"major",diffs:["임의 y스케일·값 · 원본은 틱/에러 거의 없음","X 그룹(총점/2차) 레이아웃·별표 색 차이"],fixes:["y틱 최소화 · 상대 높이만 원본 비율","그룹 X·별표 검정"]},
+"thinkgin-evidence-3.webp":{sev:"critical",diffs:["에러바 방향/크기 원본과 크게 다름","하단 PSQI-K 한국어 주석 누락","브라켓 문구 `*p=0.046` vs `*p<0.05`"],fixes:["tip-only/원본식 에러로 재매칭","주석·브라켓 `*p<0.05` 복원","라벨을 막대 위"]},
+"neulearn-evidence-2-clean.png":{sev:"major",diffs:["through-bar 에러(원본 tip-only)","이중 P브라켓·P=0.08 누락","X 라벨 축약 · 600/1200 색 분리(원본 동일 cyan)"],fixes:["`err1:true`","이중 브라켓·P=0.08 · 동일 cyan · 풀 라벨·↑화살"]},
+"neulearn-evidence-3-clean.png":{sev:"major",diffs:["through + `#/##` 마크(원본 tip-only + P브라켓)","↓개선 화살 누락"],fixes:["`err1:true` · P브라켓으로 교체","↓화살 · 동일 시험군 색"]},
+"applephenon-evidence-1.webp":{sev:"major",diffs:["Placebo dashed+square(원본 실선·원)","end-label · Later 라벨 축약 · 하단 범례→상단"],fixes:["Placebo 실선·circle · `noEndLabel`","Later observation 복원 · 하단 범례"]},
+"applephenon-evidence-2.webp":{sev:"critical",diffs:["비교 원본 경로/`local:` 로드 실패 가능","자산이 BMI형 곡선과 혼동·허리 Table7 BUILD와 불일치 위험"],fixes:["원본 허리 이미지 경로 확정·교체","이미지↔Table7 매칭 재검증 후 Exact 유지"]},
+"applephenon-evidence-3.webp":{sev:"major",diffs:["Placebo dashed+square · end-label · 틱 0.2(원본 0.1·무마커)"],fixes:["실선·무마커·`noEndLabel`·틱 0.1·하단 범례"]},
+"collagen-evidence-1-clean.png":{sev:"minor",diffs:["수치 대체로 Exact · AU 스케일(42~54)은 원본 표기와 단위 표기 방식 차이 가능","라벨 겹침·† 브라켓 높이 미세"],fixes:["라벨 offset · † 브라켓 높이 미세 조정","천 단위 표기 필요 시 원본과 맞춤"]},
+"collagen-evidence-2-clean.png":{sev:"minor",diffs:["Ra 6주 12.680 vs 원본≈12.650 추정","주름/Ra 브라켓 범위 확인 필요"],fixes:["6주 Ra 원본 판독값으로","브라켓 범위(0→12주) 확인"]},
+"dermania-evidence-1.webp":{sev:"minor",diffs:["`err1` OK · 라벨이 하단(원본 상단) · 각주/빗금 배경 약함"],fixes:["라벨 상단 · `*p<0.05…` 각주 · ®"]},
+"dermania-evidence-2.webp":{sev:"major",diffs:["에러 스타일·`*` 색이 원본보다 무거움","각주(경희대) 약함 · y라벨 잘림 가능"],fixes:["위스커 얇게·회색 · `*` 검정","각주 2줄·® · y라벨 여백"]},
+"agrimony-alt-evidence.png":{sev:"major",diffs:["브라켓 인덱스 `si0:0.5,si1:2.5`가 원본(Agrimony 8W↔Placebo 8W)과 어긋남","Unit 각주 누락 · 텍스트 빨강/파랑"],fixes:["`si0:1, si1:3`","Unit: IU/L 각주 · 텍스트 검정"]},
+"agrimony-ast-evidence.png":{sev:"minor",diffs:["브라켓 Baseline↔8W 일치 · through OK","AST 풀네임 각주·색 톤"],fixes:["각주·모노톤 미세 정리"]},
+"agrimony-hsi-evidence.png":{sev:"minor",diffs:["브라켓 위치 원본과 일치","through 에러·색 강조"],fixes:["캡션에 HSI=Index 명시 · 색 완화"]},
+"pinitol-evidence-1.webp":{sev:"major",diffs:["through-bar(원본 tip-only)","파란↑/초록↓ 큰 화살·(p=…)가 ▲/▼로 축소"],fixes:["전 막대 `err1:true`","컬러 화살·p문구 원본 위치"]},
+"pinitol-evidence-2.webp":{sev:"critical",diffs:["through-bar · 3패널 과밀","초록↓·p·중간 범례 누락/단순화 · AST 군간은 원본 에러 없음"],fixes:["`err1:true`(패널3 err 제거)","간격·p·초록 화살·0주/12주 범례 복원"]},
+"acetobeta-evidence-2.webp":{sev:"major",diffs:["`err1`+callout은 있으나 하향 흰 화살·말풍선 형태 약함","그리드·캡 디테일"],fixes:["callout을 큰 하향 화살 말풍선으로","그리드 제거·캡 tip-only 유지"]},
+"acetobeta-evidence-3.webp":{sev:"critical",diffs:["원본 대각 대형 빨간 하향 화살 누락(중앙 박스만)","through가 아닌 tip 유지 확인 필요"],fixes:["대각 빨간 큰 화살 오버레이","제목/눈금/범례를 원본 톤에 맞춤"]},
+"immulink-evidence-1.webp":{sev:"minor",diffs:["Exact %·through OK","우측 적응/선천 요약 박스·빨간 카테고리 프레임·DOI 누락"],fixes:["우측 카피·빨간 프레임·출처 UI 복원(기획 합의)","y틱 −30~110 원본 맞춤"]}
+};
+
 const stage=document.getElementById("stage");
 /* 2026-08-21 교차검증으로 HTML에 반영된 항목 — 오른쪽 여백 큰 원으로 표시 */
 const MARK={
@@ -282,6 +341,32 @@ function markRail(kind){
   const lab=document.createElement("div");lab.className="mark-label "+k;lab.innerHTML=L(copy).replace(/\n/g,"<br>");
   rail.appendChild(cir);rail.appendChild(lab);return rail;
 }
+function fixRail(buildKey,type){
+  const rail=document.createElement("div");rail.className="fix-rail";
+  if(type==="image"||!buildKey){
+    rail.innerHTML='<div class="fh"><span class="sev na">n/a</span>비전 수정안</div><div class="namsg">이미지 유지 · 차트 재현 대상 아님</div>';
+    return rail;
+  }
+  const fx=FIXES[buildKey];
+  if(!fx){
+    rail.innerHTML='<div class="fh"><span class="sev na">?</span>비전 수정안</div><div class="namsg">이 키에 대한 비전 기록 없음 — 재감사 필요</div>';
+    return rail;
+  }
+  const sev=fx.sev||"major";
+  const sevLab={critical:"치명",major:"중요",minor:"경미",ok:"양호"}[sev]||sev;
+  let html='<div class="fh"><span class="sev '+sev+'">'+sevLab+'</span>비전 차이 · 수정안</div>';
+  if(sev==="ok"&&(!fx.diffs||!fx.diffs.length)){
+    html+='<div class="okmsg">원본과 시각적으로 충분. 미세 정돈만 선택.</div>';
+  } else {
+    if(fx.diffs&&fx.diffs.length){
+      html+='<div class="sec">차이점</div><ul>'+fx.diffs.map(function(d){return '<li>'+d+'</li>';}).join('')+'</ul>';
+    }
+    if(fx.fixes&&fx.fixes.length){
+      html+='<div class="sec">수정안</div><ul>'+fx.fixes.map(function(d){return '<li>'+d+'</li>';}).join('')+'</ul>';
+    }
+  }
+  rail.innerHTML=html;return rail;
+}
 function render(){
   document.getElementById("topnote").innerHTML=L(T.headnote);
   [...stage.querySelectorAll(".prod,.ba")].forEach(n=>n.remove());
@@ -289,7 +374,8 @@ function render(){
     const h=document.createElement("h2");h.className="prod";h.textContent=prod;stage.appendChild(h);
     items.forEach(function(it){const file=it[0],type=it[1],buildKey=it[2],desc=it[3];
       const markKind=buildKey&&MARK[buildKey]?MARK[buildKey]:"none";
-      const ba=document.createElement("div");ba.className="ba"+(markKind==="exact"?" ba-exact":markKind==="approx"?" ba-approx":"");
+      const fx=buildKey&&FIXES[buildKey];
+      const ba=document.createElement("div");ba.className="ba"+(markKind==="exact"?" ba-exact":markKind==="approx"?" ba-approx":"")+(fx&&fx.sev==="critical"?" ba-crit":"");
       const bf=document.createElement("div");bf.className="side";
       bf.innerHTML='<div class="h">BEFORE · 원본 <span class="badge '+(type==='image'?'b-image':'b-chart')+'">'+(type==='image'?'도식·사진':'차트')+'</span></div>';
       const SRC=file.indexOf('local:')===0?file.slice(6):IMG+file;
@@ -310,13 +396,13 @@ function render(){
       } else {
         af.innerHTML='<div class="h">AFTER <span class="badge b-image">이미지 유지</span></div><div class="pend">'+L(desc)+'<br><small>데이터 차트가 아니라 그대로 둡니다</small></div>';
       }
-      ba.appendChild(bf);ba.appendChild(af);ba.appendChild(markRail(markKind));stage.appendChild(ba);
+      ba.appendChild(bf);ba.appendChild(af);ba.appendChild(fixRail(buildKey,type));ba.appendChild(markRail(markKind));stage.appendChild(ba);
     });
   });
   observe();
 }
 let io;function observe(){if(io)io.disconnect();io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("show");});},{threshold:.12});document.querySelectorAll(".after-box").forEach(function(c){io.observe(c);});}
 document.getElementById("lang").addEventListener("click",function(e){const b=e.target.closest("button");if(!b)return;[...e.currentTarget.children].forEach(function(x){x.classList.remove("on");});b.classList.add("on");LANG=b.dataset.l;document.documentElement.lang=LANG;render();});
-const wctl=document.getElementById("w"),wv=document.getElementById("wv");wctl.addEventListener("input",function(){stage.style.maxWidth=wctl.value+"px";wv.textContent=Math.round(wctl.value/1180*100)+"%";});
+const wctl=document.getElementById("w"),wv=document.getElementById("wv");wctl.addEventListener("input",function(){stage.style.maxWidth=wctl.value+"px";wv.textContent=Math.round(wctl.value/1480*100)+"%";});
 render();
 </script>
