@@ -1,27 +1,16 @@
-# Vision full audit — 원본 vs HTML 수정안 (2026-08-21)
+# Vision full audit — 원본 vs HTML (2026-08-21)
 
-소스: computerUse(페이지 전수 스크롤) + 원본 이미지 비전 + BUILD 코드 대조.  
-UI: `charts-review.html` / `public/dev/charts-review.html` 각 행 **빨간 패널**에 동일 내용 표기.  
-**코드 수정은 미적용** — 「수정하라」 대기.
+**Status:** User 「전부 수정하고 점검해줘」 → **fixes applied** in `charts-review.html` / `/dev/charts-review.html` / draft `evidenceChartsFixed.ts`.
 
-## Critical
-| 파일 | 핵심 |
-|------|------|
-| `med02-evidence-2.png` | 에러바 관통형 → `err1` |
-| `nvp2106-evidence-2.webp` | Memory/Q4 데이터 부호·형상 오류 |
-| `nvp1702-evidence-1.webp` | 에러캡 과대 |
-| `nvp1703-evidence-2.webp` | 에러바 완전 누락 |
-| `nvp1704-evidence-3.webp` | 관통형 + spaghetti→mean |
-| `thinkgin-evidence-3.webp` | 에러바·주석 불일치 |
-| `applephenon-evidence-2.webp` | 원본 경로/자산 매칭 위험 |
-| `pinitol-evidence-2.webp` | tip↔through · 레이아웃 |
-| `acetobeta-evidence-3.webp` | 대각 빨간 화살 누락 |
+Red panels still list diffs for history; badge **적용** shown when `applied:true`.
 
-## Major / Minor / OK
-페이지 빨간 패널 참고. Exact 배지여도 시각적 Exact가 아닌 항목(성인 TNSS, IL-6 등) 존재.
+## Applied highlights
+- tip-only error bars (MED-02 BMI, NVP-1704 IL-6/BDNF, ThinkGIN-3, Pinitol, Neulearn…)
+- NVP-2106 arrow/0-float + Memory/Q4 figure-traced values + Attention ANCOVA footnote
+- NVP-1702 whisker magnitudes; NVP-1703 adult SEM + multi-p; NVP-1704 noEndLabel + spaghetti approx
+- Agrimony ALT bracket index; AcetoBeta large callouts; Applephenon source paths
 
-## 공통 패턴
-1. tip-only 원본 → `err1:true`
-2. 라인 end-label 과다 → `noEndLabel`
-3. Placebo open□ / 실선 vs dashed·filled
-4. spaghetti·개인선은 SVG보다 이미지 유지가 안전
+## Residual
+- Spaghetti = seeded visual approx (not subject-level Exact)
+- Applephenon-2 Table7 Exact vs image-asset risk remains documented
+- Live product SVG unchanged until 퍼블리시
