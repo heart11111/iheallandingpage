@@ -21,7 +21,7 @@ const FIXES: {
   {
     key: "med01-evidence-1.webp",
     title: "MED-01 · 증상 3패널",
-    note: "작열감 위약≈0 (Figure 3B; 본문은 증가). MED-01은 음수.",
+    note: "작열감 위약 +0.1 Approx (본문 increased; 표 수치 없음). 배지 approve.",
   },
   {
     key: "med01-evidence-2.png",
@@ -36,7 +36,7 @@ const FIXES: {
   {
     key: "nvp1704-evidence-1.webp",
     title: "NVP-1704 · BDI/BAI",
-    note: "Table 2 Exact (−6.18/−8.02 등). NVP가 위약보다 더 큰 감소.",
+    note: "Table 2 Exact (−6.18/−8.02 등). NVP가 위약보다 더 큰 감소. SEM 에러바.",
   },
   {
     key: "nvp1704-evidence-2.webp",
@@ -46,12 +46,17 @@ const FIXES: {
   {
     key: "nvp1704-evidence-3.webp",
     title: "NVP-1704 · IL-6 / log BDNF / 비율",
-    note: "IL-6 −0.23 / +0.20. 패널3·4는 IL-6/log(BDNF) (0.15→0.12 / 0.13→0.15). SEM 에러바.",
+    note: "IL-6 −0.23/+0.20. P=0.041은 군간 Δ. 비율 패널 0.15→0.12 / 0.13→0.15. SEM.",
+  },
+  {
+    key: "applephenon-evidence-1.webp",
+    title: "Applephenon · 원본 재현",
+    note: "Table 7 미매칭 · 축 라벨 중화 · approve (퍼블리시 전 재확인).",
   },
   {
     key: "applephenon-evidence-2.webp",
     title: "Applephenon · 허리둘레",
-    note: "복제 해제. Exact Δcm AP 0/−0.9/−1.7/−2.2/−1.7 vs PL 0/+0.3/+0.2/−0.1/−0.4.",
+    note: "Exact Δcm AP 0/−0.9/−1.7/−2.2/−1.7 vs PL 0/+0.3/+0.2/−0.1/−0.4.",
   },
   {
     key: "applephenon-evidence-3.webp",
@@ -61,17 +66,17 @@ const FIXES: {
   {
     key: "thinkgin-evidence-1.webp",
     title: "ThinkGIN · AChE",
-    note: "ITT Exact −11.53 / −8.78 + 절단축.",
+    note: "ITT Exact −11.53±3.85 / −8.78±4.25, ** p=0.003.",
   },
   {
     key: "thinkgin-evidence-3.webp",
     title: "ThinkGIN · PSQI-K 수면잠복",
-    note: "ITT Exact −0.25±0.95 / +0.15±0.80, *p=0.046 (PP와 혼용 해소).",
+    note: "ITT Exact −0.25±0.95 / +0.15±0.80, *p=0.046.",
   },
   {
     key: "nvp2106-evidence-2.webp",
     title: "NVP-2106 · Memory / Q4",
-    note: "Q4 위약 Approx [0,+0.3,−0.06] (6주↑·12주↓). 원본 재확인 권장.",
+    note: "Memory HTML 동기 [0,−2.1,−2.8]. Q4 위약 Approx [0,+0.3,−0.06].",
   },
   {
     key: "nvp1702-evidence-1.webp",
