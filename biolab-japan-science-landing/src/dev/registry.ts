@@ -34,7 +34,7 @@ export const draftRegistry: DraftEntry[] = [
     previewPath: "/dev/charts-approx",
     livePath: "/products (evidence SVG — 퍼블리시 전 미반영)",
     status: "ready",
-    note: "라이브 evidenceCharts.ts는 원본 유지. 수정본은 /dev + drafts/evidenceChartsFixed.ts + charts-review.html만. Opus 감사 반영, 다중모델 교차검증 진행.",
+    note: "라이브 미반영. Opus+GPT+Sonnet 교차검증 중/완료 — multi-model-cross-verify-2026-08-21.md. /dev/charts-approx에서 검수.",
     updatedAt: "2026-08-21",
   },
 ];

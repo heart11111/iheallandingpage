@@ -108,10 +108,11 @@ export default function ChartsApproxDevPage() {
             <p className="dh-kicker">INTERNAL · DEV PREVIEW · LIVE 미반영</p>
             <h1>차트 상대·Exact 수정 초안</h1>
             <p className="dh-dev-hub-lead">
-              Opus 논문 교차검증 + 다중 모델 검수용 초안입니다.{" "}
+              Opus 논문 교차검증 + GPT/Sonnet 다중 모델 검수용 초안입니다.{" "}
               <strong>제품 상세(라이브) SVG는 아직 바꾸지 않았습니다.</strong>{" "}
               여기(/dev)만 수정본을 렌더합니다. 검수 후 「퍼블리시」라고 하시면
-              <code>evidenceCharts.ts</code>로 승격합니다.
+              <code>evidenceCharts.ts</code>로 승격합니다. 교차검증 요약:{" "}
+              <code>reference/charts-review/multi-model-cross-verify-2026-08-21.md</code>
             </p>
 
             <div style={{ display: "flex", gap: 8, marginBottom: 28 }}>
