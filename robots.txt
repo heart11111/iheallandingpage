@@ -1,5 +1,7 @@
 User-Agent: *
 Allow: /
+Disallow: /dev/
+Disallow: /dev
 
 Host: https://biolabjp.com
 Sitemap: https://biolabjp.com/sitemap.xml
