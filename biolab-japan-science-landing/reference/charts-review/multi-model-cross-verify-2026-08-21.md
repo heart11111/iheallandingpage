@@ -59,12 +59,19 @@
 3. **MED-01 작열감 +0.1** — 부호만 Exact, 수치는 Figure Approx.
 4. **NVP-1704 선그래프 에러바** — 표는 SD, 그림 캡션은 SEM → 초안은 SEM(SD/√n) 사용.
 
-## 종합 판정 (현재)
+## 모델별 결과 (도착분)
+
+### Sonnet ([Sonnet 교차검증](bc-a583a273-f31e-513a-bd50-9bba09f49f77))
+핵심 5클레임 전부 **CONFIRMED**. 라이브 미반영 확인.
+
+### GPT ([교차검증 Exact](bc-5f906dcc-4b6f-5206-b6bb-d9ce428880f1))
+Exact 다수 **CONFIRMED**. 이견:
+- MED-01 작열감 위약 `+0.10` → Figure 3B≈0 권고 → **초안을 `0`으로 수정**
+- NVP-2106 Q4 → canonical Approx `[0,+0.30,−0.06]` 권고 → **draft/HTML 동기 수정**
+- 라이브는 publish 전까지 유지 권고 → **동의**
+
+## 종합 판정
 
 **PASS_WITH_NOTES**
 
-- Exact·부호 핵심 클레임은 PMC 원문으로 재확인됨.
-- 라이브 미반영 /dev 전용 구조 유지.
-- Approx 잔여 4건은 퍼블리시 전 원본 이미지로 한 번 더 보면 좋음.
-
-모델 B/C/A2 백그라운드 결과가 도착하면 본 문서 §모델별 원문 섹션에 붙입니다.
+Exact·부호 핵심은 모델 간 합의. 작열감/`Q4`는 Approx로 정리. `/dev`만 수정, 라이브 미반영.
