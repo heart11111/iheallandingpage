@@ -21,7 +21,7 @@ const FIXES: {
   {
     key: "med01-evidence-1.webp",
     title: "MED-01 · 증상 3패널",
-    note: "작열감 위약 +0.1 (논문: control group increased). MED-01은 음수.",
+    note: "작열감 위약≈0 (Figure 3B; 본문은 증가). MED-01은 음수.",
   },
   {
     key: "med01-evidence-2.png",
@@ -71,7 +71,7 @@ const FIXES: {
   {
     key: "nvp2106-evidence-2.webp",
     title: "NVP-2106 · Memory / Q4",
-    note: "Q4 위약 종점 0 아래(Approx, 캡션 +1514%와 정합). 원본 재확인 권장.",
+    note: "Q4 위약 Approx [0,+0.3,−0.06] (6주↑·12주↓). 원본 재확인 권장.",
   },
   {
     key: "nvp1702-evidence-1.webp",
