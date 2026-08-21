@@ -7,6 +7,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      // Internal draft previews — never index.
+      disallow: ["/dev/", "/dev"],
     },
     sitemap: "https://biolabjp.com/sitemap.xml",
     host: "https://biolabjp.com",
