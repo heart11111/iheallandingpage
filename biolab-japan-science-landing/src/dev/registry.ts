@@ -28,16 +28,15 @@ export type DraftEntry = {
  * Agents: add/update entries here whenever a draft page is created or changed.
  */
 export const draftRegistry: DraftEntry[] = [
-  // Example shape (no active drafts yet):
-  // {
-  //   id: "home-2026-08",
-  //   title: "홈페이지 개편",
-  //   previewPath: "/dev/home",
-  //   livePath: "/",
-  //   status: "ready",
-  //   note: "히어로 카피·CTA 초안",
-  //   updatedAt: "2026-08-21",
-  // },
+  {
+    id: "charts-approx-2026-08",
+    title: "차트 상대·방향 근사치 수정",
+    previewPath: "/dev/charts-approx",
+    livePath: "/products (evidence SVG)",
+    status: "ready",
+    note: "Immulink/Nugent/Applephenon 허리·ThinkGIN 등 논문 Exact 기준 상대·부호 수정. /dev에서 확인 후 퍼블리시.",
+    updatedAt: "2026-08-21",
+  },
 ];
 
 export function getOpenDrafts() {
