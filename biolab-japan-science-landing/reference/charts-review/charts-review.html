@@ -21,13 +21,25 @@
   .legendbar{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;margin:6px 0 16px}
   .legendbar span{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--grid);padding:3px 9px;border-radius:20px}
   .dotb{width:10px;height:10px;border-radius:50%}
+  .dotb.lg{width:22px;height:22px;border:2px solid rgba(0,0,0,.08);box-shadow:inset 0 0 0 2px #fff}
   h2.prod{font-size:14px;margin:22px 0 8px;color:#0f2233;border-bottom:2px solid #dbe2e8;padding-bottom:6px}
-  .ba{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:#fff;border:1px solid var(--grid);border-radius:12px;padding:12px;margin:10px 0;box-shadow:0 1px 3px rgba(16,34,51,.05)}
-  @media(max-width:720px){.ba{grid-template-columns:1fr}}
+  .ba{display:grid;grid-template-columns:1fr 1fr 64px;gap:12px;background:#fff;border:1px solid var(--grid);border-radius:12px;padding:12px;margin:10px 0;box-shadow:0 1px 3px rgba(16,34,51,.05);align-items:stretch}
+  .ba.ba-exact{border-color:#86efac;background:linear-gradient(90deg,#fff 0%,#fff 92%,#ecfdf5 100%)}
+  .ba.ba-approx{border-color:#fcd34d;background:linear-gradient(90deg,#fff 0%,#fff 92%,#fffbeb 100%)}
+  @media(max-width:720px){.ba{grid-template-columns:1fr;}.mark-rail{min-height:56px;padding-top:4px}}
   .side{min-width:0}
   .side .h{font-size:11px;font-weight:700;letter-spacing:.4px;color:#6b7280;text-transform:uppercase;margin-bottom:6px;display:flex;gap:8px;align-items:center}
   .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;color:#fff}
-  .b-chart{background:#12857e}.b-done{background:#1f9d55}.b-image{background:#556}
+  .b-chart{background:#12857e}.b-done{background:#1f9d55}.b-image{background:#556}.b-exact{background:#059669}.b-approx{background:#d97706}
+  .mark-rail{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:4px 0}
+  .mark-circle{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;line-height:1;box-shadow:0 2px 8px rgba(15,34,51,.18);border:3px solid #fff;flex-shrink:0}
+  .mark-circle.exact{background:#059669}
+  .mark-circle.approx{background:#d97706}
+  .mark-circle.none{background:#cbd5e1;color:#475569;font-size:18px}
+  .mark-label{font-size:10px;font-weight:800;letter-spacing:.02em;text-align:center;line-height:1.25;max-width:58px}
+  .mark-label.exact{color:#047857}
+  .mark-label.approx{color:#b45309}
+  .mark-label.none{color:#64748b}
   .side img{width:100%;display:block;border:1px solid #eee;border-radius:6px;background:#fafafa}
   .fname{font-size:10px;color:#9aa3af;margin-top:4px;font-family:monospace}
   .after-box{border:1px dashed #cfd6dd;border-radius:8px;padding:10px;height:100%;display:flex;flex-direction:column;justify-content:center}
@@ -55,7 +67,11 @@
 </header>
 <div class="wrap" id="stage">
   <div class="note" id="topnote"></div>
-  <div class="legendbar"><span><i class="dotb" style="background:#1f9d55"></i>완성(좌우 비교)</span><span><i class="dotb" style="background:#556"></i>도식·사진 → 이미지 유지</span></div>
+  <div class="legendbar">
+    <span><i class="dotb lg" style="background:#059669"></i>오른쪽 큰 초록 원 = Exact 교차검증 <b>반영됨</b></span>
+    <span><i class="dotb lg" style="background:#d97706"></i>주황 원 = Approx·승인대기(이번 라운드 반영)</span>
+    <span><i class="dotb lg" style="background:#cbd5e1"></i>회색 = 이번 Exact 패치 대상 아님 / 이미지 유지</span>
+  </div>
 </div>
 <script>
 const IMG="https://biolabjp.com/images/ingredients/";
@@ -232,17 +248,48 @@ const INV=[
  ["면역 · Immulink",[["immulink-evidence-1.webp","chart","immulink-evidence-1.webp"]]]
 ];
 const stage=document.getElementById("stage");
+/* 2026-08-21 교차검증으로 HTML에 반영된 항목 — 오른쪽 여백 큰 원으로 표시 */
+const MARK={
+  "immulink-evidence-1.webp":"exact",
+  "med01-evidence-2.png":"exact",
+  "nvp1703-evidence-2.webp":"exact",
+  "nvp1704-evidence-1.webp":"exact",
+  "nvp1704-evidence-2.webp":"exact",
+  "nvp1704-evidence-3.webp":"exact",
+  "thinkgin-evidence-1.webp":"exact",
+  "thinkgin-evidence-3.webp":"exact",
+  "applephenon-evidence-2.webp":"exact",
+  "applephenon-evidence-3.webp":"exact",
+  "nvp1702-evidence-1.webp":"exact",
+  "med01-evidence-1.webp":"approx",
+  "nvp2106-evidence-2.webp":"approx",
+  "applephenon-evidence-1.webp":"approx",
+  "nvp1703-evidence-1.webp":"approx"
+};
+const MARK_COPY={
+  exact:{ko:"Exact\n반영",ja:"Exact\n反映",en:"Exact\ndone",glyph:"✓"},
+  approx:{ko:"Approx\n반영",ja:"Approx\n反映",en:"Approx\ndone",glyph:"!"},
+  none:{ko:"미대상",ja:"対象外",en:"n/a",glyph:"–"}
+};
 function legendMED(){const d=document.createElement("div");d.className="legc";d.innerHTML='<span><i style="background:var(--accent)"></i>'+L(T.MED)+'</span><span><i style="background:var(--placebo)"></i>'+L(T.placebo)+'</span>';return d;}
 function legendMED01(){const d=document.createElement("div");d.className="legc";d.innerHTML='<span><i style="background:var(--purple)"></i>'+L(T.MED01)+'</span><span><i style="background:var(--placebo)"></i>'+L(T.placebo)+'</span>';return d;}
 function legendNVP(){const d=document.createElement("div");d.className="legc";d.innerHTML='<span><i style="background:var(--brand2)"></i>'+L(T.NVP)+'</span><span><i style="background:#9aa3af"></i>'+L(T.placebo)+'</span>';return d;}
 function legendCustom(items){const d=document.createElement("div");d.className="legc";d.innerHTML=items.map(it=>'<span><i style="background:'+it.c+'"></i>'+(typeof it.t==='string'?it.t:L(it.t))+'</span>').join('');return d;}
+function markRail(kind){
+  const k=kind||"none",copy=MARK_COPY[k]||MARK_COPY.none;
+  const rail=document.createElement("div");rail.className="mark-rail";rail.title=L(copy).replace(/\n/g," ");
+  const cir=document.createElement("div");cir.className="mark-circle "+k;cir.textContent=copy.glyph;
+  const lab=document.createElement("div");lab.className="mark-label "+k;lab.innerHTML=L(copy).replace(/\n/g,"<br>");
+  rail.appendChild(cir);rail.appendChild(lab);return rail;
+}
 function render(){
   document.getElementById("topnote").innerHTML=L(T.headnote);
   [...stage.querySelectorAll(".prod,.ba")].forEach(n=>n.remove());
   INV.forEach(function(entry){const prod=entry[0],items=entry[1];
     const h=document.createElement("h2");h.className="prod";h.textContent=prod;stage.appendChild(h);
     items.forEach(function(it){const file=it[0],type=it[1],buildKey=it[2],desc=it[3];
-      const ba=document.createElement("div");ba.className="ba";
+      const markKind=buildKey&&MARK[buildKey]?MARK[buildKey]:"none";
+      const ba=document.createElement("div");ba.className="ba"+(markKind==="exact"?" ba-exact":markKind==="approx"?" ba-approx":"");
       const bf=document.createElement("div");bf.className="side";
       bf.innerHTML='<div class="h">BEFORE · 원본 <span class="badge '+(type==='image'?'b-image':'b-chart')+'">'+(type==='image'?'도식·사진':'차트')+'</span></div>';
       const SRC=file.indexOf('local:')===0?file.slice(6):IMG+file;
@@ -252,7 +299,8 @@ function render(){
       im.src=SRC;bf.appendChild(im);bf.appendChild(fn);
       const af=document.createElement("div");af.className="side";
       if(buildKey&&BUILD[buildKey]){const b=BUILD[buildKey],capText=L(b.cap)||"",needsCheck=/근사값|approx|近似/i.test(capText);
-        af.innerHTML='<div class="h">AFTER · HTML <span class="badge '+(needsCheck?'b-image':'b-done')+'">'+(needsCheck?'수치확인':'완성')+'</span></div>';
+        const statusBadge=markKind==="exact"?'<span class="badge b-exact">Exact 반영</span>':markKind==="approx"?'<span class="badge b-approx">Approx 반영</span>':'<span class="badge '+(needsCheck?'b-image':'b-done')+'">'+(needsCheck?'수치확인':'완성')+'</span>';
+        af.innerHTML='<div class="h">AFTER · HTML '+statusBadge+'</div>';
         const box=document.createElement("div");box.className="after-box";
         const pill=document.createElement("div");pill.className="pillt";pill.textContent=L(b.pill);box.appendChild(pill);
         box.appendChild(b.legendItems?legendCustom(b.legendItems):b.legend==="med"?legendMED():b.legend==="med01"?legendMED01():legendNVP());
@@ -262,7 +310,7 @@ function render(){
       } else {
         af.innerHTML='<div class="h">AFTER <span class="badge b-image">이미지 유지</span></div><div class="pend">'+L(desc)+'<br><small>데이터 차트가 아니라 그대로 둡니다</small></div>';
       }
-      ba.appendChild(bf);ba.appendChild(af);stage.appendChild(ba);
+      ba.appendChild(bf);ba.appendChild(af);ba.appendChild(markRail(markKind));stage.appendChild(ba);
     });
   });
   observe();
