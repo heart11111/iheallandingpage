@@ -1,88 +1,40 @@
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BIOLAB 근거 차트 — 원본 ↔ HTML (검토·승인용)</title>
-<style>
-  :root{--bg:#eef1f4;--card:#fff;--ink:#1f2937;--muted:#6b7280;--grid:#e5e7eb;--brand:#0b6b8a;--brand2:#12a19a;--placebo:#b6bcc4;--accent:#e8730c;--purple:#8e2c8e;--pill:#12857e;}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR","Noto Sans JP",Arial,sans-serif}
-  header{position:sticky;top:0;z-index:10;background:#0f2233;color:#fff;padding:12px 18px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.15)}
-  header h1{font-size:15px;margin:0;font-weight:700}
-  header .sub{font-size:11px;color:#9fb3c8}
-  .controls{margin-left:auto;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-  .seg{display:inline-flex;border:1px solid #33506b;border-radius:8px;overflow:hidden}
-  .seg button{background:#16324a;color:#cfe0ee;border:0;padding:5px 12px;font-size:12px;cursor:pointer}
-  .seg button.on{background:#2f9e97;color:#fff;font-weight:700}
-  .controls label{font-size:11px;color:#9fb3c8;display:flex;gap:6px;align-items:center}
-  .wrap{max-width:1180px;margin:0 auto;padding:18px}
-  .note{font-size:13px;color:#374151;background:#fff;border:1px solid var(--grid);border-left:4px solid var(--brand2);padding:12px 14px;border-radius:8px;margin-bottom:18px;line-height:1.6}
-  .legendbar{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;margin:6px 0 16px}
-  .legendbar span{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--grid);padding:3px 9px;border-radius:20px}
-  .dotb{width:10px;height:10px;border-radius:50%}
-  .dotb.lg{width:22px;height:22px;border:2px solid rgba(0,0,0,.08);box-shadow:inset 0 0 0 2px #fff}
-  h2.prod{font-size:14px;margin:22px 0 8px;color:#0f2233;border-bottom:2px solid #dbe2e8;padding-bottom:6px}
-  .ba{display:grid;grid-template-columns:1fr 1fr 64px;gap:12px;background:#fff;border:1px solid var(--grid);border-radius:12px;padding:12px;margin:10px 0;box-shadow:0 1px 3px rgba(16,34,51,.05);align-items:stretch}
-  .ba.ba-exact{border-color:#86efac;background:linear-gradient(90deg,#fff 0%,#fff 92%,#ecfdf5 100%)}
-  .ba.ba-approx{border-color:#fcd34d;background:linear-gradient(90deg,#fff 0%,#fff 92%,#fffbeb 100%)}
-  @media(max-width:720px){.ba{grid-template-columns:1fr;}.mark-rail{min-height:56px;padding-top:4px}}
-  .side{min-width:0}
-  .side .h{font-size:11px;font-weight:700;letter-spacing:.4px;color:#6b7280;text-transform:uppercase;margin-bottom:6px;display:flex;gap:8px;align-items:center}
-  .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;color:#fff}
-  .b-chart{background:#12857e}.b-done{background:#1f9d55}.b-image{background:#556}.b-exact{background:#059669}.b-approx{background:#d97706}
-  .mark-rail{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:4px 0}
-  .mark-circle{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;line-height:1;box-shadow:0 2px 8px rgba(15,34,51,.18);border:3px solid #fff;flex-shrink:0}
-  .mark-circle.exact{background:#059669}
-  .mark-circle.approx{background:#d97706}
-  .mark-circle.none{background:#cbd5e1;color:#475569;font-size:18px}
-  .mark-label{font-size:10px;font-weight:800;letter-spacing:.02em;text-align:center;line-height:1.25;max-width:58px}
-  .mark-label.exact{color:#047857}
-  .mark-label.approx{color:#b45309}
-  .mark-label.none{color:#64748b}
-  .side img{width:100%;display:block;border:1px solid #eee;border-radius:6px;background:#fafafa}
-  .fname{font-size:10px;color:#9aa3af;margin-top:4px;font-family:monospace}
-  .after-box{border:1px dashed #cfd6dd;border-radius:8px;padding:10px;height:100%;display:flex;flex-direction:column;justify-content:center}
-  .pillt{display:inline-block;background:var(--pill);color:#fff;font-weight:700;font-size:12px;padding:5px 12px;border-radius:20px;margin-bottom:4px;align-self:flex-start}
-  .cap{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5}
-  .pend{font-size:12px;color:#8a6d3b;background:#fff8ec;border:1px solid #f0e0c0;border-radius:8px;padding:12px;text-align:center;line-height:1.6}
-  .legc{display:flex;gap:14px;font-size:11px;margin:2px 0 4px;flex-wrap:wrap}
-  .legc i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:4px;vertical-align:-1px}
-  svg{width:100%;height:auto;display:block;overflow:visible}
-  .barRect{transform-box:fill-box;transform:scaleY(0);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-  .show .barRect{transform:scaleY(1)}
-  .lp{transition:stroke-dashoffset 1.1s ease}.show .lp{stroke-dashoffset:0!important}
-  .dot{opacity:0;transition:opacity .4s ease .55s}.show .dot{opacity:1}
-  text{font-family:inherit}
-</style>
-</head>
-<body>
-<header>
-  <div><h1>원본 이미지 ↔ HTML 재현 — 비포/애프터 (검토·승인용)</h1>
-    <div class="sub">원본↔HTML 비교 · Exact 교차검증 반영(2026-08-21) · 라이브 제품 차트는 미반영</div></div>
-  <div class="controls">
-    <div class="seg" id="lang"><button data-l="ko" class="on">KR</button><button data-l="ja">JP</button><button data-l="en">EN</button></div>
-    <label>폭 <input id="w" type="range" min="380" max="1180" value="1180"><span id="wv">100%</span></label>
-  </div>
-</header>
-<div class="wrap" id="stage">
-  <div class="note" id="topnote"></div>
-  <div class="legendbar">
-    <span><i class="dotb lg" style="background:#059669"></i>오른쪽 큰 초록 원 = Exact 교차검증 <b>반영됨</b></span>
-    <span><i class="dotb lg" style="background:#d97706"></i>주황 원 = Approx·승인대기(이번 라운드 반영)</span>
-    <span><i class="dotb lg" style="background:#cbd5e1"></i>회색 = 이번 Exact 패치 대상 아님 / 이미지 유지</span>
-  </div>
-</div>
-<script>
+/* DRAFT-ONLY chart engine for /dev/charts-approx preview.
+   Do NOT import from live product pages until the owner says 퍼블리시.
+   Source of truth for numbers: reference/charts-review/charts-review.html
+   (synced after Opus/GPT accuracy audit 2026-08-21). Client-only. */
+/* eslint-disable */
+// @ts-nocheck
+
 const IMG="https://biolabjp.com/images/ingredients/";
 let LANG="ko"; const L=o=>typeof o==="string"?o:(o&&(o[LANG]||o.ko));
-const T={headnote:{ko:"왼쪽=라이브 원본, 오른쪽=HTML/SVG 재현. 원본 양식(제목·축·막대·라인·에러바·점 수치·유의표시)과 값을 맞췄습니다. 2026-08-21 다중모델 교차검증 반영(Exact·부호). 정확 수치 없는 항목만 <b>근사값</b>. 사진·도식은 이미지 유지. <b>라이브 제품 SVG는 퍼블리시 전 미반영</b> — 이 문서는 원본↔재현 비교용.",ja:"左=原本、右=HTML再現。<b>承認まで反映しません。</b>",en:"Left=original, right=HTML recreation. <b>Not committed.</b>"},
+const T={headnote:{ko:"왼쪽=라이브 원본, 오른쪽=HTML/SVG 재현. 원본 양식(제목·축·막대·라인·에러바·점 수치·유의표시)과 값을 맞췄습니다. 정확 수치가 없는 그래프는 <b>근사값</b>(캡션 표기). 사진·도식은 이미지 유지. <b>승인 전까지 깃 반영 안 함.</b> 원본이 안 보이면 브라우저에서 여세요.",ja:"左=原本、右=HTML再現。<b>承認まで反映しません。</b>",en:"Left=original, right=HTML recreation. <b>Not committed.</b>"},
  MED:{ko:"MED-02",ja:"MED-02",en:"MED-02"},MED01:{ko:"MED-01",ja:"MED-01",en:"MED-01"},NVP:{ko:"NVP-2106",ja:"NVP-2106",en:"NVP-2106"},placebo:{ko:"위약",ja:"プラセボ",en:"Placebo"},weeks:{ko:"주",ja:"週",en:"Weeks"},before:{ko:"섭취 전",ja:"摂取前",en:"Before"},after:{ko:"섭취 후",ja:"摂取後",en:"After"},test:{ko:"시험군",ja:"試験群",en:"Test"},ctrl:{ko:"대조군",ja:"対照群",en:"Control"},base:{ko:"Baseline",ja:"Baseline",en:"Baseline"},wk8:{ko:"8주",ja:"8週",en:"8 Weeks"}};
 const PL={ko:"위약",ja:"プラセボ",en:"Placebo"};
+/* 작업 상태 배지: ok=반영완료, approve=수정·승인대기, wait=작업대기, demo=오버레이 데모 */
+const STAT={
+ "med01-evidence-1.webp":"approve","med01-evidence-2.png":"ok",
+ "med02-evidence-1.webp":"ok","med02-evidence-2.png":"ok",
+ "nvp2106-evidence-1.webp":"ok","nvp2106-evidence-2.webp":"approve","nvp2106-evidence-3.webp":"ok",
+ "nvp1702-evidence-1.webp":"approve","nvp1702-evidence-2.webp":"ok",
+ "nvp1703-evidence-1.webp":"demo","nvp1703-evidence-2.webp":"wait",
+ "nvp1704-evidence-1.webp":"approve","nvp1704-evidence-2.webp":"approve","nvp1704-evidence-3.webp":"wait",
+ "testofen-evidence-1.webp":"ok","testofen-evidence-2.webp":"ok","testofen-evidence-3.webp":"ok",
+ "thinkgin-evidence-1.webp":"ok","thinkgin-evidence-2.webp":"ok","thinkgin-evidence-3.webp":"ok",
+ "neulearn-evidence-2-clean.png":"ok","neulearn-evidence-3-clean.png":"ok",
+ "applephenon-evidence-1.webp":"approve","applephenon-evidence-2.webp":"approve","applephenon-evidence-3.webp":"ok",
+ "collagen-evidence-1-clean.png":"wait","collagen-evidence-2-clean.png":"wait",
+ "dermania-evidence-1.webp":"wait","dermania-evidence-2.webp":"ok",
+ "agrimony-alt-evidence.png":"ok","agrimony-ast-evidence.png":"ok","agrimony-hsi-evidence.png":"ok",
+ "pinitol-evidence-1.webp":"ok","pinitol-evidence-2.webp":"ok",
+ "acetobeta-evidence-2.webp":"ok","acetobeta-evidence-3.webp":"ok",
+ "bifido-evidence-2.webp":"wait","immulink-evidence-1.webp":"wait"
+};
+const STLABEL={ok:"✅ 반영완료",approve:"🟦 수정·승인대기",wait:"⬜ 작업대기",demo:"🟡 오버레이 데모"};
 const NS="http://www.w3.org/2000/svg";
 const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in(a||{}))e.setAttribute(k,a[k]);return e;};
 const txt=(x,y,s,a)=>{const e=el("text",Object.assign({x,y},a||{}));e.textContent=s;return e;};
 const fmt=v=>(Math.round(v*1000)/1000).toString();
+function wavePath(x0,x1,y){const n=4,seg=(x1-x0)/n;let d="M"+x0+" "+y;for(let k=0;k<n;k++){const xa=x0+seg*k,dir=k%2===0?-1:1;d+=" Q"+(xa+seg/2)+" "+(y+dir*3.4)+" "+(xa+seg)+" "+y;}return d;}
 function barChart(cfg){
   const tt=(cfg.title||cfg.titleBox)?26:0;const sigLv=(cfg.sig&&cfg.sig.length)?Math.max.apply(null,cfg.sig.map(function(s){return s.lvl||0;})):0;const w=cfg.w||420,h=cfg.h||300,m={t:30+tt+sigLv*18,r:16,b:56,l:66},iw=w-m.l-m.r,ih=h-m.t-m.b;
   const Y=v=>m.t+ih*(cfg.yMax-v)/(cfg.yMax-cfg.yMin);
@@ -94,9 +46,13 @@ function barChart(cfg){
   const n=cfg.bars.length,slot=iw/n,barW=Math.min(52,slot*0.62),b0=(cfg.base!=null?cfg.base:0);
   cfg.bars.forEach((b,i)=>{const cx=m.l+slot*i+slot/2,v=b.value,y0=Y(b0),yv=Y(v),top=Math.min(y0,yv),hgt=Math.abs(yv-y0)||1;
     const r=el("rect",{x:cx-barW/2,y:top,width:barW,height:hgt,fill:b.color,rx:2,class:"barRect"});r.style.transformOrigin=(v<b0?"top":"bottom");svg.appendChild(r);
-    if(b.err){if(b.err1){const yo=Y(v<b0?v-b.err:v+b.err),yb=Y(v);svg.appendChild(el("line",{x1:cx,y1:yb,x2:cx,y2:yo,stroke:"#333","stroke-width":1.1}));svg.appendChild(el("line",{x1:cx-4,y1:yo,x2:cx+4,y2:yo,stroke:"#333","stroke-width":1.1}));}else{const eu=Y(v+b.err),ed=Y(v-b.err);svg.appendChild(el("line",{x1:cx,y1:eu,x2:cx,y2:ed,stroke:"#333","stroke-width":1.1}));svg.appendChild(el("line",{x1:cx-4,y1:eu,x2:cx+4,y2:eu,stroke:"#333","stroke-width":1.1}));svg.appendChild(el("line",{x1:cx-4,y1:ed,x2:cx+4,y2:ed,stroke:"#333","stroke-width":1.1}));}}
+    if(b.brk){const bx=cx-barW/2,ya=Math.min(Y(b.brk[0]),Y(b.brk[1])),yb=Math.max(Y(b.brk[0]),Y(b.brk[1]));svg.appendChild(el("rect",{x:bx-0.5,y:ya,width:barW+1,height:yb-ya,fill:"#fff"}));[ya,yb].forEach(yy=>svg.appendChild(el("path",{d:wavePath(bx,bx+barW,yy),fill:"none",stroke:b.color,"stroke-width":1.8})));}
+    if(b.err){if(b.err1){/* one-sided: stem from value outward, single cap (source shows T, not H) */
+      const yo=Y(v<b0?v-b.err:v+b.err),yb=Y(v);svg.appendChild(el("line",{x1:cx,y1:yb,x2:cx,y2:yo,stroke:"#333","stroke-width":1.1}));svg.appendChild(el("line",{x1:cx-4,y1:yo,x2:cx+4,y2:yo,stroke:"#333","stroke-width":1.1}));
+    }else{/* two-sided I-beam (source shows H): caps at both ±SD */
+      const eu=Y(v+b.err),ed=Y(v-b.err);svg.appendChild(el("line",{x1:cx,y1:eu,x2:cx,y2:ed,stroke:"#333","stroke-width":1.1}));svg.appendChild(el("line",{x1:cx-4,y1:eu,x2:cx+4,y2:eu,stroke:"#333","stroke-width":1.1}));svg.appendChild(el("line",{x1:cx-4,y1:ed,x2:cx+4,y2:ed,stroke:"#333","stroke-width":1.1}));}}
     if(cfg.showval&&!b.noval)svg.appendChild(txt(cx,(v<b0?(b.err?Y(v-b.err)+13:top+hgt+13):(b.err?Y(v+b.err)-5:top-5)),fmt(v),{"text-anchor":"middle","font-size":9,fill:"#555"}));
-    if(b.mark)svg.appendChild(txt(cx,(v<b0?(b.err?Y(v-b.err)+25:top+hgt+25):(b.err?Y(v+b.err)-16:top-16)),b.mark,{"text-anchor":"middle","font-size":11,fill:"#b3243a","font-weight":700}));
+    if(b.mark)svg.appendChild(txt(cx,(v<b0?(b.err?Y(v-b.err)+27:top+hgt+27):(b.err?Y(v+b.err)-18:top-18)),b.mark,{"text-anchor":"middle","font-size":15,fill:"#b3243a","font-weight":800}));
     if(b.label!=null)svg.appendChild(txt(cx,h-30,L(b.label),{"text-anchor":"middle","font-size":11,fill:"#111827","font-weight":700}));
     if(b.sub!=null)svg.appendChild(txt(cx,h-16,L(b.sub),{"text-anchor":"middle","font-size":9.5,fill:"#6b7280"}));});
   (cfg.glabels||[]).forEach(g=>{const gx=(m.l+slot*g.i0+slot/2+m.l+slot*g.i1+slot/2)/2;svg.appendChild(txt(gx,h-15,L(g.t),{"text-anchor":"middle","font-size":10,fill:"#111827","font-weight":700}));});
@@ -132,12 +88,26 @@ function lineChart(cfg){
     if(s.label&&!cfg.improvementArrow&&!cfg.noEndLabel)ends.push({y:Y(s.vals[s.vals.length-1]),t:L(s.label),c:s.color});});
   ends.sort(function(a,b){return a.y-b.y;});for(var _e=1;_e<ends.length;_e++){if(ends[_e].y-ends[_e-1].y<13)ends[_e].y=ends[_e-1].y+13;}ends.forEach(function(e){svg.appendChild(txt(m.l+iw+6,e.y,e.t,{"font-size":10.5,fill:e.c,"font-weight":700,dy:4}));});
   (cfg.pmarks||[]).forEach(pm=>{const last=pm.i===cfg.x.length-1;svg.appendChild(txt(X(pm.i)-(last?5:0),Y(pm.y)-11,pm.text,{"text-anchor":last?"end":"middle","font-size":10,fill:"#b3243a","font-weight":700}));});
+  if(cfg.redBox){const rb=cfg.redBox,_t=L(rb.text),lines=Array.isArray(_t)?_t:[_t],bw=rb.w||172,bx=(rb.x!=null?rb.x:m.l+6),by=(rb.y!=null?rb.y:m.t+2),bh=lines.length*15+10;svg.appendChild(el("rect",{x:bx,y:by,width:bw,height:bh,rx:6,fill:"rgba(255,255,255,0.94)",stroke:"#e0242f","stroke-width":2}));lines.forEach((ln,i)=>svg.appendChild(txt(bx+bw/2,by+18+i*15,ln,{"text-anchor":"middle","font-size":11,fill:"#c0121c","font-weight":800})));}
   return svg;
 }
 function grid3(items,fn){const w=document.createElement('div');w.style.cssText="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:6px;width:100%;min-width:0";items.forEach(q=>w.appendChild(q&&q.nodeType?q:fn(q)));return w;}
 function gridN(cols,nodes){const w=document.createElement('div');w.style.cssText="display:grid;grid-template-columns:repeat("+cols+",minmax(0,1fr));gap:8px;width:100%;min-width:0";nodes.forEach(n=>w.appendChild(n));return w;}
 function panels(list){return gridN(list.length,list.map(p=>barChart({w:p.w||280,h:250,base:p.base,yMin:p.yMin,yMax:p.yMax,ticks:p.ticks,yLabel:p.yLabel,bars:[{label:T.before,value:p.a,color:"var(--placebo)"},{label:T.after,value:p.b,color:"var(--brand2)"}],sig:p.sig?[{text:p.sig}]:null})));}
 function twoLine(nv,pl,nvLabel){return [{label:nvLabel,color:"#333",vals:nv.v,err:nv.e},{label:PL,color:"#9aa3af",dashed:true,square:true,vals:pl.v,err:pl.e}];}
+/* Image + responsive SVG overlay: for complex charts we keep the source image
+   and lay translated text on top in the image's own viewBox coordinate space,
+   so it scales identically on any screen (no px breakage). KO = original image. */
+function imgOverlayNode(file,vb,langMap){
+  const box=document.createElement('div');box.style.cssText="position:relative;width:100%";
+  const im=document.createElement('img');im.src=IMG+file;im.referrerPolicy="no-referrer";im.loading="eager";im.style.cssText="width:100%;display:block;border:1px solid #e8e8e8;border-radius:6px";
+  im.onerror=function(){this.style.minHeight="180px";this.style.background="#fff8ec";};box.appendChild(im);
+  const ov=langMap[LANG];
+  if(ov){const sv=document.createElementNS(NS,"svg");sv.setAttribute("viewBox",vb);sv.setAttribute("preserveAspectRatio","none");sv.style.cssText="position:absolute;inset:0;width:100%;height:100%";
+    ov.forEach(function(o){if(o.bg)sv.appendChild(el("rect",{x:o.x,y:o.y,width:o.w,height:o.h,fill:o.bg}));(o.t||[]).forEach(function(ln,i){sv.appendChild(txt(o.x+(o.pad||6),o.y+(o.ty||16)+i*(o.lh||15),ln,{"font-size":o.fs||12,"font-weight":o.fw||700,fill:o.fg||"#111"}));});});
+    box.appendChild(sv);}
+  return box;
+}
 const X3={ko:["섭취 전","6주 후","12주 후"],ja:["摂取前","6週後","12週後"],en:["Before","wk 6","wk 12"]};
 function tcLine(cfg){return lineChart({w:cfg.w||300,h:270,showval:true,title:cfg.title,tsig:cfg.tsigs?null:(cfg.tsig||"†††"),tsigs:cfg.tsigs,yMin:cfg.yMin,yMax:cfg.yMax,ticks:cfg.ticks,x:X3[LANG]||X3.ko,xlabel:false,yLabel:cfg.yLabel,series:[{label:T.test,color:"#333",diamond:true,vlabels:true,marks:cfg.tm,below:cfg.tbelow!==false,vals:cfg.t},{label:T.ctrl,color:"#9aa3af",vlabels:true,marks:cfg.cm,below:cfg.tbelow===false,vals:cfg.c}]});}
 function grpBar(cfg){return barChart({w:cfg.w||440,h:300,title:cfg.title,base:0,yMin:0,yMax:cfg.yMax,ticks:cfg.ticks,yLabel:cfg.yLabel,glabels:[{t:cfg.g1,i0:0,i1:1},{t:cfg.g2,i0:2,i1:3}],bars:[{label:{ko:"Baseline",ja:"Baseline",en:"Baseline"},value:cfg.v[0],color:"#7fb069",err:cfg.e[0]},{label:{ko:"8주",ja:"8週",en:"8wk"},value:cfg.v[1],color:"#f5c518",err:cfg.e[1]},{label:{ko:"Baseline",ja:"Baseline",en:"Baseline"},value:cfg.v[2],color:"#7fb069",err:cfg.e[2]},{label:{ko:"8주",ja:"8週",en:"8wk"},value:cfg.v[3],color:"#f5c518",err:cfg.e[3]}],sig:[{text:cfg.p,i0:cfg.si0,i1:cfg.si1}]});}
@@ -152,21 +122,32 @@ const BUILD={
  "med01-evidence-2.png":{pill:{ko:"Nugent score ↓",ja:"Nugent score ↓",en:"Nugent score ↓"},legend:"med01",cap:{ko:"낮을수록 감염 정도 낮음 · Exact −0.36±1.72 / +0.19±1.85 · 출처: Nutrients 2023;15(2):331",ja:"低いほど良い · Exact −0.36±1.72 / +0.19±1.85 · Nutrients 2023;15(2):331",en:"Lower = less infection · Exact −0.36±1.72 / +0.19±1.85 · Nutrients 2023;15(2):331"},
    render(){return barChart({w:400,h:300,title:{ko:"Nugent score 변화",ja:"Nugent変化",en:"Nugent change"},yMin:-3,yMax:3,ticks:[3,2,1,0,-1,-2,-3],yLabel:{ko:"Nugent score",ja:"Nugent",en:"Nugent score"},bars:[{label:T.MED01,value:-0.36,color:"var(--purple)",err:1.72,err1:true},{label:T.placebo,value:0.19,color:"var(--placebo)",err:1.85,err1:true}],sig:[{text:"*"}]});}},
  "nvp2106-evidence-1.webp":{pill:{ko:"인지력 점수 총점 개선",ja:"認知総点の改善",en:"Total cognitive score"},legend:"nvp",cap:{ko:"섭취 12주째 · 위약 대비 202% 개선 (P=0.0318) · 근사값(형태 재현)",ja:"12週・+202% · 近似",en:"Week 12 · +202% · approx."},
-   render(){return lineChart({w:500,h:300,title:{ko:"Total Score (ADAS-Cog13)",ja:"Total Score",en:"Total Score"},reverseY:true,improvementArrow:true,yMin:-6,yMax:0,ticks:[-6,-4,-2,0],x:["0","6","12"],yLabel:{ko:"ADAS-Cog13 변화",ja:"ADAS-Cog13変化",en:"Change in ADAS-Cog13"},series:[{label:T.NVP,color:"var(--brand2)",vals:[0,-2.4,-4.3]},{label:T.placebo,color:"#9aa3af",dashed:true,square:true,vals:[0,-0.9,-2.1]}],pmarks:[{i:2,y:-4.3,text:"P=0.0318 *"}]});}},
+   render(){return lineChart({w:500,h:300,title:{ko:"Total Score (ADAS-Cog13)",ja:"Total Score",en:"Total Score"},reverseY:true,improvementArrow:true,yMin:-6,yMax:0,ticks:[-6,-4,-2,0],x:["0","6","12"],yLabel:{ko:"ADAS-Cog13 변화",ja:"ADAS-Cog13変化",en:"Change in ADAS-Cog13"},series:[{label:T.NVP,color:"var(--brand2)",vals:[0,-2.4,-4.3]},{label:T.placebo,color:"#9aa3af",dashed:true,square:true,vals:[0,-0.9,-2.1]}],redBox:{text:{ko:"위약 대비 202% 개선 · P=0.0318",ja:"プラセボ比202%改善 · P=0.0318",en:"+202% vs placebo · P=0.0318"}},pmarks:[{i:2,y:-4.3,text:"P=0.0318 *"}]});}},
  "nvp2106-evidence-2.webp":{pill:{ko:"기억력 총점·지연 단어회상 개선",ja:"記憶力・遅延単語再生",en:"Memory & delayed recall"},legend:"nvp",cap:{ko:"위약 대비 각 207% / 1,514% 개선 · 근사값(형태 재현)",ja:"207%/1,514%",en:"+207% / +1,514% · approx."},
    render(){return gridN(2,[lineChart({w:340,h:250,title:{ko:"Memory Score",ja:"Memory Score",en:"Memory Score"},reverseY:true,improvementArrow:true,yMin:-4.5,yMax:0.4,ticks:[-4,-2,0],x:["0","6","12"],yLabel:{ko:"ADAS-Cog13",ja:"ADAS-Cog13",en:"ADAS-Cog13"},series:[{label:T.NVP,color:"var(--brand2)",vals:[0,-2.1,-2.8]},{label:T.placebo,color:"#9aa3af",dashed:true,square:true,vals:[0,0.3,-1.4]}],pmarks:[{i:1,y:-2.1,text:"P=0.0257 *"},{i:2,y:-2.8,text:"P=0.0279 *"}]}),lineChart({w:340,h:250,title:{ko:"Q4 지연 단어회상",ja:"Q4 遅延単語再生",en:"Q4 Delayed recall"},reverseY:true,improvementArrow:true,yMin:-1.3,yMax:0.5,ticks:[-1,0],x:["0","6","12"],yLabel:{ko:"ADAS-Cog13",ja:"ADAS-Cog13",en:"ADAS-Cog13"},series:[{label:T.NVP,color:"var(--brand2)",vals:[0,-0.5,-0.9]},{label:T.placebo,color:"#9aa3af",dashed:true,square:true,vals:[0,0.3,-0.06]}],pmarks:[{i:1,y:-0.5,text:"P=0.0250 *"},{i:2,y:-0.9,text:"P=0.0037 *"}]})]);}},
- "nvp2106-evidence-3.webp":{pill:{ko:"주의집중력 개선 (정/오/누락)",ja:"注意集中力",en:"Attention"},legend:"nvp",cap:{ko:"0주 vs 12주 · Placebo vs NVP-2106 · 근사값(형태 재현)",ja:"0週 vs 12週",en:"0W vs 12W · approx."},
+ "nvp2106-evidence-3.webp":{pill:{ko:"주의집중력 개선",ja:"注意集中力の改善",en:"Attention"},legend:"nvp",cap:{ko:"0주 vs 12주 · Placebo vs NVP-2106 · 근사값(형태 재현)",ja:"0週 vs 12週",en:"0W vs 12W · approx."},
    render(){return grid3([
-     {t:{ko:"주의집중력 (정반응수) 개선",ja:"注意集中力(正反応数)の改善",en:"Attention (correct)"},yl:{ko:"정반응수",ja:"正反応数",en:"Correct"},max:150,ticks:[150,100,50,0],v:[117,118,118,130],sigs:[{text:"P=0.0174",i0:0,i1:3,lvl:0},{text:"*** p<0.0001",i0:2,i1:3,lvl:1,small:true}],cap:{ko:"대조군 대비 315% 개선",ja:"対照群比 315%",en:"+315% vs control"}},
-     {t:{ko:"주의집중력 (오반응수) 개선",ja:"注意集中力(誤反応数)の改善",en:"Attention (errors)"},yl:{ko:"오반응수",ja:"誤反応数",en:"Errors"},max:22,ticks:[20,15,10,5,0],v:[16,12,14.5,8],sigs:[{text:"P=0.0395",i0:0,i1:3,lvl:0},{text:"* p=0.0103",i0:0,i1:1,lvl:1,small:true},{text:"*** p<0.0001",i0:2,i1:3,lvl:1,small:true}],cap:{ko:"대조군 대비 147% 개선",ja:"対照群比 147%",en:"+147% vs control"}},
-     {t:{ko:"주의집중력 (누락오류수) 개선",ja:"注意集中力(脱落誤謬数)の改善",en:"Attention (omissions)"},yl:{ko:"누락오류수",ja:"脱落誤謬数",en:"Omissions"},max:27,ticks:[25,20,15,10,5,0],v:[16,12.5,15,5],sigs:[{text:"P=0.0174",i0:0,i1:3,lvl:0},{text:"*** p<0.0001",i0:2,i1:3,lvl:1,small:true}],cap:{ko:"대조군 대비 315% 개선",ja:"対照群比 315%",en:"+315% vs control"}}
+     {t:{ko:"주의집중력 (정반응수) 개선",ja:"注意集中力(正反応数)の改善",en:"Attention (correct)"},yl:{ko:"정반응수",ja:"正反応数",en:"Correct"},max:150,ticks:[150,100,50,0],v:[117,118,118,130],sigs:[{text:"P=0.0174",i0:0.5,i1:2.5,lvl:0},{text:"*** p<0.0001",i0:2,i1:3,lvl:1,small:true}],cap:{ko:"대조군 대비 315% 개선",ja:"対照群比 315%",en:"+315% vs control"}},
+     {t:{ko:"주의집중력 (오반응수) 개선",ja:"注意集中力(誤反応数)の改善",en:"Attention (errors)"},yl:{ko:"오반응수",ja:"誤反応数",en:"Errors"},max:22,ticks:[20,15,10,5,0],v:[16,12,14.5,8],sigs:[{text:"P=0.0395",i0:0.5,i1:2.5,lvl:0},{text:"* p=0.0103",i0:0,i1:1,lvl:1,small:true},{text:"*** p<0.0001",i0:2,i1:3,lvl:1,small:true}],cap:{ko:"대조군 대비 147% 개선",ja:"対照群比 147%",en:"+147% vs control"}},
+     {t:{ko:"주의집중력 (누락오류수) 개선",ja:"注意集中力(脱落誤謬数)の改善",en:"Attention (omissions)"},yl:{ko:"누락오류수",ja:"脱落誤謬数",en:"Omissions"},max:27,ticks:[25,20,15,10,5,0],v:[16,12.5,15,5],sigs:[{text:"P=0.0174",i0:0.5,i1:2.5,lvl:0},{text:"*** p<0.0001",i0:2,i1:3,lvl:1,small:true}],cap:{ko:"대조군 대비 315% 개선",ja:"対照群比 315%",en:"+315% vs control"}}
    ],q=>{const box=document.createElement('div');box.appendChild(barChart({w:330,h:295,titleBox:{t:q.t,bg:"#12857e",fg:"#fff"},yMin:0,yMax:q.max,ticks:q.ticks,yLabel:q.yl,bars:[{label:{ko:"0주",ja:"0W",en:"0W"},value:q.v[0],color:"#c2c7cd"},{label:{ko:"12주",ja:"12W",en:"12W"},value:q.v[1],color:"#9aa3af"},{label:{ko:"0주",ja:"0W",en:"0W"},value:q.v[2],color:"#5fc4bc"},{label:{ko:"12주",ja:"12W",en:"12W"},value:q.v[3],color:"var(--brand2)"}],glabels:[{t:{ko:"Placebo",ja:"Placebo",en:"Placebo"},i0:0,i1:1},{t:{ko:"NVP-2106",ja:"NVP-2106",en:"NVP-2106"},i0:2,i1:3}],sig:q.sigs}));const c=document.createElement('div');c.style.cssText="font-size:10px;color:#12857e;font-weight:700;text-align:center;margin-top:2px";c.textContent="섭취 12주째 · "+L(q.cap);box.appendChild(c);return box;});}},
- "nvp1702-evidence-1.webp":{pill:{ko:"γGTP / ALT / AST 개선",ja:"γGTP / ALT / AST",en:"γGTP / ALT / AST"},legendItems:[{c:"#333",t:"NVP-1702"},{c:"#9aa3af",t:PL}],cap:{ko:"기저치 대비 변화(U/L) · 0/6/12주 · 에러바±SD · 12주 Exact 끝점",ja:"ベースライン比(U/L) · 12週 Exact",en:"Change from baseline · Exact 12W endpoints"},
-   render(){return gridN(3,[lineChart({w:250,h:260,noEndLabel:true,title:"γ-GTP",yMin:-20,yMax:40,ticks:[40,20,0,-20],x:["0W","6W","12W"],yLabel:{ko:"γ-GTP (U/L)",ja:"γ-GTP",en:"γ-GTP (U/L)"},series:twoLine({v:[0,-7,-2.85],e:[0,7,10]},{v:[0,2,24.56],e:[0,9,16]},"NVP-1702"),pmarks:[{i:2,y:-16,text:"P=0.0292 *"}]}),lineChart({w:250,h:260,noEndLabel:true,title:"ALT",yMin:-10,yMax:10,ticks:[10,5,0,-5,-10],x:["0W","6W","12W"],yLabel:{ko:"ALT (U/L)",ja:"ALT",en:"ALT (U/L)"},series:twoLine({v:[0,-1.5,-3.77],e:[0,2.5,4.6]},{v:[0,1.5,5.16],e:[0,3,4.5]},"NVP-1702"),pmarks:[{i:2,y:-8.5,text:"P=0.0332 *"}]}),lineChart({w:250,h:260,noEndLabel:true,title:"AST",yMin:-8,yMax:10,ticks:[10,5,0,-5],x:["0W","6W","12W"],yLabel:{ko:"AST (U/L)",ja:"AST",en:"AST (U/L)"},series:twoLine({v:[0,1.2,-1.42],e:[0,3,4.4]},{v:[0,-0.5,5.32],e:[0,4,8.3]},"NVP-1702")})]);}},
+ "nvp1702-evidence-1.webp":{pill:{ko:"γGTP / ALT / AST 개선",ja:"γGTP / ALT / AST",en:"γGTP / ALT / AST"},legendItems:[{c:"#333",t:"NVP-1702"},{c:"#9aa3af",t:PL}],cap:{ko:"기저치 대비 변화(U/L) · 0/6/12주 · 에러바±SD · 근사값(형태 재현)",ja:"ベースライン比(U/L)",en:"Change from baseline · approx."},
+   render(){return gridN(3,[lineChart({w:250,h:260,noEndLabel:true,title:"γ-GTP · P=0.0292*",yMin:-20,yMax:40,ticks:[40,20,0,-20],x:["0W","6W","12W"],yLabel:{ko:"γ-GTP (U/L)",ja:"γ-GTP",en:"γ-GTP (U/L)"},series:twoLine({v:[0,-7,-2.85],e:[0,7,10]},{v:[0,2,24.56],e:[0,9,16]},"NVP-1702"),pmarks:[]}),lineChart({w:250,h:260,noEndLabel:true,title:"ALT · P=0.0332*",yMin:-10,yMax:10,ticks:[10,5,0,-5,-10],x:["0W","6W","12W"],yLabel:{ko:"ALT (U/L)",ja:"ALT",en:"ALT (U/L)"},series:twoLine({v:[0,-1.5,-3.77],e:[0,2.5,4.6]},{v:[0,1.5,5.16],e:[0,3,4.5]},"NVP-1702"),pmarks:[]}),lineChart({w:250,h:260,noEndLabel:true,title:"AST",yMin:-8,yMax:10,ticks:[10,5,0,-5],x:["0W","6W","12W"],yLabel:{ko:"AST (U/L)",ja:"AST",en:"AST (U/L)"},series:twoLine({v:[0,1.2,-1.42],e:[0,3,4.4]},{v:[0,-0.5,5.32],e:[0,4,8.3]},"NVP-1702")})]);}},
  "nvp1702-evidence-2.webp":{pill:{ko:"ALT / AST / γGTP 개선",ja:"ALT / AST / γGTP",en:"ALT / AST / γGTP"},legendItems:[{c:"#333",t:"NVP-1702"},{c:"#9aa3af",t:PL}],cap:{ko:"기저치 대비 변화(U/L) · 0/6/12주 · 에러바±SD · 근사값(형태 재현)",ja:"ベースライン比(U/L)",en:"Change from baseline · approx."},
-   render(){return grid3([{t:"ALT",min:-15,max:15,ticks:[15,10,5,0,-5,-10,-15],nv:[0,-6,-9],nve:[0,3,3],pl:[0,8,2],ple:[0,4,5],pm:[{i:1,y:8,text:"P=0.0260 *"},{i:2,y:-9,text:"P=0.0397 *"}]},{t:"AST",min:-15,max:10,ticks:[10,5,0,-5,-10,-15],nv:[0,-4,-4],nve:[0,3,3],pl:[0,4,1],ple:[0,4,5],pm:[{i:1,y:4,text:"P=0.0131 *"}]},{t:"γ-GTP",min:-15,max:15,ticks:[15,10,5,0,-5,-10,-15],nv:[0,1,-6],nve:[0,4,4],pl:[0,4,1],ple:[0,5,6],pm:[{i:2,y:-6,text:"P=0.0229 *"}]}],q=>lineChart({w:250,h:250,noEndLabel:true,title:q.t,yMin:q.min,yMax:q.max,ticks:q.ticks,x:["0W","6W","12W"],yLabel:{ko:q.t+" (U/L)",ja:q.t,en:q.t+" (U/L)"},series:twoLine({v:q.nv,e:q.nve},{v:q.pl,e:q.ple},"NVP-1702"),pmarks:q.pm||[]}));}},
- "nvp1703-evidence-1.webp":{pill:{ko:"소아·청소년 TNSS 개선",ja:"小児 TNSS",en:"Child TNSS"},legendItems:[{c:"#333",t:"NVP-1703"},{c:"#9aa3af",t:PL}],cap:{ko:"소아·청소년 · TNSS(AM+PM) 주간 변화 · 2주/4주는 Table 2 Exact, 1주·3주는 근사값 · 에러바 ±SEM · 출처: J Korean Med Sci 2024;39(40):e266",ja:"小児TNSS(AM+PM) · 2週/4週はTable 2 Exact · J Korean Med Sci 2024;39(40):e266",en:"Child TNSS (AM+PM) · wk2/wk4 Exact (Table 2), wk1/wk3 approx. · J Korean Med Sci 2024;39(40):e266"},
-   render(){return gridN(2,[lineChart({w:290,h:250,title:{ko:"TNSS (weekly)",ja:"TNSS (weekly)",en:"TNSS (weekly)"},yMin:-5.2,yMax:0,ticks:[0,-1,-2,-3,-4,-5],x:["0w","1w","2w","3w","4w"],yLabel:{ko:"TNSS 변화",ja:"TNSS変化",en:"TNSS change"},series:twoLine({v:[0,-1.5,-2.99,-3.5,-4.07],e:[0,0.5,0.58,0.63,0.68]},{v:[0,-0.8,-1.45,-1.7,-1.9],e:[0,0.5,0.55,0.68,0.82]},"NVP-1703")}),lineChart({w:290,h:250,title:{ko:"TNSS (daily)",ja:"TNSS (daily)",en:"TNSS (daily)"},yMin:-3.2,yMax:0.15,ticks:[0,-1,-2,-3],x:["","","","","","","1w","","","","","","","2w","","","","","","","3w","","","","","","","4w"],xlabel:false,yLabel:{ko:"TNSS 변화",ja:"TNSS変化",en:"TNSS change"},series:[{label:"NVP-1703",color:"#333",sm:true,vals:[0,-0.21,-0.38,-0.31,-0.62,-0.55,-0.7,-0.91,-0.83,-1.09,-1.03,-1.25,-1.33,-1.29,-1.23,-1.56,-1.61,-1.54,-1.5,-1.72,-1.86,-1.73,-2.14,-1.92,-2.2,-2.33,-2.41,-2.42],err:[0,0.33,0.4,0.31,0.43,0.45,0.41,0.48,0.36,0.44,0.42,0.42,0.39,0.47,0.49,0.39,0.43,0.31,0.44,0.43,0.5,0.46,0.36,0.38,0.43,0.3,0.39,0.33]},{label:PL,color:"#9aa3af",sm:true,dashed:true,vals:[0,0.06,-0.24,-0.13,-0.15,-0.3,-0.27,-0.51,-0.55,-0.53,-0.38,-0.52,-0.6,-0.53,-0.62,-0.72,-0.56,-0.63,-0.85,-0.75,-0.8,-0.7,-0.79,-1,-0.76,-1.14,-1.05,-0.95],err:[0,0.3,0.42,0.34,0.4,0.47,0.38,0.45,0.4,0.42,0.44,0.4,0.41,0.45,0.47,0.41,0.4,0.34,0.46,0.4,0.48,0.44,0.38,0.4,0.41,0.33,0.42,0.36]}]})]);}},
+   render(){return grid3([{t:"ALT · P=0.0260/0.0397*",min:-15,max:15,ticks:[15,10,5,0,-5,-10,-15],nv:[0,-6,-9],nve:[0,3,3],pl:[0,8,2],ple:[0,4,5],pm:[]},{t:"AST · P=0.0131*",min:-15,max:10,ticks:[10,5,0,-5,-10,-15],nv:[0,-4,-4],nve:[0,3,3],pl:[0,4,1],ple:[0,4,5],pm:[]},{t:"γ-GTP · P=0.0229*",min:-15,max:15,ticks:[15,10,5,0,-5,-10,-15],nv:[0,1,-6],nve:[0,4,4],pl:[0,4,1],ple:[0,5,6],pm:[]}],q=>lineChart({w:250,h:250,noEndLabel:true,title:q.t,yMin:q.min,yMax:q.max,ticks:q.ticks,x:["0W","6W","12W"],yLabel:{ko:q.t+" (U/L)",ja:q.t,en:q.t+" (U/L)"},series:twoLine({v:q.nv,e:q.nve},{v:q.pl,e:q.ple},"NVP-1702"),pmarks:q.pm||[]}));}},
+ "nvp1703-evidence-1.webp":{pill:{ko:"소아·청소년 TNSS 개선",ja:"小児 TNSS",en:"Child TNSS"},legendItems:[{c:"#333",t:"NVP-1703"},{c:"#9aa3af",t:PL}],cap:{ko:"원본 이미지 + 번역 오버레이(JP/EN 전환 시 텍스트 교체) · 출처: J Korean Med Sci 2024;39(40)",ja:"原本画像＋翻訳オーバーレイ · J Korean Med Sci 2024;39(40)",en:"Original image + translated overlay · J Korean Med Sci 2024;39(40)"},
+   render(){return imgOverlayNode("nvp1703-evidence-1.webp","0 0 830 368",{
+     ja:[{x:8,y:8,w:520,h:46,bg:"#eef2f6",t:["小児・青少年を対象としたヒト臨床試験"],fs:29,fw:800,fg:"#111",ty:38},
+         {x:14,y:72,w:392,h:26,bg:"#1b3a6b",t:["01. TNSS(鼻症状スコア)の有意な改善(Weekly)"],fs:13,fw:700,fg:"#fff",pad:12,ty:18},
+         {x:424,y:72,w:392,h:26,bg:"#1b3a6b",t:["02. TNSS(鼻症状スコア)の有意な改善(daily)"],fs:13,fw:700,fg:"#fff",pad:12,ty:18},
+         {x:58,y:320,w:344,h:44,bg:"#fff",t:["TNSS(鼻水・鼻づまり・くしゃみ・","鼻のかゆみの症状スコア)を有意に改善"],fs:12,fw:400,fg:"#222",ty:15,lh:16},
+         {x:450,y:320,w:366,h:44,bg:"#fff",t:["daily 基準で分析した結果、試験群では","摂取1週以降から有意な改善が確認された"],fs:12,fw:400,fg:"#222",ty:15,lh:16}],
+     en:[{x:8,y:8,w:560,h:46,bg:"#eef2f6",t:["Human trial in children & adolescents"],fs:26,fw:800,fg:"#111",ty:37},
+         {x:14,y:72,w:392,h:26,bg:"#1b3a6b",t:["01. TNSS total — significant improvement (Weekly)"],fs:11.5,fw:700,fg:"#fff",pad:12,ty:18},
+         {x:424,y:72,w:392,h:26,bg:"#1b3a6b",t:["02. TNSS total — significant improvement (daily)"],fs:11.5,fw:700,fg:"#fff",pad:12,ty:18},
+         {x:58,y:320,w:344,h:44,bg:"#fff",t:["Significantly improved TNSS (rhinorrhea,","congestion, sneezing, nasal itching)."],fs:11,fw:400,fg:"#222",ty:15,lh:16},
+         {x:450,y:320,w:366,h:44,bg:"#fff",t:["Analyzed daily; significant improvement","from week 1 in the test group."],fs:11,fw:400,fg:"#222",ty:15,lh:16}]
+   });}},
  "nvp1703-evidence-2.webp":{pill:{ko:"성인 TNSS·콧물·코막힘 개선",ja:"成人 TNSS等",en:"Adult TNSS etc."},legendItems:[{c:"#333",t:"NVP-1703"},{c:"#9aa3af",t:PL}],cap:{ko:"성인 · 0~4주 기저치 대비 변화 · Table 2 Exact (2주는 절대점수 차) · 출처: Nutrients 2020;12(5):1427",ja:"成人 0~4週 変化量 · Table 2 Exact · Nutrients 2020;12(5):1427",en:"Adult 0-4wk change from baseline · Exact (Table 2) · Nutrients 2020;12(5):1427"},
    render(){return grid3([{t:{ko:"TNSS 총점",ja:"TNSS総点",en:"TNSS"},min:-2.2,max:0.3,ticks:[0,-1,-2],nv:[0,-0.47,-0.93,-1.25,-1.69],pl:[0,0.1,-0.42,-0.4,-0.64],p:{i:4,y:-1.69,text:"p=0.029 *"}},{t:{ko:"수양성 콧물",ja:"鼻水",en:"Rhinorrhea"},min:-0.7,max:0.2,ticks:[0,-0.2,-0.4,-0.6],nv:[0,-0.19,-0.3,-0.39,-0.55],pl:[0,0.06,-0.13,-0.12,-0.16],p:{i:4,y:-0.55,text:"p=0.007 **"}},{t:{ko:"코막힘",ja:"鼻づまり",en:"Congestion"},min:-0.5,max:0.2,ticks:[0,-0.2,-0.4],nv:[0,-0.1,-0.25,-0.25,-0.42],pl:[0,0.08,-0.02,-0.02,-0.09],p:{i:4,y:-0.42,text:"p=0.034 *"}}],q=>lineChart({w:250,h:250,title:q.t,yMin:q.min,yMax:q.max,ticks:q.ticks,x:["0","1","2","3","4"],yLabel:q.t,series:twoLine({v:q.nv},{v:q.pl},"NVP-1703"),pmarks:[q.p]}));}},
  "nvp1704-evidence-1.webp":{pill:{ko:"우울·불안 (BDI/BAI) 개선",ja:"うつ・不安",en:"BDI/BAI"},legendItems:[{c:"#333",t:"NVP-1704"},{c:"#9aa3af",t:PL}],cap:{ko:"0/4/8주 · * 유의 · 논문 표 Exact · 에러바 ±SEM · 출처: Nutrients 2021;13:2660",ja:"0/4/8週 · 論文表 Exact · Nutrients 2021;13:2660",en:"0/4/8wk · Exact from paper tables · Nutrients 2021;13:2660"},
@@ -228,95 +209,19 @@ const BUILD={
      const bars=[];cats.forEach((c,i)=>{bars.push({label:c,value:iv[i],color:"#26406b",err:ivE[i],noval:true});bars.push({label:null,value:pv[i],color:"#9aa3af",err:pvE[i],noval:true});});
      return barChart({w:640,h:300,yMin:-50,yMax:120,ticks:[110,90,70,50,30,10,-10,-30,-50],yLabel:{ko:"변화 (%)",ja:"変化 (%)",en:"Change (%)"},bars:bars});}}
 };
-const INV=[
- ["여성 · MED-01",[["med01-evidence-1.webp","chart","med01-evidence-1.webp"],["med01-evidence-2.png","chart","med01-evidence-2.png"]]],
- ["체지방 · MED-02",[["med02-evidence-1.webp","chart","med02-evidence-1.webp"],["med02-evidence-2.png","chart","med02-evidence-2.png"]]],
- ["뇌·기억 · NVP-2106",[["nvp2106-evidence-1.webp","chart","nvp2106-evidence-1.webp"],["nvp2106-evidence-2.webp","chart","nvp2106-evidence-2.webp"],["nvp2106-evidence-3.webp","chart","nvp2106-evidence-3.webp"]]],
- ["간 · NVP-1702",[["nvp1702-evidence-1.webp","chart","nvp1702-evidence-1.webp"],["nvp1702-evidence-2.webp","chart","nvp1702-evidence-2.webp"],["nvp1702-evidence-3.png","image",null,{ko:"간손상 메커니즘 도식 → 이미지 유지",ja:"肝メカニズム図",en:"Liver mechanism"}]]],
- ["코 · NVP-1703",[["nvp1703-evidence-1.webp","chart","nvp1703-evidence-1.webp"],["nvp1703-evidence-2.webp","chart","nvp1703-evidence-2.webp"],["nvp1703-evidence-3.jpeg","image",null,{ko:"비염 메커니즘 도식 → 이미지 유지",ja:"鼻炎メカニズム図",en:"Rhinitis mechanism"}]]],
- ["스트레스 · NVP-1704",[["nvp1704-evidence-1.webp","chart","nvp1704-evidence-1.webp"],["nvp1704-evidence-2.webp","chart","nvp1704-evidence-2.webp"],["nvp1704-evidence-3.webp","chart","nvp1704-evidence-3.webp"]]],
- ["장 · Bifido",[["bifido-evidence-2.webp","chart","bifido-evidence-2.webp"],["bifido-evidence-6.png","image",null,{ko:"고령자 시험 자료 → 이미지 유지",ja:"高齢者資料",en:"Elderly study"}],["bifido-evidence-1.webp","image",null,{ko:"FDA 인증/로고 → 이미지 유지",ja:"FDA認証",en:"FDA cert"}]]],
- ["남성 · Testofen",[["testofen-evidence-1.webp","chart","testofen-evidence-1.webp"],["testofen-evidence-2.webp","chart","testofen-evidence-2.webp"],["testofen-evidence-3.webp","chart","testofen-evidence-3.webp"]]],
- ["기억 · ThinkGIN",[["thinkgin-evidence-1.webp","chart","thinkgin-evidence-1.webp"],["thinkgin-evidence-2.webp","chart","thinkgin-evidence-2.webp"],["thinkgin-evidence-3.webp","chart","thinkgin-evidence-3.webp"]]],
- ["인지 · Neulearn",[["neulearn-evidence-1-clean.png","image",null,{ko:"f-MRI 뇌 영상 → 이미지 유지",ja:"f-MRI画像",en:"f-MRI"}],["neulearn-evidence-2-clean.png","chart","neulearn-evidence-2-clean.png"],["neulearn-evidence-3-clean.png","chart","neulearn-evidence-3-clean.png"]]],
- ["체지방 · Applephenon",[["applephenon-evidence-1.webp","chart","applephenon-evidence-1.webp"],["local:renamed-originals/APPLEPHENON_waist.jpeg","chart","applephenon-evidence-2.webp"],["local:renamed-originals/APPLEPHENON_16wk-BMI.jpeg","chart","applephenon-evidence-3.webp"],["applephenon-evidence-4.jpeg","image",null,{ko:"CT 촬영 → 이미지 유지",ja:"CT画像",en:"CT scan"}]]],
- ["피부 · Collagen",[["collagen-evidence-1-clean.png","chart","collagen-evidence-1-clean.png"],["collagen-evidence-2-clean.png","chart","collagen-evidence-2-clean.png"]]],
- ["피부 · DermaNia",[["dermania-evidence-1.webp","chart","dermania-evidence-1.webp"],["dermania-evidence-2.webp","chart","dermania-evidence-2.webp"],["dermania-evidence-3.png","image",null,{ko:"메커니즘 도식 → 이미지 유지",ja:"メカニズム図",en:"Mechanism"}]]],
- ["간 · Agrimony",[["agrimony-alt-evidence.png","chart","agrimony-alt-evidence.png"],["agrimony-ast-evidence.png","chart","agrimony-ast-evidence.png"],["agrimony-hsi-evidence.png","chart","agrimony-hsi-evidence.png"],["agrimony-evidence-2.jpeg","image",null,{ko:"조직 사진 → 이미지 유지",ja:"組織写真",en:"Tissue"}]]],
- ["간 · Pinitol",[["pinitol-evidence-1.webp","chart","pinitol-evidence-1.webp"],["pinitol-evidence-2.webp","chart","pinitol-evidence-2.webp"]]],
- ["숙취 · AcetoBeta",[["acetobeta-evidence-1.webp","image",null,{ko:"분해경로 도식 → 이미지 유지",ja:"分解経路図",en:"Pathway"}],["acetobeta-evidence-2.webp","chart","acetobeta-evidence-2.webp"],["acetobeta-evidence-3.webp","chart","acetobeta-evidence-3.webp"]]],
- ["면역 · Immulink",[["immulink-evidence-1.webp","chart","immulink-evidence-1.webp"]]]
-];
-const stage=document.getElementById("stage");
-/* 2026-08-21 교차검증으로 HTML에 반영된 항목 — 오른쪽 여백 큰 원으로 표시 */
-const MARK={
-  "immulink-evidence-1.webp":"exact",
-  "med01-evidence-2.png":"exact",
-  "nvp1703-evidence-2.webp":"exact",
-  "nvp1704-evidence-1.webp":"exact",
-  "nvp1704-evidence-2.webp":"exact",
-  "nvp1704-evidence-3.webp":"exact",
-  "thinkgin-evidence-1.webp":"exact",
-  "thinkgin-evidence-3.webp":"exact",
-  "applephenon-evidence-2.webp":"exact",
-  "applephenon-evidence-3.webp":"exact",
-  "nvp1702-evidence-1.webp":"exact",
-  "med01-evidence-1.webp":"approx",
-  "nvp2106-evidence-2.webp":"approx",
-  "applephenon-evidence-1.webp":"approx",
-  "nvp1703-evidence-1.webp":"approx"
-};
-const MARK_COPY={
-  exact:{ko:"Exact\n반영",ja:"Exact\n反映",en:"Exact\ndone",glyph:"✓"},
-  approx:{ko:"Approx\n반영",ja:"Approx\n反映",en:"Approx\ndone",glyph:"!"},
-  none:{ko:"미대상",ja:"対象外",en:"n/a",glyph:"–"}
-};
-function legendMED(){const d=document.createElement("div");d.className="legc";d.innerHTML='<span><i style="background:var(--accent)"></i>'+L(T.MED)+'</span><span><i style="background:var(--placebo)"></i>'+L(T.placebo)+'</span>';return d;}
-function legendMED01(){const d=document.createElement("div");d.className="legc";d.innerHTML='<span><i style="background:var(--purple)"></i>'+L(T.MED01)+'</span><span><i style="background:var(--placebo)"></i>'+L(T.placebo)+'</span>';return d;}
-function legendNVP(){const d=document.createElement("div");d.className="legc";d.innerHTML='<span><i style="background:var(--brand2)"></i>'+L(T.NVP)+'</span><span><i style="background:#9aa3af"></i>'+L(T.placebo)+'</span>';return d;}
-function legendCustom(items){const d=document.createElement("div");d.className="legc";d.innerHTML=items.map(it=>'<span><i style="background:'+it.c+'"></i>'+(typeof it.t==='string'?it.t:L(it.t))+'</span>').join('');return d;}
-function markRail(kind){
-  const k=kind||"none",copy=MARK_COPY[k]||MARK_COPY.none;
-  const rail=document.createElement("div");rail.className="mark-rail";rail.title=L(copy).replace(/\n/g," ");
-  const cir=document.createElement("div");cir.className="mark-circle "+k;cir.textContent=copy.glyph;
-  const lab=document.createElement("div");lab.className="mark-label "+k;lab.innerHTML=L(copy).replace(/\n/g,"<br>");
-  rail.appendChild(cir);rail.appendChild(lab);return rail;
+
+/** Build the SVG/HTML node for an approved chart key at the given language. */
+export function buildChartNode(key, lang) {
+  LANG = lang === "ko" || lang === "ja" || lang === "en" ? lang : "ja";
+  const b = BUILD[key];
+  if (!b) return null;
+  try {
+    return b.render();
+  } catch (e) {
+    return null;
+  }
 }
-function render(){
-  document.getElementById("topnote").innerHTML=L(T.headnote);
-  [...stage.querySelectorAll(".prod,.ba")].forEach(n=>n.remove());
-  INV.forEach(function(entry){const prod=entry[0],items=entry[1];
-    const h=document.createElement("h2");h.className="prod";h.textContent=prod;stage.appendChild(h);
-    items.forEach(function(it){const file=it[0],type=it[1],buildKey=it[2],desc=it[3];
-      const markKind=buildKey&&MARK[buildKey]?MARK[buildKey]:"none";
-      const ba=document.createElement("div");ba.className="ba"+(markKind==="exact"?" ba-exact":markKind==="approx"?" ba-approx":"");
-      const bf=document.createElement("div");bf.className="side";
-      bf.innerHTML='<div class="h">BEFORE · 원본 <span class="badge '+(type==='image'?'b-image':'b-chart')+'">'+(type==='image'?'도식·사진':'차트')+'</span></div>';
-      const SRC=file.indexOf('local:')===0?file.slice(6):IMG+file;
-      const fn=document.createElement("div");fn.className="fname";fn.innerHTML='<a href="'+SRC+'" target="_blank" rel="noreferrer" style="color:#9aa3af">'+file+'</a>';
-      const im=document.createElement("img");im.loading="eager";im.decoding="async";im.referrerPolicy="no-referrer";
-      im.onerror=function(){this.style.display="none";const w=document.createElement("div");w.className="pend";w.innerHTML='이 뷰어에서 원본을 못 불러왔어요 →<br><a href="'+SRC+'" target="_blank" rel="noreferrer">브라우저에서 원본 열기</a>';bf.insertBefore(w,fn);};
-      im.src=SRC;bf.appendChild(im);bf.appendChild(fn);
-      const af=document.createElement("div");af.className="side";
-      if(buildKey&&BUILD[buildKey]){const b=BUILD[buildKey],capText=L(b.cap)||"",needsCheck=/근사값|approx|近似/i.test(capText);
-        const statusBadge=markKind==="exact"?'<span class="badge b-exact">Exact 반영</span>':markKind==="approx"?'<span class="badge b-approx">Approx 반영</span>':'<span class="badge '+(needsCheck?'b-image':'b-done')+'">'+(needsCheck?'수치확인':'완성')+'</span>';
-        af.innerHTML='<div class="h">AFTER · HTML '+statusBadge+'</div>';
-        const box=document.createElement("div");box.className="after-box";
-        const pill=document.createElement("div");pill.className="pillt";pill.textContent=L(b.pill);box.appendChild(pill);
-        box.appendChild(b.legendItems?legendCustom(b.legendItems):b.legend==="med"?legendMED():b.legend==="med01"?legendMED01():legendNVP());
-        box.appendChild(b.render());
-        const cp=document.createElement("div");cp.className="cap";cp.textContent=L(b.cap);box.appendChild(cp);
-        af.appendChild(box);
-      } else {
-        af.innerHTML='<div class="h">AFTER <span class="badge b-image">이미지 유지</span></div><div class="pend">'+L(desc)+'<br><small>데이터 차트가 아니라 그대로 둡니다</small></div>';
-      }
-      ba.appendChild(bf);ba.appendChild(af);ba.appendChild(markRail(markKind));stage.appendChild(ba);
-    });
-  });
-  observe();
+
+export function hasChart(key) {
+  return !!BUILD[key];
 }
-let io;function observe(){if(io)io.disconnect();io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("show");});},{threshold:.12});document.querySelectorAll(".after-box").forEach(function(c){io.observe(c);});}
-document.getElementById("lang").addEventListener("click",function(e){const b=e.target.closest("button");if(!b)return;[...e.currentTarget.children].forEach(function(x){x.classList.remove("on");});b.classList.add("on");LANG=b.dataset.l;document.documentElement.lang=LANG;render();});
-const wctl=document.getElementById("w"),wv=document.getElementById("wv");wctl.addEventListener("input",function(){stage.style.maxWidth=wctl.value+"px";wv.textContent=Math.round(wctl.value/1180*100)+"%";});
-render();
-</script>
