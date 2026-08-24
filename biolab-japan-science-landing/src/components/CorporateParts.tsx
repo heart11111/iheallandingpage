@@ -207,7 +207,9 @@ const liveChartEvidence = new Set<string>([
   "dermania-evidence-1.webp",
   "dermania-evidence-2.webp",
   "nvp2106-evidence-1.webp",
+  "nvp2106-evidence-2.webp",
   "nvp2106-evidence-3.webp",
+  "nvp1702-evidence-2.webp",
 ]);
 
 function getLiveChartKey(src: string): string | null {

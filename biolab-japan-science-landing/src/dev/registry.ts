@@ -33,9 +33,9 @@ export const draftRegistry: DraftEntry[] = [
     title: "차트 Exact·부호 수정 (검수 초안)",
     previewPath: "/dev/charts-approx",
     livePath: "/products (evidence SVG — 퍼블리시 전 미반영)",
-    status: "ready",
-    note: "라이브 미반영. Opus+GPT+Sonnet 교차검증 중/완료 — multi-model-cross-verify-2026-08-21.md. /dev/charts-approx에서 검수.",
-    updatedAt: "2026-08-21",
+    status: "published",
+    note: "6차트 퍼블리시(2026-08-24): MED-01·MED-02·NVP-2106(1·2)·NVP-1702-2 — 비전 수정안 반영. 나머지는 /dev 검수 중.",
+    updatedAt: "2026-08-24",
   },
 ];
 
