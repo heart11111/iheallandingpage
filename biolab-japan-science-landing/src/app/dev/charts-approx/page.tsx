@@ -83,6 +83,16 @@ const FIXES: {
     title: "NVP-1702 · γGTP/ALT/AST",
     note: "12주 Exact 끝점 (−2.85 / 24.56 등).",
   },
+  {
+    key: "acetobeta-evidence-2.webp",
+    title: "AcetoBeta · Acetaldehyde",
+    note: "pill callout — 막대 사이 브래킷 + 캡슐 배지 (구: 상단 빨간 말풍선).",
+  },
+  {
+    key: "acetobeta-evidence-3.webp",
+    title: "AcetoBeta · 메스꺼움(숙취)",
+    note: "pill 2단 카드 — 「메스꺼움 개선 효과 / 약 70%(9/13)」.",
+  },
 ];
 
 function DraftChart({ chartKey, lang }: { chartKey: string; lang: Lang }) {
