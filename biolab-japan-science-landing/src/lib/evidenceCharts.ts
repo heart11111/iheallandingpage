@@ -80,8 +80,8 @@ function lineChart(cfg){
   }
   var _ts=cfg.tsigs||(cfg.tsig?[{text:cfg.tsig,i0:0,i1:cfg.x.length-1}]:[]);_ts.forEach(function(sg){const y=m.t-6-(sg.lvl||0)*14,x1=X(sg.i0),x2=X(sg.i1);svg.appendChild(el("line",{x1:x1,y1:y,x2:x2,y2:y,stroke:"#555"}));svg.appendChild(el("line",{x1:x1,y1:y,x2:x1,y2:y+5,stroke:"#555"}));svg.appendChild(el("line",{x1:x2,y1:y,x2:x2,y2:y+5,stroke:"#555"}));svg.appendChild(txt((x1+x2)/2,y-3,sg.text,{"text-anchor":"middle","font-size":11,fill:"#333","font-weight":700}));});
   const ends=[];cfg.series.forEach(s=>{let d="",len=0,px,py;s.vals.forEach((v,i)=>{const x=X(i),y=Y(v);d+=(i?"L":"M")+x+" "+y;if(i)len+=Math.hypot(x-px,y-py);px=x;py=y;});
-    const p=el("path",{d:d,fill:"none",stroke:s.color,"stroke-width":2.4});
-    if(s.dashed)p.setAttribute("stroke-dasharray","7 6");else{p.setAttribute("class","lp");p.style.strokeDasharray=len;p.style.strokeDashoffset=len;}
+    const p=el("path",{d:d,fill:"none",stroke:s.color,"stroke-width":3.2});
+    if(s.dashed)p.setAttribute("stroke-dasharray","7 5");else{p.setAttribute("class","lp");p.style.strokeDasharray="none";p.style.strokeDashoffset="0";}
     svg.appendChild(p);
     if(s.err)s.vals.forEach((v,i)=>{const e=s.err[i];if(!e)return;const x=X(i),yu=Y(v+e),yd=Y(v-e);svg.appendChild(el("line",{x1:x,y1:yu,x2:x,y2:yd,stroke:s.color,"stroke-width":1,class:"dot"}));svg.appendChild(el("line",{x1:x-3,y1:yu,x2:x+3,y2:yu,stroke:s.color,"stroke-width":1,class:"dot"}));svg.appendChild(el("line",{x1:x-3,y1:yd,x2:x+3,y2:yd,stroke:s.color,"stroke-width":1,class:"dot"}));});
     s.vals.forEach((v,i)=>{let mk;if(s.diamond){mk=el("path",{d:"M"+X(i)+" "+(Y(v)-4.5)+"L"+(X(i)+4.5)+" "+Y(v)+"L"+X(i)+" "+(Y(v)+4.5)+"L"+(X(i)-4.5)+" "+Y(v)+"Z",fill:s.color,class:"dot"});}else if(s.square){mk=el("rect",{x:X(i)-4,y:Y(v)-4,width:8,height:8,fill:s.open?"#fff":s.color,stroke:s.color,"stroke-width":s.open?1.6:0,class:"dot"});}else{mk=el("circle",{cx:X(i),cy:Y(v),r:(s.sm?2:4.5),fill:s.color,class:"dot"});}svg.appendChild(mk);
