@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AcetoBeta 말풍선 비교 — 원본 vs 구 SVG vs 신 pill</title>
+<style>
+  :root{--bg:#e8ecf1;--ink:#111827;--grid:#d1d5db;--brand:#0a5f7a;--bad:#dc2626;--good:#059669}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",Arial,sans-serif}
+  header{background:#0f2233;color:#fff;padding:14px 20px}
+  header h1{margin:0;font-size:16px}
+  header p{margin:6px 0 0;font-size:12px;color:#9fb3c8;line-height:1.5}
+  header a{color:#7dd3fc}
+  .wrap{max-width:1480px;margin:0 auto;padding:18px}
+  .note{background:#fff;border-left:4px solid var(--brand);padding:12px 14px;border-radius:8px;font-size:13px;line-height:1.6;margin-bottom:18px}
+  h2{font-size:15px;margin:28px 0 10px;color:#0f2233;border-bottom:2px solid #c5ced8;padding-bottom:6px}
+  .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:stretch}
+  @media(max-width:980px){.grid{grid-template-columns:1fr 1fr}.grid .col-note{grid-column:1/-1}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .col{background:#fff;border:1px solid #cbd5e1;border-radius:10px;padding:12px;min-height:200px}
+  .col h3{margin:0 0 8px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#64748b}
+  .col.bad{border-color:#fecaca;background:#fffafa}
+  .col.good{border-color:#86efac;background:#f0fdf4}
+  .col img{width:100%;display:block;border:1px solid #e5e7eb;border-radius:6px;background:#fafafa}
+  .col svg{width:100%;height:auto;display:block}
+  .col-note{font-size:12px;line-height:1.55;color:#374151}
+  .col-note strong{color:#b91c1c}
+  .col-note em{color:#047857;font-style:normal;font-weight:700}
+</style>
+</head>
+<body>
+<header>
+  <h1>AcetoBeta · 말풍선(callout) 3-way 비교</h1>
+  <p>
+    Acetaldehyde(#2) · 메스꺼움(#3) — 원본 PPT 이미지 / <strong style="color:#fca5a5">구 SVG(상단 빨간 말풍선+줄기)</strong> / <strong style="color:#86efac">신 SVG(pill·막대 사이 브래킷)</strong><br>
+    전체 차트 비교: <a href="charts-review.html">charts-review.html</a> → 「숙취 · AcetoBeta」 섹션
+  </p>
+</header>
+<div class="wrap">
+  <div class="note">
+    <b>읽는 법</b> — 왼쪽부터 원본 → 문제였던 SVG 재현 → 수정안입니다.
+    구 버전은 차트 <b>최상단</b>에 빨간 박스+삼각형+두꺼운 줄기를 붙여 원본(PPT)과 위치·형태가 어긋났습니다.
+    신 버전은 두 막대 <b>사이</b>에 얇은 브래킷 + 흰색 배지(pill)로 비교 의미를 표시합니다.
+  </div>
+
+  <h2>acetobeta-evidence-2 · Acetaldehyde · 5배 차이</h2>
+  <div class="grid" id="row2"></div>
+
+  <h2>acetobeta-evidence-3 · 메스꺼움(숙취) · 약 70%(9/13)</h2>
+  <div class="grid" id="row3"></div>
+</div>
+<script>
+const IMG="https://biolabjp.com/images/ingredients/";
+const NS="http://www.w3.org/2000/svg";
+const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in(a||{}))e.setAttribute(k,a[k]);return e;};
+const txt=(x,y,s,a)=>{const e=el("text",Object.assign({x,y},a||{}));e.textContent=s;return e;};
+const fmt=v=>(Math.round(v*1000)/1000).toString();
+function drawBarCallout(svg,cfg,ctx){const co=cfg.callout,lines=Array.isArray(co)?co:[co],style=cfg.calloutStyle||"bubble";if(style==="pill"){const i0=cfg.calloutBetween?cfg.calloutBetween[0]:0,i1=cfg.calloutBetween?cfg.calloutBetween[1]:ctx.n-1,x1=ctx.m.l+ctx.slot*i0+ctx.slot/2,x2=ctx.m.l+ctx.slot*i1+ctx.slot/2,cx=(x1+x2)/2,yRef=Math.min(ctx.barEnds[i0].tip,ctx.barEnds[i1].tip),multi=lines.length>1,padX=multi?16:14,padY=multi?8:6,accent=cfg.calloutAccent||"#ea580c",txtCol=cfg.calloutFill||"#c2410c",stroke=cfg.calloutStroke||"#94a3b8",lhArr=multi?[{fs:10.5,lh:13,col:"#64748b",fw:600},{fs:15,lh:18,col:txtCol,fw:800}]:[{fs:14,lh:17,col:txtCol,fw:800}];var bh=padY*2;lhArr.forEach(function(s){bh+=s.lh;});if(multi)bh+=4;var tw=Math.max.apply(null,lines.map(function(ln,i){var s=lhArr[Math.min(i,lhArr.length-1)];return ln.length*s.fs*0.72;})),bw=Math.max(multi?132:72,Math.min(tw+padX*2,ctx.iw*(multi?0.72:0.58))),rx=multi?10:bh/2,brGap=multi?12:8,yBracket=yRef-brGap,yBadge=yBracket-bh-(multi?10:8);svg.appendChild(el("line",{x1:x1,y1:ctx.barEnds[i0].tip,x2:x1,y2:yBracket,stroke:stroke,"stroke-width":1.1}));svg.appendChild(el("line",{x1:x2,y1:ctx.barEnds[i1].tip,x2:x2,y2:yBracket,stroke:stroke,"stroke-width":1.1}));svg.appendChild(el("line",{x1:x1,y1:yBracket,x2:x2,y2:yBracket,stroke:stroke,"stroke-width":1.15}));svg.appendChild(el("rect",{x:cx-bw/2+1,y:yBadge+1.5,width:bw,height:bh,rx:rx,fill:"rgba(15,23,42,0.06)"}));svg.appendChild(el("rect",{x:cx-bw/2,y:yBadge,width:bw,height:bh,rx:rx,fill:"#fff",stroke:accent,"stroke-width":1.35}));if(multi)svg.appendChild(el("rect",{x:cx-bw/2+1,y:yBadge+1,width:bw-2,height:lhArr[0].lh+padY-1,rx:"9 9 0 0",fill:"#fff7ed"}));var ty=yBadge+padY;lines.forEach(function(ln,i){var s=lhArr[Math.min(i,lhArr.length-1)];if(i===1)ty+=4;svg.appendChild(txt(cx,ty+s.lh*0.72,ln,{"text-anchor":"middle","font-size":s.fs,fill:s.col,"font-weight":s.fw}));ty+=s.lh;});return;}const big=!!cfg.calloutBig,cw2=Math.min(ctx.iw*(big?0.94:0.78),big?240:170),cx2=ctx.m.l+ctx.iw/2,cy=ctx.m.t+(big?6:10),lh=big?19:17,bh=lines.length*lh+14,fill=cfg.calloutFill||"#e0242f";svg.appendChild(el("rect",{x:cx2-cw2/2,y:cy,width:cw2,height:bh,rx:big?6:8,fill:fill}));lines.forEach(function(ln,i){svg.appendChild(txt(cx2,cy+16+i*lh,ln,{"text-anchor":"middle","font-size":big?15:13,fill:"#fff","font-weight":800}));});const aw=big?22:14,ah=big?20:13,by=cy+bh;svg.appendChild(el("path",{d:"M"+(cx2-aw)+" "+by+"L"+(cx2+aw)+" "+by+"L"+cx2+" "+(by+ah)+"Z",fill:fill}));if(big){svg.appendChild(el("line",{x1:cx2,y1:by+ah,x2:cx2,y2:by+ah+10,stroke:fill,"stroke-width":big?5:3,"stroke-linecap":"round"}));}}
+function barChart(cfg){
+  const callStyle=cfg.calloutStyle||(cfg.callout?"bubble":null);
+  const callH=cfg.callout&&callStyle!=="pill"?(cfg.calloutBig?62:44):0;
+  const w=cfg.w||400,h=cfg.h||320,m={t:30+callH,r:16,b:cfg.callout&&callStyle!=="pill"?52:56,l:cfg.yLabel?72:66},iw=w-m.l-m.r,ih=h-m.t-m.b;
+  const Y=v=>m.t+ih*(cfg.yMax-v)/(cfg.yMax-cfg.yMin);
+  const svg=el("svg",{viewBox:"0 0 "+w+" "+h});
+  if(cfg.title)svg.appendChild(txt(w/2,17,cfg.title,{"text-anchor":"middle","font-size":14,fill:"#111827","font-weight":800}));
+  cfg.ticks.forEach(tk=>{const y=Y(tk);if(!cfg.noGrid||tk===0){svg.appendChild(el("line",{x1:m.l,y1:y,x2:m.l+iw,y2:y,stroke:tk===0?"#1f2937":"#d1d5db","stroke-width":tk===0?1.7:1}));}svg.appendChild(txt(m.l-8,y+4,fmt(tk),{"text-anchor":"end","font-size":12,fill:"#1f2937","font-weight":600}));});
+  if(cfg.yLabel)svg.appendChild(txt(18,m.t+ih/2,cfg.yLabel,{"text-anchor":"middle","font-size":12,fill:"#0a5f7a","font-weight":800,transform:"rotate(-90 18 "+(m.t+ih/2)+")"}));
+  const n=cfg.bars.length,slot=iw/n,barW=Math.min(58,slot*0.68),b0=cfg.base||0,barEnds=[];
+  cfg.bars.forEach((b,i)=>{const cx=m.l+slot*i+slot/2,v=b.value,y0=Y(b0),yv=Y(v),top=Math.min(y0,yv),hgt=Math.abs(yv-y0)||1;
+    svg.appendChild(el("rect",{x:cx-barW/2,y:top,width:barW,height:hgt,fill:b.color,rx:2}));
+    if(b.err){const yo=Y(v+b.err);svg.appendChild(el("line",{x1:cx,y1:yv,x2:cx,y2:yo,stroke:"#1f2937","stroke-width":1.5}));svg.appendChild(el("line",{x1:cx-5,y1:yo,x2:cx+5,y2:yo,stroke:"#1f2937","stroke-width":1.5}));}
+    if(b.label!=null)svg.appendChild(txt(cx,h-30,b.label,{"text-anchor":"middle","font-size":12,fill:"#111","font-weight":700}));
+    barEnds.push({tip:b.err?Y(v+b.err):top});});
+  if(cfg.callout)drawBarCallout(svg,cfg,{m:m,iw:iw,n:n,slot:slot,barEnds:barEnds});
+  if(cfg.diagArrow){const ax1=m.l+iw*.12,ay1=m.t+ih*.18,ax2=m.l+iw*.88,ay2=m.t+ih*.82,col="#e0242f";svg.appendChild(el("line",{x1:ax1,y1:ay1,x2:ax2,y2:ay2,stroke:col,"stroke-width":5}));const ang=Math.atan2(ay2-ay1,ax2-ax1),hl=14;svg.appendChild(el("path",{d:"M"+ax2+" "+ay2+"L"+(ax2-hl*Math.cos(ang-.45))+" "+(ay2-hl*Math.sin(ang-.45))+"L"+(ax2-hl*Math.cos(ang+.45))+" "+(ay2-hl*Math.sin(ang+.45))+"Z",fill:col}));}
+  return svg;
+}
+const BARS2=[
+  {label:"큐어자임 에이스",value:0.02,color:"#1a1a1a",err:0.13},
+  {label:"위약군",value:0.11,color:"#9aa3af",err:0.15}
+];
+const BARS3=[
+  {label:"큐어자임 에이스",value:0.5,color:"#1a1a1a",err:1.0},
+  {label:"위약군",value:1.05,color:"#9aa3af",err:0.75}
+];
+function base2(extra){return Object.assign({w:400,h:320,title:"Acetaldehyde",noGrid:true,base:0,yMin:0,yMax:0.3,ticks:[0.3,0.2,0.1,0],yLabel:"0.25h − Baseline (mg/L)",bars:BARS2},extra);}
+function base3(extra){return Object.assign({w:400,h:340,title:"메스꺼움(숙취)",noGrid:true,base:0,yMin:0,yMax:3,ticks:[3,2,1,0],yLabel:"숙취 정도",bars:BARS3},extra);}
+function col(title,cls,node){const d=document.createElement("div");d.className="col"+(cls?" "+cls:"");d.innerHTML="<h3>"+title+"</h3>";d.appendChild(node);return d;}
+function note(html){const d=document.createElement("div");d.className="col col-note";d.innerHTML="<h3>차이 요약</h3>"+html;return d;}
+function imgCol(file){const im=document.createElement("img");im.src=IMG+file;im.alt=file;return im;}
+function renderRow(host,file,legacyCfg,newCfg,noteHtml){
+  host.appendChild(col("① 원본 PPT",null,imgCol(file)));
+  host.appendChild(col("② 구 SVG · calloutBig", "bad", barChart(legacyCfg)));
+  host.appendChild(col("③ 신 SVG · pill", "good", barChart(newCfg)));
+  host.appendChild(note(noteHtml));
+}
+renderRow(document.getElementById("row2"),"acetobeta-evidence-2.webp",
+  base2({calloutBig:true,callout:["5배 차이"]}),
+  base2({calloutStyle:"pill",calloutBetween:[0,1],callout:["5배 차이"],calloutAccent:"#ea580c",calloutFill:"#c2410c"}),
+  "<p><strong>구:</strong> 차트 최상단 빨간 말풍선 + 두꺼운 줄기 → 원본(막대 사이)과 불일치</p><p><em>신:</em> 에러바 끝 → 브래킷 → 캡슐 배지 「5배 차이」</p>"
+);
+renderRow(document.getElementById("row3"),"acetobeta-evidence-3.webp",
+  base3({calloutBig:true,diagArrow:true,callout:["메스꺼움 개선 효과","약 70%(9/13)"]}),
+  base3({calloutStyle:"pill",calloutBetween:[0,1],callout:["메스꺼움 개선 효과","약 70%(9/13)"],calloutAccent:"#ea580c",calloutFill:"#c2410c"}),
+  "<p><strong>구:</strong> 상단 말풍선 + 대각 빨간 화살표 → 답답하고 PPT와 다른 인상</p><p><em>신:</em> 2단 카드(제목+70%) · 막대 사이 브래킷 · diagArrow 제거</p>"
+);
+</script>
+</body>
+</html>

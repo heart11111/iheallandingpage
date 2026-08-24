@@ -4,8 +4,9 @@
 
 ## 바로 보기
 
-- **비교 HTML (배포):** https://biolabjp.com/dev/charts-review.html  
-- 저장소 원본: `charts-review.html`  
+- **전체 차트 비교 (원본 ↔ SVG):** https://biolabjp.com/dev/charts-review.html  
+- **AcetoBeta 말풍선 3-way 비교:** https://biolabjp.com/dev/acetobeta-callout-compare.html  
+- 저장소 원본: `charts-review.html` · `acetobeta-callout-compare.html`  
 - Exact 교차검증 보고서: `multi-model-cross-verify-2026-08-21.md`
 
 ## 파일
