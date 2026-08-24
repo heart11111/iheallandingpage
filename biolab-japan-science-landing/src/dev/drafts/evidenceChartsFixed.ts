@@ -1,6 +1,7 @@
-/* AUTO-PORTED from reference/charts-review/charts-review.html chart engine.
-   Do not hand-edit: keep this in sync with the approved review file so the
-   live charts render identically. Client-only (builds SVG DOM nodes). */
+/* DRAFT-ONLY chart engine for /dev/charts-approx preview.
+   Do NOT import from live product pages until the owner says 퍼블리시.
+   Source of truth for numbers: reference/charts-review/charts-review.html
+   (synced after Opus/GPT accuracy audit 2026-08-21). Client-only. */
 /* eslint-disable */
 // @ts-nocheck
 
@@ -11,16 +12,16 @@ const T={headnote:{ko:"왼쪽=라이브 원본, 오른쪽=HTML/SVG 재현. 원�
 const PL={ko:"위약",ja:"プラセボ",en:"Placebo"};
 /* 작업 상태 배지: ok=반영완료, approve=수정·승인대기, wait=작업대기, demo=오버레이 데모 */
 const STAT={
- "med01-evidence-1.webp":"ok","med01-evidence-2.png":"ok",
+ "med01-evidence-1.webp":"approve","med01-evidence-2.png":"ok",
  "med02-evidence-1.webp":"ok","med02-evidence-2.png":"ok",
- "nvp2106-evidence-1.webp":"ok","nvp2106-evidence-2.webp":"approve","nvp2106-evidence-3.webp":"ok",
- "nvp1702-evidence-1.webp":"approve","nvp1702-evidence-2.webp":"ok",
- "nvp1703-evidence-1.webp":"demo","nvp1703-evidence-2.webp":"wait",
- "nvp1704-evidence-1.webp":"approve","nvp1704-evidence-2.webp":"approve","nvp1704-evidence-3.webp":"wait",
+ "nvp2106-evidence-1.webp":"ok","nvp2106-evidence-2.webp":"ok","nvp2106-evidence-3.webp":"ok",
+ "nvp1702-evidence-1.webp":"ok","nvp1702-evidence-2.webp":"ok",
+ "nvp1703-evidence-1.webp":"demo","nvp1703-evidence-2.webp":"ok",
+ "nvp1704-evidence-1.webp":"approve","nvp1704-evidence-2.webp":"ok","nvp1704-evidence-3.webp":"ok",
  "testofen-evidence-1.webp":"ok","testofen-evidence-2.webp":"ok","testofen-evidence-3.webp":"ok",
  "thinkgin-evidence-1.webp":"ok","thinkgin-evidence-2.webp":"ok","thinkgin-evidence-3.webp":"ok",
  "neulearn-evidence-2-clean.png":"ok","neulearn-evidence-3-clean.png":"ok",
- "applephenon-evidence-1.webp":"ok","applephenon-evidence-3.webp":"ok",
+ "applephenon-evidence-1.webp":"approve","applephenon-evidence-2.webp":"approve","applephenon-evidence-3.webp":"ok",
  "collagen-evidence-1-clean.png":"wait","collagen-evidence-2-clean.png":"wait",
  "dermania-evidence-1.webp":"wait","dermania-evidence-2.webp":"ok",
  "agrimony-alt-evidence.png":"ok","agrimony-ast-evidence.png":"ok","agrimony-hsi-evidence.png":"ok",
@@ -69,7 +70,7 @@ function barChart(cfg){
   (cfg.sig||[]).forEach(sg=>{const i0=sg.i0!=null?sg.i0:0,i1=sg.i1!=null?sg.i1:n-1,x1=m.l+slot*i0+slot/2,x2=m.l+slot*i1+slot/2,sw=cfg.sigLight?0.85:1;
     if(cfg.sigBottom||sg.bottom){const yBot=Math.max(barEnds[i0].end,barEnds[i1].end)+10;svg.appendChild(el("line",{x1:x1,y1:yBot,x2:x2,y2:yBot,stroke:sigLine,"stroke-width":sw}));svg.appendChild(el("line",{x1:x1,y1:yBot-5,x2:x1,y2:yBot,stroke:sigLine,"stroke-width":sw}));svg.appendChild(el("line",{x1:x2,y1:yBot-5,x2:x2,y2:yBot,stroke:sigLine,"stroke-width":sw}));svg.appendChild(txt((x1+x2)/2,yBot+14,sg.text,{"text-anchor":"middle","font-size":sg.small?9:13,fill:sigCol,"font-weight":700}));}
     else{const y=m.t-8-(sigLv-(sg.lvl||0))*sigStep;svg.appendChild(el("line",{x1:x1,y1:y,x2:x2,y2:y,stroke:sigLine,"stroke-width":sw}));svg.appendChild(el("line",{x1:x1,y1:y,x2:x1,y2:y+5,stroke:sigLine,"stroke-width":sw}));svg.appendChild(el("line",{x1:x2,y1:y,x2:x2,y2:y+5,stroke:sigLine,"stroke-width":sw}));svg.appendChild(txt((x1+x2)/2,y-4,sg.text,{"text-anchor":"middle","font-size":sg.small?9:12,fill:sigCol,"font-weight":700}));}});
-  if(cfg.callout){const co=L(cfg.callout),lines=Array.isArray(co)?co:[co],big=!!cfg.calloutBig,cw2=Math.min(iw*(big?0.94:0.78),big?240:170),cx2=m.l+iw/2,cy=m.t+(big?6:10),lh=big?19:17,bh=lines.length*lh+14,fill=cfg.calloutFill||"#e0242f";svg.appendChild(el("rect",{x:cx2-cw2/2,y:cy,width:cw2,height:bh,rx:big?6:8,fill:fill}));lines.forEach((ln,i)=>svg.appendChild(txt(cx2,cy+16+i*lh,ln,{"text-anchor":"middle","font-size":big?15:13,fill:"#fff","font-weight":800})));const aw=big?22:14,ah=big?20:13,by=cy+bh;svg.appendChild(el("path",{d:"M"+(cx2-aw)+" "+by+"L"+(cx2+aw)+" "+by+"L"+cx2+" "+(by+ah)+"Z",fill:fill}));if(big){svg.appendChild(el("line",{x1:cx2,y1:by+ah,x2:cx2,y2:by+ah+10,stroke:fill,"stroke-width":big?5:3,"stroke-linecap":"round"}));}}
+  if(cfg.callout){const co=L(cfg.callout),lines=Array.isArray(co)?co:[co],big=!!cfg.calloutBig,cw2=Math.min(iw*(big?0.92:0.72),big?220:160),cx2=m.l+iw/2,cy=m.t+ih*(big?0.18:0.24),bh=lines.length*(big?18:16)+(big?14:10);svg.appendChild(el("rect",{x:cx2-cw2/2,y:cy,width:cw2,height:bh,rx:big?4:8,fill:"#f26d6d"}));lines.forEach((ln,i)=>svg.appendChild(txt(cx2,cy+(big?22:19)+i*(big?18:16),ln,{"text-anchor":"middle","font-size":big?14:13,fill:"#fff","font-weight":700})));svg.appendChild(el("path",{d:"M"+(cx2-(big?18:9))+" "+(cy+bh)+"L"+(cx2+(big?18:9))+" "+(cy+bh)+"L"+cx2+" "+(cy+bh+(big?22:13))+"Z",fill:"#f26d6d"}));}
   if(cfg.diagArrow){const ax1=m.l+iw*.12,ay1=m.t+ih*.18,ax2=m.l+iw*.88,ay2=m.t+ih*.82,col="#e0242f";svg.appendChild(el("line",{x1:ax1,y1:ay1,x2:ax2,y2:ay2,stroke:col,"stroke-width":5,"stroke-linecap":"round"}));const ang=Math.atan2(ay2-ay1,ax2-ax1),hl=14;svg.appendChild(el("path",{d:"M"+ax2+" "+ay2+"L"+(ax2-hl*Math.cos(ang-.45))+" "+(ay2-hl*Math.sin(ang-.45))+"L"+(ax2-hl*Math.cos(ang+.45))+" "+(ay2-hl*Math.sin(ang+.45))+"Z",fill:col}));}
   if(cfg.footnote){const wrap=document.createElement("div");wrap.appendChild(svg);const fn=document.createElement("div");fn.style.cssText="font-size:10px;color:#374151;margin-top:4px;text-align:center";fn.textContent=L(cfg.footnote);wrap.appendChild(fn);return wrap;}
   return svg;
