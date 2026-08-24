@@ -23,12 +23,14 @@
   .dotb{width:10px;height:10px;border-radius:50%}
   .dotb.lg{width:22px;height:22px;border:2px solid rgba(0,0,0,.08);box-shadow:inset 0 0 0 2px #fff}
   h2.prod{font-size:14px;margin:22px 0 8px;color:#0f2233;border-bottom:2px solid #dbe2e8;padding-bottom:6px}
-  .ba{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.05fr) minmax(220px,280px) 64px;gap:12px;background:#fff;border:1px solid var(--grid);border-radius:12px;padding:12px;margin:10px 0;box-shadow:0 1px 3px rgba(16,34,51,.05);align-items:stretch}
+  .ba{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.05fr) minmax(220px,280px) 64px;gap:12px;background:#fff;border:1px solid var(--grid);border-radius:12px;padding:12px 12px 12px 52px;margin:10px 0;box-shadow:0 1px 3px rgba(16,34,51,.05);align-items:stretch}
+  .chart-id{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:8px;background:#0f2233;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em;box-shadow:0 2px 6px rgba(15,34,51,.22);z-index:2;flex-shrink:0}
+  .ba.ba-crit .chart-id{background:#b91c1c}
   .ba.ba-exact{border-color:#86efac;background:linear-gradient(90deg,#fff 0%,#fff 88%,#ecfdf5 100%)}
   .ba.ba-approx{border-color:#fcd34d;background:linear-gradient(90deg,#fff 0%,#fff 88%,#fffbeb 100%)}
   .ba.ba-crit{border-color:#fca5a5;box-shadow:0 0 0 1px rgba(185,28,28,.12)}
   @media(max-width:1100px){.ba{grid-template-columns:1fr 1fr;}.fix-rail,.mark-rail{grid-column:1/-1}}
-  @media(max-width:720px){.ba{grid-template-columns:1fr;}.mark-rail{min-height:56px;padding-top:4px}}
+  @media(max-width:720px){.ba{grid-template-columns:1fr;padding-left:12px;padding-top:40px;}.chart-id{top:8px;transform:none;}.mark-rail{min-height:56px;padding-top:4px}}
   .fix-rail{background:#fff5f5;border:1px solid #fecaca;border-left:4px solid #dc2626;border-radius:8px;padding:10px 11px;min-width:0;align-self:stretch}
   .fix-rail .fh{font-size:11px;font-weight:800;color:#b91c1c;letter-spacing:.02em;margin:0 0 6px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
   .fix-rail .sev{font-size:10px;font-weight:800;padding:2px 7px;border-radius:10px;color:#fff}
@@ -87,12 +89,13 @@
     <span><i class="dotb lg" style="background:#d97706"></i>주황 원 = Approx·승인대기(이번 라운드 반영)</span>
     <span><i class="dotb lg" style="background:#cbd5e1"></i>회색 = 이번 Exact 패치 대상 아님 / 이미지 유지</span>
     <span style="border-color:#fecaca;color:#991b1b"><i class="dotb lg" style="background:#dc2626"></i>빨간 패널 = 비전 차이·수정안 (이번 라운드 다수 반영)</span>
+    <span><i class="dotb lg" style="background:#0f2233"></i>왼쪽 <b>#번호</b> = 지적용 차트 ID (예: 「#7 오차바」)</span>
   </div>
 </div>
 <script>
 const IMG="https://biolabjp.com/images/ingredients/";
 let LANG="ko"; const L=o=>typeof o==="string"?o:(o&&(o[LANG]||o.ko));
-const T={headnote:{ko:"왼쪽=라이브 원본, 가운데=HTML/SVG 재현, <b style='color:#b91c1c'>빨간 패널=비전 모델 전수 대조 차이점·수정안</b>(수정 반영 후 재점검). 2026-08-21 Exact 교차검증+비전 감사. 사진·도식은 이미지 유지. <b>라이브 제품 SVG는 퍼블리시 전 미반영</b>.",ja:"左=原本、中央=HTML、<b style='color:#b91c1c'>赤=ビジョン差分・修正案</b>。<b>承認まで反映しません。</b>",en:"Left=original, center=HTML, <b style='color:#b91c1c'>red=vision diffs &amp; fix proposals</b>. <b>Not live.</b>"},
+const T={headnote:{ko:"각 행 왼쪽 <b>#번호</b>로 지적해 주세요 (예: 「#3 오차바 제거」). 왼쪽=라이브 원본, 가운데=HTML/SVG 재현, <b style='color:#b91c1c'>빨간 패널=비전 모델 전수 대조 차이점·수정안</b>(수정 반영 후 재점검). 2026-08-21 Exact 교차검증+비전 감사. 사진·도식은 이미지 유지. <b>라이브 제품 SVG는 퍼블리시 전 미반영</b>.",ja:"各行左の<b>#番号</b>で指摘してください。左=原本、中央=HTML、<b style='color:#b91c1c'>赤=ビジョン差分・修正案</b>。<b>承認まで反映しません。</b>",en:"Use the left <b>#ID</b> to flag issues (e.g. “#3 remove error bars”). Left=original, center=HTML, <b style='color:#b91c1c'>red=vision diffs &amp; fix proposals</b>. <b>Not live.</b>"},
  MED:{ko:"MED-02",ja:"MED-02",en:"MED-02"},MED01:{ko:"MED-01",ja:"MED-01",en:"MED-01"},NVP:{ko:"NVP-2106",ja:"NVP-2106",en:"NVP-2106"},placebo:{ko:"위약",ja:"プラセボ",en:"Placebo"},weeks:{ko:"주",ja:"週",en:"Weeks"},before:{ko:"섭취 전",ja:"摂取前",en:"Before"},after:{ko:"섭취 후",ja:"摂取後",en:"After"},test:{ko:"시험군",ja:"試験群",en:"Test"},ctrl:{ko:"대조군",ja:"対照群",en:"Control"},base:{ko:"Baseline",ja:"Baseline",en:"Baseline"},wk8:{ko:"8주",ja:"8週",en:"8 Weeks"}};
 const PL={ko:"위약",ja:"プラセボ",en:"Placebo"};
 const NS="http://www.w3.org/2000/svg";
@@ -358,20 +361,21 @@ function markRail(kind){
   const lab=document.createElement("div");lab.className="mark-label "+k;lab.innerHTML=L(copy).replace(/\n/g,"<br>");
   rail.appendChild(cir);rail.appendChild(lab);return rail;
 }
-function fixRail(buildKey,type){
+function fixRail(buildKey,type,num){
   const rail=document.createElement("div");rail.className="fix-rail";
+  const idTag=num?'<span style="margin-left:auto;font-weight:800;color:#0f2233;font-size:12px">#'+num+'</span>':'';
   if(type==="image"||!buildKey){
-    rail.innerHTML='<div class="fh"><span class="sev na">n/a</span>비전 수정안</div><div class="namsg">이미지 유지 · 차트 재현 대상 아님</div>';
+    rail.innerHTML='<div class="fh"><span class="sev na">n/a</span>비전 수정안'+idTag+'</div><div class="namsg">이미지 유지 · 차트 재현 대상 아님</div>';
     return rail;
   }
   const fx=FIXES[buildKey];
   if(!fx){
-    rail.innerHTML='<div class="fh"><span class="sev na">?</span>비전 수정안</div><div class="namsg">이 키에 대한 비전 기록 없음 — 재감사 필요</div>';
+    rail.innerHTML='<div class="fh"><span class="sev na">?</span>비전 수정안'+idTag+'</div><div class="namsg">이 키에 대한 비전 기록 없음 — 재감사 필요</div>';
     return rail;
   }
   const sev=fx.sev||"major";
   const sevLab={critical:"치명",major:"중요",minor:"경미",ok:"양호"}[sev]||sev;
-  let html='<div class="fh"><span class="sev '+sev+'">'+sevLab+'</span>비전 차이 · 수정안'+(fx.applied?' <span class="sev ok">적용</span>':'')+'</div>';
+  let html='<div class="fh"><span class="sev '+sev+'">'+sevLab+'</span>비전 차이 · 수정안'+(fx.applied?' <span class="sev ok">적용</span>':'')+idTag+'</div>';
   if(sev==="ok"&&(!fx.diffs||!fx.diffs.length)){
     html+='<div class="okmsg">원본과 시각적으로 충분. 미세 정돈만 선택.</div>';
   } else {
@@ -387,14 +391,16 @@ function fixRail(buildKey,type){
 function render(){
   document.getElementById("topnote").innerHTML=L(T.headnote);
   [...stage.querySelectorAll(".prod,.ba")].forEach(n=>n.remove());
+  let chartSeq=0;
   INV.forEach(function(entry){const prod=entry[0],items=entry[1];
     const h=document.createElement("h2");h.className="prod";h.textContent=prod;stage.appendChild(h);
-    items.forEach(function(it){const file=it[0],type=it[1],buildKey=it[2],desc=it[3];
+    items.forEach(function(it){chartSeq+=1;const num=chartSeq;const file=it[0],type=it[1],buildKey=it[2],desc=it[3];
       const markKind=buildKey&&MARK[buildKey]?MARK[buildKey]:"none";
       const fx=buildKey&&FIXES[buildKey];
-      const ba=document.createElement("div");ba.className="ba"+(markKind==="exact"?" ba-exact":markKind==="approx"?" ba-approx":"")+(fx&&fx.sev==="critical"?" ba-crit":"");
+      const ba=document.createElement("div");ba.className="ba"+(markKind==="exact"?" ba-exact":markKind==="approx"?" ba-approx":"")+(fx&&fx.sev==="critical"?" ba-crit":"");ba.id="chart-"+num;
+      const cid=document.createElement("div");cid.className="chart-id";cid.textContent=num;cid.title="#"+num+" · "+file;ba.appendChild(cid);
       const bf=document.createElement("div");bf.className="side";
-      bf.innerHTML='<div class="h">BEFORE · 원본 <span class="badge '+(type==='image'?'b-image':'b-chart')+'">'+(type==='image'?'도식·사진':'차트')+'</span></div>';
+      bf.innerHTML='<div class="h">BEFORE · <b>#'+num+'</b> · 원본 <span class="badge '+(type==='image'?'b-image':'b-chart')+'">'+(type==='image'?'도식·사진':'차트')+'</span></div>';
       const SRC=file.indexOf('local:')===0?file.slice(6):IMG+file;
       const fn=document.createElement("div");fn.className="fname";fn.innerHTML='<a href="'+SRC+'" target="_blank" rel="noreferrer" style="color:#9aa3af">'+file+'</a>';
       const im=document.createElement("img");im.loading="eager";im.decoding="async";im.referrerPolicy="no-referrer";
@@ -403,7 +409,7 @@ function render(){
       const af=document.createElement("div");af.className="side";
       if(buildKey&&BUILD[buildKey]){const b=BUILD[buildKey],capText=L(b.cap)||"",needsCheck=/근사값|approx|近似/i.test(capText);
         const statusBadge=markKind==="exact"?'<span class="badge b-exact">Exact 반영</span>':markKind==="approx"?'<span class="badge b-approx">Approx 반영</span>':'<span class="badge '+(needsCheck?'b-image':'b-done')+'">'+(needsCheck?'수치확인':'완성')+'</span>';
-        af.innerHTML='<div class="h">AFTER · HTML '+statusBadge+'</div>';
+        af.innerHTML='<div class="h">AFTER · <b>#'+num+'</b> · HTML '+statusBadge+'</div>';
         const box=document.createElement("div");box.className="after-box";
         const pill=document.createElement("div");pill.className="pillt";pill.textContent=L(b.pill);box.appendChild(pill);
         box.appendChild(b.legendItems?legendCustom(b.legendItems):b.legend==="med"?legendMED():b.legend==="med01"?legendMED01():legendNVP());
@@ -411,9 +417,9 @@ function render(){
         const cp=document.createElement("div");cp.className="cap";cp.textContent=L(b.cap);box.appendChild(cp);
         af.appendChild(box);
       } else {
-        af.innerHTML='<div class="h">AFTER <span class="badge b-image">이미지 유지</span></div><div class="pend">'+L(desc)+'<br><small>데이터 차트가 아니라 그대로 둡니다</small></div>';
+        af.innerHTML='<div class="h">AFTER · <b>#'+num+'</b> <span class="badge b-image">이미지 유지</span></div><div class="pend">'+L(desc)+'<br><small>데이터 차트가 아니라 그대로 둡니다</small></div>';
       }
-      ba.appendChild(bf);ba.appendChild(af);ba.appendChild(fixRail(buildKey,type));ba.appendChild(markRail(markKind));stage.appendChild(ba);
+      ba.appendChild(bf);ba.appendChild(af);ba.appendChild(fixRail(buildKey,type,num));ba.appendChild(markRail(markKind));stage.appendChild(ba);
     });
   });
   observe();
