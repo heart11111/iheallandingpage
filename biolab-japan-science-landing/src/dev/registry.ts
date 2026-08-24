@@ -34,7 +34,7 @@ export const draftRegistry: DraftEntry[] = [
     previewPath: "/dev/charts-approx",
     livePath: "/products (evidence SVG — 퍼블리시 전 미반영)",
     status: "published",
-    note: "6차트 퍼블리시(2026-08-24): MED-01·MED-02·NVP-2106(1·2)·NVP-1702-2 — 비전 수정안 반영. 나머지는 /dev 검수 중.",
+    note: "8차트 퍼블리시(2026-08-24): MED-01·MED-02·NVP-2106(1·2)·NVP-1702-2·Testofen(AMS총점·신체·성기능) — 비전 수정안 반영. 나머지는 /dev 검수 중.",
     updatedAt: "2026-08-24",
   },
 ];
