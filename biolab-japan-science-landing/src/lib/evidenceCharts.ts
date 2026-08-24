@@ -21,7 +21,7 @@ const STAT={
  "thinkgin-evidence-1.webp":"ok","thinkgin-evidence-2.webp":"ok","thinkgin-evidence-3.webp":"ok",
  "neulearn-evidence-2-clean.png":"ok","neulearn-evidence-3-clean.png":"ok",
  "applephenon-evidence-1.webp":"ok","applephenon-evidence-3.webp":"ok",
- "collagen-evidence-1-clean.png":"wait","collagen-evidence-2-clean.png":"wait",
+ "collagen-evidence-1-clean.png":"ok","collagen-evidence-2-clean.png":"ok",
  "dermania-evidence-1.webp":"wait","dermania-evidence-2.webp":"ok",
  "agrimony-alt-evidence.png":"ok","agrimony-ast-evidence.png":"ok","agrimony-hsi-evidence.png":"ok",
  "pinitol-evidence-1.webp":"ok","pinitol-evidence-2.webp":"ok",
