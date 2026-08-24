@@ -86,7 +86,7 @@ const FIXES: {
   {
     key: "acetobeta-evidence-2.webp",
     title: "AcetoBeta · Acetaldehyde",
-    note: "pill callout — 막대 사이 브래킷 + 캡슐 배지 (구: 상단 빨간 말풍선).",
+    note: "tag callout — 원본처럼 막대 사이 컴팩트 빨간 박스+삼각형 (pill 아님).",
   },
   {
     key: "acetobeta-evidence-3.webp",
