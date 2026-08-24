@@ -71,7 +71,7 @@ function lineChart(cfg){
   cfg.x.forEach((xx,i)=>svg.appendChild(txt(X(i),h-24,L(xx),{"text-anchor":"middle","font-size":10,fill:"#111827","font-weight":700})));
   if(cfg.xlabel!==false)svg.appendChild(txt(m.l+plotW/2,h-6,cfg.xLabelText||L(T.weeks),{"text-anchor":"middle","font-size":11,fill:"#374151","font-weight":700}));
   if(cfg.improvementArrow){
-    const x=cfg.arrowInside?(m.l+plotW+28):(m.l+iw+40),y0=m.t+ih*.18,y1=m.t+ih*.82,col="#0f172a",sw=3.4;
+    const x=cfg.arrowInside?(m.l+plotW+18):(m.l+iw+40),y0=m.t+ih*.18,y1=m.t+ih*.82,col="#0f172a",sw=3.4;
     svg.appendChild(el("line",{x1:x,y1:y0,x2:x,y2:y1,stroke:col,"stroke-width":sw,"stroke-linecap":"round"}));
     svg.appendChild(el("path",{d:"M"+x+" "+(y0-11)+"L"+(x-8)+" "+(y0+5)+"L"+(x+8)+" "+(y0+5)+"Z",fill:col}));
     svg.appendChild(el("path",{d:"M"+x+" "+(y1+11)+"L"+(x-8)+" "+(y1-5)+"L"+(x+8)+" "+(y1-5)+"Z",fill:col}));
