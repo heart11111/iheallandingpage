@@ -102,8 +102,9 @@ const NS="http://www.w3.org/2000/svg";
 const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in(a||{}))e.setAttribute(k,a[k]);return e;};
 const txt=(x,y,s,a)=>{const e=el("text",Object.assign({x,y},a||{}));e.textContent=s;return e;};
 const fmt=v=>(Math.round(v*1000)/1000).toString();
-/** 막대/축 단절(broken axis) 물결 — 원본 ThinkGIN AChE 등 */
-function wavePath(x0,x1,y){const n=4,seg=(x1-x0)/n;let d="M"+x0+" "+y;for(let k=0;k<n;k++){const xa=x0+seg*k,dir=k%2===0?-1:1;d+=" Q"+(xa+seg/2)+" "+(y+dir*3.4)+" "+(xa+seg)+" "+y;}return d;}
+/** 축 단절(broken bar): 막대 중간을 물결 밴드로 잘라 길이 압축을 표시 (ThinkGIN AChE 등) */
+function barBreakBand(x0,x1,yTop,yBot,amp){amp=amp||3.4;const n=4,seg=(x1-x0)/n;let d="M"+x0+" "+yTop;for(let k=0;k<n;k++){const dir=k%2===0?-1:1;d+=" Q"+(x0+seg*k+seg/2)+" "+(yTop+dir*amp)+" "+(x0+seg*(k+1))+" "+yTop;}d+=" L"+x1+" "+yBot;for(let k=n-1;k>=0;k--){const dir=k%2===0?1:-1;d+=" Q"+(x0+seg*k+seg/2)+" "+(yBot+dir*amp)+" "+(x0+seg*k)+" "+yBot;}return d+" Z";}
+function drawBarBreak(svg,b,cx,barW,Y){const bx=cx-barW/2,ya=Math.min(Y(b.brk[0]),Y(b.brk[1])),yb=Math.max(Y(b.brk[0]),Y(b.brk[1])),gap=Math.max(yb-ya,10),yMid=(ya+yb)/2,yT=yMid-gap/2,yB=yMid+gap/2;svg.appendChild(el("path",{d:barBreakBand(bx,bx+barW,yT,yB),fill:"#fff",stroke:b.color,"stroke-width":2,"stroke-linejoin":"round"}));}
 function barChart(cfg){
   const tt=(cfg.title||cfg.titleBox)?26:0;
   const sigLv=(cfg.sig&&cfg.sig.length)?Math.max.apply(null,cfg.sig.map(function(s){return s.lvl||0;})):0;
@@ -124,8 +125,7 @@ function barChart(cfg){
   const barEnds=[];
   cfg.bars.forEach((b,i)=>{const cx=m.l+slot*i+slot/2,v=b.value,y0=Y(b0),yv=Y(v),top=Math.min(y0,yv),hgt=Math.abs(yv-y0)||1;
     const r=el("rect",{x:cx-barW/2,y:top,width:barW,height:hgt,fill:b.color,rx:2,class:"barRect"});if(b.stroke){r.setAttribute("stroke",b.stroke);r.setAttribute("stroke-width",b.sw||1.4);}r.style.transformOrigin=(v<b0?"top":"bottom");svg.appendChild(r);
-    /* broken-bar 물결: 막대 중간 흰 절단 + 상·하 물결선 (ThinkGIN AChE) */
-    if(b.brk){const bx=cx-barW/2,ya=Math.min(Y(b.brk[0]),Y(b.brk[1])),yb=Math.max(Y(b.brk[0]),Y(b.brk[1]));svg.appendChild(el("rect",{x:bx-0.5,y:ya,width:barW+1,height:Math.max(yb-ya,6),fill:"#fff"}));[ya,yb].forEach(function(yy){svg.appendChild(el("path",{d:wavePath(bx,bx+barW,yy),fill:"none",stroke:b.color,"stroke-width":2}));});}
+    if(b.brk)drawBarBreak(svg,b,cx,barW,Y);
     if(b.err){if(b.err1){const yo=Y(v<b0?v-b.err:v+b.err),yb2=Y(v);svg.appendChild(el("line",{x1:cx,y1:yb2,x2:cx,y2:yo,stroke:"#1f2937","stroke-width":1.5}));svg.appendChild(el("line",{x1:cx-5,y1:yo,x2:cx+5,y2:yo,stroke:"#1f2937","stroke-width":1.5}));}else{const eu=Y(v+b.err),ed=Y(v-b.err);svg.appendChild(el("line",{x1:cx,y1:eu,x2:cx,y2:ed,stroke:"#1f2937","stroke-width":1.5}));svg.appendChild(el("line",{x1:cx-5,y1:eu,x2:cx+5,y2:eu,stroke:"#1f2937","stroke-width":1.5}));svg.appendChild(el("line",{x1:cx-5,y1:ed,x2:cx+5,y2:ed,stroke:"#1f2937","stroke-width":1.5}));}}
     if(cfg.showval&&!b.noval)svg.appendChild(txt(cx,(v<b0?(b.err?Y(v-b.err)+14:top+hgt+14):(b.err?Y(v+b.err)-6:top-6)),fmt(v),{"text-anchor":"middle","font-size":11,fill:"#1f2937","font-weight":700}));
     if(b.mark)svg.appendChild(txt(cx,(v<b0?(b.err?Y(v-b.err)+25:top+hgt+25):(b.err?Y(v+b.err)-18:top-18)),b.mark,{"text-anchor":"middle","font-size":b.markSize||11,fill:b.markColor||"#111827","font-weight":700}));
@@ -362,7 +362,7 @@ const FIXES={
 "testofen-evidence-1.webp":{sev:"major",applied:true,diffs:["선 끝 텍스트 라벨(원본 없음)","y범위 7~12 vs 원본 7~11 느낌","굵은 L축·실선 그리드 약함"],fixes:["`noEndLabel:true`","yMax=11 · 에러바 검정 통일","축/그리드 톤 원본화"]},
 "testofen-evidence-2.webp":{sev:"major",applied:true,diffs:["end-label · 하단 범례/Rao 각주 누락","마커·제목 배치 차이"],fixes:["`noEndLabel`+하단 범례·출처","패널 제목을 상단 텍스트로"]},
 "testofen-evidence-3.webp":{sev:"major",applied:true,diffs:["0주 Testofen ≈42(기존 41.5)","6·12주 에러바가 Y=30 눈금에 접점(기존 ±1.5~2px 어긋남)","Placebo 6주 ≈39±3"],fixes:["Testofen [42,32,28] err [0,2,2] → 6w하단·12w상단=30","Placebo [40,39,35] err [0,3,2]","`noEndLabel` · 제목/축 모노톤"]},
-"thinkgin-evidence-1.webp":{sev:"major",applied:true,diffs:["물결(broken bar) HTML 미렌더"],fixes:["wavePath+brk 절단 물결 반영","라벨 막대 위·* 하단·yMax −12"]},
+"thinkgin-evidence-1.webp":{sev:"major",applied:true,diffs:["물결=축 단절(broken bar) · 기존 윤곽선만 그려 텅 빈 밴드"],fixes:["barBreakBand: 채워진 물결 밴드+막대색 테두리","라벨 막대 위·* 하단·yMax −12"]},
 "thinkgin-evidence-2.webp":{sev:"major",applied:true,diffs:["임의 y스케일·값 · 원본은 틱/에러 거의 없음","X 그룹(총점/2차) 레이아웃·별표 색 차이"],fixes:["y틱 최소화 · 상대 높이만 원본 비율","그룹 X·별표 검정"]},
 "thinkgin-evidence-3.webp":{sev:"critical",applied:true,diffs:["에러바 방향/크기 원본과 크게 다름","하단 PSQI-K 한국어 주석 누락","브라켓 문구 `*p=0.046` vs `*p<0.05`"],fixes:["tip-only/원본식 에러로 재매칭","주석·브라켓 `*p<0.05` 복원","라벨을 막대 위"]},
 "neulearn-evidence-2-clean.png":{sev:"major",applied:true,diffs:["P=0.02가 600↔1200으로 잘못 연결"],fixes:["P=0.02 → PL↔1200 · P=0.08 → PL↔600","단기기억 이중 P=0.001(PL↔600·PL↔1200)"]},
