@@ -34,7 +34,7 @@ export const draftRegistry: DraftEntry[] = [
     previewPath: "/dev/charts-approx",
     livePath: "/products (evidence SVG — 퍼블리시 전 미반영)",
     status: "published",
-    note: "15차트 퍼블리시(2026-08-24): 기존 8종 + ThinkGIN(SVLT·PSQI-K)·Neulearn(SMCQ)·Applephenon(허리둘레)·Collagen(보습·탄력·주름·거칠기) — 비전 수정안 반영.",
+    note: "27차트 라이브(2026-08-24): +DermaNiA(주름·수분)·Agrimony(ALT·AST·HSI)·Pinitol(GPx/MDA·간지방) 7종 추가 — 화살표 markSize:17·markBelow 개선.",
     updatedAt: "2026-08-24",
   },
 ];
