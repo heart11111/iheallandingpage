@@ -87,6 +87,47 @@ export default function DevHubPage() {
               )}
             </div>
 
+            <div className="dh-dev-hub-list dh-dev-hub-static">
+              <div className="dh-dev-hub-list-head">
+                <h2>검수 HTML (정적 비교 뷰어)</h2>
+                <p>2건</p>
+              </div>
+              <ul>
+                <li>
+                  <div>
+                    <p className="dh-dev-hub-status" data-status="ready">
+                      검토 대기
+                    </p>
+                    <h3>전체 차트 원본 ↔ HTML 비교</h3>
+                    <p>
+                      27종+ 차트를 원본 이미지·SVG 재현·비전 수정안 패널로 나란히 봅니다. #번호로
+                      지적해 주세요.
+                    </p>
+                    <p className="dh-dev-hub-meta">
+                      미리보기 <code>/dev/charts-review.html</code>
+                    </p>
+                  </div>
+                  <Link href="/dev/charts-review.html">HTML 보기</Link>
+                </li>
+                <li>
+                  <div>
+                    <p className="dh-dev-hub-status" data-status="ready">
+                      검토 대기
+                    </p>
+                    <h3>AcetoBeta 말풍선 3-way 비교</h3>
+                    <p>
+                      Acetaldehyde·메스꺼움 차트 — 원본 PPT / 구 SVG(상단 말풍선) / 신 pill
+                      배지를 나란히 비교합니다.
+                    </p>
+                    <p className="dh-dev-hub-meta">
+                      미리보기 <code>/dev/acetobeta-callout-compare.html</code>
+                    </p>
+                  </div>
+                  <Link href="/dev/acetobeta-callout-compare.html">HTML 보기</Link>
+                </li>
+              </ul>
+            </div>
+
             {draftRegistry.some((entry) => entry.status === "published") ? (
               <p className="dh-dev-hub-footnote">
                 퍼블리시가 끝난 초안은 보관만 하거나 정리합니다. 라이브 URL이 최종본입니다.
