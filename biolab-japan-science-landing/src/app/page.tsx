@@ -13,6 +13,9 @@ import { useReveal } from "@/lib/useReveal";
 // Flip this back to `true` to restore the homepage News section instantly.
 const SHOW_NEWS = false;
 
+// Business map section is temporarily hidden. Flip to `true` to restore.
+const SHOW_BUSINESS_MAP = false;
+
 // Two evidence-backed ingredient lines lead; ODM/OEM is a service, so it is
 // tagged and linked to the real service page rather than the empty
 // /products/odm-oem ingredient list.
@@ -277,6 +280,7 @@ export default function Home() {
           </div>
         </section>
 
+        {SHOW_BUSINESS_MAP && (
         <section id="business-map" className="dh-bizmap">
           <div className="dh-container">
             <div className="dh-section-title" data-reveal="">
@@ -348,6 +352,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        )}
 
         <section id="technology" className="dh-tech">
           <div className="dh-container">
