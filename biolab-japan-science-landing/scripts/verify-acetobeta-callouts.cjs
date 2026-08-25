@@ -43,10 +43,10 @@ function geom(svg) {
 
 function checkAcetaldehyde(svg) {
   const { vw, vh, rects, paths, lines } = geom(svg);
-  const tag = rects.find((r) => r.getAttribute("fill") === "#e0242f");
-  const tri = paths.find((p) => p.getAttribute("fill") === "#e0242f");
-  if (!tag) return fail("acetobeta-evidence-2: missing #e0242f tag rect");
-  if (!tri) return fail("acetobeta-evidence-2: missing #e0242f triangle");
+  const tag = rects.find((r) => r.getAttribute("fill") === "#b91c1c");
+  const tri = paths.find((p) => p.getAttribute("fill") === "#b91c1c");
+  if (!tag) return fail("acetobeta-evidence-2: missing #b91c1c tag rect");
+  if (!tri) return fail("acetobeta-evidence-2: missing #b91c1c triangle");
   if (lines.some((l) => l.getAttribute("stroke") === "#94a3b8")) {
     fail("acetobeta-evidence-2: tag must not use pill brackets");
   }
