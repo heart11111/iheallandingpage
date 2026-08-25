@@ -6774,6 +6774,41 @@ h2 {
   opacity: 1 !important;
 }
 
+.dh-evidence-chart .legc {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  margin: 8px 0 4px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.dh-evidence-chart .legc span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dh-evidence-chart .legc i {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.dh-evidence-chart .evidence-pinitol-grid {
+  gap: 14px;
+}
+
+@media (max-width: 720px) {
+  .dh-evidence-chart .evidence-pinitol-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+}
+
 /* Translated-text overlay laid over an evidence image whose Korean labels are
    painted out with the local background colour (viewBox-locked, responsive). */
 .dh-evidence-overlay-wrap {
