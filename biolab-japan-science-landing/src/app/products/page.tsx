@@ -62,35 +62,31 @@ export default function ProductsPage() {
                   />
                   <div className="dh-product-shade" aria-hidden="true" />
                   <div className="dh-product-text">
-                    <IngredientLineBadge
-                      label={group.menuLabel}
-                      line={index === 0 ? "Functional Probiotics" : "Nature-derived Ingredients"}
-                    />
-                    <h3>
-                      <LocalizedText
-                        ja={group.label}
-                        ko={
-                          index === 0 ? (
-                            "Functional Probiotics"
-                          ) : (
-                            "Functional Nature’s food ingredients"
-                          )
-                        }
+                    <div className="dh-product-copy">
+                      <IngredientLineBadge
+                        label={group.menuLabel}
+                        line={index === 0 ? "Functional Probiotics" : "Nature-derived Ingredients"}
                       />
-                    </h3>
-                    <strong>
-                      <LocalizedText
-                        ja={`${group.items.length}素材・ヒト臨床試験完了`}
-                        ko={`${group.items.length}개 소재 · 인체적용시험 완료`}
-                      />
-                    </strong>
-                    <p>
-                      <LocalizedText ja={group.summary} ko={group.koSummary} />
-                    </p>
+                      <h3>
+                        <LocalizedText
+                          ja={group.label}
+                          ko={index === 0 ? "기능성 프로바이오틱스" : "기능성 천연소재"}
+                        />
+                      </h3>
+                      <strong>
+                        <LocalizedText
+                          ja={`${group.items.length}素材・ヒト臨床試験完了`}
+                          ko={`${group.items.length}개 소재 · 인체적용시험 완료`}
+                        />
+                      </strong>
+                      <p>
+                        <LocalizedText ja={group.summary} ko={group.koSummary} />
+                      </p>
+                    </div>
+                    <a href={group.href}>
+                      <LocalizedText ja="ラインを見る" ko="라인 상세 보기" />
+                    </a>
                   </div>
-                  <a href={group.href}>
-                    <LocalizedText ja="ラインを見る" ko="라인 상세 보기" />
-                  </a>
                 </article>
               ))}
             </div>

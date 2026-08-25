@@ -124,11 +124,11 @@ export const productLinePages = [
 // Contact is a top-level destination rather than a child of Communication, so
 // an inquiry never takes more than one click from any page.
 export const siteMapGroups = [
-  { label: "会社紹介", menuLabel: "COMPANY", href: "/company", children: companyPages },
-  { label: "事業 & サービス", menuLabel: "BUSINESS", href: "/business", children: businessPages },
-  { label: "供給製品", menuLabel: "PRODUCTS", href: "/products", children: productLinePages },
-  { label: "資料 & チャネル", menuLabel: "COMMUNICATION", href: "/communication", children: communicationPages },
-  { label: "お問い合わせ", menuLabel: "CONTACT US", href: "/contact", children: [] },
+  { label: "会社紹介", koLabel: "회사소개", menuLabel: "COMPANY", koMenuLabel: "회사소개", href: "/company", children: companyPages },
+  { label: "事業 & サービス", koLabel: "사업/서비스", menuLabel: "BUSINESS", koMenuLabel: "사업/서비스", href: "/business", children: businessPages },
+  { label: "供給製品", koLabel: "제품", menuLabel: "PRODUCTS", koMenuLabel: "제품", href: "/products", children: productLinePages },
+  { label: "資料 & チャネル", koLabel: "자료 및 채널", menuLabel: "COMMUNICATION", koMenuLabel: "자료 및 채널", href: "/communication", children: communicationPages },
+  { label: "お問い合わせ", koLabel: "문의하기", menuLabel: "CONTACT US", koMenuLabel: "문의하기", href: "/contact", children: [] },
 ];
 
 export const productGroups = [

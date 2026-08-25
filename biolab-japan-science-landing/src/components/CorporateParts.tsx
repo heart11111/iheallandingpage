@@ -600,7 +600,7 @@ export function CorporateFooter() {
               .map((group) => (
                 <div className="dh-footer-col" key={group.href}>
                   <p>
-                    <Link href={group.href}>{group.menuLabel}</Link>
+                    <Link href={group.href}>{isKorean ? group.koMenuLabel || group.koLabel : group.menuLabel}</Link>
                   </p>
                   <ul>
                     {group.children.map((child) => (
@@ -613,7 +613,7 @@ export function CorporateFooter() {
               ))}
             <div className="dh-footer-col">
               <p>
-                <Link href="/contact">CONTACT</Link>
+                <Link href="/contact">{isKorean ? "문의하기" : "CONTACT"}</Link>
               </p>
               <ul>
                 <li>

@@ -5,22 +5,35 @@ import { NavBar } from "@/components/NavBar";
 const visionItems = [
   {
     title: "Vision",
+    koTitle: "비전",
     body: ["韓国の素材開発・製造力と", "日本市場の事業機会をつなぎ、", "信頼されるヘルスケア事業基盤をつくります。"],
-    koBody: ["한국과 일본의", "B2B 사업 기회를 연결합니다."],
+    koBody: [
+      "한국의 소재 개발·제조력과",
+      "일본 시장의 사업 기회를 연결해,",
+      "신뢰할 수 있는 헬스케어 사업 기반을 만듭니다.",
+    ],
   },
   {
     title: "Mission",
+    koTitle: "미션",
     body: ["Functional Probiotics、", "自然由来機能性素材、OEM/ODMを", "一体で整理し、製品化までの流れを支えます。"],
     koBody: [
       "Functional Probiotics,",
       "Functional Nature’s food ingredients,",
-      "ODM/OEM & Brand Royalty 등 통합 솔루션을 제공합니다.",
+      "ODM/OEM & Brand Royalty를",
+      "하나로 정리해 제품화까지의 흐름을 지원합니다.",
     ],
   },
   {
     title: "Goal",
+    koTitle: "목표",
     body: ["BIOLAB KoreaとBIOLAB Japanの", "ネットワークを活用し、", "エビデンス・品質・供給安定性を備えた", "事業基盤を広げます。"],
-    koBody: ["대한민국 식약처(KFDA) 인증", "개별인정형 기능성 소재를", "일본 헬스케어 파트너에게 제공합니다."],
+    koBody: [
+      "BIOLAB Korea와 BIOLAB Japan의",
+      "네트워크를 활용해,",
+      "근거·품질·공급 안정성을 갖춘",
+      "사업 기반을 넓혀 갑니다.",
+    ],
   },
 ];
 
@@ -32,8 +45,8 @@ export default function VisionPage() {
         <CorporateSubHero
           title="Vision & Goals"
           copy="Korea to Japan Healthcare Bridgeとして目指す方向性です。"
-          koTitle="Vision & Mission"
-          koCopy="BIOLAB Japan’s Vision & Mission과 사업 목표입니다."
+          koTitle="비전 및 목표"
+          koCopy="BIOLAB Japan의 Vision & Mission과 사업 목표입니다."
           image="/images/global-evidence-bg.png"
           compact
         />
@@ -66,7 +79,9 @@ export default function VisionPage() {
             <div className="dh-vision-card-grid">
               {visionItems.map((item) => (
                 <article className="dh-vision-card" key={item.title}>
-                  <span>{item.title}</span>
+                  <span>
+                    <LocalizedText ja={item.title} ko={item.koTitle} />
+                  </span>
                   <p>
                     <LocalizedText
                       ja={item.body.map((line) => (
