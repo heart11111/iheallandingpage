@@ -6755,6 +6755,27 @@ h2 {
   overflow: visible;
 }
 
+.dh-evidence-chart img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dh-evidence-chart .evidence-nvp1704-il6 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.45fr);
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+}
+
+@media (max-width: 720px) {
+  .dh-evidence-chart .evidence-nvp1704-il6 {
+    grid-template-columns: 1fr;
+  }
+}
+
 .dh-evidence-chart text {
   font-family: inherit;
   paint-order: stroke fill;
