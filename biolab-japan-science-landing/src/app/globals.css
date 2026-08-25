@@ -7575,6 +7575,15 @@ h2 {
   background: #dfe6ee;
 }
 
+/* 카드가 2개면 빈 3열 칸(회색 박스)이 생기지 않도록 2열로 축소 */
+.dh-page-card-grid:has(> :nth-child(2):last-child) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.dh-page-card-grid:has(> :only-child) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .dh-page-card {
   min-height: 240px;
   padding: 28px;
@@ -7597,7 +7606,8 @@ h2 {
   font-weight: 900;
   line-height: 1.4;
   letter-spacing: 0.12em;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .dh-page-card h2 {
@@ -7607,6 +7617,9 @@ h2 {
   font-weight: 900;
   line-height: 1.25;
   letter-spacing: 0;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  line-break: strict;
 }
 
 .dh-page-card p {
@@ -8914,15 +8927,14 @@ h2 {
 
 .dh-footer .dh-container {
   display: block;
-  /* Five nav columns need more room than the 1000px body container, or the
-     COMMUNICATION heading wraps. */
-  width: min(1140px, calc(100% - 40px));
+  /* Five nav columns + long JA labels need room beyond the 1000px body container. */
+  width: min(1240px, calc(100% - 40px));
 }
 
 .dh-footer-top {
   display: grid;
-  grid-template-columns: minmax(240px, 0.9fr) 1.6fr;
-  gap: 48px;
+  grid-template-columns: minmax(200px, 0.75fr) minmax(0, 2fr);
+  gap: 36px;
   align-items: start;
 }
 
@@ -8946,7 +8958,7 @@ h2 {
 .dh-footer-nav {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 18px;
+  gap: 14px 20px;
 }
 
 .dh-footer-col > p {
@@ -8958,7 +8970,7 @@ h2 {
   font-size: 11px;
   font-weight: 900;
   /* 0.14em pushed COMMUNICATION past its column width. */
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -8972,11 +8984,15 @@ h2 {
 }
 
 .dh-footer-col li a {
+  display: block;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 12.5px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.45;
   text-decoration: none;
   transition: color 0.2s ease;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  line-break: strict;
 }
 
 .dh-footer-col li a:hover,
