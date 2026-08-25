@@ -195,19 +195,43 @@ const neutralEvidenceImages: Record<string, string> = {
 // original image). Keep this list to charts confirmed correct in the review;
 // everything else keeps its source image.
 const liveChartEvidence = new Set<string>([
+  // Probiotics
   "med01-evidence-1.webp",
   "med01-evidence-2.png",
   "med02-evidence-1.webp",
   "med02-evidence-2.png",
+  "nvp2106-evidence-1.webp",
+  "nvp2106-evidence-2.webp",
+  "nvp2106-evidence-3.webp",
+  "nvp1702-evidence-1.webp",
+  "nvp1702-evidence-2.webp",
+  "nvp1704-evidence-1.webp",
+  "nvp1704-evidence-2.webp",
+  "nvp1704-evidence-3.webp",
+  "bifido-evidence-2.webp",
+  // Nature ingredients
   "testofen-evidence-1.webp",
   "testofen-evidence-2.webp",
   "testofen-evidence-3.webp",
+  "thinkgin-evidence-1.webp",
+  "thinkgin-evidence-2.webp",
+  "thinkgin-evidence-3.webp",
+  "neulearn-evidence-2-clean.png",
+  "neulearn-evidence-3-clean.png",
   "applephenon-evidence-1.webp",
+  "applephenon-evidence-2.webp",
   "applephenon-evidence-3.webp",
+  "collagen-evidence-1-clean.png",
+  "collagen-evidence-2-clean.png",
   "dermania-evidence-1.webp",
   "dermania-evidence-2.webp",
-  "nvp2106-evidence-1.webp",
-  "nvp2106-evidence-3.webp",
+  "agrimony-alt-evidence.png",
+  "agrimony-ast-evidence.png",
+  "agrimony-hsi-evidence.png",
+  "pinitol-evidence-1.webp",
+  "pinitol-evidence-2.webp",
+  "acetobeta-evidence-2.webp",
+  "acetobeta-evidence-3.webp",
 ]);
 
 function getLiveChartKey(src: string): string | null {
