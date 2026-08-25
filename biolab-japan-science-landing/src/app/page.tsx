@@ -13,6 +13,9 @@ import { useReveal } from "@/lib/useReveal";
 // Flip this back to `true` to restore the homepage News section instantly.
 const SHOW_NEWS = false;
 
+// Business map section is temporarily hidden. Flip to `true` to restore.
+const SHOW_BUSINESS_MAP = false;
+
 // Two evidence-backed ingredient lines lead; ODM/OEM is a service, so it is
 // tagged and linked to the real service page rather than the empty
 // /products/odm-oem ingredient list.
@@ -24,6 +27,7 @@ const featuredCards = [
     koTag: "인체적용시험 완료 · 7종",
     title: "Application-specific strain portfolio",
     subtitle: "用途別プロバイオティクス",
+    description: "女性・体脂肪・認知など、製品目的に合わせて菌株を検討します。",
     koTitle: "프로바이오틱스 소재",
     koSubtitle: "용도별 7개 영역",
     koDescription: "여성·체지방·인지 등 제품 목적에 맞춰 균주를 검토합니다.",
@@ -39,6 +43,7 @@ const featuredCards = [
     koTag: "인체적용시험 완료 · 10종",
     title: "Nature-derived functional materials",
     subtitle: "自然由来機能性素材",
+    description: "男性健康・記憶・認知など、製品目的に合わせて自然由来素材を検討します。",
     koTitle: "기능성 천연소재",
     koSubtitle: "용도별 10개 영역",
     koDescription: "남성 건강·기억·인지 등 제품 목적에 맞춰 자연 유래 소재를 검토합니다.",
@@ -52,6 +57,7 @@ const featuredCards = [
     koTag: "서비스",
     title: "Market-ready product planning",
     subtitle: "商品化・供給設計",
+    description: "韓国の製造ネットワークをもとに、製品企画と生産をつなぎます。",
     koTitle: "ODM/OEM",
     koSubtitle: "상품 개발 및 ODM / OEM 생산",
     koDescription: "한국 제조 네트워크를 바탕으로 제품 기획과 생산을 연결합니다.",
@@ -175,7 +181,7 @@ export default function Home() {
             <div className="dh-vision-head" data-reveal="">
               <p className="dh-kicker">VISION &amp; MISSION</p>
               <h2>
-                BIOLAB Japan&rsquo;s Vision &amp; Mission.
+                {isKorean ? "BIOLAB Japan의 Vision & Mission" : "BIOLAB Japan’s Vision & Mission."}
               </h2>
               <p className="dh-vision-lead">
                 {isKorean
@@ -188,8 +194,12 @@ export default function Home() {
                 <span className="dh-vision-icon" aria-hidden="true">
                   <Telescope size={22} strokeWidth={1.8} />
                 </span>
-                <p className="dh-vision-card-label">Vision</p>
-                <h3>Beyond Functional Healthcare Solutions</h3>
+                <p className="dh-vision-card-label">{isKorean ? "비전" : "Vision"}</p>
+                <h3>
+                  {isKorean
+                    ? "기능성 헬스케어 솔루션을 넘어"
+                    : "Beyond Functional Healthcare Solutions"}
+                </h3>
                 <p>
                   {isKorean
                     ? "기능성 소재의 공급을 넘어, 일본 시장에서 헬스케어 사업이 성립하도록 근거·제조·유통을 함께 설계합니다."
@@ -200,8 +210,12 @@ export default function Home() {
                 <span className="dh-vision-icon" aria-hidden="true">
                   <Rocket size={22} strokeWidth={1.8} />
                 </span>
-                <p className="dh-vision-card-label">Our Mission</p>
-                <h3>Leap to become a leading company for functional healthcare industry in Japan</h3>
+                <p className="dh-vision-card-label">{isKorean ? "미션" : "Our Mission"}</p>
+                <h3>
+                  {isKorean
+                    ? "일본 기능성 헬스케어 산업의 리딩 기업으로"
+                    : "Leap to become a leading company for functional healthcare industry in Japan"}
+                </h3>
                 <p>
                   {isKorean
                     ? "일본 기능성 헬스케어 산업을 이끄는 기업으로 도약하는 것이 BIOLAB Japan의 목표입니다."
@@ -220,9 +234,19 @@ export default function Home() {
           <div className="dh-container">
             <div className="dh-section-title" data-reveal="">
               <h2>
-                It all starts
-                <br />
-                with the ingredients.
+                {isKorean ? (
+                  <>
+                    제품을 만들기 전에,
+                    <br />
+                    소재와 근거가 먼저입니다.
+                  </>
+                ) : (
+                  <>
+                    It all starts
+                    <br />
+                    with the ingredients.
+                  </>
+                )}
               </h2>
               <p>{isKorean ? "제품을 만들기 전에 대한민국 식약처(KFDA) 인증 개별인정형 기능성 소재와 근거 정보에 집중합니다." : "商品開発の成功を支える素材と根拠情報に集中します。"}</p>
             </div>
@@ -239,10 +263,16 @@ export default function Home() {
                     <p className="dh-product-eyebrow">{card.eyebrow}</p>
                     <h3>{isKorean ? card.koTitle : card.title}</h3>
                     <strong>{isKorean ? card.koSubtitle : card.subtitle}</strong>
-                    {isKorean && <p>{card.koDescription}</p>}
+                    <p>{isKorean ? card.koDescription : card.description}</p>
                   </div>
-                  <a href={card.href} aria-label={`${card.title} 詳細`}>
-                    {card.kind === "service" ? (isKorean ? "서비스 보기" : "サービスを見る") : "LEARN MORE"}
+                  <a href={card.href} aria-label={isKorean ? `${card.koTitle} 상세` : `${card.title} 詳細`}>
+                    {card.kind === "service"
+                      ? isKorean
+                        ? "서비스 보기"
+                        : "サービスを見る"
+                      : isKorean
+                        ? "자세히 보기"
+                        : "詳しく見る"}
                   </a>
                 </article>
               ))}
@@ -250,14 +280,25 @@ export default function Home() {
           </div>
         </section>
 
+        {SHOW_BUSINESS_MAP && (
         <section id="business-map" className="dh-bizmap">
           <div className="dh-container">
             <div className="dh-section-title" data-reveal="">
               <p className="dh-kicker">OUR BUSINESS MAP</p>
               <h2>
-                Korea to Japan,
-                <br />
-                one continuous supply line.
+                {isKorean ? (
+                  <>
+                    한국에서 일본으로,
+                    <br />
+                    하나의 연속된 공급선.
+                  </>
+                ) : (
+                  <>
+                    Korea to Japan,
+                    <br />
+                    one continuous supply line.
+                  </>
+                )}
               </h2>
               <p>
                 {isKorean
@@ -311,14 +352,25 @@ export default function Home() {
             </div>
           </div>
         </section>
+        )}
 
         <section id="technology" className="dh-tech">
           <div className="dh-container">
             <div className="dh-section-title" data-reveal="">
               <h2>
-                Empowering healthcare brands to build
-                <br />
-                <span>evidence-led growth</span> is what matters to us.
+                {isKorean ? (
+                  <>
+                    헬스케어 브랜드가
+                    <br />
+                    <span>근거 기반 성장</span>을 만들어가도록 돕는 일.
+                  </>
+                ) : (
+                  <>
+                    Empowering healthcare brands to build
+                    <br />
+                    <span>evidence-led growth</span> is what matters to us.
+                  </>
+                )}
               </h2>
               <p>
                 {isKorean
@@ -334,7 +386,7 @@ export default function Home() {
                   <p className="dh-tech-subtitle">{item.subtitle}</p>
                   <p>{isKorean ? item.koCopy : item.copy}</p>
                   <Link className="dh-tech-link" href={item.href}>
-                    LEARN MORE
+                    {isKorean ? "자세히 보기" : "詳しく見る"}
                   </Link>
                 </article>
               ))}
