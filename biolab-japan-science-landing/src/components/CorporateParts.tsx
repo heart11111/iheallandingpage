@@ -181,6 +181,7 @@ const wideEvidenceImages = new Set([
   "/images/ingredients/nvp2106-evidence-3.webp",
   "/images/ingredients/pinitol-evidence-1.webp",
   "/images/ingredients/pinitol-evidence-2.webp",
+  "/images/ingredients/acetobeta-evidence-1.webp",
 ]);
 
 const japaneseEvidenceImages: Record<string, string> = {};
@@ -249,6 +250,7 @@ type OverlayText = {
   fs?: number;
   lh?: number;
   anchor?: "start" | "middle" | "end";
+  fg?: string;
   lines: string[];
 };
 type ImageOverlay = { base: string; viewBox: string; fg?: string; ja: OverlayText[]; en?: OverlayText[] };
@@ -275,6 +277,18 @@ const evidenceImageOverlays: Record<string, ImageOverlay> = {
     fg: "#111111",
     ja: [
       { x: 392, y: 278, fs: 13, lh: 22, lines: ["ピッツバーグ睡眠質指数、", "記憶力と睡眠には深い関連があります"] },
+    ],
+  },
+  // Aceto Beta liver pathway — green callouts (white) + bottom metabolite names (dark).
+  "/images/ingredients/acetobeta-evidence-1.webp": {
+    base: "/images/ingredients/acetobeta-evidence-1-notext.webp",
+    viewBox: "0 0 701 480",
+    ja: [
+      { x: 358, y: 66, fs: 14, lh: 22, fg: "#ffffff", lines: ["血中アルコール", "濃度の低下"] },
+      { x: 558, y: 66, fs: 14, lh: 22, fg: "#ffffff", lines: ["二日酔い", "軽減"] },
+      { x: 105, y: 384, fs: 16, fg: "#4a4a4a", lines: ["アルコール"] },
+      { x: 340, y: 384, fs: 16, fg: "#4a4a4a", lines: ["アセトアルデヒド"] },
+      { x: 593, y: 384, fs: 16, fg: "#4a4a4a", lines: ["酢酸"] },
     ],
   },
 };
@@ -310,7 +324,7 @@ function EvidenceFigureImage({
                   key={j}
                   x={box.x}
                   y={box.y + j * (box.lh || fs + 4)}
-                  fill={overlay.fg || "#111"}
+                  fill={box.fg || overlay.fg || "#111"}
                   fontSize={fs}
                   fontWeight={600}
                   textAnchor={box.anchor || "middle"}
@@ -349,19 +363,10 @@ const featureEvidenceImages: Record<string, string> = {
 };
 
 const mechanismEvidenceImages: Record<string, string> = {
-  acetobeta: "/images/ingredients/acetobeta-evidence-1.webp",
   nvp1702: "/images/ingredients/nvp1702-evidence-3.png",
 };
 
 const mechanismEvidenceCopy: Record<string, { bodyJa: string; bodyKo: string; titleJa: string; titleKo: string }> = {
-  acetobeta: {
-    titleJa: "アルコール分解の流れ",
-    titleKo: "알코올 분해 경로",
-    bodyJa:
-      "アルコールはADHによりアセトアルデヒドへ分解され、さらにALDHにより酢酸へ変換されます。Aceto Betaはこの分解経路をサポートし、飲酒後のアルコールとアセトアルデヒドの負担を軽減する設計です。",
-    bodyKo:
-      "알코올은 ADH에 의해 아세트알데히드로 분해되고, 다시 ALDH에 의해 초산으로 전환됩니다. Aceto Beta는 이 분해 경로를 도와 음주 후 알코올과 아세트알데히드 부담을 낮추는 설계입니다.",
-  },
   nvp1702: {
     titleJa: "肝損傷メカニズム",
     titleKo: "간 손상 메커니즘",
