@@ -9311,3 +9311,253 @@ h2 {
 .dh-hero-route .dh-route-core {
   box-shadow: none;
 }
+
+/* ============================================================================
+   Dev preview hub (/dev) — internal drafts before live publish
+   ========================================================================== */
+
+.dh-dev-preview-chrome {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  background: #14233a;
+  color: #f4f7fb;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dh-dev-preview-chrome-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 10px 24px;
+}
+
+.dh-dev-preview-chrome p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.dh-dev-preview-chrome strong {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.dh-dev-preview-chrome-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.dh-dev-preview-chrome-actions a {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dh-dev-preview-chrome-actions a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dh-dev-page .dh-nav {
+  top: 44px;
+}
+
+.dh-dev-hub {
+  padding: 72px 0 96px;
+}
+
+.dh-dev-hub h1 {
+  margin: 10px 0 16px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.dh-dev-hub-lead {
+  max-width: 46rem;
+  margin: 0 0 36px;
+  color: #4a5563;
+  font-size: 1.05rem;
+}
+
+.dh-dev-hub-lead code,
+.dh-dev-hub-meta code,
+.dh-dev-hub-steps code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: #eef3f8;
+  color: #1d3557;
+  font-size: 0.92em;
+}
+
+.dh-dev-hub-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 48px;
+}
+
+.dh-dev-hub-steps article {
+  padding: 22px 20px;
+  border: 1px solid #e4ebf2;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.dh-dev-hub-steps span {
+  display: block;
+  margin-bottom: 10px;
+  color: #204da1;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.dh-dev-hub-steps h2 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.dh-dev-hub-steps p {
+  margin: 0;
+  color: #526074;
+  font-size: 0.95rem;
+}
+
+.dh-dev-hub-list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.dh-dev-hub-list-head h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.dh-dev-hub-list-head p {
+  margin: 0;
+  color: #6b7785;
+  font-weight: 700;
+}
+
+.dh-dev-hub-empty {
+  padding: 28px 24px;
+  border: 1px dashed #cfd9e4;
+  border-radius: 18px;
+  background: #f7fafc;
+}
+
+.dh-dev-hub-empty p {
+  margin: 0;
+  color: #526074;
+}
+
+.dh-dev-hub-empty p + p {
+  margin-top: 8px;
+}
+
+.dh-dev-hub-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.dh-dev-hub-list li {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 22px;
+  border: 1px solid #e4ebf2;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.dh-dev-hub-list h3 {
+  margin: 6px 0 6px;
+  font-size: 1.15rem;
+}
+
+.dh-dev-hub-list li > div > p {
+  margin: 0;
+  color: #526074;
+}
+
+.dh-dev-hub-status {
+  display: inline-flex;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #eef3f8;
+  color: #1d3557;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.dh-dev-hub-status[data-status="ready"] {
+  background: #e7f6ee;
+  color: #146c43;
+}
+
+.dh-dev-hub-meta {
+  margin-top: 10px !important;
+  font-size: 0.86rem;
+}
+
+.dh-dev-hub-list li > a {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #204da1;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.dh-dev-hub-footnote {
+  margin: 28px 0 0;
+  color: #6b7785;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 860px) {
+  .dh-dev-preview-chrome-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 16px;
+  }
+
+  .dh-dev-page .dh-nav {
+    top: 72px;
+  }
+
+  .dh-dev-hub-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .dh-dev-hub-list li {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dh-dev-hub-list li > a {
+    justify-content: center;
+  }
+}

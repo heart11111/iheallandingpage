@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "verify:callouts": "node scripts/verify-acetobeta-callouts.cjs",
+    "build:verified": "npm run build && npm run verify:callouts",
     "start": "next start",
     "lint": "eslint"
   },
