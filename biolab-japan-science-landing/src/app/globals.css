@@ -6774,6 +6774,17 @@ h2 {
   opacity: 1 !important;
 }
 
+.dh-evidence-chart .evidence-pinitol-grid {
+  gap: 14px;
+}
+
+@media (max-width: 720px) {
+  .dh-evidence-chart .evidence-pinitol-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+}
+
 /* Translated-text overlay laid over an evidence image whose Korean labels are
    painted out with the local background colour (viewBox-locked, responsive). */
 .dh-evidence-overlay-wrap {
