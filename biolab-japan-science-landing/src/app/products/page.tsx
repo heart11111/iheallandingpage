@@ -69,13 +69,7 @@ export default function ProductsPage() {
                     <h3>
                       <LocalizedText
                         ja={group.label}
-                        ko={
-                          index === 0 ? (
-                            "Functional Probiotics"
-                          ) : (
-                            "Functional Nature’s food ingredients"
-                          )
-                        }
+                        ko={index === 0 ? "기능성 프로바이오틱스" : "기능성 천연소재"}
                       />
                     </h3>
                     <strong>
