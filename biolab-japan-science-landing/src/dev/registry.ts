@@ -29,6 +29,15 @@ export type DraftEntry = {
  */
 export const draftRegistry: DraftEntry[] = [
   {
+    id: "chart-redesign-demo",
+    title: "차트 디자인 예시 (MED-02)",
+    previewPath: "/dev/chart-redesign",
+    livePath: "/products (evidence SVG — 승인 전 미반영)",
+    status: "ready",
+    note: "현재 vs 개선안 한 개. 승인 시 전체 차트에 같은 규칙 적용 플랜.",
+    updatedAt: "2026-08-26",
+  },
+  {
     id: "charts-approx-2026-08",
     title: "차트 Exact·부호 수정 (검수 초안)",
     previewPath: "/dev/charts-approx",
