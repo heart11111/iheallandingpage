@@ -9803,7 +9803,6 @@ h2 {
   background: transparent;
 }
 
-.dh-ingredient-origin-panel .dh-bifido-highlights,
 .dh-ingredient-origin-panel .dh-bifido-effect-grid,
 .dh-ingredient-origin-panel .dh-bifido-certs ul,
 .dh-ingredient-origin-panel .dh-bifido-effect-grid ul {
@@ -9812,7 +9811,6 @@ h2 {
   grid-template-columns: unset;
 }
 
-.dh-ingredient-origin-panel .dh-bifido-highlights li,
 .dh-ingredient-origin-panel .dh-bifido-effect-grid li,
 .dh-ingredient-origin-panel .dh-bifido-certs li {
   display: block;
@@ -9827,30 +9825,10 @@ h2 {
   line-height: inherit;
 }
 
-.dh-ingredient-origin-panel .dh-bifido-highlights li::before,
 .dh-ingredient-origin-panel .dh-bifido-effect-grid li::before,
 .dh-ingredient-origin-panel .dh-bifido-certs li::before {
   content: none;
   transform: none;
-}
-
-.dh-ingredient-origin-panel .dh-bifido-highlights li {
-  position: relative;
-  padding-left: 16px;
-  color: #4b5563;
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-.dh-ingredient-origin-panel .dh-bifido-highlights li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 10px;
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: #41abe1;
 }
 
 .dh-bifido-panel {
@@ -9866,33 +9844,6 @@ h2 {
   font-weight: 900;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-
-.dh-bifido-highlights {
-  display: grid;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.dh-bifido-highlights li {
-  position: relative;
-  padding-left: 16px;
-  color: #4b5563;
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-.dh-bifido-highlights li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 10px;
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: #41abe1;
 }
 
 .dh-bifido-effects {

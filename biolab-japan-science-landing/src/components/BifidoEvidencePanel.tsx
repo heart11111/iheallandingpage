@@ -9,25 +9,6 @@ import { useReducedMotion } from "@/lib/useReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const highlights = [
-  {
-    ko: "모유수유한 건강한 아기의 분변에서 분리한 인체 유래 균주입니다.",
-    ja: "母乳で育った健康な乳児の便から分離した、ヒト由来菌株です。",
-  },
-  {
-    ko: "미국 FDA GRAS 등재: BGN4 GRN 814, BORI GRN 813, AD011 GRN 952.",
-    ja: "米国FDA GRAS登録: BGN4 GRN 814、BORI GRN 813、AD011 GRN 952。",
-  },
-  {
-    ko: "한국 미생물보존센터 기탁: BGN4 KCCM 80046, BORI KCCM 10492, AD011 KCCM 11209.",
-    ja: "韓国微生物保存センター寄託: BGN4 KCCM 80046、BORI KCCM 10492、AD011 KCCM 11209。",
-  },
-  {
-    ko: "GenBank 염기서열: BGN4 CP001361, BORI CP031133, AD011 CP001213.",
-    ja: "GenBank塩基配列: BGN4 CP001361、BORI CP031133、AD011 CP001213。",
-  },
-];
-
 const effectGroups = [
   {
     key: "gut",
@@ -232,12 +213,6 @@ export function BifidoEvidencePanel() {
           ))}
         </div>
       </div>
-
-      <ul className="dh-bifido-highlights">
-        {highlights.map((item) => (
-          <li key={item.ja}>{isKorean ? item.ko : item.ja}</li>
-        ))}
-      </ul>
     </section>
   );
 }
