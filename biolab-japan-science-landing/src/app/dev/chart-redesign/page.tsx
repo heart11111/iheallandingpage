@@ -20,24 +20,18 @@ const txt = (x: number, y: number, text: string, attrs?: Record<string, string |
 
 function CurrentChart() {
   const host = useRef<HTMLDivElement>(null);
-  console.log("CurrentChart render");
   useEffect(() => {
-    console.log("CurrentChart useEffect");
     if (!host.current) return;
     host.current.replaceChildren();
     try {
       const node = buildChartNode("med02-evidence-1.webp", "ko");
-      console.log("buildChartNode result:", node);
       if (node) {
         node.classList?.add("show");
         host.current.appendChild(node);
-      } else {
-        host.current.textContent = "buildChartNode returned null";
       }
-    } catch (error) {
-      host.current.textContent = `차트 오류: ${error instanceof Error ? error.message : String(error)}`;
+    } catch {
+      // Chart failed to render; leave the container empty.
     }
-    console.log("CurrentChart host children:", host.current.children.length);
   }, []);
   return <div className="dh-evidence-chart" ref={host} />;
 }
