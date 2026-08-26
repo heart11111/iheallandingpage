@@ -23,9 +23,17 @@ function CurrentChart() {
   useEffect(() => {
     if (!host.current) return;
     host.current.replaceChildren();
-    const node = buildChartNode("med02-evidence-1.webp", "ko");
-    node.classList?.add("show");
-    if (node) host.current.appendChild(node);
+    try {
+      const node = buildChartNode("med02-evidence-1.webp", "ko");
+      if (node) {
+        node.classList?.add("show");
+        host.current.appendChild(node);
+      } else {
+        host.current.textContent = "차트를 불러오지 못했습니다.";
+      }
+    } catch (error) {
+      host.current.textContent = `차트 오류: ${error instanceof Error ? error.message : String(error)}`;
+    }
   }, []);
   return <div className="dh-evidence-chart" ref={host} />;
 }
@@ -36,7 +44,8 @@ function RedesignedChart() {
     if (!host.current) return;
     host.current.replaceChildren();
 
-    const w = 340;
+    try {
+      const w = 340;
     const h = 280;
     const m = { t: 56, r: 20, b: 46, l: 72 };
     const iw = w - m.l - m.r;
@@ -160,7 +169,10 @@ function RedesignedChart() {
       }),
     );
 
-    host.current.appendChild(svg);
+      host.current.appendChild(svg);
+    } catch (error) {
+      host.current.textContent = `차트 오류: ${error instanceof Error ? error.message : String(error)}`;
+    }
   }, []);
   return <div className="dh-evidence-chart dh-evidence-chart-redesign" ref={host} />;
 }
