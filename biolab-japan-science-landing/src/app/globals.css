@@ -9806,7 +9806,6 @@ h2 {
 .dh-ingredient-origin-panel .dh-bifido-highlights,
 .dh-ingredient-origin-panel .dh-bifido-effect-grid,
 .dh-ingredient-origin-panel .dh-bifido-certs ul,
-.dh-ingredient-origin-panel .dh-bifido-strain-marks ul,
 .dh-ingredient-origin-panel .dh-bifido-effect-grid ul {
   max-width: none;
   margin: 0;
@@ -9815,8 +9814,7 @@ h2 {
 
 .dh-ingredient-origin-panel .dh-bifido-highlights li,
 .dh-ingredient-origin-panel .dh-bifido-effect-grid li,
-.dh-ingredient-origin-panel .dh-bifido-certs li,
-.dh-ingredient-origin-panel .dh-bifido-strain-marks li {
+.dh-ingredient-origin-panel .dh-bifido-certs li {
   display: block;
   min-height: 0;
   align-items: stretch;
@@ -9831,8 +9829,7 @@ h2 {
 
 .dh-ingredient-origin-panel .dh-bifido-highlights li::before,
 .dh-ingredient-origin-panel .dh-bifido-effect-grid li::before,
-.dh-ingredient-origin-panel .dh-bifido-certs li::before,
-.dh-ingredient-origin-panel .dh-bifido-strain-marks li::before {
+.dh-ingredient-origin-panel .dh-bifido-certs li::before {
   content: none;
   transform: none;
 }
@@ -9900,44 +9897,6 @@ h2 {
 
 .dh-bifido-effects {
   padding: 18px 0 8px;
-}
-
-.dh-bifido-strain-marks ul {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.dh-ingredient-origin-panel .dh-bifido-strain-marks ul {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.dh-bifido-strain-marks li {
-  display: grid;
-  place-items: center;
-  padding: 8px 10px 10px;
-  border: 1px solid #dbe7f4;
-  background: #fff;
-}
-
-.dh-ingredient-origin-panel .dh-bifido-strain-marks li {
-  display: grid;
-  place-items: center;
-  padding: 8px 10px 10px;
-  border: 1px solid #dbe7f4;
-  background: #fff;
-}
-
-.dh-bifido-strain-marks img {
-  display: block;
-  width: auto;
-  max-width: 180px;
-  height: auto;
-  max-height: 210px;
-  object-fit: contain;
 }
 
 .dh-bifido-effect-grid {
