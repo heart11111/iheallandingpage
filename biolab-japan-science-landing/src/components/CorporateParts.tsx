@@ -1130,6 +1130,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           ))}
         </ul>
         {originImages.length > 0 && <OriginCatalogCards images={originImages} isKorean={isKorean} />}
+        {sourceItem.id === "bifido" && <BifidoEvidencePanel />}
       </section>
 
       {originTable && <OriginCompositionTab isKorean={isKorean} table={originTable} />}
@@ -1167,8 +1168,6 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           )}
         </section>
       </div>
-
-      {sourceItem.id === "bifido" && <BifidoEvidencePanel />}
 
       {mechanismImage && mechanismCopy && (
         <section className="dh-mechanism-panel" aria-label={`${item.name} mechanism`}>
