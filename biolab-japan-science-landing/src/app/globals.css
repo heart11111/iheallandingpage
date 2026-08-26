@@ -10025,6 +10025,20 @@ h2 {
   stroke-width: 2.4;
   stroke-linecap: round;
   stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-bifido-effect-icon path,
+  .dh-bifido-effect-icon circle,
+  .dh-bifido-effect-icon line {
+    stroke-dashoffset: 0;
+  }
+
+  .dh-bifido-effect-icon circle {
+    fill: currentColor;
+  }
 }
 
 .dh-bifido-effect-grid article:hover .dh-bifido-effect-icon {
