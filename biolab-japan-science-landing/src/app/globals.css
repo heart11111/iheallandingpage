@@ -10020,8 +10020,8 @@ h2 {
 
 .dh-ingredient-origin-panel .dh-bifido-certs li {
   display: grid;
-  gap: 10px;
-  padding: 10px 10px 14px;
+  gap: 0;
+  padding: 12px;
   border: 1px solid #d7e2ee;
   background: #fff;
   color: #17335a;
@@ -10041,8 +10041,8 @@ h2 {
 
 .dh-bifido-certs li {
   display: grid;
-  gap: 10px;
-  padding: 10px 10px 14px;
+  gap: 0;
+  padding: 12px;
   border: 1px solid #d7e2ee;
   background: #fff;
   color: #17335a;
@@ -10057,7 +10057,7 @@ h2 {
   place-items: center;
   height: 152px;
   margin: 0;
-  padding: 12px 16px 4px;
+  padding: 8px 12px;
   overflow: hidden;
   background: #fff;
 }
@@ -10073,21 +10073,6 @@ h2 {
 
 .dh-bifido-certs li:hover img {
   transform: scale(1.045);
-}
-
-.dh-bifido-certs strong {
-  padding: 0 4px;
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: 0.04em;
-}
-
-.dh-bifido-certs span {
-  padding: 0 4px;
-  color: #5b6b7c;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1.45;
 }
 
 .dh-bifido-panel [data-reveal="3"].dh-reveal-in {

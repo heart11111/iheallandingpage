@@ -76,32 +76,28 @@ const effectGroups = [
 const certificates = [
   {
     key: "fda",
-    label: "FDA",
-    sub: "U.S. Food & Drug Administration",
+    alt: "FDA",
     src: "/images/bifido/certs/fda.png",
     width: 646,
     height: 309,
   },
   {
     key: "halal",
-    label: "HALAL",
-    sub: "Korea Muslim Federation",
+    alt: "HALAL",
     src: "/images/bifido/certs/halal.webp",
     width: 255,
     height: 320,
   },
   {
     key: "gras",
-    label: "FDA GRAS",
-    sub: "GRN 814 / 813 / 952",
+    alt: "FDA GRAS",
     src: "/images/bifido/certs/fda-gras.jpg",
     width: 250,
     height: 180,
   },
   {
     key: "ndi",
-    label: "FDA NDI",
-    sub: "NDI 1079 / 1082 / 1118",
+    alt: "FDA NDI",
     src: "/images/bifido/certs/fda-ndi.webp",
     width: 540,
     height: 360,
@@ -184,10 +180,8 @@ export function BifidoEvidencePanel() {
           {certificates.map((cert) => (
             <li key={cert.key}>
               <figure>
-                <Image alt={cert.label} height={cert.height} src={cert.src} width={cert.width} />
+                <Image alt={cert.alt} height={cert.height} src={cert.src} width={cert.width} />
               </figure>
-              <strong>{cert.label}</strong>
-              <span>{cert.sub}</span>
             </li>
           ))}
         </ul>
