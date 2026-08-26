@@ -35,7 +35,7 @@ const effectGroups = [
     items: ["Immune", "Diarrhea", "Ulcerative colitis", "IBS"],
     icon: (
       <svg viewBox="0 0 94 64" aria-hidden="true">
-        <path d="M24 8C16 4 10 10 16 16H78C88 16 90 24 80 28H20C10 28 8 36 18 40H76C86 40 88 48 78 52H28C18 52 20 60 32 62" pathLength="1" />
+        <path d="M24 8C16 4 10 10 16 16H78C88 16 90 24 80 28H20C10 28 8 36 18 40H76C86 40 88 48 78 52H28C18 52 20 60 32 62" />
       </svg>
     ),
   },
@@ -45,11 +45,11 @@ const effectGroups = [
     items: ["Cognitive function", "State of emotion"],
     icon: (
       <svg viewBox="0 0 94 64" aria-hidden="true">
-        <path d="M34 12c-11 3-16 14-13 24 1 5-3 9-8 12 4 9 15 14 28 14 11 0 20-4 26-11 8-2 12-10 10-17-1-8-6-13-8-21-7-9-23-12-35-1z" pathLength="1" />
-        <path d="M40 22c6 5 8 14 6 24" pathLength="1" />
-        <path d="M50 20c5 7 6 16 3 26" pathLength="1" />
-        <path d="M60 26c4 7 3 16-2 24" pathLength="1" />
-        <path d="M44 32c8 3 13 10 11 20" pathLength="1" />
+        <path d="M34 12c-11 3-16 14-13 24 1 5-3 9-8 12 4 9 15 14 28 14 11 0 20-4 26-11 8-2 12-10 10-17-1-8-6-13-8-21-7-9-23-12-35-1z" />
+        <path d="M40 22c6 5 8 14 6 24" />
+        <path d="M50 20c5 7 6 16 3 26" />
+        <path d="M60 26c4 7 3 16-2 24" />
+        <path d="M44 32c8 3 13 10 11 20" />
       </svg>
     ),
   },
@@ -59,12 +59,12 @@ const effectGroups = [
     items: ["AKI"],
     icon: (
       <svg viewBox="0 0 94 64" aria-hidden="true">
-        <path d="M24 12c12-9 26 2 24 18 0 12-8 24-20 30-9 4-14-3-14-12 0-12 4-26 10-36z" pathLength="1" />
-        <path d="M32 22c5 8 5 20 0 30" pathLength="1" />
-        <path d="M36 50v12" pathLength="1" />
-        <path d="M70 12c-12-9-26 2-24 18 0 12 8 24 20 30 9 4 14-3 14-12 0-12-4-26-10-36z" pathLength="1" />
-        <path d="M62 22c-5 8-5 20 0 30" pathLength="1" />
-        <path d="M58 50v12" pathLength="1" />
+        <path d="M24 12c12-9 26 2 24 18 0 12-8 24-20 30-9 4-14-3-14-12 0-12 4-26 10-36z" />
+        <path d="M32 22c5 8 5 20 0 30" />
+        <path d="M36 50v12" />
+        <path d="M70 12c-12-9-26 2-24 18 0 12 8 24 20 30 9 4 14-3 14-12 0-12-4-26-10-36z" />
+        <path d="M62 22c-5 8-5 20 0 30" />
+        <path d="M58 50v12" />
       </svg>
     ),
   },
@@ -74,19 +74,19 @@ const effectGroups = [
     items: ["Eczema"],
     icon: (
       <svg viewBox="0 0 94 64" aria-hidden="true">
-        <path d="M8 12h78" pathLength="1" />
-        <path d="M8 20h78" pathLength="1" />
-        <path d="M8 28h78" pathLength="1" />
-        <path d="M8 38c10 8 18-8 28 0s18-8 28 0 18-8 22-2" pathLength="1" />
-        <circle cx="20" cy="50" pathLength="1" r="1.8" />
-        <circle cx="34" cy="50" pathLength="1" r="1.8" />
-        <circle cx="48" cy="50" pathLength="1" r="1.8" />
-        <circle cx="62" cy="50" pathLength="1" r="1.8" />
-        <circle cx="76" cy="50" pathLength="1" r="1.8" />
-        <circle cx="27" cy="58" pathLength="1" r="1.8" />
-        <circle cx="41" cy="58" pathLength="1" r="1.8" />
-        <circle cx="55" cy="58" pathLength="1" r="1.8" />
-        <circle cx="69" cy="58" pathLength="1" r="1.8" />
+        <path d="M8 12h78" />
+        <path d="M8 20h78" />
+        <path d="M8 28h78" />
+        <path d="M8 38c10 8 18-8 28 0s18-8 28 0 18-8 22-2" />
+        <circle cx="20" cy="50" r="1.8" />
+        <circle cx="34" cy="50" r="1.8" />
+        <circle cx="48" cy="50" r="1.8" />
+        <circle cx="62" cy="50" r="1.8" />
+        <circle cx="76" cy="50" r="1.8" />
+        <circle cx="27" cy="58" r="1.8" />
+        <circle cx="41" cy="58" r="1.8" />
+        <circle cx="55" cy="58" r="1.8" />
+        <circle cx="69" cy="58" r="1.8" />
       </svg>
     ),
   },
@@ -158,30 +158,49 @@ export function BifidoEvidencePanel() {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>(root.querySelectorAll("[data-bifido-rise]"));
 
+      const strokeLength = (node: SVGGeometryElement) => {
+        try {
+          const length = node.getTotalLength();
+          return Number.isFinite(length) && length > 1 ? length : 120;
+        } catch {
+          return 120;
+        }
+      };
+
       cards.forEach((card) => {
         const strokes = gsap.utils.toArray<SVGGeometryElement>(
           card.querySelectorAll(".dh-bifido-effect-icon path, .dh-bifido-effect-icon circle, .dh-bifido-effect-icon line"),
         );
         const dots = gsap.utils.toArray<SVGCircleElement>(card.querySelectorAll(".dh-bifido-effect-icon circle"));
 
-        gsap.set(strokes, { strokeDasharray: 1, strokeDashoffset: 1 });
+        strokes.forEach((stroke) => {
+          const length = strokeLength(stroke);
+          gsap.set(stroke, { strokeDasharray: length, strokeDashoffset: length });
+        });
         if (dots.length) gsap.set(dots, { fill: "none" });
 
-        const draw = gsap.timeline({
-          scrollTrigger: {
-            trigger: card,
-            start: "top 88%",
-            end: "top 42%",
-            scrub: 0.85,
+        ScrollTrigger.create({
+          trigger: card,
+          start: "top 78%",
+          once: true,
+          onEnter: () => {
+            const draw = gsap.timeline();
+            strokes.forEach((stroke, index) => {
+              draw.to(
+                stroke,
+                {
+                  strokeDashoffset: 0,
+                  duration: index === 0 ? 1.15 : 0.72,
+                  ease: "power2.out",
+                },
+                index === 0 ? 0 : "-=0.48",
+              );
+            });
+            if (dots.length) {
+              draw.to(dots, { fill: "currentColor", duration: 0.28, stagger: 0.04 }, "-=0.2");
+            }
           },
         });
-
-        strokes.forEach((stroke, index) => {
-          draw.to(stroke, { strokeDashoffset: 0, ease: "none", duration: 1 }, index === 0 ? 0 : index * 0.18);
-        });
-        if (dots.length) {
-          draw.to(dots, { fill: "currentColor", duration: 0.35, stagger: 0.04, ease: "none" }, "-=0.2");
-        }
       });
 
       requestAnimationFrame(() => ScrollTrigger.refresh());

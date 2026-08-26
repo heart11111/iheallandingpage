@@ -10025,14 +10025,15 @@ h2 {
   stroke-width: 2.4;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .dh-bifido-effect-icon path,
   .dh-bifido-effect-icon circle,
   .dh-bifido-effect-icon line {
+    stroke-dasharray: none;
     stroke-dashoffset: 0;
   }
 
