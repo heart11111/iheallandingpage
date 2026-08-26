@@ -98,6 +98,8 @@ const strainMarks = [
     src: "/images/bifido/certs/strain-ad011.webp",
   },
 ] as const;
+
+const certificates = [
   {
     key: "fda",
     label: "FDA",
