@@ -26,6 +26,7 @@ export const devKoreanLabels = {
     specs: "기본 정보",
     area: "용도 영역",
     intake: "1일 섭취 기준",
+    spec: "규격",
     line: "소재 라인",
     evidence: "근거 정보",
     features: "Features / 인체효능 평가",
@@ -44,7 +45,7 @@ export const devKoreanLabels = {
 
 export const devKoreanPageCopy = {
   microbiome: {
-    title: "Functional Probiotics",
+    title: "기능성 프로바이오틱스",
     copy: "Probiotics Strain by Application 인체적용시험 완료 소재 7종입니다.",
     lead: "인체적용시험을 마친 개별인정형 프로바이오틱스 7종입니다. 질 건강·체지방·인지·간·코·스트레스·장 용도별로 균주와 근거 자료(인체적용시험·SCI 논문·특허)를 정리했습니다.",
     primary: "기능성 식품 원료 사업",
@@ -66,7 +67,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "iHEAL GINO 5 Formula – MED01",
     category: "여성",
     area: "여성 질건강",
-    intake: "50억 CFU/day (5×10⁹ CFU/day)",
+    intake: "2000억CFU/gr.",
     summary: "한국 여성의 질에서 분리한 유산균으로, 여성 질건강을 돕는 프로바이오틱스 복합물입니다.",
     healthClaims: [
       "여성의 질건강을 돕는 프로바이오틱스 복합물입니다.",
@@ -87,7 +88,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "iHEAL DIT 2 Formula – MED02",
     category: "체지방",
     area: "체지방 감소",
-    intake: "50억 CFU/day (5×10⁹ CFU/day)",
+    intake: "2000억CFU/gr.",
     summary: "지방세포의 분화를 억제하는 특허 프로바이오틱스 복합물로, 항비만 특허 유산균입니다.",
     healthClaims: [
       "지방세포의 분화를 억제하는 특허 프로바이오틱스 복합물입니다.",
@@ -182,7 +183,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "Bifidobacterium Probiotics",
     category: "장",
     area: "장건강",
-    intake: "용도별 설계",
+    intake: "B. bifidum BGN4 1000억CFU/gr.\nB. longum BORI 1000억CFU/gr.\nB. lactis AD011 1000억CFU/gr.",
     summary: "모유를 먹고 자란 건강한 신생아의 분변에서 얻은 100% 인체 유래 비피더스 유산균입니다.",
     healthClaims: [
       "장건강과 원활한 배변활동에 도움을 주는 인체 유래 비피더스 유산균입니다.",
@@ -393,6 +394,7 @@ export function getKoreanIngredient(item: Ingredient): Ingredient {
     category: copy.category,
     area: copy.area,
     intake: copy.intake || item.intake,
+    specKind: item.specKind,
     summary: copy.summary,
     origin: copy.origin || item.origin,
     healthClaims: copy.healthClaims,

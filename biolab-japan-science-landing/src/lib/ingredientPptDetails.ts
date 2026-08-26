@@ -211,9 +211,9 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
     originTitle: "使用菌株",
     originItems: [
-      "B. bifidum BGN4 - GRAS No.814 / NDI No.1079",
-      "B. longum BORI - GRAS No.813 / NDI No.1082",
-      "B. lactis AD011 - GRAS No.952 / NDI No.1118",
+      "B. bifidum BGN4 — 1,000億CFU/g · GRAS No.814 / NDI No.1079",
+      "B. longum BORI — 1,000億CFU/g · GRAS No.813 / NDI No.1082",
+      "B. lactis AD011 — 1,000億CFU/g · GRAS No.952 / NDI No.1118",
     ],
     features: [
       "米国食品医薬品局(FDA)の安全性認証(GRAS・NDI)に加え、HALAL・KOSHER認証も取得しています。",
