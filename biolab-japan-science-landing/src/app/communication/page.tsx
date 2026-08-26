@@ -10,9 +10,9 @@ export default function CommunicationPage() {
       <main>
         <CorporateSubHero
           title="Communication"
-          copy="カタログ確認と公式チャネルを案内します。開発のご相談はCONTACT USからお問い合わせください。"
+          copy="Eカタログと公式チャネルです。相談はCONTACT USへ。"
           koTitle="자료 및 채널"
-          koCopy="E-카탈로그와 공식 커뮤니케이션 채널입니다. 개발 상담은 CONTACT US에서 문의해 주세요."
+          koCopy="E-카탈로그와 공식 채널입니다. 상담은 CONTACT US로 주세요."
           image="/images/clinical-platform-hero.png"
           compact
         />

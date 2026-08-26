@@ -7,18 +7,41 @@ export const companyPages = [
     koLabel: "대표이사 인사말",
     menuLabel: "CEO Message",
     href: "/company/greeting",
-    summary: "BIOLAB Japanの代表メッセージと事業姿勢を紹介します。",
-    koSummary: "BIOLAB Japan의 대표 메시지와 사업 방향을 소개합니다.",
+    summary: "BIOLAB Japanの代表ご挨拶です。",
+    koSummary: "BIOLAB Japan 대표 인사말입니다.",
   },
   {
     label: "ビジョン及び目標",
     koLabel: "비전 및 목표",
     menuLabel: "Vision & Goals",
     href: "/company/vision",
-    summary: "日本市場で目指すヘルスケア事業ブリッジの方向性を整理します。",
-    koSummary: "일본 시장에서 지향하는 기능성 헬스케어 사업 브리지의 방향성입니다.",
+    summary: "日本市場で目指す事業の方向です。",
+    koSummary: "일본 시장에서 지향하는 사업 방향입니다.",
   },
 ];
+
+export const ceoMessage = {
+  quoteJa: ["“BIOLAB Japanは、信頼できる", "ヘルスケアパートナーです。”"] as const,
+  quoteKo: ["“비오랩 재팬은", "신뢰할 수 있는", "헬스케어 파트너입니다.”"] as const,
+  paragraphs: [
+    {
+      ja: "BIOLAB Japanのウェブサイトをご覧いただき、ありがとうございます。",
+      ko: "비오랩 재팬을 방문해 주셔서 감사합니다.",
+    },
+    {
+      ja: "BIOLAB Japanは、韓国に本社を置く株式会社BIOLABの日本現地法人です。株式会社BIOLABは2017年設立の、マイクロバイオーム領域の健康機能食品企業です。",
+      ko: "비오랩 재팬은 한국에 본사를 둔 (주)비오랩의 일본 현지법인입니다. (주)비오랩은 2017년에 설립된 마이크로바이옴 건강기능식품 기업입니다.",
+    },
+    {
+      ja: "日本ではiHEALブランドのプロバイオティクスを中心に事業を広げています。供給する機能性素材は、ヒト臨床試験、SCI論文、特許などの資料を確認できるものです。",
+      ko: "일본에서는 iHEAL 브랜드 프로바이오틱스를 중심으로 사업을 넓히고 있습니다. 공급하는 기능성 소재는 인체적용시험, SCI 논문, 특허 자료를 확인할 수 있습니다.",
+    },
+    {
+      ja: "韓国のGMP製造パートナーと連携し、日本のB2B取引先の素材・商品化の相談に応じています。",
+      ko: "한국 GMP 제조 파트너와 함께, 일본 B2B 거래처의 소재·상품화 상담에 응하고 있습니다.",
+    },
+  ],
+};
 
 export const businessPages = [
   {
@@ -26,24 +49,24 @@ export const businessPages = [
     koLabel: "기능성 식품 원료 사업",
     menuLabel: "Ingredient Supply",
     href: "/business/materials",
-    summary: "製品企画に必要な機能性素材を、用途と根拠情報に合わせて提案します。",
-    koSummary: "제품 기획에 필요한 기능성 원료를 용도와 근거 자료에 맞춰 제안합니다.",
+    summary: "製品企画に必要な機能性素材を、用途と根拠資料で案内します。",
+    koSummary: "제품 기획에 필요한 기능성 원료를 용도와 근거 자료로 안내합니다.",
   },
   {
     label: "OEM/ODMサービス",
     koLabel: "ODM/OEM",
     menuLabel: "OEM/ODM Service",
     href: "/business/odm-oem",
-    summary: "韓国製造ネットワークを活用し、処方・剤形・量産・供給条件を設計します。",
-    koSummary: "일본 내 브랜드 유통사 전용 상품 개발 및 ODM / OEM 생산을 설계합니다.",
+    summary: "日本ブランド流通向けの商品開発とODM/OEM生産です。",
+    koSummary: "일본 브랜드 유통사 전용 상품 개발과 ODM/OEM 생산입니다.",
   },
   {
     label: "ブランドマネジメント",
     koLabel: "Brand Royalty",
     menuLabel: "Brand Management",
     href: "/business/brand-management",
-    summary: "iHEALブランド運営経験をもとに、商品資料・チャネル・パートナー対応を支援します。",
-    koSummary: "iHEAL 브랜드 사용에 대한 상품 로열티 사업과 브랜드 협업을 지원합니다.",
+    summary: "iHEALブランドの商品化、ロイヤリティ、パートナー対応です。",
+    koSummary: "iHEAL 브랜드 상품화, 로열티, 파트너 대응입니다.",
   },
 ];
 
@@ -71,8 +94,8 @@ export const communicationPages = [
     koLabel: "E-카탈로그",
     menuLabel: "E-Catalog",
     href: "/communication/catalog",
-    summary: "素材供給、OEM/ODM、ブランド協業の検討に必要な情報をまとめます。",
-    koSummary: "기능성 식품 원료 사업, ODM/OEM, Brand Royalty 검토에 필요한 정보를 안내합니다.",
+    summary: "素材供給、OEM/ODM、ブランド協業の資料です。",
+    koSummary: "기능성 식품 원료 사업, ODM/OEM, Brand Royalty 자료입니다.",
   },
   {
     label: "コミュニケーションチャネル",
@@ -80,7 +103,7 @@ export const communicationPages = [
     menuLabel: "Channels",
     href: "/communication/channels",
     summary: "BIOLAB Japan、BIOLAB Korea、iHEAL Mallへの公式導線を案内します。",
-    koSummary: "BIOLAB Japan, BIOLAB Korea, iHEAL Mall 공식 연결 경로입니다.",
+    koSummary: "BIOLAB Japan, BIOLAB Korea, iHEAL Mall 공식 창구입니다.",
   },
 ];
 
@@ -106,8 +129,8 @@ export const productLinePages = [
     koLabel: "Probiotics Strain by Application",
     menuLabel: "Functional Probiotics",
     href: "/products/microbiome-probiotics",
-    summary: "女性、体脂肪、脳・記憶、肝臓、鼻、ストレス、腸の7種を整理します。",
-    koSummary: "질내 마이크로바이옴, 체지방·항비만, 인지·기억, 간건강, 면역 과민반응에 따른 코 상태, 스트레스·수면·릴랙스, 장건강·배변활동 영역의 프로바이오틱스 7종입니다.",
+    summary: "女性、体脂肪、脳・記憶、肝臓、鼻、ストレス、腸の7種です。",
+    koSummary: "여성, 체지방, 인지·기억, 간, 코, 스트레스, 장 영역 7종입니다.",
     items: microbiomeProductItems,
   },
   {
@@ -115,8 +138,8 @@ export const productLinePages = [
     koLabel: "Nature’s food ingredients by Application",
     menuLabel: "Functional Nature’s food ingredients",
     href: "/products/nature-ingredients",
-    summary: "男性健康、記憶、認知、体脂肪、肌、肝臓・血糖、二日酔い、免疫の10種を整理します。",
-    koSummary: "남성 갱년기·남성 건강, 기억·인지 기능, 노화 관련 인지기능, 다이어트·체지방, 피부 수분·탄력, 주름·보습, 간·혈당 건강, 알코올 대사 지원, 면역기능 영역의 자연 유래 기능성 소재 10종입니다.",
+    summary: "男性健康、記憶、認知、体脂肪、肌、肝臓・血糖、二日酔い、免疫の10種です。",
+    koSummary: "남성 건강, 기억·인지, 체지방, 피부, 간·혈당, 숙취, 면역 영역 10종입니다.",
     items: natureProductItems,
   },
 ];
@@ -143,9 +166,9 @@ export const productGroups = [
     koSubtitle: "Probiotics Strain by Application",
     image: "/images/products-microbiome-probiotics-card-v3.webp",
     description:
-      "女性、体脂肪、認知、肝臓、鼻、ストレス、腸のコンディションに合わせて、菌株レベルで素材情報を整理します。",
+      "女性、体脂肪、認知、肝臓、鼻、ストレス、腸向けの菌株情報です。",
     koDescription:
-      "질내 마이크로바이옴, 체지방·항비만, 인지·기억, 간건강, 면역 과민반응에 따른 코 상태, 스트레스·수면·릴랙스, 장건강·배변활동 영역의 인체적용시험 완료 프로바이오틱스 소재입니다.",
+      "여성, 체지방, 인지, 간, 코, 스트레스, 장 용도의 균주 정보입니다.",
     items: probioticsIngredients,
   },
   {
@@ -159,9 +182,9 @@ export const productGroups = [
     koSubtitle: "Nature’s food ingredients by Application",
     image: "/images/products-functional-nature-card-v3.webp",
     description:
-      "記憶、肌、肝臓、免疫、男性健康など、商品カテゴリーに合わせた自然由来機能性素材を提案します。",
+      "記憶、肌、肝臓、免疫、男性健康など、カテゴリー別の自然由来素材です。",
     koDescription:
-      "남성 갱년기·남성 건강, 기억·인지 기능, 노화 관련 인지기능, 다이어트·체지방, 피부 수분·탄력, 주름·보습, 간·혈당 건강, 알코올 대사 지원, 면역기능 등 상품 카테고리별 자연 유래 기능성 소재입니다.",
+      "기억, 피부, 간, 면역, 남성 건강 등 카테고리별 자연 유래 소재입니다.",
     items: natureIngredients,
   },
   {
@@ -175,9 +198,9 @@ export const productGroups = [
     koSubtitle: "한국 Major 제조업체 Direct 생산 및 납품",
     image: "/images/biolab-global-factory-bg.png",
     description:
-      "韓国主要メーカーとの製造ネットワークを活用し、日本市場向けの処方、剤形、量産、供給条件を設計します。",
+      "韓国主要メーカーの製造ネットワークで、処方、剤形、量産、供給条件を合わせます。",
     koDescription:
-      "한국 Major 제조업체 Direct 생산 및 납품, 제조 상품 수입/통관, 일본 내 브랜드 유통사 전용 상품 개발을 연결합니다.",
+      "한국 주요 제조사 직납, 수입·통관, 일본 브랜드 유통사 전용 상품 개발입니다.",
     items: [] as Ingredient[],
   },
   {
@@ -191,9 +214,9 @@ export const productGroups = [
     koSubtitle: "iHEAL 브랜드 사용에 대한 상품 로열티 사업",
     image: "/images/clinical-platform-hero.png",
     description:
-      "iHEALブランド、共同商品化、販売会社向け商品展開を含めたロイヤリティ型の事業協業を検討します。",
+      "iHEALブランドの共同商品化、販売会社向け展開です。",
     koDescription:
-      "iHEAL 브랜드 사용에 대한 상품 로열티 사업과 일본 내 브랜드 유통사 전용 상품 개발 협업을 검토합니다.",
+      "iHEAL 브랜드 상품 로열티와 일본 브랜드 유통사 전용 상품 개발입니다.",
     items: [] as Ingredient[],
   },
 ];
@@ -202,12 +225,12 @@ export const corporateNews = [
   {
     slug: "korea-japan-bridge",
     date: "2026.06.08",
-    title: "韓国R&Dから日本B2B流通までをつなぐ事業構造を整理",
-    koTitle: "한국 R&D부터 일본 B2B 유통까지 연결하는 사업 구조 정리",
+    title: "韓国R&Dから日本B2B流通までの事業構造",
+    koTitle: "한국 R&D부터 일본 B2B 유통까지의 사업 구조",
     summary:
-      "BIOLAB Japanは、素材開発、製造、ブランド管理、日本側販売ネットワークを一体で設計する事業ブリッジとして機能します。",
+      "素材開発、製造、ブランド管理と日本側の販売ネットワークを、一つの供給線にまとめました。",
     koSummary:
-      "BIOLAB Japan은 한국의 소재 개발, 제조, 브랜드 관리와 일본 측 판매 네트워크를 하나로 설계하는 사업 브리지입니다.",
+      "소재 개발, 제조, 브랜드 관리와 일본 판매 네트워크를 하나의 공급선으로 정리했습니다.",
     image: "/images/biolab-global-factory-bg.png",
   },
   {

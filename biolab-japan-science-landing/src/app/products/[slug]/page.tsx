@@ -56,8 +56,8 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                     "Planning",
                     "企画設計",
                     "상품 기획",
-                    "カテゴリー、摂取量、剤形、販売チャネルを整理します。",
-                    "카테고리, 섭취량, 제형, 판매 채널을 정리합니다.",
+                    "カテゴリー、摂取量、剤形、販売チャネルです。",
+                    "카테고리, 섭취량, 제형, 판매 채널입니다.",
                   ],
                   [
                     "02",
@@ -72,8 +72,8 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                     "Supply",
                     "供給設計",
                     "공급 설계",
-                    "輸入、通関、卸供給、日本側販売導線を事業計画に接続します。",
-                    "제조 상품 수입/통관, 도매 공급, 일본 판매 경로를 사업 계획에 연결합니다.",
+                    "輸入、通関、卸供給、日本側の販売経路です。",
+                    "수입·통관, 도매 공급, 일본 판매 경로입니다.",
                   ],
                 ].map((row) => (
                   <article key={row[0]}>

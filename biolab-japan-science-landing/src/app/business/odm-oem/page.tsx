@@ -8,24 +8,24 @@ const steps = [
     label: "企画設計",
     koLabel: "상품 개발",
     ruby: "Planning",
-    body: "対象カテゴリー、摂取量、剤形、販売チャネル、表示表現の方向性を整理します。",
-    koBody: "일본 내 브랜드 유통사 전용 상품 개발 범위: 대상 카테고리, 섭취량, 제형, 판매 채널.",
+    body: "対象カテゴリー、摂取量、剤形、販売チャネル、表示の方向です。",
+    koBody: "대상 카테고리, 섭취량, 제형, 판매 채널, 표시 방향.",
   },
   {
     num: "02",
     label: "製造連携",
     koLabel: "ODM / OEM 생산",
     ruby: "Manufacturing",
-    body: "韓国GMP製造ネットワークと連携し、試作、量産、供給条件を調整します。",
-    koBody: "한국 Major 제조업체 Direct 생산 및 납품 네트워크와 연계해 시제품, 양산, 공급을 제공합니다.",
+    body: "韓国GMP製造ネットワークで試作、量産、供給条件を合わせます。",
+    koBody: "한국 주요 제조사 직납 네트워크로 시제품, 양산, 공급 조건을 맞춥니다.",
   },
   {
     num: "03",
     label: "供給設計",
     koLabel: "수입 / 통관 / 공급",
     ruby: "Supply",
-    body: "韓国Major製造業者からの直接生産・納品、製造商品の輸入・通関、日本側の販売会社・メーカー・卸に合わせた供給導線を設計します。",
-    koBody: "제조 상품 수입/통관부터 일본 판매회사, 제조사, 도매에 맞춘 공급 경로를 설계합니다.",
+    body: "韓国メーカー直納、輸入・通関、日本の販売会社・メーカー・卸への供給です。",
+    koBody: "한국 제조사 직납, 수입·통관, 일본 판매회사·제조사·도매 공급입니다.",
   },
 ];
 
@@ -36,9 +36,9 @@ export default function OdmOemPage() {
       <main>
         <CorporateSubHero
           title="OEM / ODM Service"
-          copy="韓国製造ネットワークを活用し、日本市場向けの商品化を支援します。"
+          copy="韓国製造ネットワークで、日本向け商品化に応じています。"
           koTitle="ODM/OEM"
-          koCopy="한국 제조 네트워크를 활용해 일본 시장용 상품화를 지원합니다."
+          koCopy="한국 제조 네트워크로 일본 시장용 상품화에 응합니다."
           image="/images/biolab-global-factory-bg.png"
           compact
         />
@@ -50,8 +50,8 @@ export default function OdmOemPage() {
             </h1>
             <p>
               <LocalizedText
-                ja="素材選定から処方、剤形、製造、供給条件までを事業化の流れとして設計します。"
-                ko="소재 선정부터 처방, 제형, 제조, 공급 조건까지 BIOLAB Japan 소재를 활용한 건강기능식품 완제품 개발 및 유통 흐름으로 설계합니다."
+                ja="素材選定から処方、剤形、製造、供給条件まで対応します。"
+                ko="소재 선정부터 처방, 제형, 제조, 공급 조건까지 대응합니다."
               />
             </p>
             <div className="dh-process-list">

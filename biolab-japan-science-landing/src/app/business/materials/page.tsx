@@ -10,8 +10,8 @@ const lines = [
     koLabel: "Probiotics Strain by Application",
     ruby: "Functional Probiotics",
     koRuby: "Functional Probiotics",
-    copy: "女性、体脂肪、認知、肝臓、鼻、ストレス、腸のコンディションに合わせたプロバイオティクス素材を検討します。",
-    koCopy: "질내 마이크로바이옴, 체지방·항비만, 인지·기억, 간건강, 면역 과민반응에 따른 코 상태, 스트레스·수면·릴랙스, 장건강·배변활동 영역의 인체적용시험 완료 프로바이오틱스 소재입니다.",
+    copy: "女性、体脂肪、認知、肝臓、鼻、ストレス、腸向けのプロバイオティクス素材です。",
+    koCopy: "여성, 체지방, 인지, 간, 코, 스트레스, 장 용도의 인체적용시험 완료 프로바이오틱스입니다.",
     href: "/products/microbiome-probiotics",
     items: microbiomeProductItems,
   },
@@ -20,8 +20,8 @@ const lines = [
     koLabel: "Nature’s food ingredients by Application",
     ruby: "Functional Nature’s food ingredients",
     koRuby: "Functional Nature’s food ingredients",
-    copy: "男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫などの自然由来機能性素材を提案します。モロシル、発酵紅参、ジンセンベリーなど、韓国の幅広い機能性素材ネットワークへのアクセスもご相談いただけます。",
-    koCopy: "남성 갱년기·남성 건강, 기억·인지 기능, 노화 관련 인지기능, 다이어트·체지방, 피부 수분·탄력, 주름·보습, 비알코올성 지방간 건강, 간·혈당 건강, 알코올 대사 지원, 면역기능 영역의 자연 유래 기능성 소재입니다. 모로오렌지추출분말(Morosil®), 발효홍삼, 진생베리 등 한국 기능성 소재 네트워크도 상담 가능합니다.",
+    copy: "男性健康、記憶、認知、体脂肪、肌、肝・血糖、免疫などの自然由来機能性素材です。モロシル、発酵紅参、ジンセンベリーなど、掲載以外の韓国素材も相談できます。",
+    koCopy: "남성 건강, 기억, 인지, 체지방, 피부, 간·혈당, 면역 등의 자연 유래 기능성 소재입니다. 모로실, 발효홍삼, 진생베리 등 게재 외 한국 소재도 상담할 수 있습니다.",
     href: "/products/nature-ingredients",
     items: natureProductItems,
   },
@@ -34,9 +34,9 @@ export default function MaterialsPage() {
       <main>
         <CorporateSubHero
           title="Functional Ingredient Supply"
-          copy="製品目的に合わせた機能性素材と根拠資料を一緒に検討します。"
+          copy="製品目的に合わせた機能性素材と根拠資料です。"
           koTitle="기능성 식품 원료 사업"
-          koCopy="제품 목적에 맞춰 기능성 소재와 인체적용시험 근거를 함께 검토합니다."
+          koCopy="제품 목적에 맞춘 기능성 소재와 인체적용시험 근거입니다."
           image="/images/global-evidence-bg.png"
           compact
         />
@@ -50,12 +50,11 @@ export default function MaterialsPage() {
               <LocalizedText
                 ja={
                   <>
-                    BIOLAB Japanは、大韓民国 食品医薬品安全処(KFDA)認証の個別認定型機能性素材の公式供給社として、
-                    韓国の素材開発・製造ネットワークと日本市場のB2Bニーズを接続し、
-                    用途別素材、摂取目安、根拠資料、商品化可能性を統合的に検討します。
+                    大韓民国食品医薬品安全処(KFDA)認証の個別認定型機能性素材を供給します。
+                    用途別素材、摂取目安、根拠資料、商品化の相談に応じています。
                   </>
                 }
-                ko="BIOLAB Japan은 대한민국 식약처(KFDA) 인증 개별인정형 기능성 소재 공식 공급사로서, 한국의 소재 개발·제조 네트워크와 일본 시장의 B2B 니즈를 연결합니다. 용도별 소재, 섭취 기준, 근거 자료, 상품화 가능성을 통합적으로 검토합니다."
+                ko="대한민국 식약처(KFDA) 인증 개별인정형 기능성 소재를 공급합니다. 용도별 소재, 섭취 기준, 근거 자료, 상품화 상담에 응합니다."
               />
             </p>
             <div className="dh-supply-tabs">

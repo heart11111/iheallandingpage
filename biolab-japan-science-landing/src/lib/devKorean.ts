@@ -92,7 +92,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     healthClaims: [
       "지방세포의 분화를 억제하는 특허 프로바이오틱스 복합물입니다.",
       "체중·체지방 감소와 BMI(체질량지수) 저하에 도움을 줍니다.",
-      "100명 인체적용시험과 SCI 논문 6편으로 검증된 항비만 특허 유산균입니다.",
+      "100명 인체적용시험과 SCI 논문 6편으로 확인된 항비만 특허 유산균입니다.",
     ],
     featurePoints: [
       "과체중 또는 비만 성인 100명을 대상으로 인체적용시험을 진행했습니다.",
@@ -130,8 +130,8 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     summary: "듀오바이옴 기술로 만든 간 기능 개선용 2종 특허 프로바이오틱스 복합물입니다.",
     healthClaims: [
       "듀오바이옴 기술로 만든 간 기능 개선용 2종 특허 프로바이오틱스 복합물입니다.",
-      "비알코올성 93명·알코올성 70명 인체적용시험 2건과 SCI 논문으로 검증된 간기능 개선용 특허 유산균입니다.",
-      "알코올성·비알코올성으로 손상된 간을 함께 고려한 복합 설계입니다.",
+      "비알코올성 93명·알코올성 70명 인체적용시험 2건과 SCI 논문이 있는 간기능 개선용 특허 유산균입니다.",
+      "알코올성·비알코올성 간 손상을 함께 다룹니다.",
     ],
     featurePoints: [
       "간의 해독 기능을 높이고, 장내·혈중 내독소(엔도톡신)를 개선합니다.",
@@ -190,7 +190,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     ],
     featurePoints: [
       "미국 식품의약국(FDA) 안전성 인증(GRAS·NDI)에 더해 HALAL·KOSHER 인증도 받았습니다.",
-      "증상별 10건의 인체적용시험, 80건의 국제 특허, 260편 이상의 SCI 논문을 보유한 세계적인 비피더스 유산균입니다.",
+      "증상별 10건의 인체적용시험, 80건의 국제 특허, 260편 이상의 SCI 논문이 있는 비피더스 유산균입니다.",
       "12주 섭취 후 가스 배출 빈도가 늘고 복부 팽만감이 줄었습니다.",
       "참고: BGN4·BORI를 배합한 프로바이오틱스(40억 CFU/일)를 65세 이상 고령자가 12주간 섭취한 시험에서 인지기능과 기분 개선이 확인됐습니다(서울대학교 분당병원 실시).",
     ],
@@ -200,16 +200,16 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "Testofen®",
     category: "남성",
     area: "남성 갱년기 증상 완화",
-    summary: "갱년기 남성 건강을 위한 차별화된 기능성 소재입니다.",
+    summary: "갱년기 남성 건강을 위한 기능성 소재입니다.",
     healthClaims: [
-      "갱년기를 맞은 남성 건강을 위한 차별화된 기능성 소재입니다.",
+      "갱년기를 맞은 남성 건강을 위한 기능성 소재입니다.",
       "남성 갱년기 증상을 정신·심리, 신체기능, 성기능 세 방면에서 개선합니다.",
     ],
     featurePoints: [
       "43~75세 남성을 대상으로 12주간 인체적용시험을 진행했습니다.",
       "남성 호르몬인 테스토스테론의 항상성을 유지하고 높여줍니다.",
-      "남성 갱년기 증상(정신·심리 안정, 신체기능 향상, 성기능 향상)이 크게 개선됐습니다.",
-      "한국 내 남성 갱년기 관련 소재 중 가장 높은 AMS 데이터를 보유하고, 미국에서도 가장 대중적인 남성 건강 원료입니다.",
+      "남성 갱년기 증상(정신·심리 안정, 신체기능 향상, 성기능 향상)이 개선됐습니다.",
+      "남성 갱년기 관련 AMS 데이터를 보유한 원료입니다.",
       "갱년기 남성을 위한 추가 임상 데이터도 갖추고 있습니다.",
     ],
     evidenceTags: ["KFDA 개별인정", "AMS", "12주 인체적용시험"],
@@ -219,7 +219,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "ThinkGIN",
     category: "기억",
     area: "기억력·인지기능 개선",
-    summary: "기억력·인지 기능 개선에 도움을 줄 수 있으며, 일반 홍삼보다 훨씬 많은 ‘진세노사이드’를 함유합니다.",
+    summary: "기억력·인지 기능 개선에 도움을 줄 수 있으며, 일반 홍삼보다 고농도의 진세노사이드를 함유합니다.",
     healthClaims: [
       "기억력과 인지 기능 개선에 도움을 줄 수 있습니다.",
       "일반 홍삼에 비해 고농도의 ‘진세노사이드’를 함유합니다.",
@@ -240,7 +240,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     summary: "노화로 저하된 인지기능 개선에 도움을 줄 수 있는 흰목이버섯 효소분해추출물입니다.",
     healthClaims: [
       "노화로 저하된 인지기능 개선에 도움을 줄 수 있습니다.",
-      "대뇌 회백질 용적 증가를 f-MRI로 확인·검증했습니다.",
+      "대뇌 회백질 용적 증가를 f-MRI로 확인했습니다.",
     ],
     featurePoints: [
       "40~65세 남녀를 대상으로 12주간 인체적용시험을 진행했습니다.",
@@ -256,10 +256,10 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "풋사과추출물 애플페논(Applephenon®)",
     category: "체지방",
     area: "체지방 감소",
-    summary: "체지방 감소에 도움을 줄 수 있는, 다이어트 대표 스테디셀러 원료입니다.",
+    summary: "체지방 감소에 도움을 줄 수 있는 풋사과 추출물입니다.",
     healthClaims: [
       "체지방 감소에 도움을 줄 수 있습니다.",
-      "다이어트를 위한 대표적인 스테디셀러 원료입니다.",
+      "풋사과 추출물(폴리페놀) 소재입니다.",
     ],
     featurePoints: [
       "20~55세 남녀를 대상으로 12주간 인체적용시험을 진행했습니다.",
@@ -280,7 +280,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     ],
     featurePoints: [
       "30~65세 여성을 대상으로 12주간 인체적용시험을 진행했습니다.",
-      "피부 보습이 뚜렷하게 개선되고 눈가 주름도 감소했습니다(육안 평가·지표 성분 모두 확인).",
+      "피부 보습이 개선되고 눈가 주름도 감소했습니다(육안 평가·지표 성분 모두 확인).",
       "피부 전체 탄력(생체 탄력·순수 탄력)이 높아지고 피부 결도 매끄러워졌습니다.",
     ],
     evidenceTags: ["피부보습", "탄력(R2)", "눈가 주름"],
@@ -361,10 +361,10 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "Immulink MBG",
     category: "면역",
     area: "면역기능 증진",
-    summary: "면역기능 증진에 도움을 줄 수 있으며, 선천·후천 면역 개선 효과를 입증한 소재입니다.",
+    summary: "선천·후천 면역 지표 개선이 보고된 영지 균사체 추출물입니다.",
     healthClaims: [
       "면역기능 증진에 도움을 줄 수 있습니다.",
-      "선천면역과 후천(적응)면역 양쪽 모두에서 개선 효과를 입증했습니다.",
+      "선천면역과 후천(적응)면역 양쪽에서 지표 개선이 보고됐습니다.",
     ],
     featurePoints: [
       "18~55세 남녀를 대상으로 13주간 인체적용시험을 진행했습니다.",
