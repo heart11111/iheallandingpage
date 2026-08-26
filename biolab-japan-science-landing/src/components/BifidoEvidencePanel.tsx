@@ -35,7 +35,7 @@ const effectGroups = [
     items: ["Immune", "Diarrhea", "Ulcerative colitis", "IBS"],
     icon: (
       <svg viewBox="0 0 94 64" aria-hidden="true">
-        <path d="M16 13h59c6.4 0 11 4.8 11 10.2S81.4 33.4 75 33.4H28.6c-5.2 0-8.4 3.8-8.4 8s3.4 8 8.4 8H70c5.6 0 9.6 3.8 9.6 8.6S75.6 59 70 59H20" />
+        <path d="M24 8C16 4 10 10 16 16H78C88 16 90 24 80 28H20C10 28 8 36 18 40H76C86 40 88 48 78 52H28C18 52 20 60 32 62" />
       </svg>
     ),
   },
@@ -44,9 +44,12 @@ const effectGroups = [
     title: "BRAIN",
     items: ["Cognitive function", "State of emotion"],
     icon: (
-      <svg viewBox="0 0 64 64" aria-hidden="true">
-        <path d="M23 15c-7.2 2.8-10.4 11-8.2 18.2 1 4-1.2 8-4.2 10.2 3.2 6 10.2 10 18.4 10 9 0 16.2-3.2 20.2-9.2 5-2 8-8 6.8-13.2-1-6-5-10.2-6.2-16.2C43.6 9.4 33.4 7.6 23 15z" />
-        <path d="M29 23c3 3 4 8 3 13M36 21c2 5 2 11 0 16" />
+      <svg viewBox="0 0 94 64" aria-hidden="true">
+        <path d="M34 12c-11 3-16 14-13 24 1 5-3 9-8 12 4 9 15 14 28 14 11 0 20-4 26-11 8-2 12-10 10-17-1-8-6-13-8-21-7-9-23-12-35-1z" />
+        <path d="M40 22c6 5 8 14 6 24" />
+        <path d="M50 20c5 7 6 16 3 26" />
+        <path d="M60 26c4 7 3 16-2 24" />
+        <path d="M44 32c8 3 13 10 11 20" />
       </svg>
     ),
   },
@@ -55,10 +58,13 @@ const effectGroups = [
     title: "KIDNEY",
     items: ["AKI"],
     icon: (
-      <svg viewBox="0 0 64 64" aria-hidden="true">
-        <path d="M20 17c8-6.2 16.2.8 16.2 10 0 8-5 16-12.2 20.2-6 3-10-1-10-8 0-8 2.2-16 6-22.2z" />
-        <path d="M44 17c-8-6.2-16.2.8-16.2 10 0 8 5 16 12.2 20.2 6 3 10-1 10-8 0-8-2.2-16-6-22.2z" />
-        <path d="M28 49v8M36 49v8" />
+      <svg viewBox="0 0 94 64" aria-hidden="true">
+        <path d="M24 12c12-9 26 2 24 18 0 12-8 24-20 30-9 4-14-3-14-12 0-12 4-26 10-36z" />
+        <path d="M32 22c5 8 5 20 0 30" />
+        <path d="M36 50v12" />
+        <path d="M70 12c-12-9-26 2-24 18 0 12 8 24 20 30 9 4 14-3 14-12 0-12-4-26-10-36z" />
+        <path d="M62 22c-5 8-5 20 0 30" />
+        <path d="M58 50v12" />
       </svg>
     ),
   },
@@ -67,15 +73,20 @@ const effectGroups = [
     title: "SKIN",
     items: ["Eczema"],
     icon: (
-      <svg viewBox="0 0 64 64" aria-hidden="true">
-        <path d="M10 16h44M10 23h44M10 31c6 6 16-4 22 2s16-4 22 2" />
-        <circle cx="18" cy="46" r="2.1" />
-        <circle cx="28" cy="46" r="2.1" />
-        <circle cx="38" cy="46" r="2.1" />
-        <circle cx="48" cy="46" r="2.1" />
-        <circle cx="23" cy="54" r="2.1" />
-        <circle cx="33" cy="54" r="2.1" />
-        <circle cx="43" cy="54" r="2.1" />
+      <svg viewBox="0 0 94 64" aria-hidden="true">
+        <path d="M8 12h78" />
+        <path d="M8 20h78" />
+        <path d="M8 28h78" />
+        <path d="M8 38c10 8 18-8 28 0s18-8 28 0 18-8 22-2" />
+        <circle cx="20" cy="50" r="1.8" />
+        <circle cx="34" cy="50" r="1.8" />
+        <circle cx="48" cy="50" r="1.8" />
+        <circle cx="62" cy="50" r="1.8" />
+        <circle cx="76" cy="50" r="1.8" />
+        <circle cx="27" cy="58" r="1.8" />
+        <circle cx="41" cy="58" r="1.8" />
+        <circle cx="55" cy="58" r="1.8" />
+        <circle cx="69" cy="58" r="1.8" />
       </svg>
     ),
   },
@@ -146,40 +157,63 @@ export function BifidoEvidencePanel() {
 
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>(root.querySelectorAll("[data-bifido-rise]"));
-      const marks = gsap.utils.toArray<SVGGeometryElement>(root.querySelectorAll(".dh-bifido-effect-icon path"));
 
-      gsap.set(cards, { autoAlpha: 0, y: 72 });
-      marks.forEach((mark) => {
+      const strokeLength = (node: SVGGeometryElement) => {
         try {
-          const length = mark.getTotalLength();
-          gsap.set(mark, { strokeDasharray: length, strokeDashoffset: length });
+          const length = node.getTotalLength();
+          return Number.isFinite(length) && length > 0 ? length : 72;
         } catch {
-          // Keep the icon visible if the path cannot be measured.
+          return 72;
         }
-      });
-
-      const play = () => {
-        gsap.to(cards, {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.95,
-          ease: "power4.out",
-          stagger: 0.08,
-        });
-        gsap.to(marks, {
-          strokeDashoffset: 0,
-          duration: 0.9,
-          ease: "power2.out",
-          stagger: 0.035,
-        });
       };
 
-      ScrollTrigger.create({
-        trigger: root.querySelector(".dh-bifido-effects") ?? root,
-        start: "top 78%",
-        once: true,
-        onEnter: play,
+      cards.forEach((card) => {
+        const strokes = gsap.utils.toArray<SVGGeometryElement>(
+          card.querySelectorAll(".dh-bifido-effect-icon path, .dh-bifido-effect-icon circle, .dh-bifido-effect-icon line"),
+        );
+        const dots = gsap.utils.toArray<SVGCircleElement>(card.querySelectorAll(".dh-bifido-effect-icon circle"));
+
+        gsap.set(card, { autoAlpha: 0, y: 92 });
+        strokes.forEach((stroke) => {
+          const length = strokeLength(stroke);
+          gsap.set(stroke, { strokeDasharray: length, strokeDashoffset: length });
+        });
+        if (dots.length) gsap.set(dots, { fill: "none" });
+
+        const play = () => {
+          gsap.to(card, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.95,
+            ease: "power4.out",
+          });
+
+          const draw = gsap.timeline({ delay: 0.12 });
+          strokes.forEach((stroke, index) => {
+            draw.to(
+              stroke,
+              {
+                strokeDashoffset: 0,
+                duration: index === 0 ? 0.85 : 0.62,
+                ease: "power2.out",
+              },
+              index === 0 ? 0 : "-=0.42",
+            );
+          });
+          if (dots.length) {
+            draw.to(dots, { fill: "currentColor", duration: 0.22, stagger: 0.03 }, "-=0.18");
+          }
+        };
+
+        ScrollTrigger.create({
+          trigger: card,
+          start: "top 84%",
+          once: true,
+          onEnter: play,
+        });
       });
+
+      requestAnimationFrame(() => ScrollTrigger.refresh());
     }, root);
 
     return () => ctx.revert();
@@ -239,9 +273,7 @@ export function BifidoEvidencePanel() {
 
       <ul className="dh-bifido-highlights">
         {highlights.map((item) => (
-          <li data-bifido-rise="" key={item.ja}>
-            {isKorean ? item.ko : item.ja}
-          </li>
+          <li key={item.ja}>{isKorean ? item.ko : item.ja}</li>
         ))}
       </ul>
     </section>

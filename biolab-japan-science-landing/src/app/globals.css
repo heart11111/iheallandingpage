@@ -9899,7 +9899,7 @@ h2 {
 }
 
 .dh-bifido-effects {
-  padding: 8px 0 2px;
+  padding: 18px 0 8px;
 }
 
 .dh-bifido-strain-marks ul {
@@ -9941,17 +9941,36 @@ h2 {
 }
 
 .dh-bifido-effect-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.dh-ingredient-origin-panel .dh-bifido-effect-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.dh-bifido-effect-rise {
+  display: flex;
+}
+
+.dh-bifido-effect-rise:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+.dh-bifido-effect-rise:nth-child(even) {
+  justify-content: flex-end;
 }
 
 .dh-bifido-effect-grid article {
   display: flex;
+  width: min(560px, 88%);
   align-items: center;
   gap: 8px;
-  min-height: 132px;
-  padding: 18px 22px 18px 16px;
+  min-height: 176px;
+  padding: 22px 28px 22px 18px;
   border: 1px solid #e3e8ee;
   border-radius: 999px;
   background: #fff;
@@ -9960,14 +9979,6 @@ h2 {
     transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.45s ease;
-}
-
-.dh-bifido-effect-grid .dh-bifido-effect-rise:nth-child(even) {
-  margin-top: 28px;
-}
-
-.dh-bifido-effect-grid .dh-bifido-effect-rise:nth-child(odd) {
-  margin-bottom: 28px;
 }
 
 .dh-bifido-effect-grid article:hover,
@@ -9979,13 +9990,13 @@ h2 {
 
 .dh-bifido-effect-grid h4 {
   display: grid;
-  width: 42%;
-  flex: 0 0 42%;
+  width: 48%;
+  flex: 0 0 48%;
   justify-items: center;
-  gap: 8px;
+  gap: 10px;
   margin: 0;
   color: #be8b40;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-align: center;
@@ -9993,30 +10004,27 @@ h2 {
 
 .dh-bifido-effect-icon {
   display: flex;
-  width: 72px;
-  height: 48px;
+  width: 94px;
+  height: 64px;
   align-items: center;
   justify-content: center;
   color: #be8b40;
 }
 
 .dh-bifido-effect-icon svg {
-  width: 72px;
-  height: 48px;
+  width: 94px;
+  height: 64px;
+  overflow: visible;
 }
 
 .dh-bifido-effect-icon path,
-.dh-bifido-effect-icon circle {
+.dh-bifido-effect-icon circle,
+.dh-bifido-effect-icon line {
   fill: none;
   stroke: currentColor;
   stroke-width: 2.4;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-
-.dh-bifido-effect-icon circle {
-  fill: currentColor;
-  stroke: none;
 }
 
 .dh-bifido-effect-grid article:hover .dh-bifido-effect-icon {
@@ -10053,7 +10061,8 @@ h2 {
 }
 
 .dh-ingredient-origin-panel .dh-bifido-effect-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-direction: column;
 }
 
 .dh-ingredient-origin-panel .dh-bifido-effect-grid li {
@@ -10163,12 +10172,20 @@ h2 {
 @media (max-width: 860px) {
   .dh-bifido-effect-grid,
   .dh-ingredient-origin-panel .dh-bifido-effect-grid {
-    grid-template-columns: 1fr;
+    gap: 28px;
   }
 
-  .dh-bifido-effect-grid .dh-bifido-effect-rise:nth-child(even),
-  .dh-bifido-effect-grid .dh-bifido-effect-rise:nth-child(odd) {
+  .dh-bifido-effect-rise,
+  .dh-bifido-effect-rise:nth-child(even),
+  .dh-bifido-effect-rise:nth-child(odd) {
+    justify-content: stretch;
     margin: 0;
+  }
+
+  .dh-bifido-effect-grid article {
+    width: 100%;
+    min-height: 148px;
+    padding: 18px 16px;
   }
 
   .dh-bifido-certs ul,
