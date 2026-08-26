@@ -81,7 +81,23 @@ const effectGroups = [
   },
 ];
 
-const certificates = [
+const strainMarks = [
+  {
+    key: "bgn4",
+    alt: "B. bifidum BGN4 GRAS No.814 / NDI 1079",
+    src: "/images/bifido/certs/strain-bgn4.webp",
+  },
+  {
+    key: "bori",
+    alt: "B. longum BORI GRAS No.813 / NDI 1082",
+    src: "/images/bifido/certs/strain-bori.webp",
+  },
+  {
+    key: "ad011",
+    alt: "B. lactis AD011 GRAS No.952 / NDI 1118",
+    src: "/images/bifido/certs/strain-ad011.webp",
+  },
+] as const;
   {
     key: "fda",
     label: "FDA",
@@ -169,6 +185,16 @@ export function BifidoEvidencePanel() {
       className="dh-bifido-panel"
       aria-label={isKorean ? "Bifido 특징 및 인증" : "Bifido features and certifications"}
     >
+      <div className="dh-bifido-strain-marks">
+        <ul>
+          {strainMarks.map((mark) => (
+            <li data-bifido-rise="" key={mark.key}>
+              <Image alt={mark.alt} height={298} src={mark.src} width={242} />
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div className="dh-bifido-effects">
         <p>Bio-functional effects</p>
         <div className="dh-bifido-effect-grid">
