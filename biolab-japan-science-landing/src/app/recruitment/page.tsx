@@ -21,7 +21,7 @@ export default function RecruitmentPage() {
             <p className="dh-detail-primary">RECRUITMENT</p>
             <div className="dh-recruitment-content">
               <h1>
-                <LocalizedText ja="Become part of our business network." ko="BIOLAB Japan의 사업 네트워크에 함께해 주세요." />
+                <LocalizedText ja="事業パートナーを募集しています。" ko="사업 파트너를 모집합니다." />
               </h1>
               <span className="dh-recruitment-lead">
                 <LocalizedText

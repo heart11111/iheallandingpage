@@ -16,12 +16,12 @@ const visionItems = [
   {
     title: "Mission",
     koTitle: "미션",
-    body: ["Functional Probiotics、", "自然由来機能性素材、OEM/ODMを", "一体で整理し、製品化までの流れを支えます。"],
+    body: ["Functional Probiotics、", "自然由来機能性素材、OEM/ODMを", "製品化までつなぎます。"],
     koBody: [
       "Functional Probiotics,",
       "Functional Nature’s food ingredients,",
       "ODM/OEM & Brand Royalty를",
-      "하나로 정리해 제품화까지의 흐름을 지원합니다.",
+      "제품화까지 잇습니다.",
     ],
   },
   {
@@ -44,9 +44,9 @@ export default function VisionPage() {
       <main>
         <CorporateSubHero
           title="Vision & Goals"
-          copy="Korea to Japan Healthcare Bridgeとして目指す方向性です。"
+          copy="日本市場で目指す事業の方向です。"
           koTitle="비전 및 목표"
-          koCopy="BIOLAB Japan의 Vision & Mission과 사업 목표입니다."
+          koCopy="일본 시장에서 지향하는 사업 방향입니다."
           image="/images/global-evidence-bg.png"
           compact
         />
@@ -55,25 +55,26 @@ export default function VisionPage() {
             <p className="dh-detail-primary">VISION</p>
             <h1>
               <LocalizedText
-                ja="Beyond Functional Healthcare Solutions"
+                ja={
+                  <>
+                    韓国と日本の
+                    <br />
+                    B2B事業をつなぎます。
+                  </>
+                }
                 ko={
                   <>
                     한국과 일본의
                     <br />
-                    B2B 사업 기회를 연결합니다.
+                    B2B 사업을 잇습니다.
                   </>
                 }
               />
             </h1>
             <p className="dh-lead-copy">
               <LocalizedText
-                ja={
-                  <>
-                    BIOLAB Japanは、機能性素材、製品化、ブランド運営、日本市場への導入を接続し、
-                    健康機能食品事業における信頼性の高いパートナーとなることを目指します。
-                  </>
-                }
-                ko="BIOLAB Japan은 기능성 식품 원료 사업, ODM/OEM & Brand Royalty, 일본 B2B 유통을 연결해 일본 기능성 헬스케어 산업의 리딩 기업으로 도약하는 것을 목표로 합니다."
+                ja="機能性素材、製品化、ブランド、日本市場への導入を扱います。"
+                ko="기능성 식품 원료 사업, ODM/OEM, Brand Royalty, 일본 B2B 유통을 다룹니다."
               />
             </p>
             <div className="dh-vision-card-grid">

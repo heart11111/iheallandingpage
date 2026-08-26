@@ -36,9 +36,9 @@ export default function CatalogPage() {
       <main>
         <CorporateSubHero
           title="E-Catalog"
-          copy="素材供給、OEM/ODM、ブランド協業の検討に必要な情報をまとめます。"
+          copy="素材供給、OEM/ODM、ブランド協業の資料です。"
           koTitle="E-카탈로그"
-          koCopy="기능성 식품 원료 사업, ODM/OEM, Brand Royalty 검토에 필요한 정보를 안내합니다."
+          koCopy="기능성 식품 원료, ODM/OEM, Brand Royalty 자료입니다."
           image="/images/global-evidence-bg.png"
           compact
         />

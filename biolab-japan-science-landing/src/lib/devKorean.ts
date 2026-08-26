@@ -361,10 +361,10 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "Immulink MBG",
     category: "면역",
     area: "면역기능 증진",
-    summary: "면역기능 증진에 도움을 줄 수 있으며, 선천·후천 면역 개선 효과를 입증한 소재입니다.",
+    summary: "선천·후천 면역 지표 개선이 보고된 영지 균사체 추출물입니다.",
     healthClaims: [
       "면역기능 증진에 도움을 줄 수 있습니다.",
-      "선천면역과 후천(적응)면역 양쪽 모두에서 개선 효과를 입증했습니다.",
+      "선천면역과 후천(적응)면역 양쪽에서 지표 개선이 보고됐습니다.",
     ],
     featurePoints: [
       "18~55세 남녀를 대상으로 13주간 인체적용시험을 진행했습니다.",

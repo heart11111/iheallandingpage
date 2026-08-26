@@ -12,12 +12,12 @@ export default function ContactPage() {
           <div className="dh-container">
             <p className="dh-detail-primary">CONTACT US</p>
             <h1>
-              <LocalizedText ja="How can we help you?" ko="무엇을 도와드릴까요?" />
+              <LocalizedText ja="ご相談ください" ko="문의 바랍니다" />
             </h1>
             <span>
               <LocalizedText
-                ja="機能性素材の調達、ODM/OEM商品開発、日本B2B流通、iHEALブランド協業の開発相談を受け付けます。"
-                ko="기능성 식품 원료 사업, ODM/OEM 상품 개발, 일본 B2B 유통, iHEAL 브랜드 사용에 대한 상품 로열티 사업의 개발 상담을 접수합니다."
+                ja="機能性素材、ODM/OEM、日本B2B流通、iHEALブランド協業の相談を受けています。"
+                ko="기능성 식품 원료, ODM/OEM, 일본 B2B 유통, iHEAL 브랜드 상품 로열티 상담을 받습니다."
               />
             </span>
             <div className="dh-contact-page-grid">

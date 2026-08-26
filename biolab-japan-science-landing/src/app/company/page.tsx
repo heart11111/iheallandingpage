@@ -10,9 +10,9 @@ export default function CompanyPage() {
       <main>
         <CorporateSubHero
           title="Company Overview"
-          copy="BIOLAB Japanのメッセージ、ビジョン、事業目標を紹介します。"
+          copy="代表ご挨拶と、ビジョン・目標です。"
           koTitle="회사 소개"
-          koCopy="BIOLAB Japan의 메시지, Vision & Mission, 사업 목표를 소개합니다."
+          koCopy="대표 인사말과 비전·목표입니다."
           image="/images/global-factory-bg.png"
           compact
         />

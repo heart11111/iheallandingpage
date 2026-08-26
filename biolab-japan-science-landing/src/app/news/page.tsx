@@ -20,7 +20,7 @@ export default function NewsPage() {
           <div className="dh-container">
             <p className="dh-detail-primary">NEWS</p>
             <h1>
-              <LocalizedText ja="Recent topics" ko="최근 소식" />
+              <LocalizedText ja="最近のトピック" ko="최근 소식" />
             </h1>
             <div className="dh-news-board">
               {corporateNews.map((item) => (
@@ -35,7 +35,9 @@ export default function NewsPage() {
                     <span>
                       <LocalizedText ja={item.summary} ko={item.koSummary} />
                     </span>
-                    <a href="/contact">LEARN MORE</a>
+                    <a href="/contact">
+                      <LocalizedText ja="お問い合わせ" ko="문의하기" />
+                    </a>
                   </div>
                 </article>
               ))}

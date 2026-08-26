@@ -12,9 +12,9 @@ export default function ProductsPage() {
       <main>
         <CorporateSubHero
           title="Products"
-          copy="商品開発の成功を支える素材と根拠情報に集中します。"
+          copy="商品開発に必要な素材と根拠情報です。"
           koTitle="제품"
-          koCopy="성공적인 상품 개발의 핵심이 되는 소재와 근거 정보입니다."
+          koCopy="상품 개발에 필요한 소재와 근거 정보입니다."
           image="/images/biolab-cosmetic-science-bg.png"
           align="center"
         />
@@ -26,9 +26,9 @@ export default function ProductsPage() {
                 <LocalizedText
                   ja={
                     <>
-                      It all starts
+                      商品の前に、
                       <br />
-                      with the ingredients.
+                      素材と根拠です。
                     </>
                   }
                   ko={
@@ -42,8 +42,8 @@ export default function ProductsPage() {
               </h2>
               <p>
                 <LocalizedText
-                  ja="BIOLAB Japanの供給製品ラインは、Functional ProbioticsとFunctional Nature’s food ingredientsを中心に構成します。"
-                  ko="BIOLAB Japan의 공급 제품 라인은 기능성 프로바이오틱스와 기능성 천연소재를 중심으로 구성합니다."
+                  ja="供給ラインはFunctional ProbioticsとFunctional Nature’s food ingredientsです。"
+                  ko="공급 라인은 기능성 프로바이오틱스와 기능성 천연소재입니다."
                 />
               </p>
             </div>
@@ -91,7 +91,7 @@ export default function ProductsPage() {
               ))}
             </div>
             <ProductIngredientExplorer
-              description="上部のボタンでラインとカテゴリーを切り替え、各素材の詳細ページへ進めます。"
+              description="ラインとカテゴリー別の素材一覧です。"
               items={[...microbiomeProductItems, ...natureProductItems]}
               koDescription="라인과 카테고리별 소재 상세 인덱스입니다."
               koTitle="소재별 상세 인덱스"

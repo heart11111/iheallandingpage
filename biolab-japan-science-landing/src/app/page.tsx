@@ -165,8 +165,8 @@ export default function Home() {
               </h1>
               <p className="dh-hero-support">
                 {isKorean
-                  ? "한국의 가능성을 일본 시장으로 연결합니다. 기능성 식품 원료 사업, ODM/OEM & Brand Royalty, 일본 B2B 유통을 이어 일본에서 헬스케어 사업을 여는 비즈니스 브리지 역할을 합니다."
-                  : "韓国の可能性を、日本の市場価値へ。機能性素材、製造、ブランド、流通をつなぎ、次のヘルスケア事業をひらくビジネスブリッジです。"}
+                  ? "한국의 가능성을 일본 시장으로 잇습니다. 기능성 소재, 제조, 브랜드, 유통을 연결하는 비즈니스 브리지입니다."
+                  : "韓国の可能性を、日本の市場へ。機能性素材、製造、ブランド、流通をつなぐビジネスブリッジです。"}
               </p>
               <div className="dh-hero-actions">
                 <Link href="/products">{isKorean ? "소재 보기" : "素材を見る"}</Link>
@@ -181,12 +181,10 @@ export default function Home() {
             <div className="dh-vision-head" data-reveal="">
               <p className="dh-kicker">VISION &amp; MISSION</p>
               <h2>
-                {isKorean ? "BIOLAB Japan의 Vision & Mission" : "BIOLAB Japan’s Vision & Mission."}
+                {isKorean ? "비전과 미션" : "ビジョンとミッション"}
               </h2>
               <p className="dh-vision-lead">
-                {isKorean
-                  ? "무엇을 목표로 일본 시장에서 사업을 하는지에 대한 BIOLAB Japan의 답입니다."
-                  : "BIOLAB Japanが日本市場で何を目指して事業を行うのか、その答えです。"}
+                {isKorean ? "일본 시장에서 지향하는 사업 방향입니다." : "日本市場で目指す事業の方向です。"}
               </p>
             </div>
             <div className="dh-vision-cards">
@@ -196,14 +194,12 @@ export default function Home() {
                 </span>
                 <p className="dh-vision-card-label">{isKorean ? "비전" : "Vision"}</p>
                 <h3>
-                  {isKorean
-                    ? "기능성 헬스케어 솔루션을 넘어"
-                    : "Beyond Functional Healthcare Solutions"}
+                  {isKorean ? "소재 공급을 넘어" : "素材供給を超えて"}
                 </h3>
                 <p>
                   {isKorean
-                    ? "기능성 소재의 공급을 넘어, 일본 시장에서 헬스케어 사업이 성립하도록 근거·제조·유통을 함께 설계합니다."
-                    : "機能性素材を供給するだけでなく、日本市場でヘルスケア事業が成り立つように、エビデンス・製造・流通までを一体で設計します。"}
+                    ? "기능성 소재만이 아니라, 근거·제조·유통까지 일본 사업에 맞춥니다."
+                    : "機能性素材だけでなく、根拠・製造・流通まで日本の事業に合わせます。"}
                 </p>
               </article>
               <article data-kind="mission" data-reveal="1">
@@ -212,19 +208,17 @@ export default function Home() {
                 </span>
                 <p className="dh-vision-card-label">{isKorean ? "미션" : "Our Mission"}</p>
                 <h3>
-                  {isKorean
-                    ? "일본 기능성 헬스케어 산업의 리딩 기업으로"
-                    : "Leap to become a leading company for functional healthcare industry in Japan"}
+                  {isKorean ? "일본에서 사업을 키우는 것" : "日本で事業を広げること"}
                 </h3>
                 <p>
                   {isKorean
-                    ? "일본 기능성 헬스케어 산업을 이끄는 기업으로 도약하는 것이 BIOLAB Japan의 목표입니다."
-                    : "日本の機能性ヘルスケア産業をリードする企業へ飛躍することが、BIOLAB Japanの目標です。"}
+                    ? "일본 기능성 헬스케어 시장에서 사업을 넓히는 것이 목표입니다."
+                    : "日本の機能性ヘルスケア市場で事業を広げることが目標です。"}
                 </p>
               </article>
             </div>
             <Link className="dh-text-link dh-vision-link" href="/company/vision">
-              {isKorean ? "비전 및 목표 보기" : "Vision & Goalsを見る"}
+              {isKorean ? "비전 및 목표 보기" : "ビジョンと目標を見る"}
               <ArrowRight size={15} aria-hidden="true" />
             </Link>
           </div>
@@ -248,7 +242,7 @@ export default function Home() {
                   </>
                 )}
               </h2>
-              <p>{isKorean ? "제품을 만들기 전에 대한민국 식약처(KFDA) 인증 개별인정형 기능성 소재와 근거 정보에 집중합니다." : "商品開発の成功を支える素材と根拠情報に集中します。"}</p>
+              <p>{isKorean ? "상품 개발에 필요한 소재와 근거 정보에 집중합니다." : "商品開発に必要な素材と根拠情報に集中します。"}</p>
             </div>
             <div className="dh-product-grid">
               {featuredCards.map((card, index) => (
@@ -360,22 +354,20 @@ export default function Home() {
               <h2>
                 {isKorean ? (
                   <>
-                    헬스케어 브랜드가
+                    근거 있는 소재를
                     <br />
-                    <span>근거 기반 성장</span>을 만들어가도록 돕는 일.
+                    일본 시장으로 잇는 일.
                   </>
                 ) : (
                   <>
-                    Empowering healthcare brands to build
+                    根拠のある素材を、
                     <br />
-                    <span>evidence-led growth</span> is what matters to us.
+                    日本市場へつなぐこと。
                   </>
                 )}
               </h2>
               <p>
-                {isKorean
-                  ? "더 확실한 소재를 더 넓은 일본 시장 전개로 연결하는 것이 BIOLAB Japan의 가치입니다."
-                  : "より確かな素材情報を、より広い市場展開へつなげることがBIOLAB Japanの価値です。"}
+                {isKorean ? "소재 정보와 시장 전개를 함께 봅니다." : "素材情報と市場展開を、一緒に見ます。"}
               </p>
             </div>
             <div className="dh-tech-grid">
@@ -422,8 +414,8 @@ export default function Home() {
           <div className="dh-container" data-reveal="">
             <div>
               <p className="dh-kicker">CONTACT US</p>
-              <h2>{isKorean ? "기능성 헬스케어 사업 프로젝트를 시작하세요." : "Start a Korea-to-Japan healthcare project."}</h2>
-              <p>{isKorean ? "상담 항목: 기능성 식품 원료 사업, ODM/OEM, 일본 B2B 유통, Brand Royalty." : "素材調達、ODM/OEM、日本B2B流通、ブランド協業についてはお問い合わせページからご相談ください。"}</p>
+              <h2>{isKorean ? "소재, ODM/OEM, 일본 유통 상담" : "素材、ODM/OEM、日本流通のご相談"}</h2>
+              <p>{isKorean ? "기능성 식품 원료, ODM/OEM, 일본 B2B 유통, Brand Royalty." : "機能性素材、ODM/OEM、日本B2B流通、ブランド協業。"}</p>
             </div>
             <Link className="dh-outline-button" href="/contact">CONTACT US</Link>
           </div>
