@@ -985,7 +985,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                   ))}
                 </ul>
                 {hasStatNotation(item.featurePoints) && <StatLegend isKorean={isKorean} />}
-                {featureImage && (
+                {featureImage && sourceItem.id !== "bifido" && (
                   <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
                     <Image
                       alt={getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}
@@ -1153,7 +1153,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
             ))}
           </ul>
           {hasStatNotation(featureBlocks) && <StatLegend isKorean={isKorean} />}
-          {featureImage && (
+          {featureImage && sourceItem.id !== "bifido" && (
             <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
               <Image
                 alt={getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}

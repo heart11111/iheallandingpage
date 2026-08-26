@@ -64,9 +64,9 @@ export default function ProductsPage() {
                       }
                       alt=""
                     />
-                    <span>
-                      <LocalizedText ja="カタログをダウンロード" ko="카탈로그 다운로드" />
-                    </span>
+                  </a>
+                  <a className="dh-product-card-catalog-btn" download href={group.catalogHref}>
+                    <LocalizedText ja="カタログをダウンロード" ko="카탈로그 다운로드" />
                   </a>
                   <div className="dh-product-shade" aria-hidden="true" />
                   <div className="dh-product-text">
