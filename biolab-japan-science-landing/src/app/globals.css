@@ -9888,6 +9888,7 @@ h2 {
 .dh-bifido-effect-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
   gap: 12px;
 }
 
@@ -9895,6 +9896,8 @@ h2 {
   display: grid;
   align-content: start;
   gap: 10px;
+  height: 100%;
+  min-height: 248px;
   padding: 18px 16px 18px;
   border: 1px solid #dbe7f4;
   background: #f8fbff;

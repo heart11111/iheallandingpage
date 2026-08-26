@@ -56,24 +56,32 @@ const certificates = [
     label: "FDA",
     sub: "U.S. Food & Drug Administration",
     src: "/images/bifido/certs/fda-mark.jpg",
+    width: 436,
+    height: 144,
   },
   {
     key: "halal",
     label: "HALAL",
     sub: "Korea Muslim Federation",
     src: "/images/bifido/certs/halal.jpg",
+    width: 240,
+    height: 320,
   },
   {
     key: "gras",
     label: "FDA GRAS",
     sub: "GRN 814 / 813 / 952",
     src: "/images/bifido/certs/fda-gras.jpg",
+    width: 240,
+    height: 320,
   },
   {
     key: "ndi",
     label: "FDA NDI",
     sub: "NDI 1079 / 1082 / 1118",
     src: "/images/bifido/certs/fda-ndi.jpg",
+    width: 240,
+    height: 320,
   },
 ] as const;
 
@@ -117,7 +125,7 @@ export function BifidoEvidencePanel() {
           {certificates.map((cert, index) => (
             <li data-reveal={String(index)} key={cert.key}>
               <figure>
-                <Image alt={cert.label} height={320} src={cert.src} width={240} />
+                <Image alt={cert.label} height={cert.height} src={cert.src} width={cert.width} />
               </figure>
               <strong>{cert.label}</strong>
               <span>{cert.sub}</span>
