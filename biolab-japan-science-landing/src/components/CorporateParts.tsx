@@ -371,9 +371,9 @@ const mechanismEvidenceCopy: Record<string, { bodyJa: string; bodyKo: string; ti
     titleJa: "肝損傷メカニズム",
     titleKo: "간 손상 메커니즘",
     bodyJa:
-      "腸内・血中のLPS(内毒素)と炎症シグナルTNF-αが増えると、肝損傷指標であるALT・AST・γ-GTPも上昇します。NVP-1702はこの炎症経路を整え、肝損傷指標の改善をサポートする設計です。",
+      "腸内・血中のLPS(内毒素)と炎症シグナルTNF-αが増えると、肝損傷指標であるALT・AST・γ-GTPも上昇します。NVP-1702はこの炎症経路を整え、肝損傷指標の改善をサポートします。",
     bodyKo:
-      "장내·혈중 LPS(내독소)와 염증 신호물질 TNF-α가 늘면 간 손상 지표인 ALT·AST·γ-GTP도 함께 높아집니다. NVP-1702는 이 염증 경로를 조절해 간 손상 지표 개선에 도움을 주는 설계입니다.",
+      "장내·혈중 LPS(내독소)와 염증 신호물질 TNF-α가 늘면 간 손상 지표인 ALT·AST·γ-GTP도 함께 높아집니다. NVP-1702는 이 염증 경로를 조절해 간 손상 지표 개선에 도움을 줍니다.",
   },
 };
 
@@ -609,8 +609,8 @@ export function CorporateFooter() {
             </strong>
             <p className="dh-footer-tagline">
               {isKorean
-                ? "한국의 기능성 소재를 일본 시장으로 잇는 비즈니스 브리지"
-                : "韓国の機能性素材を日本市場へつなぐビジネスブリッジ"}
+                ? "한국의 기능성 소재를 일본 시장으로 공급합니다."
+                : "韓国の機能性素材を日本市場へ供給します。"}
             </p>
             <address className="dh-footer-contact">
               <span className="dh-footer-company">{companyContact.legalName}</span>

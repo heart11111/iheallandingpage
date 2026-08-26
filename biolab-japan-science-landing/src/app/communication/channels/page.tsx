@@ -38,7 +38,7 @@ export default function ChannelsPage() {
           title="Communication Channels"
           copy="BIOLAB Japan、BIOLAB Korea、iHEAL Mallの公式導線です。"
           koTitle="커뮤니케이션 채널"
-          koCopy="BIOLAB Japan, BIOLAB Korea, iHEAL Mall 공식 연결 경로입니다."
+          koCopy="BIOLAB Japan, BIOLAB Korea, iHEAL Mall 공식 창구입니다."
           image="/images/clinical-platform-hero.png"
           compact
         />

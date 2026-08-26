@@ -11,13 +11,13 @@ const aboutBlocks = [
   },
   {
     label: "Mission",
-    copy: "韓国のR&D・製造と、日本の販売・商談をつなぎます。",
-    koCopy: "한국의 R&D·제조와 일본의 판매·상담을 잇습니다.",
+    copy: "韓国のR&D・製造と、日本の販売・商談を扱います。",
+    koCopy: "한국의 R&D·제조와 일본의 판매·상담을 다룹니다.",
   },
   {
     label: "Business",
-    copy: "韓国側の開発・製造・ブランド管理と、日本側の販売・卸・新規事業をつなぎます。",
-    koCopy: "한국 측 개발·제조·브랜드 관리와 일본 측 판매·도매·신규 사업을 잇습니다.",
+    copy: "韓国側の開発・製造・ブランド管理と、日本側の販売・卸・新規事業です。",
+    koCopy: "한국 측 개발·제조·브랜드 관리와 일본 측 판매·도매·신규 사업입니다.",
   },
 ];
 
@@ -28,9 +28,9 @@ export default function AboutPage() {
       <main>
         <CorporateSubHero
           title="Korea to Japan"
-          copy="韓国の素材開発と、日本のB2B市場をつなぎます。"
+          copy="韓国の素材開発と、日本のB2B市場です。"
           koTitle="Korea to Japan"
-          koCopy="한국 소재 개발과 일본 B2B 시장을 잇습니다."
+          koCopy="한국 소재 개발과 일본 B2B 시장입니다."
           image="/images/global-factory-bg.png"
           compact
         />
@@ -48,10 +48,10 @@ export default function AboutPage() {
                   ja={
                     <>
                       BIOLAB Japanは、韓国の機能性素材開発・製造・ブランド運営と、
-                      日本の販売会社・メーカー・卸をつなぐB2B窓口です。
+                      日本の販売会社・メーカー・卸を扱うB2B窓口です。
                     </>
                   }
-                  ko="BIOLAB Japan은 한국의 기능성 소재 개발·제조·브랜드 운영과 일본의 판매회사·제조사·도매를 잇는 B2B 창구입니다."
+                  ko="BIOLAB Japan은 한국의 기능성 소재 개발·제조·브랜드 운영과 일본의 판매회사·제조사·도매를 다루는 B2B 창구입니다."
                 />
               </p>
               <div className="dh-about-card-grid">
@@ -142,13 +142,13 @@ export default function AboutPage() {
                 <p className="dh-value-title">
                   <LocalizedText ja="根拠資料" ko="근거 자료" />
                 </p>
-                <p>EVIDENCE ARCHITECTURE</p>
+                <p>EVIDENCE</p>
               </div>
               <div>
                 <p className="dh-value-title">
                   <LocalizedText ja="事業連携" ko="사업 연계" />
                 </p>
-                <p>GLOBAL BUSINESS BRIDGE</p>
+                <p>BUSINESS</p>
               </div>
             </div>
           </div>

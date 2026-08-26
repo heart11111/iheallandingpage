@@ -6,22 +6,22 @@ const visionItems = [
   {
     title: "Vision",
     koTitle: "비전",
-    body: ["韓国の素材開発・製造力と", "日本市場の事業機会をつなぎ、", "信頼されるヘルスケア事業基盤をつくります。"],
+    body: ["韓国の素材開発・製造力と", "日本市場の事業機会を合わせ、", "ヘルスケア事業の基盤をつくります。"],
     koBody: [
       "한국의 소재 개발·제조력과",
-      "일본 시장의 사업 기회를 연결해,",
-      "신뢰할 수 있는 헬스케어 사업 기반을 만듭니다.",
+      "일본 시장 사업에 맞춰",
+      "헬스케어 사업 기반을 만듭니다.",
     ],
   },
   {
     title: "Mission",
     koTitle: "미션",
-    body: ["Functional Probiotics、", "自然由来機能性素材、OEM/ODMを", "製品化までつなぎます。"],
+    body: ["Functional Probiotics、", "自然由来機能性素材、OEM/ODM、", "ブランド協業を製品化まで進めます。"],
     koBody: [
       "Functional Probiotics,",
       "Functional Nature’s food ingredients,",
-      "ODM/OEM & Brand Royalty를",
-      "제품화까지 잇습니다.",
+      "ODM/OEM, Brand Royalty를",
+      "제품화까지 진행합니다.",
     ],
   },
   {
@@ -59,14 +59,14 @@ export default function VisionPage() {
                   <>
                     韓国と日本の
                     <br />
-                    B2B事業をつなぎます。
+                    B2B事業です。
                   </>
                 }
                 ko={
                   <>
                     한국과 일본의
                     <br />
-                    B2B 사업을 잇습니다.
+                    B2B 사업입니다.
                   </>
                 }
               />

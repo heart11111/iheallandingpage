@@ -25,12 +25,12 @@ const featuredCards = [
     eyebrow: "Functional Probiotics",
     tag: "ヒト臨床試験完了・7種",
     koTag: "인체적용시험 완료 · 7종",
-    title: "Application-specific strain portfolio",
-    subtitle: "用途別プロバイオティクス",
-    description: "女性・体脂肪・認知など、製品目的に合わせて菌株を検討します。",
+    title: "用途別プロバイオティクス",
+    subtitle: "7種",
+    description: "女性・体脂肪・認知など、製品目的に合わせた菌株です。",
     koTitle: "프로바이오틱스 소재",
-    koSubtitle: "용도별 7개 영역",
-    koDescription: "여성·체지방·인지 등 제품 목적에 맞춰 균주를 검토합니다.",
+    koSubtitle: "용도별 7종",
+    koDescription: "여성·체지방·인지 등 제품 목적에 맞춘 균주입니다.",
     // v2 has a "Microbiome Probiotics" wordmark burnt into the photograph, which
     // collided with the card’s own eyebrow and cannot be translated.
     image: "images/products-microbiome-probiotics-card-v3.webp",
@@ -41,12 +41,12 @@ const featuredCards = [
     eyebrow: "Functional Nature’s food ingredients",
     tag: "ヒト臨床試験完了・10種",
     koTag: "인체적용시험 완료 · 10종",
-    title: "Nature-derived functional materials",
-    subtitle: "自然由来機能性素材",
-    description: "男性健康・記憶・認知など、製品目的に合わせて自然由来素材を検討します。",
+    title: "自然由来機能性素材",
+    subtitle: "10種",
+    description: "男性健康・記憶・認知など、製品目的に合わせた自然由来素材です。",
     koTitle: "기능성 천연소재",
-    koSubtitle: "용도별 10개 영역",
-    koDescription: "남성 건강·기억·인지 등 제품 목적에 맞춰 자연 유래 소재를 검토합니다.",
+    koSubtitle: "용도별 10종",
+    koDescription: "남성 건강·기억·인지 등 제품 목적에 맞춘 자연 유래 소재입니다.",
     image: "images/products-functional-nature-card-v2.webp",
     href: "/products/nature-ingredients",
   },
@@ -55,12 +55,12 @@ const featuredCards = [
     eyebrow: "ODM / OEM",
     tag: "SERVICE",
     koTag: "서비스",
-    title: "Market-ready product planning",
-    subtitle: "商品化・供給設計",
-    description: "韓国の製造ネットワークをもとに、製品企画と生産をつなぎます。",
+    title: "ODM / OEM",
+    subtitle: "商品化・供給",
+    description: "韓国の製造ネットワークで、製品企画と生産を進めます。",
     koTitle: "ODM/OEM",
-    koSubtitle: "상품 개발 및 ODM / OEM 생산",
-    koDescription: "한국 제조 네트워크를 바탕으로 제품 기획과 생산을 연결합니다.",
+    koSubtitle: "상품 개발 및 ODM/OEM 생산",
+    koDescription: "한국 제조 네트워크로 제품 기획과 생산을 진행합니다.",
     image: "images/biolab-global-factory-bg.png",
     href: "/business/odm-oem",
   },
@@ -82,7 +82,7 @@ const businessMapSides = [
       { ja: "生産", ko: "생산" },
       { ja: "ブランド管理", ko: "브랜드 관리" },
     ],
-    note: "Together with the best manufacturers",
+    note: "",
   },
   {
     side: "japan",
@@ -103,27 +103,27 @@ const techValues = [
   {
     title: "研究開発",
     subtitle: "RESEARCH & DEVELOPMENT",
-    copy: "韓国の素材開発、製造、ブランド管理を日本市場向けの事業設計につなげます。",
+    copy: "韓国の素材開発、製造、ブランド管理を、日本市場向けの事業に合わせます。",
     koTitle: "연구개발",
-    koCopy: "한국의 소재 개발, 제조, 브랜드 관리를 일본 시장용 사업 설계로 연결합니다.",
+    koCopy: "한국의 소재 개발, 제조, 브랜드 관리를 일본 시장 사업에 맞춥니다.",
     href: "/business/materials",
     icon: Microscope,
   },
   {
     title: "根拠資料",
-    subtitle: "EVIDENCE ARCHITECTURE",
-    copy: "ヒト臨床試験、SCI論文、特許、認証資料を素材別に整理し、B2B提案に活用します。",
+    subtitle: "EVIDENCE",
+    copy: "ヒト臨床試験、SCI論文、特許、認証資料を素材別に整理し、B2B提案に使います。",
     koTitle: "근거 자료",
-    koCopy: "인체적용시험, SCI 논문, 특허, 인증 자료를 소재별로 정리해 B2B 제안에 활용합니다.",
+    koCopy: "인체적용시험, SCI 논문, 특허, 인증 자료를 소재별로 정리해 B2B 제안에 사용합니다.",
     href: "/products",
     icon: ShieldCheck,
   },
   {
     title: "事業連携",
-    subtitle: "GLOBAL BUSINESS BRIDGE",
-    copy: "日本の販売会社、メーカー、卸、ブランド事業者へ展開できる供給線を構築します。",
+    subtitle: "BUSINESS",
+    copy: "日本の販売会社、メーカー、卸、ブランド事業者向けの供給です。",
     koTitle: "사업 연계",
-    koCopy: "일본 판매사, 제조사, 도매, 브랜드 사업자로 확장 가능한 공급선을 구축합니다.",
+    koCopy: "일본 판매사, 제조사, 도매, 브랜드 사업자 대상 공급입니다.",
     href: "/business/odm-oem",
     icon: Globe2,
   },
@@ -157,16 +157,24 @@ export default function Home() {
           </div>
           <div className="dh-container dh-hero-inner">
             <div className="dh-hero-copy">
-              <p className="dh-hero-kicker">WE ARE BRIDGE!</p>
+              <p className="dh-hero-kicker">BIOLAB JAPAN</p>
               <h1>
-                <span className="dh-hero-line">One-stop Solution</span>
-                <span className="dh-hero-line">for Total Healthcare</span>
-                <span className="dh-hero-accent">in JAPAN</span>
+                {isKorean ? (
+                  <>
+                    <span className="dh-hero-line">한국의 기능성 소재를</span>
+                    <span className="dh-hero-accent">일본 B2B로</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="dh-hero-line">韓国の機能性素材を</span>
+                    <span className="dh-hero-accent">日本のB2Bへ</span>
+                  </>
+                )}
               </h1>
               <p className="dh-hero-support">
                 {isKorean
-                  ? "한국의 가능성을 일본 시장으로 잇습니다. 기능성 소재, 제조, 브랜드, 유통을 연결하는 비즈니스 브리지입니다."
-                  : "韓国の可能性を、日本の市場へ。機能性素材、製造、ブランド、流通をつなぐビジネスブリッジです。"}
+                  ? "기능성 소재, 제조, 브랜드, 유통을 다루는 일본 현지법인입니다."
+                  : "機能性素材、製造、ブランド、流通を扱う日本現地法人です。"}
               </p>
               <div className="dh-hero-actions">
                 <Link href="/products">{isKorean ? "소재 보기" : "素材を見る"}</Link>
@@ -194,7 +202,7 @@ export default function Home() {
                 </span>
                 <p className="dh-vision-card-label">{isKorean ? "비전" : "Vision"}</p>
                 <h3>
-                  {isKorean ? "소재 공급을 넘어" : "素材供給を超えて"}
+                  {isKorean ? "소재, 근거, 제조, 유통" : "素材、根拠、製造、流通"}
                 </h3>
                 <p>
                   {isKorean
@@ -208,7 +216,7 @@ export default function Home() {
                 </span>
                 <p className="dh-vision-card-label">{isKorean ? "미션" : "Our Mission"}</p>
                 <h3>
-                  {isKorean ? "일본에서 사업을 키우는 것" : "日本で事業を広げること"}
+                  {isKorean ? "일본에서 사업을 넓히는 것" : "日本で事業を広げること"}
                 </h3>
                 <p>
                   {isKorean
@@ -230,19 +238,19 @@ export default function Home() {
               <h2>
                 {isKorean ? (
                   <>
-                    제품을 만들기 전에,
+                    제품보다 먼저,
                     <br />
-                    소재와 근거가 먼저입니다.
+                    소재와 근거입니다.
                   </>
                 ) : (
                   <>
-                    It all starts
+                    商品の前に、
                     <br />
-                    with the ingredients.
+                    素材と根拠です。
                   </>
                 )}
               </h2>
-              <p>{isKorean ? "상품 개발에 필요한 소재와 근거 정보에 집중합니다." : "商品開発に必要な素材と根拠情報に集中します。"}</p>
+              <p>{isKorean ? "상품 개발에 필요한 소재와 근거 정보입니다." : "商品開発に必要な素材と根拠情報です。"}</p>
             </div>
             <div className="dh-product-grid">
               {featuredCards.map((card, index) => (
@@ -316,7 +324,7 @@ export default function Home() {
                   <br />
                   Japan
                 </strong>
-                <span>{isKorean ? "브리지" : "ブリッジ"}</span>
+                <span>{isKorean ? "창구" : "窓口"}</span>
               </div>
               <div className="dh-bizmap-link" aria-hidden="true">
                 <b>Commerce</b>
@@ -354,20 +362,20 @@ export default function Home() {
               <h2>
                 {isKorean ? (
                   <>
-                    근거 있는 소재를
+                    근거 자료가 있는 소재를
                     <br />
-                    일본 시장으로 잇는 일.
+                    일본 시장으로.
                   </>
                 ) : (
                   <>
-                    根拠のある素材を、
+                    根拠資料のある素材を、
                     <br />
-                    日本市場へつなぐこと。
+                    日本市場へ。
                   </>
                 )}
               </h2>
               <p>
-                {isKorean ? "소재 정보와 시장 전개를 함께 봅니다." : "素材情報と市場展開を、一緒に見ます。"}
+                {isKorean ? "소재 정보와 시장 전개입니다." : "素材情報と市場展開です。"}
               </p>
             </div>
             <div className="dh-tech-grid">
@@ -391,7 +399,7 @@ export default function Home() {
             <div className="dh-container">
               <div className="dh-section-title" data-reveal="">
                 <h2>News</h2>
-                <p>{isKorean ? "BIOLAB Japan의 사업 전개, 소재 정보, 제휴 상담 관련 최신 토픽입니다." : "BIOLAB Japanの事業展開、素材情報、提携相談に関する最新トピックです。"}</p>
+                <p>{isKorean ? "BIOLAB Japan의 사업 전개, 소재 정보, 제휴 상담입니다." : "BIOLAB Japanの事業展開、素材情報、提携相談です。"}</p>
               </div>
               <div className="dh-topic-grid">
                 {corporateNews.map((item, index) => (
@@ -402,7 +410,7 @@ export default function Home() {
                     <p className="dh-topic-date">{item.date}</p>
                     <h3>{isKorean ? item.koTitle : item.title}</h3>
                     <p>{isKorean ? item.koSummary : item.summary}</p>
-                    <a href="/news">LEARN MORE</a>
+                    <a href="/news">{isKorean ? "자세히 보기" : "詳しく見る"}</a>
                   </article>
                 ))}
               </div>

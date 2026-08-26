@@ -33,9 +33,9 @@ export default function ProductsPage() {
                   }
                   ko={
                     <>
-                      제품을 만들기 전에,
+                      제품보다 먼저,
                       <br />
-                      소재와 근거가 먼저입니다.
+                      소재와 근거입니다.
                     </>
                   }
                 />

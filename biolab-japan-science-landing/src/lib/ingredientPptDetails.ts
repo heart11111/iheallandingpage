@@ -116,7 +116,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     healthClaims: [
       "デュオバイオーム技術による、肝機能の改善に向けた2種の特許プロバイオティクス複合物です。",
       "非アルコール性93名・アルコール性70名のヒト臨床試験2件とSCI論文で確認された、肝機能改善向けの特許乳酸菌です。",
-      "アルコール性・非アルコール性で傷んだ肝臓のケアを考えた複合設計です。",
+      "アルコール性・非アルコール性の肝損傷を対象にしています。",
     ],
     originTitle: "使用菌株",
     originItems: ["L. plantarum LC27", "B. longum LC67"],
@@ -217,7 +217,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     ],
     features: [
       "米国食品医薬品局(FDA)の安全性認証(GRAS・NDI)に加え、HALAL・KOSHER認証も取得しています。",
-      "症状別に10件のヒト臨床試験、80件の国際特許、260編以上のSCI論文を持つ世界的なビフィズス菌です。",
+      "症状別に10件のヒト臨床試験、80件の国際特許、260編以上のSCI論文があるビフィズス菌です。",
       "12週間の摂取で、ガスの排出頻度が上がり、お腹の張りが和らぎました。",
       "参考: BGN4・BORIをベースとしたプロバイオティクス(40億CFU/日、12週間)を65歳以上の高齢者が摂取した試験で、認知機能と気分の改善が確認されました(ソウル大学校盆唐病院実施)。",
     ],
@@ -240,7 +240,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
   testofen: {
     productName: "Testofen",
     healthClaims: [
-      "更年期を迎えた男性の健康に向けた、他にない機能性素材です。",
+      "更年期を迎えた男性の健康に向けた機能性素材です。",
       "男性更年期の症状を、精神・心理、身体機能、性機能の3つの面から改善します。",
     ],
     originTitle: "原料",
@@ -248,8 +248,8 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     features: [
       "43〜75歳の男性を対象に、12週間のヒト臨床試験を行いました。",
       "男性ホルモンであるテストステロンの恒常性を保ち、高めます。",
-      "男性更年期の症状(精神・心理の安定、身体機能の向上、性機能の向上)が大きく改善しました。",
-      "韓国内の男性更年期関連素材の中で最も高いAMSデータを持ち、米国でも最も普及している男性向け原料です。",
+      "男性更年期の症状(精神・心理の安定、身体機能の向上、性機能の向上)が改善しました。",
+      "男性更年期に関するAMSデータを持つ原料です。",
       "更年期の男性を対象とした追加の臨床データもそろえています。",
     ],
     graphNotes: [
@@ -309,7 +309,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
     productName: "Neu learn",
     healthClaims: [
       "加齢によって低下した認知機能の改善に役立ちます。",
-      "大脳の灰白質の容積が増えることを、f-MRIで確認・検証しています。",
+      "大脳の灰白質の容積が増えることを、f-MRIで確認しています。",
     ],
     originTitle: "原料",
     originItems: ["白キクラゲ酵素分解抽出物 Tremella fuciformis Beck-extract"],
@@ -338,7 +338,7 @@ export const ingredientPptDetails: Record<string, IngredientPptDetail> = {
   },
   applephenon: {
     productName: "Applephenon",
-    healthClaims: ["体脂肪を減らすのに役立つ、ダイエット向けの定番ロングセラー原料です。"],
+    healthClaims: ["体脂肪を減らすのに役立つ未熟リンゴ抽出物です。"],
     originTitle: "原料",
     originItems: ["未熟リンゴ抽出物(青リンゴポリフェノール)"],
     features: [

@@ -12,7 +12,7 @@ export default function ContactPage() {
           <div className="dh-container">
             <p className="dh-detail-primary">CONTACT US</p>
             <h1>
-              <LocalizedText ja="ご相談ください" ko="문의 바랍니다" />
+              <LocalizedText ja="お問い合わせ" ko="문의하기" />
             </h1>
             <span>
               <LocalizedText
