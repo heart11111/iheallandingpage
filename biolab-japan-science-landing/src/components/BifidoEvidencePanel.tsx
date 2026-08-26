@@ -169,14 +169,6 @@ export function BifidoEvidencePanel() {
       className="dh-bifido-panel"
       aria-label={isKorean ? "Bifido 특징 및 인증" : "Bifido features and certifications"}
     >
-      <ul className="dh-bifido-highlights">
-        {highlights.map((item) => (
-          <li data-bifido-rise="" key={item.ja}>
-            {isKorean ? item.ko : item.ja}
-          </li>
-        ))}
-      </ul>
-
       <div className="dh-bifido-effects">
         <p>Bio-functional effects</p>
         <div className="dh-bifido-effect-grid">
@@ -212,6 +204,14 @@ export function BifidoEvidencePanel() {
           ))}
         </ul>
       </div>
+
+      <ul className="dh-bifido-highlights">
+        {highlights.map((item) => (
+          <li data-bifido-rise="" key={item.ja}>
+            {isKorean ? item.ko : item.ja}
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

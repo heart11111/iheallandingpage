@@ -5869,9 +5869,20 @@ h2 {
   margin-top: 16px;
 }
 
+.dh-origin-visual-stack {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 18px;
+}
+
 .dh-ingredient-origin-panel .dh-origin-composition-cards {
   grid-column: 1 / -1;
   margin-top: 2px;
+  margin-bottom: 0;
+}
+
+.dh-origin-visual-stack .dh-origin-composition-cards {
+  margin-top: 0;
 }
 
 .dh-origin-composition-cards figure {
@@ -9786,10 +9797,9 @@ h2 {
 
 .dh-ingredient-origin-panel .dh-bifido-panel {
   grid-column: 1 / -1;
-  margin: 4px 0 0;
-  padding: 22px 0 0;
+  margin: 0;
+  padding: 4px 0 0;
   border: 0;
-  border-top: 1px solid #e4ebf3;
   background: transparent;
 }
 

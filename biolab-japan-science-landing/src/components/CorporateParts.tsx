@@ -1129,8 +1129,12 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
             <li key={origin}>{origin}</li>
           ))}
         </ul>
-        {originImages.length > 0 && <OriginCatalogCards images={originImages} isKorean={isKorean} />}
-        {sourceItem.id === "bifido" && <BifidoEvidencePanel />}
+        {originImages.length > 0 && (
+          <div className="dh-origin-visual-stack">
+            <OriginCatalogCards images={originImages} isKorean={isKorean} />
+            {sourceItem.id === "bifido" && <BifidoEvidencePanel />}
+          </div>
+        )}
       </section>
 
       {originTable && <OriginCompositionTab isKorean={isKorean} table={originTable} />}
