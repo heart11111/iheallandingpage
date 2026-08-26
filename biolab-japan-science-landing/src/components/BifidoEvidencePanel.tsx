@@ -1,8 +1,13 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
-import { useReveal } from "@/lib/useReveal";
+import { useReducedMotion } from "@/lib/useReducedMotion";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const highlights = [
   {
@@ -27,26 +32,52 @@ const effectGroups = [
   {
     key: "gut",
     title: "GUT",
-    icon: "/images/bifido/effects/gut.png",
     items: ["Immune", "Diarrhea", "Ulcerative colitis", "IBS"],
+    icon: (
+      <svg viewBox="0 0 94 64" aria-hidden="true">
+        <path d="M16 13h59c6.4 0 11 4.8 11 10.2S81.4 33.4 75 33.4H28.6c-5.2 0-8.4 3.8-8.4 8s3.4 8 8.4 8H70c5.6 0 9.6 3.8 9.6 8.6S75.6 59 70 59H20" />
+      </svg>
+    ),
   },
   {
     key: "brain",
     title: "BRAIN",
-    icon: "/images/bifido/effects/brain.png",
     items: ["Cognitive function", "State of emotion"],
+    icon: (
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M23 15c-7.2 2.8-10.4 11-8.2 18.2 1 4-1.2 8-4.2 10.2 3.2 6 10.2 10 18.4 10 9 0 16.2-3.2 20.2-9.2 5-2 8-8 6.8-13.2-1-6-5-10.2-6.2-16.2C43.6 9.4 33.4 7.6 23 15z" />
+        <path d="M29 23c3 3 4 8 3 13M36 21c2 5 2 11 0 16" />
+      </svg>
+    ),
   },
   {
     key: "kidney",
     title: "KIDNEY",
-    icon: "/images/bifido/effects/kidney.png",
     items: ["AKI"],
+    icon: (
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M20 17c8-6.2 16.2.8 16.2 10 0 8-5 16-12.2 20.2-6 3-10-1-10-8 0-8 2.2-16 6-22.2z" />
+        <path d="M44 17c-8-6.2-16.2.8-16.2 10 0 8 5 16 12.2 20.2 6 3 10-1 10-8 0-8-2.2-16-6-22.2z" />
+        <path d="M28 49v8M36 49v8" />
+      </svg>
+    ),
   },
   {
     key: "skin",
     title: "SKIN",
-    icon: "/images/bifido/effects/skin.png",
     items: ["Eczema"],
+    icon: (
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M10 16h44M10 23h44M10 31c6 6 16-4 22 2s16-4 22 2" />
+        <circle cx="18" cy="46" r="2.1" />
+        <circle cx="28" cy="46" r="2.1" />
+        <circle cx="38" cy="46" r="2.1" />
+        <circle cx="48" cy="46" r="2.1" />
+        <circle cx="23" cy="54" r="2.1" />
+        <circle cx="33" cy="54" r="2.1" />
+        <circle cx="43" cy="54" r="2.1" />
+      </svg>
+    ),
   },
 ];
 
@@ -88,13 +119,59 @@ const certificates = [
 export function BifidoEvidencePanel() {
   const { language } = useDevLanguage();
   const isKorean = language === "ko";
-  useReveal();
+  const reduced = useReducedMotion();
+  const rootRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root || reduced) return;
+
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray<HTMLElement>(root.querySelectorAll("[data-bifido-rise]"));
+      const marks = gsap.utils.toArray<SVGGeometryElement>(root.querySelectorAll(".dh-bifido-effect-icon path"));
+
+      gsap.set(cards, { autoAlpha: 0, y: 72 });
+      marks.forEach((mark) => {
+        const length = mark.getTotalLength();
+        gsap.set(mark, { strokeDasharray: length, strokeDashoffset: length });
+      });
+
+      const play = () => {
+        gsap.to(cards, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.95,
+          ease: "power4.out",
+          stagger: 0.08,
+        });
+        gsap.to(marks, {
+          strokeDashoffset: 0,
+          duration: 0.9,
+          ease: "power2.out",
+          stagger: 0.035,
+        });
+      };
+
+      ScrollTrigger.create({
+        trigger: root.querySelector(".dh-bifido-effects") ?? root,
+        start: "top 78%",
+        once: true,
+        onEnter: play,
+      });
+    }, root);
+
+    return () => ctx.revert();
+  }, [reduced]);
 
   return (
-    <section className="dh-bifido-panel" aria-label={isKorean ? "Bifido 특징 및 인증" : "Bifido features and certifications"}>
+    <section
+      ref={rootRef}
+      className="dh-bifido-panel"
+      aria-label={isKorean ? "Bifido 특징 및 인증" : "Bifido features and certifications"}
+    >
       <ul className="dh-bifido-highlights">
-        {highlights.map((item, index) => (
-          <li data-reveal={String(index % 3)} key={item.ja}>
+        {highlights.map((item) => (
+          <li data-bifido-rise="" key={item.ja}>
             {isKorean ? item.ko : item.ja}
           </li>
         ))}
@@ -103,18 +180,20 @@ export function BifidoEvidencePanel() {
       <div className="dh-bifido-effects">
         <p>Bio-functional effects</p>
         <div className="dh-bifido-effect-grid">
-          {effectGroups.map((group, index) => (
-            <article data-reveal={String(index)} key={group.key}>
-              <span className="dh-bifido-effect-icon">
-                <Image alt="" height={64} src={group.icon} width={94} />
-              </span>
-              <strong>{group.title}</strong>
-              <ul>
-                {group.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
+          {effectGroups.map((group) => (
+            <div className="dh-bifido-effect-rise" data-bifido-rise="" key={group.key}>
+              <article>
+                <h4>
+                  <span className="dh-bifido-effect-icon">{group.icon}</span>
+                  {group.title}
+                </h4>
+                <ul>
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            </div>
           ))}
         </div>
       </div>
@@ -122,8 +201,8 @@ export function BifidoEvidencePanel() {
       <div className="dh-bifido-certs">
         <p>Certification marks</p>
         <ul>
-          {certificates.map((cert, index) => (
-            <li data-reveal={String(index)} key={cert.key}>
+          {certificates.map((cert) => (
+            <li data-bifido-rise="" key={cert.key}>
               <figure>
                 <Image alt={cert.label} height={cert.height} src={cert.src} width={cert.width} />
               </figure>

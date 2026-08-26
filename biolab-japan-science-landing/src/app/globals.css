@@ -9885,83 +9885,143 @@ h2 {
   background: #41abe1;
 }
 
+.dh-bifido-effects {
+  padding: 8px 0 2px;
+}
+
 .dh-bifido-effect-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: stretch;
-  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 22px;
 }
 
 .dh-bifido-effect-grid article {
-  display: grid;
-  align-content: start;
-  gap: 10px;
-  height: 100%;
-  min-height: 248px;
-  padding: 18px 16px 18px;
-  border: 1px solid #dbe7f4;
-  background: #f8fbff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 132px;
+  padding: 18px 22px 18px 16px;
+  border: 1px solid #e3e8ee;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(16, 32, 52, 0.05);
   transition:
     transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.45s ease;
 }
 
+.dh-bifido-effect-grid .dh-bifido-effect-rise:nth-child(even) {
+  margin-top: 28px;
+}
+
+.dh-bifido-effect-grid .dh-bifido-effect-rise:nth-child(odd) {
+  margin-bottom: 28px;
+}
+
 .dh-bifido-effect-grid article:hover,
 .dh-bifido-certs li:hover {
-  border-color: #b9d3ea;
-  box-shadow: 0 16px 28px rgba(20, 44, 76, 0.08);
-  transform: translateY(-6px);
+  border-color: #d4c09a;
+  box-shadow: 0 16px 30px rgba(20, 44, 76, 0.1);
+  transform: translateY(-7px);
+}
+
+.dh-bifido-effect-grid h4 {
+  display: grid;
+  width: 42%;
+  flex: 0 0 42%;
+  justify-items: center;
+  gap: 8px;
+  margin: 0;
+  color: #be8b40;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-align: center;
 }
 
 .dh-bifido-effect-icon {
   display: flex;
   width: 72px;
-  height: 56px;
+  height: 48px;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  background: #0d0d0d;
+  color: #be8b40;
 }
 
-.dh-bifido-effect-icon img {
-  display: block;
-  width: 94px;
-  height: 64px;
-  object-fit: cover;
+.dh-bifido-effect-icon svg {
+  width: 72px;
+  height: 48px;
 }
 
-.dh-bifido-effect-grid strong {
-  color: #17335a;
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
+.dh-bifido-effect-icon path,
+.dh-bifido-effect-icon circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dh-bifido-effect-icon circle {
+  fill: currentColor;
+  stroke: none;
+}
+
+.dh-bifido-effect-grid article:hover .dh-bifido-effect-icon {
+  transform: scale(1.06);
+}
+
+.dh-bifido-effect-icon {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dh-bifido-effect-grid ul {
   display: grid;
-  gap: 4px;
+  flex: 1;
+  gap: 8px;
   margin: 0;
-  padding: 0;
+  padding: 0 8px 0 0;
   list-style: none;
 }
 
 .dh-bifido-effect-grid li {
-  color: #4b5563;
-  font-size: 12px;
-  font-weight: 700;
+  color: #3b4654;
+  font-size: 13px;
+  font-weight: 600;
   line-height: 1.45;
+}
+
+.dh-bifido-effect-grid li::before {
+  content: "·";
+  display: inline-block;
+  width: 12px;
+  margin-right: 2px;
+  color: #be8b40;
+  font-weight: 800;
 }
 
 .dh-ingredient-origin-panel .dh-bifido-effect-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .dh-ingredient-origin-panel .dh-bifido-effect-grid li {
-  color: #4b5563;
-  font-size: 12px;
-  font-weight: 700;
+  color: #3b4654;
+  font-size: 13px;
+  font-weight: 600;
   line-height: 1.45;
+}
+
+.dh-ingredient-origin-panel .dh-bifido-effect-grid li::before {
+  content: "·";
+  position: static;
+  width: 12px;
+  height: auto;
+  margin-right: 2px;
+  border-radius: 0;
+  background: transparent;
+  color: #be8b40;
+  transform: none;
 }
 
 .dh-ingredient-origin-panel .dh-bifido-certs ul {
@@ -10049,7 +10109,15 @@ h2 {
 
 @media (max-width: 860px) {
   .dh-bifido-effect-grid,
-  .dh-ingredient-origin-panel .dh-bifido-effect-grid,
+  .dh-ingredient-origin-panel .dh-bifido-effect-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dh-bifido-effect-grid .dh-bifido-effect-rise:nth-child(even),
+  .dh-bifido-effect-grid .dh-bifido-effect-rise:nth-child(odd) {
+    margin: 0;
+  }
+
   .dh-bifido-certs ul,
   .dh-ingredient-origin-panel .dh-bifido-certs ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
