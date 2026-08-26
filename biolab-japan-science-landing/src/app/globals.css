@@ -5083,7 +5083,7 @@ h2 {
     padding: 0 26px;
   }
 
-  .dh-product-card > a {
+  .dh-product-card > a:not(.dh-product-card-catalog):not(.dh-product-card-catalog-btn) {
     left: 26px;
   }
 
