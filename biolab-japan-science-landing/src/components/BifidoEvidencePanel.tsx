@@ -150,8 +150,12 @@ export function BifidoEvidencePanel() {
 
       gsap.set(cards, { autoAlpha: 0, y: 72 });
       marks.forEach((mark) => {
-        const length = mark.getTotalLength();
-        gsap.set(mark, { strokeDasharray: length, strokeDashoffset: length });
+        try {
+          const length = mark.getTotalLength();
+          gsap.set(mark, { strokeDasharray: length, strokeDashoffset: length });
+        } catch {
+          // Keep the icon visible if the path cannot be measured.
+        }
       });
 
       const play = () => {
@@ -190,8 +194,23 @@ export function BifidoEvidencePanel() {
       <div className="dh-bifido-strain-marks">
         <ul>
           {strainMarks.map((mark) => (
-            <li data-bifido-rise="" key={mark.key}>
+            <li key={mark.key}>
               <Image alt={mark.alt} height={298} src={mark.src} width={242} />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="dh-bifido-certs">
+        <p>Certification marks</p>
+        <ul>
+          {certificates.map((cert) => (
+            <li key={cert.key}>
+              <figure>
+                <Image alt={cert.label} height={cert.height} src={cert.src} width={cert.width} />
+              </figure>
+              <strong>{cert.label}</strong>
+              <span>{cert.sub}</span>
             </li>
           ))}
         </ul>
@@ -216,21 +235,6 @@ export function BifidoEvidencePanel() {
             </div>
           ))}
         </div>
-      </div>
-
-      <div className="dh-bifido-certs">
-        <p>Certification marks</p>
-        <ul>
-          {certificates.map((cert) => (
-            <li data-bifido-rise="" key={cert.key}>
-              <figure>
-                <Image alt={cert.label} height={cert.height} src={cert.src} width={cert.width} />
-              </figure>
-              <strong>{cert.label}</strong>
-              <span>{cert.sub}</span>
-            </li>
-          ))}
-        </ul>
       </div>
 
       <ul className="dh-bifido-highlights">
