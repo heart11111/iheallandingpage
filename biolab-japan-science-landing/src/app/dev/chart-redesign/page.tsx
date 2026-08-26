@@ -29,11 +29,13 @@ function CurrentChart() {
         node.classList?.add("show");
         host.current.appendChild(node);
       } else {
-        host.current.textContent = "차트를 불러오지 못했습니다.";
+        host.current.textContent = "buildChartNode returned null";
       }
     } catch (error) {
       host.current.textContent = `차트 오류: ${error instanceof Error ? error.message : String(error)}`;
     }
+    // Debug: log what we got
+    console.log("CurrentChart host children:", host.current.children.length);
   }, []);
   return <div className="dh-evidence-chart" ref={host} />;
 }
