@@ -32,7 +32,7 @@ export function ingredientProductStructuredData(item: Ingredient, route: string)
       },
       {
         "@type": "PropertyValue",
-        name: "Suggested intake",
+        name: item.specKind === "spec" ? "Specification" : "Suggested intake",
         value: item.intake,
       },
       {

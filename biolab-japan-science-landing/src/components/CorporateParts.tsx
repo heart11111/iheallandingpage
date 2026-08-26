@@ -4,12 +4,15 @@ import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
+import { BifidoEvidencePanel } from "@/components/BifidoEvidencePanel";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { EvidenceChart } from "@/components/EvidenceChart";
 import { IngredientCategoryBadge } from "@/components/IngredientCategoryBadge";
 import { hasChart } from "@/lib/evidenceCharts";
+import { bifidoStrainCatalogs } from "@/lib/catalogs";
 import { companyContact, siteMapGroups } from "@/lib/corporate";
 import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
+import { getIngredientSpecLabel } from "@/lib/ingredientDisplay";
 import { getIngredientCardImage, getIngredientDisplayImage } from "@/lib/ingredientImages";
 import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
 import { ingredientPptDetails } from "@/lib/ingredientPptDetails";
@@ -20,6 +23,7 @@ type SubHeroProps = {
   copy: string;
   koTitle?: string;
   koCopy?: string;
+  englishTitle?: string;
   image?: string;
   align?: "left" | "right" | "center";
   compact?: boolean;
@@ -105,6 +109,47 @@ function StatLegend({ isKorean }: { isKorean: boolean }) {
 
 function renderMultiline(items: string[]): ReactNode {
   return items.flatMap((item, index) => (index === 0 ? [item] : [<br key={`br-${index}`} />, item]));
+}
+
+function OriginCatalogCards({
+  images,
+  isKorean,
+}: {
+  images: { alt: string; src: string; catalog?: (typeof bifidoStrainCatalogs)[keyof typeof bifidoStrainCatalogs] }[];
+  isKorean: boolean;
+}) {
+  return (
+    <div className="dh-origin-composition-cards">
+      {images.map((originImage) => {
+        const figure = (
+          <figure>
+            <Image alt={originImage.alt} height={295} loading="eager" src={originImage.src} width={431} />
+            {originImage.catalog ? (
+              <figcaption>
+                <strong>{originImage.alt.split(" - ")[0]}</strong>
+                <span>{isKorean ? "이미지 클릭 시 카탈로그 다운로드" : "画像クリックでカタログをダウンロード"}</span>
+              </figcaption>
+            ) : null}
+          </figure>
+        );
+
+        if (!originImage.catalog) {
+          return <div key={originImage.src}>{figure}</div>;
+        }
+
+        return (
+          <a
+            className="dh-origin-catalog-link"
+            download={originImage.catalog.fileName}
+            href={originImage.catalog.href}
+            key={originImage.src}
+          >
+            {figure}
+          </a>
+        );
+      })}
+    </div>
+  );
 }
 
 const koreanEvidenceCaptions: Record<string, string> = {
@@ -393,19 +438,22 @@ function renderIngredientName(name: string) {
 
 const belowSummaryEvidenceImages = new Set(["/images/ingredients/dermania-evidence-3.png"]);
 
-const originCompositionImages: Record<string, { alt: string; src: string }[]> = {
+const originCompositionImages: Record<string, { alt: string; src: string; catalog?: (typeof bifidoStrainCatalogs)[keyof typeof bifidoStrainCatalogs] }[]> = {
   bifido: [
     {
       alt: "B. bifidum BGN4 - GRAS No.814 / NDI No.1079",
       src: "/images/ingredients/bifido-strain-bgn4.webp",
+      catalog: bifidoStrainCatalogs.bgn4,
     },
     {
       alt: "B. longum BORI - GRAS No.813 / NDI No.1082",
       src: "/images/ingredients/bifido-strain-bori.webp",
+      catalog: bifidoStrainCatalogs.bori,
     },
     {
       alt: "B. lactis AD011 - GRAS No.952 / NDI No.1118",
       src: "/images/ingredients/bifido-strain-ad011.webp",
+      catalog: bifidoStrainCatalogs.ad011,
     },
   ],
 };
@@ -568,6 +616,7 @@ export function CorporateSubHero({
   copy,
   koTitle,
   koCopy,
+  englishTitle,
   image = "/images/biolab-global-factory-bg.png",
   align = "left",
   compact = false,
@@ -581,7 +630,10 @@ export function CorporateSubHero({
       <div className="dh-sub-bg" style={{ backgroundImage: `url(${image})` }} aria-hidden="true" />
       <div className="dh-sub-overlay" aria-hidden="true" />
       <div className="dh-container">
-        <h1>{displayTitle}</h1>
+        <h1>
+          {displayTitle}
+          {englishTitle ? <small className="dh-sub-hero-en">{englishTitle}</small> : null}
+        </h1>
         <p>{displayCopy}</p>
       </div>
     </section>
@@ -712,7 +764,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             <h2>{item.name}</h2>
             <strong>{item.area}</strong>
             <span className="dh-detail-card-intake">
-              <em>{isKorean ? "1일 섭취 기준" : "一日摂取目安"}</em>
+              <em>{getIngredientSpecLabel(item, isKorean)}</em>
               {item.intake}
             </span>
           </>
@@ -755,7 +807,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 <dd>{item.area}</dd>
               </div>
               <div>
-                <dt>{isKorean ? labels.intake : "摂取目安"}</dt>
+                <dt>{getIngredientSpecLabel(item, isKorean)}</dt>
                 <dd>{item.intake}</dd>
               </div>
               <div>
@@ -771,15 +823,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                   <li key={text}>{text}</li>
                 ))}
               </ul>
-              {originImages.length > 0 && (
-                <div className="dh-origin-composition-cards">
-                  {originImages.map((originImage) => (
-                    <figure key={originImage.src}>
-                      <Image alt={originImage.alt} height={295} loading="eager" src={originImage.src} width={431} />
-                    </figure>
-                  ))}
-                </div>
-              )}
+              {originImages.length > 0 && <OriginCatalogCards images={originImages} isKorean={isKorean} />}
             </section>
 
             {originTable && <OriginCompositionTab isKorean={isKorean} table={originTable} />}
@@ -941,7 +985,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                   ))}
                 </ul>
                 {hasStatNotation(item.featurePoints) && <StatLegend isKorean={isKorean} />}
-                {featureImage && (
+                {featureImage && sourceItem.id !== "bifido" && (
                   <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
                     <Image
                       alt={getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}
@@ -1065,7 +1109,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
             <dd>{item.area}</dd>
           </div>
           <div>
-            <dt>{isKorean ? labels.intake : "一日摂取目安"}</dt>
+            <dt>{getIngredientSpecLabel(item, isKorean)}</dt>
             <dd>{item.intake}</dd>
           </div>
           <div>
@@ -1086,12 +1130,9 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           ))}
         </ul>
         {originImages.length > 0 && (
-          <div className="dh-origin-composition-cards">
-            {originImages.map((originImage) => (
-              <figure key={originImage.src}>
-                <Image alt={originImage.alt} height={295} loading="eager" src={originImage.src} width={431} />
-              </figure>
-            ))}
+          <div className="dh-origin-visual-stack">
+            <OriginCatalogCards images={originImages} isKorean={isKorean} />
+            {sourceItem.id === "bifido" && <BifidoEvidencePanel />}
           </div>
         )}
       </section>
@@ -1117,7 +1158,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
             ))}
           </ul>
           {hasStatNotation(featureBlocks) && <StatLegend isKorean={isKorean} />}
-          {featureImage && (
+          {featureImage && sourceItem.id !== "bifido" && (
             <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
               <Image
                 alt={getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}

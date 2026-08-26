@@ -10,7 +10,8 @@ export default function MicrobiomeProbioticsPage() {
       <NavBar />
       <main>
         <CorporateSubHero
-          title="Functional Probiotics"
+          title="機能性プロバイオティクス"
+          englishTitle="Functional Probiotics"
           copy="用途別プロバイオティクス素材の全体リストです。"
           koTitle={devKoreanPageCopy.microbiome.title}
           koCopy={devKoreanPageCopy.microbiome.copy}
@@ -22,8 +23,9 @@ export default function MicrobiomeProbioticsPage() {
             <p className="dh-detail-primary">
               <LocalizedText ja="PRODUCTS" ko={devKoreanPageCopy.microbiome.primary} />
             </p>
-            <h1>
-              <LocalizedText ja="Functional Probiotics" ko={devKoreanPageCopy.microbiome.title} />
+            <h1 className="dh-line-title">
+              <LocalizedText ja="機能性プロバイオティクス" ko={devKoreanPageCopy.microbiome.title} />
+              <small>Functional Probiotics</small>
             </h1>
             <p>
               <LocalizedText

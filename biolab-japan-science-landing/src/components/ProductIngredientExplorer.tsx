@@ -7,6 +7,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { IngredientLineBadge } from "@/components/IngredientCategoryBadge";
 import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
+import { getIngredientSpecLabel } from "@/lib/ingredientDisplay";
 import { getIngredientCardImage } from "@/lib/ingredientImages";
 import type { Ingredient, IngredientLine } from "@/lib/ingredients";
 
@@ -266,7 +267,7 @@ export function ProductIngredientExplorer({ items, title, description, koTitle, 
               <h3>{item.name}</h3>
               <strong>{item.area}</strong>
               <span className="dh-ingredient-card-intake">
-                <em>{language === "ko" ? "1일 섭취 기준" : "一日摂取目安"}</em>
+                <em>{getIngredientSpecLabel(item, language === "ko")}</em>
                 {item.intake}
               </span>
               <em className="dh-ingredient-card-cta">

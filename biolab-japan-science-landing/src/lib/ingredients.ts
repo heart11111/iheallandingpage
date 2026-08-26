@@ -14,6 +14,8 @@ import type { LucideIcon } from "lucide-react";
 
 export type IngredientLine = "Functional Probiotics" | "Nature-derived Ingredients";
 
+export type IngredientSpecKind = "intake" | "spec";
+
 export type Ingredient = {
   id: string;
   name: string;
@@ -21,6 +23,7 @@ export type Ingredient = {
   area: string;
   summary: string;
   intake: string;
+  specKind?: IngredientSpecKind;
   image: string;
   strains?: string[];
   origin?: string[];
@@ -37,7 +40,8 @@ export const probioticsIngredients: Ingredient[] = [
     category: "女性",
     area: "女性の腟の健康",
     summary: "健康な韓国女性の腟から分離した特許乳酸菌。女性の腟の健康維持をサポートするプロバイオティクス複合物です。",
-    intake: "50億 CFU/day (5×10⁹ CFU/day)",
+    intake: "2,000億CFU/g",
+    specKind: "spec",
     image: "/images/ingredients/med01.webp",
     strains: [
       "L. plantarum MG989",
@@ -55,7 +59,8 @@ export const probioticsIngredients: Ingredient[] = [
     category: "体脂肪",
     area: "体脂肪低減",
     summary: "健康な韓国人由来の特許乳酸菌。脂肪細胞分化抑制のためのプロバイオティクス。",
-    intake: "50億 CFU/day (5×10⁹ CFU/day)",
+    intake: "2,000億CFU/g",
+    specKind: "spec",
     image: "/images/ingredients/med02.webp",
     strains: ["L. fermentum MG4231", "L. fermentum MG4244"],
     evidenceTags: ["100名ヒト臨床試験", "SCI論文6編", "国際特許3か国"],
@@ -115,7 +120,8 @@ export const probioticsIngredients: Ingredient[] = [
     category: "腸",
     area: "腸の健康",
     summary: "母乳を与えられた健康な新生児の便由来、100%ヒト由来ビフィズス菌。",
-    intake: "用途別設計",
+    intake: "B. bifidum BGN4 1,000億CFU/g\nB. longum BORI 1,000億CFU/g\nB. lactis AD011 1,000億CFU/g",
+    specKind: "spec",
     image: "/images/ingredients/bifido.webp",
     strains: ["B. bifidum BGN4", "B. longum BORI", "B. lactis AD011"],
     evidenceTags: ["FDA GRAS/NDI認証", "HALAL/KOSHER認証", "臨床10件・特許80件・SCI論文260編"],
