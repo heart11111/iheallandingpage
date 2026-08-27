@@ -6,6 +6,7 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { BifidoEvidencePanel } from "@/components/BifidoEvidencePanel";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
+import { ProductInkObserver } from "@/components/ProductInkObserver";
 import { EvidenceChart } from "@/components/EvidenceChart";
 import { IngredientCategoryBadge } from "@/components/IngredientCategoryBadge";
 import { hasChart } from "@/lib/evidenceCharts";
@@ -16,6 +17,7 @@ import { getIngredientCardImage, getIngredientDisplayImage } from "@/lib/ingredi
 import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
 import { ingredientPptDetails } from "@/lib/ingredientPptDetails";
 import type { Ingredient } from "@/lib/ingredients";
+import { hasStatNotation, renderEmphasized } from "@/lib/productInk";
 
 type SubHeroProps = {
   title: string;
@@ -60,40 +62,6 @@ function getEvidenceReferences(pptDetail: (typeof ingredientPptDetails)[string] 
       .replace(/^Sexual function - /, isKorean ? "성기능 증진 - " : "性機能増進 - ");
     return `${isKorean ? "출처" : "出典"}: ${localizedReference}`;
   });
-}
-
-// Statistical notation (p-values) is de-emphasised so it does not interrupt the
-// sentence, while the outcome figures a reader is looking for are highlighted.
-const STAT_PATTERN = /[Pp]\s*[=<>≤≥]\s*0?\.\d+(?:\s*\/\s*(?:[Pp]\s*[=<>≤≥]\s*)?0?\.\d+)*/;
-const FIGURE_PATTERN = /[+-]?\d[\d,]*(?:\.\d+)?\s?(?:%|kg\/m2|kg|mg|g|CFU|억|명|名|人|편|編|건|種|종|점|배)/;
-const EMPHASIS_PATTERN = new RegExp(`(${STAT_PATTERN.source})|(${FIGURE_PATTERN.source})`, "g");
-
-function hasStatNotation(items: string[]) {
-  return items.some((item) => new RegExp(STAT_PATTERN.source).test(item));
-}
-
-function renderEmphasized(text: string): ReactNode {
-  const matches = Array.from(text.matchAll(EMPHASIS_PATTERN));
-  if (matches.length === 0) return text;
-
-  const nodes: ReactNode[] = [];
-  let cursor = 0;
-  matches.forEach((match, index) => {
-    const start = match.index ?? 0;
-    if (start > cursor) nodes.push(text.slice(cursor, start));
-    nodes.push(
-      match[1] ? (
-        <small className="dh-stat-note" key={`stat-${index}`}>
-          {match[0]}
-        </small>
-      ) : (
-        <strong key={`em-${index}`}>{match[0]}</strong>
-      ),
-    );
-    cursor = start + match[0].length;
-  });
-  if (cursor < text.length) nodes.push(text.slice(cursor));
-  return nodes;
 }
 
 function StatLegend({ isKorean }: { isKorean: boolean }) {
@@ -831,7 +799,9 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
   const labels = devKoreanLabels.detail;
 
   return (
-    <div className={`dh-detail-grid${items.length === 1 ? " dh-detail-grid-single" : ""}`}>
+    <>
+      <ProductInkObserver />
+      <div className={`dh-detail-grid${items.length === 1 ? " dh-detail-grid-single" : ""}`}>
       {items.map((sourceItem) => {
         const item = isKorean ? getKoreanIngredient(sourceItem) : sourceItem;
         const materials = item.strains || item.origin || [];
@@ -868,7 +838,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             />
             <IngredientCategoryBadge category={item.category} line={item.line} />
             <h2>{item.name}</h2>
-            <strong>{item.area}</strong>
+            <strong>{renderEmphasized(item.area)}</strong>
             <span className="dh-detail-card-intake">
               <em>{getIngredientSpecLabel(item, isKorean)}</em>
               {item.intake}
@@ -888,12 +858,12 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             />
             <IngredientCategoryBadge category={item.category} line={item.line} />
             <h2>{item.name}</h2>
-            <strong>{item.area}</strong>
+            <strong>{renderEmphasized(item.area)}</strong>
             <span>{item.intake}</span>
 
             <section className="dh-detail-summary" aria-label={`${item.name} 概要`}>
               <h3>{isKorean ? labels.summary : "素材概要"}</h3>
-              <p>{item.summary}</p>
+              <p>{renderEmphasized(item.summary)}</p>
             </section>
 
             {showExtended && detailClaims && detailClaims.length > 0 && (
@@ -910,7 +880,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             <dl className="dh-detail-specs">
               <div>
                 <dt>{isKorean ? labels.area : "用途領域"}</dt>
-                <dd>{item.area}</dd>
+                <dd>{renderEmphasized(item.area)}</dd>
               </div>
               <div>
                 <dt>{getIngredientSpecLabel(item, isKorean)}</dt>
@@ -1040,7 +1010,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                           </div>
                         )}
                         <figcaption>
-                          <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
+                          <p>{renderEmphasized(getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean))}</p>
                           {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
                         </figcaption>
                       </figure>
@@ -1099,7 +1069,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                       isKorean={isKorean}
                       src={featureImage.src}
                     />
-                    <figcaption>{getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}</figcaption>
+                    <figcaption>{renderEmphasized(getEvidenceCaption(featureImage.src, featureImage.caption, isKorean))}</figcaption>
                   </figure>
                 )}
               </section>
@@ -1110,7 +1080,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 <div>
                   <p>{isKorean ? "Mechanism" : "Mechanism"}</p>
                   <h3>{isKorean ? mechanismCopy.titleKo : mechanismCopy.titleJa}</h3>
-                  <span>{isKorean ? mechanismCopy.bodyKo : mechanismCopy.bodyJa}</span>
+                  <span>{renderEmphasized(isKorean ? mechanismCopy.bodyKo : mechanismCopy.bodyJa)}</span>
                 </div>
                 <figure>
                   <Image
@@ -1120,7 +1090,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                     src={mechanismImage.src}
                     width={720}
                   />
-                  <figcaption>{getEvidenceCaption(mechanismImage.src, mechanismImage.caption, isKorean)}</figcaption>
+                  <figcaption>{renderEmphasized(getEvidenceCaption(mechanismImage.src, mechanismImage.caption, isKorean))}</figcaption>
                 </figure>
               </section>
             )}
@@ -1146,6 +1116,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
         );
       })}
     </div>
+    </>
   );
 }
 
@@ -1182,6 +1153,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
 
   return (
     <article className="dh-ingredient-profile">
+      <ProductInkObserver />
       <div className="dh-ingredient-profile-hero">
         <div className="dh-ingredient-profile-visual">
           <Image
@@ -1196,8 +1168,8 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           <IngredientCategoryBadge category={item.category} line={item.line} />
           <p>{isKorean ? devKoreanLabels.line[sourceItem.line] : item.line}</p>
           <h2>{renderIngredientName(displayName)}</h2>
-          <strong>{item.area}</strong>
-          <span>{item.summary}</span>
+          <strong>{renderEmphasized(item.area)}</strong>
+          <span>{renderEmphasized(item.summary)}</span>
         </div>
       </div>
 
@@ -1211,7 +1183,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           </div>
           <div>
             <dt>{isKorean ? labels.functionalContent : "機能性内容"}</dt>
-            <dd>{item.area}</dd>
+            <dd>{renderEmphasized(item.area)}</dd>
           </div>
           <div>
             <dt>{getIngredientSpecLabel(item, isKorean)}</dt>
@@ -1271,7 +1243,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
                 isKorean={isKorean}
                 src={featureImage.src}
               />
-              <figcaption>{getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}</figcaption>
+              <figcaption>{renderEmphasized(getEvidenceCaption(featureImage.src, featureImage.caption, isKorean))}</figcaption>
             </figure>
           )}
         </section>
@@ -1282,7 +1254,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           <div>
             <p>Mechanism</p>
             <h3>{isKorean ? mechanismCopy.titleKo : mechanismCopy.titleJa}</h3>
-            <span>{isKorean ? mechanismCopy.bodyKo : mechanismCopy.bodyJa}</span>
+            <span>{renderEmphasized(isKorean ? mechanismCopy.bodyKo : mechanismCopy.bodyJa)}</span>
           </div>
           <figure>
             <Image
@@ -1292,7 +1264,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
               src={mechanismImage.src}
               width={720}
             />
-            <figcaption>{getEvidenceCaption(mechanismImage.src, mechanismImage.caption, isKorean)}</figcaption>
+            <figcaption>{renderEmphasized(getEvidenceCaption(mechanismImage.src, mechanismImage.caption, isKorean))}</figcaption>
           </figure>
         </section>
       )}
@@ -1308,7 +1280,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
                 src={evidenceImage.src}
                 width={1100}
               />
-              <figcaption>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</figcaption>
+              <figcaption>{renderEmphasized(getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean))}</figcaption>
             </figure>
           ))}
         </div>
@@ -1390,7 +1362,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
                     </div>
                   )}
                   <figcaption>
-                    <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
+                    <p>{renderEmphasized(getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean))}</p>
                     {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
                   </figcaption>
                 </figure>

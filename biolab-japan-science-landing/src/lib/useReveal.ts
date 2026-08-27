@@ -35,3 +35,63 @@ export function useReveal() {
     return () => observer.disconnect();
   }, []);
 }
+
+/**
+ * Draws highlighter / underline strokes on `[data-ink]` the first time they
+ * enter the viewport. Marks stay fully painted for no-JS and reduced-motion.
+ */
+export function useInkReveal(dep?: unknown) {
+  useEffect(() => {
+    const marks = Array.from(document.querySelectorAll<HTMLElement>("[data-ink]"));
+    if (!marks.length) return;
+
+    const reduce =
+      typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      marks.forEach((mark) => mark.classList.add("is-on"));
+      return;
+    }
+
+    document.documentElement.classList.add("dh-ink-ready");
+
+    let cancelled = false;
+    let primed = false;
+    const waiting = new Set<HTMLElement>();
+
+    const paint = (element: HTMLElement) => {
+      element.classList.add("is-on");
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const target = entry.target as HTMLElement;
+          observer.unobserve(target);
+          if (primed) paint(target);
+          else waiting.add(target);
+        }
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.2 },
+    );
+
+    marks.forEach((mark) => observer.observe(mark));
+
+    const prime = () => {
+      if (cancelled) return;
+      primed = true;
+      waiting.forEach((element) => paint(element));
+      waiting.clear();
+    };
+
+    const frame = window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(prime);
+    });
+
+    return () => {
+      cancelled = true;
+      window.cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
+  }, [dep]);
+}

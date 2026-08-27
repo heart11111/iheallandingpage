@@ -1,4 +1,5 @@
 import { CorporateFooter, CorporateSubHero, IngredientList } from "@/components/CorporateParts";
+import { InkCopy } from "@/components/ProductInkObserver";
 import { LocalizedText } from "@/components/DevLanguageProvider";
 import { NavBar } from "@/components/NavBar";
 import { natureProductItems } from "@/lib/corporate";
@@ -28,7 +29,7 @@ export default function NatureIngredientsPage() {
               <small>Functional Nature’s food ingredients</small>
             </h1>
             <p>
-              <LocalizedText
+              <InkCopy
                 ja="ヒト臨床試験を終えた自然由来の機能性素材10種です。男性の健康・記憶・認知・体脂肪・肌・肝臓・血糖・二日酔い・免疫の用途別に、原料と根拠資料を整理しています。"
                 ko={devKoreanPageCopy.nature.lead}
               />
