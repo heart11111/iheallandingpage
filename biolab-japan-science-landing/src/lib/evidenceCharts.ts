@@ -49,22 +49,23 @@ function barChart(cfg){
   const hasLabAbove=(cfg.bars||[]).some(function(b){return b.labAbove;});
   const hasCallBubble=cfg.callout&&callStyle!=="pill"&&callStyle!=="tag";
   const bBot=hasG?(cfg.noBarLabels?48:66):(hasCallBubble?52:(cfg.sigBottom?72:56));
-  const m={t:30+tt+(cfg.sigBottom?0:sigLv*sigStep)+callH+(hasLabAbove?18:0),r:16,b:bBot,l:cfg.yLabel?80:66},iw=w-m.l-m.r,ih=h-m.t-m.b;
+  const headPad=(cfg.chartLegend&&cfg.chartLegend.length)?6:0;
+  const m={t:30+tt+headPad+(cfg.sigBottom?0:sigLv*sigStep)+callH+(hasLabAbove?18:0),r:16,b:bBot,l:cfg.yLabel?80:66},iw=w-m.l-m.r,ih=h-m.t-m.b;
   const Y=v=>m.t+ih*(cfg.yMax-v)/(cfg.yMax-cfg.yMin);
   const svg=el("svg",{viewBox:"0 0 "+w+" "+h,role:"img"});
   if(cfg.titleBox){const tb=cfg.titleBox,tw=Math.min(iw*0.98,tb.compact?148:168),th=tb.compact?18:22,fs=tb.compact?10.5:12.5;svg.appendChild(el("rect",{x:m.l+iw/2-tw/2,y:5,width:tw,height:th,rx:tb.compact?9:11,fill:tb.bg||"#f6dede",stroke:tb.bg?"none":"#c3b3d3"}));svg.appendChild(txt(m.l+iw/2,5+(th*0.72),L(tb.t),{"text-anchor":"middle","font-size":fs,fill:(tb.fg||"#111"),"font-weight":800}));}
   else if(cfg.title){
-    if(cfg.titleLeft)svg.appendChild(txt(m.l,17,L(cfg.title),{"text-anchor":"start","font-size":14,fill:cfg.titleColor||"#0f172a","font-weight":700}));
+    if(cfg.titleLeft)svg.appendChild(txt(12,17,L(cfg.title),{"text-anchor":"start","font-size":13.5,fill:cfg.titleColor||"#0f172a","font-weight":700}));
     else svg.appendChild(txt(w/2,17,L(cfg.title),{"text-anchor":"middle","font-size":14,fill:cfg.titleColor||"#0f172a","font-weight":700}));
   }
   if(cfg.chartLegend&&cfg.chartLegend.length){
-    let lx=m.l+iw;
+    let lx=w-10;
     for(let i=cfg.chartLegend.length-1;i>=0;i--){
-      const lab=L(cfg.chartLegend[i].t),tw=Math.max(48,lab.length*7.4);
-      lx-=tw+18;
-      svg.appendChild(el("rect",{x:lx,y:7,width:11,height:11,rx:2,fill:cfg.chartLegend[i].c,stroke:"rgba(0,0,0,.14)","stroke-width":0.7}));
-      svg.appendChild(txt(lx+15,16,lab,{"font-size":12,fill:"#111827","font-weight":700}));
-      lx-=12;
+      const lab=L(cfg.chartLegend[i].t),tw=Math.max(42,lab.length*6.6);
+      lx-=tw+16;
+      svg.appendChild(el("rect",{x:lx,y:6,width:10,height:10,rx:2,fill:cfg.chartLegend[i].c,stroke:"rgba(0,0,0,.14)","stroke-width":0.6}));
+      svg.appendChild(txt(lx+14,15,lab,{"font-size":11.5,fill:"#111827","font-weight":700}));
+      lx-=8;
     }
   }
   const _plotBg=cfg.plotFill!==false&&cfg.noGrid?(cfg.plotFill||"#f8fafc"):(cfg.plotFill||null);if(_plotBg)svg.appendChild(el("rect",{x:m.l,y:m.t,width:iw,height:ih,fill:_plotBg,rx:3}));
@@ -156,7 +157,7 @@ function imgOverlayNode(file,vb,langMap){
   return box;
 }
 function tcLine(cfg){return lineChart({w:cfg.w||300,h:270,showval:true,vlabelOffset:cfg.vlabelOffset||0,title:cfg.title,tsig:cfg.tsigs?null:(cfg.tsig||"†††"),tsigs:cfg.tsigs,yMin:cfg.yMin,yMax:cfg.yMax,ticks:cfg.ticks,x:X3[LANG]||X3.ko,xlabel:false,yLabel:cfg.yLabel,series:[{label:T.test,color:"#333",diamond:true,vlabels:true,marks:cfg.tm,below:cfg.tbelow!==false,vals:cfg.t},{label:T.ctrl,color:"#9aa3af",vlabels:true,marks:cfg.cm,below:cfg.tbelow===false,vals:cfg.c}]});}
-function grpBar(cfg){return barChart({w:cfg.w||520,h:cfg.h||350,title:cfg.title,titleLeft:true,titleColor:"#111827",titleColorY:"#0a5f7a",noBarLabels:true,noGrid:true,plotFill:false,chartLegend:[{c:"#7fb069",t:T.base},{c:"#f5c518",t:T.wk8}],sigBlack:true,base:0,yMin:0,yMax:cfg.yMax,ticks:cfg.ticks,yLabel:cfg.yLabel,glabels:[{t:cfg.g1,i0:0,i1:1},{t:cfg.g2,i0:2,i1:3}],bars:[{label:null,value:cfg.v[0],color:"#7fb069",err:cfg.e[0]},{label:null,value:cfg.v[1],color:"#f5c518",err:cfg.e[1]},{label:null,value:cfg.v[2],color:"#7fb069",err:cfg.e[2]},{label:null,value:cfg.v[3],color:"#f5c518",err:cfg.e[3]}],sig:[{text:cfg.p,i0:cfg.si0,i1:cfg.si1}]});}
+function grpBar(cfg){return barChart({w:cfg.w||560,h:cfg.h||350,title:cfg.title,titleLeft:true,titleColor:"#111827",titleColorY:"#0a5f7a",noBarLabels:true,noGrid:true,plotFill:false,chartLegend:[{c:"#7fb069",t:T.base},{c:"#f5c518",t:T.wk8}],sigBlack:true,base:0,yMin:0,yMax:cfg.yMax,ticks:cfg.ticks,yLabel:cfg.yLabel,glabels:[{t:cfg.g1,i0:0,i1:1},{t:cfg.g2,i0:2,i1:3}],bars:[{label:null,value:cfg.v[0],color:"#7fb069",err:cfg.e[0]},{label:null,value:cfg.v[1],color:"#f5c518",err:cfg.e[1]},{label:null,value:cfg.v[2],color:"#7fb069",err:cfg.e[2]},{label:null,value:cfg.v[3],color:"#f5c518",err:cfg.e[3]}],sig:[{text:cfg.p,i0:cfg.si0,i1:cfg.si1}]});}
 function tsLine(w,yMin,yMax,ticks,x,yLabel,tsc,plc,tlabel){return lineChart({w:w,h:270,yMin:yMin,yMax:yMax,ticks:ticks,x:x,xlabel:false,yLabel:yLabel,series:[{label:tlabel,color:"#1f6feb",vlabels:true,vals:tsc.v,err:tsc.e},{label:T.placebo,color:"#b6bcc4",vlabels:true,below:true,vals:plc.v,err:plc.e}]});}
 function srcImg(file,alt){const im=document.createElement("img");im.src=(file.charAt(0)==="/"||/^https?:/.test(file))?file:IMG+file;im.alt=alt||"";im.loading="eager";im.style.cssText="width:100%;height:auto;display:block;object-fit:contain";return im;}
 function spaghetti(cfg){
