@@ -6761,12 +6761,12 @@ h2 {
    these CSS custom properties and hides bars/lines until a scroll-triggered
    `.show` class appears; here they render immediately and fully visible. */
 .dh-evidence-chart {
-  --brand: #0b5f78;
-  --brand2: #0d9488;
+  --brand: #1e40af;
+  --brand2: #1e40af;
   --placebo: #94a3b8;
   --accent: #1e40af;
-  --purple: #6b21a8;
-  --pill: #0f766e;
+  --purple: #1e40af;
+  --pill: #1e40af;
   --grid: #e2e8f0;
   --plot: #f8fafc;
   --axis: #334155;
