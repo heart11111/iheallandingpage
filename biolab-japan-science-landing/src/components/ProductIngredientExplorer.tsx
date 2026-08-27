@@ -42,7 +42,7 @@ function getIngredientHref(item: Ingredient) {
       ? "/products/microbiome-probiotics"
       : "/products/nature-ingredients";
 
-  return `${base}/${item.id}`;
+  return `${base}/${item.id}/`;
 }
 
 function getFilterFallbackScript() {

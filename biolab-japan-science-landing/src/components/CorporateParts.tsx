@@ -1231,7 +1231,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
 
         if (linkBase) {
           return (
-            <Link className="dh-detail-card dh-detail-card-link" href={`${linkBase}/${item.id}`} key={item.id}>
+            <Link className="dh-detail-card dh-detail-card-link" href={`${linkBase.replace(/\/$/, "")}/${item.id}/`} key={item.id}>
               {compactContent}
               <span className="dh-detail-card-cta">
                 DETAIL
