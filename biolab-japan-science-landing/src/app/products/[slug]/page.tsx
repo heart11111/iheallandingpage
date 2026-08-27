@@ -1,15 +1,58 @@
 import { notFound } from "next/navigation";
-import { CorporateFooter, CorporateSubHero, IngredientList } from "@/components/CorporateParts";
+import { CorporateFooter, CorporateSubHero, IngredientDetailArticle, IngredientList } from "@/components/CorporateParts";
 import { LocalizedText } from "@/components/DevLanguageProvider";
+import { JsonLd } from "@/components/JsonLd";
 import { NavBar } from "@/components/NavBar";
-import { getProductGroup, productGroups } from "@/lib/corporate";
+import {
+  findProductIngredient,
+  getProductGroup,
+  microbiomeProductItems,
+  natureProductItems,
+  productGroups,
+  productIngredientPath,
+} from "@/lib/corporate";
+import { devKoreanPageCopy } from "@/lib/devKorean";
+import { ingredientProductStructuredData } from "@/lib/structuredData";
 
 export function generateStaticParams() {
-  return productGroups.map((group) => ({ slug: group.slug }));
+  const groupParams = productGroups.map((group) => ({ slug: group.slug }));
+  const ingredientParams = [...microbiomeProductItems, ...natureProductItems].map((item) => ({ slug: item.id }));
+  return [...groupParams, ...ingredientParams];
 }
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const ingredient = findProductIngredient(slug);
+
+  if (ingredient) {
+    const isProbiotic = ingredient.line === "Functional Probiotics";
+    const canonicalPath = productIngredientPath(ingredient).replace(/\/$/, "");
+
+    return (
+      <div className="dh-page">
+        <NavBar />
+        <JsonLd data={ingredientProductStructuredData(ingredient, canonicalPath)} />
+        <main>
+          <CorporateSubHero
+            title={isProbiotic ? "機能性プロバイオティクス" : "機能性天然素材"}
+            englishTitle={isProbiotic ? "Functional Probiotics" : "Functional Nature’s food ingredients"}
+            copy={isProbiotic ? "用途別プロバイオティクス素材" : "自然由来機能性素材"}
+            koTitle={isProbiotic ? devKoreanPageCopy.microbiome.title : devKoreanPageCopy.nature.title}
+            koCopy={isProbiotic ? devKoreanPageCopy.detailPrimary.microbiome : devKoreanPageCopy.detailPrimary.nature}
+            image={isProbiotic ? "/images/biolab-cosmetic-science-bg.png" : "/images/biolab-global-factory-bg.png"}
+            compact
+          />
+          <section className="dh-product-detail">
+            <div className="dh-container">
+              <IngredientDetailArticle item={ingredient} />
+            </div>
+          </section>
+        </main>
+        <CorporateFooter />
+      </div>
+    );
+  }
+
   const group = getProductGroup(slug);
 
   if (!group) {

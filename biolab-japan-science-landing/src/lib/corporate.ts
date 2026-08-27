@@ -276,3 +276,12 @@ export const partnerRows = [
 export function getProductGroup(slug: string) {
   return productGroups.find((group) => group.slug === slug);
 }
+
+export function findProductIngredient(id: string) {
+  return microbiomeProductItems.find((item) => item.id === id) || natureProductItems.find((item) => item.id === id);
+}
+
+export function productIngredientPath(item: Ingredient) {
+  const base = item.line === "Functional Probiotics" ? "/products/microbiome-probiotics" : "/products/nature-ingredients";
+  return `${base}/${item.id}/`;
+}
