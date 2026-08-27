@@ -4543,7 +4543,7 @@ h2 {
   text-overflow: ellipsis;
   white-space: normal;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
 }
 
 .dh-topic h3::after {
@@ -7203,12 +7203,11 @@ h2 {
 
 .dh-news-board h2 {
   margin: 0 0 12px;
-  overflow: hidden;
   color: #202226;
   font-size: 24px;
   font-weight: 900;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.4;
+  white-space: normal;
 }
 
 .dh-news-board h2::after {

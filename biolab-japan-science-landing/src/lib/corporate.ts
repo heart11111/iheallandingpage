@@ -82,6 +82,14 @@ export const communicationPages = [
     summary: "BIOLAB Japan、BIOLAB Korea、iHEAL Mallへの公式導線を案内します。",
     koSummary: "BIOLAB Japan, BIOLAB Korea, iHEAL Mall 공식 연결 경로입니다.",
   },
+  {
+    label: "ニュース",
+    koLabel: "뉴스",
+    menuLabel: "News",
+    href: "/news",
+    summary: "適時開示と報道です。",
+    koSummary: "공시와 보도입니다.",
+  },
 ];
 
 const natureProductIds = [
@@ -202,37 +210,46 @@ export const productGroups = [
 
 export const corporateNews = [
   {
-    slug: "korea-japan-bridge",
-    date: "2026.06.08",
-    title: "韓国R&Dから日本B2B流通までをつなぐ事業構造を整理",
-    koTitle: "한국 R&D부터 일본 B2B 유통까지 연결하는 사업 구조 정리",
+    slug: "iheal-exclusive-prtimes",
+    date: "2026.06.18",
+    source: "PR TIMES / 適時開示",
+    koSource: "PR TIMES / 적시공시",
+    title: "「iHEAL」日本国内における独占販売契約",
+    koTitle: "iHEAL 일본 국내 독점 판매 계약",
     summary:
-      "BIOLAB Japanは、素材開発、製造、ブランド管理、日本側販売ネットワークを一体で設計する事業ブリッジとして機能します。",
+      "ジェリービーンズグループがBIOLAB Corp.、AIDEN LAB JAPANと三者契約を締結し、日本総代理店として独占販売・マーケティング権を取得しました。本格販売は2027年1月期下半期予定です。",
     koSummary:
-      "BIOLAB Japan은 한국의 소재 개발, 제조, 브랜드 관리와 일본 측 판매 네트워크를 하나로 설계하는 사업 브리지입니다.",
-    image: "/images/biolab-global-factory-bg.png",
+      "젤리빈즈그룹이 BIOLAB Corp., AIDEN LAB JAPAN과 3자 계약을 체결하고, 일본 총대리점으로서 독점 판매·마케팅권을 취득했습니다. 본격 판매는 2027년 1월기 하반기 예정입니다.",
+    href: "https://prtimes.jp/main/html/rd/p/000000131.000069992.html",
+    image: "/images/clinical-platform-hero.png",
   },
   {
-    slug: "ingredient-portfolio",
-    date: "2026.06.08",
-    title: "用途別機能性素材ポートフォリオを日本向けに再構成",
-    koTitle: "용도별 기능성 식품 소재 포트폴리오를 일본 시장 기준으로 재구성",
+    slug: "iheal-donga",
+    date: "2026.06.26",
+    source: "東亜日報",
+    koSource: "동아일보",
+    title: "K-フェムケア「iHEAL」、日本上場企業と供給契約",
+    koTitle: "K-페미닌케어 아이힐, 日 상장사와 120억 공급 계약",
     summary:
-      "プロバイオティクスと自然由来機能性素材を、カテゴリー、摂取量、エビデンスタグ別に整理しました。",
+      "東亜日報は、BIOLABがAIDEN LAB JAPAN、ジェリービーンズグループと日本独占供給契約を締結したと報じました。",
     koSummary:
-      "Functional Probiotics 7종과 Functional Nature’s food ingredients 10종을 용도별로 정리했습니다.",
+      "동아일보는 비오랩이 AIDEN LAB JAPAN, 젤리빈즈그룹과 일본 독점 공급 계약을 체결했다고 보도했습니다.",
+    href: "https://www.donga.com/news/Economy/article/all/20260626/134187394/1",
     image: "/images/global-evidence-bg.png",
   },
   {
-    slug: "partnership-inquiry",
-    date: "2026.06.08",
-    title: "ODM/OEM・素材調達・ブランド協業の相談受付を開始",
-    koTitle: "ODM/OEM, 소재 조달, Brand Royalty 상담 접수",
+    slug: "iheal-wowtv",
+    date: "2026.06.29",
+    source: "韓国経済TV",
+    koSource: "한국경제TV",
+    title: "iHEALの日本独占供給契約を韓国メディアが報道",
+    koTitle: "아이힐, 일본 시장 공략 가속화…최소 120억 규모 독점 공급 계약 성사",
     summary:
-      "機能性素材の調達、日本B2B流通、iHEALブランド協業に関する相談をWebフォームから受け付けます。",
+      "韓国経済TVは、BIOLAB、AIDEN LAB JAPAN、ジェリービーンズグループの三者契約を報じました。",
     koSummary:
-      "기능성 식품 원료 사업, 일본 B2B 유통, iHEAL 브랜드 사용에 대한 상품 로열티 사업 상담을 접수합니다.",
-    image: "/images/clinical-platform-hero.png",
+      "한국경제TV는 비오랩, AIDEN LAB JAPAN, 젤리빈즈그룹의 3자 계약을 보도했습니다.",
+    href: "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202606260340",
+    image: "/images/biolab-global-factory-bg.png",
   },
 ];
 
