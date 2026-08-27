@@ -6456,6 +6456,25 @@ h2 {
   font-weight: 700;
   font-style: italic;
   letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.dh-ingredient-origin-panel .dh-origin-feature-latin,
+.dh-ingredient-origin-panel .dh-origin-feature > div > p {
+  margin: 0;
+  color: #3d4b5c;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.7;
+  text-transform: none;
+}
+
+.dh-ingredient-origin-panel .dh-origin-feature-latin {
+  color: #5b6b80;
+  font-size: 13px;
+  font-weight: 700;
+  font-style: italic;
 }
 
 .dh-origin-feature > div > strong {
@@ -6556,6 +6575,28 @@ h2 {
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.dh-ingredient-origin-panel .dh-origin-feature ul {
+  margin: 2px 0 0;
+}
+
+.dh-ingredient-origin-panel .dh-origin-feature li {
+  min-height: 0;
+  align-items: flex-start;
+  border: 0;
+  border-radius: 10px;
+  background: #fff;
+  padding: 10px 12px 10px 28px;
+  color: #2c394a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.dh-ingredient-origin-panel .dh-origin-feature li::before {
+  left: 12px;
+  top: 18px;
+  transform: none;
 }
 
 .dh-ingredient-evidence-tags div {
