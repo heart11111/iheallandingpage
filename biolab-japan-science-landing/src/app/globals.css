@@ -6733,6 +6733,8 @@ h2 {
   padding: 18px;
   background: #fff;
   min-width: 0;
+  max-width: 100%;
+  overflow: visible;
 }
 
 .dh-ppt-chart > div {
@@ -6864,6 +6866,9 @@ h2 {
 .dh-evidence-overlay-wrap {
   position: relative;
   line-height: 0;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .dh-evidence-overlay-wrap img {

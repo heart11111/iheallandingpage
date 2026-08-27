@@ -251,6 +251,7 @@ const liveChartEvidence = new Set<string>([
   "nvp2106-evidence-3.webp",
   "nvp1702-evidence-1.webp",
   "nvp1702-evidence-2.webp",
+  "nvp1703-evidence-2.webp",
   "nvp1704-evidence-1.webp",
   "nvp1704-evidence-2.webp",
   "nvp1704-evidence-3.webp",
@@ -294,11 +295,27 @@ type OverlayText = {
   y: number; // baseline of the first line
   fs?: number;
   lh?: number;
+  fw?: number;
   anchor?: "start" | "middle" | "end";
   fg?: string;
   lines: string[];
 };
-type ImageOverlay = { base: string; viewBox: string; fg?: string; ja: OverlayText[]; en?: OverlayText[] };
+type OverlayCover = {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  fill?: string;
+  rx?: number;
+};
+type ImageOverlay = {
+  base?: string;
+  viewBox: string;
+  fg?: string;
+  covers?: OverlayCover[];
+  ja: OverlayText[];
+  en?: OverlayText[];
+};
 
 const evidenceImageOverlays: Record<string, ImageOverlay> = {
   // f-MRI brain clusters — dark grey-green panel, white labels.
@@ -336,6 +353,101 @@ const evidenceImageOverlays: Record<string, ImageOverlay> = {
       { x: 593, y: 384, fs: 16, fg: "#4a4a4a", lines: ["酢酸"] },
     ],
   },
+  // NVP-1703 pediatric TNSS — Daily panel was not HTML-reproduced. Cover
+  // baked Korean and set Japanese on the original art; KO keeps the source.
+  "/images/ingredients/nvp1703-evidence-1.webp": {
+    viewBox: "0 0 830 368",
+    fg: "#374151",
+    covers: [
+      { x: 16, y: 8, w: 480, h: 42, fill: "#ffffff" },
+      { x: 14, y: 68, w: 400, h: 30, fill: "#1b4e8f", rx: 15 },
+      { x: 428, y: 68, w: 386, h: 30, fill: "#1b4e8f", rx: 15 },
+      { x: 16, y: 318, w: 400, h: 46, fill: "#ffffff" },
+      { x: 430, y: 318, w: 392, h: 46, fill: "#ffffff" },
+    ],
+    ja: [
+      {
+        x: 22,
+        y: 36,
+        fs: 20,
+        fw: 800,
+        anchor: "start",
+        fg: "#163a66",
+        lines: ["小児・青少年対象 人体適用試験"],
+      },
+      {
+        x: 214,
+        y: 88,
+        fs: 10.5,
+        fw: 800,
+        fg: "#ffffff",
+        lines: ["01. TNSS（全体鼻症状スコア）総点の有意改善（Weekly）"],
+      },
+      {
+        x: 621,
+        y: 88,
+        fs: 10.5,
+        fw: 800,
+        fg: "#ffffff",
+        lines: ["02. TNSS（全体鼻症状スコア）総点の有意改善（daily）"],
+      },
+      {
+        x: 22,
+        y: 334,
+        fs: 10,
+        lh: 15,
+        fw: 600,
+        anchor: "start",
+        lines: ["TNSS（鼻水、鼻づまり、くしゃみ、鼻のかゆみ）を", "群間で統計的に有意に改善"],
+      },
+      {
+        x: 438,
+        y: 334,
+        fs: 10,
+        lh: 15,
+        fw: 600,
+        anchor: "start",
+        lines: ["TNSSスコアをdaily基準で分析した結果、試験群では", "摂取1週以降から群間で統計的に有意な改善が認められた"],
+      },
+    ],
+  },
+  // NVP-1703 mechanism diagram — Korean callouts only; IgE/IL/RCAT/TNSS stay.
+  "/images/ingredients/nvp1703-evidence-3.jpeg": {
+    viewBox: "0 0 637 586",
+    fg: "#1a365d",
+    covers: [
+      { x: 68, y: 62, w: 196, h: 22, fill: "#ffffff" },
+      { x: 438, y: 188, w: 150, h: 52, fill: "#ffffff" },
+      { x: 12, y: 526, w: 260, h: 50, fill: "#ffffff" },
+    ],
+    ja: [
+      {
+        x: 90,
+        y: 78,
+        fs: 12,
+        fw: 800,
+        anchor: "start",
+        lines: ["アレルギー抗体の減少"],
+      },
+      {
+        x: 513,
+        y: 206,
+        fs: 10.5,
+        lh: 17,
+        fw: 700,
+        lines: ["鼻炎コントロール改善", "鼻症状スコア減少"],
+      },
+      {
+        x: 18,
+        y: 542,
+        fs: 11,
+        lh: 18,
+        fw: 700,
+        anchor: "start",
+        lines: ["*Tregから分泌されるIL-10の増加", "*Th2から分泌されるIL-4、IL-5、IL-13の減少"],
+      },
+    ],
+  },
 };
 
 function EvidenceFigureImage({
@@ -350,16 +462,37 @@ function EvidenceFigureImage({
   isKorean: boolean;
 }) {
   const overlay = evidenceImageOverlays[src];
-  // KO keeps the original (baked-Korean) image; other languages get the
-  // text-free base image plus a translated-text overlay.
+  // KO keeps the original (baked-Korean) image; other languages get a
+  // text-free base (or cover rects on the original) plus translated text.
   if (!overlay || isKorean) {
     return <Image alt={caption} height={480} loading="eager" src={imageSrc} width={720} />;
   }
   const boxes = overlay.ja;
+  const covers = overlay.covers || [];
+  const viewBoxParts = overlay.viewBox.trim().split(/\s+/).map(Number);
+  const overlayWidth = viewBoxParts[2] || 720;
+  const overlayHeight = viewBoxParts[3] || 480;
   return (
     <div className="dh-evidence-overlay-wrap">
-      <Image alt={caption} height={480} loading="eager" src={overlay.base} width={720} />
+      <Image
+        alt={caption}
+        height={overlayHeight}
+        loading="eager"
+        src={overlay.base || imageSrc}
+        width={overlayWidth}
+      />
       <svg className="dh-evidence-overlay" viewBox={overlay.viewBox} preserveAspectRatio="none" aria-hidden="true">
+        {covers.map((cover, i) => (
+          <rect
+            key={`cover-${i}`}
+            x={cover.x}
+            y={cover.y}
+            width={cover.w}
+            height={cover.h}
+            rx={cover.rx || 0}
+            fill={cover.fill || "#fff"}
+          />
+        ))}
         {boxes.map((box, i) => {
           const fs = box.fs || 14;
           return (
@@ -371,7 +504,7 @@ function EvidenceFigureImage({
                   y={box.y + j * (box.lh || fs + 4)}
                   fill={box.fg || overlay.fg || "#111"}
                   fontSize={fs}
-                  fontWeight={600}
+                  fontWeight={box.fw || 600}
                   textAnchor={box.anchor || "middle"}
                 >
                   {line}
@@ -987,12 +1120,11 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 {hasStatNotation(item.featurePoints) && <StatLegend isKorean={isKorean} />}
                 {featureImage && sourceItem.id !== "bifido" && (
                   <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
-                    <Image
-                      alt={getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}
-                      height={480}
-                      loading="eager"
+                    <EvidenceFigureImage
+                      caption={getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}
+                      imageSrc={getLocalizedEvidenceImageSrc(featureImage.src, isKorean)}
+                      isKorean={isKorean}
                       src={featureImage.src}
-                      width={720}
                     />
                     <figcaption>{getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}</figcaption>
                   </figure>
@@ -1160,12 +1292,11 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           {hasStatNotation(featureBlocks) && <StatLegend isKorean={isKorean} />}
           {featureImage && sourceItem.id !== "bifido" && (
             <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
-              <Image
-                alt={getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}
-                height={480}
-                loading="eager"
+              <EvidenceFigureImage
+                caption={getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}
+                imageSrc={getLocalizedEvidenceImageSrc(featureImage.src, isKorean)}
+                isKorean={isKorean}
                 src={featureImage.src}
-                width={720}
               />
               <figcaption>{getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}</figcaption>
             </figure>
