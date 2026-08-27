@@ -50,24 +50,15 @@ export default function ProductsPage() {
             <div className="dh-product-grid dh-product-grid-two">
               {productLinePages.map((group, index) => (
                 <article className="dh-product-card" key={group.href}>
-                  <a
-                    className="dh-product-card-catalog"
-                    download
-                    href={group.catalogHref}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={
-                        index === 0
-                          ? "/images/products-microbiome-probiotics-card-v3.webp"
-                          : "/images/products-functional-nature-card-v3.webp"
-                      }
-                      alt=""
-                    />
-                  </a>
-                  <a className="dh-product-card-catalog-btn" download href={group.catalogHref}>
-                    <LocalizedText ja="カタログをダウンロード" ko="카탈로그 다운로드" />
-                  </a>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={
+                      index === 0
+                        ? "/images/products-microbiome-probiotics-card-v3.webp"
+                        : "/images/products-functional-nature-card-v3.webp"
+                    }
+                    alt=""
+                  />
                   <div className="dh-product-shade" aria-hidden="true" />
                   <div className="dh-product-text">
                     <div className="dh-product-copy">
@@ -91,10 +82,18 @@ export default function ProductsPage() {
                         <LocalizedText ja={group.summary} ko={group.koSummary} />
                       </p>
                     </div>
-                    <a href={group.href}>
+                    <span className="dh-product-card-cta">
                       <LocalizedText ja="ラインを見る" ko="라인 상세 보기" />
-                    </a>
+                    </span>
                   </div>
+                  <a className="dh-product-card-hit" href={group.href}>
+                    <span className="dh-visually-hidden">
+                      <LocalizedText ja={`${group.label}のラインを見る`} ko={`${index === 0 ? "기능성 프로바이오틱스" : "기능성 천연소재"} 라인 상세 보기`} />
+                    </span>
+                  </a>
+                  <a className="dh-product-card-catalog-btn" download href={group.catalogHref}>
+                    <LocalizedText ja="カタログをダウンロード" ko="카탈로그 다운로드" />
+                  </a>
                 </article>
               ))}
             </div>
