@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Node-only maintenance scripts (CommonJS, not part of the Next app bundle)
     "scripts/**",
+    // Local Chrome profile used for catalog/PDF tooling — not part of the app
+    ".tmp-catalogs/**",
   ]),
 ]);
 
