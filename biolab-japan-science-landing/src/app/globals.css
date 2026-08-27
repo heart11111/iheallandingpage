@@ -7872,6 +7872,91 @@ h2 {
   white-space: nowrap;
 }
 
+/* Product copy: highlighter for outcomes, underline for figures.
+   Default is fully painted (no-JS). `.dh-ink-ready` collapses unrevealed
+   strokes so they draw the first time they scroll into view. */
+mark.dh-ink,
+.dh-ink-line {
+  display: inline;
+  color: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  letter-spacing: inherit;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  transition: background-size 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--ink-i, 0) * 80ms);
+}
+
+mark.dh-ink {
+  padding: 0.04em 0.08em;
+  margin: 0 -0.02em;
+  border-radius: 0.12em;
+  background-image: linear-gradient(#ffe08a, #ffe08a);
+  background-position: 0 82%;
+  background-size: 100% 0.58em;
+}
+
+.dh-ink-line {
+  padding-bottom: 0.06em;
+  background-image: linear-gradient(#1e40af, #1e40af);
+  background-position: 0 100%;
+  background-size: 100% 1.6px;
+}
+
+html.dh-ink-ready mark.dh-ink:not(.is-on) {
+  background-size: 0 0.58em;
+}
+
+html.dh-ink-ready .dh-ink-line:not(.is-on) {
+  background-size: 0 1.6px;
+}
+
+html.dh-ink-ready mark.dh-ink.is-on {
+  background-size: 100% 0.58em;
+}
+
+html.dh-ink-ready .dh-ink-line.is-on {
+  background-size: 100% 1.6px;
+}
+
+mark.dh-ink .dh-stat-note,
+mark.dh-ink strong {
+  display: inline;
+  color: inherit;
+  font-size: inherit;
+  font-weight: 650;
+  line-height: inherit;
+}
+
+/* Photo overlay cards: keep the stroke readable on white type. */
+.dh-product-text mark.dh-ink {
+  background-image: linear-gradient(rgba(255, 213, 90, 0.78), rgba(255, 213, 90, 0.78));
+  color: inherit;
+}
+
+.dh-product-text .dh-ink-line {
+  background-image: linear-gradient(#fff, #fff);
+}
+
+.dh-detail-card mark.dh-ink,
+.dh-detail-card .dh-ink-line,
+.dh-detail-card .dh-stat-note,
+.dh-ingredient-card mark.dh-ink,
+.dh-ingredient-card .dh-ink-line,
+.dh-ppt-summary-list mark.dh-ink,
+.dh-ppt-summary-list .dh-ink-line,
+.dh-ingredient-section-grid mark.dh-ink,
+.dh-ingredient-section-grid .dh-ink-line,
+.dh-ingredient-profile-summary mark.dh-ink,
+.dh-ingredient-profile-summary .dh-ink-line,
+.dh-product-text mark.dh-ink,
+.dh-product-text .dh-ink-line {
+  display: inline;
+}
+
 /* Qualified so it outranks the eyebrow `p` styling that each of these panels
    applies to its first paragraph. */
 .dh-stat-legend,
@@ -9239,6 +9324,20 @@ h2 {
   .dh-bizmap-hub::after,
   .dh-bizmap-link i::after {
     animation: none;
+  }
+
+  html.dh-ink-ready mark.dh-ink,
+  html.dh-ink-ready mark.dh-ink:not(.is-on),
+  html.dh-ink-ready mark.dh-ink.is-on {
+    background-size: 100% 0.58em;
+    transition: none;
+  }
+
+  html.dh-ink-ready .dh-ink-line,
+  html.dh-ink-ready .dh-ink-line:not(.is-on),
+  html.dh-ink-ready .dh-ink-line.is-on {
+    background-size: 100% 1.6px;
+    transition: none;
   }
 }
 

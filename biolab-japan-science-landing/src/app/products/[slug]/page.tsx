@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { CorporateFooter, CorporateSubHero, IngredientList } from "@/components/CorporateParts";
 import { LocalizedText } from "@/components/DevLanguageProvider";
+import { InkCopy } from "@/components/ProductInkObserver";
 import { NavBar } from "@/components/NavBar";
 import { getProductGroup, productGroups } from "@/lib/corporate";
 
@@ -44,7 +45,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               <LocalizedText ja={group.subtitle} ko={group.koSubtitle} />
             </h1>
             <p>
-              <LocalizedText ja={group.description} ko={group.koDescription} />
+              <InkCopy ja={group.description} ko={group.koDescription} />
             </p>
             {group.items.length ? (
               <IngredientList items={group.items} linkBase={ingredientLinkBase} />

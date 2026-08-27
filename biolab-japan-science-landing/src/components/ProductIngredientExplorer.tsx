@@ -6,10 +6,12 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { IngredientLineBadge } from "@/components/IngredientCategoryBadge";
+import { ProductInkObserver } from "@/components/ProductInkObserver";
 import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
 import { getIngredientSpecLabel } from "@/lib/ingredientDisplay";
 import { getIngredientCardImage } from "@/lib/ingredientImages";
 import type { Ingredient, IngredientLine } from "@/lib/ingredients";
+import { renderEmphasized } from "@/lib/productInk";
 
 type LineFilter = "All" | IngredientLine;
 
@@ -191,6 +193,7 @@ export function ProductIngredientExplorer({ items, title, description, koTitle, 
       data-fallback-line="All"
       data-ingredient-filter-root
     >
+      <ProductInkObserver />
       <div className="dh-explorer-head">
         <p className="dh-detail-primary">INGREDIENT INDEX</p>
         <h2>{language === "ko" && koTitle ? koTitle : title}</h2>
@@ -265,7 +268,7 @@ export function ProductIngredientExplorer({ items, title, description, koTitle, 
                 ) : null}
               </div>
               <h3>{item.name}</h3>
-              <strong>{item.area}</strong>
+              <strong>{renderEmphasized(item.area)}</strong>
               <span className="dh-ingredient-card-intake">
                 <em>{getIngredientSpecLabel(item, language === "ko")}</em>
                 {item.intake}

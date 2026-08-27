@@ -1,5 +1,6 @@
 import { CorporateFooter, CorporateSubHero } from "@/components/CorporateParts";
 import { LocalizedText } from "@/components/DevLanguageProvider";
+import { InkCopy, ProductInkObserver } from "@/components/ProductInkObserver";
 import { IngredientLineBadge } from "@/components/IngredientCategoryBadge";
 import { NavBar } from "@/components/NavBar";
 import { ProductIngredientExplorer } from "@/components/ProductIngredientExplorer";
@@ -8,6 +9,7 @@ import { microbiomeProductItems, natureProductItems, productLinePages } from "@/
 export default function ProductsPage() {
   return (
     <div className="dh-page">
+      <ProductInkObserver />
       <NavBar />
       <main>
         <CorporateSubHero
@@ -72,13 +74,13 @@ export default function ProductsPage() {
                         <LocalizedText ja={group.label} ko={group.koLabel} />
                       </h3>
                       <strong>
-                        <LocalizedText
+                        <InkCopy
                           ja={`${group.items.length}素材・ヒト臨床試験完了`}
                           ko={`${group.items.length}개 소재 · 인체적용시험 완료`}
                         />
                       </strong>
                       <p>
-                        <LocalizedText ja={group.summary} ko={group.koSummary} />
+                        <InkCopy ja={group.summary} ko={group.koSummary} />
                       </p>
                     </div>
                     <a href={group.href}>
