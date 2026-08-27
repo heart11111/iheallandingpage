@@ -98,8 +98,8 @@ function barChart(cfg){
 function nvp2106Foot(pill,sub,compact){const w=document.createElement('div');w.style.cssText='text-align:center;margin-top:'+(compact?6:10)+'px';const p=document.createElement('div');p.style.cssText='display:inline-block;background:#0f766e;color:#fff;font-weight:800;font-size:'+(compact?12:15)+'px;padding:'+(compact?'5px 14px':'8px 22px')+';border-radius:20px;letter-spacing:.01em';p.textContent=L(pill);w.appendChild(p);if(sub){const s=document.createElement('div');s.style.cssText='font-size:'+(compact?11:14.5)+'px;color:#111827;margin-top:'+(compact?4:8)+'px;font-weight:'+(compact?700:800);s.textContent=L(sub);w.appendChild(s);}return w;}
 function nvp2106Line(cfg){return lineChart(Object.assign({reverseY:true,improvementArrow:true,arrowInside:true,noEndLabel:true,sideLegend:true,titleColor:"#111",titleLeft:true,titleSize:14.5,pmarkColor:"#111",xLabelText:"Weeks"},cfg));}
 function lineChart(cfg){
-  const tfs=cfg.titleSize||13.5;const tt=cfg.title?(tfs>10?18:28):0;const w=cfg.w||520,h=cfg.h||320,_longX=(cfg.x||[]).some(function(xx){var t=L(xx);return String(t).length>11;}),_yl=!!cfg.yLabel&&!cfg.noYLabel,m={t:26+tt+(cfg.extraTop||0),r:cfg.improvementArrow?(cfg.arrowInside?88:152):(cfg.noEndLabel?22:78),b:(_longX?58:48)+(cfg.extraBot||0),l:cfg.marginL!=null?cfg.marginL:(_yl?(cfg.compactAxis?80:72):66)},iw=w-m.l-m.r,ih=h-m.t-m.b;
-  const gutter=cfg.improvementArrow&&cfg.arrowInside?78:0,plotW=iw-gutter;
+  const tfs=cfg.titleSize||13.5;const tt=cfg.title?(tfs>10?18:28):0;const w=cfg.w||520,h=cfg.h||320,_longX=(cfg.x||[]).some(function(xx){var t=L(xx);return String(t).length>11;}),_yl=!!cfg.yLabel&&!cfg.noYLabel,m={t:26+tt+(cfg.extraTop||0),r:cfg.improvementArrow?(cfg.arrowInside?16:96):(cfg.noEndLabel?22:78),b:(_longX?58:48)+(cfg.extraBot||0),l:cfg.marginL!=null?cfg.marginL:(_yl?(cfg.compactAxis?80:72):66)},iw=w-m.l-m.r,ih=h-m.t-m.b;
+  const gutter=cfg.improvementArrow&&cfg.arrowInside?62:0,plotW=iw-gutter;
   const X=i=>m.l+plotW*i/(cfg.x.length-1),Y=v=>m.t+ih*((cfg.reverseY?v-cfg.yMin:cfg.yMax-v)/(cfg.yMax-cfg.yMin));
   const svg=el("svg",{viewBox:"0 0 "+w+" "+h,role:"img"});
   if(cfg.title){const tcol=cfg.titleColor||"#c0392b";if(cfg.titleLeft)svg.appendChild(txt(m.l+6,tfs>10?16:18,L(cfg.title),{"text-anchor":"start","font-size":tfs,fill:tcol,"font-weight":700}));else svg.appendChild(txt(w/2,tfs>10?15:18,L(cfg.title),{"text-anchor":"middle","font-size":tfs,fill:tcol,"font-weight":700}));}
@@ -111,12 +111,12 @@ function lineChart(cfg){
   if(cfg.xlabel!==false)svg.appendChild(txt(m.l+plotW/2,h-6,cfg.xLabelText||L(T.weeks),{"text-anchor":"middle","font-size":12.5,fill:"#1f2937","font-weight":800}));
   if(cfg.panelTag)svg.appendChild(txt(m.l-4,cfg.title?14:16,cfg.panelTag,{"text-anchor":"end","font-size":15,fill:"#111","font-weight":800}));
   if(cfg.improvementArrow){
-    const x=cfg.arrowInside?(m.l+plotW+18):(m.l+iw+40),y0=m.t+ih*.18,y1=m.t+ih*.82,col="#0f172a",sw=3.4;
+    const x=cfg.arrowInside?(m.l+plotW+10):(m.l+iw+28),y0=m.t+ih*.24,y1=m.t+ih*.76,col="#334155",sw=1.15,hw=3.2,ht=6;
     svg.appendChild(el("line",{x1:x,y1:y0,x2:x,y2:y1,stroke:col,"stroke-width":sw,"stroke-linecap":"round"}));
-    svg.appendChild(el("path",{d:"M"+x+" "+(y0-11)+"L"+(x-8)+" "+(y0+5)+"L"+(x+8)+" "+(y0+5)+"Z",fill:col}));
-    svg.appendChild(el("path",{d:"M"+x+" "+(y1+11)+"L"+(x-8)+" "+(y1-5)+"L"+(x+8)+" "+(y1-5)+"Z",fill:col}));
-    svg.appendChild(txt(x+11,y0+5,"Improvement",{"font-size":13,fill:col,"font-weight":800}));
-    svg.appendChild(txt(x+11,y1+5,"Worsening",{"font-size":13,fill:col,"font-weight":800}));
+    svg.appendChild(el("path",{d:"M"+x+" "+(y0-ht)+"L"+(x-hw)+" "+y0+"L"+(x+hw)+" "+y0+"Z",fill:col}));
+    svg.appendChild(el("path",{d:"M"+x+" "+(y1+ht)+"L"+(x-hw)+" "+y1+"L"+(x+hw)+" "+y1+"Z",fill:col}));
+    svg.appendChild(txt(x+7,y0+3,"Improvement",{"font-size":8.5,fill:col,"font-weight":600}));
+    svg.appendChild(txt(x+7,y1+3,"Worsening",{"font-size":8.5,fill:col,"font-weight":600}));
   }
   var _ts=cfg.tsigs||(cfg.tsig?[{text:cfg.tsig,i0:0,i1:cfg.x.length-1}]:[]);_ts.forEach(function(sg){const y=m.t-6-(sg.lvl||0)*14,x1=X(sg.i0),x2=X(sg.i1);svg.appendChild(el("line",{x1:x1,y1:y,x2:x2,y2:y,stroke:"#555"}));svg.appendChild(el("line",{x1:x1,y1:y,x2:x1,y2:y+5,stroke:"#555"}));svg.appendChild(el("line",{x1:x2,y1:y,x2:x2,y2:y+5,stroke:"#555"}));svg.appendChild(txt((x1+x2)/2,y-3,sg.text,{"text-anchor":"middle","font-size":11,fill:"#333","font-weight":700}));});
   const ends=[];const vLabs=[];cfg.series.forEach(s=>{let d="",len=0,px,py;s.vals.forEach((v,i)=>{const x=X(i),y=Y(v);d+=(i?"L":"M")+x+" "+y;if(i)len+=Math.hypot(x-px,y-py);px=x;py=y;});
