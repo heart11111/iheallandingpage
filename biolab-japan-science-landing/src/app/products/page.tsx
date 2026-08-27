@@ -89,9 +89,9 @@ export default function ProductsPage() {
               ))}
             </div>
             <ProductIngredientExplorer
-              description="上部のボタンでラインとカテゴリーを切り替え、各素材の詳細ページへ進めます。"
+              description="プロバイオティクスと天然素材、用途別に絞り込めます。カードから各素材の詳細へ進めます。"
               items={[...microbiomeProductItems, ...natureProductItems]}
-              koDescription="위 버튼으로 라인과 카테고리를 전환해 각 소재 상세 페이지로 이동합니다."
+              koDescription="프로바이오틱스와 천연소재, 용도별로 골라 볼 수 있습니다. 카드를 누르면 소재 상세로 갑니다."
               koTitle="소재별 상세 인덱스"
               title="素材別詳細インデックス"
             />
