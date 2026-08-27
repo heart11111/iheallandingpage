@@ -174,7 +174,7 @@ const koreanEvidenceCaptions: Record<string, string> = {
   "/images/ingredients/acetobeta-evidence-1.webp": "알코올이 아세트알데히드를 거쳐 초산으로 분해되는 과정",
   "/images/ingredients/acetobeta-evidence-2.webp": "음주 0.25시간 후 혈중 아세트알데히드 변화량",
   "/images/ingredients/acetobeta-evidence-3.webp": "음주 후 메스꺼움 개선 효과",
-  "/images/ingredients/immulink-evidence-1.webp": "자연면역 및 획득면역 8개 면역 인자 개선",
+  "/images/ingredients/immulink-evidence-1.webp": "선천면역(NK세포 수·NK세포 활성)·후천면역(총 림프구·T세포·CD4/CD8 비율·혈청 IgA) 8인자 유의 개선",
 };
 
 const wideEvidenceImages = new Set([
