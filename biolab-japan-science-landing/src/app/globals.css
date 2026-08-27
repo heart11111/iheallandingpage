@@ -6801,9 +6801,38 @@ h2 {
   align-items: center;
 }
 
+.dh-evidence-chart .evidence-immulink-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  width: 100%;
+  min-width: 0;
+}
+
+.dh-evidence-chart .evidence-immulink-side {
+  width: 148px;
+  flex: 0 0 148px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #111;
+  border: 2px solid #e0242f;
+  border-radius: 6px;
+  padding: 10px;
+  background: #fff;
+}
+
 @media (max-width: 720px) {
   .dh-evidence-chart .evidence-nvp1704-il6 {
     grid-template-columns: 1fr;
+  }
+
+  .dh-evidence-chart .evidence-immulink-row {
+    flex-direction: column;
+  }
+
+  .dh-evidence-chart .evidence-immulink-side {
+    width: 100%;
+    flex: 1 1 auto;
   }
 }
 

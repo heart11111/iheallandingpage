@@ -254,6 +254,7 @@ const liveChartEvidence = new Set<string>([
   "pinitol-evidence-2.webp",
   "acetobeta-evidence-2.webp",
   "acetobeta-evidence-3.webp",
+  "immulink-evidence-1.webp",
 ]);
 
 function getLiveChartKey(src: string): string | null {

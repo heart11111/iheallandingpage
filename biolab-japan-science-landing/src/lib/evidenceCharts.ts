@@ -27,7 +27,7 @@ const STAT={
  "agrimony-alt-evidence.png":"ok","agrimony-ast-evidence.png":"ok","agrimony-hsi-evidence.png":"ok",
  "pinitol-evidence-1.webp":"ok","pinitol-evidence-2.webp":"ok",
  "acetobeta-evidence-2.webp":"ok","acetobeta-evidence-3.webp":"ok",
- "bifido-evidence-2.webp":"wait","immulink-evidence-1.webp":"wait"
+ "bifido-evidence-2.webp":"wait","immulink-evidence-1.webp":"ok"
 };
 const STLABEL={ok:"✅ 반영완료",approve:"🟦 수정·승인대기",wait:"⬜ 작업대기",demo:"🟡 오버레이 데모"};
 const NS="http://www.w3.org/2000/svg";
@@ -279,8 +279,15 @@ const BUILD={
    render(){const cats=[{ko:"총림프구",ja:"総リンパ",en:"Lymph"},{ko:"CD3+",ja:"CD3+",en:"CD3+"},{ko:"CD4+",ja:"CD4+",en:"CD4+"},{ko:"CD8+",ja:"CD8+",en:"CD8+"},{ko:"CD4/8",ja:"CD4/8",en:"CD4/8"},{ko:"IgA",ja:"IgA",en:"IgA"},{ko:"NK수",ja:"NK数",en:"NK"},{ko:"NK독성",ja:"NK活性",en:"NKcyto"}];
      /* Exact %Δ from Foods 2023 (intervention vs placebo). Placebo CD8 SD reported as ±22 (paper typo “2.4 ± −22”); NK cyto PL SD ±8.7. */
      const iv=[14.1,15.0,13.4,14.6,12.9,10.0,19.5,83.1],ivE=[20.9,9.9,22.2,22.8,11.2,38.3,6.4,30.0],pv=[2.8,1.0,-8.0,2.4,-2.2,2.1,-2.0,-4.5],pvE=[12.8,2.5,17.2,22,1.7,11.8,8.9,8.7];
-     const bars=[];cats.forEach((c,i)=>{bars.push({label:c,value:iv[i],color:"#26406b",err:ivE[i],noval:true});bars.push({label:null,value:pv[i],color:"#9aa3af",err:pvE[i],noval:true});});
-     const wrap=document.createElement('div');wrap.style.cssText='display:flex;gap:10px;align-items:flex-start;width:100%';const chartBox=document.createElement('div');chartBox.style.flex='1';chartBox.appendChild(barChart({w:560,h:300,yMin:-30,yMax:110,ticks:[100,80,60,40,20,0,-20,-30],yLabel:{ko:"변화 (%)",ja:"変化 (%)",en:"Change (%)"},bars:bars}));wrap.appendChild(chartBox);const side=document.createElement('div');side.style.cssText='width:128px;font-size:9.5px;line-height:1.45;color:#111;border:2px solid #e0242f;border-radius:6px;padding:8px;background:#fff';side.innerHTML='<div style="font-weight:700;color:#c0121c;margin-bottom:4px">Adaptive & innate</div>Significant improvements in lymphocytes, CD markers, IgA, and NK activity.<div style="margin-top:6px;font-size:9px;color:#6b7280">Foods 2023;12(3):659</div>';wrap.appendChild(side);return wrap;}}
+     const bars=[],glabels=[];cats.forEach((c,i)=>{bars.push({label:null,value:iv[i],color:"#26406b",err:ivE[i],noval:true});bars.push({label:null,value:pv[i],color:"#9aa3af",err:pvE[i],noval:true});glabels.push({t:c,i0:i*2,i1:i*2+1});});
+     const wrap=document.createElement('div');wrap.className='evidence-immulink';
+     const head=document.createElement('div');head.style.cssText='font-size:15px;font-weight:800;color:#163a66;margin:0 0 2px';head.textContent=L({ko:"선천·후천 8종 면역지표 개선",ja:"自然免疫・獲得免疫 8指標の改善",en:"8 immune markers"});wrap.appendChild(head);
+     const leg=document.createElement('div');leg.className='legc';leg.innerHTML='<span><i style="background:#26406b"></i>'+L({ko:"섭취군",ja:"摂取群",en:"Intervention"})+'</span><span><i style="background:#9aa3af"></i>'+L(PL)+'</span>';wrap.appendChild(leg);
+     const row=document.createElement('div');row.className='evidence-immulink-row';
+     const chartBox=document.createElement('div');chartBox.style.cssText='flex:1;min-width:0';chartBox.appendChild(barChart({w:560,h:310,yMin:-30,yMax:110,ticks:[100,80,60,40,20,0,-20,-30],yLabel:{ko:"변화 (%)",ja:"変化 (%)",en:"Change (%)"},noBarLabels:true,bars:bars,glabels:glabels}));row.appendChild(chartBox);
+     const side=document.createElement('div');side.className='evidence-immulink-side';
+     side.innerHTML='<div style="font-weight:700;color:#c0121c;margin-bottom:4px">'+L({ko:"선천·후천 면역",ja:"自然免疫・獲得免疫",en:"Adaptive & innate"})+'</div>'+L({ko:"림프구, CD 마커, IgA, NK 활성이 유의하게 개선되었습니다.",ja:"リンパ球、CDマーカー、IgA、NK活性が有意に改善しました。",en:"Significant improvements in lymphocytes, CD markers, IgA, and NK activity."})+'<div style="margin-top:6px;font-size:9px;color:#6b7280">Foods 2023;12(3):659</div>';
+     row.appendChild(side);wrap.appendChild(row);return wrap;}}
 };
 
 /** Build the SVG/HTML node for an approved chart key at the given language. */
