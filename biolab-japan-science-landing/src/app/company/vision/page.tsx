@@ -16,11 +16,10 @@ const visionItems = [
   {
     title: "Mission",
     koTitle: "미션",
-    body: ["Functional Probiotics、", "自然由来機能性素材、OEM/ODMを", "一体で整理し、製品化までの流れを支えます。"],
+    body: ["機能性プロバイオティクス、", "機能性天然素材、OEM/ODMを", "一体で整理し、製品化までの流れを支えます。"],
     koBody: [
-      "Functional Probiotics,",
-      "Functional Nature’s food ingredients,",
-      "ODM/OEM & Brand Royalty를",
+      "기능성 프로바이오틱스,",
+      "기능성 천연소재, ODM/OEM을",
       "하나로 정리해 제품화까지의 흐름을 지원합니다.",
     ],
   },

@@ -26,9 +26,9 @@ export default function ProductsPage() {
                 <LocalizedText
                   ja={
                     <>
-                      It all starts
+                      商品をつくる前に、
                       <br />
-                      with the Innovate new ingredients.
+                      素材と根拠が先です。
                     </>
                   }
                   ko={
@@ -42,7 +42,7 @@ export default function ProductsPage() {
               </h2>
               <p>
                 <LocalizedText
-                  ja="BIOLAB Japanの供給製品ラインは、Functional ProbioticsとFunctional Nature’s food ingredientsを中心に構成します。"
+                  ja="BIOLAB Japanの供給製品ラインは、機能性プロバイオティクスと機能性天然素材を中心に構成します。"
                   ko="BIOLAB Japan의 공급 제품 라인은 기능성 프로바이오틱스와 기능성 천연소재를 중심으로 구성합니다."
                 />
               </p>
@@ -76,10 +76,7 @@ export default function ProductsPage() {
                         line={index === 0 ? "Functional Probiotics" : "Nature-derived Ingredients"}
                       />
                       <h3>
-                        <LocalizedText
-                          ja={group.label}
-                          ko={index === 0 ? "기능성 프로바이오틱스" : "기능성 천연소재"}
-                        />
+                        <LocalizedText ja={group.label} ko={group.koLabel} />
                       </h3>
                       <strong>
                         <LocalizedText
@@ -101,7 +98,7 @@ export default function ProductsPage() {
             <ProductIngredientExplorer
               description="上部のボタンでラインとカテゴリーを切り替え、各素材の詳細ページへ進めます。"
               items={[...microbiomeProductItems, ...natureProductItems]}
-              koDescription="라인과 카테고리별 소재 상세 인덱스입니다."
+              koDescription="위 버튼으로 라인과 카테고리를 전환해 각 소재 상세 페이지로 이동합니다."
               koTitle="소재별 상세 인덱스"
               title="素材別詳細インデックス"
             />

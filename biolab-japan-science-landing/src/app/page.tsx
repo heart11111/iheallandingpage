@@ -25,11 +25,11 @@ const featuredCards = [
     eyebrow: "Functional Probiotics",
     tag: "ヒト臨床試験完了・7種",
     koTag: "인체적용시험 완료 · 7종",
-    title: "Application-specific strain portfolio",
+    title: "機能性プロバイオティクス",
     subtitle: "用途別プロバイオティクス",
     description: "女性・体脂肪・認知など、製品目的に合わせて菌株を検討します。",
-    koTitle: "프로바이오틱스 소재",
-    koSubtitle: "용도별 7개 영역",
+    koTitle: "기능성 프로바이오틱스",
+    koSubtitle: "용도별 프로바이오틱스",
     koDescription: "여성·체지방·인지 등 제품 목적에 맞춰 균주를 검토합니다.",
     // v2 has a "Microbiome Probiotics" wordmark burnt into the photograph, which
     // collided with the card’s own eyebrow and cannot be translated.
@@ -41,11 +41,11 @@ const featuredCards = [
     eyebrow: "Functional Nature’s food ingredients",
     tag: "ヒト臨床試験完了・10種",
     koTag: "인체적용시험 완료 · 10종",
-    title: "Nature-derived functional materials",
+    title: "機能性天然素材",
     subtitle: "自然由来機能性素材",
     description: "男性健康・記憶・認知など、製品目的に合わせて自然由来素材を検討します。",
     koTitle: "기능성 천연소재",
-    koSubtitle: "용도별 10개 영역",
+    koSubtitle: "자연 유래 기능성 소재",
     koDescription: "남성 건강·기억·인지 등 제품 목적에 맞춰 자연 유래 소재를 검토합니다.",
     image: "images/products-functional-nature-card-v2.webp",
     href: "/products/nature-ingredients",
@@ -242,13 +242,13 @@ export default function Home() {
                   </>
                 ) : (
                   <>
-                    It all starts
+                    商品をつくる前に、
                     <br />
-                    with the ingredients.
+                    素材と根拠が先です。
                   </>
                 )}
               </h2>
-              <p>{isKorean ? "제품을 만들기 전에 대한민국 식약처(KFDA) 인증 개별인정형 기능성 소재와 근거 정보에 집중합니다." : "商品開発の成功を支える素材と根拠情報に集中します。"}</p>
+              <p>{isKorean ? "성공적인 상품 개발의 핵심이 되는 소재와 근거 정보입니다." : "商品開発の成功を支える素材と根拠情報に集中します。"}</p>
             </div>
             <div className="dh-product-grid">
               {featuredCards.map((card, index) => (
