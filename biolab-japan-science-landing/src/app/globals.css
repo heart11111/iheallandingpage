@@ -6951,6 +6951,22 @@ h2 {
   }
 }
 
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-kind="diagram"] {
+  display: grid;
+  justify-items: center;
+}
+
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-kind="diagram"] > img,
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-kind="diagram"] .dh-evidence-overlay-wrap {
+  width: 100%;
+  max-width: 520px;
+}
+
+.dh-ppt-chart.dh-ppt-chart-figure[data-evidence-kind="diagram"] figcaption {
+  width: 100%;
+  max-width: 520px;
+}
+
 .dh-ppt-chart.dh-ppt-chart-figure[data-evidence-shape="wide"] {
   grid-column: 1 / -1;
   padding: 12px;
