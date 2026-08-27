@@ -298,7 +298,22 @@ type OverlayText = {
   fg?: string;
   lines: string[];
 };
-type ImageOverlay = { base: string; viewBox: string; fg?: string; ja: OverlayText[]; en?: OverlayText[] };
+type OverlayCover = {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  fill?: string;
+  rx?: number;
+};
+type ImageOverlay = {
+  base?: string;
+  viewBox: string;
+  fg?: string;
+  covers?: OverlayCover[];
+  ja: OverlayText[];
+  en?: OverlayText[];
+};
 
 const evidenceImageOverlays: Record<string, ImageOverlay> = {
   // f-MRI brain clusters — dark grey-green panel, white labels.
@@ -336,6 +351,57 @@ const evidenceImageOverlays: Record<string, ImageOverlay> = {
       { x: 593, y: 384, fs: 16, fg: "#4a4a4a", lines: ["酢酸"] },
     ],
   },
+  // Immulink 8-marker chart — Korean labels live in the source art. Cover them
+  // with matching fills and set Japanese copy on top; KO keeps the original.
+  "/images/ingredients/immulink-evidence-1.webp": {
+    viewBox: "0 0 1088 487",
+    fg: "#2b2b2b",
+    covers: [
+      { x: 14, y: 6, w: 726, h: 42, fill: "#ffffff" },
+      { x: 566, y: 60, w: 140, h: 36, fill: "#e24a52", rx: 12 },
+      { x: 224, y: 192, w: 162, h: 36, fill: "#e24a52", rx: 12 },
+      { x: 782, y: 63, w: 291, h: 49, fill: "#5e5553" },
+      { x: 783, y: 112, w: 289, h: 213, fill: "#ffffff" },
+      { x: 782, y: 359, w: 290, h: 35, fill: "#5e5553" },
+      { x: 783, y: 394, w: 288, h: 75, fill: "#ffffff" },
+    ],
+    ja: [
+      {
+        x: 20,
+        y: 34,
+        fs: 17,
+        anchor: "start",
+        lines: ["1. 自然免疫および獲得免疫の両方で有意な改善を確認（8種）"],
+      },
+      { x: 636, y: 83, fs: 12, fg: "#ffffff", lines: ["自然免疫因子"] },
+      { x: 305, y: 215, fs: 12, fg: "#ffffff", lines: ["獲得免疫因子"] },
+      { x: 928, y: 93, fs: 15, fg: "#ffffff", lines: ["獲得免疫の改善"] },
+      {
+        x: 796,
+        y: 138,
+        fs: 12,
+        lh: 32,
+        anchor: "start",
+        lines: [
+          "・総リンパ球数の増加",
+          "・Tリンパ球（CD3+）数の増加",
+          "・ヘルパーTリンパ球（CD4+）数の増加",
+          "・細胞傷害性Tリンパ球（CD8+）数の増加",
+          "・CD4/CD8比の増加",
+          "・血清IgAグロブリン濃度の増加",
+        ],
+      },
+      { x: 927, y: 381, fs: 15, fg: "#ffffff", lines: ["自然免疫の改善"] },
+      {
+        x: 796,
+        y: 424,
+        fs: 12,
+        lh: 28,
+        anchor: "start",
+        lines: ["・NK細胞数の増加", "・NK細胞活性の増加"],
+      },
+    ],
+  },
 };
 
 function EvidenceFigureImage({
@@ -350,16 +416,37 @@ function EvidenceFigureImage({
   isKorean: boolean;
 }) {
   const overlay = evidenceImageOverlays[src];
-  // KO keeps the original (baked-Korean) image; other languages get the
-  // text-free base image plus a translated-text overlay.
+  // KO keeps the original (baked-Korean) image; other languages get a
+  // text-free base (or cover rects on the original) plus translated text.
   if (!overlay || isKorean) {
     return <Image alt={caption} height={480} loading="eager" src={imageSrc} width={720} />;
   }
   const boxes = overlay.ja;
+  const covers = overlay.covers || [];
+  const viewBoxParts = overlay.viewBox.trim().split(/\s+/).map(Number);
+  const overlayWidth = viewBoxParts[2] || 720;
+  const overlayHeight = viewBoxParts[3] || 480;
   return (
     <div className="dh-evidence-overlay-wrap">
-      <Image alt={caption} height={480} loading="eager" src={overlay.base} width={720} />
+      <Image
+        alt={caption}
+        height={overlayHeight}
+        loading="eager"
+        src={overlay.base || imageSrc}
+        width={overlayWidth}
+      />
       <svg className="dh-evidence-overlay" viewBox={overlay.viewBox} preserveAspectRatio="none" aria-hidden="true">
+        {covers.map((cover, i) => (
+          <rect
+            key={`cover-${i}`}
+            x={cover.x}
+            y={cover.y}
+            width={cover.w}
+            height={cover.h}
+            rx={cover.rx || 0}
+            fill={cover.fill || "#fff"}
+          />
+        ))}
         {boxes.map((box, i) => {
           const fs = box.fs || 14;
           return (
