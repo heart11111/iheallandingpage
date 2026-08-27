@@ -102,23 +102,23 @@ export const natureProductItems = natureIngredients.filter((item) => natureProdu
 
 export const productLinePages = [
   {
-    label: "個別認定型プロバイオティクス",
-    koLabel: "Probiotics Strain by Application",
+    label: "機能性プロバイオティクス",
+    koLabel: "기능성 프로바이오틱스",
     menuLabel: "Functional Probiotics",
     href: "/products/microbiome-probiotics",
     catalogHref: "/downloads/catalogs/functional-probiotics.pdf",
     summary: "女性、体脂肪、脳・記憶、肝臓、鼻、ストレス、腸の7種を整理します。",
-    koSummary: "질내 마이크로바이옴, 체지방·항비만, 인지·기억, 간건강, 면역 과민반응에 따른 코 상태, 스트레스·수면·릴랙스, 장건강·배변활동 영역의 프로바이오틱스 7종입니다.",
+    koSummary: "여성, 체지방, 뇌·기억, 간, 코, 스트레스, 장의 프로바이오틱스 7종입니다.",
     items: microbiomeProductItems,
   },
   {
     label: "機能性天然素材",
-    koLabel: "Nature’s food ingredients by Application",
+    koLabel: "기능성 천연소재",
     menuLabel: "Functional Nature’s food ingredients",
     href: "/products/nature-ingredients",
     catalogHref: "/downloads/catalogs/nature-ingredients.pdf",
     summary: "男性健康、記憶、認知、体脂肪、肌、肝臓・血糖、二日酔い、免疫の10種を整理します。",
-    koSummary: "남성 갱년기·남성 건강, 기억·인지 기능, 노화 관련 인지기능, 다이어트·체지방, 피부 수분·탄력, 주름·보습, 간·혈당 건강, 알코올 대사 지원, 면역기능 영역의 자연 유래 기능성 소재 10종입니다.",
+    koSummary: "남성 건강, 기억, 인지, 체지방, 피부, 간·혈당, 숙취, 면역의 자연 유래 기능성 소재 10종입니다.",
     items: natureProductItems,
   },
 ];
@@ -137,33 +137,33 @@ export const productGroups = [
   {
     slug: "probiotics",
     menuLabel: "Functional Probiotics",
-    eyebrow: "個別認定型・特許菌株",
-    koEyebrow: "개별인정형 기능성 소재 / 특허 유산균",
-    title: "Functional Probiotics",
-    koTitle: "Functional Probiotics",
+    eyebrow: "Functional Probiotics",
+    koEyebrow: "기능성 프로바이오틱스",
+    title: "機能性プロバイオティクス",
+    koTitle: "기능성 프로바이오틱스",
     subtitle: "用途別プロバイオティクス",
-    koSubtitle: "Probiotics Strain by Application",
+    koSubtitle: "용도별 프로바이오틱스",
     image: "/images/products-microbiome-probiotics-card-v3.webp",
     description:
       "女性、体脂肪、認知、肝臓、鼻、ストレス、腸のコンディションに合わせて、菌株レベルで素材情報を整理します。",
     koDescription:
-      "질내 마이크로바이옴, 체지방·항비만, 인지·기억, 간건강, 면역 과민반응에 따른 코 상태, 스트레스·수면·릴랙스, 장건강·배변활동 영역의 인체적용시험 완료 프로바이오틱스 소재입니다.",
+      "여성, 체지방, 인지, 간, 코, 스트레스, 장 용도에 맞춰 균주 단위로 소재 정보를 정리합니다.",
     items: probioticsIngredients,
   },
   {
     slug: "nature",
     menuLabel: "Functional Nature’s food ingredients",
-    eyebrow: "自然由来機能性素材",
-    koEyebrow: "인체적용시험 완료 / 자연 유래 기능성 소재",
-    title: "Functional Nature’s food ingredients",
-    koTitle: "Functional Nature’s food ingredients",
+    eyebrow: "Functional Nature’s food ingredients",
+    koEyebrow: "기능성 천연소재",
+    title: "機能性天然素材",
+    koTitle: "기능성 천연소재",
     subtitle: "自然由来素材",
-    koSubtitle: "Nature’s food ingredients by Application",
+    koSubtitle: "자연 유래 소재",
     image: "/images/products-functional-nature-card-v3.webp",
     description:
       "記憶、肌、肝臓、免疫、男性健康など、商品カテゴリーに合わせた自然由来機能性素材を提案します。",
     koDescription:
-      "남성 갱년기·남성 건강, 기억·인지 기능, 노화 관련 인지기능, 다이어트·체지방, 피부 수분·탄력, 주름·보습, 간·혈당 건강, 알코올 대사 지원, 면역기능 등 상품 카테고리별 자연 유래 기능성 소재입니다.",
+      "기억, 피부, 간, 면역, 남성 건강 등 상품 카테고리에 맞춘 자연 유래 기능성 소재를 제안합니다.",
     items: natureIngredients,
   },
   {
@@ -220,7 +220,7 @@ export const corporateNews = [
     summary:
       "プロバイオティクスと自然由来機能性素材を、カテゴリー、摂取量、エビデンスタグ別に整理しました。",
     koSummary:
-      "Functional Probiotics 7종과 Functional Nature’s food ingredients 10종을 용도별로 정리했습니다.",
+      "기능성 프로바이오틱스 7종과 기능성 천연소재 10종을 용도별로 정리했습니다.",
     image: "/images/global-evidence-bg.png",
   },
   {
@@ -253,7 +253,7 @@ export const partnerRows = [
     label: "提案素材",
     value: "プロバイオティクス、自然由来機能性素材、iHEALブランド活用",
     koLabel: "제안 소재",
-    koValue: "Functional Probiotics, Functional Nature’s food ingredients, iHEAL 브랜드 활용",
+    koValue: "기능성 프로바이오틱스, 기능성 천연소재, iHEAL 브랜드 활용",
   },
   {
     label: "進行方法",

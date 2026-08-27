@@ -17,8 +17,8 @@ export const devKoreanLabels = {
   ja: "JP",
   ko: "KR",
   materialLabel: {
-    strains: "Probiotics Strain",
-    origin: "Origin Ingredient",
+    strains: "균주 구성",
+    origin: "원료",
   },
   detail: {
     summary: "소재 개요",
@@ -38,27 +38,27 @@ export const devKoreanLabels = {
     functionalContent: "기능성 내용",
   },
   line: {
-    "Functional Probiotics": "Functional Probiotics",
-    "Nature-derived Ingredients": "Functional Nature’s food ingredients",
+    "Functional Probiotics": "기능성 프로바이오틱스",
+    "Nature-derived Ingredients": "기능성 천연소재",
   } satisfies Record<IngredientLine, string>,
 };
 
 export const devKoreanPageCopy = {
   microbiome: {
     title: "기능성 프로바이오틱스",
-    copy: "Probiotics Strain by Application 인체적용시험 완료 소재 7종입니다.",
-    lead: "인체적용시험을 마친 개별인정형 프로바이오틱스 7종입니다. 질 건강·체지방·인지·간·코·스트레스·장 용도별로 균주와 근거 자료(인체적용시험·SCI 논문·특허)를 정리했습니다.",
-    primary: "기능성 식품 원료 사업",
+    copy: "용도별 프로바이오틱스 소재 전체 목록입니다.",
+    lead: "인체적용시험을 마친 개별인정형 프로바이오틱스 7종입니다. 여성·체지방·인지·간·코·스트레스·장 용도별로 균주와 근거 자료(인체적용시험·SCI 논문·특허)를 정리했습니다.",
+    primary: "제품",
   },
   nature: {
-    title: "Functional Nature’s food ingredients",
-    copy: "Nature’s food ingredients by Application 인체적용시험 완료 소재 10종입니다.",
+    title: "기능성 천연소재",
+    copy: "자연 유래 기능성 소재 전체 목록입니다.",
     lead: "인체적용시험을 마친 자연 유래 기능성 소재 10종입니다. 남성 건강·기억·인지·체지방·피부·간·혈당·숙취·면역 용도별로 원료와 근거 자료를 정리했습니다.",
-    primary: "기능성 식품 원료 사업",
+    primary: "제품",
   },
   detailPrimary: {
-    microbiome: "Probiotics Strain by Application",
-    nature: "Nature’s food ingredients by Application",
+    microbiome: "용도별 프로바이오틱스 소재",
+    nature: "자연 유래 기능성 소재",
   },
 };
 
@@ -82,7 +82,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "질 내 유산균이 늘고 유해균이 억제되어 질 내 균총이 정상 상태로 회복됩니다.",
       "질 분비물, 질 작열감, 배뇨통이 줄었습니다.",
     ],
-    evidenceTags: ["101명 인체적용시험", "SCI 논문 9편", "Nugent score"],
+    evidenceTags: ["101명 인체적용시험", "SCI 논문 9편", "국제 특허 3개국"],
   },
   med02: {
     name: "iHEAL DIT 2 Formula – MED02",
@@ -102,7 +102,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "성인기 중성지방 축적으로 인한 비만·이상지질혈증 위험도 줄여줍니다.",
       "임상 데이터(12주): 체지방량 약 -1,200g(위약 약 -400g), 체지방률 약 -0.85%(위약 약 -0.15%), 체중 약 -2.1kg(위약 약 -1.2kg).",
     ],
-    evidenceTags: ["100명 인체적용시험", "SCI 논문 6편", "BMI 감소"],
+    evidenceTags: ["100명 인체적용시험", "SCI 논문 6편", "국제 특허 3개국"],
   },
   nvp2106: {
     name: "NVP-2106",
@@ -136,9 +136,9 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     ],
     featurePoints: [
       "간의 해독 기능을 높이고, 장내·혈중 내독소(엔도톡신)를 개선합니다.",
-      "비알코올성 간손상: 간 손상 지표인 ALT·AST·γ-GTP가 낮아졌습니다(γ-GTP P=0.0292, ALT P=0.0332).",
+      "비알코올성 간손상: 간 손상 지표인 ALT·AST·γ-GTP가 낮아졌습니다(ALT P=0.0260/0.0397, AST P=0.0131, γ-GTP P=0.0229).",
       "비알코올성 간손상: 피로지표와 혈중 염증지표도 함께 개선됐습니다.",
-      "알코올성 간손상: 간 손상 지표인 ALT·AST·γ-GTP가 낮아졌습니다(ALT P=0.0260/0.0397, AST P=0.0131, γ-GTP P=0.0229).",
+      "알코올성 간손상: 간 손상 지표인 ALT·AST·γ-GTP가 낮아졌습니다(γ-GTP P=0.0292, ALT P=0.0332).",
       "알코올성 간손상: 혈중 중성지방과 혈중 염증지표도 함께 개선됐습니다.",
     ],
     evidenceTags: ["비알코올성 93명", "알코올성 70명", "SCI 논문"],
@@ -195,7 +195,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "12주 섭취 후 가스 배출 빈도가 늘고 복부 팽만감이 줄었습니다.",
       "참고: BGN4·BORI를 배합한 프로바이오틱스(40억 CFU/일)를 65세 이상 고령자가 12주간 섭취한 시험에서 인지기능과 기분 개선이 확인됐습니다(서울대학교 분당병원 실시).",
     ],
-    evidenceTags: ["FDA GRAS·NDI", "HALAL·KOSHER", "SCI 논문 260편"],
+    evidenceTags: ["FDA GRAS·NDI", "HALAL·KOSHER", "임상 10건·특허 80건·SCI 논문 260편"],
   },
   testofen: {
     name: "Testofen®",
@@ -220,7 +220,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "ThinkGIN",
     category: "기억",
     area: "기억력·인지기능 개선",
-    summary: "기억력·인지 기능 개선에 도움을 줄 수 있으며, 일반 홍삼보다 훨씬 많은 ‘진세노사이드’를 함유합니다.",
+    summary: "기억력·인지 기능 개선에 도움을 줄 수 있으며, 일반 홍삼보다 고농도의 진세노사이드를 함유한 새싹인삼추출분말입니다.",
     healthClaims: [
       "기억력과 인지 기능 개선에 도움을 줄 수 있습니다.",
       "일반 홍삼에 비해 고농도의 ‘진세노사이드’를 함유합니다.",
@@ -274,7 +274,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "저분자콜라겐펩타이드 AG",
     category: "피부",
     area: "피부보습·피부건강",
-    summary: "피부보습과 자외선 손상으로부터의 피부건강 유지에 도움을 줄 수 있는 저분자 콜라겐 펩타이드입니다.",
+    summary: "피부보습과 자외선 손상으로부터의 피부건강 유지, 눈가 주름·피부 윤기에 도움을 줄 수 있는 저분자 콜라겐 펩타이드입니다.",
     healthClaims: [
       "피부보습에 도움을 줄 수 있습니다.",
       "자외선에 의한 피부 손상으로부터 피부건강을 유지하는 데 도움을 줄 수 있습니다.",
@@ -326,7 +326,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     category: "간",
     area: "간건강·혈당건강 개선",
     intake: "간건강 300mg/day·혈당건강 1.2g/day",
-    summary: "비알코올성 지방간 개선에 도움을 줄 수 있으며, 간의 중성지방과 콜레스테롤 감소를 확인한 소재입니다.",
+    summary: "비알코올성 지방간 개선과 간·혈당 건강 유지에 도움을 줄 수 있으며, 간의 중성지방과 콜레스테롤 감소를 확인한 소재입니다.",
     healthClaims: [
       "비알코올성 지방간 개선에 도움을 줄 수 있습니다.",
       "간의 중성지방과 콜레스테롤 감소를 확인했습니다.",
@@ -362,7 +362,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
     name: "Immulink MBG",
     category: "면역",
     area: "면역기능 증진",
-    summary: "면역기능 증진에 도움을 줄 수 있으며, 선천·후천 면역 개선 효과를 입증한 소재입니다.",
+    summary: "선천면역과 후천면역 양쪽 개선에 도움을 줄 수 있는 영지버섯 균사체 추출분말입니다.",
     healthClaims: [
       "면역기능 증진에 도움을 줄 수 있습니다.",
       "선천면역과 후천(적응)면역 양쪽 모두에서 개선 효과를 입증했습니다.",

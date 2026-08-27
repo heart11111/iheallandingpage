@@ -673,7 +673,7 @@ const evidenceStudyNotes: Record<string, LocalizedStudyNote> = {
         valueJa: "12週間、BGN4・BORIベースのプロバイオティクスを40億CFU/日摂取",
         valueKo: "12주간 BGN4, BORI 기반 프로바이오틱스를 40억 CFU/일 섭취",
       },
-      { labelJa: "試験場所", labelKo: "시험장소", valueJa: "ソウル大学校盆唐再生病院", valueKo: "서울대학교 분당재생병원" },
+      { labelJa: "試験場所", labelKo: "시험장소", valueJa: "ソウル大学校盆唐病院", valueKo: "서울대학교 분당병원" },
       {
         labelJa: "出典",
         labelKo: "출처",
