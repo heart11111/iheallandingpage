@@ -6359,6 +6359,38 @@ h2 {
   line-height: 1.6;
 }
 
+.dh-mechanism-panel figcaption p {
+  margin: 0;
+}
+
+.dh-mechanism-panel figcaption cite {
+  display: block;
+  margin-top: 6px;
+  color: #64748b;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.dh-mechanism-panel[data-layout="stack"] {
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+.dh-mechanism-panel[data-layout="stack"] > div {
+  max-width: 46rem;
+}
+
+.dh-mechanism-panel[data-diagram="compact"] figure {
+  justify-self: center;
+  width: min(100%, 440px);
+}
+
+.dh-mechanism-panel[data-kicker="literal"] > div > p {
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
 .dh-below-summary-evidence {
   display: grid;
   justify-items: center;

@@ -14,7 +14,7 @@ import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
 import { getIngredientSpecLabel } from "@/lib/ingredientDisplay";
 import { getIngredientCardImage, getIngredientDisplayImage } from "@/lib/ingredientImages";
 import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
-import { ingredientPptDetails } from "@/lib/ingredientPptDetails";
+import { ingredientPptDetails, type PptEvidenceImage } from "@/lib/ingredientPptDetails";
 import type { Ingredient } from "@/lib/ingredients";
 
 type SubHeroProps = {
@@ -500,7 +500,7 @@ const histologyPanelCaptions: Record<string, HistologyLabels> = {
     arrow: { ko: "지방세포", ja: "脂肪細胞" },
     panels: [
       { ko: "고지방식 섭취 후 지방세포 수", ja: "高脂肪食摂取後の脂肪細胞数" },
-      { ko: "고지방식과 특허유산균 섭취 후 지방세포 수", ja: "高脂肪食と特許乳酸菌摂取後の脂肪細胞数" },
+      { ko: "고지방식과 추출물 섭취 후 지방세포 수", ja: "高脂肪食と抽出物摂取後の脂肪細胞数" },
     ],
   },
 };
@@ -513,14 +513,30 @@ function getLocalizedEvidenceImageSrc(src: string, isKorean: boolean) {
 
 const featureEvidenceImages: Record<string, string> = {
   bifido: "/images/ingredients/bifido-evidence-1.webp",
-  nvp1703: "/images/ingredients/nvp1703-evidence-3.jpeg",
+};
+
+type MechanismCopy = {
+  bodyJa: string;
+  bodyKo: string;
+  titleJa: string;
+  titleKo: string;
+  kickerJa?: string;
+  kickerKo?: string;
+  layout?: "split" | "stack";
+  diagramFit?: "default" | "compact";
 };
 
 const mechanismEvidenceImages: Record<string, string> = {
   nvp1702: "/images/ingredients/nvp1702-evidence-3.png",
+  nvp1703: "/images/ingredients/nvp1703-evidence-3.jpeg",
+  dermania: "/images/ingredients/dermania-evidence-3.png",
+  acetobeta: "/images/ingredients/acetobeta-evidence-1.webp",
+  agrimony: "/images/ingredients/agrimony-evidence-2.jpeg",
+  neulearn: "/images/ingredients/neulearn-evidence-1-clean.png",
+  applephenon: "/images/ingredients/applephenon-evidence-4.jpeg",
 };
 
-const mechanismEvidenceCopy: Record<string, { bodyJa: string; bodyKo: string; titleJa: string; titleKo: string }> = {
+const mechanismEvidenceCopy: Record<string, MechanismCopy> = {
   nvp1702: {
     titleJa: "肝損傷メカニズム",
     titleKo: "간 손상 메커니즘",
@@ -528,6 +544,65 @@ const mechanismEvidenceCopy: Record<string, { bodyJa: string; bodyKo: string; ti
       "腸内・血中のLPS(内毒素)と炎症シグナルTNF-αが増えると、肝損傷指標であるALT・AST・γ-GTPも上昇します。NVP-1702はこの炎症経路を整え、肝損傷指標の改善をサポートする設計です。",
     bodyKo:
       "장내·혈중 LPS(내독소)와 염증 신호물질 TNF-α가 늘면 간 손상 지표인 ALT·AST·γ-GTP도 함께 높아집니다. NVP-1702는 이 염증 경로를 조절해 간 손상 지표 개선에 도움을 주는 설계입니다.",
+  },
+  nvp1703: {
+    titleJa: "免疫過敏反応および鼻状態改善メカニズム",
+    titleKo: "면역과민반응 및 코 상태 개선 메커니즘",
+    bodyJa:
+      "免疫の過敏な反応にともなう鼻の状態の改善を目指します。アレルギー抗体IgEが減少し、Tregから分泌されるIL-10が増える一方、Th2由来のIL-4・IL-5・IL-13は減少します。その流れで鼻炎コントロール評価(RCAT)が改善し、全体鼻症状スコア(TNSS)が下がります。",
+    bodyKo:
+      "면역 과민반응에 따른 코 상태 개선을 목표로 합니다. 알레르기 항체 IgE가 줄고, Treg에서 분비되는 IL-10은 늘며 Th2에서 나오는 IL-4·IL-5·IL-13은 감소합니다. 그 결과 비염 조절 평가(RCAT)가 개선되고 전체 코 증상 점수(TNSS)가 낮아지는 흐름입니다.",
+  },
+  dermania: {
+    titleJa: "しわ・保湿ケアのメカニズム",
+    titleKo: "주름·보습 케어 메커니즘",
+    layout: "stack",
+    bodyJa:
+      "コラーゲン遺伝子を活性化し、MMPs遺伝子の働きを抑えます。コラーゲンとNMF(天然保湿因子)が増え、しわの形成が抑えられ、保湿力が高まります。",
+    bodyKo:
+      "콜라겐 유전자를 활성화하고 MMPs 유전자 작용을 억제합니다. 콜라겐과 NMF(천연보습인자)가 늘고, 주름 형성은 줄며 보습력이 높아집니다.",
+  },
+  acetobeta: {
+    titleJa: "アルコール分解の流れ",
+    titleKo: "알코올 분해 과정",
+    diagramFit: "compact",
+    bodyJa:
+      "アルコールを分解する酵素ADH(アルコール脱水素酵素)が増え、血中アルコール濃度が下がります。アセトアルデヒドを分解する酵素ALDH(アセトアルデヒド脱水素酵素)が増え、二日酔いをやわらげます。",
+    bodyKo:
+      "알코올을 분해하는 효소 ADH(알코올 탈수소효소)가 늘어 혈중 알코올 농도가 낮아집니다. 아세트알데하이드를 분해하는 효소 ALDH(아세트알데하이드 탈수소효소)가 늘어 숙취를 줄여줍니다.",
+  },
+  agrimony: {
+    titleJa: "脂肪肝組織の比較",
+    titleKo: "지방간 조직 비교",
+    kickerJa: "Imaging",
+    kickerKo: "Imaging",
+    layout: "stack",
+    bodyJa:
+      "非アルコール性脂肪肝の改善に役立ちます。脂肪肝の含量とALT・ASTの低下を確認しています。組織画像では、脂肪肝と抽出物摂取後の肝組織の変化を比較しています。",
+    bodyKo:
+      "비알코올성 지방간 개선에 도움을 줄 수 있습니다. 지방간 함량과 ALT·AST 감소를 확인했습니다. 조직 이미지에서는 지방간과 추출물 섭취 후 간 조직 변화를 비교합니다.",
+  },
+  neulearn: {
+    titleJa: "大脳灰白質容積の確認",
+    titleKo: "대뇌 회백질 용적 확인",
+    kickerJa: "f-MRI",
+    kickerKo: "f-MRI",
+    layout: "stack",
+    bodyJa:
+      "加齢によって低下した認知機能の改善に役立ちます。f-MRI(機能的磁気共鳴画像)で、大脳の灰白質容積の増加を確認・検証しています。",
+    bodyKo:
+      "노화로 저하된 인지기능 개선에 도움을 줄 수 있습니다. f-MRI(기능적 자기공명영상)로 대뇌 회백질 용적 증가를 확인·검증했습니다.",
+  },
+  applephenon: {
+    titleJa: "腹部内臓脂肪のCT評価",
+    titleKo: "복부 내장지방 CT 평가",
+    kickerJa: "CT",
+    kickerKo: "CT",
+    layout: "stack",
+    bodyJa:
+      "体脂肪を減らすのに役立ちます。CT撮影により、腹部内臓脂肪の摂取前後の変化を評価しています。",
+    bodyKo:
+      "체지방 감소에 도움을 줄 수 있습니다. CT 촬영으로 복부 내장지방의 섭취 전후 변화를 평가합니다.",
   },
 };
 
@@ -544,8 +619,6 @@ function renderIngredientName(name: string) {
 
   return name;
 }
-
-const belowSummaryEvidenceImages = new Set(["/images/ingredients/dermania-evidence-3.png"]);
 
 const originCompositionImages: Record<string, { alt: string; src: string }[]> = {
   bifido: [
@@ -715,6 +788,67 @@ function getEvidenceCaption(src: string, caption: string, isKorean: boolean) {
 function getEvidenceSource(source: string | undefined, isKorean: boolean) {
   if (!source) return undefined;
   return `${isKorean ? "출처" : "出典"}: ${getLocalizedEvidenceSourceText(source, isKorean)}`;
+}
+
+function HistologyCaption({ src, isKorean }: { src: string; isKorean: boolean }) {
+  const histology = histologyPanelCaptions[src];
+  if (!histology) return null;
+
+  return (
+    <div className="dh-histo-labels">
+      {histology.arrow && (
+        <p className="dh-histo-arrow">
+          <span aria-hidden="true">↘</span> {isKorean ? histology.arrow.ko : histology.arrow.ja}
+        </p>
+      )}
+      <div className="dh-histo-panels">
+        {histology.panels.map((panel) => (
+          <p key={panel.ko}>{isKorean ? panel.ko : panel.ja}</p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MechanismPanel({
+  copy,
+  image,
+  isKorean,
+  name,
+}: {
+  copy: MechanismCopy;
+  image: PptEvidenceImage;
+  isKorean: boolean;
+  name: string;
+}) {
+  const imageSrc = getLocalizedEvidenceImageSrc(image.src, isKorean);
+  const caption = getEvidenceCaption(image.src, image.caption, isKorean);
+  const source = getEvidenceSource(image.source, isKorean);
+  const kicker = isKorean ? copy.kickerKo || "Mechanism" : copy.kickerJa || "Mechanism";
+
+  return (
+    <section
+      aria-label={`${name} ${kicker}`}
+      className="dh-mechanism-panel"
+      data-diagram={copy.diagramFit || "default"}
+      data-kicker={kicker === "Mechanism" ? undefined : "literal"}
+      data-layout={copy.layout || "split"}
+    >
+      <div>
+        <p>{kicker}</p>
+        <h3>{isKorean ? copy.titleKo : copy.titleJa}</h3>
+        <span>{isKorean ? copy.bodyKo : copy.bodyJa}</span>
+      </div>
+      <figure>
+        <EvidenceFigureImage caption={caption} imageSrc={imageSrc} isKorean={isKorean} src={image.src} />
+        <HistologyCaption isKorean={isKorean} src={image.src} />
+        <figcaption>
+          <p>{caption}</p>
+          {source && <cite>{source}</cite>}
+        </figcaption>
+      </figure>
+    </section>
+  );
 }
 
 export function CorporateSubHero({
@@ -1022,23 +1156,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                             src={evidenceImage.src}
                           />
                         )}
-                        {histologyPanelCaptions[evidenceImage.src] && (
-                          <div className="dh-histo-labels">
-                            {histologyPanelCaptions[evidenceImage.src].arrow && (
-                              <p className="dh-histo-arrow">
-                                <span aria-hidden="true">↘</span>{" "}
-                                {isKorean
-                                  ? histologyPanelCaptions[evidenceImage.src].arrow!.ko
-                                  : histologyPanelCaptions[evidenceImage.src].arrow!.ja}
-                              </p>
-                            )}
-                            <div className="dh-histo-panels">
-                              {histologyPanelCaptions[evidenceImage.src].panels.map((panel) => (
-                                <p key={panel.ko}>{isKorean ? panel.ko : panel.ja}</p>
-                              ))}
-                            </div>
-                          </div>
-                        )}
+                        <HistologyCaption isKorean={isKorean} src={evidenceImage.src} />
                         <figcaption>
                           <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
                           {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
@@ -1106,23 +1224,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             )}
 
             {showExtended && mechanismImage && mechanismCopy && (
-              <section className="dh-mechanism-panel" aria-label={`${item.name} mechanism`}>
-                <div>
-                  <p>{isKorean ? "Mechanism" : "Mechanism"}</p>
-                  <h3>{isKorean ? mechanismCopy.titleKo : mechanismCopy.titleJa}</h3>
-                  <span>{isKorean ? mechanismCopy.bodyKo : mechanismCopy.bodyJa}</span>
-                </div>
-                <figure>
-                  <Image
-                    alt={getEvidenceCaption(mechanismImage.src, mechanismImage.caption, isKorean)}
-                    height={480}
-                    loading="eager"
-                    src={mechanismImage.src}
-                    width={720}
-                  />
-                  <figcaption>{getEvidenceCaption(mechanismImage.src, mechanismImage.caption, isKorean)}</figcaption>
-                </figure>
-              </section>
+              <MechanismPanel copy={mechanismCopy} image={mechanismImage} isKorean={isKorean} name={item.name} />
             )}
           </>
         );
@@ -1168,11 +1270,9 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
   const mechanismImageSrc = mechanismEvidenceImages[sourceItem.id];
   const mechanismImage = pptDetail?.evidenceImages.find((image) => image.src === mechanismImageSrc);
   const mechanismCopy = mechanismEvidenceCopy[sourceItem.id];
-  const belowSummaryImages = pptDetail?.evidenceImages.filter((image) => belowSummaryEvidenceImages.has(image.src)) || [];
   const excludedEvidenceSources = [
     featureImageSrc,
     mechanismImageSrc,
-    ...belowSummaryImages.map((image) => image.src),
     ...(originCompositionEvidenceImages[sourceItem.id] || []),
   ].filter((source): source is string => Boolean(source));
   const chartEvidenceImages = getChartEvidenceImages(pptDetail, excludedEvidenceSources);
@@ -1278,40 +1378,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
       </div>
 
       {mechanismImage && mechanismCopy && (
-        <section className="dh-mechanism-panel" aria-label={`${item.name} mechanism`}>
-          <div>
-            <p>Mechanism</p>
-            <h3>{isKorean ? mechanismCopy.titleKo : mechanismCopy.titleJa}</h3>
-            <span>{isKorean ? mechanismCopy.bodyKo : mechanismCopy.bodyJa}</span>
-          </div>
-          <figure>
-            <Image
-              alt={getEvidenceCaption(mechanismImage.src, mechanismImage.caption, isKorean)}
-              height={480}
-              loading="eager"
-              src={mechanismImage.src}
-              width={720}
-            />
-            <figcaption>{getEvidenceCaption(mechanismImage.src, mechanismImage.caption, isKorean)}</figcaption>
-          </figure>
-        </section>
-      )}
-
-      {belowSummaryImages.length > 0 && (
-        <div className="dh-below-summary-evidence">
-          {belowSummaryImages.map((evidenceImage) => (
-            <figure key={evidenceImage.src}>
-              <Image
-                alt={getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}
-                height={287}
-                loading="eager"
-                src={evidenceImage.src}
-                width={1100}
-              />
-              <figcaption>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</figcaption>
-            </figure>
-          ))}
-        </div>
+        <MechanismPanel copy={mechanismCopy} image={mechanismImage} isKorean={isKorean} name={item.name} />
       )}
 
       {evidenceReferences.length > 0 && (
@@ -1372,23 +1439,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
                       src={evidenceImage.src}
                     />
                   )}
-                  {histologyPanelCaptions[evidenceImage.src] && (
-                    <div className="dh-histo-labels">
-                      {histologyPanelCaptions[evidenceImage.src].arrow && (
-                        <p className="dh-histo-arrow">
-                          <span aria-hidden="true">↘</span>{" "}
-                          {isKorean
-                            ? histologyPanelCaptions[evidenceImage.src].arrow!.ko
-                            : histologyPanelCaptions[evidenceImage.src].arrow!.ja}
-                        </p>
-                      )}
-                      <div className="dh-histo-panels">
-                        {histologyPanelCaptions[evidenceImage.src].panels.map((panel) => (
-                          <p key={panel.ko}>{isKorean ? panel.ko : panel.ja}</p>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <HistologyCaption isKorean={isKorean} src={evidenceImage.src} />
                   <figcaption>
                     <p>{getEvidenceCaption(evidenceImage.src, evidenceImage.caption, isKorean)}</p>
                     {getEvidenceSource(evidenceImage.source, isKorean) && <cite>{getEvidenceSource(evidenceImage.source, isKorean)}</cite>}
