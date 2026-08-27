@@ -1,3 +1,7 @@
+/**
+ * Internal HTML→PDF stubs for layout experiments.
+ * Do not deploy the output as official BIOLAB Japan catalogs.
+ */
 const fs = require("node:fs");
 const path = require("node:path");
 const { spawnSync } = require("node:child_process");

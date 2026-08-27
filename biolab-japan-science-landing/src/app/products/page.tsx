@@ -50,11 +50,7 @@ export default function ProductsPage() {
             <div className="dh-product-grid dh-product-grid-two">
               {productLinePages.map((group, index) => (
                 <article className="dh-product-card" key={group.href}>
-                  <a
-                    className="dh-product-card-catalog"
-                    download
-                    href={group.catalogHref}
-                  >
+                  <a className="dh-product-card-catalog" href={group.href}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={
@@ -64,9 +60,6 @@ export default function ProductsPage() {
                       }
                       alt=""
                     />
-                  </a>
-                  <a className="dh-product-card-catalog-btn" download href={group.catalogHref}>
-                    <LocalizedText ja="カタログをダウンロード" ko="카탈로그 다운로드" />
                   </a>
                   <div className="dh-product-shade" aria-hidden="true" />
                   <div className="dh-product-text">

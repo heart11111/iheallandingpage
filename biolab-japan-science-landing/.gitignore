@@ -18,6 +18,9 @@
 /out/
 .tmp-catalogs/
 
+# Generated HTML-to-PDF stubs — not official catalogs
+/public/downloads/catalogs/*.pdf
+
 # production
 /build
 

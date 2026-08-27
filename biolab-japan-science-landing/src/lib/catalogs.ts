@@ -5,6 +5,8 @@ export type CatalogFile = {
   titleKo: string;
 };
 
+// Reserved filenames for official print catalogs. Generated HTML-to-PDF stubs
+// must not be linked from the site; wire these hrefs only after real files exist.
 export const productLineCatalogs = {
   probiotics: {
     href: "/downloads/catalogs/functional-probiotics.pdf",
