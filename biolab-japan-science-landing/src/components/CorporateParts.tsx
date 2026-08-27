@@ -16,6 +16,7 @@ import { getIngredientCardImage, getIngredientDisplayImage } from "@/lib/ingredi
 import { ingredientEvidenceVisuals } from "@/lib/ingredientEvidence";
 import { ingredientPptDetails } from "@/lib/ingredientPptDetails";
 import type { Ingredient } from "@/lib/ingredients";
+import { originMaterials } from "@/lib/originMaterials";
 
 type SubHeroProps = {
   title: string;
@@ -124,6 +125,44 @@ function OriginCatalogCards({ images }: { images: { alt: string; src: string }[]
         </div>
       ))}
     </div>
+  );
+}
+
+function OriginMaterialCard({ id, isKorean }: { id: string; isKorean: boolean }) {
+  const material = originMaterials[id];
+  if (!material) return null;
+
+  const title = isKorean ? material.titleKo : material.titleJa;
+  const note = isKorean ? material.noteKo : material.noteJa;
+  const badges = isKorean ? material.badgesKo : material.badgesJa;
+  const facts = isKorean ? material.factsKo : material.factsJa;
+  const alt = material.latin ? `${title} (${material.latin})` : title;
+
+  return (
+    <article className="dh-origin-feature" data-fit={material.fit}>
+      <figure>
+        <Image alt={alt} height={420} loading="eager" src={material.image} width={560} />
+      </figure>
+      <div>
+        {material.latin ? <p className="dh-origin-feature-latin">{material.latin}</p> : null}
+        <strong>{title}</strong>
+        {badges.length > 0 ? (
+          <div className="dh-origin-feature-badges">
+            {badges.map((badge) => (
+              <em key={badge}>{badge}</em>
+            ))}
+          </div>
+        ) : null}
+        {note ? <p>{note}</p> : null}
+        {facts.length > 0 ? (
+          <ul>
+            {facts.map((fact) => (
+              <li key={fact}>{fact}</li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+    </article>
   );
 }
 
@@ -924,11 +963,15 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
 
             <section className="dh-detail-materials" aria-label={`${item.name} ${materialLabel}`}>
               <h3>{materialLabel}</h3>
-              <ul>
-                {detailOriginItems.map((text) => (
-                  <li key={text}>{text}</li>
-                ))}
-              </ul>
+              {originMaterials[sourceItem.id] ? (
+                <OriginMaterialCard id={sourceItem.id} isKorean={isKorean} />
+              ) : (
+                <ul>
+                  {detailOriginItems.map((text) => (
+                    <li key={text}>{text}</li>
+                  ))}
+                </ul>
+              )}
               {originImages.length > 0 && <OriginCatalogCards images={originImages} />}
             </section>
 
@@ -1229,11 +1272,15 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           <p>Raw Material</p>
           <h3>{isKorean ? labels.rawMaterial : pptDetail?.originTitle || materialLabel}</h3>
         </div>
-        <ul>
-          {originItems.map((origin) => (
-            <li key={origin}>{origin}</li>
-          ))}
-        </ul>
+        {originMaterials[sourceItem.id] ? (
+          <OriginMaterialCard id={sourceItem.id} isKorean={isKorean} />
+        ) : (
+          <ul>
+            {originItems.map((origin) => (
+              <li key={origin}>{origin}</li>
+            ))}
+          </ul>
+        )}
         {originImages.length > 0 && (
           <div className="dh-origin-visual-stack">
             <OriginCatalogCards images={originImages} />
