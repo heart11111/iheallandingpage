@@ -5292,8 +5292,8 @@ h2 {
 
 .dh-ceo-message-grid {
   display: grid;
-  grid-template-columns: minmax(260px, 0.74fr) minmax(0, 1.26fr);
-  gap: 64px;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  gap: 56px;
   align-items: start;
 }
 
@@ -5319,11 +5319,11 @@ h2 {
   padding-left: 18px;
   border-left: 4px solid #2f70bf;
   color: #111827;
-  font-size: clamp(22px, 1.7vw, 28px);
+  font-size: clamp(21px, 1.65vw, 27px);
   font-weight: 900;
   line-height: 1.42;
   letter-spacing: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   word-break: normal;
 }
 
