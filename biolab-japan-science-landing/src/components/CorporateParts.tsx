@@ -1033,7 +1033,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             <strong>{item.area}</strong>
             <span>{item.intake}</span>
 
-            <section className="dh-detail-summary" aria-label={`${item.name} 概要`}>
+            <section className="dh-detail-summary" aria-label={`${item.name} ${isKorean ? labels.overviewAria : "概要"}`}>
               <h3>{isKorean ? labels.summary : "素材概要"}</h3>
               <p>{item.summary}</p>
             </section>
@@ -1121,7 +1121,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                     </div>
                   </section>
                   <section>
-                    <h4>{isKorean ? labels.rawMaterial : pptDetail.originTitle}</h4>
+                    <h4>{isKorean ? materialLabel : pptDetail.originTitle}</h4>
                     <div className="dh-ppt-origin-tags">
                       {detailOriginItems.map((origin) => (
                         <span key={origin}>{origin}</span>
@@ -1244,7 +1244,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
             <Link className="dh-detail-card dh-detail-card-link" href={`${linkBase.replace(/\/$/, "")}/${item.id}/`} key={item.id}>
               {compactContent}
               <span className="dh-detail-card-cta">
-                DETAIL
+                {isKorean ? devKoreanLabels.cta.detail : "DETAIL"}
                 <ArrowRight aria-hidden="true" size={13} strokeWidth={3} />
               </span>
             </Link>
@@ -1337,7 +1337,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
       <section className="dh-ingredient-origin-panel">
         <div>
           <p>Raw Material</p>
-          <h3>{isKorean ? labels.rawMaterial : pptDetail?.originTitle || materialLabel}</h3>
+          <h3>{isKorean ? materialLabel : pptDetail?.originTitle || materialLabel}</h3>
         </div>
         <ul>
           {originItems.map((origin) => (
@@ -1544,7 +1544,7 @@ export function CompanyLocationMap() {
       <p className="dh-contact-map-address">
         {isKorean ? companyContact.address.ko : companyContact.address.ja}
       </p>
-      {isKorean ? <p className="dh-contact-note">{companyContact.address.ja}</p> : null}
+      {isKorean ? <p className="dh-contact-note">일본 등록 주소: {companyContact.address.ja}</p> : null}
       <div className="dh-contact-map-frame">
         <iframe
           title={isKorean ? `${companyContact.legalName} 위치 지도` : `${companyContact.legalName} 所在地の地図`}

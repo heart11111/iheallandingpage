@@ -2,6 +2,7 @@ import { CorporateFooter, CorporateSubHero } from "@/components/CorporateParts";
 import { LocalizedText } from "@/components/DevLanguageProvider";
 import { NavBar } from "@/components/NavBar";
 import { corporateNews } from "@/lib/corporate";
+import { devKoreanLabels } from "@/lib/devKorean";
 
 export default function NewsPage() {
   return (
@@ -35,7 +36,9 @@ export default function NewsPage() {
                     <span>
                       <LocalizedText ja={item.summary} ko={item.koSummary} />
                     </span>
-                    <a href="/contact">LEARN MORE</a>
+                    <a href="/contact">
+                      <LocalizedText ja="LEARN MORE" ko={devKoreanLabels.cta.learnMore} />
+                    </a>
                   </div>
                 </article>
               ))}

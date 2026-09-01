@@ -36,6 +36,11 @@ export const devKoreanLabels = {
     documents: "근거 자료",
     materialName: "소재명",
     functionalContent: "기능성 내용",
+    overviewAria: "개요",
+  },
+  cta: {
+    detail: "상세",
+    learnMore: "자세히 보기",
   },
   line: {
     "Functional Probiotics": "기능성 프로바이오틱스",
@@ -268,7 +273,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "중성지방 억제·배출과 관련된 체지방 감소 데이터를 보유하고, 섭취를 멈춘 뒤에도 4주간 효과가 지속됐습니다.",
     ],
     evidenceTags: ["체지방 감소", "고농축 폴리페놀", "지속 효과"],
-    origin: ["풋사과추출물"],
+    origin: ["풋사과추출물(청사과 폴리페놀)"],
   },
   collagen: {
     name: "저분자콜라겐펩타이드 AG",
@@ -285,7 +290,11 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "피부 전체 탄력(생체 탄력·순수 탄력)이 높아지고 피부 결도 매끄러워졌습니다.",
     ],
     evidenceTags: ["피부보습", "탄력(R2)", "눈가 주름"],
-    origin: ["가이양(Pangasius)의 어피로 만든 젤라틴의 가수분해 공법", "500Da 이하 저분자 콜라겐 펩타이드"],
+    origin: [
+      "Long-pep collagen peptide AG",
+      "가이양(Pangasius)의 어피로 만든 젤라틴의 가수분해 공법",
+      "500Da 이하 저분자 콜라겐 펩타이드",
+    ],
   },
   dermania: {
     name: "DermaNia",

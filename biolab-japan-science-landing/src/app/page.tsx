@@ -410,7 +410,7 @@ export default function Home() {
                     <p className="dh-topic-date">{item.date}</p>
                     <h3>{isKorean ? item.koTitle : item.title}</h3>
                     <p>{isKorean ? item.koSummary : item.summary}</p>
-                    <a href="/news">LEARN MORE</a>
+                    <a href="/news">{isKorean ? "자세히 보기" : "LEARN MORE"}</a>
                   </article>
                 ))}
               </div>

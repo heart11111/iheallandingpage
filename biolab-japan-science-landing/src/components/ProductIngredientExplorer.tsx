@@ -92,7 +92,10 @@ function getFilterFallbackScript() {
       if (visible) visibleCount += 1;
     });
 
-    if (count) count.textContent = visibleCount + "素材";
+    if (count) {
+      const suffix = document.documentElement.lang === "ko" ? "개 소재" : "素材";
+      count.textContent = visibleCount + suffix;
+    }
     root.dataset.fallbackLine = activeLine;
     root.dataset.fallbackCategory = activeCategory;
   }
@@ -186,7 +189,7 @@ export function ProductIngredientExplorer({ items, title, description, koTitle, 
   return (
     <section
       className="dh-ingredient-explorer"
-      aria-label="Ingredient detail index"
+      aria-label={language === "ko" ? "소재 상세 인덱스" : "Ingredient detail index"}
       data-fallback-category="All"
       data-fallback-line="All"
       data-ingredient-filter-root
@@ -197,8 +200,8 @@ export function ProductIngredientExplorer({ items, title, description, koTitle, 
         <p>{language === "ko" && koDescription ? koDescription : description}</p>
       </div>
 
-      <div className="dh-filter-stack" aria-label="Product filters">
-        <div className="dh-filter-row" aria-label="Product line">
+      <div className="dh-filter-stack" aria-label={language === "ko" ? "제품 필터" : "Product filters"}>
+        <div className="dh-filter-row" aria-label={language === "ko" ? "제품 라인" : "Product line"}>
           {displayLineOptions.map((option) => (
             <button
               aria-pressed={activeLine === option.value}
@@ -212,7 +215,7 @@ export function ProductIngredientExplorer({ items, title, description, koTitle, 
             </button>
           ))}
         </div>
-        <div className="dh-filter-row dh-filter-row-soft" aria-label="Ingredient category">
+        <div className="dh-filter-row dh-filter-row-soft" aria-label={language === "ko" ? "소재 카테고리" : "Ingredient category"}>
           {categories.map((option) => (
             <button
               aria-pressed={selectedCategory === option}
@@ -254,9 +257,11 @@ export function ProductIngredientExplorer({ items, title, description, koTitle, 
               <div className="dh-ingredient-card-badges">
                 <IngredientLineBadge
                   label={
-                    item.line === "Functional Probiotics"
-                      ? "Functional Probiotics"
-                      : "Functional Nature’s food ingredients"
+                    language === "ko"
+                      ? devKoreanLabels.line[item.line]
+                      : item.line === "Functional Probiotics"
+                        ? "Functional Probiotics"
+                        : "Functional Nature’s food ingredients"
                   }
                   line={item.line}
                 />
@@ -271,7 +276,7 @@ export function ProductIngredientExplorer({ items, title, description, koTitle, 
                 {item.intake}
               </span>
               <em className="dh-ingredient-card-cta">
-                DETAIL
+                {language === "ko" ? devKoreanLabels.cta.detail : "DETAIL"}
                 <ArrowRight aria-hidden="true" size={12} strokeWidth={3} />
               </em>
             </div>
