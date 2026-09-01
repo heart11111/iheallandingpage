@@ -32,6 +32,7 @@ export function EvidenceChart({ chartKey, lang }: EvidenceChartProps) {
     }
 
     let settleTimer: number | undefined;
+    let revealTimer: number | undefined;
     const reveal = () => {
       revealedRef.current = true;
       host.classList.add("show");
@@ -53,11 +54,11 @@ export function EvidenceChart({ chartKey, lang }: EvidenceChartProps) {
       (entries) => {
         for (const entry of entries) {
           if (!entry.isIntersecting) continue;
-          reveal();
+          revealTimer = window.setTimeout(reveal, 140);
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.28, rootMargin: "0px 0px -18% 0px" },
     );
 
     // Paint the collapsed state first, then observe, so the grow transition runs.
@@ -71,6 +72,7 @@ export function EvidenceChart({ chartKey, lang }: EvidenceChartProps) {
       cancelled = true;
       cancelAnimationFrame(frame);
       observer.disconnect();
+      if (revealTimer) window.clearTimeout(revealTimer);
       if (settleTimer) window.clearTimeout(settleTimer);
     };
   }, [chartKey, lang]);

@@ -6883,12 +6883,16 @@ h2 {
 .dh-evidence-chart .barRect {
   transform-box: fill-box;
   transform: scaleY(0);
-  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  opacity: 0;
+  transition:
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.08s,
+    opacity 0.35s ease 0.08s;
 }
 
 .dh-evidence-chart.show .barRect,
 .dh-evidence-chart .show .barRect {
   transform: scaleY(1);
+  opacity: 1;
 }
 
 .dh-evidence-chart .lp {
@@ -6930,6 +6934,7 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
   .dh-evidence-chart .barRect {
     transform: scaleY(1);
+    opacity: 1;
     transition: none;
   }
 

@@ -1156,7 +1156,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                         data-evidence-index={index + 1}
                         data-evidence-shape={wideEvidenceImages.has(imageSrc) ? "wide" : undefined}
                         data-evidence-src={imageSrc}
-                        data-reveal={getLiveChartKey(evidenceImage.src) ? undefined : ""}
+                        data-reveal=""
                         key={imageSrc}
                       >
                         {getLiveChartKey(evidenceImage.src) ? (
@@ -1441,7 +1441,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
                   data-evidence-index={index + 1}
                   data-evidence-shape={wideEvidenceImages.has(imageSrc) ? "wide" : undefined}
                   data-evidence-src={imageSrc}
-                  data-reveal={getLiveChartKey(evidenceImage.src) ? undefined : ""}
+                  data-reveal=""
                   key={imageSrc}
                 >
                   {getLiveChartKey(evidenceImage.src) ? (
