@@ -214,7 +214,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "갱년기 남성을 위한 추가 임상 데이터도 갖추고 있습니다.",
     ],
     evidenceTags: ["KFDA 개별인정", "AMS", "12주 인체적용시험"],
-    origin: ["호로파종자추출물 (Trigonella foenum-graecum)"],
+    origin: ["호로파종자추출물 (Trigonella foenum-graecum)", "인도산 · 한국 개별인정형 소재"],
   },
   thinkgin: {
     name: "ThinkGIN",
@@ -232,7 +232,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "즉각 회상력이 향상되고(SVLT 총점 P<0.01), 기억력 저하 관련 혈액지표 AChE가 감소했습니다.",
     ],
     evidenceTags: ["진세노사이드", "SVLT", "AChE 감소"],
-    origin: ["새싹인삼추출분말 (Panax ginseng C.A. Meyer sprout)"],
+    origin: ["새싹인삼추출분말 (Panax ginseng C.A. Meyer sprout)", "한국산 · 한국 개별인정형 소재"],
   },
   neulearn: {
     name: "Neu learn",
@@ -251,7 +251,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "f-MRI(기능적 자기공명영상)로 대뇌 회백질 용적 증가를 확인했습니다.",
     ],
     evidenceTags: ["f-MRI", "SMCQ", "단기 기억"],
-    origin: ["흰목이버섯효소분해추출물 (Tremella fuciformis Beck-extract)"],
+    origin: ["흰목이버섯효소분해추출물 (Tremella fuciformis Beck-extract)", "중국산 · 한국 개별인정형 소재"],
   },
   applephenon: {
     name: "풋사과추출물 애플페논(Applephenon®)",
@@ -268,7 +268,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "중성지방 억제·배출과 관련된 체지방 감소 데이터를 보유하고, 섭취를 멈춘 뒤에도 4주간 효과가 지속됐습니다.",
     ],
     evidenceTags: ["체지방 감소", "고농축 폴리페놀", "지속 효과"],
-    origin: ["풋사과추출물"],
+    origin: ["풋사과추출물", "한국산 · 한국 개별인정형 소재"],
   },
   collagen: {
     name: "저분자콜라겐펩타이드 AG",
@@ -285,7 +285,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "피부 전체 탄력(생체 탄력·순수 탄력)이 높아지고 피부 결도 매끄러워졌습니다.",
     ],
     evidenceTags: ["피부보습", "탄력(R2)", "눈가 주름"],
-    origin: ["가이양(Pangasius)의 어피로 만든 젤라틴의 가수분해 공법", "500Da 이하 저분자 콜라겐 펩타이드"],
+    origin: ["가이양(Pangasius)의 어피로 만든 젤라틴의 가수분해 공법", "500Da 이하 저분자 콜라겐 펩타이드", "한국산 · 한국 개별인정형 · 한국 최초의 이중 기능성 소재"],
   },
   dermania: {
     name: "DermaNia",
@@ -302,7 +302,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "원리: 콜라겐 유전자를 활성화하고 MMPs 유전자 작용을 억제해 주름 형성을 막고 보습력을 높입니다.",
     ],
     evidenceTags: ["피부 수분", "주름 감소", "12주 임상"],
-    origin: ["줄풀추출물 Zizania latifolia (Wild rice)"],
+    origin: ["줄풀추출물 Zizania latifolia (Wild rice)", "한국산 · 한국 개별인정형 소재"],
   },
   agrimony: {
     name: "아그리모니추출물 (Agrimonia pilosa)",
@@ -319,7 +319,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "지방간 지수(HSI)도 개선됐습니다(P=0.044).",
     ],
     evidenceTags: ["ALT", "AST", "HSI"],
-    origin: ["아그리모니추출물 (Agrimonia pilosa)"],
+    origin: ["아그리모니추출물 (Agrimonia pilosa)", "한국산 · 한국 개별인정형 소재"],
   },
   pinitol: {
     name: "피니톨",
@@ -339,7 +339,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "항산화 능력이 좋아졌습니다. 항산화 효소 GPx 증가(P=0.015), 산화 스트레스 지표 MDA 감소(P=0.002).",
     ],
     evidenceTags: ["GPx 증가", "MDA 감소", "ALT/AST"],
-    origin: ["캐롭(Carob)의 껍질에서 추출·정제"],
+    origin: ["캐롭(Carob)의 껍질에서 추출·정제", "한국산 · 한국 개별인정형 소재"],
   },
   acetobeta: {
     name: "아세토베타 (Aceto Beta)",
@@ -380,7 +380,7 @@ export const koreanIngredientCopy: Record<string, KoreanIngredientCopy> = {
       "선천면역 개선: NK세포 수와 NK세포 활성이 증가했습니다.",
     ],
     evidenceTags: ["베타글루칸 77%+", "선천면역", "후천면역"],
-    origin: ["영지버섯 균사체 추출분말 (Ganoderma lucidum)"],
+    origin: ["영지버섯 균사체 추출분말 (Ganoderma lucidum)", "미국산 · 한국 개별인정형 소재"],
   },
 };
 
