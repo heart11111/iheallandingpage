@@ -58,7 +58,7 @@ export function EvidenceChart({ chartKey, lang }: EvidenceChartProps) {
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.28, rootMargin: "0px 0px -18% 0px" },
+      { threshold: 0.08, rootMargin: "0px 0px -28% 0px" },
     );
 
     // Paint the collapsed state first, then observe, so the grow transition runs.
