@@ -5900,6 +5900,12 @@ h2 {
   object-fit: cover;
 }
 
+.dh-origin-composition-cards[data-caption="in-image"] img {
+  aspect-ratio: 319 / 203;
+  object-fit: contain;
+  background: #fff;
+}
+
 .dh-origin-composition-cards figcaption {
   display: grid;
   gap: 2px;
