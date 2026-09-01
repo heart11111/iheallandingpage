@@ -9,10 +9,6 @@ import { corporateNews } from "@/lib/corporate";
 import { useLenis } from "@/lib/useLenis";
 import { useReveal } from "@/lib/useReveal";
 
-// News is temporarily hidden until real press articles are ready.
-// Flip this back to `true` to restore the homepage News section instantly.
-const SHOW_NEWS = false;
-
 // Business map section is temporarily hidden. Flip to `true` to restore.
 const SHOW_BUSINESS_MAP = false;
 
@@ -394,29 +390,32 @@ export default function Home() {
           </div>
         </section>
 
-        {SHOW_NEWS && (
-          <section id="news" className="dh-news dh-home-news">
-            <div className="dh-container">
-              <div className="dh-section-title" data-reveal="">
-                <h2>News</h2>
-                <p>{isKorean ? "BIOLAB Japan의 사업 전개, 소재 정보, 제휴 상담 관련 최신 토픽입니다." : "BIOLAB Japanの事業展開、素材情報、提携相談に関する最新トピックです。"}</p>
-              </div>
-              <div className="dh-topic-grid">
-                {corporateNews.map((item, index) => (
-                  <article className="dh-topic" data-reveal={String(index)} key={item.slug}>
-                    {/* Light brand wash only — the previous duotone flattened all
-                        three photos into the same washed-out blue. */}
-                    <div className="dh-topic-visual" style={{ backgroundImage: `linear-gradient(160deg, rgba(13, 38, 66, 0.34), rgba(65, 171, 225, 0.12)), url(${item.image})` }} />
-                    <p className="dh-topic-date">{item.date}</p>
-                    <h3>{isKorean ? item.koTitle : item.title}</h3>
-                    <p>{isKorean ? item.koSummary : item.summary}</p>
-                    <a href="/news">LEARN MORE</a>
-                  </article>
-                ))}
-              </div>
+        <section id="news" className="dh-news dh-home-news">
+          <div className="dh-container">
+            <div className="dh-section-title" data-reveal="">
+              <h2>News</h2>
+              <p>{isKorean ? "공시와 보도입니다." : "適時開示と報道です。"}</p>
             </div>
-          </section>
-        )}
+            <div className="dh-topic-grid">
+              {corporateNews.map((item, index) => (
+                <article className="dh-topic" data-reveal={String(index)} key={item.slug}>
+                  {/* Light brand wash only — the previous duotone flattened all
+                      three photos into the same washed-out blue. */}
+                  <div className="dh-topic-visual" style={{ backgroundImage: `linear-gradient(160deg, rgba(13, 38, 66, 0.34), rgba(65, 171, 225, 0.12)), url(${item.image})` }} />
+                  <p className="dh-topic-date">
+                    {item.date}
+                    {item.source ? ` · ${isKorean ? item.koSource : item.source}` : ""}
+                  </p>
+                  <h3>{isKorean ? item.koTitle : item.title}</h3>
+                  <p>{isKorean ? item.koSummary : item.summary}</p>
+                  <a href={item.href} target="_blank" rel="noreferrer">
+                    {isKorean ? "기사 보기" : "記事を見る"}
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section id="contact" className="dh-home-cta">
           <div className="dh-container" data-reveal="">
