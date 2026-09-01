@@ -22,6 +22,13 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+html[lang="ja"] body,
+html[lang="ko"] body {
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  line-break: strict;
+}
+
 body {
   margin: 0;
   overflow-x: hidden;
@@ -4221,7 +4228,8 @@ h2 {
   font-size: 28px;
   font-weight: 900;
   line-height: 1.15;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  word-break: keep-all;
   text-wrap: pretty;
 }
 
@@ -5324,7 +5332,7 @@ h2 {
   line-height: 1.42;
   letter-spacing: 0;
   overflow-wrap: break-word;
-  word-break: normal;
+  word-break: keep-all;
 }
 
 .dh-ceo-message-aside blockquote span {
@@ -5449,6 +5457,8 @@ h2 {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.75;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .dh-values-wrapper {
@@ -6119,8 +6129,8 @@ h2 {
   font-weight: 900;
   line-height: 1.18;
   letter-spacing: 0;
-  overflow-wrap: anywhere;
-  word-break: normal;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .dh-ingredient-profile-summary h1 > span,
@@ -6139,8 +6149,8 @@ h2 {
   color: #4b5563;
   font-size: 16px;
   line-height: 1.95;
-  overflow-wrap: anywhere;
-  word-break: normal;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .dh-ingredient-spec-panel,
@@ -6252,8 +6262,8 @@ h2 {
   color: #4b5563;
   font-size: 15px;
   line-height: 1.85;
-  overflow-wrap: anywhere;
-  word-break: normal;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .dh-ingredient-section-grid li::before,
@@ -6342,8 +6352,8 @@ h2 {
   color: #4b5563;
   font-size: 15px;
   line-height: 1.85;
-  overflow-wrap: anywhere;
-  word-break: normal;
+  overflow-wrap: break-word;
+  word-break: keep-all;
 }
 
 .dh-mechanism-panel figure {
@@ -7915,7 +7925,8 @@ h2 {
   line-height: 1.82;
   letter-spacing: 0;
   line-break: strict;
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
+  word-break: keep-all;
   text-wrap: pretty;
 }
 
@@ -8077,6 +8088,7 @@ h2 {
 .dh-filter-row {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
 }
 
@@ -8497,8 +8509,8 @@ h2 {
   .dh-page .dh-iheal-product-copy span,
   .dh-page .dh-iheal-product-copy strong {
     max-width: 100%;
-    overflow-wrap: anywhere;
-    word-break: normal;
+    overflow-wrap: break-word;
+    word-break: keep-all;
   }
 
   .dh-page .dh-product-grid-two {
@@ -8526,8 +8538,8 @@ h2 {
   .dh-page .dh-ingredient-section-grid li,
   .dh-page .dh-ingredient-origin-panel li,
   .dh-page .dh-ingredient-spec-panel dd {
-    word-break: normal;
-    overflow-wrap: anywhere;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .dh-page .dh-ingredient-profile-hero,
@@ -8629,8 +8641,8 @@ h2 {
     font-size: clamp(22px, 5.4vw, 28px) !important;
     line-height: 1.22 !important;
     white-space: normal !important;
-    overflow-wrap: anywhere !important;
-    word-break: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: keep-all !important;
     text-wrap: balance;
   }
 
@@ -8642,8 +8654,8 @@ h2 {
     line-height: 1.55 !important;
     text-wrap: balance;
     white-space: normal !important;
-    overflow-wrap: anywhere !important;
-    word-break: auto-phrase;
+    overflow-wrap: break-word !important;
+    word-break: keep-all;
   }
 
   .dh-mobile-toggle {
@@ -8681,7 +8693,8 @@ h2 {
   .dh-about-overview-heading h2 {
     font-size: clamp(28px, 8vw, 32px);
     line-height: 1.12;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
+    word-break: keep-all;
     text-wrap: balance;
   }
 
@@ -8689,7 +8702,8 @@ h2 {
   .dh-about-card p {
     font-size: 14px;
     line-height: 1.8;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
+    word-break: keep-all;
   }
 }
 
@@ -8852,6 +8866,12 @@ h2 {
    so the five primary items own the bar. */
 .dh-menu-item > a {
   white-space: nowrap;
+}
+
+html[lang="ko"] .dh-menu-item > a,
+html[lang="ko"] .dh-submenu a,
+html[lang="ko"] .dh-mobile-panel a {
+  letter-spacing: 0.04em;
 }
 
 .dh-nav-tools .dh-top-link {
@@ -10210,4 +10230,21 @@ h2 {
   .dh-origin-composition-cards {
     grid-template-columns: 1fr;
   }
+
+  .dh-product-grid-two .dh-product-text h3 {
+    max-width: 100%;
+  }
+}
+
+html[lang="ja"] .dh-vision-cards h3,
+html[lang="ko"] .dh-vision-cards h3,
+html[lang="ja"] .dh-vision-cards article > p:last-child,
+html[lang="ko"] .dh-vision-cards article > p:last-child,
+html[lang="ja"] .dh-hero-support,
+html[lang="ko"] .dh-hero-support,
+html[lang="ja"] .dh-ceo-message-copy p,
+html[lang="ko"] .dh-ceo-message-copy p {
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  line-break: strict;
 }
