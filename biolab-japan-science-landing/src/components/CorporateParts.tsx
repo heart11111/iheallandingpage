@@ -116,7 +116,7 @@ function OriginCatalogCards({ images }: { images: { alt: string; src: string }[]
       {images.map((originImage) => (
         <div key={originImage.src}>
           <figure>
-            <Image alt={originImage.alt} height={295} loading="eager" src={originImage.src} width={431} />
+            <Image alt={originImage.alt} height={295} loading="eager" src={getIngredientDisplayImage(originImage.src)} width={431} />
             <figcaption>
               <strong>{originImage.alt.split(" - ")[0]}</strong>
             </figcaption>
