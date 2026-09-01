@@ -1,4 +1,4 @@
-const INGREDIENT_IMAGE_VERSION = "20260901-bifido-strain-pptx";
+const INGREDIENT_IMAGE_VERSION = "20260901-bifido-pptx-cells";
 
 function withIngredientImageVersion(image: string) {
   return image.startsWith("/images/ingredients/") ? `${image}?v=${INGREDIENT_IMAGE_VERSION}` : image;

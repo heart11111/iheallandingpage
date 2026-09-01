@@ -110,16 +110,24 @@ function renderMultiline(items: string[]): ReactNode {
   return items.flatMap((item, index) => (index === 0 ? [item] : [<br key={`br-${index}`} />, item]));
 }
 
-function OriginCatalogCards({ images }: { images: { alt: string; src: string }[] }) {
+function OriginCatalogCards({
+  hideCaption,
+  images,
+}: {
+  hideCaption?: boolean;
+  images: { alt: string; src: string }[];
+}) {
   return (
-    <div className="dh-origin-composition-cards">
+    <div className="dh-origin-composition-cards" data-caption={hideCaption ? "in-image" : "below"}>
       {images.map((originImage) => (
         <div key={originImage.src}>
           <figure>
-            <Image alt={originImage.alt} height={295} loading="eager" src={getIngredientDisplayImage(originImage.src)} width={431} />
-            <figcaption>
-              <strong>{originImage.alt.split(" - ")[0]}</strong>
-            </figcaption>
+            <Image alt={originImage.alt} height={406} loading="eager" src={getIngredientDisplayImage(originImage.src)} width={638} />
+            {hideCaption ? null : (
+              <figcaption>
+                <strong>{originImage.alt.split(" - ")[0]}</strong>
+              </figcaption>
+            )}
           </figure>
         </div>
       ))}
@@ -1063,7 +1071,9 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                   <li key={text}>{text}</li>
                 ))}
               </ul>
-              {originImages.length > 0 && <OriginCatalogCards images={originImages} />}
+              {originImages.length > 0 && (
+                <OriginCatalogCards hideCaption={sourceItem.id === "bifido"} images={originImages} />
+              )}
             </section>
 
             {originTable && <OriginCompositionTab isKorean={isKorean} table={originTable} />}
@@ -1336,7 +1346,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
         </ul>
         {originImages.length > 0 && (
           <div className="dh-origin-visual-stack">
-            <OriginCatalogCards images={originImages} />
+            <OriginCatalogCards hideCaption={sourceItem.id === "bifido"} images={originImages} />
             {sourceItem.id === "bifido" && <BifidoEvidencePanel />}
           </div>
         )}
