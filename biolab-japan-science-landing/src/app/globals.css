@@ -5319,12 +5319,12 @@ h2 {
   padding-left: 18px;
   border-left: 4px solid #2f70bf;
   color: #111827;
-  font-size: clamp(23px, 1.8vw, 29px);
+  font-size: clamp(22px, 1.7vw, 28px);
   font-weight: 900;
   line-height: 1.42;
   letter-spacing: 0;
-  word-break: keep-all;
-  overflow-wrap: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .dh-ceo-message-aside blockquote span {
@@ -6119,8 +6119,8 @@ h2 {
   font-weight: 900;
   line-height: 1.18;
   letter-spacing: 0;
-  overflow-wrap: normal;
-  word-break: keep-all;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .dh-ingredient-profile-summary h1 > span,
@@ -6139,7 +6139,8 @@ h2 {
   color: #4b5563;
   font-size: 16px;
   line-height: 1.95;
-  word-break: keep-all;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .dh-ingredient-spec-panel,
@@ -6921,10 +6922,37 @@ h2 {
   gap: 14px;
 }
 
+@media (max-width: 980px) {
+  .dh-evidence-chart .evidence-pinitol-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+}
+
 @media (max-width: 720px) {
   .dh-evidence-chart .evidence-pinitol-grid {
     grid-template-columns: 1fr !important;
     gap: 20px;
+  }
+
+  .dh-origin-composition-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dh-origin-composition-table table {
+    min-width: 520px;
+    table-layout: auto;
+  }
+
+  .dh-origin-composition-table th,
+  .dh-origin-composition-table td {
+    white-space: normal;
+  }
+
+  .dh-origin-composition-table tbody th {
+    width: auto;
+    min-width: 7.5em;
   }
 }
 
@@ -7892,11 +7920,11 @@ h2 {
 }
 
 .dh-vision-card p > span {
-  display: inline;
+  display: block;
 }
 
-.dh-vision-card p > span:not(:last-child)::after {
-  content: " ";
+.dh-vision-card p > span:not(:last-child) {
+  margin-bottom: 0.15em;
 }
 
 /* Statistical notation reads as a quiet annotation next to the outcome it
@@ -8694,13 +8722,17 @@ h2 {
   }
 
   .dh-ingredient-card {
+    display: grid;
     grid-template-columns: 104px minmax(0, 1fr);
+    align-items: stretch;
     min-height: 150px;
   }
 
   .dh-ingredient-card img {
-    width: 104px;
+    width: 100%;
+    height: 100%;
     min-height: 150px;
+    object-fit: cover;
   }
 
   .dh-ingredient-card div {
