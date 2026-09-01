@@ -4533,7 +4533,7 @@ h2 {
 
 .dh-topic h3 {
   display: -webkit-box;
-  min-height: 60px;
+  min-height: 90px;
   margin: 0;
   overflow: hidden;
   color: var(--dh-ink);
@@ -4543,7 +4543,7 @@ h2 {
   text-overflow: ellipsis;
   white-space: normal;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
 }
 
 .dh-topic h3::after {
