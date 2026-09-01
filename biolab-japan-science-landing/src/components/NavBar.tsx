@@ -84,7 +84,7 @@ export function NavBar() {
               {devKoreanLabels.ko}
             </button>
           </div>
-          <button type="button" className="dh-mobile-toggle" aria-label="メニュー" onClick={() => setOpen((value) => !value)}>
+          <button type="button" className="dh-mobile-toggle" aria-label={language === "ko" ? "메뉴" : "メニュー"} onClick={() => setOpen((value) => !value)}>
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
@@ -109,10 +109,10 @@ export function NavBar() {
           ))}
           <div className="dh-mobile-language-toggle" aria-label={devKoreanLabels.language}>
             <button type="button" className={language === "ja" ? "is-active" : ""} onClick={() => setLanguage("ja")}>
-              일본어
+              {language === "ko" ? "일본어" : "日本語"}
             </button>
             <button type="button" className={language === "ko" ? "is-active" : ""} onClick={() => setLanguage("ko")}>
-              한국어
+              {language === "ko" ? "한국어" : "韓国語"}
             </button>
           </div>
         </div>

@@ -64,9 +64,19 @@ export default function ProductsPage() {
                   <div className="dh-product-shade" aria-hidden="true" />
                   <div className="dh-product-text">
                     <div className="dh-product-copy">
-                      <IngredientLineBadge
-                        label={group.menuLabel}
-                        line={index === 0 ? "Functional Probiotics" : "Nature-derived Ingredients"}
+                      <LocalizedText
+                        ja={
+                          <IngredientLineBadge
+                            label={group.menuLabel}
+                            line={index === 0 ? "Functional Probiotics" : "Nature-derived Ingredients"}
+                          />
+                        }
+                        ko={
+                          <IngredientLineBadge
+                            label={group.koLabel}
+                            line={index === 0 ? "Functional Probiotics" : "Nature-derived Ingredients"}
+                          />
+                        }
                       />
                       <h3>
                         <LocalizedText ja={group.label} ko={group.koLabel} />
