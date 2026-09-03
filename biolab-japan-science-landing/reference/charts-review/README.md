@@ -10,6 +10,7 @@
 - `graph-source-reference-map-20260707.md`: 그래프별 원자료·출처 연결표입니다.
 - `paper-chart-values-audit-20260707.md`: 논문·PPTX·PDF 수치 대조 기록입니다.
 - `vision-graph-accuracy-audit-20260707.md`: 원본 그래프와 HTML 재현본의 형태 검수 기록입니다.
+- `html-charts-full-audit-2026-08-21.md`: HTML 차트 전수 재검수(구조·Exact 수치·라이브 포트 불일치).
 
 ## 사용 방법
 
