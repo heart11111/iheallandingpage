@@ -79,8 +79,8 @@ export const communicationPages = [
     koLabel: "커뮤니케이션 채널",
     menuLabel: "Channels",
     href: "/communication/channels",
-    summary: "BIOLAB Japan、BIOLAB Korea、iHEAL Mallへの公式導線を案内します。",
-    koSummary: "BIOLAB Japan, BIOLAB Korea, iHEAL Mall 공식 연결 경로입니다.",
+    summary: "BIOLAB Korea、iHEAL Mallへの公式導線を案内します。",
+    koSummary: "BIOLAB Korea, iHEAL Mall 공식 연결 경로입니다.",
   },
 ];
 
