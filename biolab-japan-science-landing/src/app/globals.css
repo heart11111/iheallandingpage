@@ -6795,9 +6795,8 @@ h2 {
   margin: 0;
 }
 
-/* Live evidence charts ported from the review SVG engine. The engine relies on
-   these CSS custom properties and hides bars/lines until a scroll-triggered
-   `.show` class appears; here they render immediately and fully visible. */
+/* Live evidence charts. Bars/lines stay collapsed until `.show` is added
+   (scroll into view, or immediately when the user prefers reduced motion). */
 .dh-evidence-chart {
   --brand: #1e40af;
   --brand2: #1e40af;
@@ -6882,15 +6881,73 @@ h2 {
 }
 
 .dh-evidence-chart .barRect {
-  transform: none !important;
+  transform-box: fill-box;
+  transform: scaleY(0);
+  opacity: 0;
+  transition:
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.08s,
+    opacity 0.35s ease 0.08s;
+}
+
+.dh-evidence-chart.show .barRect,
+.dh-evidence-chart .show .barRect {
+  transform: scaleY(1);
+  opacity: 1;
 }
 
 .dh-evidence-chart .lp {
+  transition: stroke-dashoffset 1.1s ease;
+}
+
+.dh-evidence-chart.show .lp,
+.dh-evidence-chart .show .lp {
   stroke-dashoffset: 0 !important;
 }
 
 .dh-evidence-chart .dot {
-  opacity: 1 !important;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.55s;
+}
+
+.dh-evidence-chart.show .dot,
+.dh-evidence-chart .show .dot {
+  opacity: 1;
+}
+
+.dh-evidence-chart .barBreak {
+  opacity: 0;
+}
+
+.dh-evidence-chart.show .barBreak,
+.dh-evidence-chart .show .barBreak {
+  opacity: 1;
+  transition: opacity 0.3s ease 0.5s;
+}
+
+.dh-evidence-chart.show.is-settled .barRect,
+.dh-evidence-chart.show.is-settled .lp,
+.dh-evidence-chart.show.is-settled .dot,
+.dh-evidence-chart.show.is-settled .barBreak {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-evidence-chart .barRect {
+    transform: scaleY(1);
+    opacity: 1;
+    transition: none;
+  }
+
+  .dh-evidence-chart .lp {
+    stroke-dashoffset: 0 !important;
+    transition: none;
+  }
+
+  .dh-evidence-chart .dot,
+  .dh-evidence-chart .barBreak {
+    opacity: 1;
+    transition: none;
+  }
 }
 
 .dh-evidence-chart .legc {

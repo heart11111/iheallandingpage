@@ -9,6 +9,7 @@ import { useDevLanguage } from "@/components/DevLanguageProvider";
 import { EvidenceChart } from "@/components/EvidenceChart";
 import { IngredientCategoryBadge } from "@/components/IngredientCategoryBadge";
 import { hasChart } from "@/lib/evidenceCharts";
+import { useReveal } from "@/lib/useReveal";
 import { companyContact, siteMapGroups } from "@/lib/corporate";
 import { devKoreanLabels, getKoreanIngredient } from "@/lib/devKorean";
 import { getIngredientSpecLabel } from "@/lib/ingredientDisplay";
@@ -838,6 +839,7 @@ function MechanismPanel({
     <section
       aria-label={`${name} ${kicker}`}
       className="dh-mechanism-panel"
+      data-reveal=""
       data-diagram={copy.diagramFit || "default"}
       data-kicker={kicker === "Mechanism" ? undefined : "literal"}
       data-layout={copy.layout || "split"}
@@ -1154,6 +1156,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                         data-evidence-index={index + 1}
                         data-evidence-shape={wideEvidenceImages.has(imageSrc) ? "wide" : undefined}
                         data-evidence-src={imageSrc}
+                        data-reveal={getLiveChartKey(evidenceImage.src) ? undefined : ""}
                         key={imageSrc}
                       >
                         {getLiveChartKey(evidenceImage.src) ? (
@@ -1220,7 +1223,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 </ul>
                 {hasStatNotation(item.featurePoints) && <StatLegend isKorean={isKorean} />}
                 {featureImage && sourceItem.id !== "bifido" && (
-                  <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
+                  <figure className="dh-feature-mechanism" data-reveal="" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
                     <EvidenceFigureImage
                       caption={getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}
                       imageSrc={getLocalizedEvidenceImageSrc(featureImage.src, isKorean)}
@@ -1264,6 +1267,7 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
 export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient }) {
   const { language } = useDevLanguage();
   const isKorean = language === "ko";
+  useReveal();
   const item = isKorean ? getKoreanIngredient(sourceItem) : sourceItem;
   const labels = devKoreanLabels.detail;
   const materials = item.strains || item.origin || [];
@@ -1374,7 +1378,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           </ul>
           {hasStatNotation(featureBlocks) && <StatLegend isKorean={isKorean} />}
           {featureImage && sourceItem.id !== "bifido" && (
-            <figure className="dh-feature-mechanism" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
+            <figure className="dh-feature-mechanism" data-reveal="" data-feature-kind={sourceItem.id === "bifido" ? "certification" : undefined}>
               <EvidenceFigureImage
                 caption={getEvidenceCaption(featureImage.src, featureImage.caption, isKorean)}
                 imageSrc={getLocalizedEvidenceImageSrc(featureImage.src, isKorean)}
@@ -1437,6 +1441,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
                   data-evidence-index={index + 1}
                   data-evidence-shape={wideEvidenceImages.has(imageSrc) ? "wide" : undefined}
                   data-evidence-src={imageSrc}
+                  data-reveal={getLiveChartKey(evidenceImage.src) ? undefined : ""}
                   key={imageSrc}
                 >
                   {getLiveChartKey(evidenceImage.src) ? (
