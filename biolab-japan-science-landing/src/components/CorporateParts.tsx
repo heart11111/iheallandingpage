@@ -1293,7 +1293,7 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
   return (
     <article className="dh-ingredient-profile">
       <div className="dh-ingredient-profile-hero">
-        <div className="dh-ingredient-profile-visual">
+        <div className={`dh-ingredient-profile-visual${sourceItem.id === "bifido" ? " is-catalog-cell" : ""}`}>
           <Image
             alt=""
             aria-hidden="true"

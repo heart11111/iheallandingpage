@@ -6094,6 +6094,11 @@ h2 {
   object-fit: cover;
 }
 
+.dh-ingredient-profile-visual.is-catalog-cell img {
+  object-fit: contain;
+  background: #f4f8fc;
+}
+
 .dh-ingredient-profile-summary {
   display: flex;
   min-width: 0;
