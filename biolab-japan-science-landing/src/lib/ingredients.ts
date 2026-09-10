@@ -122,7 +122,7 @@ export const probioticsIngredients: Ingredient[] = [
     summary: "母乳を与えられた健康な新生児の便由来、100%ヒト由来ビフィズス菌。",
     intake: "B. bifidum BGN4 1,000億CFU/g\nB. longum BORI 1,000億CFU/g\nB. lactis AD011 1,000億CFU/g",
     specKind: "spec",
-    image: "/images/ingredients/bifido.webp",
+    image: "/images/ingredients/bifido-strain-bgn4.webp",
     strains: ["B. bifidum BGN4", "B. longum BORI", "B. lactis AD011"],
     evidenceTags: ["FDA GRAS/NDI認証", "HALAL/KOSHER認証", "臨床10件・特許80件・SCI論文260編"],
     line: "Functional Probiotics",
