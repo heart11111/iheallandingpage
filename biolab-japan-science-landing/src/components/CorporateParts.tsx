@@ -212,6 +212,19 @@ const wideEvidenceImages = new Set([
   "/images/ingredients/acetobeta-evidence-1.webp",
 ]);
 
+// Mechanism / pathway illustrations: keep a full-width row, but cap the
+// drawing itself so it does not stretch to the evidence-grid column.
+const diagramEvidenceImages = new Set([
+  "/images/ingredients/acetobeta-evidence-1.webp",
+]);
+
+function evidenceFigureMeta(imageSrc: string) {
+  return {
+    kind: diagramEvidenceImages.has(imageSrc) ? "diagram" : undefined,
+    shape: wideEvidenceImages.has(imageSrc) ? "wide" : undefined,
+  };
+}
+
 const japaneseEvidenceImages: Record<string, string> = {};
 
 // Images whose baked-in captions are cropped away; the neutral photo is served to
@@ -1147,12 +1160,14 @@ export function IngredientList({ items, linkBase }: { items: Ingredient[]; linkB
                 <div className="dh-ppt-graph-grid" data-evidence-count={chartEvidenceImages.length}>
                   {chartEvidenceImages.map((evidenceImage, index) => {
                     const imageSrc = getLocalizedEvidenceImageSrc(evidenceImage.src, isKorean);
+                    const figureMeta = evidenceFigureMeta(imageSrc);
 
                     return (
                       <figure
                         className="dh-ppt-chart dh-ppt-chart-figure"
                         data-evidence-index={index + 1}
-                        data-evidence-shape={wideEvidenceImages.has(imageSrc) ? "wide" : undefined}
+                        data-evidence-kind={figureMeta.kind}
+                        data-evidence-shape={figureMeta.shape}
                         data-evidence-src={imageSrc}
                         key={imageSrc}
                       >
@@ -1430,12 +1445,14 @@ export function IngredientDetailArticle({ item: sourceItem }: { item: Ingredient
           <div className="dh-ppt-graph-grid" data-evidence-count={chartEvidenceImages.length}>
             {chartEvidenceImages.map((evidenceImage, index) => {
               const imageSrc = getLocalizedEvidenceImageSrc(evidenceImage.src, isKorean);
+              const figureMeta = evidenceFigureMeta(imageSrc);
 
               return (
                 <figure
                   className="dh-ppt-chart dh-ppt-chart-figure"
                   data-evidence-index={index + 1}
-                  data-evidence-shape={wideEvidenceImages.has(imageSrc) ? "wide" : undefined}
+                  data-evidence-kind={figureMeta.kind}
+                  data-evidence-shape={figureMeta.shape}
                   data-evidence-src={imageSrc}
                   key={imageSrc}
                 >
