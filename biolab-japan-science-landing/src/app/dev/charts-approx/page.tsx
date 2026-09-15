@@ -103,7 +103,7 @@ function DraftChart({ chartKey, lang }: { chartKey: string; lang: Lang }) {
     host.replaceChildren();
     const node = buildChartNode(chartKey, lang);
     if (node) {
-      node.classList?.add("show");
+      host.classList.add("show");
       host.appendChild(node);
     }
   }, [chartKey, lang]);
