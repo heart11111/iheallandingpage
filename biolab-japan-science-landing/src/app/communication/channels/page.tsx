@@ -4,14 +4,6 @@ import { NavBar } from "@/components/NavBar";
 
 const channels = [
   {
-    label: "ビオラボジャパン",
-    koLabel: "비오랩 재팬",
-    ruby: "BIOLAB Japan",
-    body: "日本B2B事業、機能性素材、ODM/OEM、ブランド協業の公式窓口です。",
-    koBody: "일본 B2B 사업, 기능성 식품 원료 사업, ODM/OEM, Brand Royalty 공식 창구입니다.",
-    href: "/contact",
-  },
-  {
     label: "ビオラボコリア",
     koLabel: "비오랩 코리아",
     ruby: "BIOLAB Korea",
@@ -36,9 +28,9 @@ export default function ChannelsPage() {
       <main>
         <CorporateSubHero
           title="Communication Channels"
-          copy="BIOLAB Japan、BIOLAB Korea、iHEAL Mallの公式導線です。"
+          copy="BIOLAB Korea、iHEAL Mallの公式導線です。"
           koTitle="커뮤니케이션 채널"
-          koCopy="BIOLAB Japan, BIOLAB Korea, iHEAL Mall 공식 연결 경로입니다."
+          koCopy="BIOLAB Korea, iHEAL Mall 공식 연결 경로입니다."
           image="/images/clinical-platform-hero.png"
           compact
         />
